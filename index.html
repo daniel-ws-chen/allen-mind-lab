@@ -74,10 +74,15 @@
       overflow:hidden;
     }
 
-    .hero img{
-      width:100%;
+    .hero picture{
       display:block;
-      object-fit:cover;
+      width:100%;
+    }
+
+    .hero img{
+      display:block;
+      width:100%;
+      height:auto;
     }
 
     section{padding:95px 8vw}
@@ -370,12 +375,24 @@
     @media(max-width:980px){
       .navlinks{display:none}
       section{padding:75px 6vw}
-      .about-grid,.cards,.works-grid,.pub-grid{grid-template-columns:1fr}
-      .hero img{
-        min-height:300px;
-        object-fit:cover;
-        object-position:left center;
+      .about-grid,.cards,.works-grid,.pub-grid{
+        grid-template-columns:1fr;
       }
+
+      .hero picture{
+        display:block;
+        width:100%;
+      }
+
+      .hero img{
+        display:block;
+        width:100%;
+        height:auto;
+        min-height:0;
+        object-fit:contain;
+        object-position:center;
+      }
+
       .pub-cover{
         max-width:180px;
       }
