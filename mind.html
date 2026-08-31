@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Mind & Well-being | Allen Mind Lab</title>
+
+  <style>
+    :root{
+      --navy:#0d1b2a;
+      --navy2:#14263b;
+      --gold:#c7a76a;
+      --cream:#f6f1e8;
+      --paper:#fffdf9;
+      --ink:#1f2933;
+      --muted:#6b7280;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.75;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:100;
+      height:72px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 6vw;
+      background:rgba(8,22,38,.92);
+      backdrop-filter:blur(12px);
+      color:white;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.12em;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:24px;
+      font-size:.9rem;
+    }
+
+    .navlinks a{
+      color:#e5e7eb;
+      transition:.2s;
+    }
+
+    .navlinks a:hover{color:var(--gold)}
+
+    .hero{
+      min-height:78vh;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:60px;
+      align-items:center;
+      padding:130px 8vw 90px;
+      background:
+        radial-gradient(circle at 80% 30%,rgba(199,167,106,.17),transparent 30%),
+        linear-gradient(135deg,var(--navy),var(--navy2));
+      color:white;
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .hero h1{
+      margin:0 0 20px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(3rem,6vw,6rem);
+      line-height:1;
+    }
+
+    .hero p{
+      color:#d6dde6;
+      max-width:720px;
+      font-size:1.08rem;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:24px;
+      padding:34px;
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-card h3{
+      color:var(--gold);
+      margin-top:0;
+    }
+
+    .hero-card p{
+      margin-bottom:0;
+      font-size:1rem;
+    }
+
+    section{padding:100px 8vw}
+
+    .section-title{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(2.2rem,4vw,4rem);
+      color:var(--navy);
+      margin:0 0 18px;
+    }
+
+    .section-lead{
+      max-width:860px;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    .intro-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:60px;
+      align-items:start;
+    }
+
+    .quote{
+      border-left:3px solid var(--gold);
+      padding-left:24px;
+      font-size:1.35rem;
+      color:var(--navy);
+      font-weight:700;
+    }
+
+    .dimensions{background:var(--cream)}
+
+    .dimension-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:40px;
+    }
+
+    .dimension{
+      background:white;
+      padding:30px;
+      border-radius:22px;
+      border:1px solid #e8e2d7;
+      min-height:220px;
+      transition:.25s ease;
+    }
+
+    .dimension:hover{
+      transform:translateY(-5px);
+      box-shadow:0 16px 38px rgba(15,23,42,.08);
+    }
+
+    .dimension span{
+      color:var(--gold);
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.15em;
+    }
+
+    .dimension h3{
+      color:var(--navy);
+      margin:10px 0;
+    }
+
+    .dimension p{
+      color:var(--muted);
+      margin:0;
+    }
+
+    .balance{
+      background:var(--navy);
+      color:white;
+    }
+
+    .balance .section-title{color:white}
+    .balance .section-lead{color:#cbd5e1}
+
+    .balance-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+      margin-top:42px;
+    }
+
+    .balance-card{
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:20px;
+      padding:26px;
+      background:rgba(255,255,255,.04);
+    }
+
+    .balance-card span{
+      color:var(--gold);
+      font-weight:800;
+      font-size:.82rem;
+    }
+
+    .balance-card h3{margin:8px 0}
+
+    .balance-card p{
+      color:#cbd5e1;
+      margin:0;
+      font-size:.95rem;
+    }
+
+    .practice-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:40px;
+    }
+
+    .practice-card{
+      padding:30px;
+      border-radius:22px;
+      border:1px solid #e5e7eb;
+      background:linear-gradient(180deg,white,#fbfaf7);
+      transition:.25s;
+    }
+
+    .practice-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 14px 34px rgba(15,23,42,.07);
+    }
+
+    .practice-card h3{
+      color:var(--navy);
+      margin-top:0;
+    }
+
+    .practice-card p{color:var(--muted)}
+
+
+    .cultivation{
+      background:linear-gradient(135deg,#f7f1e6,#fffdf9);
+    }
+
+    .cultivation-intro{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:50px;
+      align-items:start;
+    }
+
+    .cultivation-quote{
+      border-left:3px solid var(--gold);
+      padding-left:24px;
+      color:var(--navy);
+      font-size:1.22rem;
+      font-weight:700;
+    }
+
+    .path-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:42px;
+    }
+
+    .path-card{
+      background:white;
+      border:1px solid #e7e1d6;
+      border-radius:22px;
+      padding:30px;
+      transition:.25s ease;
+    }
+
+    .path-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 36px rgba(15,23,42,.08);
+    }
+
+    .path-label{
+      color:var(--gold);
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .path-card h3{
+      color:var(--navy);
+      margin:9px 0 10px;
+    }
+
+    .path-card p{
+      color:var(--muted);
+      margin:0;
+    }
+
+    .external-note{
+      margin-top:16px;
+      color:#8b7751;
+      font-size:.88rem;
+      font-weight:700;
+    }
+
+    .link-disabled{
+      display:inline-block;
+      margin-top:18px;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px dashed #cbb98f;
+      color:#8b7751;
+      background:#faf7f0;
+      font-size:.9rem;
+      font-weight:700;
+      cursor:not-allowed;
+    }
+
+    .external-link{
+      display:inline-block;
+      margin-top:18px;
+      padding:10px 16px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      color:var(--navy);
+      background:white;
+      font-size:.9rem;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .external-link:hover{
+      background:var(--gold);
+      transform:translateY(-2px);
+    }
+
+    .boundary-note{
+      margin-top:42px;
+      padding:24px 26px;
+      border-radius:18px;
+      background:#0d1b2a;
+      color:#dbe3eb;
+      font-size:.96rem;
+    }
+
+    .boundary-note strong{
+      color:var(--gold);
+    }
+
+    .reflection{background:#faf8f3}
+
+    .reflection-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      margin-top:36px;
+    }
+
+    .reflection-card{
+      background:white;
+      padding:30px;
+      border-radius:22px;
+      border:1px solid #e7e7e7;
+      transition:.25s;
+    }
+
+    .reflection-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 14px 34px rgba(15,23,42,.07);
+    }
+
+    .reflection-card h3{
+      color:var(--navy);
+      margin-top:0;
+    }
+
+    .reflection-card p{color:var(--muted)}
+
+    .ending{
+      text-align:center;
+      padding:120px 8vw;
+      background:linear-gradient(135deg,#f5efe3,white);
+    }
+
+    .ending h2{
+      font-family:Georgia,"Times New Roman",serif;
+      color:var(--navy);
+      font-size:clamp(2rem,4vw,4rem);
+    }
+
+    .ending p{
+      color:var(--gold);
+      font-weight:800;
+      letter-spacing:.08em;
+    }
+
+    .back{
+      display:inline-block;
+      margin-top:20px;
+      padding:11px 20px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      color:var(--navy);
+      font-weight:700;
+      transition:.2s;
+    }
+
+    .back:hover{background:var(--gold)}
+
+    footer{
+      padding:30px 8vw;
+      background:var(--navy);
+      color:#cbd5e1;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:20px;
+      font-size:.9rem;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(35px);
+      transition:opacity .8s ease,transform .8s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .hero,
+      .intro-grid,
+      .dimension-grid,
+      .balance-grid,
+      .practice-grid,
+      .cultivation-intro,
+      .path-grid,
+      .reflection-grid{
+        grid-template-columns:1fr;
+      }
+      .hero{padding:120px 6vw 70px}
+      section{padding:75px 6vw}
+    }
+  
+/* ===== AML Unified Footer v1 ===== */
+.aml-footer{
+  background:#101719;
+  color:#d7dde0;
+  padding:72px 8vw 30px;
+  border-top:1px solid rgba(199,167,106,.22);
+}
+.aml-footer-top{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:64px;
+  align-items:start;
+  padding-bottom:44px;
+}
+.aml-footer-brand{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:2rem;
+  color:white;
+  margin-bottom:8px;
+}
+.aml-footer-brand span{
+  color:#c7a76a;
+  font-size:1rem;
+  margin-left:8px;
+  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+}
+.aml-footer-tagline{
+  color:#c7a76a;
+  font-weight:800;
+  letter-spacing:.08em;
+  margin-bottom:16px;
+}
+.aml-footer-copy{
+  max-width:650px;
+  color:#9eaaaf;
+  line-height:1.8;
+}
+.aml-footer-links{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px 40px;
+}
+.aml-footer-group h4{
+  margin:0 0 13px;
+  color:#c7a76a;
+  font-size:.78rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.aml-footer-group a{
+  display:block;
+  color:#c8d0d4;
+  margin:7px 0;
+  font-size:.93rem;
+  transition:.2s;
+}
+.aml-footer-group a:hover{
+  color:#c7a76a;
+  transform:translateX(2px);
+}
+.aml-footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:24px;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  color:#7f8b90;
+  font-size:.84rem;
+}
+.aml-footer-mini-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.aml-footer-mini-links a{
+  color:#9aa6ab;
+}
+.aml-footer-mini-links a:hover{
+  color:#c7a76a;
+}
+@media(max-width:900px){
+  .aml-footer{
+    padding:58px 6vw 26px;
+  }
+  .aml-footer-top{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .aml-footer-links{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:560px){
+  .aml-footer-links{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+<nav>
+  <div class="brand">ALLEN MIND LAB</div>
+
+  <div class="navlinks">
+    <a href="index.html">Home</a>
+    <a href="#about">Well-being</a>
+    <a href="#dimensions">Dimensions</a>
+    <a href="#balance">Balance</a>
+    <a href="#practice">Practice</a>
+    <a href="#cultivation">Cultivation</a>
+    <a href="#reflection">Reflection</a>
+  </div>
+</nav>
+
+
+<header class="hero">
+
+  <div>
+    <div class="eyebrow">Mind & Well-being</div>
+
+    <h1>
+      Live Well.<br>
+      Live Meaningfully.
+    </h1>
+
+    <p>
+      健康，
+      不只是沒有疾病；
+      幸福，
+      也不只是短暫的愉快。
+    </p>
+
+    <p>
+      在 Allen Mind Lab，
+      Well-being 關注的是如何在身體、心理、關係、
+      角色與生活節奏之間，
+      建立一個能夠長久安住自己的方式。
+    </p>
+  </div>
+
+  <div class="hero-card">
+    <h3>Well-being is a way of living.</h3>
+
+    <p>
+      真正的安定，
+      不一定來自掌控所有事情，
+      而是知道什麼需要努力、
+      什麼可以放下，
+      並在日常中找到自己的節奏。
+    </p>
+  </div>
+
+</header>
+
+
+<section id="about" class="reveal">
+
+  <div class="intro-grid">
+
+    <div>
+      <div class="eyebrow">What is Well-being?</div>
+
+      <h2 class="section-title">
+        從「保持健康」，
+        走向「好好生活」。
+      </h2>
+
+      <p class="section-lead">
+        Well-being 是一種整體狀態。
+        它包含身體健康、心理穩定、人際連結、
+        有意義的角色與對生活的掌控感。
+      </p>
+
+      <p class="section-lead">
+        因此，
+        健康促進不只是做對更多事情，
+        而是找到能夠長期維持的生活方式。
+      </p>
+    </div>
+
+    <div class="quote">
+      真正的健康，
+      不是把生活變成一張完美清單，
+      而是讓自己的身體、心與日常，
+      逐漸回到可以長久前進的節奏。
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="dimensions" id="dimensions">
+
+  <div class="reveal">
+
+    <div class="eyebrow">Dimensions of Well-being</div>
+
+    <h2 class="section-title">
+      幸福，
+      是多個面向共同構成的。
+    </h2>
+
+    <div class="dimension-grid">
+
+      <div class="dimension">
+        <span>01</span>
+        <h3>Physical</h3>
+        <p>
+          睡眠、活動、飲食與身體照顧，
+          是穩定生活的基本盤。
+        </p>
+      </div>
+
+      <div class="dimension">
+        <span>02</span>
+        <h3>Emotional</h3>
+        <p>
+          能夠辨識、調節與容納情緒，
+          而不是只要求自己永遠正向。
+        </p>
+      </div>
+
+      <div class="dimension">
+        <span>03</span>
+        <h3>Social</h3>
+        <p>
+          關係、支持與歸屬感，
+          是健康的重要保護因子。
+        </p>
+      </div>
+
+      <div class="dimension">
+        <span>04</span>
+        <h3>Occupational</h3>
+        <p>
+          在工作、家庭與日常角色中，
+          找到能力、投入與意義。
+        </p>
+      </div>
+
+      <div class="dimension">
+        <span>05</span>
+        <h3>Reflective</h3>
+        <p>
+          透過反思與安靜，
+          看見自己真正重視的是什麼。
+        </p>
+      </div>
+
+      <div class="dimension">
+        <span>06</span>
+        <h3>Meaning</h3>
+        <p>
+          當生活與價值產生連結，
+          人才更有力量面對變化。
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="balance" id="balance">
+
+  <div class="reveal">
+
+    <div class="eyebrow">Life Balance</div>
+
+    <h2 class="section-title">
+      覺察 → 調整 → 練習 → 回到生活。
+    </h2>
+
+    <p class="section-lead">
+      平衡不是每件事情都平均分配，
+      而是能夠察覺當下真正需要什麼，
+      並做出適合自己的調整。
+    </p>
+
+    <div class="balance-grid">
+
+      <div class="balance-card">
+        <span>01</span>
+        <h3>Notice</h3>
+        <p>
+          覺察身體、情緒、
+          壓力與生活節奏的變化。
+        </p>
+      </div>
+
+      <div class="balance-card">
+        <span>02</span>
+        <h3>Adjust</h3>
+        <p>
+          調整作息、
+          期待、界線與生活安排。
+        </p>
+      </div>
+
+      <div class="balance-card">
+        <span>03</span>
+        <h3>Practice</h3>
+        <p>
+          透過規律活動、
+          呼吸、運動、靜心或其他適合自己的修習。
+        </p>
+      </div>
+
+      <div class="balance-card">
+        <span>04</span>
+        <h3>Integrate</h3>
+        <p>
+          把練習帶回工作、
+          家庭與每天真正的生活。
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="practice" class="reveal">
+
+  <div class="eyebrow">Well-being in Practice</div>
+
+  <h2 class="section-title">
+    健康促進，
+    最終要回到日常。
+  </h2>
+
+  <div class="practice-grid">
+
+    <div class="practice-card">
+      <h3>Healthy Routine</h3>
+      <p>
+        從睡眠、飲食、活動與休息，
+        建立可以長期持續的健康習慣。
+      </p>
+    </div>
+
+    <div class="practice-card">
+      <h3>Mindful Practice</h3>
+      <p>
+        透過呼吸、身體覺察、
+        靜心或其他適合自己的身心練習，
+        增加穩定與覺察。
+      </p>
+    </div>
+
+    <div class="practice-card">
+      <h3>Meaningful Occupation</h3>
+      <p>
+        保留真正重要、喜歡與有意義的活動，
+        讓生活不只剩責任與效率。
+      </p>
+    </div>
+
+    <div class="practice-card">
+      <h3>Connection</h3>
+      <p>
+        維持支持性關係，
+        讓健康不只是個人努力，
+        而是有人同行。
+      </p>
+    </div>
+
+    <div class="practice-card">
+      <h3>Reflection</h3>
+      <p>
+        透過書寫、閱讀或安靜回顧，
+        整理經驗，也重新理解自己。
+      </p>
+    </div>
+
+    <div class="practice-card">
+      <h3>Compassion</h3>
+      <p>
+        對自己與他人保留彈性與善意，
+        不用完美才值得肯定。
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+<section class="cultivation" id="cultivation">
+
+  <div class="reveal">
+
+    <div class="eyebrow">Practice & Inner Cultivation</div>
+
+    <div class="cultivation-intro">
+
+      <div>
+        <h2 class="section-title">
+          專業向外，
+          修習向內。
+        </h2>
+
+        <p class="section-lead">
+          在人生下半場，
+          除了專業、管理與教育，
+          我也開始更重視另一種學習：
+          如何安頓自己的身心。
+        </p>
+
+        <p class="section-lead">
+          大安氣功、高堯楷醫師與幸福氣功，
+          是這段生命歷程中重要的引導與學習來源。
+          對我而言，
+          這些修習並不是用來取代醫療或科學，
+          而是在日常生活中，
+          練習呼吸、覺察、感恩、安定與自我照顧的一種方式。
+        </p>
+      </div>
+
+      <div class="cultivation-quote">
+        有些老師教我們知識；<br>
+        有些老師，則讓我們重新理解自己。<br><br>
+        修習對我而言，不是離開現實，
+        而是讓自己更安定地回到生活。
+      </div>
+
+    </div>
+
+    <div class="path-grid">
+
+      <div class="path-card">
+        <div class="path-label">Mentor · Physician · Teacher</div>
+        <h3>高堯楷醫師</h3>
+        <p>
+          在我的人生下半場，
+          高醫師不只是醫師，
+          也是帶領我重新理解身心、修習與生活態度的重要導師。
+        </p>
+        <div class="external-note">External Resource｜外部連結</div>
+        <a class="external-link"
+           href="https://www.drkao.org/#sanctuary"
+           target="_blank"
+           rel="noopener noreferrer">
+          Visit Dr. Kao →
+        </a>
+      </div>
+
+      <div class="path-card">
+        <div class="path-label">Traditional Chinese Medicine</div>
+        <h3>大安中醫</h3>
+        <p>
+          從中醫醫療、健康照護與生活實踐出發，
+          認識高醫師在臨床與健康促進上的工作與理念。
+        </p>
+        <div class="external-note">External Resource｜外部連結</div>
+        <a class="external-link"
+           href="https://daanclinic.com/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Visit 大安中醫 →
+        </a>
+      </div>
+
+      <div class="path-card">
+        <div class="path-label">Mind · Practice · Reflection</div>
+        <h3>大安心境｜Spirit Lab</h3>
+        <p>
+          關於修習、內在覺察與生命實踐的分享空間。
+          對我而言，這也是理解幸福氣功、大安氣功與高醫師
+          所帶領之身心修習脈絡的重要入口之一。
+        </p>
+        <div class="external-note">External Resource｜Facebook</div>
+        <a class="external-link"
+           href="https://www.facebook.com/SpiritLab.tw/?locale=zh_TW"
+           target="_blank"
+           rel="noopener noreferrer">
+          Visit 大安心境 →
+        </a>
+      </div>
+
+    </div>
+
+    <div class="boundary-note">
+      <strong>關於修習與健康</strong><br>
+      這裡分享的是個人修習、生活實踐與生命體悟；
+      涉及疾病診斷與治療時，
+      仍應以合格醫療專業人員的個別評估與建議為依據。
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="reflection" id="reflection">
+
+  <div class="reveal">
+
+    <div class="eyebrow">Reflection</div>
+
+    <h2 class="section-title">
+      安頓自己，
+      才有餘裕支持別人。
+    </h2>
+
+    <div class="reflection-grid">
+
+      <div class="reflection-card">
+        <h3>Professional Self-care</h3>
+        <p>
+          對助人者而言，
+          自我照顧不是額外獎勵，
+          而是維持專業品質與長期投入的重要條件。
+        </p>
+      </div>
+
+      <div class="reflection-card">
+        <h3>Meaningful Life</h3>
+        <p>
+          AML 最後想追問的始終是：
+          我們如何在專業、關係與生活中，
+          建立一個自己願意長久走下去的人生。
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="ending reveal">
+
+  <h2>
+    照顧身體，<br>
+    安頓內在，<br>
+    回到有意義的生活。
+  </h2>
+
+  <p>
+    MIND & WELL-BEING · ALLEN MIND LAB
+  </p>
+
+  <a href="index.html" class="back">
+    ← Back to Home
+  </a>
+
+</section>
+
+
+
+<footer class="aml-footer">
+  <div class="aml-footer-top">
+
+    <div>
+      <div class="aml-footer-brand">
+        Allen Mind Lab <span>AML</span>
+      </div>
+
+      <div class="aml-footer-tagline">
+        Building A Meaningful Life.
+      </div>
+
+      <div class="aml-footer-copy">
+        從職能治療、PBS、管理、教育、AI 到身心修習，
+        整合專業、實踐與反思，
+        持續探索更有意義的生活。
+      </div>
+    </div>
+
+    <div class="aml-footer-links">
+
+      <div class="aml-footer-group">
+        <h4>Explore AML</h4>
+        <a href="about.html">About</a>
+        <a href="articles.html">Articles</a>
+        <a href="publications.html">Publications</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">Newsletter</a>
+      </div>
+
+      <div class="aml-footer-group">
+        <h4>Explore Topics</h4>
+        <a href="ot.html">OT & Human Occupation</a>
+        <a href="pbs.html">PBS</a>
+        <a href="management.html">Management & Leadership</a>
+        <a href="education.html">Education</a>
+        <a href="ai.html">AI × Practice</a>
+        <a href="mind.html">Mind & Well-being</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="aml-footer-bottom">
+    <div>
+      © 2026 Allen Mind Lab · Allen Chen 陳威勝
+    </div>
+
+    <div class="aml-footer-mini-links">
+      <a href="https://www.facebook.com/weishengdaniel.chen/" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">Notes from the Lab</a>
+      <span>Privacy · Terms · RSS · Sitemap — coming later</span>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll(){
+    reveals.forEach((element) => {
+      const windowHeight = window.innerHeight;
+      const elementTop = element.getBoundingClientRect().top;
+
+      if(elementTop < windowHeight - 100){
+        element.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+</script>
+
+</body>
+</html>

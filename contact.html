@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Allen Mind Lab</title>
+  <meta name="description" content="Contact Allen Mind Lab for speaking, teaching, professional collaboration and media inquiries." />
+
+  <style>
+    :root{
+      --navy:#0d1b2a;
+      --navy2:#18324f;
+      --gold:#c7a76a;
+      --cream:#f6f1e8;
+      --paper:#fffdf9;
+      --ink:#1f2933;
+      --muted:#6b7280;
+      --line:#e7e1d6;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.75;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    nav{
+      position:fixed;
+      top:0;left:0;right:0;
+      z-index:100;
+      height:72px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 6vw;
+      background:rgba(8,22,38,.92);
+      backdrop-filter:blur(12px);
+      color:white;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.12em;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:24px;
+      font-size:.9rem;
+    }
+
+    .navlinks a{
+      color:#e5e7eb;
+      transition:.2s;
+    }
+
+    .navlinks a:hover{color:var(--gold)}
+
+    .hero{
+      min-height:64vh;
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:60px;
+      align-items:center;
+      padding:135px 8vw 90px;
+      background:
+        radial-gradient(circle at 78% 30%,rgba(199,167,106,.18),transparent 28%),
+        linear-gradient(135deg,var(--navy),var(--navy2));
+      color:white;
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    h1,.section-title{
+      font-family:Georgia,"Times New Roman",serif;
+    }
+
+    h1{
+      margin:0 0 22px;
+      font-size:clamp(3rem,7vw,6.5rem);
+      line-height:1;
+    }
+
+    .hero p{
+      max-width:760px;
+      color:#d6dde6;
+      font-size:1.08rem;
+    }
+
+    .hero-card{
+      padding:34px;
+      border-radius:24px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      backdrop-filter:blur(10px);
+    }
+
+    .hero-card h3{
+      color:var(--gold);
+      margin-top:0;
+      font-size:1.35rem;
+    }
+
+    .hero-card p{
+      margin-bottom:0;
+      font-size:1rem;
+    }
+
+    section{padding:95px 8vw}
+
+    .section-title{
+      font-size:clamp(2.2rem,4vw,4rem);
+      color:var(--navy);
+      margin:0 0 18px;
+    }
+
+    .section-lead{
+      max-width:850px;
+      color:var(--muted);
+      font-size:1.05rem;
+    }
+
+    .types{
+      background:var(--cream);
+    }
+
+    .type-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      margin-top:40px;
+    }
+
+    .type-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:30px;
+      transition:.25s;
+    }
+
+    .type-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 36px rgba(15,23,42,.08);
+    }
+
+    .type-card span{
+      color:var(--gold);
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.12em;
+    }
+
+    .type-card h3{
+      color:var(--navy);
+      margin:8px 0;
+    }
+
+    .type-card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:26px;
+      margin-top:40px;
+    }
+
+    .contact-card{
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:30px;
+      background:white;
+    }
+
+    .contact-card h3{
+      color:var(--navy);
+      margin-top:0;
+    }
+
+    .contact-card p{
+      color:var(--muted);
+    }
+
+    .placeholder{
+      margin-top:18px;
+      padding:14px 16px;
+      border-radius:14px;
+      background:#f8f6f1;
+      border:1px dashed #d8c9ab;
+      color:#7d6a47;
+      font-weight:700;
+    }
+
+    .contact-btn{
+      display:inline-block;
+      margin-top:20px;
+      padding:11px 20px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      color:var(--navy);
+      font-weight:800;
+      transition:.2s;
+    }
+
+    .contact-btn:hover{
+      background:var(--gold);
+      transform:translateY(-2px);
+    }
+
+    .note{
+      background:var(--navy);
+      color:white;
+    }
+
+    .note .section-title{color:white}
+    .note .section-lead{color:#cbd5e1}
+
+    .note-box{
+      margin-top:34px;
+      max-width:900px;
+      border-left:3px solid var(--gold);
+      padding-left:24px;
+      color:#e2e8f0;
+      font-size:1.1rem;
+    }
+
+    .ending{
+      text-align:center;
+      padding:110px 8vw;
+      background:linear-gradient(135deg,#f5efe3,white);
+    }
+
+    .ending h2{
+      font-family:Georgia,"Times New Roman",serif;
+      color:var(--navy);
+      font-size:clamp(2rem,4vw,4rem);
+      margin-bottom:10px;
+    }
+
+    .ending p{
+      color:var(--gold);
+      font-weight:800;
+      letter-spacing:.08em;
+    }
+
+    .back{
+      display:inline-block;
+      margin-top:18px;
+      padding:11px 20px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      color:var(--navy);
+      font-weight:700;
+    }
+
+    footer{
+      padding:30px 8vw;
+      background:var(--navy);
+      color:#cbd5e1;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:20px;
+      font-size:.9rem;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity .8s ease,transform .8s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .hero,
+      .type-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+      .hero{padding:120px 6vw 75px}
+      section{padding:75px 6vw}
+    }
+  
+/* ===== AML Unified Footer v1 ===== */
+.aml-footer{
+  background:#101719;
+  color:#d7dde0;
+  padding:72px 8vw 30px;
+  border-top:1px solid rgba(199,167,106,.22);
+}
+.aml-footer-top{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:64px;
+  align-items:start;
+  padding-bottom:44px;
+}
+.aml-footer-brand{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:2rem;
+  color:white;
+  margin-bottom:8px;
+}
+.aml-footer-brand span{
+  color:#c7a76a;
+  font-size:1rem;
+  margin-left:8px;
+  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+}
+.aml-footer-tagline{
+  color:#c7a76a;
+  font-weight:800;
+  letter-spacing:.08em;
+  margin-bottom:16px;
+}
+.aml-footer-copy{
+  max-width:650px;
+  color:#9eaaaf;
+  line-height:1.8;
+}
+.aml-footer-links{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px 40px;
+}
+.aml-footer-group h4{
+  margin:0 0 13px;
+  color:#c7a76a;
+  font-size:.78rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.aml-footer-group a{
+  display:block;
+  color:#c8d0d4;
+  margin:7px 0;
+  font-size:.93rem;
+  transition:.2s;
+}
+.aml-footer-group a:hover{
+  color:#c7a76a;
+  transform:translateX(2px);
+}
+.aml-footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:24px;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  color:#7f8b90;
+  font-size:.84rem;
+}
+.aml-footer-mini-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.aml-footer-mini-links a{
+  color:#9aa6ab;
+}
+.aml-footer-mini-links a:hover{
+  color:#c7a76a;
+}
+@media(max-width:900px){
+  .aml-footer{
+    padding:58px 6vw 26px;
+  }
+  .aml-footer-top{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .aml-footer-links{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:560px){
+  .aml-footer-links{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+
+<body>
+
+<nav>
+  <div class="brand">ALLEN MIND LAB</div>
+  <div class="navlinks">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="publications.html">Publications</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+
+  <div>
+    <div class="eyebrow">Contact Allen</div>
+
+    <h1>
+      Let’s Connect.
+    </h1>
+
+    <p>
+      如果您想交流職能治療、正向行為支持、管理、教育、AI 應用，
+      或有演講、授課、專業合作與出版媒體邀約，
+      歡迎與 Allen Mind Lab 聯繫。
+    </p>
+  </div>
+
+  <div class="hero-card">
+    <h3>Professional collaboration begins with a conversation.</h3>
+
+    <p>
+      一次好的合作，
+      往往從一個問題、一個想法，
+      或一次彼此理解開始。
+    </p>
+  </div>
+
+</header>
+
+<section class="types reveal">
+
+  <div class="eyebrow">Collaboration</div>
+  <h2 class="section-title">可以從這些事情開始。</h2>
+
+  <div class="type-grid">
+
+    <div class="type-card">
+      <span>01</span>
+      <h3>演講與授課</h3>
+      <p>職能治療、PBS、管理、教育、AI 應用、健康促進與相關專業培訓。</p>
+    </div>
+
+    <div class="type-card">
+      <span>02</span>
+      <h3>專業交流與合作</h3>
+      <p>跨專業、跨系統、服務設計、教學與專案合作。</p>
+    </div>
+
+    <div class="type-card">
+      <span>03</span>
+      <h3>出版與媒體</h3>
+      <p>專業出版、文章、訪談、內容合作與相關邀約。</p>
+    </div>
+
+    <div class="type-card">
+      <span>04</span>
+      <h3>AML 專案與工具</h3>
+      <p>AI、PBS 工具、視覺教材與知識產品的交流與合作。</p>
+    </div>
+
+  </div>
+
+</section>
+
+<section id="contact" class="reveal">
+
+  <div class="eyebrow">Contact Channels</div>
+  <h2 class="section-title">聯絡方式</h2>
+
+  <p class="section-lead">
+    目前公開聯絡方式以 Email 與 Facebook 為主，
+    方便正式合作邀約與專業交流。
+  </p>
+
+  <div class="contact-grid">
+
+    <div class="contact-card">
+      <h3>Email</h3>
+      <p>
+        適合正式合作、授課、演講、出版與專業邀約。
+      </p>
+
+      <a class="contact-btn"
+         href="mailto:daniel.ws.chen@gmail.com">
+        daniel.ws.chen@gmail.com
+      </a>
+    </div>
+
+    <div class="contact-card">
+      <h3>Social & Community</h3>
+      <p>
+        可透過 Facebook 追蹤 Allen Mind Lab 的公開動態與內容分享。
+      </p>
+
+      <a class="contact-btn"
+         href="https://www.facebook.com/weishengdaniel.chen/"
+         target="_blank"
+         rel="noopener noreferrer">
+        Facebook →
+      </a>
+    </div>
+
+  </div>
+
+</section>
+
+<section class="note reveal">
+
+  <div class="eyebrow">Privacy by Design</div>
+  <h2 class="section-title">公開得剛剛好。</h2>
+
+  <p class="section-lead">
+    個人品牌網站不需要把所有私人聯絡資訊都放上網。
+  </p>
+
+  <div class="note-box">
+    建議公開「專業 Email＋公開社群入口」即可；
+    個人手機、住址與私人帳號則保留在需要進一步聯繫時再提供。
+  </div>
+
+</section>
+
+<section class="ending reveal">
+
+  <h2>
+    有好的想法，<br>
+    歡迎一起聊聊。
+  </h2>
+
+  <p>
+    CONTACT · ALLEN MIND LAB
+  </p>
+
+  <a href="index.html" class="back">
+    ← Back to Home
+  </a>
+
+</section>
+
+
+<footer class="aml-footer">
+  <div class="aml-footer-top">
+
+    <div>
+      <div class="aml-footer-brand">
+        Allen Mind Lab <span>AML</span>
+      </div>
+
+      <div class="aml-footer-tagline">
+        Building A Meaningful Life.
+      </div>
+
+      <div class="aml-footer-copy">
+        從職能治療、PBS、管理、教育、AI 到身心修習，
+        整合專業、實踐與反思，
+        持續探索更有意義的生活。
+      </div>
+    </div>
+
+    <div class="aml-footer-links">
+
+      <div class="aml-footer-group">
+        <h4>Explore AML</h4>
+        <a href="about.html">About</a>
+        <a href="articles.html">Articles</a>
+        <a href="publications.html">Publications</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">Newsletter</a>
+      </div>
+
+      <div class="aml-footer-group">
+        <h4>Explore Topics</h4>
+        <a href="ot.html">OT & Human Occupation</a>
+        <a href="pbs.html">PBS</a>
+        <a href="management.html">Management & Leadership</a>
+        <a href="education.html">Education</a>
+        <a href="ai.html">AI × Practice</a>
+        <a href="mind.html">Mind & Well-being</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="aml-footer-bottom">
+    <div>
+      © 2026 Allen Mind Lab · Allen Chen 陳威勝
+    </div>
+
+    <div class="aml-footer-mini-links">
+      <a href="https://www.facebook.com/weishengdaniel.chen/" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">Notes from the Lab</a>
+      <span>Privacy · Terms · RSS · Sitemap — coming later</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll(){
+    reveals.forEach((element) => {
+      const elementTop = element.getBoundingClientRect().top;
+
+      if(elementTop < window.innerHeight - 100){
+        element.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Articles | Allen Mind Lab</title>
+  <meta name="description" content="Allen Mind Lab 文章專區：職能治療、正向行為支持、管理、教育、AI 與身心福祉。" />
+  <style>
+    :root{
+      --navy:#0d1b2a;--navy2:#18324f;--gold:#c7a76a;--cream:#f6f1e8;
+      --paper:#fffdf9;--ink:#1f2933;--muted:#6b7280;--line:#e7e1d6;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--paper);color:var(--ink);line-height:1.75}
+    a{text-decoration:none;color:inherit}
+    nav{position:fixed;top:0;left:0;right:0;height:72px;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 6vw;background:rgba(8,22,38,.92);color:white;backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .brand{font-weight:800;letter-spacing:.12em}
+    .navlinks{display:flex;gap:24px;font-size:.9rem}
+    .navlinks a{color:#e5e7eb}.navlinks a:hover{color:var(--gold)}
+    .hero{padding:140px 8vw 90px;background:radial-gradient(circle at 80% 28%,rgba(199,167,106,.18),transparent 28%),linear-gradient(135deg,var(--navy),var(--navy2));color:white}
+    .eyebrow{color:var(--gold);font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+    h1,.title{font-family:Georgia,"Times New Roman",serif}
+    h1{font-size:clamp(3.2rem,7vw,6.8rem);line-height:1;margin:0 0 22px}
+    .hero p{max-width:850px;color:#d6dde6;font-size:1.08rem}
+    section{padding:90px 8vw}
+    .intro{background:var(--cream)}
+    .title{font-size:clamp(2.2rem,4vw,4rem);color:var(--navy);margin:0 0 18px}
+    .lead{max-width:900px;color:var(--muted);font-size:1.05rem}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+    .filter-btn{border:1px solid var(--line);background:white;padding:10px 15px;border-radius:999px;cursor:pointer;font-weight:700;color:var(--navy)}
+    .filter-btn.active,.filter-btn:hover{background:var(--navy);color:white;border-color:var(--navy)}
+    .article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+    .article-card{display:flex;flex-direction:column;padding:27px;border-radius:22px;border:1px solid var(--line);background:white;transition:.25s;min-height:300px}
+    .article-card:hover{transform:translateY(-5px);box-shadow:0 16px 38px rgba(15,23,42,.08)}
+    .meta{font-size:.82rem;color:#7b8490;margin-bottom:10px}
+    .tag{display:inline-block;align-self:flex-start;padding:4px 10px;border-radius:999px;background:var(--cream);color:#8c6f38;font-size:.75rem;font-weight:800;letter-spacing:.06em;margin-bottom:12px}
+    .article-card h2{font-size:1.25rem;line-height:1.45;color:var(--navy);margin:0 0 12px}
+    .article-card p{color:var(--muted);margin:0}
+    .read{margin-top:auto;padding-top:22px;color:var(--gold);font-weight:800}
+    .empty{border:1px dashed #d9ccb0;border-radius:20px;padding:26px;color:#7d6a47;background:#fbf8f2;margin-top:28px}
+    .framework{background:var(--navy);color:white}
+    .framework .title{color:white}.framework .lead{color:#cbd5e1}
+    .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:36px}
+    .step{padding:22px;border-radius:18px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05)}
+    .step strong{color:var(--gold);display:block;margin-bottom:6px}
+    .ending{text-align:center;background:linear-gradient(135deg,#f5efe3,white)}
+    .ending p{color:var(--gold);font-weight:800;letter-spacing:.08em}
+    .btn{display:inline-block;margin-top:18px;padding:11px 20px;border:1px solid var(--gold);border-radius:999px;font-weight:800}
+    footer{padding:28px 8vw;background:var(--navy);color:#cbd5e1;display:flex;justify-content:space-between;flex-wrap:wrap}
+    .hidden{display:none!important}
+    @media(max-width:980px){.navlinks{display:none}.article-grid{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.hero{padding:120px 6vw 70px}section{padding:72px 6vw}}
+    @media(max-width:600px){.steps{grid-template-columns:1fr}}
+  
+    .newsletter{
+      background:linear-gradient(135deg,#0d1b2a,#18324f);
+      color:white;
+    }
+
+    .newsletter-wrap{
+      display:grid;
+      grid-template-columns:240px 1fr;
+      gap:46px;
+      align-items:center;
+    }
+
+    .newsletter-icon{
+      width:220px;
+      max-width:100%;
+      border-radius:28px;
+      box-shadow:0 16px 36px rgba(0,0,0,.18);
+      display:block;
+    }
+
+    .newsletter .section-title{color:white}
+
+    .newsletter .section-lead{
+      color:#d5dde6;
+    }
+
+    .newsletter-btn{
+      display:inline-block;
+      margin-top:24px;
+      padding:12px 22px;
+      border-radius:999px;
+      background:#c7a76a;
+      color:#0d1b2a;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .newsletter-btn:hover{
+      transform:translateY(-2px);
+      filter:brightness(1.04);
+    }
+
+    .newsletter-note{
+      margin-top:14px;
+      color:#aeb8c5;
+      font-size:.88rem;
+    }
+
+    @media(max-width:900px){
+      .newsletter-wrap{
+        grid-template-columns:1fr;
+      }
+      .newsletter-icon{
+        width:170px;
+      }
+    }
+
+
+/* ===== AML Unified Footer v1 ===== */
+.aml-footer{
+  background:#101719;
+  color:#d7dde0;
+  padding:72px 8vw 30px;
+  border-top:1px solid rgba(199,167,106,.22);
+}
+.aml-footer-top{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:64px;
+  align-items:start;
+  padding-bottom:44px;
+}
+.aml-footer-brand{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:2rem;
+  color:white;
+  margin-bottom:8px;
+}
+.aml-footer-brand span{
+  color:#c7a76a;
+  font-size:1rem;
+  margin-left:8px;
+  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+}
+.aml-footer-tagline{
+  color:#c7a76a;
+  font-weight:800;
+  letter-spacing:.08em;
+  margin-bottom:16px;
+}
+.aml-footer-copy{
+  max-width:650px;
+  color:#9eaaaf;
+  line-height:1.8;
+}
+.aml-footer-links{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px 40px;
+}
+.aml-footer-group h4{
+  margin:0 0 13px;
+  color:#c7a76a;
+  font-size:.78rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.aml-footer-group a{
+  display:block;
+  color:#c8d0d4;
+  margin:7px 0;
+  font-size:.93rem;
+  transition:.2s;
+}
+.aml-footer-group a:hover{
+  color:#c7a76a;
+  transform:translateX(2px);
+}
+.aml-footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:24px;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  color:#7f8b90;
+  font-size:.84rem;
+}
+.aml-footer-mini-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.aml-footer-mini-links a{
+  color:#9aa6ab;
+}
+.aml-footer-mini-links a:hover{
+  color:#c7a76a;
+}
+@media(max-width:900px){
+  .aml-footer{
+    padding:58px 6vw 26px;
+  }
+  .aml-footer-top{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .aml-footer-links{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:560px){
+  .aml-footer-links{
+    grid-template-columns:1fr;
+  }
+}
+
+</style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<nav>
+  <div class="brand">ALLEN MIND LAB</div>
+  <div class="navlinks">
+    <a href="index.html">Home</a>
+    <a href="#articles">Articles</a>
+    <a href="publications.html">Publications</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">Notes from the Lab</div>
+  <h1>Articles</h1>
+  <p>Ideas · Practice · Reflection<br>關於專業、管理、教育、科技與生活的持續書寫。不是為了大量更新，而是把值得留下的經驗整理成可閱讀、可思考、可使用的內容。</p>
+</header>
+
+<section class="intro">
+  <div class="eyebrow">Explore by Topic</div>
+  <h2 class="title">從六個探索面向，延伸成持續生長的知識庫。</h2>
+  <p class="lead">文章會依主題分類，也允許跨領域。未來每一篇文章都使用一致的 AML 結構與安全檢核，讓網站內容愈來愈完整，而不是愈來愈凌亂。</p>
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">全部</button>
+    <button class="filter-btn" data-filter="ot">OT & Human Occupation</button>
+    <button class="filter-btn" data-filter="pbs">PBS</button>
+    <button class="filter-btn" data-filter="management">Management</button>
+    <button class="filter-btn" data-filter="education">Education</button>
+    <button class="filter-btn" data-filter="ai">AI × Practice</button>
+    <button class="filter-btn" data-filter="mind">Mind & Well-being</button>
+    <button class="filter-btn" data-filter="notes">AML Notes</button>
+  </div>
+</section>
+
+<section id="articles">
+  <div class="eyebrow">Latest Articles</div>
+  <h2 class="title">最新文章</h2>
+  <div class="article-grid">
+
+
+    <a class="article-card" data-category="mind notes" href="articles/helper-self-awareness.html">
+      <div class="meta">2026.08.31</div>
+      <span class="tag">Mind &amp; Well-being</span>
+      <h2>心安方能助人，理明方能成事</h2>
+      <p>助人工作者習慣評估別人的狀態，也需要回頭評估自己：體力與情緒、期待與現實，以及關係中的邊界。</p>
+      <div class="read">Read Article →</div>
+    </a>
+
+    <a class="article-card" data-category="mind notes" href="articles/medical-care-and-inner-practice.html">
+      <div class="meta">2026.08.31</div>
+      <span class="tag">Mind & Well-being</span>
+      <h2>醫療照顧身體，修習安頓身心</h2>
+      <p>從 COVID 後反覆的不舒服談起，思考正規醫療、休息、氣功修習與身心安頓如何各盡其分。</p>
+      <div class="read">Read Article →</div>
+    </a>
+
+    <div class="article-card" data-category="pbs">
+      <div class="meta">COMING SOON</div>
+      <span class="tag">PBS</span>
+      <h2>從「問題行為」到「理解需要」</h2>
+      <p>PBS 系列文章將從功能理解、預防、替代行為與團隊支持逐步整理。</p>
+      <div class="read">Coming soon</div>
+    </div>
+
+    <div class="article-card" data-category="ai education">
+      <div class="meta">COMING SOON</div>
+      <span class="tag">AI × Practice</span>
+      <h2>AI 不只是工具，而是新的工作方法</h2>
+      <p>記錄生成式 AI 如何進入教學、管理、知識整理與專業實務。</p>
+      <div class="read">Coming soon</div>
+    </div>
+
+  </div>
+
+  <div class="empty">
+    文章將持續累積。每一篇內容都從專業實務、生活觀察與反思出發，逐步形成 AML 的知識庫。
+  </div>
+</section>
+
+
+<section class="newsletter reveal" id="newsletter">
+
+  <div class="newsletter-wrap">
+
+    <div>
+      <img
+        class="newsletter-icon"
+        src="images/newsletter/notes-from-the-lab.png"
+        alt="Notes from the Lab Newsletter"
+      />
+    </div>
+
+    <div>
+      <div class="eyebrow">Notes from the Lab</div>
+
+      <h2 class="section-title">
+        不追求天天更新，<br>
+        只分享值得留下的內容。
+      </h2>
+
+      <p class="section-lead">
+        關於職能治療、PBS、管理、教育、AI、健康與生命反思。
+        當有新的文章或值得分享的內容，我會寄一封信給你。
+      </p>
+
+      <a
+        class="newsletter-btn"
+        href="https://buttondown.com/danielwschen"
+        target="_blank"
+        rel="noopener noreferrer">
+        Subscribe｜訂閱 Notes from the Lab →
+      </a>
+
+      <div class="newsletter-note">
+        訂閱服務由 Buttondown 提供，可隨時取消訂閱。
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="framework">
+  <div class="eyebrow">AML Editorial Structure</div>
+  <h2 class="title">每篇文章，都有共同的骨架。</h2>
+  <p class="lead">不是把所有文章寫成同一個樣子，而是確保讀者知道：這篇文章為什麼值得讀、經驗如何轉成思考、最後可以帶走什麼。</p>
+
+  <div class="steps">
+    <div class="step"><strong>01 · Opening</strong>情境與起點</div>
+    <div class="step"><strong>02 · Observation</strong>看見了什麼</div>
+    <div class="step"><strong>03 · Reflection</strong>如何理解</div>
+    <div class="step"><strong>04 · Takeaway</strong>可以帶走什麼</div>
+    <div class="step"><strong>05 · Closing</strong>留下最後一句</div>
+  </div>
+</section>
+
+<section class="ending">
+  <h2 class="title">把經驗寫下來，<br>讓它成為可以被傳遞的智慧。</h2>
+  <p>NOTES FROM THE LAB · ALLEN MIND LAB</p>
+  <a class="btn" href="index.html">← Back to Home</a>
+</section>
+
+
+<footer class="aml-footer">
+  <div class="aml-footer-top">
+
+    <div>
+      <div class="aml-footer-brand">
+        Allen Mind Lab <span>AML</span>
+      </div>
+
+      <div class="aml-footer-tagline">
+        Building A Meaningful Life.
+      </div>
+
+      <div class="aml-footer-copy">
+        從職能治療、PBS、管理、教育、AI 到身心修習，
+        整合專業、實踐與反思，
+        持續探索更有意義的生活。
+      </div>
+    </div>
+
+    <div class="aml-footer-links">
+
+      <div class="aml-footer-group">
+        <h4>Explore AML</h4>
+        <a href="about.html">About</a>
+        <a href="articles.html">Articles</a>
+        <a href="publications.html">Publications</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">Newsletter</a>
+      </div>
+
+      <div class="aml-footer-group">
+        <h4>Explore Topics</h4>
+        <a href="ot.html">OT & Human Occupation</a>
+        <a href="pbs.html">PBS</a>
+        <a href="management.html">Management & Leadership</a>
+        <a href="education.html">Education</a>
+        <a href="ai.html">AI × Practice</a>
+        <a href="mind.html">Mind & Well-being</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="aml-footer-bottom">
+    <div>
+      © 2026 Allen Mind Lab · Allen Chen 陳威勝
+    </div>
+
+    <div class="aml-footer-mini-links">
+      <a href="https://www.facebook.com/weishengdaniel.chen/" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">Notes from the Lab</a>
+      <span>Privacy · Terms · RSS · Sitemap — coming later</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+const buttons=document.querySelectorAll(".filter-btn");
+const cards=document.querySelectorAll(".article-card");
+buttons.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    buttons.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const filter=btn.dataset.filter;
+    cards.forEach(card=>{
+      const cats=(card.dataset.category||"").split(" ");
+      card.classList.toggle("hidden",filter!=="all"&&!cats.includes(filter));
+    });
+  });
+});
+</script>
+</body>
+</html>
