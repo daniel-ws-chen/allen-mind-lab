@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://allen-mind-lab.pages.dev/sitemap.xml
