@@ -17,21 +17,48 @@ a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-conte
 @media(max-width:820px){.nav{align-items:flex-start;flex-direction:column;gap:12px}.links{gap:10px}.grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.hero{padding-top:70px}}
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <!-- AML SEO / Social Preview -->
+  <link rel="canonical" href="https://allen-mind-lab.pages.dev/management.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Allen Mind Lab">
+  <meta property="og:title" content="管理與領導｜Management creates conditions.｜Allen Mind Lab">
+  <meta property="og:description" content="管理不是把事情控制得更緊，而是建立條件，讓人、資源、流程與目標可以朝同一個方向運作。">
+  <meta property="og:url" content="https://allen-mind-lab.pages.dev/management.html">
+  <meta property="og:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <meta property="og:image:alt" content="Allen Mind Lab">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="管理與領導｜Management creates conditions.｜Allen Mind Lab">
+  <meta name="twitter:description" content="管理不是把事情控制得更緊，而是建立條件，讓人、資源、流程與目標可以朝同一個方向運作。">
+  <meta name="twitter:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <link rel="stylesheet" href="aml-site.css">
 </head>
 <body>
+<a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
 
-<nav class="nav">
-  <a class="brand" href="index.html">ALLEN MIND LAB</a>
-  <div class="links">
+<nav class="aml-global-nav" aria-label="Primary navigation">
+  <a class="aml-brand" href="index.html">ALLEN MIND LAB</a>
+
+  <div class="aml-desktop-links">
     <a href="about.html">About</a>
-    <a href="ot.html">OT</a>
-    <a href="pbs.html">PBS</a>
-    <a href="management.html">Management</a>
-    <a href="education.html">Education</a>
-    <a href="ai.html">AI</a>
-    <a href="mind.html">Mind</a>
-    <a href="articles.html">Articles</a>
+    <a href="research.html">Research</a>
+    <a href="recognition.html">Recognition</a>
     <a href="publications.html">Publications</a>
+    <a href="articles.html">Articles</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <button class="aml-menu-toggle" type="button"
+          aria-label="開啟網站選單"
+          aria-controls="aml-mobile-menu"
+          aria-expanded="false">☰</button>
+
+  <div class="aml-mobile-menu" id="aml-mobile-menu">
+    <a href="about.html">About</a>
+    <a href="research.html">Research</a>
+    <a href="recognition.html">Recognition</a>
+    <a href="publications.html">Publications</a>
+    <a href="articles.html">Articles</a>
     <a href="contact.html">Contact</a>
   </div>
 </nav>
@@ -41,7 +68,7 @@ a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-conte
   <h1>管理與領導｜Management creates conditions.</h1>
   <p>管理不是把事情控制得更緊，而是建立條件，讓人、資源、流程與目標可以朝同一個方向運作。</p>
 </header>
-<main class="wrap">
+<main id="aml-main" class="wrap">
   <p class="lead">管理不是把事情控制得更緊，而是建立條件，讓人、資源、流程與目標可以朝同一個方向運作。</p>
   <div class="grid"><article class="card"><h3>Strategy</h3><p>從使命、問題與利害關係人出發，決定真正值得投入的方向。</p></article>
 <article class="card"><h3>People</h3><p>主管不只是分配工作，也需要建立信任、責任與可持續的合作。</p></article>
@@ -50,21 +77,56 @@ a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-conte
   <a class="btn" href="articles.html">閱讀相關文章 →</a>
 </main>
 
-<footer class="footer">
-  <div>
-    <strong>Allen Mind Lab</strong>
-    <p>Building A Meaningful Life.</p>
-    <p>從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思。</p>
+<footer class="aml-global-footer">
+  <div class="aml-footer-top">
+    <div>
+      <div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div>
+      <div class="aml-footer-tagline">Building A Meaningful Life.</div>
+      <div class="aml-footer-copy">
+        從職能治療、PBS、管理、教育、AI 到身心修習，
+        整合專業、實踐與反思，持續探索更有意義的生活。
+      </div>
+    </div>
+
+    <div class="aml-footer-links">
+      <div class="aml-footer-group">
+        <h4>Explore AML</h4>
+        <a href="about.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="recognition.html">Recognition</a>
+        <a href="articles.html">Articles</a>
+        <a href="publications.html">Publications</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">Newsletter</a>
+      </div>
+
+      <div class="aml-footer-group">
+        <h4>Explore Topics</h4>
+        <a href="ot.html">OT &amp; Human Occupation</a>
+        <a href="pbs.html">PBS</a>
+        <a href="management.html">Management &amp; Leadership</a>
+        <a href="education.html">Education</a>
+        <a href="ai.html">AI × Practice</a>
+        <a href="mind.html">Mind &amp; Well-being</a>
+      </div>
+    </div>
   </div>
-  <div class="footlinks">
-    <a href="about.html">About</a>
-    <a href="articles.html">Articles</a>
-    <a href="publications.html">Publications</a>
-    <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener">Newsletter</a>
-    <a href="contact.html">Contact</a>
+
+  <div class="aml-footer-bottom">
+    <div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div>
+    <div class="aml-footer-mini-links">
+      <a href="https://www.facebook.com/weishengdaniel.chen/" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">Notes from the Lab</a>
+      <span>
+        <a href="privacy.html">Privacy</a> ·
+        <a href="terms.html">Terms</a> ·
+        <a href="rss.xml">RSS</a> ·
+        <a href="sitemap.xml">Sitemap</a>
+      </span>
+    </div>
   </div>
-  <div class="copyright">© 2026 Allen Mind Lab · Allen Chen 陳威勝</div>
 </footer>
 
+<script src="aml-site.js" defer></script>
 </body>
 </html>
