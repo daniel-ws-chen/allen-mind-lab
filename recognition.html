@@ -222,6 +222,36 @@
       font-size:.9rem;
     }
 
+
+    .section-block{
+      margin-bottom:78px;
+    }
+
+    .section-head{
+      margin-bottom:28px;
+      padding-bottom:16px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .section-head h2{
+      margin:8px 0 0;
+      color:var(--navy);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(2rem,4vw,3rem);
+    }
+
+    .media-link{
+      display:inline-block;
+      margin-top:12px;
+      color:#8a6b35;
+      font-size:.88rem;
+      font-weight:800;
+    }
+
+    .media-link:hover{
+      color:var(--navy);
+    }
+
     footer{
       background:#101719;
       color:#cbd5e1;
@@ -319,77 +349,113 @@
 <main>
 
   <p class="intro">
-    本頁依歷年獲獎與採訪資料整理，依年份由近至遠呈現。
-    對 Allen Mind Lab 而言，Recognition 並不是單純陳列榮譽，
-    而是回看每一個階段曾經投入、被肯定，也持續往下一段路前進的足跡。
+    本頁整理歷年獲獎、專業肯定，以及媒體與人物專訪紀錄。
+    對 Allen Mind Lab 而言，這些不是單純的榮譽清單，
+    而是不同生命階段曾經投入、被看見與持續累積的足跡。
   </p>
 
-  <div class="timeline">
-
-    <article class="entry">
-      <div class="year">98年</div>
-      <div class="entry-card">
-        <div class="type">Award · Public Service</div>
-        <h2>臺北市政府模範公務人員</h2>
-        <p class="org">臺北市政府</p>
+  <section class="section-block">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Awards & Recognition</div>
+        <h2>獲獎與肯定</h2>
       </div>
-    </article>
+    </div>
 
-    <article class="entry">
-      <div class="year">96年</div>
-      <div class="entry-card">
-        <div class="type">Interview · Alumni</div>
-        <h2>國立臺灣大學職能治療學系系友會傑出系友專訪</h2>
-        <p class="org">國立臺灣大學</p>
+    <div class="timeline">
+
+      <article class="entry">
+        <div class="year">98年</div>
+        <div class="entry-card">
+          <div class="type">Award · Public Service</div>
+          <h2>臺北市政府模範公務人員</h2>
+          <p class="org">臺北市政府</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="year">98年</div>
+        <div class="entry-card">
+          <div class="type">Award · Innovation</div>
+          <h2>臺北市政府98年創意會報創新獎優勝－建構身心障礙者吞嚥困難防治照護模式</h2>
+          <p class="org">臺北市政府</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="year">86年</div>
+        <div class="entry-card">
+          <div class="type">Recognition · Public Interest</div>
+          <h2>熱心公益醫師感謝狀</h2>
+          <p class="org">KingNet國家網路醫院</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="year">86學年度</div>
+        <div class="entry-card">
+          <div class="type">Academic Recognition</div>
+          <h2>臺灣大學醫學院86學年度優良學生代表</h2>
+          <p class="org">國立臺灣大學</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="year">86–88年</div>
+        <div class="entry-card">
+          <div class="type">Academic Award</div>
+          <h2>臺灣大學醫學院職能治療學系書卷獎5次</h2>
+          <p class="org">國立臺灣大學｜86/02、86/08、87/02、87/08、88/08</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+
+  <section class="section-block media-section">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Media Coverage & Interviews</div>
+        <h2>媒體報導與專訪</h2>
       </div>
-    </article>
+    </div>
 
-    <article class="entry">
-      <div class="year">98年</div>
-      <div class="entry-card">
-        <div class="type">Award · Innovation</div>
-        <h2>臺北市政府98年創意會報創新獎優勝－建構身心障礙者吞嚥困難防治照護模式</h2>
-        <p class="org">臺北市政府</p>
-      </div>
-    </article>
+    <div class="timeline">
 
-    <article class="entry">
-      <div class="year">86年</div>
-      <div class="entry-card">
-        <div class="type">Media Interview</div>
-        <h2>專訪陽明教養院陳威勝職能治療師</h2>
-        <p class="org">升學資訊輔導雜誌</p>
-      </div>
-    </article>
+      <article class="entry">
+        <div class="year">MEDIA</div>
+        <div class="entry-card">
+          <div class="type">Newspaper Coverage</div>
+          <h2>自由時報｜報紙媒體報導</h2>
+          <p class="org">自由時報電子報</p>
+          <a class="media-link" href="https://news.ltn.com.tw/news/local/paper/380171" target="_blank" rel="noopener noreferrer">
+            Read Coverage ↗
+          </a>
+        </div>
+      </article>
 
-    <article class="entry">
-      <div class="year">86年</div>
-      <div class="entry-card">
-        <div class="type">Recognition · Public Interest</div>
-        <h2>熱心公益醫師感謝狀</h2>
-        <p class="org">KingNet國家網路醫院</p>
-      </div>
-    </article>
+      <article class="entry">
+        <div class="year">96年</div>
+        <div class="entry-card">
+          <div class="type">Interview · Alumni</div>
+          <h2>國立臺灣大學職能治療學系系友會傑出系友專訪</h2>
+          <p class="org">國立臺灣大學</p>
+        </div>
+      </article>
 
-    <article class="entry">
-      <div class="year">86學年度</div>
-      <div class="entry-card">
-        <div class="type">Academic Recognition</div>
-        <h2>臺灣大學醫學院86學年度優良學生代表</h2>
-        <p class="org">國立臺灣大學</p>
-      </div>
-    </article>
+      <article class="entry">
+        <div class="year">86年</div>
+        <div class="entry-card">
+          <div class="type">Media Interview</div>
+          <h2>專訪陽明教養院陳威勝職能治療師</h2>
+          <p class="org">升學資訊輔導雜誌</p>
+        </div>
+      </article>
 
-    <article class="entry">
-      <div class="year">86–88年</div>
-      <div class="entry-card">
-        <div class="type">Academic Award</div>
-        <h2>臺灣大學醫學院職能治療學系書卷獎5次</h2>
-        <p class="org">國立臺灣大學｜86/02、86/08、87/02、87/08、88/08</p>
-      </div>
-    </article>
+    </div>
+  </section>
 
-  </div>
 </main>
 
 <footer>
