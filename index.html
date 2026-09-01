@@ -237,6 +237,13 @@
       background:#f8f4ec;
     }
 
+    .research-home{background:#fffdf9}
+    .research-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px;max-width:900px}
+    .research-stat{padding:24px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#fff,#faf7f0)}
+    .research-stat strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:2rem;color:var(--navy)}
+    .research-stat span{color:var(--muted);font-size:.92rem}
+    @media(max-width:720px){.research-stats{grid-template-columns:1fr}}
+
     .pub-grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -375,27 +382,10 @@
     @media(max-width:980px){
       .navlinks{display:none}
       section{padding:75px 6vw}
-      .about-grid,.cards,.works-grid,.pub-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero picture{
-        display:block;
-        width:100%;
-      }
-
-      .hero img{
-        display:block;
-        width:100%;
-        height:auto;
-        min-height:0;
-        object-fit:contain;
-        object-position:center;
-      }
-
-      .pub-cover{
-        max-width:180px;
-      }
+      .about-grid,.cards,.works-grid,.pub-grid{grid-template-columns:1fr}
+      .hero picture{display:block;width:100%;}
+      .hero img{display:block;width:100%;height:auto;min-height:0;object-fit:contain;object-position:center;}
+      .pub-cover{max-width:180px;}
     }
   
     .newsletter{
@@ -566,6 +556,7 @@
 
   <div class="navlinks">
     <a href="about.html">About</a>
+    <a href="research.html">Research</a>
     <a href="#labs">Labs</a>
     <a href="publications.html">Publications</a>
     <a href="#journey">Journey</a>
@@ -764,6 +755,18 @@
 </section>
 
 
+<section class="research-home reveal" id="research-home">
+  <div class="eyebrow">Research & Academic Work</div>
+  <h2 class="section-title">從研究出發，讓實務持續被驗證與累積。</h2>
+  <p class="section-lead">研究軌跡涵蓋職能治療、感覺處理、實證實務、精神復健、機構健康照護、藥事長照、身心障礙服務與易讀易懂實踐。</p>
+  <div class="research-stats">
+    <div class="research-stat"><strong>6</strong><span>期刊論文 Journal Articles</span></div>
+    <div class="research-stat"><strong>11</strong><span>研討會論文與海報 Conference Papers & Posters</span></div>
+    <div class="research-stat"><strong>3</strong><span>研究計畫與成果報告 Research Projects & Reports</span></div>
+  </div>
+  <div class="pub-actions"><a href="research.html" class="pub-btn">Explore Research →</a></div>
+</section>
+
 <section class="publications reveal" id="publications-home">
 
   <div class="eyebrow">Featured Publications</div>
@@ -944,6 +947,7 @@
       <div class="aml-footer-group">
         <h4>Explore AML</h4>
         <a href="about.html">About</a>
+        <a href="research.html">Research</a>
         <a href="articles.html">Articles</a>
         <a href="publications.html">Publications</a>
         <a href="contact.html">Contact</a>
