@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>助人者也需要被支持：自我照顧之外，還有團隊與組織的責任｜Allen Mind Lab</title>
+  <meta name="description" content="當助人工作者已經知道自己累了，接下來呢？從個人覺察、團隊求援與換手機制，到組織工作設計與 CARE 支持框架，重新思考助人者的支持系統。">
+  <meta name="author" content="Allen Chen 陳威勝">
+
+  <link rel="canonical" href="https://allen-mind-lab.pages.dev/articles/helper-support-system.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="Allen Mind Lab">
+  <meta property="og:title" content="助人者也需要被支持：自我照顧之外，還有團隊與組織的責任">
+  <meta property="og:description" content="照顧助人者不能只停留在個人韌性。真正成熟的支持系統，需要同時看見個人、團隊與組織。">
+  <meta property="og:url" content="https://allen-mind-lab.pages.dev/articles/helper-support-system.html">
+  <meta property="og:image" content="https://allen-mind-lab.pages.dev/images/articles/helper-support-system.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="助人者也需要被支持">
+  <meta name="twitter:description" content="從自我照顧，走向團隊支持、組織責任與工作再設計。">
+  <meta name="twitter:image" content="https://allen-mind-lab.pages.dev/images/articles/helper-support-system.png">
+
+  <meta property="article:published_time" content="2026-09-01">
+  <meta property="article:author" content="Allen Chen 陳威勝">
+  <meta property="article:section" content="Management & Leadership">
+  <meta property="article:tag" content="Helping Professions">
+  <meta property="article:tag" content="Mind & Well-being">
+  <meta property="article:tag" content="PBS">
+  <meta property="article:tag" content="Work Design">
+  <meta property="article:tag" content="AI × Practice">
+
+  <style>
+    :root{
+      --navy:#0d1b2a;
+      --navy2:#18324f;
+      --gold:#c7a76a;
+      --cream:#f6f1e8;
+      --paper:#fffdf9;
+      --ink:#25313c;
+      --muted:#69727d;
+      --line:#e7e1d6;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      line-height:1.95;
+    }
+    a{color:inherit}
+    .skip-link{position:absolute;left:-9999px;top:auto}
+    .skip-link:focus{left:20px;top:12px;z-index:999;background:white;padding:10px 14px;border-radius:8px}
+    nav{
+      position:sticky;top:0;z-index:100;
+      display:flex;align-items:center;justify-content:space-between;
+      min-height:68px;padding:0 6vw;
+      background:rgba(13,27,42,.96);color:white;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      backdrop-filter:blur(12px);
+    }
+    .brand{font-weight:800;letter-spacing:.12em;font-size:.92rem}
+    .navlinks{display:flex;gap:22px;font-size:.9rem}
+    .navlinks a{text-decoration:none;color:#e5e7eb}
+    .navlinks a:hover{color:var(--gold)}
+    main{display:block}
+    .hero{
+      padding:76px 7vw 52px;
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      color:white;
+    }
+    .hero-inner{max-width:1080px;margin:auto}
+    .kicker{color:var(--gold);font-weight:800;letter-spacing:.14em;font-size:.78rem;text-transform:uppercase}
+    h1{
+      margin:14px 0 18px;
+      font-family:Georgia,"Noto Serif TC","PMingLiU",serif;
+      font-size:clamp(2.4rem,5.4vw,4.8rem);
+      line-height:1.28;
+      letter-spacing:-.02em;
+    }
+    .subhead{max-width:840px;font-size:1.1rem;color:#dce3ea}
+    .meta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;color:#cbd5e1;font-size:.88rem}
+    .meta-row span{padding-right:12px;border-right:1px solid rgba(255,255,255,.18)}
+    .meta-row span:last-child{border-right:0}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+    .tag{
+      border:1px solid rgba(199,167,106,.45);
+      color:#f1ddba;
+      padding:5px 10px;border-radius:999px;font-size:.78rem;
+    }
+    .cover{
+      max-width:1180px;margin:42px auto 0;padding:0 4vw;
+    }
+    .cover img{
+      display:block;width:100%;height:auto;
+      border-radius:24px;
+      box-shadow:0 18px 50px rgba(13,27,42,.13);
+      border:1px solid #eee8dd;
+    }
+    .article-wrap{
+      display:grid;
+      grid-template-columns:minmax(0,780px) 220px;
+      gap:64px;
+      max-width:1080px;
+      margin:0 auto;
+      padding:62px 5vw 90px;
+      align-items:start;
+    }
+    article{font-size:1.05rem}
+    article p{margin:0 0 1.25em}
+    article h2{
+      color:var(--navy);
+      font-family:Georgia,"Noto Serif TC","PMingLiU",serif;
+      font-size:clamp(1.75rem,3vw,2.35rem);
+      line-height:1.45;
+      margin:2.3em 0 .8em;
+      padding-top:.2em;
+    }
+    article h3{
+      color:var(--navy2);
+      font-size:1.25rem;
+      margin:1.8em 0 .6em;
+    }
+    blockquote{
+      margin:1.5em 0;
+      padding:18px 22px;
+      border-left:4px solid var(--gold);
+      background:#fbf7ef;
+      color:var(--navy);
+      font-weight:700;
+      border-radius:0 14px 14px 0;
+    }
+    .emphasis{font-weight:800;color:var(--navy)}
+    .care{
+      margin:24px 0;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+    }
+    .care-card{
+      padding:20px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fff;
+    }
+    .care-card strong{
+      display:block;
+      color:#9a7739;
+      font-size:1.08rem;
+      margin-bottom:5px;
+    }
+    .care-card span{font-weight:800;color:var(--navy)}
+    aside{
+      position:sticky;top:96px;
+      border-left:1px solid var(--line);
+      padding-left:22px;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    aside strong{color:var(--navy);display:block;margin-bottom:10px}
+    aside a{display:block;text-decoration:none;margin:9px 0}
+    aside a:hover{color:#9a7739}
+    .references{
+      margin-top:54px;
+      padding-top:30px;
+      border-top:1px solid var(--line);
+      font-size:.92rem;
+      color:#4b5563;
+    }
+    .references h2{margin-top:0}
+    .references ol{padding-left:1.3em}
+    .references li{margin:0 0 1em}
+    .references a{color:#805f27;word-break:break-word}
+    .series-box{
+      margin-top:46px;
+      padding:26px;
+      border-radius:20px;
+      background:linear-gradient(135deg,#f5efe3,#fff);
+      border:1px solid #e5dac5;
+    }
+    .series-box .label{color:#9a7739;font-weight:800;font-size:.82rem;letter-spacing:.1em}
+    .series-box h3{margin:.35em 0 .4em}
+    .next-note{
+      margin-top:34px;
+      padding:28px;
+      border-radius:20px;
+      background:var(--navy);
+      color:white;
+    }
+    .next-note strong{color:var(--gold)}
+    .back{
+      display:inline-block;margin-top:28px;
+      color:#8a6b35;font-weight:800;text-decoration:none;
+    }
+    footer{
+      background:var(--navy);color:#cbd5e1;
+      padding:48px 7vw;
+    }
+    .footer-inner{max-width:1080px;margin:auto;display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+    .footer-brand{color:white;font-weight:800;letter-spacing:.08em}
+    .footer-tagline{color:var(--gold);margin-top:6px}
+    .footer-links{display:flex;gap:18px;flex-wrap:wrap;font-size:.9rem}
+    .footer-links a{text-decoration:none}
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .hero{padding:58px 6vw 42px}
+      .cover{margin-top:28px;padding:0}
+      .cover img{border-radius:0}
+      .article-wrap{grid-template-columns:1fr;padding:44px 7vw 70px}
+      aside{display:none}
+      .care{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      h1{font-size:2.15rem}
+      article{font-size:1rem}
+      .meta-row{display:block}
+      .meta-row span{display:block;border-right:0;margin:5px 0}
+    }
+  </style>
+</head>
+
+<body>
+<a class="skip-link" href="#content">跳到文章內容</a>
+
+<nav aria-label="主導覽">
+  <a href="../index.html" class="brand" style="text-decoration:none">ALLEN MIND LAB</a>
+  <div class="navlinks">
+    <a href="../about.html">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../recognition.html">Recognition</a>
+    <a href="../publications.html">Publications</a>
+    <a href="../articles.html" aria-current="page">Articles</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</nav>
+
+<main id="content">
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="kicker">Management & Leadership · Anchor Article</div>
+      <h1>助人者也需要被支持：<br>自我照顧之外，還有團隊與組織的責任</h1>
+      <p class="subhead">當助人工作者已經知道自己累了，接下來呢？從個人的自我覺察，到團隊求援、組織支持，再走向缺工時代的工作重新設計。</p>
+      <div class="meta-row">
+        <span>Allen Chen 陳威勝</span>
+        <span>2026.09.01</span>
+        <span>Series｜Supporting the Helper · 助人者支持系列</span>
+      </div>
+      <div class="tags" aria-label="文章標籤">
+        <span class="tag">Helping Professions</span>
+        <span class="tag">Mind & Well-being</span>
+        <span class="tag">PBS</span>
+        <span class="tag">Work Design</span>
+        <span class="tag">AI × Practice</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="cover">
+    <img src="../images/articles/helper-support-system.png"
+         alt="不同年齡與性別的助人工作者圍桌討論，象徵自我照顧、團隊支持與組織支持的多層次支持系統"
+         loading="eager">
+  </div>
+
+  <div class="article-wrap">
+    <article>
+      <p>上一篇文章談到：助人工作者在照顧別人之前，也需要回頭看看自己的狀態。</p>
+
+      <p>體力是否還有餘裕？情緒是否已經影響判斷？期待與現實是否出現過大的落差？與服務對象之間的界線是否仍然清楚？</p>
+
+      <p>但自我覺察之後，還有另一個問題：</p>
+
+      <blockquote>如果一個助人工作者已經知道自己累了，接下來呢？</blockquote>
+
+      <p>我們常提醒第一線工作者：「要照顧好自己」、「要適時紓壓」、「不要把工作帶回家」。</p>
+
+      <p>這些話本身都沒有錯。</p>
+
+      <p>但如果疲憊來自長期工作過量、人力不足、持續處理高張力事件、角色模糊、缺乏支持，甚至休息時間仍不斷被工作侵入，只要求個人「學會調適」，恐怕還不夠。</p>
+
+      <p><strong>有些疲憊，需要個人調整；有些疲憊，則需要重新檢視工作系統。</strong></p>
+
+      <p>世界衛生組織指出，時間壓力、工作控制感不足、長工時、輪班及支持不足等，都是健康工作者常見的心理社會風險；相關預防措施除了個人支持，也包括工作量、排程、溝通與團隊合作等組織層面的改善。</p>
+
+      <p>所以，照顧助人者不能只停留在「個人韌性」。至少需要同時看見三個層次：</p>
+
+      <blockquote>個人、團隊與組織。</blockquote>
+
+      <h2 id="individual">一、個人：自我覺察不是為了讓自己更能撐</h2>
+
+      <p>助人工作者仍然需要辨識自己的狀態。</p>
+
+      <p>睡眠、體力、情緒、耐性，以及專業判斷，有沒有開始產生改變？</p>
+
+      <p>有些警訊其實很細微。原本能夠耐心處理的事情，最近開始容易不耐煩；下班之後，腦中仍不斷重播工作的情境；對某些服務對象開始出現明顯抗拒；明明知道需要休息，卻還是不斷告訴自己：「再撐一下就好。」</p>
+
+      <p>但自我覺察的目的，不是要求自己變得更堅強，而是更早看見自己的「黃燈」，在真正失控、出錯或耗竭之前，就開始調整。</p>
+
+      <blockquote>
+        我現在還有多少餘裕？<br>
+        我的情緒是否已經開始影響判斷？<br>
+        這件事情，是不是需要找人一起處理？
+      </blockquote>
+
+      <p>知道自己需要休息、換手或求助，不代表專業不足。很多時候，這本身就是一種專業判斷。</p>
+
+      <h2 id="team">二、團隊：建立一個「可以求援」的環境</h2>
+
+      <p>很多助人工作者其實不是不知道自己累。真正困難的是：<strong>知道自己累，卻不敢說。</strong></p>
+
+      <p>「大家都很忙。」「這是我的個案。」「別人都撐得住。」「如果一直求援，主管會不會覺得我能力不好？」</p>
+
+      <p>當這些想法逐漸變成團隊文化，即使學過再多壓力調適技巧，真正遇到高張力情境時，人還是可能選擇繼續硬撐。</p>
+
+      <blockquote>讓求援成為一種被允許的專業行為。</blockquote>
+
+      <h3>建立「可以換手」的機制</h3>
+
+      <p>在高情緒、高風險的服務現場，適時換手，往往比硬撐到底更專業。</p>
+
+      <p>當工作人員自己的情緒已經升高、判斷開始受到影響，或與服務對象的互動正在進入惡性循環時，團隊首先要做的，不是追究「為什麼你處理不了」，而是先確保服務對象與工作人員的安全。</p>
+
+      <p>以我們的服務現場為例，在危機處理流程中，我們會明定工作人員的補位機制。</p>
+
+      <p>真正進入情緒風暴或危機時刻時，當事人可能還來不及覺察自己的狀態，更未必有餘裕主動說：「我需要換手。」這時反而需要周圍的工作人員主動觀察，必要時上前補位。</p>
+
+      <p><strong>換手不是逃避，而是一種風險管理，也是一種彼此保護。</strong></p>
+
+      <h3>高壓事件之後，留下短暫的回顧</h3>
+
+      <p>危機處理完之後，我們很容易先確認：事情處理了嗎？紀錄寫了嗎？主管知道了嗎？這些都很重要。</p>
+
+      <p>但如果每一次高壓事件最後只留下行政紀錄，卻沒有留下團隊學習，下一次發生類似事件時，很可能又重新耗損一次。</p>
+
+      <p>回顧不一定需要開一個小時的會議。有時候 10 到 15 分鐘，就可以聚焦幾個問題：</p>
+
+      <blockquote>
+        剛才發生了什麼？<br>
+        哪一段最困難？<br>
+        什麼做法有幫助？<br>
+        下次有什麼可以提早調整？
+      </blockquote>
+
+      <p>如此，一次危機才可能從單純的「耗損」，慢慢轉化成下一次更好的準備。</p>
+
+      <h3>主管除了問事情，也問人</h3>
+
+      <p>主管很容易第一句就問：「事情處理好了嗎？」</p>
+
+      <p>但我愈來愈覺得，更好的習慣，是先把人放在事情前面。有時候只需要先問一句：「你現在還好嗎？」甚至再往前一步：「下一次，有沒有什麼地方，不要再讓你一個人扛？」</p>
+
+      <p>這一句，就已經從關心開始走向管理。</p>
+
+      <p>2021 年一篇混合方法系統性回顧發現，有效的臨床督導與較低的耗竭、較佳的人員留任有關；有效的督導者則與較低耗竭及較佳工作滿意度相關。</p>
+
+      <p>所以關鍵可能不只是「有沒有督導制度」，而是：<strong>這個督導，究竟是在增加壓力，還是真的能提供支持？</strong></p>
+
+      <h2 id="organization">三、組織：不要把系統問題全部個人化</h2>
+
+      <p>如果一個單位偶爾有人感到疲憊，可能與個人的生命狀態有關。</p>
+
+      <p>但如果一個組織長期反覆出現離職、病假、衝突、錯誤、情緒耗竭，甚至大家都在說「真的撐不住」，管理者就不能只問：「這個人的抗壓性是不是不夠？」</p>
+
+      <blockquote>是不是工作本身出了什麼問題？</blockquote>
+
+      <p>2026 年一篇整合 14 篇系統性回顧的研究指出，在所納入的介入類型中，正念與認知行為相關介入具有相對較強的效果證據；但研究也提醒，如果希望改善能夠持續，心理健康支持需要進一步整合進組織結構、人力政策與健康系統治理，而不能只依賴個人層次的介入。</p>
+
+      <p><strong>個人調適很重要，但不能把所有問題都留給個人處理。</strong></p>
+
+      <h3>工作量是否合理？</h3>
+      <p>不要只問「事情有沒有完成？」也需要問：「完成這些事情，付出了多少代價？」</p>
+      <p>如果一件工作長期只能依靠加班、犧牲休息，或少數幾個人持續補位才能完成，那真正需要檢視的，可能不只是個人效率，而是工作設計。</p>
+
+      <h3>人力配置是不是只看「總人數」？</h3>
+      <p>同樣有十個人，壓力不一定相同。還需要看：高需求服務對象集中在哪裡？哪一個班別風險最高？新手與資深人力是否平衡？需要高度專業判斷的工作，是不是總落在少數人身上？</p>
+      <p>所以人力配置不只是「有幾個人？」更重要的是：「什麼樣的人，被放在什麼樣的工作上？」</p>
+
+      <h3>責任、權限與資源是否一致？</h3>
+      <p>有一種工作特別容易讓人產生無力感：<strong>責任很大，權限很小。</strong></p>
+      <p>被要求負責結果，卻無法調整流程；被要求處理問題，卻沒有足夠資源；需要承擔責任，卻沒有相應的決策權。久而久之，消耗的就不只是體力，還包括一個人對工作的掌控感。</p>
+
+      <h3>督導是在「檢查」，還是在「支持」？</h3>
+      <p>督導當然需要追蹤品質、進度與責任。但好的督導，也應該提供專業討論、困難個案諮詢、資源協調，以及必要的決策支持。</p>
+      <p>如果工作人員只有在做錯事情時才會見到主管，就很難形成真正的支持系統。</p>
+      <p>從這個角度來看，我也常覺得：<strong>正向行為支持不只適用於服務對象，也值得延伸到管理者與員工之間。</strong></p>
+      <p>我們如何理解一個人的行為？如何調整環境？如何增加支持？如何讓人更容易做出好的選擇？這些問題，其實管理者同樣需要面對。</p>
+
+      <h3>工作與休息的邊界是否存在？</h3>
+      <p>有些疲憊不是由單一重大事件造成，而是一點一點累積。下班後持續收到工作訊息；休假仍然被聯絡；臨時工作逐漸變成日常；最可靠的人永遠被叫來救火。</p>
+      <p>當真正恢復的時間不斷被侵蝕，「自我照顧」最後也很難真正落實。</p>
+
+      <h3>組織裡能不能提早說「我需要幫忙」？</h3>
+      <p>更成熟的支持系統，不是等到事情出錯、危機發生或情緒爆發之後才開始處理，而是讓一個人在問題還沒有惡化以前，就能說：「我需要幫忙。」</p>
+      <p>甚至透過團隊的觀察與預警，在當事人還沒有開口之前，就有人注意到：他可能快撐不住了。然後提供補位、支援，以及一起找解方的空間。</p>
+
+      <h2 id="care">四、從自我照顧走向 CARE：一個多層次支持框架</h2>
+
+      <p>如果把前面的概念整理成一個簡單可記的框架，我暫時把它稱為 CARE：</p>
+
+      <div class="care">
+        <div class="care-card"><strong>C｜Check</strong><span>看見自己的狀態</span><br>辨識身體、情緒、工作負荷與專業判斷是否已經出現黃燈。</div>
+        <div class="care-card"><strong>A｜Ask & Assist</strong><span>可以求援，也願意支援</span><br>建立換手、求援、事件回顧，以及彼此支持的團隊文化。</div>
+        <div class="care-card"><strong>R｜Redesign</strong><span>重新設計工作</span><br>重新檢視工作量、人力、流程、角色、權限，以及高風險任務的配置。</div>
+        <div class="care-card"><strong>E｜Evaluate</strong><span>持續評估</span><br>持續觀察人員流動、加班、病假、事件、工作負荷、工作滿意度、團隊氣氛，以及工作人員是否願意求援。</div>
+      </div>
+
+      <p>CARE 並不是要再增加一套複雜制度。它只是提醒我們：</p>
+
+      <blockquote>照顧助人者，不應只發生在助人者自己身上。</blockquote>
+
+      <h2 id="resilience">五、真正的韌性，不只是讓人更能撐</h2>
+
+      <p>談助人工作者的心理健康，很容易走向兩個極端。</p>
+
+      <p>一個是把所有責任放在個人身上，認為只要更會調適、更有韌性，就能撐過所有壓力。另一個則把所有問題都歸因於組織。其實都不夠完整。</p>
+
+      <p>個人仍然需要學習自我覺察、建立界線，也要為自己的專業狀態負責。組織同樣有現實限制。人力有限、預算有限，而服務需求卻可能持續增加。</p>
+
+      <p>所以真正值得問的，或許不是：「到底誰應該負責？」而是：</p>
+
+      <blockquote>有哪些事情，可以不要再靠撐才能完成？</blockquote>
+
+      <p>一個成熟的支持系統，不是讓每個人變得更能忍耐，而是讓工作者在疲憊之前有人可以接住，在困難時有人一起想，在系統不合理時，也有機會重新調整。</p>
+
+      <p><strong>照顧自己，是專業的一部分。<br>創造一個讓人可以被支持的工作環境，也是管理的一部分。</strong></p>
+
+      <p>但走到這裡，還會出現另一個更現實的問題。</p>
+
+      <p>當人力不足逐漸成為許多產業共同面對的課題，「再多找幾個人」未必永遠是可行的答案。</p>
+
+      <p>管理者恐怕還需要重新思考：哪些流程可以簡化？哪些重複性的工作可以標準化？哪些行政負擔，可以透過數位工具甚至人工智慧協助？而哪些真正需要人與人互動、專業判斷、關係建立與情緒承接的工作，反而更應該把珍貴的人力留下來？</p>
+
+      <p>也就是說，管理者面對的問題，可能已經不只是「如何把人留下來」，更是：</p>
+
+      <blockquote>如何重新設計人、流程與科技之間的分工。</blockquote>
+
+      <p>人工智慧不一定只能從「取代人」的角度思考。如果運用得當，它更值得探索的角色，或許是減少一些不必要的重複、搜尋、整理與行政耗損，讓有限的人力重新回到真正需要「人」的工作上。</p>
+
+      <p>所以，真正的支持不只是說一句：「辛苦了。」</p>
+
+      <p>而是當一個人真的需要時，系統裡有人、有方法，也有空間可以接住他；更進一步，透過更好的流程與工具，讓一些原本不必要的負擔，根本不必落到他身上。</p>
+
+      <blockquote>成熟的助人系統，不是要求每一個人都變得更能撐，而是讓人不必總是靠撐，才能把工作做好。</blockquote>
+
+      <div class="next-note">
+        <strong>下一個管理課題</strong><br>
+        在缺工逐漸成為重要管理課題的時代，如何透過流程改善、工作重新設計與人工智慧輔助，讓科技真正減少人的耗損，而不是增加新的負擔——或許，正是下一個值得繼續思考的問題。
+      </div>
+
+      <section class="references" id="references">
+        <h2>References｜參考資料</h2>
+        <ol>
+          <li>World Health Organization. (2022). <em>Guidelines on mental health at work</em>. Geneva: World Health Organization. <a href="https://www.who.int/publications/i/item/9789240053052" target="_blank" rel="noopener noreferrer">查看資料 ↗</a></li>
+          <li>World Health Organization. <em>Psycho-social risks and mental health: Occupational hazards in the health sector</em>. <a href="https://www.who.int/tools/occupational-hazards-in-health-sector/psycho-social-risks-mental-health" target="_blank" rel="noopener noreferrer">查看資料 ↗</a></li>
+          <li>Mohd Nadzir, A. Y. B., Gopinath, D., Rajiah, K., Fang, C. M., & Maharajan, K. K. (2026). Effectiveness of interventions to support healthcare workers’ mental health and well-being: An umbrella review of systematic reviews. <em>Public Health, 258</em>, 106392. <a href="https://doi.org/10.1016/j.puhe.2026.106392" target="_blank" rel="noopener noreferrer">DOI ↗</a></li>
+          <li>Martin, P., Lizarondo, L., Kumar, S., & Snowdon, D. (2021). Impact of clinical supervision on healthcare organisational outcomes: A mixed methods systematic review. <em>PLOS ONE, 16</em>(11), e0260156. <a href="https://doi.org/10.1371/journal.pone.0260156" target="_blank" rel="noopener noreferrer">DOI ↗</a></li>
+        </ol>
+      </section>
+
+      <div class="series-box">
+        <div class="label">SERIES｜SUPPORTING THE HELPER</div>
+        <h3>助人者支持系列</h3>
+        <p>從助人者的自我覺察出發，逐步延伸到團隊、組織與工作設計，思考如何讓支持不只停留在一句關心。</p>
+      </div>
+
+      <a class="back" href="../articles.html">← 回到 Articles</a>
+    </article>
+
+    <aside aria-label="文章目錄">
+      <strong>IN THIS ARTICLE</strong>
+      <a href="#individual">一、個人</a>
+      <a href="#team">二、團隊</a>
+      <a href="#organization">三、組織</a>
+      <a href="#care">四、CARE 框架</a>
+      <a href="#resilience">五、真正的韌性</a>
+      <a href="#references">參考資料</a>
+    </aside>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">ALLEN MIND LAB</div>
+      <div class="footer-tagline">Building A Meaningful Life.</div>
+      <div style="margin-top:10px;font-size:.9rem;color:#9aa6ab">© 2026 Allen Mind Lab · Allen Chen 陳威勝</div>
+    </div>
+    <div class="footer-links">
+      <a href="../about.html">About</a>
+      <a href="../research.html">Research</a>
+      <a href="../recognition.html">Recognition</a>
+      <a href="../articles.html">Articles</a>
+      <a href="../publications.html">Publications</a>
+      <a href="../contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
