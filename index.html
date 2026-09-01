@@ -336,6 +336,72 @@
 
     .thoughts{background:#faf8f3}
 
+
+    .recognition-home{
+      background:linear-gradient(135deg,#0d1b2a,#172c43);
+      color:white;
+    }
+
+    .recognition-home .section-title{color:white}
+    .recognition-home .section-lead{color:#cbd5e1}
+
+    .recognition-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:38px;
+    }
+
+    .recognition-card{
+      padding:26px;
+      border-radius:20px;
+      border:1px solid rgba(199,167,106,.26);
+      background:rgba(255,255,255,.045);
+    }
+
+    .recognition-card .r-year{
+      color:var(--gold);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:1.15rem;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .recognition-card h3{
+      color:white;
+      margin:0 0 8px;
+      line-height:1.5;
+      font-size:1.03rem;
+    }
+
+    .recognition-card p{
+      color:#aeb9c5;
+      margin:0;
+      font-size:.9rem;
+    }
+
+    .recognition-btn{
+      display:inline-block;
+      margin-top:28px;
+      padding:11px 20px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      color:white;
+      font-weight:800;
+      transition:.2s;
+    }
+
+    .recognition-btn:hover{
+      background:var(--gold);
+      color:var(--navy);
+      transform:translateY(-2px);
+    }
+
+    @media(max-width:820px){
+      .recognition-grid{grid-template-columns:1fr}
+    }
+
+
     .ending{
       text-align:center;
       padding:120px 8vw;
@@ -557,6 +623,7 @@
   <div class="navlinks">
     <a href="about.html">About</a>
     <a href="research.html">Research</a>
+    <a href="recognition.html">Recognition</a>
     <a href="#labs">Labs</a>
     <a href="publications.html">Publications</a>
     <a href="#journey">Journey</a>
@@ -815,6 +882,44 @@
 </section>
 
 
+
+<section class="recognition-home reveal" id="recognition-home">
+
+  <div class="eyebrow">Recognition & Media</div>
+
+  <h2 class="section-title">
+    專業之外，也留下被看見與被肯定的足跡。
+  </h2>
+
+  <p class="section-lead">
+    從學業表現、專業服務、公共創新到人物專訪，
+    記錄不同階段的重要肯定與媒體採訪。
+  </p>
+
+  <div class="recognition-grid">
+    <div class="recognition-card">
+      <div class="r-year">98年</div>
+      <h3>臺北市政府模範公務人員</h3>
+      <p>臺北市政府</p>
+    </div>
+
+    <div class="recognition-card">
+      <div class="r-year">96年</div>
+      <h3>國立臺灣大學職能治療學系系友會傑出系友專訪</h3>
+      <p>國立臺灣大學</p>
+    </div>
+
+    <div class="recognition-card">
+      <div class="r-year">86學年度</div>
+      <h3>臺灣大學醫學院優良學生代表</h3>
+      <p>國立臺灣大學</p>
+    </div>
+  </div>
+
+  <a href="recognition.html" class="recognition-btn">Explore Recognition →</a>
+
+</section>
+
 <section class="thoughts reveal" id="thoughts">
 
   <div class="eyebrow">Articles · Notes from the Lab</div>
@@ -948,6 +1053,7 @@
         <h4>Explore AML</h4>
         <a href="about.html">About</a>
         <a href="research.html">Research</a>
+        <a href="recognition.html">Recognition</a>
         <a href="articles.html">Articles</a>
         <a href="publications.html">Publications</a>
         <a href="contact.html">Contact</a>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recognition & Media｜Allen Mind Lab</title>
+  <meta name="description" content="Allen Chen 陳威勝之獲獎、專業肯定、傑出系友與媒體採訪事蹟。" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    :root{
+      --navy:#0d1b2a;
+      --navy2:#14263b;
+      --gold:#c7a76a;
+      --cream:#f6f1e8;
+      --paper:#fffdf9;
+      --ink:#1f2933;
+      --muted:#6b7280;
+      --line:#e7e1d6;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+      background:var(--paper);
+      color:var(--ink);
+      line-height:1.75;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    nav{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(8,22,38,.96);
+      color:white;
+      padding:18px 7vw;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.12em;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      font-size:.9rem;
+    }
+
+    .navlinks a{color:#e5e7eb}
+    .navlinks a:hover{color:var(--gold)}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      padding:105px 8vw 80px;
+      color:white;
+      background:
+        radial-gradient(circle at 83% 18%,rgba(199,167,106,.19),transparent 30%),
+        linear-gradient(135deg,#0d1b2a,#17334f);
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      right:-90px;
+      top:-120px;
+      width:360px;
+      height:360px;
+      border:1px solid rgba(199,167,106,.18);
+      border-radius:50%;
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      font-size:.78rem;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    h1{
+      max-width:900px;
+      margin:15px 0 24px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(2.7rem,6vw,5.5rem);
+      line-height:1.12;
+    }
+
+    .lead{
+      max-width:860px;
+      color:#d5dde5;
+      font-size:1.08rem;
+    }
+
+    .summary{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:16px;
+      max-width:920px;
+      margin-top:42px;
+    }
+
+    .summary-card{
+      padding:20px 22px;
+      border-radius:18px;
+      border:1px solid rgba(199,167,106,.28);
+      background:rgba(255,255,255,.045);
+    }
+
+    .summary-card strong{
+      display:block;
+      color:var(--gold);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:1.35rem;
+    }
+
+    .summary-card span{
+      color:#c6d0d9;
+      font-size:.9rem;
+    }
+
+    main{
+      max-width:1100px;
+      margin:auto;
+      padding:70px 7vw 100px;
+    }
+
+    .intro{
+      max-width:850px;
+      color:var(--muted);
+      margin-bottom:48px;
+    }
+
+    .timeline{
+      position:relative;
+      margin-top:25px;
+    }
+
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:70px;
+      top:0;
+      bottom:0;
+      width:1px;
+      background:linear-gradient(var(--gold),#e8e0d2);
+    }
+
+    .entry{
+      position:relative;
+      display:grid;
+      grid-template-columns:105px 1fr;
+      gap:34px;
+      padding:0 0 38px;
+    }
+
+    .year{
+      color:var(--gold);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:1.15rem;
+      font-weight:700;
+      text-align:left;
+      padding-top:7px;
+    }
+
+    .entry::before{
+      content:"";
+      position:absolute;
+      left:64px;
+      top:13px;
+      width:13px;
+      height:13px;
+      border-radius:50%;
+      background:var(--gold);
+      box-shadow:0 0 0 5px var(--paper);
+    }
+
+    .entry-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:26px 28px;
+      box-shadow:0 8px 24px rgba(15,23,42,.035);
+    }
+
+    .type{
+      color:#8b7140;
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      margin-bottom:7px;
+    }
+
+    .entry-card h2{
+      margin:0 0 9px;
+      color:var(--navy);
+      font-size:1.2rem;
+      line-height:1.5;
+    }
+
+    .org{
+      color:#64748b;
+      margin:0;
+    }
+
+    .note{
+      margin-top:35px;
+      padding:20px 22px;
+      border-left:3px solid var(--gold);
+      background:#f7f3ea;
+      color:#626973;
+      font-size:.9rem;
+    }
+
+    footer{
+      background:#101719;
+      color:#cbd5e1;
+      padding:46px 8vw;
+    }
+
+    footer strong{color:var(--gold)}
+    footer a{color:#dce3e7}
+
+    @media(max-width:800px){
+      nav{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .navlinks{gap:10px}
+
+      .hero{
+        padding:70px 6vw 58px;
+      }
+
+      .summary{
+        grid-template-columns:1fr;
+      }
+
+      main{
+        padding:50px 6vw 80px;
+      }
+
+      .timeline::before{
+        left:5px;
+      }
+
+      .entry{
+        grid-template-columns:1fr;
+        gap:8px;
+        padding-left:28px;
+      }
+
+      .entry::before{
+        left:-1px;
+        top:11px;
+      }
+
+      .year{
+        font-size:1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a class="brand" href="index.html">ALLEN MIND LAB</a>
+
+  <div class="navlinks">
+    <a href="about.html">About</a>
+    <a href="research.html">Research</a>
+    <a href="recognition.html">Recognition</a>
+    <a href="publications.html">Publications</a>
+    <a href="articles.html">Articles</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">Recognition & Media</div>
+
+  <h1>獲獎及採訪事蹟</h1>
+
+  <p class="lead">
+    從求學階段的學業表現，到專業服務、公共創新與人物採訪，
+    這些紀錄不只是獎項，也標記了不同生命階段所受到的肯定與看見。
+  </p>
+
+  <div class="summary">
+    <div class="summary-card">
+      <strong>Public Service</strong>
+      <span>公共服務與創新肯定</span>
+    </div>
+
+    <div class="summary-card">
+      <strong>Professional Recognition</strong>
+      <span>專業與公益肯定</span>
+    </div>
+
+    <div class="summary-card">
+      <strong>Media & Alumni</strong>
+      <span>人物專訪與系友紀錄</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <p class="intro">
+    本頁依歷年獲獎與採訪資料整理，依年份由近至遠呈現。
+    對 Allen Mind Lab 而言，Recognition 並不是單純陳列榮譽，
+    而是回看每一個階段曾經投入、被肯定，也持續往下一段路前進的足跡。
+  </p>
+
+  <div class="timeline">
+
+    <article class="entry">
+      <div class="year">98年</div>
+      <div class="entry-card">
+        <div class="type">Award · Public Service</div>
+        <h2>臺北市政府模範公務人員</h2>
+        <p class="org">臺北市政府</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="year">96年</div>
+      <div class="entry-card">
+        <div class="type">Interview · Alumni</div>
+        <h2>國立臺灣大學職能治療學系系友會傑出系友專訪</h2>
+        <p class="org">國立臺灣大學</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="year">89年</div>
+      <div class="entry-card">
+        <div class="type">Award · Innovation</div>
+        <h2>臺北市政府98年創意會報創新獎優勝－建構身心障礙者吞嚥困難防治照護模式</h2>
+        <p class="org">臺北市政府</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="year">86年</div>
+      <div class="entry-card">
+        <div class="type">Media Interview</div>
+        <h2>專訪陽明教養院陳威勝職能治療師</h2>
+        <p class="org">升學資訊輔導雜誌</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="year">86年</div>
+      <div class="entry-card">
+        <div class="type">Recognition · Public Interest</div>
+        <h2>熱心公益醫師感謝狀</h2>
+        <p class="org">KingNet國家網路醫院</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="year">86學年度</div>
+      <div class="entry-card">
+        <div class="type">Academic Recognition</div>
+        <h2>臺灣大學醫學院86學年度優良學生代表</h2>
+        <p class="org">國立臺灣大學</p>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="year">86–88年</div>
+      <div class="entry-card">
+        <div class="type">Academic Award</div>
+        <h2>臺灣大學醫學院職能治療學系書卷獎5次</h2>
+        <p class="org">國立臺灣大學｜86/02、86/08、87/02、87/08、88/08</p>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="note">
+    資料註記：第 3 項原始資料之獎項名稱為「臺北市政府98年創意會報創新獎優勝」，
+    年份欄則記載為「89年」。本頁目前依原始資料保留，待確認後再行校正。
+  </div>
+
+</main>
+
+<footer>
+  <strong>Allen Mind Lab</strong> · Building A Meaningful Life.<br>
+  <a href="index.html">Home</a> ·
+  <a href="research.html">Research</a> ·
+  <a href="recognition.html">Recognition</a> ·
+  <a href="publications.html">Publications</a> ·
+  <a href="articles.html">Articles</a> ·
+  <a href="contact.html">Contact</a>
+</footer>
+
+</body>
+</html>
