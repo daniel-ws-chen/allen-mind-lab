@@ -209,6 +209,86 @@
   }
 }
 
+
+/* ===== Featured Series ===== */
+.featured-series{
+  padding:76px 8vw;
+  background:linear-gradient(135deg,#0d1b2a,#18324f);
+  color:white;
+}
+.featured-series-wrap{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:52px;
+  align-items:center;
+}
+.featured-series .eyebrow{
+  color:var(--gold);
+}
+.featured-series h2{
+  margin:8px 0 14px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2rem,4vw,3.4rem);
+  line-height:1.25;
+}
+.featured-series .series-lead{
+  margin:0;
+  color:#cbd5e1;
+  max-width:650px;
+}
+.series-path{
+  display:grid;
+  gap:12px;
+}
+.series-step{
+  display:grid;
+  grid-template-columns:64px 1fr;
+  gap:16px;
+  align-items:start;
+  padding:17px 18px;
+  border:1px solid rgba(199,167,106,.22);
+  border-radius:16px;
+  background:rgba(255,255,255,.045);
+  transition:.2s ease;
+}
+.series-step:hover{
+  transform:translateX(4px);
+  border-color:rgba(199,167,106,.55);
+  background:rgba(255,255,255,.07);
+}
+.series-no{
+  color:var(--gold);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:1.15rem;
+  font-weight:800;
+}
+.series-step strong{
+  display:block;
+  color:white;
+  margin-bottom:3px;
+}
+.series-step span{
+  display:block;
+  color:#aeb9c7;
+  font-size:.9rem;
+}
+.series-note{
+  margin-top:18px;
+  color:#9eabb9;
+  font-size:.86rem;
+}
+@media(max-width:900px){
+  .featured-series{
+    padding:66px 6vw;
+  }
+  .featured-series-wrap{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+}
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -278,17 +358,61 @@
   </div>
 </section>
 
+
+<section class="featured-series" id="featured-series">
+  <div class="featured-series-wrap">
+    <div>
+      <div class="eyebrow">Featured Series</div>
+      <h2>Supporting the Helper<br>助人者支持系列</h2>
+      <p class="series-lead">
+        從自我覺察、團隊與組織支持，到數位工作邊界，
+        重新思考第一線工作者如何被支持，而不只是被要求繼續撐住。
+      </p>
+      <p class="series-note">
+        Domains 告訴我們知識在哪裡；Series 則讓思考沿著同一個問題繼續往前走。
+      </p>
+    </div>
+
+    <div class="series-path">
+      <a class="series-step" href="articles/helper-self-awareness.html">
+        <div class="series-no">01</div>
+        <div>
+          <strong>看見自己｜心安方能助人，理明方能成事</strong>
+          <span>從體力、情緒、期待與關係界線開始自我覺察。</span>
+        </div>
+      </a>
+
+      <a class="series-step" href="articles/helper-support-system.html">
+        <div class="series-no">02</div>
+        <div>
+          <strong>建立支持｜助人者也需要被支持</strong>
+          <span>從個人韌性走向團隊求援、組織責任與工作重新設計。</span>
+        </div>
+      </a>
+
+      <a class="series-step" href="articles/digital-communication-boundaries.html">
+        <div class="series-no">03</div>
+        <div>
+          <strong>重新設計工作｜不是不想回，是不能一直在線</strong>
+          <span>用數位邊界與 AI 第二雙眼睛，降低第一線溝通負荷與風險。</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section id="articles">
   <div class="eyebrow">Latest Articles</div>
   <h2 class="title">最新文章</h2>
   <div class="article-grid">
-    <a class="article-card" data-category="ai" href="articles/digital-communication-boundaries.html">
+<a class="article-card" data-category="ai" href="articles/digital-communication-boundaries.html">
   <div class="meta">2026.09.02</div>
   <span class="tag">AI &amp; Practice</span>
   <h2>不是不想回，是不能一直在線</h2>
   <p>從私人 LINE、官方帳號到 AI 幕僚：為第一線工作者建立可以被找到、卻不必隨時在線的數位溝通邊界。</p>
   <div class="read">Read Article →</div>
 </a>
+
 <a class="article-card" data-category="management mind pbs ai" href="articles/helper-support-system.html">
   <div class="meta">2026.09.01 · ANCHOR ARTICLE</div>
   <span class="tag">Management & Leadership</span>
@@ -304,7 +428,6 @@
 
   <div class="read">Read Article →</div>
 </a>
-
     
     <a class="article-card" data-category="mind notes" href="articles/helper-self-awareness.html">
       <div class="meta">2026.08.31</div>
