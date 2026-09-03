@@ -347,14 +347,14 @@
   <h2 class="title">從六個探索面向，延伸成持續生長的知識庫。</h2>
   <p class="lead">文章會依主題分類，也允許跨領域。未來每一篇文章都使用一致的 AML 結構與安全檢核，讓網站內容愈來愈完整，而不是愈來愈凌亂。</p>
   <div class="filters">
-    <button class="filter-btn active" data-filter="all">全部</button>
-    <button class="filter-btn" data-filter="ot">OT & Human Occupation</button>
-    <button class="filter-btn" data-filter="pbs">PBS</button>
-    <button class="filter-btn" data-filter="management">Management</button>
-    <button class="filter-btn" data-filter="education">Education</button>
-    <button class="filter-btn" data-filter="ai">AI × Practice</button>
-    <button class="filter-btn" data-filter="mind">Mind & Well-being</button>
-    <button class="filter-btn" data-filter="notes">AML Notes</button>
+    <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">全部</button>
+    <button type="button" class="filter-btn" data-filter="ot" aria-pressed="false">OT & Human Occupation</button>
+    <button type="button" class="filter-btn" data-filter="pbs" aria-pressed="false">PBS</button>
+    <button type="button" class="filter-btn" data-filter="management" aria-pressed="false">Management</button>
+    <button type="button" class="filter-btn" data-filter="education" aria-pressed="false">Education</button>
+    <button type="button" class="filter-btn" data-filter="ai" aria-pressed="false">AI × Practice</button>
+    <button type="button" class="filter-btn" data-filter="mind" aria-pressed="false">Mind & Well-being</button>
+    <button type="button" class="filter-btn" data-filter="notes" aria-pressed="false">AML Notes</button>
   </div>
 </section>
 
@@ -464,7 +464,7 @@
 
   </div>
 
-  <div class="empty">
+  <div class="empty" id="filter-status" role="status" aria-live="polite">
     文章將持續累積。每一篇內容都從專業實務、生活觀察與反思出發，逐步形成 AML 的知識庫。
   </div>
 </section>
@@ -586,16 +586,53 @@
 
 
 <script>
-const buttons=document.querySelectorAll(".filter-btn");
-const cards=document.querySelectorAll(".article-card");
-buttons.forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    buttons.forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    const filter=btn.dataset.filter;
-    cards.forEach(card=>{
-      const cats=(card.dataset.category||"").split(" ");
-      card.classList.toggle("hidden",filter!=="all"&&!cats.includes(filter));
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".article-card");
+  const articlesSection = document.getElementById("articles");
+  const status = document.getElementById("filter-status");
+
+  const labels = {
+    all: "全部",
+    ot: "OT & Human Occupation",
+    pbs: "PBS",
+    management: "Management",
+    education: "Education",
+    ai: "AI × Practice",
+    mind: "Mind & Well-being",
+    notes: "AML Notes"
+  };
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter;
+
+      buttons.forEach(b => {
+        const active = b === btn;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-pressed", active ? "true" : "false");
+      });
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cats = (card.dataset.category || "").split(" ").filter(Boolean);
+        const show = filter === "all" || cats.includes(filter);
+        card.classList.toggle("hidden", !show);
+        if (show) visibleCount++;
+      });
+
+      if (filter === "all") {
+        status.textContent = `目前共顯示 ${visibleCount} 篇文章／內容。文章將持續累積，逐步形成 AML 的知識庫。`;
+      } else if (visibleCount > 0) {
+        status.textContent = `${labels[filter]}：目前顯示 ${visibleCount} 篇文章／內容。`;
+      } else {
+        status.textContent = `${labels[filter]} 的文章正在整理中，Allen Mind Lab 會持續更新。`;
+      }
+
+      // The filter controls are above Featured Series; move the reader
+      // directly to the filtered article results so the action is obvious.
+      articlesSection.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
 });
