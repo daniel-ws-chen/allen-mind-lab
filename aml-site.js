@@ -70,19 +70,21 @@
     });
 
 
-  /* ===== AML Article Share v1 ===== */
+  /* ===== AML Article Share v1.1 ===== */
 
   const shareButton =
     document.querySelector("[data-aml-share]");
-const lineShareButton =
-  document.querySelector("[data-aml-line-share]");
+
+  const lineShareButton =
+    document.querySelector("[data-aml-line-share]");
+
   const copyButton =
     document.querySelector("[data-aml-copy-link]");
 
   const shareStatus =
     document.querySelector("[data-aml-share-status]");
 
- if (shareButton || lineShareButton || copyButton) {
+  if (shareButton || lineShareButton || copyButton) {
 
     const getShareData = () => ({
       title:
@@ -127,9 +129,7 @@ const lineShareButton =
       try {
         await navigator.clipboard.writeText(url);
 
-        showStatus(
-          "文章連結已複製 ✓"
-        );
+        showStatus("文章連結已複製 ✓");
 
       } catch (_) {
 
@@ -165,6 +165,8 @@ const lineShareButton =
     };
 
 
+    /* ===== Native Share ===== */
+
     if (shareButton) {
       shareButton.addEventListener(
         "click",
@@ -183,7 +185,7 @@ const lineShareButton =
 
               /*
                * AbortError =
-               * 使用者自己關閉分享視窗，
+               * 使用者自行關閉分享視窗，
                * 不需要顯示錯誤。
                */
 
@@ -201,21 +203,20 @@ const lineShareButton =
       );
     }
 
-if (lineShareButton) {
-  lineShareButton.addEventListener("click", () => {
-    const shareData = getShareData();
 
-    const lineUrl =
-      "https://social-plugins.line.me/lineit/share?url=" +
-      encodeURIComponent(shareData.url);
+    /* ===== LINE Share ===== */
 
-    window.open(
-      lineUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
-  });
-}
+    if (lineShareButton) {
+      const shareData = getShareData();
+
+      lineShareButton.href =
+        "https://social-plugins.line.me/lineit/share?url=" +
+        encodeURIComponent(shareData.url);
+    }
+
+
+    /* ===== Copy Link ===== */
+
     if (copyButton) {
       copyButton.addEventListener(
         "click",
@@ -223,5 +224,5 @@ if (lineShareButton) {
       );
     }
   }
-  
+
 })();
