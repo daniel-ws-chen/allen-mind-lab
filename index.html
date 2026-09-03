@@ -611,22 +611,118 @@
   }
 }
 
+
+    /* ===== Latest Article Feature ===== */
+    .latest-article{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+      gap:42px;
+      align-items:center;
+      margin-top:38px;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:linear-gradient(145deg,#fff,#faf6ee);
+      box-shadow:0 14px 38px rgba(15,23,42,.06);
+    }
+
+    .latest-article__image{
+      display:block;
+      overflow:hidden;
+      border-radius:18px;
+      box-shadow:0 14px 32px rgba(13,27,42,.12);
+    }
+
+    .latest-article__image img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .latest-article__meta{
+      color:#8c6f38;
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+    }
+
+    .latest-article__tag{
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      background:var(--cream);
+      color:#8c6f38;
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.06em;
+      margin-bottom:14px;
+    }
+
+    .latest-article h3{
+      margin:0 0 14px;
+      color:var(--navy);
+      font-family:Georgia,"Noto Serif TC","Times New Roman",serif;
+      font-size:clamp(1.55rem,3vw,2.45rem);
+      line-height:1.35;
+    }
+
+    .latest-article p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.85;
+    }
+
+    .latest-article__actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+
+    .latest-article__btn{
+      display:inline-block;
+      padding:11px 19px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .latest-article__btn.primary{
+      background:var(--navy);
+      border-color:var(--navy);
+      color:white;
+    }
+
+    .latest-article__btn:hover{
+      transform:translateY(-2px);
+    }
+
+    @media(max-width:900px){
+      .latest-article{
+        grid-template-columns:1fr;
+        gap:26px;
+        padding:22px;
+      }
+    }
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <!-- AML SEO / Social Preview -->
-  <link rel="canonical" href="https://allen-mind-lab.pages.dev/">
+  <link rel="canonical" href="https://allenmindlab.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Allen Mind Lab">
   <meta property="og:title" content="Allen Mind Lab | Building A Meaningful Life">
   <meta property="og:description" content="Allen Mind Lab｜Allen Chen 陳威勝的個人品牌網站，涵蓋職能治療、PBS、管理、教育、AI、健康促進與出版品。">
-  <meta property="og:url" content="https://allen-mind-lab.pages.dev/">
-  <meta property="og:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <meta property="og:url" content="https://allenmindlab.com/">
+  <meta property="og:image" content="https://allenmindlab.com/images/allen-banner.png">
   <meta property="og:image:alt" content="Allen Mind Lab">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Allen Mind Lab | Building A Meaningful Life">
   <meta name="twitter:description" content="Allen Mind Lab｜Allen Chen 陳威勝的個人品牌網站，涵蓋職能治療、PBS、管理、教育、AI、健康促進與出版品。">
-  <meta name="twitter:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <meta name="twitter:image" content="https://allenmindlab.com/images/allen-banner.png">
   <link rel="stylesheet" href="aml-site.css">
 </head>
 
@@ -976,7 +1072,7 @@
 
 <section class="thoughts reveal" id="thoughts">
 
-  <div class="eyebrow">Articles · Notes from the Lab</div>
+  <div class="eyebrow">Latest Article · Notes from the Lab</div>
 
   <h2 class="section-title">
     持續書寫，讓經驗成為可以被傳遞的智慧。
@@ -984,15 +1080,40 @@
 
   <p class="section-lead">
     關於職能治療、PBS、管理、教育、AI、健康與生命反思，
-    文章專區將成為 Allen Mind Lab 持續更新的內容核心。
+    文章專區持續整理從實務現場長出來的問題與思考。
   </p>
 
-  <p style="margin-top:26px;">
-    <a href="articles.html"
-       style="display:inline-block;padding:11px 20px;border-radius:999px;border:1px solid #c7a76a;color:#0d1b2a;font-weight:800;">
-      Explore Articles →
+  <article class="latest-article">
+    <a class="latest-article__image" href="articles/pbs-being-seen.html" aria-label="閱讀：當「被看見」成為高挑戰行為">
+      <img
+        src="images/articles/pbs-being-seen.png"
+        alt="當「被看見」成為高挑戰行為：PBS、積極忽略、冰山理解與安全邊界"
+        loading="lazy"
+      >
     </a>
-  </p>
+
+    <div>
+      <div class="latest-article__meta">2026.09.03 · NEW</div>
+      <span class="latest-article__tag">PBS</span>
+
+      <h3>當「被看見」成為高挑戰行為</h3>
+
+      <p>
+        當挑戰行為的功能是取得關注，回應與否都可能成為兩難。
+        從 PBS 的事前預防、積極忽略與替代行為，到冰山下的需要與安全邊界，
+        重新理解「被看見」背後的行為與關係。
+      </p>
+
+      <div class="latest-article__actions">
+        <a class="latest-article__btn primary" href="articles/pbs-being-seen.html">
+          Read Article →
+        </a>
+        <a class="latest-article__btn" href="articles.html">
+          Explore All Articles
+        </a>
+      </div>
+    </div>
+  </article>
 
 </section>
 
