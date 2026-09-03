@@ -74,14 +74,15 @@
 
   const shareButton =
     document.querySelector("[data-aml-share]");
-
+const lineShareButton =
+  document.querySelector("[data-aml-line-share]");
   const copyButton =
     document.querySelector("[data-aml-copy-link]");
 
   const shareStatus =
     document.querySelector("[data-aml-share-status]");
 
-  if (shareButton || copyButton) {
+ if (shareButton || lineShareButton || copyButton) {
 
     const getShareData = () => ({
       title:
@@ -200,7 +201,21 @@
       );
     }
 
+if (lineShareButton) {
+  lineShareButton.addEventListener("click", () => {
+    const shareData = getShareData();
 
+    const lineUrl =
+      "https://social-plugins.line.me/lineit/share?url=" +
+      encodeURIComponent(shareData.url);
+
+    window.open(
+      lineUrl,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  });
+}
     if (copyButton) {
       copyButton.addEventListener(
         "click",
