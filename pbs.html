@@ -14,7 +14,19 @@ a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-conte
 .wrap{max-width:1120px;margin:auto;padding:72px 6vw}.lead{font-size:1.35rem;max-width:850px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:38px}.card{background:#fff;border:1px solid #e6e0d4;border-radius:18px;padding:28px;box-shadow:0 12px 35px rgba(9,24,45,.06)}.card h3{margin-top:0;color:var(--navy)}.quote{font-size:1.45rem;border-left:4px solid var(--gold);padding:10px 0 10px 24px;margin:42px 0;color:var(--navy)}
 .tag{display:inline-block;padding:5px 10px;border:1px solid #d9c79f;border-radius:999px;color:#7a6030;margin-right:6px;font-size:.82rem}.footer{background:#06172d;color:#e7edf5;padding:50px 7vw;display:grid;grid-template-columns:2fr 1fr;gap:30px}.footer strong{color:var(--gold);font-size:1.35rem}.footlinks{display:grid;gap:8px}.footlinks a{text-decoration:none}.copyright{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;color:#a9b4c2;font-size:.88rem}
 .btn{display:inline-block;text-decoration:none;background:var(--gold);color:#081a30;padding:11px 18px;border-radius:999px;font-weight:700;margin-top:12px}
-@media(max-width:820px){.nav{align-items:flex-start;flex-direction:column;gap:12px}.links{gap:10px}.grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.hero{padding-top:70px}}
+
+.tools-section{margin:56px 0 18px;padding:34px;border:1px solid #e3d8c1;border-radius:24px;background:linear-gradient(135deg,#fffdf9,#f6f1e7)}
+.tools-kicker{color:#8a6b35;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+.tools-section h2{margin:0 0 10px;color:var(--navy);font-size:clamp(1.7rem,3vw,2.35rem)}
+.tools-lead{max-width:820px;color:var(--muted);margin:0 0 24px}
+.tool-card{padding:28px;border-radius:20px;background:#fff;border:1px solid #e6e0d4;box-shadow:0 12px 30px rgba(9,24,45,.05)}
+.tool-card h3{margin:0 0 6px;color:var(--navy);font-size:1.35rem}
+.tool-subtitle{margin:0 0 14px;color:#8a6b35;font-weight:800}
+.tool-card p{margin:0;color:var(--muted)}
+.tool-actions{margin-top:18px}
+.tool-note{margin-top:16px;padding-top:15px;border-top:1px solid #eee6d8;color:#7a828d;font-size:.88rem}
+
+@media(max-width:820px){.nav{align-items:flex-start;flex-direction:column;gap:12px}.links{gap:10px}.grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.hero{padding-top:70px}.tools-section{padding:24px}.tool-card{padding:22px}}
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -74,6 +86,32 @@ a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-conte
 <article class="card"><h3>Prevention</h3><p>優先改善環境、預告、選擇、等待與溝通，而不是只在危機後處理。</p></article>
 <article class="card"><h3>SAFE</h3><p>Safety · Attune · Flexibility · Evaluate，讓支持兼顧安全、人本與持續修正。</p></article></div>
   <div class="quote">改變行為之前，先試著理解這個人正在告訴我們什麼。</div>
+
+  <section class="tools-section" aria-labelledby="practice-tools-title">
+    <div class="tools-kicker">Practice Tools</div>
+    <h2 id="practice-tools-title">實務工具</h2>
+    <p class="tools-lead">把 PBS 的概念帶回現場，協助整理案例、形成假設，並產出可由團隊進一步討論與修正的策略草稿。</p>
+
+    <article class="tool-card">
+      <h3>AML PBS Companion</h3>
+      <p class="tool-subtitle">正向行為支持實務夥伴</p>
+      <p>協助第一線工作者整理情緒行為案例、進行 ABC 分析、提出功能假設與 PBS 策略草稿。AI 作為整理與思考輔助，不取代現場觀察、專業評估與團隊判斷。</p>
+
+      <div class="tool-actions">
+        <a class="btn"
+           href="https://chatgpt.com/g/g-6a17ee42c9588191abb89a20d3625d8f-aml-pbs-companion-zheng-xiang-xing-wei-zhi-chi-shi-wu-huo-ban"
+           target="_blank"
+           rel="noopener noreferrer">
+          Open AML PBS Companion ↗
+        </a>
+      </div>
+
+      <div class="tool-note">
+        使用前請先將案例去識別化；如涉及立即安全風險、醫療疑慮或重大危機，應優先依現場專業判斷與所屬單位既有流程處理。
+      </div>
+    </article>
+  </section>
+
   <a class="btn" href="articles.html">閱讀相關文章 →</a>
 </main>
 
