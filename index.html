@@ -707,6 +707,180 @@
       }
     }
 
+
+    /* ===== Start Here vNext ===== */
+    .start-here{background:#fffdf9}
+    .start-here-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+    .start-card{display:block;padding:28px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#faf7f0);transition:.25s ease;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+    .start-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(15,23,42,.08)}
+    .start-card .num{margin-bottom:10px}
+    .start-card h3{margin:0 0 10px;color:var(--navy);font-size:1.2rem}
+    .start-card p{margin:0;color:var(--muted)}
+    .start-card .more{margin-top:18px}
+
+    /* ===== Practice Tools vNext ===== */
+    .practice-tools-home{background:linear-gradient(135deg,#f8f4ec,#fffdf9)}
+    .practice-tool-card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:32px;align-items:center;margin-top:36px;padding:32px;border:1px solid #dfd3bb;border-radius:24px;background:white;box-shadow:0 12px 32px rgba(15,23,42,.05)}
+    .practice-tool-card h3{margin:0 0 8px;color:var(--navy);font-size:1.45rem}
+    .practice-tool-sub{color:#8a6b35;font-weight:800;margin-bottom:14px}
+    .practice-tool-card p{margin:0;color:var(--muted)}
+    .practice-tool-points{display:grid;gap:10px}
+    .practice-tool-point{padding:12px 14px;border-radius:14px;background:#faf7f0;color:#536071;font-size:.94rem}
+    .practice-tool-note{margin-top:16px;color:#747d88;font-size:.84rem}
+    @media(max-width:900px){.start-here-grid{grid-template-columns:1fr}.practice-tool-card{grid-template-columns:1fr}}
+
+    /* ===== Professional Footprint vNext ===== */
+    .professional-footprint{
+      background:#f8f4ec;
+    }
+
+    .footprint-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:38px;
+    }
+
+    .footprint-card{
+      display:flex;
+      flex-direction:column;
+      min-height:270px;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:white;
+      box-shadow:0 10px 28px rgba(15,23,42,.05);
+      transition:.25s ease;
+    }
+
+    .footprint-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 36px rgba(15,23,42,.08);
+    }
+
+    .footprint-card .num{
+      margin-bottom:10px;
+    }
+
+    .footprint-card h3{
+      margin:0 0 12px;
+      color:var(--navy);
+      font-size:1.2rem;
+    }
+
+    .footprint-card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .footprint-highlight{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      color:#6e5b35;
+      font-size:.9rem;
+      line-height:1.7;
+    }
+
+    .footprint-card .more{
+      margin-top:auto;
+      padding-top:22px;
+    }
+
+    @media(max-width:900px){
+      .footprint-grid{grid-template-columns:1fr}
+    }
+
+    /* ===== Professional Journey vNext ===== */
+    .professional-journey{
+      background:linear-gradient(135deg,#0d1b2a,#172c43);
+      color:white;
+    }
+    .professional-journey .section-title{color:white}
+    .professional-journey .section-lead{color:#cbd5e1}
+    .journey-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:44px;
+      margin-top:40px;
+      align-items:start;
+    }
+    .journey-path{
+      padding-left:24px;
+      border-left:1px solid rgba(199,167,106,.38);
+    }
+    .journey-item{margin-bottom:28px}
+    .journey-item:last-child{margin-bottom:0}
+    .journey-item small{
+      display:block;
+      color:var(--gold);
+      font-weight:800;
+      letter-spacing:.1em;
+      margin-bottom:5px;
+    }
+    .journey-item h3{margin:0 0 6px;color:white}
+    .journey-item p{margin:0;color:#aeb9c5}
+    .focus-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .focus-card{
+      padding:22px;
+      border-radius:18px;
+      border:1px solid rgba(199,167,106,.22);
+      background:rgba(255,255,255,.045);
+    }
+    .focus-card h3{margin:0 0 8px;color:white;font-size:1rem}
+    .focus-card p{margin:0;color:#aeb9c5;font-size:.9rem}
+
+    /* ===== Stay Connected vNext ===== */
+    .stay-connected{background:#fffdf9}
+    .connect-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:36px;
+    }
+    .connect-card{
+      padding:30px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:linear-gradient(145deg,#fff,#faf6ee);
+      box-shadow:0 12px 32px rgba(15,23,42,.05);
+    }
+    .connect-card.dark{
+      background:linear-gradient(135deg,#0d1b2a,#18324f);
+      border-color:rgba(199,167,106,.22);
+      color:white;
+    }
+    .connect-card h3{margin:0 0 10px;color:var(--navy);font-size:1.25rem}
+    .connect-card.dark h3{color:white}
+    .connect-card p{margin:0;color:var(--muted)}
+    .connect-card.dark p{color:#cbd5e1}
+    .connect-actions{margin-top:20px}
+    .connect-btn{
+      display:inline-block;
+      padding:11px 18px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      font-weight:800;
+      transition:.2s ease;
+    }
+    .connect-btn:hover{transform:translateY(-2px)}
+    .connect-card.dark .connect-btn{background:var(--gold);color:var(--navy)}
+    .connect-note{
+      margin-top:14px;
+      color:#7f8791;
+      font-size:.84rem;
+      line-height:1.65;
+    }
+    .connect-card.dark .connect-note{color:#9eabb9}
+    @media(max-width:900px){
+      .journey-grid,.connect-grid{grid-template-columns:1fr}
+      .focus-grid{grid-template-columns:1fr}
+    }
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -796,6 +970,33 @@
 </section>
 
 
+<section class="start-here reveal" id="start-here">
+  <div class="eyebrow">Start Here</div>
+  <h2 class="section-title">從這裡開始，找到最適合入口。</h2>
+  <p class="section-lead">第一次來到 Allen Mind Lab，可以先從閱讀、探索或實務工具開始。</p>
+  <div class="start-here-grid">
+    <a class="start-card" href="articles.html">
+      <div class="num">01 · READ</div>
+      <h3>閱讀文章</h3>
+      <p>從實務現場長出的觀察、整理與反思，持續累積成可閱讀、可思考的內容。</p>
+      <span class="more">Explore Articles →</span>
+    </a>
+    <a class="start-card" href="#labs">
+      <div class="num">02 · EXPLORE</div>
+      <h3>探索主題</h3>
+      <p>從 OT、PBS、管理、教育、AI 到身心福祉，依興趣進入不同知識領域。</p>
+      <span class="more">Explore Domains →</span>
+    </a>
+    <a class="start-card" href="#practice-tools-home">
+      <div class="num">03 · USE</div>
+      <h3>使用工具</h3>
+      <p>把概念帶回現場，使用 AML 的實務工具協助整理案例、形成假設與支持策略。</p>
+      <span class="more">Explore Practice Tools →</span>
+    </a>
+  </div>
+</section>
+
+
 <section class="labs" id="labs">
 
   <div class="eyebrow">Explore AML</div>
@@ -859,217 +1060,6 @@
 
 </section>
 
-
-<section class="journey" id="journey">
-
-  <div class="reveal">
-
-    <div class="eyebrow">My Journey</div>
-
-    <h2 class="section-title">
-      From 24 to 48.
-    </h2>
-
-    <p class="section-lead">
-      從臨床走向管理、教育與跨域整合。
-      角色不斷改變，
-      關心人的核心沒有改變。
-    </p>
-
-    <div class="timeline">
-
-      <div class="timeitem">
-        <small>24</small>
-        <h3>從專業出發</h3>
-        <p>以職能治療作為理解人與生活的起點。</p>
-      </div>
-
-      <div class="timeitem">
-        <small>PRACTICE</small>
-        <h3>臨床 × 管理 × 跨專業</h3>
-        <p>從個別服務，逐步走向組織與系統。</p>
-      </div>
-
-      <div class="timeitem">
-        <small>GROWTH</small>
-        <h3>PBS × 健康促進 × AI</h3>
-        <p>把不同工具，整合成支持人的方法。</p>
-      </div>
-
-      <div class="timeitem">
-        <small>48</small>
-        <h3>重返杏壇</h3>
-        <p>把多年實務經驗，重新帶回教室。</p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<section id="works" class="reveal">
-
-  <div class="eyebrow">Selected Works</div>
-
-  <h2 class="section-title">
-    把理念，
-    轉化為可以被運用的系統。
-  </h2>
-
-  <div class="works-grid">
-
-    <div class="work">
-      <h3>Positive Behavior Support</h3>
-      <p>從行為功能分析、支持策略，到主管培訓與團隊文化。</p>
-    </div>
-
-    <div class="work">
-      <h3>Occupational Therapy Management</h3>
-      <p>把策略、人力、品質與成果管理，帶回職能治療教育。</p>
-    </div>
-
-    <div class="work">
-      <h3>AI × Education</h3>
-      <p>生成式 AI 導入課程、行政、知識整理與視覺溝通。</p>
-    </div>
-
-    <div class="work">
-      <h3>AML Visual System</h3>
-      <p>用海報、圖像與敘事，讓複雜知識更容易理解。</p>
-    </div>
-
-  </div>
-
-</section>
-
-  <!-- AML × LINE CTA v0.1 | 可放在首頁主要內容尾端、Footer 之前 -->
-<section class="aml-line-cta" aria-labelledby="aml-line-title">
-  <div class="aml-line-cta__inner">
-    <div class="aml-line-cta__copy">
-      <div class="aml-line-cta__eyebrow">ALLEN MIND LAB · OFFICIAL LINE</div>
-      <h2 id="aml-line-title">把值得留下的內容，直接送到你身邊。</h2>
-      <p class="aml-line-cta__lead">加入 Allen Mind Lab 官方 LINE，接收最新文章、實務工具與 AI 應用資訊。</p>
-      <div class="aml-line-cta__pill">知識 × 工具 × 實踐</div>
-      <div class="aml-line-cta__actions">
-        <a class="aml-line-cta__button" href="https://line.me/R/ti/p/%40468pnsft" target="_blank" rel="noopener noreferrer">加入 AML 官方 LINE →</a>
-        <span class="aml-line-cta__id">LINE ID：<strong>@468pnsft</strong></span>
-      </div>
-      <p class="aml-line-cta__note">本帳號不作為緊急求助管道；涉及立即安全、醫療或其他高風險事件，請優先使用正式緊急或通報管道。</p>
-    </div>
-    <div class="aml-line-cta__qr">
-      <div class="aml-line-cta__qr-card">
-        <img src="images/aml-line-qr.png" alt="加入 Allen Mind Lab 官方 LINE 的 QR Code" width="360" height="360" loading="lazy">
-        <p>手機掃描加入</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-.aml-line-cta{--navy:#092b55;--gold:#b78a39;--cream:#f7f3ea;--ink:#18314f;margin:72px auto 28px;padding:0 24px;max-width:1180px}.aml-line-cta__inner{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:center;padding:48px 52px;border:1px solid rgba(183,138,57,.28);border-radius:26px;background:linear-gradient(135deg,#fbf8f1 0%,#f4eee2 65%,#efe5d3 100%);box-shadow:0 18px 60px rgba(9,43,85,.08)}.aml-line-cta__inner:after{content:"";position:absolute;right:-120px;top:-160px;width:420px;height:420px;border-radius:50%;border:1px solid rgba(183,138,57,.18);box-shadow:0 0 0 44px rgba(183,138,57,.035),0 0 0 90px rgba(9,43,85,.025);pointer-events:none}.aml-line-cta__copy,.aml-line-cta__qr{position:relative;z-index:1}.aml-line-cta__eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:12px}.aml-line-cta h2{margin:0 0 16px;color:var(--navy);font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(1.85rem,3vw,2.7rem);line-height:1.22}.aml-line-cta__lead{margin:0 0 20px;color:var(--ink);font-size:1.05rem;line-height:1.8}.aml-line-cta__pill{display:inline-flex;align-items:center;padding:7px 13px;border:1px solid rgba(183,138,57,.45);border-radius:999px;color:#8b672c;background:rgba(255,255,255,.5);font-weight:700;letter-spacing:.06em}.aml-line-cta__actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:24px}.aml-line-cta__button{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;background:var(--navy);color:#fff!important;text-decoration:none!important;font-weight:700;box-shadow:0 9px 22px rgba(9,43,85,.16);transition:.2s ease}.aml-line-cta__button:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(9,43,85,.22)}.aml-line-cta__id{color:#50637a;font-size:.95rem}.aml-line-cta__note{margin:18px 0 0;color:#6d737c;font-size:.82rem;line-height:1.65;max-width:700px}.aml-line-cta__qr{display:flex;justify-content:center}.aml-line-cta__qr-card{width:230px;padding:18px 18px 14px;border-radius:22px;background:rgba(255,255,255,.8);border:1px solid rgba(9,43,85,.09);box-shadow:0 12px 32px rgba(9,43,85,.09);text-align:center}.aml-line-cta__qr-card img{display:block;width:100%;height:auto;border-radius:12px}.aml-line-cta__qr-card p{margin:10px 0 0;color:var(--navy);font-weight:700;font-size:.88rem;letter-spacing:.04em}@media(max-width:760px){.aml-line-cta{margin-top:50px;padding:0 16px}.aml-line-cta__inner{grid-template-columns:1fr;gap:28px;padding:34px 24px}.aml-line-cta__qr{order:-1}.aml-line-cta__qr-card{width:min(220px,72vw)}.aml-line-cta h2{font-size:1.75rem}.aml-line-cta__actions{align-items:flex-start;flex-direction:column;gap:11px}}
-</style>
-
-
-<section class="research-home reveal" id="research-home">
-  <div class="eyebrow">Research & Academic Work</div>
-  <h2 class="section-title">從研究出發，讓實務持續被驗證與累積。</h2>
-  <p class="section-lead">研究軌跡涵蓋職能治療、感覺處理、實證實務、精神復健、機構健康照護、藥事長照、身心障礙服務與易讀易懂實踐。</p>
-  <div class="research-stats">
-    <div class="research-stat"><strong>6</strong><span>期刊論文 Journal Articles</span></div>
-    <div class="research-stat"><strong>11</strong><span>研討會論文與海報 Conference Papers & Posters</span></div>
-    <div class="research-stat"><strong>3</strong><span>研究計畫與成果報告 Research Projects & Reports</span></div>
-  </div>
-  <div class="pub-actions"><a href="research.html" class="pub-btn">Explore Research →</a></div>
-</section>
-
-<section class="publications reveal" id="publications-home">
-
-  <div class="eyebrow">Featured Publications</div>
-
-  <h2 class="section-title">
-    著作與專業譯作。
-  </h2>
-
-  <p class="section-lead">
-    從職能治療、精神健康、感覺統合、自閉症到幼兒教育，
-    將專業知識轉化為能被閱讀、教學與實務使用的出版品。
-  </p>
-
-  <div class="pub-grid">
-
-    <article class="pub-card">
-      <img class="pub-cover" src="images/books/clinical-documentation-ot-third-edition.png" alt="職能治療實務：臨床病歷撰寫（第三版）書封" / loading="lazy">
-      <span class="pub-tag">譯作 · 2019</span>
-      <h3>職能治療實務：臨床病歷撰寫（第三版）</h3>
-      <div class="pub-meta">心理出版社</div>
-      <p>聚焦臨床病歷書寫、專業紀錄、倫理法律與行政實務，是職能治療學生與臨床工作者的重要參考。</p>
-    </article>
-
-    <article class="pub-card">
-      <img class="pub-cover" src="images/books/occupational-therapy-in-mental-health.png" alt="精神健康職能治療：理論與實務書封" / loading="lazy">
-      <span class="pub-tag">著作 · 2009</span>
-      <h3>精神健康職能治療：理論與實務</h3>
-      <div class="pub-meta">五南圖書出版</div>
-      <p>涵蓋精神健康職能治療的理論基礎、臨床推理、評估介入與實務應用，代表 Allen 的核心專業領域之一。</p>
-    </article>
-
-    <article class="pub-card">
-      <img class="pub-cover" src="images/books/building-bridges-sensory-integration.png" alt="打造感覺統合的橋樑書封" / loading="lazy">
-      <span class="pub-tag">譯作 · 2010</span>
-      <h3>打造感覺統合的橋樑</h3>
-      <div class="pub-meta">心理出版社</div>
-      <p>將感覺統合理論轉化為可實際操作的治療與活動策略，支持自閉症及其他發展障礙兒童的生活參與。</p>
-    </article>
-
-  </div>
-
-  <div class="pub-actions">
-    <a href="publications.html" class="pub-btn">Explore Publications →</a>
-  </div>
-
-</section>
-
-
-
-<section class="recognition-home reveal" id="recognition-home">
-
-  <div class="eyebrow">Recognition & Media</div>
-
-  <h2 class="section-title">
-    專業之外，也留下被看見與被肯定的足跡。
-  </h2>
-
-  <p class="section-lead">
-    從學業表現、專業服務、公共創新到人物專訪，
-    記錄不同階段的重要肯定與媒體採訪。
-  </p>
-
-  <div class="recognition-grid">
-    <div class="recognition-card">
-      <div class="r-year">98年</div>
-      <h3>臺北市政府模範公務人員</h3>
-      <p>臺北市政府</p>
-    </div>
-
-    <div class="recognition-card">
-      <div class="r-year">96年</div>
-      <h3>國立臺灣大學職能治療學系系友會傑出系友專訪</h3>
-      <p>國立臺灣大學</p>
-    </div>
-
-    <div class="recognition-card">
-      <div class="r-year">86學年度</div>
-      <h3>臺灣大學醫學院優良學生代表</h3>
-      <p>國立臺灣大學</p>
-    </div>
-  </div>
-
-  <a href="recognition.html" class="recognition-btn">Explore Recognition →</a>
-
-</section>
-
 <section class="thoughts reveal" id="thoughts">
 
   <div class="eyebrow">Latest Article · Notes from the Lab</div>
@@ -1117,51 +1107,180 @@
 
 </section>
 
+<section class="practice-tools-home reveal" id="practice-tools-home">
+  <div class="eyebrow">Practice Tools</div>
+  <h2 class="section-title">把知識帶回現場。</h2>
+  <p class="section-lead">AML 的實務工具不是替代專業判斷，而是協助整理資訊、形成假設，讓團隊更容易開始討論與修正。</p>
 
-
-
-
-<section class="newsletter reveal" id="newsletter">
-
-  <div class="newsletter-wrap">
-
+  <div class="practice-tool-card">
     <div>
-      <img
-        class="newsletter-icon"
-        src="images/newsletter/notes-from-the-lab.png"
-        alt="Notes from the Lab Newsletter"
-      / loading="lazy">
+      <div class="num">AML TOOL · PBS</div>
+      <h3>AML PBS Companion</h3>
+      <div class="practice-tool-sub">正向行為支持實務夥伴</div>
+      <p>協助第一線工作者整理情緒行為案例、進行 ABC 分析、提出功能假設與 PBS 策略草稿。</p>
+      <p class="practice-tool-note">AI 作為整理與思考輔助，不取代現場觀察、專業評估與團隊判斷。</p>
+      <a class="pub-btn" href="pbs.html" style="margin-top:22px;">Explore Tool →</a>
     </div>
+    <div class="practice-tool-points">
+      <div class="practice-tool-point">ABC 行為分析</div>
+      <div class="practice-tool-point">行為功能假設</div>
+      <div class="practice-tool-point">PBS 支持策略草稿</div>
+      <div class="practice-tool-point">去識別化與專業安全提醒</div>
+    </div>
+  </div>
+</section>
 
-    <div>
-      <div class="eyebrow">Notes from the Lab</div>
 
-      <h2 class="section-title">
-        不追求天天更新，<br>
-        只分享值得留下的內容。
-      </h2>
 
-      <p class="section-lead">
-        關於職能治療、PBS、管理、教育、AI、健康與生命反思。
-        當有新的文章或值得分享的內容，我會寄一封信給你。
-      </p>
+<section class="professional-journey reveal" id="professional-journey">
+  <div class="eyebrow">Professional Journey</div>
+  <h2 class="section-title">從專業出發，走向系統與教育。</h2>
+  <p class="section-lead">
+    從職能治療臨床起步，逐步走向管理、跨專業合作、PBS、健康促進、AI 與教學；
+    角色不斷改變，關心人的核心沒有改變。
+  </p>
 
-      <a
-        class="newsletter-btn"
-        href="https://buttondown.com/danielwschen"
-        target="_blank"
-        rel="noopener noreferrer">
-        Subscribe｜訂閱 Notes from the Lab →
-      </a>
-
-      <div class="newsletter-note">
-        訂閱服務由 Buttondown 提供，可隨時取消訂閱。
+  <div class="journey-grid">
+    <div class="journey-path">
+      <div class="journey-item">
+        <small>24 · PRACTICE</small>
+        <h3>從職能治療出發</h3>
+        <p>以職能、參與與生活為起點，理解人的需要與環境。</p>
+      </div>
+      <div class="journey-item">
+        <small>MANAGEMENT</small>
+        <h3>從個別服務走向團隊與系統</h3>
+        <p>把臨床經驗延伸到組織管理、跨系統合作與服務設計。</p>
+      </div>
+      <div class="journey-item">
+        <small>INTEGRATION</small>
+        <h3>PBS × 健康促進 × AI</h3>
+        <p>把不同方法整合成支持人、支持團隊與改善工作流程的工具。</p>
+      </div>
+      <div class="journey-item">
+        <small>48 · EDUCATION</small>
+        <h3>重返杏壇</h3>
+        <p>將多年實務經驗重新帶回教室，轉化為案例、方法與可傳遞的知識。</p>
       </div>
     </div>
 
+    <div class="focus-grid">
+      <div class="focus-card">
+        <h3>Positive Behavior Support</h3>
+        <p>從行為功能分析、支持策略，到主管培訓與團隊文化。</p>
+      </div>
+      <div class="focus-card">
+        <h3>Occupational Therapy Management</h3>
+        <p>把策略、人力、品質與成果管理帶回職能治療教育與實務。</p>
+      </div>
+      <div class="focus-card">
+        <h3>AI × Education</h3>
+        <p>生成式 AI 導入課程、行政、知識整理與工作流程。</p>
+      </div>
+      <div class="focus-card">
+        <h3>AML Visual System</h3>
+        <p>用視覺、海報與敘事，讓複雜知識更容易理解與使用。</p>
+      </div>
+    </div>
   </div>
-
 </section>
+
+
+
+<section class="professional-footprint reveal" id="professional-footprint">
+  <div class="eyebrow">Professional Footprint</div>
+  <h2 class="section-title">研究、出版與專業軌跡。</h2>
+  <p class="section-lead">
+    首頁只保留三個入口；完整的研究成果、著作與媒體／獲獎紀錄，
+    分別收錄在各自專頁中。
+  </p>
+
+  <div class="footprint-grid">
+
+    <a class="footprint-card" href="research.html">
+      <div class="num">01 · RESEARCH</div>
+      <h3>Research & Academic Work</h3>
+      <p>從職能治療、感覺處理與精神復健，到身心障礙服務、健康照護與實證實務。</p>
+      <div class="footprint-highlight">
+        6 篇期刊論文 · 11 篇研討會論文與海報 · 3 項研究計畫與成果報告
+      </div>
+      <span class="more">Explore Research →</span>
+    </a>
+
+    <a class="footprint-card" href="publications.html">
+      <div class="num">02 · PUBLICATIONS</div>
+      <h3>Books & Professional Publications</h3>
+      <p>從精神健康職能治療、臨床病歷書寫到感覺統合，將專業知識轉化為可閱讀與使用的內容。</p>
+      <div class="footprint-highlight">
+        著作與專業譯作，橫跨職能治療、精神健康、感覺統合、自閉症與教育實務。
+      </div>
+      <span class="more">Explore Publications →</span>
+    </a>
+
+    <a class="footprint-card" href="recognition.html">
+      <div class="num">03 · RECOGNITION</div>
+      <h3>Recognition & Media</h3>
+      <p>記錄不同階段的重要肯定、公共創新、人物專訪與媒體報導。</p>
+      <div class="footprint-highlight">
+        2010 臺北市政府模範公務人員 · 2009 創意提案「創新獎」優勝 · 歷年媒體與專業紀錄
+      </div>
+      <span class="more">Explore Recognition →</span>
+    </a>
+
+  </div>
+</section>
+
+<section class="stay-connected reveal" id="stay-connected">
+  <div class="eyebrow">Stay Connected</div>
+  <h2 class="section-title">找一個適合的方式，持續和 AML 保持連結。</h2>
+  <p class="section-lead">
+    官方 LINE 適合快速進入文章與實務工具；Notes from the Lab 則用來接收較完整的內容更新與長篇分享。
+  </p>
+
+  <div class="connect-grid">
+    <article class="connect-card">
+      <div class="eyebrow">OFFICIAL LINE</div>
+      <h3>Allen Mind Lab 官方 LINE</h3>
+      <p>快速進入最新文章、實務工具與 AML 相關內容，作為日常探索與連結入口。</p>
+      <div class="connect-actions">
+        <a class="connect-btn"
+           href="https://line.me/R/ti/p/%40468pnsft"
+           target="_blank"
+           rel="noopener noreferrer">
+          加入 AML 官方 LINE →
+        </a>
+      </div>
+      <div class="connect-note">
+        LINE ID：@468pnsft。此帳號不作為緊急求助管道。
+      </div>
+    </article>
+
+    <article class="connect-card dark">
+      <div class="eyebrow">NOTES FROM THE LAB</div>
+      <h3>訂閱 AML 電子報</h3>
+      <p>不追求天天更新，只分享值得留下的文章、實務觀察、AI 應用與生命反思。</p>
+      <div class="connect-actions">
+        <a class="connect-btn"
+           href="https://buttondown.com/danielwschen"
+           target="_blank"
+           rel="noopener noreferrer">
+          Subscribe｜訂閱 Notes from the Lab →
+        </a>
+      </div>
+      <div class="connect-note">
+        訂閱服務由 Buttondown 提供，可隨時取消訂閱。
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+
+
+
+
+
 
 
 <section id="contact-home" class="reveal" style="background:#fffdf9;">
