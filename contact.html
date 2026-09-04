@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Allen Mind Lab</title>
-  <meta name="description" content="Contact Allen Mind Lab for speaking, teaching, professional collaboration and media inquiries." />
+  <meta name="description" content="聯繫 Allen Mind Lab｜演講、授課、專業交流、出版媒體與內容合作邀約。" />
 
   <style>
     :root{
@@ -403,22 +403,115 @@
   }
 }
 
+
+/* ===== Contact vNext ===== */
+.contact-grid{
+  grid-template-columns:repeat(3,1fr);
+}
+
+.channel-kicker{
+  color:var(--gold);
+  font-size:.74rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.contact-card{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.contact-card .contact-btn{
+  margin-top:auto;
+}
+
+.reachout{
+  background:#fffdf9;
+}
+
+.reachout-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:54px;
+  align-items:start;
+  margin-top:34px;
+}
+
+.reachout-note{
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:linear-gradient(145deg,#fff,#faf7f0);
+}
+
+.reachout-note h3{
+  margin-top:0;
+  color:var(--navy);
+  font-size:1.25rem;
+}
+
+.reachout-note p{
+  margin-bottom:0;
+  color:var(--muted);
+}
+
+.reachout-list{
+  display:grid;
+  gap:14px;
+}
+
+.reachout-item{
+  padding:18px 20px;
+  border-left:3px solid var(--gold);
+  background:#f8f6f1;
+  border-radius:0 16px 16px 0;
+}
+
+.reachout-item strong{
+  display:block;
+  color:var(--navy);
+  margin-bottom:4px;
+}
+
+.reachout-item span{
+  color:var(--muted);
+  font-size:.94rem;
+}
+
+.boundary-note{
+  margin-top:28px;
+  color:#6b7280;
+  font-size:.92rem;
+}
+
+@media(max-width:1000px){
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+  .reachout-grid{
+    grid-template-columns:1fr;
+  }
+}
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <!-- AML SEO / Social Preview -->
-  <link rel="canonical" href="https://allen-mind-lab.pages.dev/contact.html">
+  <link rel="canonical" href="https://allenmindlab.com/contact">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Allen Mind Lab">
   <meta property="og:title" content="Contact | Allen Mind Lab">
-  <meta property="og:description" content="Contact Allen Mind Lab for speaking, teaching, professional collaboration and media inquiries.">
-  <meta property="og:url" content="https://allen-mind-lab.pages.dev/contact.html">
-  <meta property="og:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <meta property="og:description" content="聯繫 Allen Mind Lab｜演講、授課、專業交流、出版媒體與內容合作邀約。">
+  <meta property="og:url" content="https://allenmindlab.com/contact">
+  <meta property="og:image" content="https://allenmindlab.com/images/allen-banner.png">
   <meta property="og:image:alt" content="Allen Mind Lab">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact | Allen Mind Lab">
-  <meta name="twitter:description" content="Contact Allen Mind Lab for speaking, teaching, professional collaboration and media inquiries.">
-  <meta name="twitter:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <meta name="twitter:description" content="聯繫 Allen Mind Lab｜演講、授課、專業交流、出版媒體與內容合作邀約。">
+  <meta name="twitter:image" content="https://allenmindlab.com/images/allen-banner.png">
   <link rel="stylesheet" href="aml-site.css">
 </head>
 
@@ -507,8 +600,8 @@
 
     <div class="type-card">
       <span>04</span>
-      <h3>AML 專案與工具</h3>
-      <p>AI、PBS 工具、視覺教材與知識產品的交流與合作。</p>
+      <h3>內容、工具與知識協作</h3>
+      <p>AI、PBS、視覺教材、專業內容與實務工具的交流、共創與應用討論。</p>
     </div>
 
   </div>
@@ -521,16 +614,17 @@
   <h2 class="section-title">聯絡方式</h2>
 
   <p class="section-lead">
-    目前公開聯絡方式以 Email 與 Facebook 為主，
-    方便正式合作邀約與專業交流。
+    目前可透過 Email、LINE Official Account 與 Facebook 聯繫；
+    不同管道適合不同形式的交流與邀約。
   </p>
 
   <div class="contact-grid">
 
     <div class="contact-card">
+      <div class="channel-kicker">Formal Inquiry</div>
       <h3>Email</h3>
       <p>
-        適合正式合作、授課、演講、出版與專業邀約。
+        適合演講、授課、出版、媒體、研究或較完整的專業合作邀約。
       </p>
 
       <a class="contact-btn"
@@ -540,9 +634,10 @@
     </div>
 
     <div class="contact-card">
-      <h3>Social & Community</h3>
+      <div class="channel-kicker">Follow & Connect</div>
+      <h3>Facebook</h3>
       <p>
-        可透過 Facebook 追蹤 Allen Mind Lab 的公開動態與內容分享。
+        適合追蹤 Allen Mind Lab 的公開動態、文章分享與較輕量的交流。
       </p>
 
       <a class="contact-btn"
@@ -575,14 +670,57 @@
 
 </section>
 
+
+<section class="reachout reveal" aria-labelledby="reachout-title">
+  <div class="eyebrow">Before You Reach Out</div>
+  <h2 id="reachout-title" class="section-title">讓我們更快理解彼此的需要。</h2>
+  <p class="section-lead">
+    如果是演講、授課、出版、媒體或合作邀約，來訊時若能提供以下資訊，
+    會更容易快速掌握需求與討論後續。
+  </p>
+
+  <div class="reachout-grid">
+    <div class="reachout-note">
+      <h3>A good collaboration starts with context.</h3>
+      <p>
+        不需要很正式的企劃書。先把問題、對象與期待說清楚，
+        往往就足以開始一段有意義的對話。
+      </p>
+    </div>
+
+    <div class="reachout-list">
+      <div class="reachout-item">
+        <strong>主題與目的</strong>
+        <span>希望討論什麼，以及這次邀約想解決或推進的事情。</span>
+      </div>
+      <div class="reachout-item">
+        <strong>對象與場域</strong>
+        <span>例如學生、第一線工作者、主管、專業人員、家長或一般讀者。</span>
+      </div>
+      <div class="reachout-item">
+        <strong>形式與時間</strong>
+        <span>演講、課程、座談、訪談或其他形式，以及預計日期與時間長度。</span>
+      </div>
+      <div class="reachout-item">
+        <strong>其他重要資訊</strong>
+        <span>地點、線上／實體、預估人數，以及希望特別聚焦的議題。</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="boundary-note">
+    AML 目前以專業分享、交流與合作邀約為主要聯繫方向；實際合作內容仍視時間、主題與適切性個別討論。
+  </p>
+</section>
+
 <section class="note reveal">
 
   <div class="eyebrow">Professional Connection</div>
   <h2 class="section-title">歡迎交流與合作。</h2>
 
   <p class="section-lead">
-    演講、授課、專業交流、研究合作、出版媒體或其他合作邀約，
-    歡迎透過 Email 或 Facebook 與我聯繫。
+    演講、授課、專業交流、研究合作、出版媒體或內容協作邀約，
+    歡迎透過 Email、LINE Official Account 或 Facebook 與我聯繫。
   </p>
 
   <div class="note-box">
@@ -594,8 +732,8 @@
 <section class="ending reveal">
 
   <h2>
-    有好的想法，<br>
-    歡迎一起聊聊。
+    從一個問題開始，<br>
+    讓好的交流真正發生。
   </h2>
 
   <p>
