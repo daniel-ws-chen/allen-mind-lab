@@ -231,22 +231,111 @@
   }
 }
 
+
+/* ===== Publications vNext ===== */
+.selected-works{
+  padding-top:78px;
+  padding-bottom:78px;
+  background:#fffdf9;
+}
+
+.selected-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+  margin-top:34px;
+}
+
+.selected-card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:26px;
+  background:linear-gradient(145deg,#ffffff,#fbf8f1);
+  box-shadow:0 10px 28px rgba(15,23,42,.045);
+}
+
+.selected-card .selected-kicker{
+  color:var(--gold);
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.selected-card h3{
+  margin:0 0 10px;
+  color:var(--navy);
+  line-height:1.45;
+  font-size:1.18rem;
+}
+
+.selected-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:.94rem;
+}
+
+.topic-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:14px;
+}
+
+.topic-tag{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:999px;
+  border:1px solid #e6dcc9;
+  background:#f7f2e8;
+  color:#755d31;
+  font-size:.72rem;
+  font-weight:800;
+}
+
+.then-now{
+  padding-top:82px;
+  padding-bottom:82px;
+  background:linear-gradient(135deg,#f7f2e8,#fffdf9);
+}
+
+.then-now-box{
+  max-width:900px;
+  margin:auto;
+  text-align:center;
+}
+
+.then-now-box p{
+  max-width:760px;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:1.03rem;
+  line-height:1.85;
+}
+
+@media(max-width:900px){
+  .selected-grid{
+    grid-template-columns:1fr;
+  }
+}
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
   <!-- AML SEO / Social Preview -->
-  <link rel="canonical" href="https://allen-mind-lab.pages.dev/publications.html">
+  <link rel="canonical" href="https://allenmindlab.com/publications">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Allen Mind Lab">
   <meta property="og:title" content="Publications | Allen Mind Lab">
   <meta property="og:description" content="Allen Chen 陳威勝的專業著作與譯作，涵蓋職能治療、精神健康、感覺統合、自閉症與幼兒教育。">
-  <meta property="og:url" content="https://allen-mind-lab.pages.dev/publications.html">
-  <meta property="og:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <meta property="og:url" content="https://allenmindlab.com/publications">
+  <meta property="og:image" content="https://allenmindlab.com/images/allen-banner.png">
   <meta property="og:image:alt" content="Allen Mind Lab">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Publications | Allen Mind Lab">
   <meta name="twitter:description" content="Allen Chen 陳威勝的專業著作與譯作，涵蓋職能治療、精神健康、感覺統合、自閉症與幼兒教育。">
-  <meta name="twitter:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <meta name="twitter:image" content="https://allenmindlab.com/images/allen-banner.png">
   <link rel="stylesheet" href="aml-site.css">
 </head>
 <body>
@@ -297,7 +386,7 @@
       <h2 class="section-title">讓專業知識被更多人使用。</h2>
       <p class="section-lead">
         出版對我而言，不只是留下文字；
-        更是把臨床、教育與專業知識重新整理，
+        更是把臨床、教育與專業知識重新整理與轉譯，
         讓學生、專業工作者、教師與家庭都能找到可使用的參考。
       </p>
     </div>
@@ -308,11 +397,58 @@
   </div>
 </section>
 
+
+<section class="selected-works reveal" aria-labelledby="selected-works-title">
+  <div class="eyebrow">Selected Works</div>
+  <h2 id="selected-works-title" class="section-title">代表出版</h2>
+  <p class="section-lead">
+    從職能治療專業、臨床實務到家庭與教育支持，這幾本作品呈現了不同階段的知識整理與轉譯。
+  </p>
+
+  <div class="selected-grid">
+    <article class="selected-card">
+      <div class="selected-kicker">Author · OT & Mental Health</div>
+      <h3>精神健康職能治療：理論與實務</h3>
+      <p>從職能治療的專業基礎、臨床推理與介入，到精神健康服務與組織經營管理，呈現較完整的實務視角。</p>
+      <div class="topic-tags">
+        <span class="topic-tag">OT</span>
+        <span class="topic-tag">Mental Health</span>
+        <span class="topic-tag">Clinical Reasoning</span>
+        <span class="topic-tag">Management</span>
+      </div>
+    </article>
+
+    <article class="selected-card">
+      <div class="selected-kicker">Translation · Clinical Practice</div>
+      <h3>職能治療實務：臨床病歷撰寫（第三版）</h3>
+      <p>聚焦紀錄、專業溝通、倫理法律與行政實務，把臨床工作中的隱性專業轉化為可被理解與傳遞的文字。</p>
+      <div class="topic-tags">
+        <span class="topic-tag">OT</span>
+        <span class="topic-tag">Documentation</span>
+        <span class="topic-tag">Communication</span>
+        <span class="topic-tag">Ethics</span>
+      </div>
+    </article>
+
+    <article class="selected-card">
+      <div class="selected-kicker">Translation · Family & Education</div>
+      <h3>打造感覺統合的橋樑</h3>
+      <p>將感覺統合理論轉化為家庭與教育現場較容易理解與運用的活動及環境策略。</p>
+      <div class="topic-tags">
+        <span class="topic-tag">Sensory Integration</span>
+        <span class="topic-tag">Autism</span>
+        <span class="topic-tag">Family Support</span>
+        <span class="topic-tag">Education</span>
+      </div>
+    </article>
+  </div>
+</section>
+
 <section id="publications">
   <div class="eyebrow">Books · Translations · Professional Knowledge</div>
   <h2 class="section-title">出版品</h2>
   <p class="section-lead">
-    點擊「查看出版品」可前往目前整理的外部書店頁面。
+    點擊「查看出版資訊」可前往目前整理的外部書店或出版資訊頁面。
     部分較早出版品可能因庫存狀況而暫時無法購買。
   </p>
 
@@ -327,8 +463,14 @@
         <h2>職能治療實務：臨床病歷撰寫（第三版）</h2>
         <div class="meta">Karen M. Sames 著｜李杭茜、陳芝萍、陳威勝 譯｜心理出版社｜2019/09/12</div>
         <p class="desc">聚焦職能治療臨床紀錄、專業溝通、倫理法律、紀錄格式與行政實務，適合職能治療學生與臨床工作者使用。</p>
+        <div class="topic-tags">
+          <span class="topic-tag">OT</span>
+          <span class="topic-tag">Documentation</span>
+          <span class="topic-tag">Professional Communication</span>
+          <span class="topic-tag">Ethics</span>
+        </div>
       </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010834687?sloc=main">查看出版品 →</a>
+      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010834687?sloc=main">查看出版資訊 →</a>
     </article>
 
     <article class="pub-card reveal">
@@ -340,8 +482,14 @@
         <h2>自閉症檢核手冊：家長與教師實用指南</h2>
         <div class="meta">Paula Kluth、John Shouse 著｜陳威勝、陳芝萍 譯｜心理出版社｜2012/01/01</div>
         <p class="desc">以容易查閱的檢核形式，整理自閉症光譜兒童與青少年在家庭、學校及支持情境中可採取的實務策略。</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Autism</span>
+          <span class="topic-tag">Family Support</span>
+          <span class="topic-tag">Education</span>
+          <span class="topic-tag">Practical Strategies</span>
+        </div>
       </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010532137?sloc=main">查看出版品 →</a>
+      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010532137?sloc=main">查看出版資訊 →</a>
     </article>
 
     <article class="pub-card reveal">
@@ -353,8 +501,13 @@
         <h2>兒童感覺統合：學齡前教師指南</h2>
         <div class="meta">Christy Isbell、Rebecca Isbell 著｜陳威勝、陳芝萍 譯｜心理出版社｜2010/07/01</div>
         <p class="desc">提供學齡前教師辨識感覺處理需求與安排教室活動的實務建議，讓感覺統合理論更容易進入日常教育現場。</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Sensory Integration</span>
+          <span class="topic-tag">Early Childhood</span>
+          <span class="topic-tag">Education</span>
+        </div>
       </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010476650?sloc=main">查看出版品 →</a>
+      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010476650?sloc=main">查看出版資訊 →</a>
     </article>
 
     <article class="pub-card reveal">
@@ -366,8 +519,13 @@
         <h2>打造感覺統合的橋樑：自閉症及其他廣泛性發展障礙兒童的治療</h2>
         <div class="meta">E. Yack、P. Aquilla、S. Sutton 著｜陳威勝、陳芝萍 譯｜心理出版社｜2010/05/10</div>
         <p class="desc">將感覺統合理論轉化為可理解、可執行的活動與環境策略，支持自閉症及其他發展障礙兒童的學習與生活參與。</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Sensory Integration</span>
+          <span class="topic-tag">Autism</span>
+          <span class="topic-tag">Participation</span>
+        </div>
       </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010470949?sloc=main">查看出版品 →</a>
+      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010470949?sloc=main">查看出版資訊 →</a>
     </article>
 
     <article class="pub-card reveal">
@@ -379,8 +537,13 @@
         <h2>學齡前兒童精神健康手冊：發展、疾病和治療</h2>
         <div class="meta">Joan L. Luby 主編｜林政佑、陳芝萍、陳威勝 譯｜心理出版社｜2009/09/18</div>
         <p class="desc">從發展觀點探討學齡前兒童的心理健康、早發性心理疾患、評估與治療，兼顧研究基礎與臨床實務。</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Mental Health</span>
+          <span class="topic-tag">Early Childhood</span>
+          <span class="topic-tag">Clinical Practice</span>
+        </div>
       </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010450142?sloc=main">查看出版品 →</a>
+      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010450142?sloc=main">查看出版資訊 →</a>
     </article>
 
     <article class="pub-card reveal">
@@ -393,7 +556,7 @@
         <div class="meta">黃曼聰、陳威勝、陳芝萍 著｜五南圖書出版｜2009/02/01（第二版）</div>
         <p class="desc">涵蓋精神健康職能治療的專業基礎、臨床推理、評估介入、治療媒介、精神疾病與組織經營管理等實務內容。</p>
       </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.sanmin.com.tw/product/index/000758420">查看出版品 →</a>
+      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.sanmin.com.tw/product/index/000758420">查看出版資訊 →</a>
     </article>
 
     <article class="pub-card reveal">
@@ -405,10 +568,28 @@
         <h2>幼兒教育導論</h2>
         <div class="meta">George S. Morrison 著｜徐聯恩、劉惠君、陳威勝、陳芝萍、孫麗卿、陳雅鈴 譯｜華都文化｜2007/08/31</div>
         <p class="desc">從幼兒教育專業、理論到實務、家庭與社區、多元文化、適性教學與科技等面向，建立幼兒教育的整體基礎。</p>
+        <div class="topic-tags">
+          <span class="topic-tag">Early Childhood</span>
+          <span class="topic-tag">Education</span>
+          <span class="topic-tag">Family & Community</span>
+          <span class="topic-tag">Technology</span>
+        </div>
       </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.eslite.com/product/1001181681734811">查看出版品 →</a>
+      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.eslite.com/product/1001181681734811">查看出版資訊 →</a>
     </article>
 
+  </div>
+</section>
+
+
+<section class="then-now reveal" aria-labelledby="from-publications-to-aml">
+  <div class="then-now-box">
+    <div class="eyebrow">Then → Now</div>
+    <h2 id="from-publications-to-aml" class="section-title">From Publications to Allen Mind Lab</h2>
+    <p>
+      早期透過著作與譯作參與專業知識的整理與傳遞；今天，Allen Mind Lab 延續同樣的方向，
+      以文章、工具、教學與數位內容，持續探索如何讓專業知識更容易被理解、使用與連結。
+    </p>
   </div>
 </section>
 
