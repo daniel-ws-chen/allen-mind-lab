@@ -3,39 +3,139 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI × Practice｜Human × AI Collaboration.｜Allen Mind Lab</title>
-<meta name="description" content="AI 對我而言不是取代專業者，而是一個能協助整理、分析、生成、比較與加速實作的智慧幕僚。">
-<style>
-:root{--navy:#071a33;--navy2:#0d294a;--gold:#c7a76a;--cream:#f6f1e7;--ink:#142031;--muted:#657081;--white:#fff}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fbfaf7;line-height:1.75}
-a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px 5vw;background:rgba(7,26,51,.96);color:#fff;backdrop-filter:blur(8px)}
-.brand{text-decoration:none;font-weight:800;letter-spacing:.14em}.links{display:flex;gap:18px;flex-wrap:wrap}.links a{text-decoration:none;font-size:.92rem;opacity:.88}.links a:hover{color:var(--gold)}
-.hero{padding:100px 7vw 80px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}.kicker{color:var(--gold);font-weight:700;letter-spacing:.18em;text-transform:uppercase}.hero h1{font-size:clamp(2.5rem,6vw,5.5rem);line-height:1.04;margin:.2em 0}.hero p{max-width:800px;font-size:1.15rem;color:#dfe7f1}
-.wrap{max-width:1120px;margin:auto;padding:72px 6vw}.lead{font-size:1.35rem;max-width:850px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:38px}.card{background:#fff;border:1px solid #e6e0d4;border-radius:18px;padding:28px;box-shadow:0 12px 35px rgba(9,24,45,.06)}.card h3{margin-top:0;color:var(--navy)}.quote{font-size:1.45rem;border-left:4px solid var(--gold);padding:10px 0 10px 24px;margin:42px 0;color:var(--navy)}
-.tag{display:inline-block;padding:5px 10px;border:1px solid #d9c79f;border-radius:999px;color:#7a6030;margin-right:6px;font-size:.82rem}.footer{background:#06172d;color:#e7edf5;padding:50px 7vw;display:grid;grid-template-columns:2fr 1fr;gap:30px}.footer strong{color:var(--gold);font-size:1.35rem}.footlinks{display:grid;gap:8px}.footlinks a{text-decoration:none}.copyright{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;color:#a9b4c2;font-size:.88rem}
-.btn{display:inline-block;text-decoration:none;background:var(--gold);color:#081a30;padding:11px 18px;border-radius:999px;font-weight:700;margin-top:12px}
-@media(max-width:820px){.nav{align-items:flex-start;flex-direction:column;gap:12px}.links{gap:10px}.grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.hero{padding-top:70px}}
-</style>
+<title>AI × Practice｜讓 AI 參與工作，但不取代人的判斷｜Allen Mind Lab</title>
+<meta name="description" content="Allen Mind Lab 的 AI × Practice 視角：從增能、工作流程與人的判斷出發，探索 AI 如何協助思考、整理、創作與決策。">
+<link rel="canonical" href="https://allenmindlab.com/ai">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Allen Mind Lab">
+<meta property="og:title" content="AI × Practice｜讓 AI 參與工作，但不取代人的判斷">
+<meta property="og:description" content="Allen Mind Lab 的 AI × Practice 視角：從增能、工作流程與人的判斷出發，探索 AI 如何協助思考、整理、創作與決策。">
+<meta property="og:url" content="https://allenmindlab.com/ai">
+<meta property="og:image" content="https://allenmindlab.com/images/articles/digital-communication-boundaries.png">
+<meta property="og:image:alt" content="Allen Mind Lab">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI × Practice｜讓 AI 參與工作，但不取代人的判斷">
+<meta name="twitter:description" content="Allen Mind Lab 的 AI × Practice 視角：從增能、工作流程與人的判斷出發，探索 AI 如何協助思考、整理、創作與決策。">
+<meta name="twitter:image" content="https://allenmindlab.com/images/articles/digital-communication-boundaries.png">
+<link rel="stylesheet" href="aml-site.css">
 
-  <!-- AML SEO / Social Preview -->
-  <link rel="canonical" href="https://allenmindlab.com/ai">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Allen Mind Lab">
-  <meta property="og:title" content="AI × Practice｜Human × AI Collaboration.｜Allen Mind Lab">
-  <meta property="og:description" content="AI 對我而言不是取代專業者，而是一個能協助整理、分析、生成、比較與加速實作的智慧幕僚。">
-  <meta property="og:url" content="https://allenmindlab.com/ai">
-  <meta property="og:image" content="https://allenmindlab.com/images/allen-banner.png">
-  <meta property="og:image:alt" content="Allen Mind Lab">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="AI × Practice｜Human × AI Collaboration.｜Allen Mind Lab">
-  <meta name="twitter:description" content="AI 對我而言不是取代專業者，而是一個能協助整理、分析、生成、比較與加速實作的智慧幕僚。">
-  <meta name="twitter:image" content="https://allenmindlab.com/images/allen-banner.png">
-  <link rel="stylesheet" href="aml-site.css">
+<style>
+:root{
+  --navy:#071a33;--navy2:#0d294a;--gold:#c7a76a;--cream:#f6f1e7;
+  --ink:#142031;--muted:#657081;--white:#fff;--line:#e7e0d4;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fbfaf7;line-height:1.8}
+a{color:inherit}
+.topic-hero{padding:104px 7vw 88px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}
+.topic-hero-inner{max-width:1120px;margin:auto}
+.kicker{color:var(--gold);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.84rem}
+.topic-hero h1{font-size:clamp(2.7rem,6vw,5.6rem);line-height:1.05;margin:.2em 0 .28em;max-width:930px}
+.topic-hero p{max-width:820px;font-size:1.18rem;color:#dfe7f1;margin:0}
+.wrap{max-width:1120px;margin:auto;padding:78px 6vw}
+.section-head{max-width:800px;margin-bottom:34px}
+.eyebrow{font-size:.78rem;letter-spacing:.16em;font-weight:800;color:#9a7a40;text-transform:uppercase}
+h2{font-size:clamp(2rem,4vw,3.1rem);line-height:1.18;color:var(--navy);margin:.25em 0 .45em}
+h3{color:var(--navy);line-height:1.35}
+.lead{font-size:1.28rem;max-width:880px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 12px 35px rgba(9,24,45,.05)}
+.num{display:block;color:var(--gold);font-weight:800;letter-spacing:.12em;font-size:.8rem;margin-bottom:14px}
+.quote{font-size:1.5rem;border-left:4px solid var(--gold);padding:12px 0 12px 24px;margin:42px 0;color:var(--navy);max-width:880px}
+.feature{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 16px 42px rgba(9,24,45,.07)}
+.feature-media{min-height:340px;background:#eee}
+.feature-media img{width:100%;height:100%;object-fit:cover;display:block}
+.feature-copy{padding:36px 38px 38px 4px;align-self:center}
+.feature-copy h3{font-size:2rem;margin:.25em 0 .45em}
+.tag{display:inline-block;padding:5px 10px;border:1px solid #d9c79f;border-radius:999px;color:#7a6030;margin:0 6px 6px 0;font-size:.82rem}
+.btn{display:inline-block;text-decoration:none;background:var(--gold);color:#081a30;padding:11px 18px;border-radius:999px;font-weight:800;margin:12px 7px 0 0}
+.btn.secondary{background:transparent;border:1px solid #b9aa8a;color:var(--navy)}
+.bridge{background:var(--cream)}
+.path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.path-card{text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;transition:.18s ease}
+.path-card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(9,24,45,.07)}
+.path-card small{color:#9a7a40;font-weight:800;letter-spacing:.1em}
+.resource-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;margin-top:24px}
+.resource-box h3{margin-top:0}
+.cta{text-align:center;background:var(--navy);color:#fff;border-radius:24px;padding:52px 32px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{max-width:720px;margin:0 auto 18px;color:#dfe7f1}
+@media(max-width:860px){
+  .grid3,.path-grid{grid-template-columns:1fr}
+  .feature{grid-template-columns:1fr}
+  .feature-copy{padding:30px}
+  .topic-hero{padding-top:76px}
+}
+</style>
+
+
+<style>
+.aml-bottom-nav{
+  max-width:1120px;
+  margin:0 auto;
+  padding:8px 6vw 70px;
+}
+.aml-bottom-nav-inner{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:16px;
+  padding:22px 24px;
+  background:#fff;
+  border:1px solid #e7e0d4;
+  border-radius:20px;
+  box-shadow:0 12px 35px rgba(9,24,45,.05);
+}
+.aml-bottom-nav a{
+  text-decoration:none;
+  color:#071a33;
+  font-weight:800;
+}
+.aml-bottom-nav .aml-bottom-home{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:96px;
+  padding:9px 16px;
+  border-radius:999px;
+  background:#c7a76a;
+  color:#071a33;
+}
+.aml-bottom-nav .aml-bottom-prev{justify-self:start}
+.aml-bottom-nav .aml-bottom-next{justify-self:end;text-align:right}
+.aml-bottom-top{
+  text-align:center;
+  margin-top:14px;
+}
+.aml-bottom-top a{
+  font-size:.9rem;
+  color:#657081;
+  text-decoration:none;
+}
+@media(max-width:700px){
+  .aml-bottom-nav-inner{
+    grid-template-columns:1fr 1fr;
+  }
+  .aml-bottom-home{
+    grid-column:1 / -1;
+    grid-row:1;
+    justify-self:center;
+  }
+  .aml-bottom-prev{
+    grid-column:1;
+    grid-row:2;
+  }
+  .aml-bottom-next{
+    grid-column:2;
+    grid-row:2;
+  }
+}
+</style>
+
 </head>
-<body>
+<body id="top">
 <a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
-
 <nav class="aml-global-nav" aria-label="Primary navigation">
   <a class="aml-brand" href="index.html">ALLEN MIND LAB</a>
 
@@ -63,19 +163,85 @@ a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-conte
   </div>
 </nav>
 
-<header class="hero">
-  <div class="kicker">AI × PRACTICE</div>
-  <h1>AI × Practice｜Human × AI Collaboration.</h1>
-  <p>AI 對我而言不是取代專業者，而是一個能協助整理、分析、生成、比較與加速實作的智慧幕僚。</p>
+<header class="topic-hero">
+  <div class="topic-hero-inner">
+    <div class="kicker">AI × PRACTICE · HUMAN × AI COLLABORATION</div>
+    <h1>讓 AI 參與工作，但不交出人的判斷。</h1>
+    <p>在 Allen Mind Lab，AI 不是用來取代專業，而是用來放大思考、整理資訊、降低重工、加速創作，並重新設計人與工作的關係。</p>
+  </div>
 </header>
-<main id="aml-main" class="wrap">
-  <p class="lead">AI 對我而言不是取代專業者，而是一個能協助整理、分析、生成、比較與加速實作的智慧幕僚。</p>
-  <div class="grid"><article class="card"><h3>Augment</h3><p>讓 AI 放大人的判斷、創意與執行力，而不是把責任交給模型。</p></article>
-<article class="card"><h3>Workflow</h3><p>把 AI 放進可重複的工作流程：蒐整、草擬、檢查、修正與知識管理。</p></article>
-<article class="card"><h3>Human Premium</h3><p>科技愈智慧，我們的工作愈需要回到人：關係、倫理、脈絡、意義與選擇。</p></article></div>
-  <div class="quote">The more intelligent technology becomes, the more human our work must be.</div>
-  <a class="btn" href="articles.html">閱讀相關文章 →</a>
+
+<main id="aml-main">
+<section class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">HUMAN × AI COLLABORATION</div>
+    <h2>真正值得問的，不只是 AI 能做什麼。</h2>
+  </div>
+  <p class="lead">更重要的是：哪些工作適合交給 AI 協助？哪些判斷仍需要人的經驗、倫理、脈絡與責任？以及這種合作是否真的讓工作與生活變得更好。</p>
+  <div class="grid3"><article class="card"><span class="num">01 · AUGMENT</span><h3>Augment</h3><p>用 AI 延伸整理、分析、寫作、視覺化與問題拆解能力，而不是把專業判斷外包。</p></article><article class="card"><span class="num">02 · WORKFLOW</span><h3>Workflow</h3><p>真正的效益常來自重新設計流程，而不只是把原本工作做得快一點。</p></article><article class="card"><span class="num">03 · HUMAN PREMIUM</span><h3>Human Premium</h3><p>脈絡、關係、倫理、同理、責任與最終判斷，仍是人不可輕易放棄的位置。</p></article></div>
+  <div class="quote">AI 可以讓表達更精準、工作更有效率；但<strong>文字的精準感不能超過證據本身的精準度，工具的能力也不能取代人的責任。</strong></div>
+</section>
+
+<section class="wrap" style="padding-top:24px">
+  <div class="section-head">
+    <div class="eyebrow">START READING</div>
+    <h2>先從工作邊界，看 AI 如何進入第一線服務。</h2>
+  </div>
+  <article class="feature">
+    <div class="feature-media">
+      <img src="images/articles/digital-communication-boundaries.png" alt="不是不想回，是不能一直在線">
+    </div>
+    <div class="feature-copy">
+      <div class="eyebrow">START READING</div>
+      <h3>不是不想回，是不能一直在線</h3>
+      <p>從私人 LINE、官方帳號到 AI 幕僚，重新思考第一線工作者如何建立可以被找到、卻不必隨時在線的數位溝通邊界。</p>
+      <div><span class="tag">Digital Boundary</span><span class="tag">Workflow</span><span class="tag">AI Chief of Staff</span><span class="tag">Helper Support</span></div>
+      <a class="btn" href="articles/digital-communication-boundaries.html">閱讀文章 →</a>
+    </div>
+  </article>
+</section>
+
+<section class="bridge">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">AI CHANGES MORE THAN EFFICIENCY</div>
+      <h2>當工具開始參與判斷，人的職能生活也可能跟著改變。</h2>
+      <p>AI 不只改變產出速度，也可能影響能力感、工作習慣、決策形成與我們如何理解自己的角色。</p>
+    </div>
+    <div class="grid3"><article class="card"><span class="num">AUGMENT</span><h3>延伸能力</h3><p>讓 AI 處理可被加速的部分，把更多注意力留給脈絡、關係與判斷。</p></article><article class="card"><span class="num">REDESIGN</span><h3>重新設計流程</h3><p>不是把 AI 硬塞進舊工作，而是重新思考哪些步驟其實可以被改寫。</p></article><article class="card"><span class="num">JUDGE</span><h3>保留人的責任</h3><p>AI 可以提供選項與整理，但最終責任、倫理與決策仍然屬於人。</p></article></div>
+    
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">FROM THIS TOPIC TO AML</div>
+    <h2>AI 是跨域的協作方法，而不是 AML 的主角。</h2>
+  </div>
+  <div class="path-grid"><a class="path-card" href="ot.html"><small>AI → OT</small><h3>看見科技如何改變人的職能</h3><p>效率之外，也關注意志、習慣、能力、環境與有意義的參與。</p></a><a class="path-card" href="management.html"><small>AI → MANAGEMENT</small><h3>重新設計工作，而不是只加一個工具</h3><p>把 AI 放進流程、分工、知識管理與決策支持，才可能形成組織效益。</p></a><a class="path-card" href="education.html"><small>AI → EDUCATION</small><h3>讓學習者更會思考，而不是更快交作業</h3><p>AI 可以協助產出，但教學仍要把判斷、反思與責任留給人。</p></a></div>
+</section>
+
+<section class="wrap" style="padding-top:20px">
+  <div class="cta">
+    <div class="eyebrow" style="color:#c7a76a">AUGMENT · REDESIGN · JUDGE</div>
+    <h2>好的 AI 協作，不是把人移除，而是讓人的價值更清楚。</h2>
+    <p>讓工具處理可被加速的部分，把更多注意力留給脈絡、關係、創造與判斷。</p>
+    <a class="btn" href="articles.html">Explore Articles →</a>
+  </div>
+</section>
 </main>
+
+
+<section class="aml-bottom-nav" aria-label="頁面底部導覽">
+  <div class="aml-bottom-nav-inner">
+    <a class="aml-bottom-prev" href="articles.html">← 回 Articles</a>
+    <a class="aml-bottom-home" href="index.html">Home</a>
+    <a class="aml-bottom-next" href="mind.html">Mind & Well-being →</a>
+  </div>
+  <div class="aml-bottom-top">
+    <a href="#top" aria-label="回到頁面頂端">↑ Back to top</a>
+  </div>
+</section>
 
 <footer class="aml-global-footer">
   <div class="aml-footer-top">
@@ -126,7 +292,6 @@ a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-conte
     </div>
   </div>
 </footer>
-
 <script src="aml-site.js" defer></script>
 </body>
 </html>
