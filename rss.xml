@@ -1,30 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0"><channel>
+<rss version="2.0">
+<channel>
 <title>Allen Mind Lab — Articles</title>
-<link>https://allen-mind-lab.pages.dev/articles.html</link>
-<description>關於專業、管理、教育、科技與生活，分享值得留下的內容。</description>
+<link>https://allenmindlab.com/articles</link>
+<description>關於職能治療、PBS、管理、教育、AI 與身心福祉，分享值得留下的內容。</description>
 <language>zh-TW</language>
-<lastBuildDate>Wed, 02 Sep 2026 11:55:00 +0800</lastBuildDate>
-  <item>
-  <title>不是不想回，是不能一直在線</title>
-  <link>https://allen-mind-lab.pages.dev/articles/digital-communication-boundaries</link>
-  <guid>https://allen-mind-lab.pages.dev/articles/digital-communication-boundaries</guid>
-  <pubDate>Wed, 02 Sep 2026 00:00:00 +0800</pubDate>
-  <description>
-    當「不加 LINE 怕被抱怨，加了又無法下班」成為第一線工作的日常，
-    真正需要的或許不是更快回覆，而是重新設計數位溝通的邊界。
-  </description>
-</item>
+<lastBuildDate>Fri, 04 Sep 2026 16:30:00 +0800</lastBuildDate>
+
 <item>
-  <title>助人者也需要被支持：自我照顧之外，還有團隊與組織的責任</title>
-  <link>https://allen-mind-lab.pages.dev/articles/helper-support-system.html</link>
-  <guid>https://allen-mind-lab.pages.dev/articles/helper-support-system.html</guid>
-  <pubDate>Tue, 01 Sep 2026 06:00:00 GMT</pubDate>
-  <description>
-    從個人的自我覺察、團隊求援與換手機制，到組織支持、
-    CARE 框架與缺工時代的工作重新設計。
-  </description>
+<title>當 AI 開始參與我們的選擇</title>
+<link>https://allenmindlab.com/articles/ai-human-occupation-moho</link>
+<guid>https://allenmindlab.com/articles/ai-human-occupation-moho</guid>
+<pubDate>Fri, 04 Sep 2026 00:00:00 +0800</pubDate>
+<description>從 MOHO 看生成式 AI 如何影響人的能力、習慣、選擇與環境，以及我們正在形成什麼樣的職能生活。</description>
 </item>
-  <item><title>心安方能助人，理明方能成事：助人工作者也需要評估自己的狀態</title><link>https://allen-mind-lab.pages.dev/articles/helper-self-awareness.html</link><guid>https://allen-mind-lab.pages.dev/articles/helper-self-awareness.html</guid><pubDate>Sun, 31 Aug 2026 00:00:00 +0800</pubDate><description>助人工作者也需要回頭評估自己的體力、情緒、期待與關係邊界。</description></item>
-<item><title>醫療照顧身體，修習安頓身心</title><link>https://allen-mind-lab.pages.dev/articles/medical-care-and-inner-practice.html</link><guid>https://allen-mind-lab.pages.dev/articles/medical-care-and-inner-practice.html</guid><pubDate>Sun, 31 Aug 2026 00:00:00 +0800</pubDate><description>在正規醫療處遇之外，從生活修習與自我照顧思考如何安頓身心。</description></item>
-</channel></rss>
+
+<item>
+<title>當「被看見」成為高挑戰行為</title>
+<link>https://allenmindlab.com/articles/pbs-being-seen</link>
+<guid>https://allenmindlab.com/articles/pbs-being-seen</guid>
+<pubDate>Thu, 03 Sep 2026 00:00:00 +0800</pubDate>
+<description>從 PBS 的事前預防、積極忽略與替代行為，到冰山下的需求與安全邊界，重新理解「被看見」背後的行為與關係。</description>
+</item>
+
+<item>
+<title>不是不想回，是不能一直在線</title>
+<link>https://allenmindlab.com/articles/digital-communication-boundaries</link>
+<guid>https://allenmindlab.com/articles/digital-communication-boundaries</guid>
+<pubDate>Wed, 02 Sep 2026 00:00:00 +0800</pubDate>
+<description>當數位溝通侵入工作之外的生活，重新思考私人 LINE、官方帳號與 AI 幕僚如何協助第一線服務建立可持續的邊界。</description>
+</item>
+
+<item>
+<title>助人者也需要被支持：自我照顧之外，還有團隊與組織的責任</title>
+<link>https://allenmindlab.com/articles/helper-support-system</link>
+<guid>https://allenmindlab.com/articles/helper-support-system</guid>
+<pubDate>Tue, 01 Sep 2026 06:00:00 +0800</pubDate>
+<description>從個人的自我覺察、團隊求援與換手機制，到組織支持與工作重新設計。</description>
+</item>
+
+<item>
+<title>心安方能助人，理明方能成事：助人工作者也需要評估自己的狀態</title>
+<link>https://allenmindlab.com/articles/helper-self-awareness</link>
+<guid>https://allenmindlab.com/articles/helper-self-awareness</guid>
+<pubDate>Mon, 31 Aug 2026 00:00:00 +0800</pubDate>
+<description>助人工作者也需要回頭評估自己的體力、情緒、期待與關係邊界。</description>
+</item>
+
+<item>
+<title>醫療照顧身體，修習安頓身心</title>
+<link>https://allenmindlab.com/articles/medical-care-and-inner-practice</link>
+<guid>https://allenmindlab.com/articles/medical-care-and-inner-practice</guid>
+<pubDate>Mon, 31 Aug 2026 00:00:00 +0800</pubDate>
+<description>在正規醫療處遇之外，從生活修習與自我照顧思考如何安頓身心。</description>
+</item>
+</channel>
+</rss>
