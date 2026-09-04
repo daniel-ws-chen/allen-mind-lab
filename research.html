@@ -1,19 +1,125 @@
 <!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Research & Academic Work｜Allen Mind Lab</title><meta name="description" content="Allen Chen 陳威勝之期刊論文、研討會論文與海報展示、研究計畫及成果報告。"><link rel="icon" href="favicon.svg" type="image/svg+xml"><style>
 :root{--navy:#0d1b2a;--gold:#c7a76a;--paper:#fffdf9;--ink:#1f2933;--muted:#6b7280;--line:#e7e1d6}*{box-sizing:border-box}body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--paper);color:var(--ink);line-height:1.75}a{text-decoration:none;color:inherit}nav{position:sticky;top:0;z-index:20;background:rgba(8,22,38,.96);color:white;padding:18px 7vw;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-weight:800;letter-spacing:.12em}.navlinks{display:flex;gap:18px;flex-wrap:wrap;font-size:.9rem}.navlinks a{color:#e5e7eb}.navlinks a:hover{color:var(--gold)}.hero{padding:100px 8vw 72px;background:linear-gradient(135deg,#f8f1e3,#fffdf9)}.eyebrow{color:var(--gold);font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.6rem,6vw,5.4rem);line-height:1.12;color:var(--navy);margin:14px 0 24px}.lead{max-width:900px;color:var(--muted);font-size:1.08rem}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;max-width:950px}.stat{background:white;border:1px solid var(--line);border-radius:18px;padding:22px}.stat strong{display:block;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-size:2.3rem}.stat span{color:var(--muted);font-size:.9rem}main{max-width:1100px;margin:auto;padding:60px 7vw 100px}.section{margin:0 0 86px}.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:8px}.section-head h2{margin:0;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,3.2rem)}.section-head span{color:var(--gold);font-weight:800;letter-spacing:.1em;font-size:.82rem}.entry{display:grid;grid-template-columns:90px 1fr;gap:28px;padding:28px 0;border-bottom:1px solid #ece7df}.year{font-family:Georgia,"Times New Roman",serif;font-size:1.4rem;color:var(--gold);font-weight:700}.type{color:#8d7446;font-size:.72rem;letter-spacing:.14em;font-weight:800;margin-bottom:7px}.entry h3{margin:0 0 9px;color:var(--navy);font-size:1.14rem;line-height:1.5}.authors,.source{margin:5px 0;color:#4b5563}.authors strong{color:var(--navy)}.ext{display:inline-block;margin-top:8px;color:#8a6b35;font-size:.86rem;font-weight:700}.note{margin-top:54px;padding:22px 24px;background:#f6f2e8;border-left:3px solid var(--gold);color:#5d6470}footer{background:#101719;color:#cbd5e1;padding:46px 8vw}footer strong{color:var(--gold)}footer a{color:#dce3e7}@media(max-width:760px){nav{align-items:flex-start;flex-direction:column}.navlinks{gap:10px}.hero{padding:68px 6vw 54px}.stats{grid-template-columns:1fr}main{padding:44px 6vw 80px}.entry{grid-template-columns:1fr;gap:8px}.year{font-size:1rem}.section-head{align-items:flex-start;flex-direction:column;gap:6px}}
+
+/* ===== Research vNext ===== */
+.research-intro{
+  background:#fffdf9;
+}
+
+.theme-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:34px;
+}
+
+.theme-card{
+  padding:26px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:linear-gradient(145deg,#fff,#faf7f0);
+  box-shadow:0 10px 28px rgba(15,23,42,.04);
+}
+
+.theme-card small{
+  display:block;
+  color:var(--gold);
+  font-weight:800;
+  font-size:.74rem;
+  letter-spacing:.12em;
+  margin-bottom:8px;
+}
+
+.theme-card h3{
+  margin:0 0 10px;
+  color:var(--navy);
+  font-size:1.18rem;
+}
+
+.theme-card p{
+  margin:0;
+  color:var(--muted);
+  font-size:.94rem;
+}
+
+.topic-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:12px;
+}
+
+.topic-tag{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:999px;
+  border:1px solid #e6dcc9;
+  background:#f7f2e8;
+  color:#755d31;
+  font-size:.72rem;
+  font-weight:800;
+}
+
+.trajectory{
+  margin:0 0 86px;
+  padding:34px 36px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#0d1b2a,#18324f);
+  color:white;
+}
+
+.trajectory .eyebrow{color:#e4c78e}
+.trajectory h2{
+  margin:8px 0 14px;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2rem,4vw,3.2rem);
+}
+.trajectory p{
+  max-width:900px;
+  color:#d4dde5;
+  margin:0;
+}
+
+.then-now{
+  margin-top:72px;
+  padding:42px 36px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#f6f1e8,#fffdf9);
+  border:1px solid var(--line);
+  text-align:center;
+}
+
+.then-now h2{
+  margin:8px 0 14px;
+  color:var(--navy);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2rem,4vw,3rem);
+}
+
+.then-now p{
+  max-width:840px;
+  margin:0 auto;
+  color:var(--muted);
+}
+
+@media(max-width:900px){
+  .theme-grid{grid-template-columns:1fr}
+}
+
 </style>
   <!-- AML SEO / Social Preview -->
-  <link rel="canonical" href="https://allen-mind-lab.pages.dev/research.html">
+  <link rel="canonical" href="https://allenmindlab.com/research">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Allen Mind Lab">
   <meta property="og:title" content="Research &amp; Academic Work｜Allen Mind Lab">
   <meta property="og:description" content="Allen Chen 陳威勝之期刊論文、研討會論文與海報展示、研究計畫及成果報告。">
-  <meta property="og:url" content="https://allen-mind-lab.pages.dev/research.html">
-  <meta property="og:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <meta property="og:url" content="https://allenmindlab.com/research">
+  <meta property="og:image" content="https://allenmindlab.com/images/allen-banner.png">
   <meta property="og:image:alt" content="Allen Mind Lab">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Research &amp; Academic Work｜Allen Mind Lab">
   <meta name="twitter:description" content="Allen Chen 陳威勝之期刊論文、研討會論文與海報展示、研究計畫及成果報告。">
-  <meta name="twitter:image" content="https://allen-mind-lab.pages.dev/images/allen-banner.png">
+  <meta name="twitter:image" content="https://allenmindlab.com/images/allen-banner.png">
   <link rel="stylesheet" href="aml-site.css">
 </head><body>
 <a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav class="aml-global-nav" aria-label="Primary navigation">
@@ -41,18 +147,74 @@
     <a href="articles.html">Articles</a>
     <a href="contact.html">Contact</a>
   </div>
-</nav><header class="hero"><div class="eyebrow">Research & Academic Work</div><h1>研究論文與學術發表</h1><p class="lead">從職能治療、感覺處理與實證實務出發，逐步延伸至精神復健、機構健康照護、藥事長照、身心障礙服務，以及易讀易懂與人權實踐。</p><div class="stats"><div class="stat"><strong>6</strong><span>Journal Articles｜期刊論文</span></div><div class="stat"><strong>11</strong><span>Conference Papers & Posters｜研討會論文與海報</span></div><div class="stat"><strong>3</strong><span>Research Projects & Reports｜研究計畫與成果報告</span></div></div></header><main id="aml-main"><section class="section"><div class="section-head"><h2>Journal Articles</h2><span>期刊論文</span></div><article class="entry"><div class="year">2017</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>從推行易讀(Easy Read)專案談國際身心障礙者權利公約在心智障礙福利機構之實踐</h3><p class="authors">尤詒君、<strong>陳威勝</strong>、王方伶</p><p class="source"><em>社區發展</em>，157期，279-285。</p>
+</nav><header class="hero"><div class="eyebrow">Research & Academic Work</div><h1>Research & Practice Inquiry</h1><p class="lead">從職能治療、感覺處理與實證實務出發，逐步延伸至精神復健、機構健康照護、藥事長照、身心障礙服務，以及易讀易懂與人權實踐。這些研究與發表，不只是學術紀錄，也呈現不同階段持續追問「如何讓服務更有效、更可理解，也更貼近人的生活」的歷程。</p><div class="stats"><div class="stat"><strong>6</strong><span>Journal Articles｜期刊論文</span></div><div class="stat"><strong>11</strong><span>Conference Papers & Posters｜研討會論文與海報</span></div><div class="stat"><strong>3</strong><span>Research Projects & Reports｜研究計畫與成果報告</span></div></div></header><main id="aml-main">
+
+<section class="research-intro">
+  <div class="eyebrow">Selected Research Themes</div>
+  <h2 class="section-title">從不同題目，反覆回到幾個核心問題。</h2>
+  <p class="section-lead">
+    研究題目隨著工作角色與服務場域改變，但長期關注的問題其實相當一致：
+    如何理解人的功能與生活經驗、如何提升支持與照護品質，以及如何把好的方法轉化為可被制度承接的實務。
+  </p>
+
+  <div class="theme-grid">
+    <article class="theme-card">
+      <small>01 · HUMAN FUNCTION</small>
+      <h3>職能、感覺處理與功能理解</h3>
+      <p>從注意力不足過動症、感覺處理到職能治療研究導向，探索人的功能表現與專業評估基礎。</p>
+      <div class="topic-tags">
+        <span class="topic-tag">OT</span>
+        <span class="topic-tag">Sensory Processing</span>
+        <span class="topic-tag">Evidence-based Practice</span>
+      </div>
+    </article>
+
+    <article class="theme-card">
+      <small>02 · SERVICE QUALITY</small>
+      <h3>健康照護、藥事長照與服務品質</h3>
+      <p>從機構健康促進、用藥管理到照護流程，關注第一線服務如何被改善、追蹤與制度化。</p>
+      <div class="topic-tags">
+        <span class="topic-tag">Healthcare</span>
+        <span class="topic-tag">Medication Safety</span>
+        <span class="topic-tag">Quality Improvement</span>
+      </div>
+    </article>
+
+    <article class="theme-card">
+      <small>03 · RIGHTS & PARTICIPATION</small>
+      <h3>易讀易懂、人權與參與</h3>
+      <p>從易讀專案與身心障礙服務實踐，思考資訊可近性、理解權與參與如何真正進入服務現場。</p>
+      <div class="topic-tags">
+        <span class="topic-tag">Easy Read</span>
+        <span class="topic-tag">Disability Rights</span>
+        <span class="topic-tag">Participation</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="trajectory" aria-labelledby="research-trajectory">
+  <div class="eyebrow">Research Trajectory</div>
+  <h2 id="research-trajectory">從研究問題，走向實務系統。</h2>
+  <p>
+    早期的研究較聚焦於職能治療、感覺處理與實證實務；之後逐漸延伸到精神復健、
+    機構健康照護、藥事服務與身心障礙者權利。題目雖然不同，背後其實都在處理同一件事：
+    如何把「理解」轉化為可以改善真實服務現場的行動。
+  </p>
+</section>
+
+<section class="section"><div class="section-head"><h2>Journal Articles</h2><span>期刊論文</span></div><article class="entry"><div class="year">2017</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>從推行易讀(Easy Read)專案談國際身心障礙者權利公約在心智障礙福利機構之實踐</h3><div class="topic-tags"><span class="topic-tag">Easy Read</span><span class="topic-tag">CRPD</span><span class="topic-tag">Disability Rights</span></div><p class="authors">尤詒君、<strong>陳威勝</strong>、王方伶</p><p class="source"><em>社區發展</em>，157期，279-285。</p>
             <a class="ext" href="https://cdj.sfaa.gov.tw/Journal/Content?gno=7165" target="_blank" rel="noopener noreferrer">Official article ↗</a>
           </div></article>
-<article class="entry"><div class="year">2016</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>推動身心障礙者體適能活動成效初探–以臺北市立陽明教養院為例</h3><p class="authors">尤詒君、陳麒文、<strong>陳威勝</strong>、陳麗蓉、吳治慶、楊凱翔</p><p class="source"><em>社區發展</em>，156期，460-474。</p>
+<article class="entry"><div class="year">2016</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>推動身心障礙者體適能活動成效初探–以臺北市立陽明教養院為例</h3><div class="topic-tags"><span class="topic-tag">Health Promotion</span><span class="topic-tag">Disability Services</span><span class="topic-tag">Participation</span></div><p class="authors">尤詒君、陳麒文、<strong>陳威勝</strong>、陳麗蓉、吳治慶、楊凱翔</p><p class="source"><em>社區發展</em>，156期，460-474。</p>
             <a class="ext" href="https://cdj.sfaa.gov.tw/Journal/Content?gno=6929" target="_blank" rel="noopener noreferrer">Official article ↗</a>
           </div></article>
-<article class="entry"><div class="year">2007</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>台灣職能治療師之研究導向初探</h3><p class="authors">傅中珮、曾美惠、<strong>陳威勝</strong>、陳昱瑋、楊國德、黃曼聰、梁文隆</p><p class="source"><em>醫學教育</em>，11 (3)期，212-221。</p><a class="ext" href="https://jme.researchcommons.org/cgi/viewcontent.cgi?article=1643&context=journal" target="_blank" rel="noopener noreferrer">Full Text PDF ↗</a></div></article>
+<article class="entry"><div class="year">2007</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>台灣職能治療師之研究導向初探</h3><div class="topic-tags"><span class="topic-tag">OT</span><span class="topic-tag">Research Culture</span><span class="topic-tag">Evidence-based Practice</span></div><p class="authors">傅中珮、曾美惠、<strong>陳威勝</strong>、陳昱瑋、楊國德、黃曼聰、梁文隆</p><p class="source"><em>醫學教育</em>，11 (3)期，212-221。</p><a class="ext" href="https://jme.researchcommons.org/cgi/viewcontent.cgi?article=1643&context=journal" target="_blank" rel="noopener noreferrer">Full Text PDF ↗</a></div></article>
 <article class="entry"><div class="year">2007</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>職能治療專業人員對實證治療之知識、態度及執行能力之初探</h3><p class="authors">莊宜靜、曾美惠、<strong>陳威勝</strong>、楊國德、黃曼聰、梁文隆</p><p class="source"><em>醫學教育</em>，11 (2)，36-44。</p></div></article>
 <article class="entry"><div class="year">2007</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>台灣地區推行實證職能治療之障礙因子初探</h3><p class="authors">莊宜靜、曾美惠、<strong>陳威勝</strong>、楊國德、梁文隆</p><p class="source"><em>醫學教育</em>，11 (1)，58-68。</p></div></article>
 <article class="entry"><div class="year">2002</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>注意力不足過動症兒童之平衡功能研究</h3><p class="authors">羅鈞令，<strong>陳威勝</strong></p><p class="source"><em>台灣醫學</em>，6，1-7。</p></div></article></section><section class="section"><div class="section-head"><h2>Conference Papers & Posters</h2><span>研討會論文及海報展示</span></div><article class="entry"><div class="year">2018</div><div class="entry-body"><div class="type">CONFERENCE / POSTER</div><h3>應用易讀易懂原則於中重度以上心智障礙者之服務經驗分享</h3><p class="authors">尤詒君、<strong>陳威勝</strong>、王方伶</p><p class="source">2018年第九屆兩岸四地啟智服務研討會。</p></div></article>
 <article class="entry"><div class="year">2017</div><div class="entry-body"><div class="type">CONFERENCE / POSTER</div><h3>某機構給藥後追蹤紀錄結合醫院藥物不良反應通報之初探</h3><p class="authors">簡尚志、邱婉莉、<strong>陳威勝</strong>、尤詒君</p><p class="source">台灣臨床藥學會106年度14屆第2次會員代表大會暨學術研討會壁報發表。</p></div></article>
-<article class="entry"><div class="year">2016</div><div class="entry-body"><div class="type">CONFERENCE / POSTER</div><h3>建立藥事長照新模式-提升機構藥品管理與給藥品質成效探討</h3><p class="authors">簡尚志、邱婉莉、<strong>陳威勝</strong>、尤詒君</p><p class="source">台灣臨床藥學會105年度14屆第1次會員代表大會暨學術研討會壁報發表。</p></div></article>
+<article class="entry"><div class="year">2016</div><div class="entry-body"><div class="type">CONFERENCE / POSTER</div><h3>建立藥事長照新模式-提升機構藥品管理與給藥品質成效探討</h3><div class="topic-tags"><span class="topic-tag">Medication Safety</span><span class="topic-tag">Long-term Care</span><span class="topic-tag">Quality Improvement</span></div><p class="authors">簡尚志、邱婉莉、<strong>陳威勝</strong>、尤詒君</p><p class="source">台灣臨床藥學會105年度14屆第1次會員代表大會暨學術研討會壁報發表。</p></div></article>
 <article class="entry"><div class="year">2016</div><div class="entry-body"><div class="type">CONFERENCE / POSTER</div><h3>建立藥事長照新模式-以藥物血中濃度監測合併機構健檢執行為例</h3><p class="authors">簡尚志、邱婉莉、<strong>陳威勝</strong>、尤詒君</p><p class="source">台灣臨床藥學會105年度14屆第1次會員代表大會暨學術研討會壁報發表。</p></div></article>
 <article class="entry"><div class="year">2015</div><div class="entry-body"><div class="type">CONFERENCE / POSTER</div><h3>某機構以餐包調劑對整合門診處方之成效探討</h3><p class="authors">簡尚志、邱婉莉、<strong>陳威勝</strong></p><p class="source">台灣臨床藥學會104年度13屆第3次會員代表大會暨學術研討會壁報發表。</p></div></article>
 <article class="entry"><div class="year">2007</div><div class="entry-body"><div class="type">CONFERENCE / POSTER</div><h3>精神病患職業復健模式之調查暨各模式精障者能力之探究</h3><p class="authors">黃曼聰、<strong>陳威勝</strong>、陳芝萍 等人</p><p class="source">第二屆職能治療師全國聯合會學術研討會。</p></div></article>
@@ -62,7 +224,18 @@
 <article class="entry"><div class="year">2000</div><div class="entry-body"><div class="type">CONFERENCE / POSTER</div><h3>注意力不足過動症孩童的平衡功能之初探</h3><p class="authors"><strong>陳威勝</strong>，羅鈞令</p><p class="source">中華民國職能治療學會第十九次學術研討會，19，11。</p></div></article>
 <article class="entry"><div class="year">1999</div><div class="entry-body"><div class="type">CONFERENCE / POSTER</div><h3>The perceived importance of daily activities and quality of OT services among clients with CVA</h3><p class="authors"><strong>Chen, W. S.</strong>, Chen, C. P., & Pan, A.</p><p class="source"><em>Abstract book of the second Asia-Pacific Occupational Therapy Congress</em>, 49.</p></div></article></section><section class="section"><div class="section-head"><h2>Research Projects & Reports</h2><span>研究計畫與成果報告</span></div><article class="entry"><div class="year">2005</div><div class="entry-body"><div class="type">RESEARCH PROJECT / REPORT</div><h3>精神病患職業復健模式之調查暨各模式精障者能力之探究</h3><p class="authors">黃曼聰、<strong>陳威勝</strong>、陳芝萍</p><p class="source">94年衛生署研究計畫成果報告(DOH94-TD-M-113-019)，協同主持人。</p></div></article>
 <article class="entry"><div class="year">2004</div><div class="entry-body"><div class="type">RESEARCH PROJECT / REPORT</div><h3>精神分裂症的感覺處理型態暨感覺處理型態與精神症狀之關係</h3><p class="authors"><strong>陳威勝</strong>、曾美惠</p><p class="source">國科會計畫成果報告(NSC 92-2815-C002-104-B)。</p></div></article>
-<article class="entry"><div class="year">2000</div><div class="entry-body"><div class="type">RESEARCH PROJECT / REPORT</div><h3>注意力不足過動症孩童的協調功能之探討</h3><p class="authors"><strong>陳威勝</strong></p><p class="source">國科會大專學生參與專研究計畫成果報告(89-2815-C-002-023-B)。</p></div></article></section><div class="note">本頁依歷年研究與發表紀錄整理。部分早期研討會、期刊或計畫資料之線上連結可能因網站改版而異；後續將依可取得之原始資料持續補充與校正。</div></main><footer class="aml-global-footer">
+<article class="entry"><div class="year">2000</div><div class="entry-body"><div class="type">RESEARCH PROJECT / REPORT</div><h3>注意力不足過動症孩童的協調功能之探討</h3><p class="authors"><strong>陳威勝</strong></p><p class="source">國科會大專學生參與專研究計畫成果報告(89-2815-C-002-023-B)。</p></div></article></section>
+<section class="then-now" aria-labelledby="research-to-aml">
+  <div class="eyebrow">Then → Now</div>
+  <h2 id="research-to-aml">From Research to Allen Mind Lab</h2>
+  <p>
+    過去透過研究、期刊與研討會，把問題轉化為可被討論與檢驗的知識；
+    今天，Allen Mind Lab 延續同樣的習慣，透過文章、教學、工具與 AI 協作，
+    讓實務問題能更快被整理、查證、表達與分享。形式改變了，但對「問題本身」保持好奇與負責的態度沒有改變。
+  </p>
+</section>
+
+<div class="note">本頁依歷年研究與發表紀錄整理。部分早期研討會、期刊或計畫資料之線上連結可能因網站改版而異；後續將依可取得之原始資料持續補充與校正。</div></main><footer class="aml-global-footer">
   <div class="aml-footer-top">
     <div>
       <div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div>
