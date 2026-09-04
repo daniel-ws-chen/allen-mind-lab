@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>當 AI 開始參與我們的選擇｜Allen Mind Lab</title>
+<meta name="description" content="從 3C 到生成式 AI，科技不只延伸人的行動，也開始更深入參與判斷、選擇與決策形成。以 MOHO 為框架，重新理解 AI 如何影響能力、習慣、意志、環境與職能生活。">
+<link rel="canonical" href="https://allenmindlab.com/articles/ai-human-occupation-moho">
+<meta property="og:type" content="article"><meta property="og:site_name" content="Allen Mind Lab">
+<meta property="og:title" content="當 AI 開始參與我們的選擇"><meta property="og:description" content="從 MOHO 看科技如何改變人、職能與環境">
+<meta property="og:url" content="https://allenmindlab.com/articles/ai-human-occupation-moho"><meta property="og:image" content="https://allenmindlab.com/images/articles/ai-human-occupation-moho-social.png">
+<meta property="og:image:width" content="1672"><meta property="og:image:height" content="941">
+<meta property="og:image:alt" content="當 AI 開始參與我們的選擇：人、職能、環境與 AI 的互動關係">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="當 AI 開始參與我們的選擇">
+<meta name="twitter:description" content="從 MOHO 看科技如何改變人、職能與環境"><meta name="twitter:image" content="https://allenmindlab.com/images/articles/ai-human-occupation-moho-social.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+    :root{
+      --navy:#061a36; --navy2:#0a2449; --gold:#d9ad58; --gold2:#f0cf87;
+      --ink:#182231; --muted:#667085; --paper:#fffdf8; --cream:#f7f2e8;
+      --line:#e8dfcf; --white:#fff;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--ink); background:var(--paper);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      line-height:1.9;
+    }
+    a{color:#315d8b;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .site-header{
+      background:rgba(6,26,54,.98); border-bottom:1px solid rgba(217,173,88,.28);
+      color:#fff;
+    }
+    .nav{
+      max-width:1180px;margin:auto;padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px
+    }
+    .brand{font-weight:800;letter-spacing:.12em;color:#f4d391;font-size:1.04rem}
+    .brand small{display:block;color:#fff;font-weight:500;letter-spacing:.08em;font-size:.68rem;margin-top:2px;opacity:.78}
+    .menu{display:flex;gap:22px;flex-wrap:wrap}
+    .menu a{color:#e7edf5;font-size:.92rem}
+    .hero{
+      background:linear-gradient(145deg,var(--navy),var(--navy2));
+      color:#fff;padding:56px 28px 48px;
+    }
+    .hero-inner{max-width:1120px;margin:auto}
+    .eyebrow{color:var(--gold2);font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+    h1{font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;font-size:clamp(2rem,5vw,4.25rem);line-height:1.25;margin:0 0 14px;letter-spacing:.02em}
+    .subtitle{font-size:clamp(1.02rem,2vw,1.32rem);color:#e9edf3;max-width:850px;margin:0 0 20px}
+    .meta{color:#b8c4d3;font-size:.88rem}
+    .hero-image{
+      max-width:1180px;margin:34px auto 0;padding:0 28px;
+    }
+    .hero-image img{display:block;width:100%;border-radius:18px;box-shadow:0 22px 55px rgba(5,22,46,.20)}
+    main{max-width:850px;margin:0 auto;padding:52px 28px 88px}
+    .lede{
+      font-size:1.15rem;line-height:1.95;color:#29364a;margin-bottom:36px;
+    }
+    h2{
+      font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;
+      font-size:1.72rem;line-height:1.45;margin:58px 0 18px;color:#102a4d
+    }
+    p{margin:0 0 20px}
+    strong{color:#152b48}
+    blockquote{
+      margin:28px 0;padding:18px 24px;border-left:4px solid var(--gold);
+      background:var(--cream);font-size:1.08rem;color:#24334b
+    }
+    .flow{
+      text-align:center;font-weight:800;letter-spacing:.03em;padding:16px 18px;
+      background:#f7f3eb;border:1px solid #e8ddca;border-radius:12px;margin:24px 0
+    }
+    .prompt-box,.check-box,.practice-box{
+      margin:30px 0;border:1px solid var(--line);border-radius:18px;padding:26px 28px;background:#fff;
+      box-shadow:0 10px 28px rgba(31,43,61,.05)
+    }
+    .prompt-box h3,.check-box h3,.practice-box h3{margin:0 0 16px;color:#173a65;font-size:1.18rem}
+    .prompt{
+      white-space:pre-line;background:#f6f8fb;border-radius:12px;padding:20px;color:#27364b;font-size:.96rem
+    }
+    .check-box p{margin:8px 0;font-weight:650}
+    .practice-box{
+      margin-top:58px;background:linear-gradient(145deg,#081f40,#0d315f);color:#edf3fa;border-color:#b58943
+    }
+    .practice-box h3{color:#f0cf87}
+    .practice-box strong{color:#fff}
+    .practice-box a.button{
+      display:inline-block;margin-top:12px;background:#d6a84d;color:#092044;font-weight:800;
+      padding:11px 18px;border-radius:999px;text-decoration:none
+    }
+    .practice-box .fine{font-size:.85rem;color:#bfcbda;margin-top:18px}
+    .refs{
+      margin-top:56px;padding-top:26px;border-top:1px solid var(--line);
+      color:#596579;font-size:.89rem
+    }
+    .refs h3{color:#253b5b;font-size:1.08rem}
+    .refs ol{padding-left:22px}.refs li{margin:0 0 12px}
+    footer{
+      background:#061a36;color:#bfc9d8;padding:34px 28px;text-align:center;font-size:.85rem
+    }
+    .closing{
+      margin:42px 0 16px;padding:28px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+      text-align:center;font-family:"Noto Serif TC","Songti TC","PMingLiU",serif;font-size:1.18rem;color:#18365c
+    }
+    @media(max-width:780px){
+      .nav{align-items:flex-start}.menu{gap:12px 16px}.hero{padding-top:38px}
+      main{padding-left:22px;padding-right:22px}.prompt-box,.check-box,.practice-box{padding:22px 20px}
+    }
+  
+.article-figure{margin:42px auto;max-width:900px;text-align:center}
+.article-figure img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid var(--line);box-shadow:0 14px 32px rgba(6,26,54,.07)}
+.article-figure figcaption{margin-top:12px;color:var(--muted);font-size:.9rem;line-height:1.65}
+.theory-note{margin:30px 0;padding:18px 20px;border-left:4px solid var(--gold);background:var(--cream);border-radius:0 14px 14px 0;color:#435066;line-height:1.8}
+.refs a{overflow-wrap:anywhere;word-break:break-word}
+@media(max-width:700px){.article-figure{margin:30px -4px}.article-figure img{border-radius:12px}.article-figure figcaption{font-size:.82rem;padding:0 8px}}
+</style>
+<script type="application/ld+json">{
+"@context":"https://schema.org","@type":"Article","headline":"當 AI 開始參與我們的選擇","alternativeHeadline":"從 MOHO 看科技如何改變人、職能與環境",
+"datePublished":"2026-09-04","dateModified":"2026-09-04","author":{"@type":"Person","name":"陳威勝"},
+"publisher":{"@type":"Organization","name":"Allen Mind Lab"},"mainEntityOfPage":"https://allenmindlab.com/articles/ai-human-occupation-moho","image":"https://allenmindlab.com/images/articles/ai-human-occupation-moho-social.png","description":"從 3C 到生成式 AI，科技不只延伸人的行動，也開始更深入參與判斷、選擇與決策形成。以 MOHO 為框架，重新理解 AI 如何影響能力、習慣、意志、環境與職能生活。"
+}</script>
+</head>
+<body>
+<header class="site-header">
+<nav aria-label="主選單" class="nav">
+<a class="brand" href="/">ALLEN MIND LAB<small>BUILDING A MEANINGFUL LIFE.</small></a>
+<div class="menu">
+<a href="/about">About</a>
+<a href="/research">Research</a>
+<a href="/recognition">Recognition</a>
+<a href="/publications">Publications</a>
+<a href="/articles">Articles</a>
+<a href="/contact">Contact</a>
+</div>
+</nav>
+</header>
+<section class="hero"><div class="hero-inner"><div class="eyebrow">OT × AI · HUMAN OCCUPATION</div><h1>當 AI 開始參與我們的選擇</h1><p class="subtitle">從 MOHO 看科技如何改變人、職能與環境</p><div class="meta">陳威勝 · Allen Mind Lab · 2026.09.04</div></div></section>
+<div class="hero-image"><img src="/images/articles/ai-human-occupation-moho-hero.png" alt="人、職能、環境與 AI 持續互動的 AML 文章主視覺"></div>
+<main>
+<p class="lede">3C 時代，科技延伸人的行動能力；AI 時代，科技開始更深入地參與人的判斷、選擇與決策形成過程。</p>
+<p>過去二、三十年，我們早已習慣科技進入生活。</p><p>電腦改變工作，手機改變溝通，網路改變資訊取得；GPS 幫我們找路，行事曆協助記憶，搜尋引擎讓知識幾乎隨手可得。</p><p>如果今天突然失去手機、電腦與網路，很多人的工作與生活恐怕立刻就會受到影響。</p><p>科技早已不是生活之外的東西。</p><p>它就是生活的一部分。</p><p>但生成式 AI 出現之後，我開始覺得：</p><blockquote><strong>這一次，好像又有些不一樣。</strong></blockquote><h2>一句「我也想要這樣的網站」，事情就開始了</h2><p>最近我自己就有一個很直接的經驗。</p><p>某天看到高醫師的個人網站時，第一個感覺真的是——驚為天人。</p><p>它不只是把個人資料放上網，而是把一個人的專業、文章、理念與對外連結，整理成一個完整而有辨識度的空間。</p><p>當下我腦中也浮現一個想法：</p><blockquote><strong>如果我也能有一個這樣的個人網站就好了。</strong></blockquote><p>但這個念頭很快就碰到現實。</p><p>網站怎麼做？</p><p>從哪裡開始？</p><p>版面怎麼設計？</p><p>網域、部署、內容架構、訂閱功能又要怎麼處理？</p><p>如果放在過去的 3C 時代，我大概會先去找工程師、設計師或網頁公司。</p><p>接下來是需求溝通、估價、設計、製作、修改、測試、上線。需要時間，也需要一筆預算。</p><p>更不用說網站完成之後，每一次新增功能、維修或改版，都可能再次需要專業人員協助。</p><p>但這一次，我只是打開 GPT，拋出一句：</p><blockquote><strong>「我想做一個類似高醫師的個人網頁。」</strong></blockquote><p>事情就這樣開始了。</p><p>從網站定位、內容架構、版面設計，到建立頁面與網域部署，後來又一路延伸到電子報訂閱與官方 LINE。</p><p>不到一個星期，一個原本只是腦中模糊的念頭，真的變成了一套可以使用的數位平台。</p><p>真正讓我感受到差異的，其實不只是：</p><blockquote><strong>AI 幫我寫了程式。</strong></blockquote><p>而是整個過程裡，當我不知道下一步是什麼時，它會協助我拆解問題；當我不知道有哪些選擇時，它可以整理可能的方案；遇到技術問題時，可以陪著一步一步排除；新的想法冒出來，又可以立刻接著往下發展。</p><p>慢慢地，我對這件事情的認知也改變了。</p><p>原本是：</p><blockquote><strong>「這不是我會做的事。」</strong></blockquote><p>後來逐漸變成：</p><blockquote><strong>「好像真的做得到。」</strong></blockquote><p>也就是從這個經驗開始，我想到一個問題：</p><blockquote><strong>科技與人的關係，是不是已經悄悄出現了變化？</strong></blockquote><h2>從 3C 到 AI：真正改變的是什麼？</h2><p>回頭看 3C 時代，科技其實早就在延伸人的能力。</p><p>我要寫文章，所以使用 Word。</p><p>我要查資料，所以使用搜尋引擎。</p><p>我要去陌生的地方，所以使用 GPS。</p><p>我要和遠方的人聯繫，所以使用手機與通訊軟體。</p><p>科技讓我們做得更快、更遠，也讓很多原本困難的事情變得容易。</p><p>甚至在認知科學裡，早已有 <strong>cognitive offloading（認知卸載）</strong>的概念。</p><p>Risko 與 Gilbert 將 cognitive offloading 描述為：人透過外在行動或外部資源，降低一項任務原本需要由內在認知處理的負荷。手機提醒、紙筆紀錄等，都可以視為其中的例子。</p><p>也就是說：</p><blockquote><strong>把一部分認知工作交給環境，並不是 AI 才開始的事情。</strong></blockquote><p>過去的科技，早就在幫助我們記憶、計算、搜尋與完成工作。</p><p>因此，如果把 3C 與 AI 完全切成兩個世界，其實並不精確。</p><p>搜尋引擎的排序會影響我們看到什麼，社群媒體的演算法會影響我們注意什麼，影音平台的推薦也早已影響我們下一部影片可能看什麼。</p><p>科技從來不只是完全被動的工具。</p><p>真正值得注意的，是到了生成式 AI 世代，這種影響的<strong>深度與互動方式</strong>開始改變。</p><p>我會暫時這樣描述：</p><blockquote><strong>3C 時代，科技延伸人的行動能力；AI 時代，科技開始更深入地參與人的判斷、選擇與決策形成過程。</strong></blockquote><figure class="article-figure"><img src="/images/articles/3c-vs-ai.png" alt="3C 與 AI 的關鍵差異：3C 主要延伸人的行動能力；生成式 AI 更深入參與判斷、選擇與決策形成。" loading="lazy"><figcaption>圖 2｜3C 與 AI 的關鍵差異：從延伸行動，到參與決策形成</figcaption></figure><p>以前比較常是：<strong>我先決定要做什麼，再使用科技完成它。</strong></p><p>現在則可能是：<strong>我還不知道怎麼做，先和 AI 討論；決定也在互動之中逐漸形成。</strong></p><p>最後做決定的仍然是人，但決定形成的過程，已經可能有 AI 參與其中。</p><p>那麼，我們可以用什麼角度理解這種改變？</p><p>這裡，我想借用一套職能治療很重要的理論。</p><h2>職能治療其實一直在研究：人為什麼會過著現在這樣的生活？</h2><p>很多人想到職能治療 Occupational Therapy，第一個聯想到的可能是復健、手功能訓練、輔具或生活自理訓練。</p><p>但職能治療所關心的，其實比「一個動作做不做得到」更廣。</p><p>我們會問：</p><blockquote><strong>一個人為什麼想做這件事？</strong></blockquote><blockquote><strong>為什麼他的生活形成現在這些習慣？</strong></blockquote><blockquote><strong>他的能力能不能支持他做想做的事情？</strong></blockquote><blockquote><strong>環境是在幫助他，還是在阻礙他？</strong></blockquote><blockquote><strong>人在每天反覆做這些事情的過程中，又逐漸形成什麼樣的生活？</strong></blockquote><p>Model of Human Occupation，簡稱 <strong>MOHO</strong>，就是職能治療領域中非常重要的一個理論模型。</p><p>MOHO 最早由 Gary Kielhofner 與 Janice Burke 於 1980 年提出，當時便以 open systems theory 作為重要理論基礎，試圖理解人的職能如何在一個持續與環境互動的系統中形成。</p><p>後續 MOHO 不斷發展，核心持續圍繞著一個問題：</p><blockquote><strong>人的 occupation，是如何被驅動、形成規律，並真正被執行出來？</strong></blockquote><p>MOHO 將人的部分理解為三個彼此關聯的重要構面：</p><blockquote><strong>Volition｜意志</strong></blockquote><p>關於一個人為什麼想做，包括興趣、價值，以及對自己能力與效能的看法。</p><blockquote><strong>Habituation｜習慣化</strong></blockquote><p>關於我們如何透過習慣與角色，形成相對穩定的日常生活模式。</p><blockquote><strong>Performance Capacity｜表現能力</strong></blockquote><p>關於支持一個人實際執行活動的身體與心理能力。</p><p>而這些又會持續與人所處的 <strong>environment｜環境</strong>產生互動。</p><p>MOHO Clearinghouse 的資料也指出，要理解 human occupation，就必須同時理解 occupation 發生其中的 physical and social environments。</p><p>也就是說：</p><blockquote><strong>人類的職能，從來不是單純由「一個人本身的能力」決定。</strong></blockquote><p>人的動機、生活模式、能力與環境會持續彼此影響，最後形成我們每天真正過著的生活。</p><p>而這也讓 MOHO 成為一個很有意思的框架，幫助我重新觀看 AI。</p><figure class="article-figure"><img src="/images/articles/moho-concept.png" alt="MOHO 基礎概念圖：Volition、Habituation、Performance Capacity 與 Environment 持續互動並影響職能參與。" loading="lazy"><figcaption>圖 3｜MOHO 基礎概念：Volition、Habituation、Performance Capacity 與 Environment 共同影響職能參與</figcaption></figure><aside class="theory-note"><strong>理論界線：</strong><strong>接下來的四個層次，是我借用 MOHO 概念理解 AI 的一種延伸思考，並非 MOHO 原始理論對 AI 的正式分類。</strong></aside><h2>第一層：AI 改變了「我能不能做到」</h2><p>先回到剛才建立網站的例子。</p><p>我並沒有因為使用 GPT 一星期，就突然成為網頁工程師。</p><p>但是我的「可完成範圍」確實改變了。</p><p>過去需要工程師、設計師，甚至多個不同專業角色共同完成的事情，現在在 AI 的協助之下，我可以參與其中，甚至完成相當大的一部分。</p><p>這就讓我想到 MOHO 所說的 <strong>performance capacity</strong>。</p><p>但 AI 世代也帶出了一個很有趣的問題。</p><p>如果一個人本身不會寫程式，卻可以透過 AI 完成網站；</p><p>一個人不擅長整理大量資料，卻能和 AI 一起完成分析；</p><p>一個人英文能力有限，卻可以透過 AI 完成跨語言表達，</p><p>那麼：</p><blockquote><strong>我們到底該怎麼理解這個人的「能力」？</strong></blockquote><p>是只有存在他身體與腦中的能力？</p><p>還是也包括：</p><blockquote><strong>他能不能有效調動環境中的資源，完成自己想完成的事情？</strong></blockquote><p>這個問題其實很符合 OT 的思考方式。</p><p>因為職能表現從來不是只看「人會不會」。</p><p>而是看：</p><blockquote><strong>這個人，在實際環境裡，最後能不能完成對自己有意義的 occupation。</strong></blockquote><p>AI 只是讓這個問題變得更加明顯。</p><p>不過，人與 AI 合作並不代表一定會做得更好。</p><p>2024 年一篇刊登於 <em>Nature Human Behaviour</em> 的系統性回顧與統合分析，整理了 106 項 human–AI 實驗。</p><p>研究發現，人與 AI 結合平均而言確實優於「人單獨完成」，具有 human augmentation 的效果；但若以「人單獨」或「AI 單獨」之中表現較好的一方作為基準，人機組合的平均表現反而較差。</p><p>尤其在決策型任務中，人機組合出現了平均表現下降；相較之下，內容創作型任務呈現較大的互補潛力。</p><p>所以 AI 帶來的並不是：</p><blockquote><strong>人類能力無條件升級。</strong></blockquote><p>比較精確的說法可能是：</p><blockquote><strong>AI 改變了能力可以如何被組合。</strong></blockquote><h2>第二層：AI 改變了「我習慣怎麼做」</h2><p>科技真正改變生活，往往不是發生在第一次使用的時候。</p><p>而是在某件事情逐漸變成：</p><blockquote><strong>不用想，就會這樣做。</strong></blockquote><p>第一次使用 AI 修改文章，可能只是一個嘗試。</p><p>接下來變成：</p><p>文章寫完，先給 AI 看。</p><p>再後來變成：</p><p>文章還沒寫，先和 AI 討論架構。</p><p>接著可能是：</p><p>遇到問題先問 AI。</p><p>企劃之前先和 AI brainstorm。</p><p>資料很多時先讓 AI 協助整理。</p><p>甚至像這篇文章：</p><p>先由人提出問題，和 GPT 一起發展架構；</p><p>形成初稿之後，再進入編輯審閱流程；</p><p>修訂意見回來，再回到 AI 協作修稿、設計圖像與網站上稿。</p><p>一個原本單向的寫作流程，慢慢變成：</p><blockquote><strong>人 ↔ AI ↔ 編輯審閱 ↔ 人 ↔ AI</strong></blockquote><p>的雙向迴路。</p><p>當這種模式反覆發生，它就不再只是「偶爾使用一個工具」。</p><p>而可能逐漸形成新的工作習慣。</p><p>這正好讓我想到 MOHO 所說的 <strong>habituation</strong>。</p><p>Habituation 涉及 habits，也涉及我們長期扮演的 roles。</p><p>我們不會每天早上醒來，再重新決定一次：</p><p>今天要怎麼當老師？</p><p>怎麼當主管？</p><p>怎麼當治療師？</p><p>怎麼當父母？</p><p>很多行為早已經透過生活經驗，形成相對穩定的模式。</p><p>而 AI 現在開始進入這些模式。</p><p>老師的工作中，開始出現 AI-assisted teaching。</p><p>主管的工作中，也開始出現 AI-supported management。</p><p>創作工作中，也逐漸出現 human–AI co-creation。</p><p>治療師也可能逐漸使用 AI 協助資料整理、行政作業、教學準備，甚至某些專業推理之前的資訊整理。</p><p>因此，真正值得問的可能不只是：</p><blockquote><strong>AI 幫我省了多少時間？</strong></blockquote><p>還包括：</p><blockquote><strong>我正在因為 AI，養成什麼樣的工作與生活習慣？</strong></blockquote><p>因為習慣最後會形成生活。</p><h2>第三層：AI 改變了「我覺得自己能做什麼」</h2><p>MOHO 的 volition 不只是單純的「想不想」。</p><p>其中有一個很重要的概念叫做 <strong>personal causation</strong>。</p><p>簡單來說，就是：</p><blockquote><strong>我怎麼看自己的能力？</strong></blockquote><blockquote><strong>我覺得自己做得到嗎？</strong></blockquote><p>這也是我的網站經驗裡，最明顯的改變之一。</p><p>一開始：</p><blockquote><strong>「做網站不是我的專業。」</strong></blockquote><p>後來：</p><blockquote><strong>「也許我可以試試看。」</strong></blockquote><p>再後來：</p><blockquote><strong>「原來我真的可以把自己的想法做成網站。」</strong></blockquote><p>客觀上，我的程式能力並沒有突然成長到工程師的程度。</p><p>但是我對：</p><blockquote><strong>「自己能完成什麼」</strong></blockquote><p>的理解，已經發生改變。</p><p>而 volition 除了 personal causation，也包括 <strong>values</strong> 與 <strong>interests</strong>。</p><p>也就是：</p><p>我重視什麼？</p><p>什麼事情吸引我？</p><p>我願意把時間放在哪裡？</p><p>AI 可能會對我們說：</p><p>「這個方向還可以這樣發展。」</p><p>「你可以從另外三個角度思考。」</p><p>「這兩個方案的差別可能在這裡。」</p><p>這並不代表 AI 擁有人的 volition。</p><p>但我認為，它的確可能成為：</p><blockquote><strong>影響人類 volition 的環境因素之一。</strong></blockquote><p>而且和傳統資訊工具相比，這種影響可以發生在一連串持續的對話與回饋中。</p><h2>第四層：AI 開始進入「決策形成」的過程</h2><p>這也是我認為 AI 與過去 3C 最值得區分的地方。</p><p>搜尋引擎可以給我一百個網站。</p><p>生成式 AI 則可以和我討論：</p><p>「你真正重視的是成本、時間，還是自主性？」</p><p>也可以協助比較：</p><p>A 方案有什麼優勢？</p><p>B 方案可能有哪些風險？</p><p>當我提出新的條件，它還可以重新整理前面的分析。</p><p>於是，人與 AI 之間可能形成一個持續修正問題與判斷的 feedback loop：</p><figure class="article-figure"><img src="/images/articles/human-ai-feedback-loop.png" alt="Human–AI Feedback Loop：人提出問題、AI 回應、人重新理解與修正提問，最後由人形成新的判斷。" loading="lazy"><figcaption>圖 4｜Human–AI Feedback Loop：AI 參與決策形成，不等於取代人的決策</figcaption></figure><p>這和傳統「使用工具」的感覺已經有所不同。</p><p>一項 2024 年關於 human–Generative AI collaborative decision-making 的準實驗研究，也顯示生成式 AI 可能影響人類分析與決策的歷程；但研究同時提醒，過度依賴 AI，以及 AI 在情境理解與人類判斷上的限制，仍是人機協作時需要注意的問題。</p><p>所以：</p><blockquote><strong>AI 參與決策形成，不等於 AI 應該取代人的決策。</strong></blockquote><p>真正的改變在於：</p><blockquote><strong>過去我們比較常是在「決定之後」使用科技；現在 AI 開始有機會出現在「決定形成之前」。</strong></blockquote><h2>當環境開始會和我們「對話」</h2><p>這裡也許是 AI 最有意思的地方。</p><p>MOHO 一直非常重視 environment。</p><p>環境可以支持我們，也可以限制我們。</p><p>沒有電梯的建築，會限制輪椅使用者的參與。</p><p>支持性的家庭，可能讓一個人在挫折後重新投入生活。</p><p>友善的工作制度，可能讓能力真正被發揮。</p><p>而科技一直都可以被理解成環境的一部分。</p><p>電腦是環境資源。</p><p>手機是環境資源。</p><p>網路也是。</p><p>但 AI 有一個相當特殊的地方：</p><blockquote><strong>它會回應。</strong></blockquote><p>而且不只是固定回應。</p><p>它可以依據我們提出的問題、提供的資料，以及當下對話中的脈絡，生成不同的內容。</p><p>它具有互動性、生成性與回應性；在某些系統與設定下，也可能呈現一定程度的個人化與適應性。</p><p>它會影響我們下一步怎麼做。</p><p>而我們的下一步，又會影響下一次 AI 如何回應。</p><p>所以 AI 雖然仍然可以被放在 environment 的脈絡中思考，但它可能是一種和過去許多科技不同的環境條件。</p><p>它不只提供工具。</p><p>在我的理解裡，它也開始成為：</p><blockquote><strong>人與職能之間，一個持續互動的數位介面。</strong></blockquote><figure class="article-figure"><img src="/images/articles/ai-moho-four-layers.png" alt="AI 與 MOHO 四個層次的延伸理解：AI 可能影響表現能力、習慣化、意志與環境，並回到職能生活。" loading="lazy"><figcaption>圖 5｜AI 與 MOHO 四個層次：從能力、習慣、意志到環境，最後回到職能生活</figcaption></figure><h2>AI 不是只有「讓事情做得更快」</h2><p>目前談 AI 時，我們很容易停留在 productivity。</p><p>可以省多少時間？</p><p>能提高多少效率？</p><p>可以自動化多少流程？</p><p>這些當然重要。</p><p>但如果從 OT 的角度來看，我們可能還會再多問一些問題：</p><p>AI 是否增加了一個人的 participation？</p><p>是否讓他完成原本很重要、卻做不到的事情？</p><p>是否增加了自主？</p><p>是否重新建立角色？</p><p>是否支持 meaningful occupation？</p><p>或者反過來：</p><p>AI 是否讓人逐漸不敢在沒有協助的情況下開始？</p><p>是否降低了對自身能力的信任？</p><p>是否讓選擇越來越依賴系統提供的建議？</p><p>甚至讓我們逐漸忘記：</p><blockquote><strong>自己原本真正重視的是什麼？</strong></blockquote><p>這些問題沒有單一答案。</p><p>前面提到的人機合作統合分析其實已經提醒我們：</p><blockquote><strong>Human + AI 並不自動等於最好的結果。</strong></blockquote><p>它能不能產生真正的 augmentation 或 synergy，和任務、人本身的能力、AI 的能力，以及兩者如何協作都有關。</p><p>所以 OT 對 AI 的問題，可能不只是：</p><blockquote><strong>「AI 好不好用？」</strong></blockquote><p>而是：</p><blockquote><strong>「這樣使用 AI，正在形成什麼樣的職能生活？」</strong></blockquote><h2>能做什麼，不等於值得做什麼</h2><p>回頭看我建立網站的例子。</p><p>如果只有 AI，而沒有一開始那一句：</p><blockquote><strong>「我也想要有一個這樣的網站。」</strong></blockquote><p>後面的事情其實都不會發生。</p><p>網站要放什麼？</p><p>哪些文章值得留下？</p><p>想和什麼樣的人連結？</p><p>Allen Mind Lab 想傳達什麼？</p><p>未來希望它長成什麼樣子？</p><p>這些都不是 AI 自己擁有的職能意義。</p><p>它們仍然來自人的：</p><blockquote><strong>values</strong></blockquote><blockquote><strong>interests</strong></blockquote><blockquote><strong>roles</strong></blockquote><p>以及一路累積而來的生活經驗。</p><p>AI 可以讓很多原本很遠的事情變得可及。</p><p>但：</p><blockquote><strong>能做什麼，不等於值得做什麼。</strong></blockquote><p>而「什麼值得做」，</p><p>可能才是人與 occupation 之間最重要的核心。</p><h2>從「我會不會用 AI」，到「AI 正在讓我怎麼生活」</h2><p>3C 時代，我們慢慢學會了：</p><blockquote><strong>如何使用科技。</strong></blockquote><p>AI 時代，也許我們需要進一步學會：</p><blockquote><strong>如何與科技相處。</strong></blockquote><p>因為當 AI 開始參與我們的工作、學習、創作、判斷與選擇，真正值得思考的，就不再只是：</p><p>「我還可以叫 AI 幫我做什麼？」</p><p>而是：</p><blockquote><strong>我正在因為 AI，變成一個怎麼工作的人？</strong></blockquote><blockquote><strong>我正在形成什麼樣的習慣？</strong></blockquote><blockquote><strong>我對自己的能力產生什麼樣的理解？</strong></blockquote><blockquote><strong>哪些決定仍然是我想清楚之後做出的？</strong></blockquote><blockquote><strong>哪些事情仍然值得我親自投入？</strong></blockquote><p>以及也許最重要的一個問題：</p><blockquote><strong>AI 正在支持我過更有意義的生活，還是只是讓我做更多的事情？</strong></blockquote><p>職能治療一直關心的，從來不只是人：</p><blockquote><strong>「能不能做。」</strong></blockquote><p>而是：</p><blockquote><strong>一個人做什麼、為什麼做、在什麼環境裡做，以及這些每天反覆發生的行動，最後如何形塑他的生活。</strong></blockquote><p>也許 AI 時代真正值得我們重新理解的，不只是人工智慧。</p><p>而是人。</p><p>以及——</p><blockquote><strong>當人開始與 AI 一起工作、一起思考、一起形成選擇之後，我們將過著什麼樣的職能生活？</strong></blockquote>
+
+<section class="refs" aria-labelledby="references-title">
+  <h3 id="references-title">References｜參考資料</h3>
+  <ol>
+    <li>Kielhofner, G., &amp; Burke, J. P. (1980). A Model of Human Occupation, Part 1: Conceptual Framework and Content. <em>American Journal of Occupational Therapy, 34</em>(9), 572–581. <a href="https://doi.org/10.5014/ajot.34.9.572" target="_blank" rel="noopener">DOI</a></li>
+    <li>Kielhofner, G., &amp; Forsyth, K. (1997). The Model of Human Occupation: An Overview of Current Concepts. <em>British Journal of Occupational Therapy, 60</em>(3), 103–110. <a href="https://doi.org/10.1177/030802269706000302" target="_blank" rel="noopener">DOI</a></li>
+    <li>Model of Human Occupation Clearinghouse, University of Illinois Chicago. <em>About the Model of Human Occupation</em>. MOHO-IRM Web. <a href="https://moho-irm.uic.edu/resources/about.aspx" target="_blank" rel="noopener">MOHO Clearinghouse</a></li>
+    <li>Risko, E. F., &amp; Gilbert, S. J. (2016). Cognitive Offloading. <em>Trends in Cognitive Sciences, 20</em>(9), 676–688. <a href="https://doi.org/10.1016/j.tics.2016.07.002" target="_blank" rel="noopener">DOI</a></li>
+    <li>Hao, X., Demir, E., &amp; Eyers, D. (2024). Exploring collaborative decision-making: A quasi-experimental study of human and Generative AI interaction. <em>Technology in Society, 78</em>, 102662. <a href="https://doi.org/10.1016/j.techsoc.2024.102662" target="_blank" rel="noopener">DOI</a></li>
+    <li>Vaccaro, M., Almaatouq, A., &amp; Malone, T. (2024). When combinations of humans and AI are useful: A systematic review and meta-analysis. <em>Nature Human Behaviour, 8</em>, 2293–2303. <a href="https://doi.org/10.1038/s41562-024-02024-1" target="_blank" rel="noopener">DOI</a></li>
+  </ol>
+</section>
+</main>
+<footer>
+    Allen Mind Lab · Building A Meaningful Life.<br/>
+    美感，讓人駐足。智慧，讓人沉澱。價值，讓人同行。
+  </footer>
+</body></html>
