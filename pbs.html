@@ -3,66 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PBS｜Behavior is communication.｜Allen Mind Lab</title>
-<meta name="description" content="問題行為不是單純需要被制止的事件，而可能是人在有限能力與環境條件下，用來表達需求、逃避壓力或調節自己的方式。">
-<style>
-:root{--navy:#071a33;--navy2:#0d294a;--gold:#c7a76a;--cream:#f6f1e7;--ink:#142031;--muted:#657081;--white:#fff}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fbfaf7;line-height:1.75}
-a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px 5vw;background:rgba(7,26,51,.96);color:#fff;backdrop-filter:blur(8px)}
-.brand{text-decoration:none;font-weight:800;letter-spacing:.14em}.links{display:flex;gap:18px;flex-wrap:wrap}.links a{text-decoration:none;font-size:.92rem;opacity:.88}.links a:hover{color:var(--gold)}
-.hero{padding:100px 7vw 80px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}.kicker{color:var(--gold);font-weight:700;letter-spacing:.18em;text-transform:uppercase}.hero h1{font-size:clamp(2.5rem,6vw,5.5rem);line-height:1.04;margin:.2em 0}.hero p{max-width:800px;font-size:1.15rem;color:#dfe7f1}
-.wrap{max-width:1120px;margin:auto;padding:72px 6vw}.lead{font-size:1.35rem;max-width:850px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:38px}.card{background:#fff;border:1px solid #e6e0d4;border-radius:18px;padding:28px;box-shadow:0 12px 35px rgba(9,24,45,.06)}.card h3{margin-top:0;color:var(--navy)}.quote{font-size:1.45rem;border-left:4px solid var(--gold);padding:10px 0 10px 24px;margin:42px 0;color:var(--navy)}
-.tag{display:inline-block;padding:5px 10px;border:1px solid #d9c79f;border-radius:999px;color:#7a6030;margin-right:6px;font-size:.82rem}.footer{background:#06172d;color:#e7edf5;padding:50px 7vw;display:grid;grid-template-columns:2fr 1fr;gap:30px}.footer strong{color:var(--gold);font-size:1.35rem}.footlinks{display:grid;gap:8px}.footlinks a{text-decoration:none}.copyright{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;color:#a9b4c2;font-size:.88rem}
-.btn{display:inline-block;text-decoration:none;background:var(--gold);color:#081a30;padding:11px 18px;border-radius:999px;font-weight:700;margin-top:12px}
-
-.tools-section{margin:56px 0 18px;padding:34px;border:1px solid #e3d8c1;border-radius:24px;background:linear-gradient(135deg,#fffdf9,#f6f1e7)}
-.tools-kicker{color:#8a6b35;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
-.tools-section h2{margin:0 0 10px;color:var(--navy);font-size:clamp(1.7rem,3vw,2.35rem)}
-.tools-lead{max-width:820px;color:var(--muted);margin:0 0 24px}
-.tool-card{padding:28px;border-radius:20px;background:#fff;border:1px solid #e6e0d4;box-shadow:0 12px 30px rgba(9,24,45,.05)}
-.tool-card h3{margin:0 0 6px;color:var(--navy);font-size:1.35rem}
-.tool-subtitle{margin:0 0 14px;color:#8a6b35;font-weight:800}
-.tool-card p{margin:0;color:var(--muted)}
-.tool-actions{margin-top:18px}
-.tool-note{margin-top:16px;padding-top:15px;border-top:1px solid #eee6d8;color:#7a828d;font-size:.88rem}
-
-.howto{margin-top:24px;padding:26px;border-radius:20px;background:#0d1b2a;color:white}
-.howto-kicker{color:var(--gold);font-size:.76rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}
-.howto h3{margin:0 0 10px;font-size:1.35rem;color:white}
-.howto-lead{margin:0 0 20px;color:#cbd5e1}
-.howto-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.howto-step{padding:18px;border:1px solid rgba(199,167,106,.24);border-radius:16px;background:rgba(255,255,255,.045)}
-.howto-step strong{display:block;color:var(--gold);margin-bottom:6px}
-.howto-step p{margin:0;color:#d5dde6;font-size:.92rem}
-.howto-examples{margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12)}
-.howto-examples strong{display:block;color:var(--gold);margin-bottom:8px}
-.howto-examples ul{margin:0;padding-left:20px;color:#d5dde6}
-.howto-examples li{margin:6px 0}
-.howto-principle{margin-top:18px;padding:16px 18px;border-left:3px solid var(--gold);background:rgba(255,255,255,.05);color:#f4ead4;font-weight:700}
-.howto-safety{margin-top:14px;color:#aeb8c5;font-size:.86rem;line-height:1.7}
-
-@media(max-width:820px){.nav{align-items:flex-start;flex-direction:column;gap:12px}.links{gap:10px}.grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.hero{padding-top:70px}.tools-section{padding:24px}.tool-card{padding:22px}.howto-grid{grid-template-columns:1fr}.howto{padding:22px}}
-</style>
+<title>PBS｜先理解，再支持改變｜Allen Mind Lab</title>
+<meta name="description" content="Allen Mind Lab 的正向行為支持視角：從行為功能、前因與環境、事前預防、替代行為到安全邊界，以理解取代標籤，建立可持續的支持。">
+<link rel="canonical" href="https://allenmindlab.com/pbs">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Allen Mind Lab">
+<meta property="og:title" content="PBS｜先理解，再支持改變">
+<meta property="og:description" content="Allen Mind Lab 的正向行為支持視角：從行為功能、前因與環境、事前預防、替代行為到安全邊界，以理解取代標籤，建立可持續的支持。">
+<meta property="og:url" content="https://allenmindlab.com/pbs">
+<meta property="og:image" content="https://allenmindlab.com/images/articles/pbs-being-seen.png">
+<meta property="og:image:alt" content="Allen Mind Lab">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PBS｜先理解，再支持改變">
+<meta name="twitter:description" content="Allen Mind Lab 的正向行為支持視角：從行為功能、前因與環境、事前預防、替代行為到安全邊界，以理解取代標籤，建立可持續的支持。">
+<meta name="twitter:image" content="https://allenmindlab.com/images/articles/pbs-being-seen.png">
+<link rel="stylesheet" href="aml-site.css">
 
-  <!-- AML SEO / Social Preview -->
-  <link rel="canonical" href="https://allenmindlab.com/pbs">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Allen Mind Lab">
-  <meta property="og:title" content="PBS｜Behavior is communication.｜Allen Mind Lab">
-  <meta property="og:description" content="問題行為不是單純需要被制止的事件，而可能是人在有限能力與環境條件下，用來表達需求、逃避壓力或調節自己的方式。">
-  <meta property="og:url" content="https://allenmindlab.com/pbs">
-  <meta property="og:image" content="https://allenmindlab.com/images/allen-banner.png">
-  <meta property="og:image:alt" content="Allen Mind Lab">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="PBS｜Behavior is communication.｜Allen Mind Lab">
-  <meta name="twitter:description" content="問題行為不是單純需要被制止的事件，而可能是人在有限能力與環境條件下，用來表達需求、逃避壓力或調節自己的方式。">
-  <meta name="twitter:image" content="https://allenmindlab.com/images/allen-banner.png">
-  <link rel="stylesheet" href="aml-site.css">
+<style>
+:root{
+  --navy:#071a33;--navy2:#0d294a;--gold:#c7a76a;--cream:#f6f1e7;
+  --ink:#142031;--muted:#657081;--white:#fff;--line:#e7e0d4;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fbfaf7;line-height:1.8}
+a{color:inherit}
+.topic-hero{padding:104px 7vw 88px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}
+.topic-hero-inner{max-width:1120px;margin:auto}
+.kicker{color:var(--gold);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.84rem}
+.topic-hero h1{font-size:clamp(2.7rem,6vw,5.6rem);line-height:1.05;margin:.2em 0 .28em;max-width:930px}
+.topic-hero p{max-width:820px;font-size:1.18rem;color:#dfe7f1;margin:0}
+.wrap{max-width:1120px;margin:auto;padding:78px 6vw}
+.section-head{max-width:800px;margin-bottom:34px}
+.eyebrow{font-size:.78rem;letter-spacing:.16em;font-weight:800;color:#9a7a40;text-transform:uppercase}
+h2{font-size:clamp(2rem,4vw,3.1rem);line-height:1.18;color:var(--navy);margin:.25em 0 .45em}
+h3{color:var(--navy);line-height:1.35}
+.lead{font-size:1.28rem;max-width:880px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 12px 35px rgba(9,24,45,.05)}
+.num{display:block;color:var(--gold);font-weight:800;letter-spacing:.12em;font-size:.8rem;margin-bottom:14px}
+.quote{font-size:1.5rem;border-left:4px solid var(--gold);padding:12px 0 12px 24px;margin:42px 0;color:var(--navy);max-width:880px}
+.feature{display:grid;grid-template-columns:1.08fr .92fr;gap:34px;align-items:stretch;background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 16px 42px rgba(9,24,45,.07)}
+.feature-media{min-height:340px;background:#eee}
+.feature-media img{width:100%;height:100%;object-fit:cover;display:block}
+.feature-copy{padding:36px 38px 38px 4px;align-self:center}
+.feature-copy h3{font-size:2rem;margin:.25em 0 .45em}
+.tag{display:inline-block;padding:5px 10px;border:1px solid #d9c79f;border-radius:999px;color:#7a6030;margin:0 6px 6px 0;font-size:.82rem}
+.btn{display:inline-block;text-decoration:none;background:var(--gold);color:#081a30;padding:11px 18px;border-radius:999px;font-weight:800;margin:12px 7px 0 0}
+.btn.secondary{background:transparent;border:1px solid #b9aa8a;color:var(--navy)}
+.bridge{background:var(--cream)}
+.path-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.path-card{text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:18px;padding:25px;transition:.18s ease}
+.path-card:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(9,24,45,.07)}
+.path-card small{color:#9a7a40;font-weight:800;letter-spacing:.1em}
+.resource-box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;margin-top:24px}
+.resource-box h3{margin-top:0}
+.cta{text-align:center;background:var(--navy);color:#fff;border-radius:24px;padding:52px 32px}
+.cta h2{color:#fff;margin-top:0}
+.cta p{max-width:720px;margin:0 auto 18px;color:#dfe7f1}
+@media(max-width:860px){
+  .grid3,.path-grid{grid-template-columns:1fr}
+  .feature{grid-template-columns:1fr}
+  .feature-copy{padding:30px}
+  .topic-hero{padding-top:76px}
+}
+</style>
+
 </head>
 <body>
 <a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
-
 <nav class="aml-global-nav" aria-label="Primary navigation">
   <a class="aml-brand" href="index.html">ALLEN MIND LAB</a>
 
@@ -90,90 +99,72 @@ a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-conte
   </div>
 </nav>
 
-<header class="hero">
-  <div class="kicker">POSITIVE BEHAVIOR SUPPORT</div>
-  <h1>PBS｜Behavior is communication.</h1>
-  <p>問題行為不是單純需要被制止的事件，而可能是人在有限能力與環境條件下，用來表達需求、逃避壓力或調節自己的方式。</p>
+<header class="topic-hero">
+  <div class="topic-hero-inner">
+    <div class="kicker">POSITIVE BEHAVIOR SUPPORT · PBS</div>
+    <h1>先理解行為，再支持改變。</h1>
+    <p>在 Allen Mind Lab，行為不是只需要被制止的問題。真正重要的是理解：它在什麼情境發生、完成了什麼功能，以及我們能否用更安全、更可行的方式支持同樣的需要。</p>
+  </div>
 </header>
-<main id="aml-main" class="wrap">
-  <p class="lead">問題行為不是單純需要被制止的事件，而可能是人在有限能力與環境條件下，用來表達需求、逃避壓力或調節自己的方式。</p>
-  <div class="grid"><article class="card"><h3>Understand before changing</h3><p>先理解前因、行為與後果，再形成可驗證的功能假設。</p></article>
-<article class="card"><h3>Prevention</h3><p>優先改善環境、預告、選擇、等待與溝通，而不是只在危機後處理。</p></article>
-<article class="card"><h3>SAFE</h3><p>Safety · Attune · Flexibility · Evaluate，讓支持兼顧安全、人本與持續修正。</p></article></div>
-  <div class="quote">改變行為之前，先試著理解這個人正在告訴我們什麼。</div>
 
-  <section class="tools-section" aria-labelledby="practice-tools-title">
-    <div class="tools-kicker">Practice Tools</div>
-    <h2 id="practice-tools-title">實務工具</h2>
-    <p class="tools-lead">把 PBS 的概念帶回現場，協助整理案例、形成假設，並產出可由團隊進一步討論與修正的策略草稿。</p>
+<main id="aml-main">
+<section class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">BEHAVIOR IS COMMUNICATION</div>
+    <h2>行為是訊息，也是人與環境互動的結果。</h2>
+  </div>
+  <p class="lead">PBS 的核心不只是降低問題行為，而是透過功能理解、事前預防、技能教學與環境調整，增加一個人可以成功參與生活的可能性。</p>
+  <div class="grid3"><article class="card"><span class="num">01 · UNDERSTAND</span><h3>先理解，再改變</h3><p>辨識行為功能、前因與後果，不急著用標籤解釋一個人。</p></article><article class="card"><span class="num">02 · PREVENT</span><h3>把支持放在行為升高之前</h3><p>調整需求、環境、節奏與可預期性，往往比事後制止更有效。</p></article><article class="card"><span class="num">03 · SUPPORT</span><h3>教會更好的替代方式</h3><p>不只拿掉不安全的行為，也要建立更有效的表達與參與方式。</p></article></div>
+  <div class="quote">PBS 想問的不是只有「怎麼讓他不要這樣做」，而是：<strong>我們能不能讓他有更好的方式，得到真正需要的東西？</strong></div>
+</section>
 
-    <article class="tool-card">
-      <h3>AML PBS Companion</h3>
-      <p class="tool-subtitle">正向行為支持實務夥伴</p>
-      <p>協助第一線工作者整理情緒行為案例、進行 ABC 分析、提出功能假設與 PBS 策略草稿。AI 作為整理與思考輔助，不取代現場觀察、專業評估與團隊判斷。</p>
-
-      <div class="tool-actions">
-        <a class="btn"
-           href="https://chatgpt.com/g/g-6a17ee42c9588191abb89a20d3625d8f-aml-pbs-companion-zheng-xiang-xing-wei-zhi-chi-shi-wu-huo-ban"
-           target="_blank"
-           rel="noopener noreferrer">
-          Open AML PBS Companion ↗
-        </a>
-      </div>
-
-      <div class="tool-note">
-        使用前請先將案例去識別化；如涉及立即安全風險、醫療疑慮或重大危機，應優先依現場專業判斷與所屬單位既有流程處理。
-      </div>
-    </article>
-
-    <div class="howto" aria-labelledby="howto-title">
-      <div class="howto-kicker">How to Use</div>
-      <h3 id="howto-title">怎麼開始</h3>
-      <p class="howto-lead">不需要先整理成完整報告。從一段去識別化的事件描述開始，就可以逐步整理。</p>
-
-      <div class="howto-grid">
-        <div class="howto-step">
-          <strong>01｜先去識別化</strong>
-          <p>使用 A生、服務對象A、CASE-01 等代稱，避免輸入姓名、病歷號、完整生日、電話、地址或可辨識照片。</p>
-        </div>
-
-        <div class="howto-step">
-          <strong>02｜描述發生了什麼</strong>
-          <p>盡量提供場域、當時活動或要求、前因、具體可觀察行為、現場回應，以及行為後的結果。</p>
-        </div>
-
-        <div class="howto-step">
-          <strong>03｜說明希望協助的方向</strong>
-          <p>可以請工具整理 ABC、改寫客觀描述、提出功能假設、形成 PBS 策略草稿，或指出還需要補哪些資料。</p>
-        </div>
-
-        <div class="howto-step">
-          <strong>04｜把結果帶回團隊</strong>
-          <p>AI 產出的是整理與思考草稿，仍需回到現場觀察、專業評估與團隊討論後再決定如何執行。</p>
-        </div>
-      </div>
-
-      <div class="howto-examples">
-        <strong>可以這樣問</strong>
-        <ul>
-          <li>請幫我把這段紀錄整理成 ABC，並區分客觀資料與推測。</li>
-          <li>這個行為可能有哪些功能？請列出支持理由與還需要觀察的資料。</li>
-          <li>請依 PBS 提出預防策略、替代行為與團隊一致話術。</li>
-          <li>請整理成行為分析與支持策略初稿，並提供下載。</li>
-        </ul>
-      </div>
-
-      <div class="howto-principle">
-        AI 給草稿，人做判斷；AI 給選項，團隊做決策。
-      </div>
-
-      <div class="howto-safety">
-        若行為突然明顯改變、伴隨疼痛、疾病、睡眠或藥物變化，應先考慮健康／醫療因素。若涉及攻擊、自傷、危險物品或其他立即安全風險，應優先依現場安全判斷與所屬單位危機處理流程處理。
-      </div>
+<section class="wrap" style="padding-top:24px">
+  <div class="section-head">
+    <div class="eyebrow">START READING</div>
+    <h2>從一個最常被誤解的功能開始：取得關注。</h2>
+  </div>
+  <article class="feature">
+    <div class="feature-media">
+      <img src="images/articles/pbs-being-seen.png" alt="當被看見成為高挑戰行為">
     </div>
-  </section>
+    <div class="feature-copy">
+      <div class="eyebrow">START READING</div>
+      <h3>當「被看見」成為高挑戰行為</h3>
+      <p>從事前預防、積極忽略與替代行為，到冰山下的需要與班級安全邊界，重新理解「被看見」背後的行為與關係。</p>
+      <div><span class="tag">Functional Behavior</span><span class="tag">Prevention</span><span class="tag">Replacement Behavior</span><span class="tag">Safety</span></div>
+      <a class="btn" href="articles/pbs-being-seen.html">閱讀文章 →</a>
+    </div>
+  </article>
+</section>
 
-  <a class="btn" href="articles.html">閱讀相關文章 →</a>
+<section class="bridge">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">SAFE IN PRACTICE</div>
+      <h2>理解之外，現場還需要可以落地的判斷。</h2>
+      <p>AML 在 PBS × 管理實務中，持續用 SAFE 提醒現場：安全、調頻、彈性與持續評估需要同時存在。</p>
+    </div>
+    <div class="grid3"><article class="card"><span class="num">S · SAFETY</span><h3>先守住安全</h3><p>辨識立即風險，以及需要停止、換手或求援的時點。</p></article><article class="card"><span class="num">A + F</span><h3>Attune × Flexibility</h3><p>讀懂當事人與現場狀態，保留調整需求、節奏與支持方式的彈性。</p></article><article class="card"><span class="num">E · EVALUATE</span><h3>持續評估</h3><p>觀察策略是否有效，避免把一次成功變成不經檢驗的固定做法。</p></article></div>
+    
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head">
+    <div class="eyebrow">FROM THIS TOPIC TO AML</div>
+    <h2>行為支持從來不是單一專業的事。</h2>
+  </div>
+  <div class="path-grid"><a class="path-card" href="ot.html"><small>PBS → OT</small><h3>回到人的生活與參與</h3><p>理解功能之後，仍要問：我們想支持的是什麼樣的生活與職能參與？</p></a><a class="path-card" href="management.html"><small>PBS → MANAGEMENT</small><h3>讓第一線有系統可以依靠</h3><p>換手、求援、督導、記錄與跨專業合作，決定策略能不能落地。</p></a><a class="path-card" href="education.html"><small>PBS → EDUCATION</small><h3>把支持變成可以學會的能力</h3><p>對服務對象與工作者而言，教學、練習與回饋都是改變的一部分。</p></a></div>
+</section>
+
+<section class="wrap" style="padding-top:20px">
+  <div class="cta">
+    <div class="eyebrow" style="color:#c7a76a">UNDERSTAND · SUPPORT · PARTICIPATE</div>
+    <h2>真正的支持，不只讓行為下降，也讓生活的可能性增加。</h2>
+    <p>從功能理解開始，走向預防、替代技能、環境支持與團隊系統。</p>
+    <a class="btn" href="articles.html">Explore Articles →</a>
+  </div>
+</section>
 </main>
 
 <footer class="aml-global-footer">
@@ -225,7 +216,6 @@ a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-conte
     </div>
   </div>
 </footer>
-
 <script src="aml-site.js" defer></script>
 </body>
 </html>
