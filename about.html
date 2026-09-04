@@ -499,23 +499,106 @@ section{padding:92px 8vw}
   .chief-card{padding:28px 24px}
   .aml-footer-links{grid-template-columns:1fr}
 }
+
+/* ===== About vNext ===== */
+.why-aml{
+  background:#fffdf9;
+}
+
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:36px;
+}
+
+.why-card{
+  padding:28px;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:linear-gradient(145deg,#fff,#faf7f0);
+  box-shadow:0 10px 28px rgba(15,23,42,.04);
+}
+
+.why-card small{
+  display:block;
+  color:var(--gold);
+  font-weight:800;
+  letter-spacing:.12em;
+  margin-bottom:7px;
+}
+
+.why-card h3{
+  margin:0 0 10px;
+  color:var(--navy);
+  font-size:1.25rem;
+}
+
+.why-card p{
+  margin:0;
+  color:var(--muted);
+}
+
+.about-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:12px;
+  margin-top:24px;
+}
+
+.btn-secondary{
+  display:inline-block;
+  padding:10px 17px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  color:var(--navy);
+  font-weight:800;
+  background:white;
+  transition:.2s;
+}
+
+.btn-secondary:hover{
+  border-color:var(--gold);
+  transform:translateY(-2px);
+}
+
+.chief-section{
+  background:#faf8f3;
+}
+
+.chief-intro{
+  max-width:900px;
+  margin:0 auto 28px;
+  text-align:center;
+}
+
+.chief-intro .section-lead{
+  margin-left:auto;
+  margin-right:auto;
+}
+
+@media(max-width:980px){
+  .why-grid{grid-template-columns:1fr}
+}
+
 </style>
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
 <!-- AML SEO / Social Preview -->
-<link rel="canonical" href="https://allen-mind-lab.pages.dev/about.html">
+<link rel="canonical" href="https://allenmindlab.com/about">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Allen Mind Lab">
 <meta property="og:title" content="About AML | Allen Mind Lab">
 <meta property="og:description" content="Allen Mind Lab 核心理念與一核・三層・六域架構：從理解人、支持改變，到建立可持續的系統，回到有意義的生活。">
-<meta property="og:url" content="https://allen-mind-lab.pages.dev/about.html">
-<meta property="og:image" content="https://allen-mind-lab.pages.dev/images/aml-core-framework.png">
+<meta property="og:url" content="https://allenmindlab.com/about">
+<meta property="og:image" content="https://allenmindlab.com/images/aml-core-framework.png">
 <meta property="og:image:alt" content="Allen Mind Lab 一核三層六域核心架構">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="About AML | Allen Mind Lab">
 <meta name="twitter:description" content="Allen Mind Lab 核心理念與一核・三層・六域架構。">
-<meta name="twitter:image" content="https://allen-mind-lab.pages.dev/images/aml-core-framework.png">
+<meta name="twitter:image" content="https://allenmindlab.com/images/aml-core-framework.png">
 <link rel="stylesheet" href="aml-site.css">
 </head>
 
@@ -551,7 +634,7 @@ section{padding:92px 8vw}
     <div class="eyebrow">About Allen Mind Lab</div>
     <h1>從理解人，<br>到支持改變，<br>再到建立系統。</h1>
     <p>
-      Allen Mind Lab 不是六個彼此分離的主題，而是一套從人出發的整合架構。
+      Allen Mind Lab 不是六個彼此分離的主題，而是一個從人出發、持續生長的知識與實踐空間。
       我們從生活、參與與內在狀態理解人，透過專業實踐支持改變，
       再以教育、管理與 AI，讓好的方法能被學習、被承接，也被延伸。
     </p>
@@ -562,6 +645,57 @@ section{padding:92px 8vw}
     <em>Building A Meaningful Life.</em>
   </div>
 </header>
+
+<section class="about-allen" id="about-allen">
+  <div class="about-grid">
+    <div>
+      <div class="eyebrow">About Allen</div>
+      <h2 class="section-title">Allen Mind Lab，從長期實踐裡慢慢長出來。</h2>
+      <p class="section-lead">
+        我從職能治療出發，歷經臨床、行政、管理、正向行為支持、健康促進、
+        教育與 AI 應用。Allen Mind Lab 並不是先設計好的一套品牌，
+        而是在這些經驗不斷交會之後，逐漸形成的一個整理、實驗與分享空間。
+        不同角色帶來不同工具，但我始終關心同一件事：
+        人如何在真實生活裡重新找到參與、選擇與意義。
+      </p>
+    </div>
+    <div class="quote">
+      專業不是用來證明自己，<br>
+      而是用來增加別人的可能性。
+    </div>
+  </div>
+</section>
+
+<section class="why-aml" id="why-aml">
+  <div class="eyebrow">Why Allen Mind Lab</div>
+  <h2 class="section-title">不是為了把答案收進來，<br>而是讓好的問題繼續長大。</h2>
+  <p class="section-lead">
+    Allen Mind Lab 的起點很單純：把工作、教學、閱讀與生活裡值得留下的問題整理清楚。
+    有些來自第一線實務，有些來自跨領域學習，也有些只是某一天突然冒出的念頭。
+    透過持續書寫、查證、實驗與交流，讓原本零散的經驗逐漸形成可分享、可使用，也可繼續修正的知識。
+  </p>
+
+  <div class="why-grid">
+    <article class="why-card">
+      <small>01 · OBSERVE</small>
+      <h3>從真實問題開始</h3>
+      <p>先看見人在生活、工作、照護與學習中真正遇到的困難，而不是急著套用答案。</p>
+    </article>
+
+    <article class="why-card">
+      <small>02 · INTEGRATE</small>
+      <h3>把不同專業重新連起來</h3>
+      <p>讓職能治療、PBS、管理、教育、AI 與身心實踐彼此對話，尋找更完整的理解方式。</p>
+    </article>
+
+    <article class="why-card">
+      <small>03 · SHARE</small>
+      <h3>讓知識回到可以被使用的形式</h3>
+      <p>透過文章、教學、工具與交流，把想法從腦中帶到現場，持續接受回饋並重新優化。</p>
+    </article>
+  </div>
+</section>
+
 
 <section class="framework-section" id="framework">
   <div class="framework-intro">
@@ -657,44 +791,6 @@ section{padding:92px 8vw}
   </div>
 </section>
 
-<section class="chief-section" id="chief-of-staff">
-  <div class="chief-card">
-    <div>
-      <div class="chief-label">AI Chief of Staff</div>
-      <h3>曦兒｜AML 參謀長</h3>
-      <span class="chief-pill">AI 協作資訊整合</span>
-    </div>
-    <div>
-      <p>
-        在 AML 航艦裡，AI 不是目的，也不是取代人的駕駛者。
-        曦兒所代表的是一個「協作中樞」：協助彙整資訊、連結不同領域、
-        降低認知負荷，並在需要時提供第二個整理視角。
-      </p>
-      <p style="margin-top:12px;color:#f1f5f9;font-weight:700;">
-        人仍然負責價值、關係、判斷與責任；AI 協助讓專業運作得更清楚、更有效率。
-      </p>
-    </div>
-  </div>
-</section>
-
-<section class="about-allen" id="about-allen">
-  <div class="about-grid">
-    <div>
-      <div class="eyebrow">About Allen</div>
-      <h2 class="section-title">架構來自長期實踐，而不是先有答案。</h2>
-      <p class="section-lead">
-        我從職能治療出發，歷經臨床、行政、管理、正向行為支持、健康促進、
-        教育與 AI 應用。不同角色帶來不同工具，但我始終關心同一件事：
-        人如何在真實生活裡重新找到參與、選擇與意義。
-      </p>
-    </div>
-    <div class="quote">
-      專業不是用來證明自己，<br>
-      而是用來增加別人的可能性。
-    </div>
-  </div>
-</section>
-
 <section class="journey" id="journey">
   <div class="eyebrow">My Journey</div>
   <h2 class="section-title">From 24 to 48.</h2>
@@ -779,10 +875,43 @@ section{padding:92px 8vw}
   </div>
 </section>
 
+<section class="chief-section" id="chief-of-staff">
+  <div class="chief-intro">
+    <div class="eyebrow">How AML Works · AI Collaboration</div>
+    <h2 class="section-title">AI 是協作方法，不是品牌的主角。</h2>
+    <p class="section-lead">
+      Allen Mind Lab 的內容與工具有相當一部分透過 AI 協作完成。
+      AI 用來協助整理、比較、結構化與提高表達效率；價值選擇、專業判斷、經驗與最後責任仍由人承擔。
+    </p>
+  </div>
+  <div class="chief-card">
+    <div>
+      <div class="chief-label">AI Chief of Staff</div>
+      <h3>曦兒｜AML AI 協作參謀</h3>
+      <span class="chief-pill">AI 協作資訊整合</span>
+    </div>
+    <div>
+      <p>
+        在 AML 的工作流程裡，AI 不是目的，也不是取代人的駕駛者。
+        曦兒所代表的是一個「協作中樞」：協助彙整資訊、連結不同領域、
+        降低認知負荷，並在需要時提供第二個整理視角。
+      </p>
+      <p style="margin-top:12px;color:#f1f5f9;font-weight:700;">
+        人仍然負責價值、關係、判斷與責任；AI 協助讓專業運作得更清楚、更有效率。
+      </p>
+    </div>
+  </div>
+</section>
+
+
 <section class="ending">
   <h2>Building A Meaningful Life.</h2>
   <p>ALLEN MIND LAB</p>
-  <a class="btn" href="index.html">← Back to Home</a>
+  <div class="about-actions">
+    <a class="btn" href="articles.html">Explore Articles →</a>
+    <a class="btn-secondary" href="contact.html">Contact AML →</a>
+    <a class="btn-secondary" href="index.html">← Back to Home</a>
+  </div>
 </section>
 
 <footer class="aml-global-footer aml-footer">
