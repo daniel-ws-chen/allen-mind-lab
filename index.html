@@ -881,6 +881,125 @@
       .focus-grid{grid-template-columns:1fr}
     }
 
+
+    /* ===== Featured OT Reading ===== */
+    .featured-ot{
+      background:linear-gradient(145deg,#f7f2e8,#fffdf9);
+      border-top:1px solid #ece4d6;
+      border-bottom:1px solid #ece4d6;
+    }
+
+    .featured-ot-wrap{
+      display:grid;
+      grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+      gap:46px;
+      align-items:center;
+      max-width:1180px;
+      margin:0 auto;
+    }
+
+    .featured-ot-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 11px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #dfd3bb;
+      color:#806634;
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.1em;
+      margin-bottom:16px;
+    }
+
+    .featured-ot h2{
+      margin:0 0 16px;
+      color:var(--navy);
+      font-family:Georgia,"Noto Serif TC","Times New Roman",serif;
+      font-size:clamp(1.8rem,3.2vw,3rem);
+      line-height:1.35;
+    }
+
+    .featured-ot-lead{
+      margin:0;
+      color:var(--muted);
+      line-height:1.9;
+      max-width:720px;
+    }
+
+    .featured-ot-card{
+      padding:30px;
+      border-radius:24px;
+      background:#fff;
+      border:1px solid var(--line);
+      box-shadow:0 14px 36px rgba(15,23,42,.06);
+    }
+
+    .featured-ot-meta{
+      color:#8c6f38;
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+    }
+
+    .featured-ot-card h3{
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:1.42rem;
+      line-height:1.45;
+    }
+
+    .featured-ot-sub{
+      margin:0 0 18px;
+      color:#657083;
+      line-height:1.8;
+    }
+
+    .featured-ot-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin:18px 0 22px;
+    }
+
+    .featured-ot-tag{
+      padding:7px 11px;
+      border-radius:999px;
+      background:#f8f4ec;
+      border:1px solid #e7ddcb;
+      color:#655433;
+      font-size:.78rem;
+      font-weight:750;
+    }
+
+    .featured-ot-btn{
+      display:inline-block;
+      padding:11px 18px;
+      border-radius:999px;
+      background:var(--navy);
+      color:#fff;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .featured-ot-btn:hover{
+      transform:translateY(-2px);
+      text-decoration:none;
+    }
+
+    @media(max-width:900px){
+      .featured-ot-wrap{
+        grid-template-columns:1fr;
+        gap:26px;
+      }
+
+      .featured-ot-card{
+        padding:24px;
+      }
+    }
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -1059,6 +1178,52 @@
   </div>
 
 </section>
+
+
+<section class="featured-ot reveal" id="featured-ot">
+  <div class="featured-ot-wrap">
+
+    <div>
+      <div class="featured-ot-kicker">FEATURED OT READING · 核心閱讀</div>
+
+      <h2>
+        從「人如何生活」出發，<br>
+        看見 AML 的職能治療視角。
+      </h2>
+
+      <p class="featured-ot-lead">
+        Allen Mind Lab 的主題橫跨 PBS、管理、教育、AI 與身心福祉，
+        但底層始終關心同一件事：人如何在環境中形成選擇、建立習慣、
+        發揮能力，並參與對自己有意義的生活。
+      </p>
+    </div>
+
+    <article class="featured-ot-card">
+      <div class="featured-ot-meta">MOHO × AI · OT &amp; HUMAN OCCUPATION</div>
+
+      <h3>當 AI 開始參與我們的選擇</h3>
+
+      <p class="featured-ot-sub">
+        從 Model of Human Occupation（MOHO）看生成式 AI 如何進入人的意志、
+        習慣化、表現能力與環境，重新思考 AI 時代的職能生活。
+      </p>
+
+      <div class="featured-ot-tags" aria-label="MOHO 核心概念">
+        <span class="featured-ot-tag">Volition｜意志</span>
+        <span class="featured-ot-tag">Habituation｜習慣化</span>
+        <span class="featured-ot-tag">Performance Capacity｜表現能力</span>
+        <span class="featured-ot-tag">Environment｜環境</span>
+      </div>
+
+      <a class="featured-ot-btn"
+         href="articles/ai-human-occupation-moho.html">
+        Read Featured OT Article →
+      </a>
+    </article>
+
+  </div>
+</section>
+
 
 <section class="thoughts reveal" id="thoughts">
 
