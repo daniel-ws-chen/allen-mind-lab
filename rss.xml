@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <rss version="2.0">
 <channel>
 <title>Allen Mind Lab — Articles</title>
 <link>https://allenmindlab.com/articles</link>
 <description>關於職能治療、PBS、管理、教育、AI 與身心福祉，分享值得留下的內容。</description>
 <language>zh-TW</language>
-<lastBuildDate>Fri, 04 Sep 2026 16:30:00 +0800</lastBuildDate>
+<lastBuildDate>Mon, 07 Sep 2026 09:54:00 +0800</lastBuildDate>
 
-<item>
+<item><title>職能治療師為什麼需要學管理？</title><link>https://allenmindlab.com/articles/ot-management-why-management-matters</link><guid>https://allenmindlab.com/articles/ot-management-why-management-matters</guid><pubDate>Mon, 07 Sep 2026 00:00:00 +0800</pubDate><description>從專業執行者走向管理者，理解職能治療服務背後的目標、資源、團隊、品質與組織支持。</description></item><item>
 <title>當 AI 開始參與我們的選擇</title>
 <link>https://allenmindlab.com/articles/ai-human-occupation-moho</link>
 <guid>https://allenmindlab.com/articles/ai-human-occupation-moho</guid>
