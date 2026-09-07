@@ -69,6 +69,27 @@ h3{color:var(--navy);line-height:1.35}
   .feature-copy{padding:30px}
   .topic-hero{padding-top:76px}
 }
+
+/* AML_DOMAIN_CATALOG_CSS_START */
+/* AML domain article catalog: scoped, responsive, no changes to existing cards. */
+.aml-domain-catalog{padding-top:44px}
+.aml-domain-catalog__head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.aml-domain-catalog__head h2{margin:.25em 0 .4em}
+.aml-domain-catalog__head p{margin:0;max-width:780px;color:var(--muted)}
+.aml-domain-catalog__count{white-space:nowrap;color:var(--navy);font-weight:700;font-size:.95rem}
+.aml-domain-catalog__count strong{font-size:2.4rem;line-height:1.1;display:block;color:var(--navy)}
+.aml-domain-catalog__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.aml-domain-catalog__card{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .18s ease,border-color .18s ease}
+.aml-domain-catalog__card:hover{transform:translateY(-2px);border-color:var(--gold)}
+.aml-domain-catalog__card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.aml-domain-catalog__meta{font-size:.78rem;letter-spacing:.04em;color:var(--muted);font-weight:700}
+.aml-domain-catalog__card h3{font-size:1.28rem;line-height:1.45;margin:0;color:var(--navy)}
+.aml-domain-catalog__card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.8;flex:1}
+.aml-domain-catalog__read{color:#8a6a32;font-size:.9rem;font-weight:800;margin-top:4px}
+.aml-domain-catalog__all{margin-top:24px}
+@media(max-width:700px){.aml-domain-catalog__grid{grid-template-columns:1fr}.aml-domain-catalog__card{padding:22px}}
+/* AML_DOMAIN_CATALOG_CSS_END */
+
 </style>
 
 <style>
@@ -293,7 +314,55 @@ h3{color:var(--navy);line-height:1.35}
     </p>
   </section>
 
-  <section class="wrap" style="padding-top:20px">
+  <!-- AML_DOMAIN_CATALOG_START -->
+<section class="wrap aml-domain-catalog" id="domain-articles" aria-labelledby="domain-articles-title" data-domain="ot">
+  <div class="aml-domain-catalog__head">
+    <div>
+      <div class="eyebrow">EXPLORE ARTICLES · OT &amp; Human Occupation</div>
+      <h2 id="domain-articles-title">本領域全部文章</h2>
+      <p>依 Articles 的正式分類收錄；同一篇文章可能屬於多個領域，以下各篇均可獨立閱讀。</p>
+    </div>
+    <div class="aml-domain-catalog__count" aria-label="本領域收錄 5 篇文章"><strong>05</strong>篇文章</div>
+  </div>
+  <div class="aml-domain-catalog__grid">
+    <a class="aml-domain-catalog__card" href="articles/ot-management-decision-accountability.html">
+      <div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div>
+      <h3>從管理決策到當責文化</h3>
+      <p>讓責任、資源與團隊成長形成良性循環。從有限理性、資源合作到公平當責與人員發展。</p>
+      <span class="aml-domain-catalog__read">閱讀文章 →</span>
+    </a>
+    <a class="aml-domain-catalog__card" href="articles/ot-management-leadership-team-change.html">
+      <div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div>
+      <h3>管理與領導：如何帶領團隊一起前進？</h3>
+      <p>從共同方向、授權與領導風格，到組織變革與持續發展，理解如何讓職能治療團隊共同前進。</p>
+      <span class="aml-domain-catalog__read">閱讀文章 →</span>
+    </a>
+    <a class="aml-domain-catalog__card" href="articles/ot-management-functions-quality-improvement.html">
+      <div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div>
+      <h3>從管理五大功能到品質改善</h3>
+      <p>讓職能治療服務有系統地運作，從管理五大功能、SOP 到持續改善，建立可執行、可追蹤的專業服務系統。</p>
+      <span class="aml-domain-catalog__read">閱讀文章 →</span>
+    </a>
+    <a class="aml-domain-catalog__card" href="articles/ot-management-why-management-matters.html">
+      <div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div>
+      <h3>職能治療師為什麼需要學管理？</h3>
+      <p>從專業執行者走向管理者，理解職能治療服務背後的目標、資源、團隊、品質與組織支持。</p>
+      <span class="aml-domain-catalog__read">閱讀文章 →</span>
+    </a>
+    <a class="aml-domain-catalog__card" href="articles/ai-human-occupation-moho.html">
+      <div class="aml-domain-catalog__meta">2026.09.04 · OT × AI</div>
+      <h3>當 AI 開始參與我們的選擇</h3>
+      <p>從 MOHO 看 3C 到 AI：科技如何從延伸行動，走進人的能力、
+      習慣、判斷、選擇與職能生活。</p>
+      <span class="aml-domain-catalog__read">閱讀文章 →</span>
+    </a>
+  </div>
+  <div class="aml-domain-catalog__all">
+    <a class="btn secondary" href="articles.html">探索全部文章 →</a>
+  </div>
+</section>
+<!-- AML_DOMAIN_CATALOG_END -->
+<section class="wrap" style="padding-top:20px">
     <div class="cta">
       <div class="eyebrow" style="color:#c7a76a">BUILDING A MEANINGFUL LIFE</div>
       <h2>從理解人開始，讓生活有更多可能。</h2>

@@ -67,6 +67,27 @@ h3{color:var(--navy);line-height:1.35}
   .feature-copy{padding:30px}
   .topic-hero{padding-top:76px}
 }
+
+/* AML_DOMAIN_CATALOG_CSS_START */
+/* AML domain article catalog: scoped, responsive, no changes to existing cards. */
+.aml-domain-catalog{padding-top:44px}
+.aml-domain-catalog__head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.aml-domain-catalog__head h2{margin:.25em 0 .4em}
+.aml-domain-catalog__head p{margin:0;max-width:780px;color:var(--muted)}
+.aml-domain-catalog__count{white-space:nowrap;color:var(--navy);font-weight:700;font-size:.95rem}
+.aml-domain-catalog__count strong{font-size:2.4rem;line-height:1.1;display:block;color:var(--navy)}
+.aml-domain-catalog__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.aml-domain-catalog__card{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .18s ease,border-color .18s ease}
+.aml-domain-catalog__card:hover{transform:translateY(-2px);border-color:var(--gold)}
+.aml-domain-catalog__card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.aml-domain-catalog__meta{font-size:.78rem;letter-spacing:.04em;color:var(--muted);font-weight:700}
+.aml-domain-catalog__card h3{font-size:1.28rem;line-height:1.45;margin:0;color:var(--navy)}
+.aml-domain-catalog__card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.8;flex:1}
+.aml-domain-catalog__read{color:#8a6a32;font-size:.9rem;font-weight:800;margin-top:4px}
+.aml-domain-catalog__all{margin-top:24px}
+@media(max-width:700px){.aml-domain-catalog__grid{grid-template-columns:1fr}.aml-domain-catalog__card{padding:22px}}
+/* AML_DOMAIN_CATALOG_CSS_END */
+
 </style>
 
 
@@ -221,6 +242,43 @@ h3{color:var(--navy);line-height:1.35}
   <div class="path-grid"><a class="path-card" href="ot.html"><small>AI → OT</small><h3>看見科技如何改變人的職能</h3><p>效率之外，也關注意志、習慣、能力、環境與有意義的參與。</p></a><a class="path-card" href="management.html"><small>AI → MANAGEMENT</small><h3>重新設計工作，而不是只加一個工具</h3><p>把 AI 放進流程、分工、知識管理與決策支持，才可能形成組織效益。</p></a><a class="path-card" href="education.html"><small>AI → EDUCATION</small><h3>讓學習者更會思考，而不是更快交作業</h3><p>AI 可以協助產出，但教學仍要把判斷、反思與責任留給人。</p></a></div>
 </section>
 
+<!-- AML_DOMAIN_CATALOG_START -->
+<section class="wrap aml-domain-catalog" id="domain-articles" aria-labelledby="domain-articles-title" data-domain="ai">
+  <div class="aml-domain-catalog__head">
+    <div>
+      <div class="eyebrow">EXPLORE ARTICLES · AI × Practice</div>
+      <h2 id="domain-articles-title">本領域全部文章</h2>
+      <p>依 Articles 的正式分類收錄；同一篇文章可能屬於多個領域，以下各篇均可獨立閱讀。</p>
+    </div>
+    <div class="aml-domain-catalog__count" aria-label="本領域收錄 3 篇文章"><strong>03</strong>篇文章</div>
+  </div>
+  <div class="aml-domain-catalog__grid">
+    <a class="aml-domain-catalog__card" href="articles/ai-human-occupation-moho.html">
+      <div class="aml-domain-catalog__meta">2026.09.04 · OT × AI</div>
+      <h3>當 AI 開始參與我們的選擇</h3>
+      <p>從 MOHO 看 3C 到 AI：科技如何從延伸行動，走進人的能力、
+      習慣、判斷、選擇與職能生活。</p>
+      <span class="aml-domain-catalog__read">閱讀文章 →</span>
+    </a>
+    <a class="aml-domain-catalog__card" href="articles/digital-communication-boundaries.html">
+      <div class="aml-domain-catalog__meta">2026.09.02 · AI &amp; Practice</div>
+      <h3>不是不想回，是不能一直在線</h3>
+      <p>從私人 LINE、官方帳號到 AI 幕僚：為第一線工作者建立可以被找到、卻不必隨時在線的數位溝通邊界。</p>
+      <span class="aml-domain-catalog__read">閱讀文章 →</span>
+    </a>
+    <a class="aml-domain-catalog__card" href="articles/helper-support-system.html">
+      <div class="aml-domain-catalog__meta">2026.09.01 · Management &amp; Leadership</div>
+      <h3>助人者也需要被支持：自我照顧之外，還有團隊與組織的責任</h3>
+      <p>從個人的自我覺察、團隊求援與換手機制，到組織支持、
+    CARE 框架與缺工時代的工作重新設計。</p>
+      <span class="aml-domain-catalog__read">閱讀文章 →</span>
+    </a>
+  </div>
+  <div class="aml-domain-catalog__all">
+    <a class="btn secondary" href="articles.html">探索全部文章 →</a>
+  </div>
+</section>
+<!-- AML_DOMAIN_CATALOG_END -->
 <section class="wrap" style="padding-top:20px">
   <div class="cta">
     <div class="eyebrow" style="color:#c7a76a">AUGMENT · REDESIGN · JUDGE</div>
