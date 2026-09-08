@@ -106,6 +106,25 @@
   .theme-grid{grid-template-columns:1fr}
 }
 
+
+
+/* AML Research integrated bibliography and practice resources */
+.aml-biblio-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:8px}
+.aml-biblio-links .ext{margin-top:0}
+.aml-biblio-summary,.aml-biblio-caution{color:var(--muted);font-size:.9rem;line-height:1.8;margin:10px 0}
+.aml-biblio-caution{padding:12px 15px;border-left:3px solid var(--gold);background:#f8f4eb}
+.aml-research-resource{margin:28px 0 0;padding:28px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(135deg,#fff,#faf7f0)}
+.aml-research-resource h3{margin:4px 0 10px;color:var(--navy);font-size:1.35rem;line-height:1.5}
+.aml-research-resource p{margin:0 0 14px;color:var(--muted)}
+.aml-research-resource__links{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 12px}
+.aml-research-resource__links a{display:inline-flex;justify-content:center;align-items:center;padding:11px 17px;border-radius:999px;border:1px solid #c7a76a;background:var(--navy);color:#fff;font-size:.9rem;font-weight:700;text-align:center}
+.aml-research-resource__links a.secondary{background:#fff;color:var(--navy);border-color:var(--line)}
+.aml-research-resource__links a:hover{background:#18324f;color:#fff}
+.aml-research-resource__links a:focus-visible{outline:3px solid #a17b3d;outline-offset:3px}
+.aml-research-resource__note{font-size:.83rem;line-height:1.8}
+.aml-biblio-status{margin:12px 0 0;color:var(--muted);font-size:.85rem}
+@media(max-width:620px){.aml-research-resource{padding:22px 20px}.aml-research-resource__links{flex-direction:column}}
+
 </style>
   <!-- AML SEO / Social Preview -->
   <link rel="canonical" href="https://allenmindlab.com/research">
@@ -169,7 +188,7 @@
 <a href="/articles.html">Articles</a>
 <a href="/contact.html">Contact</a>
   </div>
-</nav><header class="hero"><div class="eyebrow">Research & Academic Work</div><h1>Research & Practice Inquiry</h1><p class="lead">從職能治療、感覺處理與實證實務出發，逐步延伸至精神復健、機構健康照護、藥事長照、身心障礙服務，以及易讀易懂與人權實踐。這些研究與發表，不只是學術紀錄，也呈現不同階段持續追問「如何讓服務更有效、更可理解，也更貼近人的生活」的歷程。</p><div class="stats"><div class="stat"><strong>6</strong><span>Journal Articles｜期刊論文</span></div><div class="stat"><strong>11</strong><span>Conference Papers & Posters｜研討會論文與海報</span></div><div class="stat"><strong>3</strong><span>Research Projects & Reports｜研究計畫與成果報告</span></div></div></header><main id="aml-main">
+</nav><header class="hero"><div class="eyebrow">Research & Academic Work</div><h1>Research & Practice Inquiry</h1><p class="lead">從職能治療、感覺處理與實證實務出發，逐步延伸至精神復健、機構健康照護、藥事長照、身心障礙服務，以及易讀易懂與人權實踐。這些研究與發表，不只是學術紀錄，也呈現不同階段持續追問「如何讓服務更有效、更可理解，也更貼近人的生活」的歷程。</p><div class="stats"><div class="stat"><strong>7</strong><span>Journal Articles｜已核實期刊論文</span></div><div class="stat"><strong>11</strong><span>Conference Papers & Posters｜研討會論文與海報</span></div><div class="stat"><strong>3</strong><span>Research Projects & Reports｜研究計畫與成果報告</span></div></div></header><main id="aml-main">
 
 <section class="research-intro">
   <div class="eyebrow">Selected Research Themes</div>
@@ -214,6 +233,17 @@
     </article>
   </div>
 </section>
+<aside class="aml-research-resource" aria-labelledby="aml-easyread-resource-title" id="easy-read-resources">
+  <div class="eyebrow">OFFICIAL PRACTICE RESOURCE · EASY READ</div>
+  <h3 id="aml-easyread-resource-title">易讀易懂：研究、出版與實務推廣</h3>
+  <p>從易讀易懂、人權與參與的研究脈絡，延伸至政府出版品及機構實務資源。以下連結由原出版及維護單位提供，方便讀者了解易讀理念、查找樣版與文件，並回到原始出版資訊。</p>
+  <div class="aml-research-resource__links">
+    <a href="https://www.ym.gov.taipei/News_Content.aspx?n=0273A212C84D24B3&amp;sms=3444753E80AF660B&amp;s=4CE7E9E4D42441EF" target="_blank" rel="noopener noreferrer">易讀理念與推廣經驗 ↗</a>
+    <a class="secondary" href="https://www.ym.gov.taipei/News.aspx?n=0273A212C84D24B3&amp;sms=3444753E80AF660B" target="_blank" rel="noopener noreferrer">官方專區與下載資源 ↗</a>
+    <a class="secondary" href="publications.html#easy-read-publication">生活狀況調查易讀版 ↗</a>
+  </div>
+  <p class="aml-research-resource__note">資料來源：臺北市立陽明教養院。官方專區包含權益資料、訓練教材及文宣公告等下載分類；版本、授權與使用方式請以官方說明為準。政府出版品與實務資源不計入期刊或研究計畫篇數。</p>
+</aside>
 
 <section class="trajectory" aria-labelledby="research-trajectory">
   <div class="eyebrow">Research Trajectory</div>
@@ -225,7 +255,44 @@
   </p>
 </section>
 
-<section class="section"><div class="section-head"><h2>Journal Articles</h2><span>期刊論文</span></div><article class="entry"><div class="year">2017</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>從推行易讀(Easy Read)專案談國際身心障礙者權利公約在心智障礙福利機構之實踐</h3><div class="topic-tags"><span class="topic-tag">Easy Read</span><span class="topic-tag">CRPD</span><span class="topic-tag">Disability Rights</span></div><p class="authors">尤詒君、<strong>陳威勝</strong>、王方伶</p><p class="source"><em>社區發展</em>，157期，279-285。</p>
+<section class="section"><div class="section-head"><h2>Journal Articles</h2><span>期刊論文</span></div>
+<p class="aml-biblio-status">目前已核實期刊論文7篇；另收錄1篇期刊論文摘要及1筆待核對的期刊索引紀錄。研討會與研究計畫另行統計，不將摘要或待核對紀錄混計為完整期刊論文。</p>
+<article class="entry">
+  <div class="year">2025</div>
+  <div class="entry-body">
+    <div class="type">JOURNAL ABSTRACT</div>
+    <h3>中度以上智能障礙者適用之體適能檢測初探：肌力、肌耐力與動態平衡評估－以臺北某智能障礙機構為例</h3>
+    <div class="topic-tags"><span class="topic-tag">Physical Fitness</span><span class="topic-tag">Intellectual Disabilities</span><span class="topic-tag">Assessment</span></div>
+    <p class="authors">張家綺、葉俊郎、洪麗晴、張良銘、黃湘如、<strong>陳威勝</strong></p>
+    <p class="source"><em>物理治療（Formosan Journal of Physical Therapy）</em>，50卷4期，332頁，2025年12月。DOI：10.6215/FJPT.202512.P06。</p>
+    <p class="aml-biblio-summary">研究以改良式握力、30秒椅子起身及4公尺舒適步行速度，探索中度以上智能障礙者體適能檢測的信度與機構可行性。此項為期刊論文摘要，並非完整原著論文。</p>
+    <div class="aml-biblio-links"><a class="ext" href="https://www.airitilibrary.com/Article/Detail/15632555-N202512230021-00033" target="_blank" rel="noopener noreferrer">華藝書目與摘要 ↗</a> <a class="ext" href="https://doi.org/10.6215/FJPT.202512.P06" target="_blank" rel="noopener noreferrer">DOI ↗</a></div>
+  </div>
+</article>
+<article class="entry">
+  <div class="year">2024</div>
+  <div class="entry-body">
+    <div class="type">JOURNAL ARTICLE</div>
+    <h3>住宿型機構COVID-19感染管制蛻變及創新</h3>
+    <div class="topic-tags"><span class="topic-tag">Infection Control</span><span class="topic-tag">Residential Care</span><span class="topic-tag">Quality Improvement</span></div>
+    <p class="authors">廖芸禪、姜秀子、王方伶、<strong>陳威勝</strong>、葉俊郎</p>
+    <p class="source"><em>長照感染預防控制雜誌</em>，3卷2期，1–16頁，2024年12月。</p>
+    
+    <div class="aml-biblio-links"><a class="ext" href="https://tpl.ncl.edu.tw/NclService/JournalContentDetail?SysId=A2026044512" target="_blank" rel="noopener noreferrer">國家圖書館書目 ↗</a></div>
+  </div>
+</article>
+<article class="entry">
+  <div class="year">2025</div>
+  <div class="entry-body">
+    <div class="type">JOURNAL INDEX RECORD · BIBLIOGRAPHY PENDING</div>
+    <h3>參加114年住宿機構強化感染管制獎勵計畫--指標五桌上演習之經驗分享</h3>
+    <div class="topic-tags"><span class="topic-tag">Infection Control</span><span class="topic-tag">Emergency Preparedness</span><span class="topic-tag">Tabletop Exercise</span></div>
+    <p class="authors">作者名單：待依正式期刊書目核對。</p>
+    <p class="source">民國114年（2025）。期刊名稱、卷期、頁次及正式出版日期待核對。</p>
+    <p class="aml-biblio-caution">此紀錄依作者提供之題名、年份及國圖連結先行收錄；完整書目尚未取得，不列入已核實期刊篇數。請以原始出版紀錄為準。</p>
+    <div class="aml-biblio-links"><a class="ext" href="https://tpl.ncl.edu.tw/NclService/JournalContentDetail?SysId=A2026046733" target="_blank" rel="noopener noreferrer">國家圖書館書目 ↗</a></div>
+  </div>
+</article><article class="entry"><div class="year">2017</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>從推行易讀(Easy Read)專案談國際身心障礙者權利公約在心智障礙福利機構之實踐</h3><div class="topic-tags"><span class="topic-tag">Easy Read</span><span class="topic-tag">CRPD</span><span class="topic-tag">Disability Rights</span></div><p class="authors">尤詒君、<strong>陳威勝</strong>、王方伶</p><p class="source"><em>社區發展</em>，157期，279-285。</p>
             <a class="ext" href="https://cdj.sfaa.gov.tw/Journal/Content?gno=7165" target="_blank" rel="noopener noreferrer">Official article ↗</a>
           </div></article>
 <article class="entry"><div class="year">2016</div><div class="entry-body"><div class="type">JOURNAL ARTICLE</div><h3>推動身心障礙者體適能活動成效初探–以臺北市立陽明教養院為例</h3><div class="topic-tags"><span class="topic-tag">Health Promotion</span><span class="topic-tag">Disability Services</span><span class="topic-tag">Participation</span></div><p class="authors">尤詒君、陳麒文、<strong>陳威勝</strong>、陳麗蓉、吳治慶、楊凱翔</p><p class="source"><em>社區發展</em>，156期，460-474。</p>
