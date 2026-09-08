@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>當 GPT 開始審 GPT：從 AI 產出到品質協作的實驗｜Allen Mind Lab</title><meta content="從四篇教材的製作經驗出發，分享如何透過不同 GPT 的分工、反覆審修、文獻檢視與人工驗收，重新思考 AI 時代的品質協作。" name="description"/><meta content="article" property="og:type"/><meta content="Allen Mind Lab" property="og:site_name"/><meta content="當 GPT 開始審 GPT：從 AI 產出到品質協作的實驗" property="og:title"/><meta content="從四篇教材的製作經驗出發，分享如何透過不同 GPT 的分工、反覆審修、文獻檢視與人工驗收，重新思考 AI 時代的品質協作。" property="og:description"/><meta content="https://allenmindlab.com/articles/ai-review-quality-collaboration" property="og:url"/><meta content="summary_large_image" name="twitter:card"/><link href="https://allenmindlab.com/articles/ai-review-quality-collaboration" rel="canonical"/><link href="/favicon.svg" rel="icon" type="image/svg+xml"/><link href="/aml-site.css" rel="stylesheet"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "當 GPT 開始審 GPT：從 AI 產出到品質協作的實驗", "alternativeHeadline": "當不同 AI 開始參與同一份工作，我們是否也需要重新學習如何分工、檢核與承擔責任？", "datePublished": "2026-09-08", "dateModified": "2026-09-08", "author": {"@type": "Person", "name": "陳威勝"}, "publisher": {"@type": "Organization", "name": "Allen Mind Lab"}, "mainEntityOfPage": "https://allenmindlab.com/articles/ai-review-quality-collaboration", "description": "從四篇教材的製作經驗出發，分享如何透過不同 GPT 的分工、反覆審修、文獻檢視與人工驗收，重新思考 AI 時代的品質協作。", "isAccessibleForFree": true, "image": "https://allenmindlab.com/images/articles/ai-review-quality-collaboration-social.png"}</script><style>
+:root{--learn-navy:#061a36;--learn-gold:#b28a4b;--learn-cream:#f7f2e8;--learn-ink:#182231;--learn-muted:#667085}
+.aml-learn-hero{background:#061a36;color:#fff;padding:68px 6vw 62px}
+.aml-learn-container{max-width:1040px;margin:auto}
+.aml-learn-hero .eyebrow{color:#e2c38b;letter-spacing:.12em;font-size:.78rem;font-weight:700}
+.aml-learn-hero h1{font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.4;margin:18px 0}
+.aml-learn-hero p{color:#d4dce6;line-height:1.9;max-width:760px}
+.aml-learn-main{max-width:1040px;margin:auto;padding:44px 6vw 80px}
+.aml-learn-main h2{color:#061a36;line-height:1.5;margin:32px 0 16px}
+.aml-learn-main p{line-height:1.95}
+.aml-learn-notice{background:#f7f2e8;border-left:4px solid #b28a4b;padding:20px 24px;border-radius:0 12px 12px 0;margin:24px 0;line-height:1.85}
+.aml-learn-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:26px 0}
+.aml-learn-card{display:block;padding:25px;border:1px solid #e8dfcf;border-radius:16px;background:#fffdf8;text-decoration:none;color:#182231}
+.aml-learn-card h3{margin:10px 0;color:#061a36;line-height:1.5}.aml-learn-card p{color:#667085;margin:0}
+.aml-learn-tag{display:inline-block;font-size:.73rem;letter-spacing:.06em;font-weight:700;color:#8c6f38;background:#f7f2e8;border-radius:999px;padding:5px 11px}
+.aml-learn-article{max-width:800px;margin:auto;padding:42px 6vw 80px;color:#182231;line-height:1.95}
+.aml-learn-article h2{font-family:Georgia,"Noto Serif TC",serif;color:#061a36;font-size:1.55rem;line-height:1.5;margin:48px 0 18px}
+.aml-learn-article p{margin:0 0 20px}.aml-learn-article .lede{font-size:1.1rem;color:#334155}
+.aml-learn-article blockquote{border-left:4px solid #b28a4b;background:#f7f2e8;margin:28px 0;padding:18px 24px;font-weight:600}
+.aml-learn-article a{color:#315d8b;overflow-wrap:anywhere}
+.aml-learn-article .source-note{background:#f7f2e8;border-radius:14px;padding:20px 24px;font-size:.9rem;color:#475569;margin:32px 0}
+.aml-learn-article .source-note p{margin-bottom:0}
+.aml-learn-article .learning-check{border:1px solid #e8dfcf;border-radius:16px;padding:20px 24px;margin-top:24px}
+.aml-learn-article .learning-check summary{cursor:pointer;font-weight:700}
+.aml-learn-article .learning-check p{margin-top:14px}
+.aml-learn-article .aml-share{margin-top:44px;padding-top:24px;border-top:1px solid #e8dfcf}
+.aml-learn-article .aml-share-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.aml-learn-article .aml-share-btn{border:1px solid #b28a4b;background:#061a36;color:#fff;border-radius:999px;padding:10px 18px;cursor:pointer;font:inherit}
+.aml-learn-article .aml-share-btn.secondary{background:transparent;color:#061a36}
+@media(max-width:640px){.aml-learn-grid{grid-template-columns:1fr}.aml-learn-hero{padding:44px 6vw}.aml-learn-article{padding-top:30px}.aml-learn-card{padding:20px}}
+
+.aml-article-image{margin:0 0 38px}.aml-article-image img{display:block;width:100%;height:auto;border-radius:14px;object-fit:cover}
+.aml-article-image figcaption{font-size:.82rem;color:#667085;text-align:center;margin-top:10px;line-height:1.7}
+.aml-learning-note{margin:32px 0 36px;background:#f7f2e8;border-left:3px solid #b28a4b;border-radius:0 12px 12px 0;padding:20px 24px}
+.aml-learning-note-label{font-size:.74rem;font-weight:700;letter-spacing:.08em;color:#806338}
+.aml-learning-note h4{font-size:1.03rem;color:#061a36;margin:7px 0 9px}.aml-learning-note p{font-size:.94rem;line-height:1.9;margin:0}
+.aml-references,.aml-source-notes{border-top:1px solid #e8dfcf;margin-top:48px;padding-top:4px}
+.aml-references ol{padding-left:1.55em}.aml-references li{margin:0 0 18px;line-height:1.85;overflow-wrap:anywhere}
+.aml-references li:target{background:#f7f2e8;border-radius:6px}
+.aml-source-notes{font-size:.9rem;color:#5b6472}.aml-source-notes h2{font-size:1.25rem}
+.aml-ref{font-size:.82em;white-space:nowrap}.aml-back{font-size:.9rem}
+.aml-learn-article h3{font-size:1.17rem;color:#253c5c;line-height:1.6;margin:32px 0 13px}
+.aml-learn-article blockquote{font-style:normal}
+@media(max-width:600px){.aml-learn-hero{padding:48px 22px 38px}.aml-learn-article{padding:28px 22px 64px}.aml-article-image{margin:0 0 26px}.aml-learning-note{padding:17px 18px;margin:27px 0}.aml-learn-article h2{font-size:1.38rem;margin-top:38px}}
+
+/* Article 2: scoped reading and poster enhancements */
+.aml-learn-article{max-width:820px}
+.aml-learn-article h3{font-size:1.18rem;line-height:1.65;color:#253c5c;margin:32px 0 14px}
+.aml-article-image.aml-wide-figure{margin:30px -110px 40px;text-align:center}
+.aml-wide-figure>a{display:block}
+.aml-wide-figure img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;border-radius:12px}
+.aml-wide-figure figcaption{font-size:.85rem;color:#667085;line-height:1.8;margin:12px 0 0}
+.aml-learning-note{background:#f7f2e8;border-left:3px solid #b28a4b;border-radius:0 12px 12px 0;padding:20px 24px;margin:32px 0;line-height:1.85}
+.aml-learning-note-label{font-size:.75rem;letter-spacing:.08em;color:#806338;font-weight:700}
+.aml-learning-note h4{font-size:1.02rem;color:#061a36;margin:8px 0 10px}
+.aml-learning-note p{font-size:.94rem;margin:0}
+.aml-references,.aml-source-notes{border-top:1px solid #e8dfcf;margin-top:52px;padding-top:6px}
+.aml-references ol{padding-left:1.5em}
+.aml-references li{margin:0 0 20px;line-height:1.85;overflow-wrap:anywhere}
+.aml-references li:target{background:#f7f2e8;border-radius:6px}
+.aml-source-notes{font-size:.91rem;color:#586474}.aml-source-notes h2{font-size:1.3rem}
+.aml-ref{font-size:.82em;white-space:nowrap}
+.aml-quality-table-scroll{width:100%;overflow-x:auto;margin:28px 0;border:1px solid #e8dfcf;border-radius:12px}
+.aml-quality-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.94rem;line-height:1.7;margin:0}
+.aml-quality-table th,.aml-quality-table td{padding:13px 14px;text-align:left;vertical-align:top;border-bottom:1px solid #e8dfcf;overflow-wrap:anywhere}
+.aml-quality-table th{background:#f7f2e8;color:#061a36;font-weight:700}
+.aml-quality-table tr:last-child td{border-bottom:0}
+.aml-quality-table th:first-child{width:25%}.aml-quality-table th:nth-child(2){width:34%}
+.aml-article-next{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;margin:36px 0 0;padding-top:22px;border-top:1px solid #e8dfcf}
+.aml-article-next a{font-size:.91rem}
+@media(max-width:1100px){.aml-article-image.aml-wide-figure{margin-left:-5vw;margin-right:-5vw}}
+@media(max-width:600px){
+.aml-learn-article{padding:28px 22px 64px}
+.aml-article-image.aml-wide-figure{margin:24px -22px 32px}
+.aml-wide-figure img{border-radius:0}
+.aml-wide-figure figcaption{padding:0 22px;text-align:left}
+.aml-quality-table{min-width:620px;font-size:.88rem}
+.aml-quality-table th,.aml-quality-table td{padding:11px 12px}
+.aml-learning-note{padding:17px 18px}
+.aml-article-next{display:block}
+.aml-article-next a{display:block;margin-bottom:12px}
+}
+
+/* AML third management article: responsive editorial tables and full poster. */
+.aml-learn-article{max-width:820px}
+.aml-learn-article h3{font-size:1.18rem;line-height:1.65;color:#253c5c;margin:32px 0 14px}
+.aml-article-image.aml-wide-figure{margin:30px -110px 40px;text-align:center}
+.aml-wide-figure>a{display:block}.aml-wide-figure img{display:block;width:100%;height:auto;max-width:100%;object-fit:contain;border-radius:12px}
+.aml-wide-figure figcaption{font-size:.85rem;color:#667085;line-height:1.8;margin:12px 0 0}
+.aml-article-table-scroll{width:100%;max-width:100%;overflow-x:auto;margin:28px 0;border:1px solid #e8dfcf;border-radius:12px;-webkit-overflow-scrolling:touch}
+.aml-article-table{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.94rem;line-height:1.7;margin:0}
+.aml-article-table th,.aml-article-table td{padding:13px 14px;text-align:left;vertical-align:top;border-bottom:1px solid #e8dfcf;overflow-wrap:anywhere}
+.aml-article-table th{background:#f7f2e8;color:#061a36;font-weight:700}.aml-article-table tr:last-child td{border-bottom:0}
+.aml-references,.aml-source-notes{border-top:1px solid #e8dfcf;margin-top:52px;padding-top:6px}
+.aml-references ol{padding-left:1.5em}.aml-references li{margin:0 0 20px;line-height:1.85;overflow-wrap:anywhere}
+.aml-references li:target{background:#f7f2e8;border-radius:6px}
+.aml-source-notes{font-size:.91rem;color:#586474}.aml-source-notes h2{font-size:1.3rem}
+.aml-ref{font-size:.82em;white-space:nowrap}
+.aml-article-next{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;margin:36px 0 0;padding-top:22px;border-top:1px solid #e8dfcf}
+.aml-article-next a{font-size:.91rem}
+@media(max-width:1100px){.aml-article-image.aml-wide-figure{margin-left:-5vw;margin-right:-5vw}}
+@media(max-width:600px){.aml-learn-article{padding:28px 22px 64px}.aml-article-image.aml-wide-figure{margin:24px -22px 32px}.aml-wide-figure img{border-radius:0}.aml-wide-figure figcaption{padding:0 22px;text-align:left}.aml-article-table{min-width:620px;font-size:.88rem}.aml-article-table th,.aml-article-table td{padding:11px 12px}.aml-article-next{display:block}.aml-article-next a{display:block;margin-bottom:12px}}
+
+html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}body{margin:0;min-width:0}
+
+/* Article 4: long-form reading refinements; scoped to this article. */
+.aml-learn-article{max-width:820px;min-width:0}
+.aml-learn-article .aml-article-toc{margin:28px 0 38px;padding:22px 26px;background:#f7f2e8;border:1px solid #e8dfcf;border-radius:16px}
+.aml-article-toc strong{display:block;color:#061a36;font-size:1rem;margin-bottom:13px}
+.aml-article-toc div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 22px}
+.aml-article-toc a{font-size:.91rem;line-height:1.8;text-decoration:none;overflow-wrap:anywhere}
+.aml-article-toc a:hover{text-decoration:underline}
+.aml-learn-article .aml-article-table-scroll{min-width:0;max-width:100%}
+.aml-learn-article .aml-article-table{width:100%;table-layout:fixed}
+.aml-article-table th:first-child{width:28%}
+.aml-article-table th,.aml-article-table td{word-break:normal;overflow-wrap:anywhere}
+.aml-learn-article .aml-references li{scroll-margin-top:95px}
+.aml-safety-note{background:#f7f2e8;border-left:3px solid #b28a4b;padding:4px 22px 18px;border-radius:0 12px 12px 0}
+.aml-safety-note h2{margin-top:20px}
+.aml-safety-note p{margin-bottom:0}
+@media(max-width:600px){
+ .aml-article-toc{padding:18px 20px}
+ .aml-article-toc div{grid-template-columns:1fr}
+ .aml-learn-article .aml-article-table{min-width:560px;font-size:.88rem}
+ .aml-safety-note{padding:4px 18px 18px}
+}
+
+/* Keep the accessibility shortcut out of the logo's area. */
+.aml-skip-link{
+  position:fixed;
+  left:16px;
+  top:0;
+  transform:translateY(-150%);
+  z-index:10000;
+  transition:none;
+}
+.aml-skip-link:focus,
+.aml-skip-link:focus-visible{
+  top:76px;
+  transform:none;
+}
+</style><meta content="https://allenmindlab.com/images/articles/ai-review-quality-collaboration-social.png" property="og:image"/><meta content="當 GPT 開始審 GPT：人主導 AI 分工、反覆校閱與人工驗收的橫式海報" property="og:image:alt"/><meta content="https://allenmindlab.com/images/articles/ai-review-quality-collaboration-social.png" name="twitter:image"/><meta content="當 GPT 開始審 GPT：從 AI 產出到品質協作的實驗" name="twitter:title"/><meta content="從四篇教材的製作經驗出發，分享如何透過不同 GPT 的分工、反覆審修、文獻檢視與人工驗收，重新思考 AI 時代的品質協作。" name="twitter:description"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><style>
+.aml-learn-article{max-width:1040px;margin:auto;padding:44px 6vw 80px}
+.aml-learn-article p{line-height:1.95;margin:0 0 1.25em}
+.aml-learn-article h2{scroll-margin-top:96px}
+.aml-learn-article .aml-article-image img{display:block;max-width:100%;height:auto;margin:auto}
+.aml-learn-article .aml-ref{white-space:nowrap}
+.aml-learn-article .aml-article-toc a{overflow-wrap:anywhere}
+.aml-learn-article .aml-references li{margin-bottom:1.25em;overflow-wrap:anywhere}
+.aml-learn-article .aml-references li a{font-size:.94em}
+.aml-learn-article .aml-source-notes{overflow-wrap:anywhere}
+@media(max-width:640px){
+ .aml-learn-hero{padding:42px 22px 38px}
+ .aml-learn-article{padding:30px 22px 56px}
+ .aml-learn-article h2{font-size:1.5rem}
+ .aml-learn-article .aml-article-toc{padding:18px}
+}
+</style></head><body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav aria-label="Primary navigation" class="aml-global-nav">
+<a class="aml-brand" href="/index.html">ALLEN MIND LAB</a>
+<div class="aml-desktop-links">
+<a href="/about.html">About</a>
+<details class="aml-explore">
+<summary>Explore <span aria-hidden="true" class="aml-explore__chevron">⌄</span></summary>
+<div class="aml-explore__panel">
+<div class="aml-explore__heading">EXPLORE AML · SIX DOMAINS</div>
+<div class="aml-explore__grid">
+<a href="/ot.html"><span>OT &amp; Human Occupation</span><small>生活、職能與參與</small></a>
+<a href="/mind.html"><span>Mind &amp; Well-being</span><small>覺察、安定與身心福祉</small></a>
+<a href="/pbs.html"><span>PBS</span><small>理解行為與正向支持</small></a>
+<a href="/education.html"><span>Education</span><small>教學、學習與能力建立</small></a>
+<a href="/management.html"><span>Management &amp; Leadership</span><small>組織、團隊與品質系統</small></a>
+<a href="/ai.html"><span>AI × Practice</span><small>讓科技放大專業實踐</small></a>
+</div>
+</div>
+</details>
+<a href="/research.html">Research</a>
+<a href="/recognition.html">Recognition</a>
+<a href="/publications.html">Publications</a>
+<a href="/articles.html">Articles</a>
+<a href="/contact.html">Contact</a>
+</div>
+<button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button>
+<div class="aml-mobile-menu" id="aml-mobile-menu">
+<a href="/about.html">About</a>
+<details class="aml-explore aml-explore--mobile">
+<summary>Explore <span aria-hidden="true" class="aml-explore__chevron">⌄</span></summary>
+<div class="aml-explore__panel">
+<div class="aml-explore__heading">EXPLORE AML · SIX DOMAINS</div>
+<div class="aml-explore__grid">
+<a href="/ot.html"><span>OT &amp; Human Occupation</span><small>生活、職能與參與</small></a>
+<a href="/mind.html"><span>Mind &amp; Well-being</span><small>覺察、安定與身心福祉</small></a>
+<a href="/pbs.html"><span>PBS</span><small>理解行為與正向支持</small></a>
+<a href="/education.html"><span>Education</span><small>教學、學習與能力建立</small></a>
+<a href="/management.html"><span>Management &amp; Leadership</span><small>組織、團隊與品質系統</small></a>
+<a href="/ai.html"><span>AI × Practice</span><small>讓科技放大專業實踐</small></a>
+</div>
+</div>
+</details>
+<a href="/research.html">Research</a>
+<a href="/recognition.html">Recognition</a>
+<a href="/publications.html">Publications</a>
+<a href="/articles.html">Articles</a>
+<a href="/contact.html">Contact</a>
+</div>
+</nav>
+<header class="aml-learn-hero"><div class="aml-learn-container"><div class="eyebrow">AI × PRACTICE · NOTES FROM THE LAB</div><h1>當 GPT 開始審 GPT</h1><p>從 AI 產出到品質協作的實驗</p><p>陳威勝 · Allen Mind Lab · 2026.09.08</p></div></header>
+<main class="aml-learn-article" id="aml-main"><p><em>AI × Practice｜Allen Mind Lab</em></p><p>近年來，使用生成式 AI 協助撰寫文章、整理資料與製作內容，對許多人而言，已經逐漸成為日常工作的一部分。從構思、擬定架構到完成初稿，AI 往往能在短時間內產出一篇看起來相當完整的文章。</p>
+<p>而我自己在使用 AI 寫作時，也逐漸遇到一個有趣的現象：當 AI 已經把文章整理得很流暢、架構也相當完整，留給人直接修改的地方，有時反而沒有想像中多。</p>
+<p>但這是否代表文章已經足夠好了？還是因為我們面對一份看起來很完整的稿件時，反而不容易再看出其中的問題？</p>
+<p>這個疑問，讓我開始思考另一種可能：</p>
+<p><strong>如果我們不只是請 AI 寫稿，而是再請另一個 AI 來審查 AI 產出的文章，究竟會發生什麼事？</strong></p>
+<p>它會不會只是換一種方式稱讚原稿？會不會提出不同的意見，甚至推翻原本看似合理的論述？如果兩個 AI 的判斷不一致，又該由誰決定要採納哪一個版本？</p>
+<p>最近，我在準備職能治療管理學的課程時，正好有機會實際嘗試這個想法。我將第一週的授課簡報重新拆解、整理，延伸成四篇網站長文，並搭配海報，作為學生課後複習與延伸學習的資源。這是原本沒有預期會在一天之內完成的工作。</p>
+<p>從文章架構、文字整理、文獻核對、海報設計，到網站 HTML、排版與上稿，AI 確實讓許多原本需要不同專業協助的工作，可以在同一個工作流程中逐步完成。</p>
+<p>但真正讓我覺得有意思的，並不是「AI 一天幫我寫了四篇文章」，而是自己使用 AI 的方式，開始和過去不太一樣了。</p>
+<p><strong>如果 AI 已經能夠快速產出內容，我們是否也應該為它建立分工、審查與品質檢核的流程？</strong></p>
+<p>這個念頭，讓我開始嘗試一種有點像小型編輯室的工作方式。</p>
+<figure class="aml-article-image aml-wide-figure">
+<a aria-label="開啟完整 AI 品質協作海報" href="/images/articles/ai-review-quality-collaboration-hero.png" rel="noopener noreferrer" target="_blank">
+<img alt="從人與 AI 的線性使用，轉向創作 AI、審查 AI、反覆修訂、原文查證與人工驗收的協作流程。" decoding="async" height="1055" loading="eager" src="/images/articles/ai-review-quality-collaboration-hero.png" width="1491"/>
+</a><figcaption>從線性產出到多角色協作：分工、反覆改善、來源查證與人工當責。<a href="/images/articles/ai-review-quality-collaboration-hero.png" rel="noopener noreferrer" target="_blank">開啟完整海報 ↗</a></figcaption>
+</figure><nav aria-label="本文目錄" class="aml-article-toc"><strong>本文目錄</strong><div><a href="#section-1">從「請 AI 幫我做」，到「如何安排 AI 一起做」</a><a href="#section-2">我的 AI 寫作與審稿流程</a><a href="#section-3">不同角色，為什麼可能帶來不同的檢視角度？</a><a href="#section-4">AI 審 AI，並不等於完成事實查證</a><a href="#section-5">原來，我正在把管理學用在自己的工作上</a><a href="#section-6">未來的工作，可能不再只是「人與一個 AI」</a><a href="#section-7">從產出更多，走向更有意識地工作</a></div></nav><h2 id="section-1">從「請 AI 幫我做」，到「如何安排 AI 一起做」</h2>
+<p>過去使用數位工具，大多是人先決定要做什麼，再操作工具完成任務。即使生成式 AI 已經能夠協助構思、寫作、分析與程式設計，我們也很容易延續這種線性的使用方式：</p>
+<p><strong>人提出要求 → AI 產出 → 人修改或使用。</strong></p>
+<p>這樣的方式並沒有不好。對許多簡單任務而言，它快速、直接，也已經非常有幫助。但當工作變得比較複雜，尤其是需要公開發布的專業文章、教學教材或網站內容時，單純追求「產出完成」似乎還不夠。</p>
+<p>一篇文章可能文字流暢，卻不一定符合作者原本的意思；架構看起來完整，卻可能存在論述跳躍；參考文獻列得很漂亮，卻仍然需要確認來源是否正確、是否真的支持文中的主張。生成式 AI 的相關研究也提醒我們，流暢的文字不應被直接等同於可靠的知識。<a aria-label="前往參考資料 1" class="aml-ref" href="#ref-1">[1]</a></p>
+<p>因此，我開始嘗試把「產出」與「審查」分成不同任務。</p>
+<p>這並不是什麼新的技術發明。熟悉 AI 的朋友可能早已接觸過多代理人協作、Agent、自動化工作流程，或不同模型互相審查的設計。相關研究也已探討透過不同 AI 角色之間的對話、回饋與分工，完成較複雜的任務。[2,3]</p>
+<p>我想分享的，只是一位非資訊背景的專業工作者，如何從自己的實際需求出發，慢慢開始理解：</p>
+<p><strong>AI 不一定只能是一個等待指令的工具，也可以被安排成不同任務角色，參與同一套由人統籌的工作流程。</strong></p>
+<h2 id="section-2">我的 AI 寫作與審稿流程</h2>
+<p>目前，我在 AML 文章製作上，開始採用一套相對簡單、由人主導的協作流程。</p>
+<p>首先，由我決定文章主題、教學目的、核心觀點與希望保留的經驗，再與一般 GPT 協作，完成架構與初稿。這個階段的重點，是讓原本散落的想法逐漸成形，成為可以閱讀、討論與修改的文字。</p>
+<p>接著，我會將稿件交給另一個自訂 GPT（My GPT）進行校閱。這個 GPT 事先設定了 AML 的寫作風格、編輯原則與審查要求，因此它的任務不是重新寫出一篇自己喜歡的文章，而是檢查現有稿件是否符合既定標準。</p>
+<p>校閱內容包含文字語氣、論述結構、重複段落、參考文獻、專業界線，以及是否需要補充安全警語。它也會透過紅黃綠燈分析，區分哪些地方可以保留、哪些需要補強，以及哪些問題在發布前必須處理。</p>
+<p>完成校閱後，我會將審稿意見帶回原本的 GPT 對話，逐項討論與整合修訂。修訂後，也可能再次送交自訂 GPT 檢查。這個過程並不是一次審稿、一次修稿就必然結束，而是依照問題性質來回數次，直到重要的論述、引用與安全疑慮獲得適當處理。</p>
+<p>若參考文獻出現疑慮，我會要求 AI 協助調閱原始文獻或可取得的原文資料，再由自己檢視相關內容，確認研究是否支持文章主張，以及引用是否需要修正。若無法取得原文，就不能把尚未完成的查證宣稱為已經確認。</p>
+<p>整個流程並不是單向的：</p>
+<p><strong>人設定目的 → AI 協助初稿 → 審稿與修稿反覆循環 → 必要時調閱原文、由作者檢視 → 人工驗收與發布。</strong></p>
+<p>文獻檢視也不是只能安排在最後。只要任何一輪審查出現疑慮，就可以暫時回到原始資料，確認後再繼續修稿。</p>
+<p>為了讓不同工作角色更容易辨識，GPT 在協作過程中曾自行提出「曦兒」與「汐靈」兩個名稱，經我確認後沿用。前者主要協助創作與製作，後者則依照我設定的 AML 風格與審查規範進行校閱。於是偶爾就會出現「曦兒交稿，汐靈退件」的有趣情況。XDD</p>
+<p>但這些名稱只是工作角色的暱稱，並不代表 AI 具有獨立人格。真正重要的，是透過不同任務設定，讓同一份作品獲得不同的檢視角度，並形成持續改善的循環。</p>
+<h2 id="section-3">不同角色，為什麼可能帶來不同的檢視角度？</h2>
+<p>如果一個 AI 已經參與了文章的構思與寫作，它在後續修改時，可能會延續原本的架構、假設與表達方式。因此，我希望透過另一個具有不同任務設定的 GPT，讓它暫時不以「協助完成文章」為主要目標，而是改以「找出可能需要修正的地方」為任務。</p>
+<p>例如，初稿階段可能比較重視內容是否完整、段落是否連貫；審稿階段則特別檢查：文章是否偏離作者原意？是否有過度肯定的說法？研究結果與作者推論是否混在一起？參考文獻是否支持相應主張？健康、臨床或行為支持相關內容，是否需要補充適用範圍與安全提醒？</p>
+<p>這種分工的價值，不在於第二個 AI 一定比較正確，而在於<strong>不同任務設定，可以協助我們刻意建立不同的檢查視角。</strong></p>
+<p>AI 研究已有模型自我回饋、反覆修訂及多角色協作的相關探索。<a aria-label="前往參考資料 2" class="aml-ref" href="#ref-2">[2]</a><a aria-label="前往參考資料 3" class="aml-ref" href="#ref-3">[3]</a><a aria-label="前往參考資料 4" class="aml-ref" href="#ref-4">[4]</a> 不過，這些研究的方法與評估條件，並不等同於我目前使用的自訂 GPT 流程，只能作為概念參照，不能直接證明我的流程一定能提升文章正確率。</p>
+<p>紅黃綠燈分析，也讓審稿意見不只是「這篇寫得很好」或「建議再潤飾」，而是進一步區分問題的性質與優先順序。</p>
+<p>紅燈代表可能有重大錯誤、來源問題或安全風險，需要在發布前處理；黃燈代表論述、證據或表達仍需補強；綠燈則表示目前檢查範圍內未發現重大問題，可以進入下一階段。</p>
+<p>這些燈號只是輔助判斷的工具。綠燈不代表文章完全正確，紅燈也不代表 AI 的判斷必然正確。它們的目的，是協助作者辨識需要重新檢查的地方，而不是取代作者的決定。</p>
+<h2 id="section-4">AI 審 AI，並不等於完成事實查證</h2>
+<p>即使使用兩個不同設定的 GPT，它們仍然可能共享相似的知識限制、錯誤假設或推論盲點。第一個 AI 寫錯的內容，第二個 AI 不一定能發現；第二個 AI 提出的修正，也不一定就比原稿正確。</p>
+<p>因此，我不會把「另一個 GPT 也認為正確」當成完成查證的依據。</p>
+<p>尤其是參考文獻，當審稿過程出現疑慮時，我會要求 AI 協助調閱原始文獻或可取得的原文資料，再由自己親自檢視。需要確認的，不只是文獻標題、作者、年份或 DOI 是否正確，更包括研究實際討論了什麼，以及這些內容是否真的能支持文章中的主張。</p>
+<p>如果只能取得摘要，就應該明確知道目前判斷的限制；如果無法取得原文，也不能將 AI 的推測或二手摘要包裝成已完成的全文查證。</p>
+<p>當作者發現引用不夠精確，或研究證據不足以支持原本的說法，文章就必須回到修稿階段。必要時，可以縮小主張、補充限制、尋找更適切的來源，或直接刪除無法支持的內容。</p>
+<p>這種做法與學術出版對 AI 使用的基本要求相呼應：AI 可以協助寫作，但作者仍須對內容的正確性、完整性與適當引用負責，也不能將 AI 列為承擔責任的作者。[5,6]</p>
+<p>同樣地，安全警語也不是文章後面加上一句「僅供參考」就算完成。真正重要的是，作者是否理解內容的適用範圍、個別差異、可能風險，以及哪些情況需要進一步的專業評估。</p>
+<p>因此，我比較願意把 AI 審稿視為一種<strong>風險篩檢與品質輔助機制</strong>，而不是獨立的事實認證。它可以協助我發現問題、取得需要檢視的資料並提出修訂建議，但不能替我完成所有專業判斷，更不能替我承擔作者責任。</p>
+<h2 id="section-5">原來，我正在把管理學用在自己的工作上</h2>
+<p>這次經驗還有一個讓我覺得很有趣的地方：我剛好正在準備管理學課程。</p>
+<p>課堂上，我們討論管理如何透過目標、資源、分工、流程與評估，讓一項專業服務能夠穩定運作；也討論 SOP、品質改善、風險控管與當責，如何協助組織持續修正。</p>
+<p>回頭看自己的 AI 協作流程，竟然也出現了相似的邏輯。我需要先決定文章的目的，再安排不同角色的工作；需要建立編輯標準，讓審稿不只是憑感覺；需要檢查成果、處理問題，最後決定是否可以發布。</p>
+<p>某種程度上，這不就是一個小型的管理實驗嗎？</p>
+<p>以 PDSA（Plan–Do–Study–Act）循環為例，透過規劃、執行、研究結果與採取行動，讓工作形成反覆學習與改善的過程。<a aria-label="前往參考資料 7" class="aml-ref" href="#ref-7">[7]</a> 我的 AI 編輯流程雖然不是正式的品質改善研究，卻可以借用這個概念，理解審稿、修稿與再次檢核的循環。</p>
+<p>當然，我並不是把 AI 當成真正的員工，也不是說一個人加上幾個 GPT，就能取代完整的專業團隊。只是 AI 的出現，讓個人有機會以更低的協作門檻，嘗試組織過去需要多種專業協助才能完成的工作。</p>
+<p>這也讓我逐漸意識到，自己需要學習的，可能不再只是「如何把 Prompt 寫得更好」，而是：</p>
+<p><strong>如何拆解任務、選擇合適的工具、設定工作標準、安排相互檢核，並整合不同 AI 所提供的成果。</strong></p>
+<p>這些能力，反而與管理學所關心的問題越來越接近。</p>
+<h2 id="section-6">未來的工作，可能不再只是「人與一個 AI」</h2>
+<p>如果把這個經驗再往前想一步，未來的知識工作，或許會逐漸出現更多由人主導的多角色 AI 協作形式。</p>
+<p>不同 AI 可以依照任務設定、工具能力與工作強項，分別參與資料整理、寫作、分析、程式設計、審查或其他工作。人則需要在其中設定方向、安排分工、整合成果，並決定哪些事情必須保留給自己或交由真人專家處理。</p>
+<p>這不一定意味著所有工作都會變成自主運作的 Agent 系統，也不代表每個人都需要建立一間 AI 公司。對許多人而言，最適合的方式可能仍然是簡單的人機協作；對較複雜的任務，則可能需要更多角色、工具與檢核機制。</p>
+<p>相關人機協作研究也提醒我們，AI 的導入不只是技術能力問題，還涉及人與系統如何分配任務、理解彼此的能力限制，以及如何設計有效的合作關係。<a aria-label="前往參考資料 8" class="aml-ref" href="#ref-8">[8]</a> 因此，更多 AI 角色並不必然代表更好的成果；角色是否適合、工作是否需要、成本是否合理，以及人能否有效監督，仍然需要依情境判斷。</p>
+<p>但我認為值得思考的是：</p>
+<p><strong>當個人可以調度的數位能力越來越多，我們對「工作能力」的理解，是否也會跟著改變？</strong></p>
+<p>過去，我們可能比較重視一個人能否親自完成某項工作。未來，除了專業知識與執行能力之外，如何界定問題、組織資源、與不同 AI 協作、判斷成果品質，可能也會成為越來越重要的能力。</p>
+<p>這並不是說人不再需要學習專業。相反地，當 AI 能夠快速產出看似專業的內容時，人若缺乏基本知識與判斷能力，反而更難辨識其中的問題。</p>
+<p>AI 可以擴大我們能夠嘗試的事情，但專業知識、倫理判斷與責任意識，仍然是我們決定如何使用這些能力的重要基礎。</p>
+<h2 id="section-7">從產出更多，走向更有意識地工作</h2>
+<p>回頭看這段時間，我確實因為 AI，開始做了許多過去不曾想過的事情。從網站、文章、海報到教學資源，很多原本覺得需要不同專業協助才能完成的想法，逐漸有機會被實現。</p>
+<p>但這個過程也讓我發現，AI 的價值或許不只是讓事情變快、讓產出變多。</p>
+<p>更重要的，是它讓我們有機會重新思考：一件事情應該如何被完成？哪些工作適合交由 AI 協助？哪些地方需要第二道檢查？哪些判斷必須由人保留？而我們又希望這些新的能力，最後服務什麼樣的目的？</p>
+<p>對我而言，這套 AI 編輯流程目前仍然只是持續摸索中的實驗，談不上什麼成熟的系統，更不是技術上的創新發明。</p>
+<p>但它讓我開始從「使用 AI」，逐漸走向「設計 AI 協作」。</p>
+<p>而這個思維轉變，我覺得很值得留下。</p>
+<p><strong>AI 的進步，讓我們能夠完成更多事情；但真正值得學習的，也許是如何重新設計工作，讓不同能力形成協作，並讓人的判斷與責任始終留在其中。</strong></p>
+<p>至於那間小型 AI 編輯室，目前仍然只有一位真人總編輯。偶爾還得兼任資訊長、品管主管與網站維修人員。</p>
+<p>看來組織架構雖然逐漸成形，人力編制仍有待改善。XDD</p><section class="aml-references" id="references"><h2>延伸閱讀與概念參照</h2><p>以下資料提供本文相關概念的延伸閱讀。本文為個人實務經驗與反思，並非學術研究；所列研究不代表已直接驗證本文使用的 AI 編輯流程。</p><ol><li id="ref-1"><strong>生成式 AI 的幻覺問題</strong>｜Ji 等人（2023），Survey of Hallucination in Natural Language Generation。介紹自然語言生成可能產生不符合事實或來源的內容，作為本文討論文字流暢與可靠性差異的概念參照。<br/><a href="https://doi.org/10.1145/3571730" rel="noopener noreferrer" target="_blank">查看原始來源 ↗</a></li><li id="ref-2"><strong>多代理人協作</strong>｜Wu 等人，AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation。探討透過可自訂的 AI 代理人、對話與工具協作完成任務，作為本文角色分工的概念參照。<br/><a href="https://arxiv.org/abs/2308.08155" rel="noopener noreferrer" target="_blank">查看原始來源 ↗</a></li><li id="ref-3"><strong>角色對話與協作</strong>｜Li 等人（2023），CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society。探討角色設定與代理人對話的協作方式，作為本文多角色思維的延伸閱讀。<br/><a href="https://arxiv.org/abs/2303.17760" rel="noopener noreferrer" target="_blank">查看原始來源 ↗</a></li><li id="ref-4"><strong>反覆回饋與修訂</strong>｜Madaan 等人（2023），Self-Refine: Iterative Refinement with Self-Feedback。探討模型透過自我回饋與修訂改善特定任務成果；其研究方法不等同於本文的雙 GPT 審稿流程。<br/><a href="https://arxiv.org/abs/2303.17651" rel="noopener noreferrer" target="_blank">查看原始來源 ↗</a></li><li id="ref-5"><strong>AI 使用與作者責任</strong>｜International Committee of Medical Journal Editors（ICMJE），Recommendations。提供 AI 輔助寫作、揭露、正確性與作者責任的相關原則。<br/><a href="https://www.icmje.org/recommendations/" rel="noopener noreferrer" target="_blank">查看原始來源 ↗</a></li><li id="ref-6"><strong>AI 與作者資格</strong>｜Committee on Publication Ethics（COPE），Authorship and AI tools。說明 AI 工具不能承擔作者責任，並強調人類作者的責任與揭露。<br/><a href="https://publicationethics.org/cope-position-statements/ai-author" rel="noopener noreferrer" target="_blank">查看原始來源 ↗</a></li><li id="ref-7"><strong>PDSA 品質改善循環</strong>｜The W. Edwards Deming Institute，PDSA Cycle。說明 Plan–Do–Study–Act 的反覆學習與改善概念，供本文管理學段落參照。<br/><a href="https://deming.org/explore/pdsa/" rel="noopener noreferrer" target="_blank">查看原始來源 ↗</a></li><li id="ref-8"><strong>人機團隊合作</strong>｜Seeber 等人（2020），Machines as Teammates: A Research Agenda on AI in Team Collaboration。探討 AI 作為團隊成員時的合作設計與研究議題，作為本文未來工作想像的概念參照。<br/><a href="https://doi.org/10.1016/j.im.2019.103174" rel="noopener noreferrer" target="_blank">查看原始來源 ↗</a></li></ol></section><section class="aml-source-notes" id="source-notes"><h2>作者註記</h2><p>本文為個人使用生成式 AI 進行專業寫作、教材整理與網站製作的實務經驗與反思，並非 AI 技術首創宣稱，也不代表所有工作皆適合採用相同流程。文中所稱 AI 角色、編輯室與小型組織均為工作分工的比喻；AI 審查結果不等同於獨立專家審查或事實認證。涉及專業、健康或安全的重要內容，仍應依實際情境進行來源核對與必要的專業判斷。</p><p><em>Allen Mind Lab<br/>Building A Meaningful Life.</em></p></section><section aria-label="分享文章" class="aml-share"><div class="aml-share-copy"><strong>覺得這篇文章值得分享？</strong><p>如果這篇文章對你有幫助，也歡迎分享給需要的人。</p></div><div class="aml-share-actions"><button class="aml-share-btn" data-aml-share="" type="button">分享文章 ↗</button><button class="aml-share-btn secondary" data-aml-copy-link="" type="button">複製連結</button></div><div aria-live="polite" class="aml-share-status" data-aml-share-status=""></div></section><nav aria-label="相關文章" class="aml-article-next">
+<a href="/articles/ai-human-occupation-moho.html">← 延伸閱讀：當 AI 開始參與我們的選擇</a>
+<a href="/ai.html">返回 AI × Practice →</a>
+</nav></main>
+<footer class="aml-global-footer">
+<div class="aml-footer-top">
+<div>
+<div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div>
+<div class="aml-footer-tagline">Building A Meaningful Life.</div>
+<div class="aml-footer-copy">
+        從職能治療、PBS、管理、教育、AI 到身心修習，
+        整合專業、實踐與反思，持續探索更有意義的生活。
+      </div>
+</div>
+<div class="aml-footer-links">
+<div class="aml-footer-group">
+<h4>Explore AML</h4>
+<a href="/about.html">About</a>
+<a href="/research.html">Research</a>
+<a href="/recognition.html">Recognition</a>
+<a href="/articles.html">Articles</a>
+<a href="/publications.html">Publications</a>
+<a href="/contact.html">Contact</a>
+<a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Newsletter</a>
+</div>
+<div class="aml-footer-group">
+<h4>Explore Topics</h4>
+<a href="/ot.html">OT &amp; Human Occupation</a>
+<a href="/pbs.html">PBS</a>
+<a href="/management.html">Management &amp; Leadership</a>
+<a href="/education.html">Education</a>
+<a href="/ai.html">AI × Practice</a>
+<a href="/mind.html">Mind &amp; Well-being</a>
+</div>
+</div>
+</div>
+<div class="aml-footer-bottom">
+<div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div>
+<div class="aml-footer-mini-links">
+<a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a>
+<a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a>
+<span>
+<a href="/privacy.html">Privacy</a> ·
+        <a href="/terms.html">Terms</a> ·
+        <a href="/rss.xml">RSS</a> ·
+        <a href="/sitemap.xml">Sitemap</a>
+</span>
+</div>
+</div>
+</footer><script defer="True" src="/aml-site.js"></script></body></html>
