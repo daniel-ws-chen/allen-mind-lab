@@ -333,6 +333,28 @@
 .aml-publication-links a:focus-visible{outline:3px solid #a17b3d;outline-offset:3px}
 @media(max-width:620px){.aml-gov-cover{max-width:140px;aspect-ratio:3/4}}
 
+
+
+/* AML Publications: role-based bibliography */
+.aml-pub-overview{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0}
+.aml-pub-overview a{display:flex;align-items:center;gap:9px;padding:11px 15px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--navy);font-size:.88rem;font-weight:700;line-height:1.5}
+.aml-pub-overview a:hover{background:var(--navy);color:#fff}
+.aml-pub-overview a:focus-visible{outline:3px solid #a17b3d;outline-offset:3px}
+.aml-pub-overview strong{color:#8a6b35}
+.aml-pub-overview a:hover strong{color:inherit}
+.aml-pub-group{margin-top:64px;scroll-margin-top:120px}
+.aml-pub-group:first-of-type{margin-top:40px}
+.aml-pub-group-head{display:flex;justify-content:space-between;align-items:end;gap:24px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.aml-pub-group-kicker{color:#8a6b35;font-size:.76rem;letter-spacing:.13em;font-weight:800}
+.aml-pub-group-head h3{margin:8px 0 4px;color:var(--navy);font-family:Georgia,"Noto Sans TC",serif;font-size:clamp(1.7rem,3vw,2.25rem);line-height:1.35}
+.aml-pub-group-en{color:#8a6b35;font-size:.82rem;font-weight:700;letter-spacing:.04em}
+.aml-pub-group-head p{margin:12px 0 0;color:var(--muted);font-size:.94rem}
+.aml-pub-count{flex-shrink:0;text-align:right;color:var(--muted);font-size:.88rem}
+.aml-pub-count strong{display:block;color:var(--navy);font-family:Georgia,serif;font-size:2rem;line-height:1.15}
+.aml-pub-group .pub-list{margin-top:26px}
+.aml-pub-group .pub-card{scroll-margin-top:120px}
+@media(max-width:620px){.aml-pub-overview{flex-direction:column}.aml-pub-overview a{justify-content:space-between}.aml-pub-group{margin-top:48px}.aml-pub-group-head{align-items:start;gap:12px}.aml-pub-count strong{font-size:1.55rem}}
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -487,6 +509,46 @@
     部分較早出版品可能因庫存狀況而暫時無法購買。
   </p>
 
+  <nav class="aml-pub-overview" aria-label="出版品分類">
+  <a href="#pub-authored"><span>01 · 著作</span><strong>1 本</strong></a>
+  <a href="#pub-government"><span>02 · 政府與專業實務出版品</span><strong>1 本</strong></a>
+  <a href="#pub-translated"><span>03 · 譯作</span><strong>7 本</strong></a>
+</nav>
+<section class="aml-pub-group" id="pub-authored" aria-labelledby="pub-authored-title">
+  <div class="aml-pub-group-head">
+    <div>
+      <div class="aml-pub-group-kicker">01 · AUTHORED WORKS</div>
+      <h3 id="pub-authored-title">著作</h3>
+      <div class="aml-pub-group-en">Authored Works</div>
+      <p>以作者身分參與撰寫的專業書籍。</p>
+    </div>
+    <div class="aml-pub-count"><strong>01</strong>本出版品</div>
+  </div>
+  <div class="pub-list">
+<article class="pub-card reveal">
+      <div class="cover-wrap">
+        <img class="cover" src="images/books/occupational-therapy-in-mental-health.png" alt="精神健康職能治療：理論與實務書封" loading="lazy">
+      </div>
+      <div>
+        <span class="badge">著作 · Author</span>
+        <h2>精神健康職能治療：理論與實務</h2>
+        <div class="meta">黃曼聰、陳威勝、陳芝萍 著｜五南圖書出版｜2009/02/01（第二版）</div>
+        <p class="desc">涵蓋精神健康職能治療的專業基礎、臨床推理、評估介入、治療媒介、精神疾病與組織經營管理等實務內容。</p>
+      </div>
+      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.sanmin.com.tw/product/index/000758420">查看出版資訊 →</a>
+    </article>
+  </div>
+</section>
+<section class="aml-pub-group" id="pub-government" aria-labelledby="pub-government-title">
+  <div class="aml-pub-group-head">
+    <div>
+      <div class="aml-pub-group-kicker">02 · GOVERNMENT &amp; PROFESSIONAL PUBLICATIONS</div>
+      <h3 id="pub-government-title">政府與專業實務出版品</h3>
+      <div class="aml-pub-group-en">Government &amp; Professional Publications</div>
+      <p>以企劃、編輯或其他實務角色參與的出版成果，明確標示實際貢獻與出版單位。</p>
+    </div>
+    <div class="aml-pub-count"><strong>01</strong>本出版品</div>
+  </div>
   <div class="pub-list">
 <!-- AML_GOV_PUBLICATION_START -->
 <article class="pub-card reveal" id="easy-read-publication">
@@ -508,8 +570,20 @@
   <a class="buy" href="https://spec.nptu.edu.tw/var/file/122/1122/img/4565/245099180.pdf" target="_blank" rel="noopener noreferrer">閱讀原始 PDF →</a>
 </article>
 <!-- AML_GOV_PUBLICATION_END -->
-
-    <article class="pub-card reveal">
+  </div>
+</section>
+<section class="aml-pub-group" id="pub-translated" aria-labelledby="pub-translated-title">
+  <div class="aml-pub-group-head">
+    <div>
+      <div class="aml-pub-group-kicker">03 · TRANSLATED WORKS</div>
+      <h3 id="pub-translated-title">譯作</h3>
+      <div class="aml-pub-group-en">Translated Works</div>
+      <p>將國際專業知識引介至中文讀者的翻譯出版品。</p>
+    </div>
+    <div class="aml-pub-count"><strong>07</strong>本出版品</div>
+  </div>
+  <div class="pub-list">
+<article class="pub-card reveal">
       <div class="cover-wrap">
         <img class="cover" src="images/books/clinical-documentation-ot-third-edition.png" alt="職能治療實務：臨床病歷撰寫（第三版）書封" loading="lazy">
       </div>
@@ -527,8 +601,7 @@
       </div>
       <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010834687?sloc=main">查看出版資訊 →</a>
     </article>
-
-    <article class="pub-card reveal">
+<article class="pub-card reveal">
       <div class="cover-wrap">
         <img class="cover" src="images/books/autism-checklist.png" alt="自閉症檢核手冊：家長與教師實用指南書封" loading="lazy">
       </div>
@@ -546,8 +619,7 @@
       </div>
       <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010532137?sloc=main">查看出版資訊 →</a>
     </article>
-
-    <article class="pub-card reveal">
+<article class="pub-card reveal">
       <div class="cover-wrap">
         <img class="cover" src="images/books/sensory-integration-for-preschool-teachers.png" alt="兒童感覺統合：學齡前教師指南書封" loading="lazy">
       </div>
@@ -564,8 +636,7 @@
       </div>
       <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010476650?sloc=main">查看出版資訊 →</a>
     </article>
-
-    <article class="pub-card reveal">
+<article class="pub-card reveal">
       <div class="cover-wrap">
         <img class="cover" src="images/books/building-bridges-sensory-integration.png" alt="打造感覺統合的橋樑：自閉症及其他廣泛性發展障礙兒童的治療書封" loading="lazy">
       </div>
@@ -582,8 +653,7 @@
       </div>
       <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010470949?sloc=main">查看出版資訊 →</a>
     </article>
-
-    <article class="pub-card reveal">
+<article class="pub-card reveal">
       <div class="cover-wrap">
         <img class="cover" src="images/books/handbook-of-preschool-mental-health.png" alt="學齡前兒童精神健康手冊：發展、疾病和治療書封" loading="lazy">
       </div>
@@ -600,21 +670,7 @@
       </div>
       <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010450142?sloc=main">查看出版資訊 →</a>
     </article>
-
-    <article class="pub-card reveal">
-      <div class="cover-wrap">
-        <img class="cover" src="images/books/occupational-therapy-in-mental-health.png" alt="精神健康職能治療：理論與實務書封" loading="lazy">
-      </div>
-      <div>
-        <span class="badge">著作 · Author</span>
-        <h2>精神健康職能治療：理論與實務</h2>
-        <div class="meta">黃曼聰、陳威勝、陳芝萍 著｜五南圖書出版｜2009/02/01（第二版）</div>
-        <p class="desc">涵蓋精神健康職能治療的專業基礎、臨床推理、評估介入、治療媒介、精神疾病與組織經營管理等實務內容。</p>
-      </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.sanmin.com.tw/product/index/000758420">查看出版資訊 →</a>
-    </article>
-
-    <article class="pub-card reveal">
+<article class="pub-card reveal">
       <div class="cover-wrap">
         <img class="cover" src="images/books/introduction-to-early-childhood-education.png" alt="幼兒教育導論書封" loading="lazy">
       </div>
@@ -648,8 +704,8 @@
   <a class="buy" href="https://www.sanmin.com.tw/product/index/000485603" target="_blank" rel="noopener noreferrer">查看出版資訊 →</a>
 </article>
 <!-- AML_CHILD_MENTAL_HEALTH_BOOK_END -->
-
   </div>
+</section>
 </section>
 
 
