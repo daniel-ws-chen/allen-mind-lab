@@ -1,74 +1,88 @@
 (() => {
-  /* ===== Mobile Navigation ===== */
-
+  /* ===== Accessible Explore & Mobile Navigation ===== */
   const toggle = document.querySelector(".aml-menu-toggle");
   const menu = document.querySelector(".aml-mobile-menu");
+  const exploreMenus = Array.from(document.querySelectorAll(".aml-explore"));
+
+  const closeExplore = (except = null) => {
+    exploreMenus.forEach(details => {
+      if (details !== except) details.open = false;
+    });
+  };
+
+  const closeMenu = () => {
+    closeExplore();
+    if (!toggle || !menu) return;
+    menu.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.textContent = "☰";
+  };
+
+  exploreMenus.forEach(details => {
+    details.addEventListener("toggle", () => {
+      if (details.open) closeExplore(details);
+    });
+  });
 
   if (toggle && menu) {
-    const closeMenu = () => {
-      menu.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.textContent = "☰";
-    };
-
     toggle.addEventListener("click", () => {
-      const open = menu.classList.toggle("is-open");
-
-      toggle.setAttribute(
-        "aria-expanded",
-        open ? "true" : "false"
-      );
-
-      toggle.textContent = open ? "×" : "☰";
-    });
-
-    menu
-      .querySelectorAll("a")
-      .forEach(a =>
-        a.addEventListener("click", closeMenu)
-      );
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
+      if (menu.classList.contains("is-open")) {
         closeMenu();
+      } else {
+        closeExplore();
+        menu.classList.add("is-open");
+        toggle.setAttribute("aria-expanded", "true");
+        toggle.textContent = "×";
       }
     });
 
-    document.addEventListener("click", (e) => {
-      if (!menu.classList.contains("is-open")) return;
-
-      if (
-        !menu.contains(e.target) &&
-        !toggle.contains(e.target)
-      ) {
-        closeMenu();
-      }
-    });
+    menu.querySelectorAll("a").forEach(a =>
+      a.addEventListener("click", closeMenu)
+    );
   }
 
+  document.addEventListener("keydown", e => {
+    if (e.key !== "Escape") return;
+    const activeExplore = exploreMenus.find(details => details.open);
+    if (activeExplore) {
+      activeExplore.open = false;
+      activeExplore.querySelector("summary")?.focus();
+      return;
+    }
+    if (menu?.classList.contains("is-open")) {
+      closeMenu();
+      toggle?.focus();
+    }
+  });
+
+  document.addEventListener("click", e => {
+    const target = e.target;
+    if (!target.closest(".aml-explore")) closeExplore();
+    if (menu?.classList.contains("is-open") &&
+        !menu.contains(target) && !toggle?.contains(target)) {
+      closeMenu();
+    }
+  });
 
   /* ===== Current Page State ===== */
-
-  const currentPath =
-    location.pathname.replace(/\/$/, "/index.html");
-
-  document
-    .querySelectorAll(
-      ".aml-global-nav a, .aml-global-footer a"
-    )
+  const normalizePath = path => {
+    const normalized = path.replace(/\/index(?:\.html)?\/?$/, "/")
+      .replace(/\.html\/?$/, "").replace(/\/+$/, "");
+    return normalized || "/";
+  };
+  const currentPath = normalizePath(location.pathname);
+  document.querySelectorAll(".aml-global-nav a, .aml-global-footer a")
     .forEach(a => {
       try {
-        const p =
-          new URL(a.href, location.href)
-            .pathname
-            .replace(/\/$/, "/index.html");
-
-        if (p === currentPath) {
+        const url = new URL(a.href, location.href);
+        if (url.origin === location.origin &&
+            normalizePath(url.pathname) === currentPath) {
           a.setAttribute("aria-current", "page");
+          a.closest(".aml-explore")?.querySelector("summary")
+            ?.setAttribute("aria-current", "page");
         }
       } catch (_) {}
     });
-
 
   /* ===== AML Article Share v1.1 ===== */
 
