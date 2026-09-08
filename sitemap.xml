@@ -2,13 +2,13 @@
 <ns0:urlset xmlns:ns0="http://www.sitemaps.org/schemas/sitemap/0.9">
   <ns0:url>
     <ns0:loc>https://allenmindlab.com/</ns0:loc>
-    <ns0:lastmod>2026-09-07</ns0:lastmod>
+    <ns0:lastmod>2026-09-09</ns0:lastmod>
     <ns0:changefreq>monthly</ns0:changefreq>
     <ns0:priority>1.0</ns0:priority>
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://allenmindlab.com/about</ns0:loc>
-    <ns0:lastmod>2026-09-04</ns0:lastmod>
+    <ns0:lastmod>2026-09-09</ns0:lastmod>
     <ns0:changefreq>monthly</ns0:changefreq>
     <ns0:priority>0.9</ns0:priority>
   </ns0:url>
@@ -32,7 +32,7 @@
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://allenmindlab.com/articles</ns0:loc>
-    <ns0:lastmod>2026-09-07</ns0:lastmod>
+    <ns0:lastmod>2026-09-09</ns0:lastmod>
     <ns0:changefreq>monthly</ns0:changefreq>
     <ns0:priority>0.9</ns0:priority>
   </ns0:url>
@@ -44,19 +44,19 @@
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://allenmindlab.com/ot</ns0:loc>
-    <ns0:lastmod>2026-09-04</ns0:lastmod>
+    <ns0:lastmod>2026-09-09</ns0:lastmod>
     <ns0:changefreq>monthly</ns0:changefreq>
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://allenmindlab.com/pbs</ns0:loc>
-    <ns0:lastmod>2026-09-04</ns0:lastmod>
+    <ns0:lastmod>2026-09-09</ns0:lastmod>
     <ns0:changefreq>monthly</ns0:changefreq>
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
   <ns0:url>
     <ns0:loc>https://allenmindlab.com/management</ns0:loc>
-    <ns0:lastmod>2026-09-07</ns0:lastmod>
+    <ns0:lastmod>2026-09-09</ns0:lastmod>
     <ns0:changefreq>monthly</ns0:changefreq>
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
@@ -156,4 +156,4 @@
     <ns0:changefreq>monthly</ns0:changefreq>
     <ns0:priority>0.8</ns0:priority>
   </ns0:url>
-</ns0:urlset>
+<ns0:url><ns0:loc>https://allenmindlab.com/articles/pbs-support-transition-real-life</ns0:loc><ns0:lastmod>2026-09-09</ns0:lastmod><ns0:changefreq>monthly</ns0:changefreq><ns0:priority>0.8</ns0:priority></ns0:url></ns0:urlset>
