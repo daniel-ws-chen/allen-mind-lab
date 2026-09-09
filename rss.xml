@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <rss version="2.0">
   <channel>
+    <item><title>當 AI 越來越會管事，管理者該如何帶人？</title><link>https://allenmindlab.com/articles/ai-manager-leadership-human-ai-collaboration</link><guid>https://allenmindlab.com/articles/ai-manager-leadership-human-ai-collaboration</guid><pubDate>Thu, 10 Sep 2026 06:30:00 +0800</pubDate><description>當 AI 能協助排程、追蹤、分析與績效管理，管理者的價值是否需要重新定義？從管理與領導、人機協作、組織設計到當責，思考 AI 時代主管的新角色。</description></item>
 <item><title>組織為什麼存在？從願景、使命到可執行的服務方向</title><link>https://allenmindlab.com/articles/ot-management-organizational-planning</link><guid>https://allenmindlab.com/articles/ot-management-organizational-planning</guid><pubDate>Wed, 09 Sep 2026 23:03:00 +0800</pubDate><description>從願景、使命與組織目標出發，透過 5P 理解醫療、長照與社區的組織規劃，讓職能治療服務從專業理念走向可執行的服務方向。</description></item>
 
     <title>Allen Mind Lab — Articles</title>
     <link>https://allenmindlab.com/articles</link>
     <description>關於職能治療、PBS、管理、教育、AI 與身心福祉，分享值得留下的內容。</description>
     <language>zh-TW</language>
-    <lastBuildDate>Wed, 09 Sep 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 10 Sep 2026 06:30:00 +0800</lastBuildDate>
     <item>
       <title>當組長不再一個人救火：用 AI 與管理系統整合小組方案</title>
       <link>https://allenmindlab.com/articles/management-coach-leader-workflow</link>
