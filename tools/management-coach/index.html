@@ -1,24 +1,24 @@
 <!doctype html>
-<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="AML 方案規劃管理助教系統，協助組長彙整十章內容、檢查章節連貫性並匯出修訂後初稿。"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><title>方案規劃管理助教系統｜AML</title>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="description" content="協助個人與團隊從構想到完整方案，透過統一架構、內容彙整、跨章連貫性檢查與 AI 評析，逐步完成有系統的計畫初稿。"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><title>方案規劃管理助教系統｜AML</title>
 <style>
 :root{--navy:#193a55;--gold:#b69a68;--bg:#f5f7f9;--ink:#24394b;--muted:#637789;--line:#dce3e9;--white:#fff;--ok:#27745f;--warn:#9b6b2d}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.68 system-ui,"Noto Sans TC",sans-serif}header{background:linear-gradient(135deg,#193a55,#102b41);color:white;padding:26px max(20px,calc((100% - 1050px)/2))}header small{color:#e2cfaa;letter-spacing:.08em}h1{font-size:28px;margin:5px 0}h2{font-size:22px;margin:0 0 10px}h3{font-size:17px;margin:0 0 8px}p{margin:6px 0 12px}a{color:#315d82}header a{color:#e9d6ae}.sub{color:#dce6ef}.wrap{max-width:1050px;margin:auto;padding:22px 18px 60px}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin:0 0 16px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:0 0 16px}.step{border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px;color:var(--muted);cursor:pointer;text-align:center}.step.active{background:var(--navy);color:#fff;border-color:var(--navy)}.step.done{color:var(--ok);border-color:#98c7b6}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:block;font-size:14px;font-weight:700;margin:0 0 12px}input,select,textarea{display:block;width:100%;margin-top:5px;padding:10px 12px;border:1px solid #cbd6df;border-radius:9px;background:white;color:var(--ink);font:inherit;font-weight:400}textarea{min-height:120px;resize:vertical}button{font:inherit;cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.btn{border:1px solid var(--navy);background:var(--navy);color:white;border-radius:9px;padding:10px 14px;text-decoration:none;display:inline-block}.btn.secondary{background:#fff;color:var(--navy)}.btn.warn{background:#fff8ea;color:#5f4017;border-color:#d9b77b}.muted{color:var(--muted);font-size:14px}.small{font-size:14px}.hint{background:#eef3f7;border-radius:11px;padding:13px 15px;margin:12px 0}.warning{border-left:4px solid var(--warn);background:#fff8ea;padding:12px 14px;border-radius:8px}.hidden{display:none!important}.chapter{border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}.chapter-head{display:grid;grid-template-columns:120px 1fr auto;gap:10px;align-items:center}.badge{display:inline-block;border-radius:99px;background:#eef3f7;color:#33556d;padding:3px 10px;font-size:13px}.badge.ok{background:#e9f5ef;color:#1f6b54}.badge.warn{background:#fff4dd;color:#7a5421}details{margin:10px 0}summary{cursor:pointer;color:var(--navy);font-weight:700}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f4f6f8;border-radius:10px;padding:14px;max-height:420px;overflow:auto;font:14px/1.65 inherit}.progress{height:9px;border-radius:99px;background:#e2e9ee;overflow:hidden;margin-top:8px}.progress div{height:100%;background:#568477;transition:width .2s}.status{font-size:14px;color:var(--ok);min-height:24px}.review-list{display:grid;gap:8px}.checkitem{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);padding:10px;border-radius:9px}.checkitem input{width:auto;margin-top:5px}.footer{font-size:13px;color:var(--muted);padding:10px 0 0}@media(max-width:760px){.steps{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.chapter-head{grid-template-columns:1fr}.btn{width:100%;text-align:center}header{padding:22px 16px}.wrap{padding:14px 10px 44px}.panel{padding:16px}}
 </style></head><body>
-<header><small>ALLEN MIND LAB · MANAGEMENT & LEADERSHIP</small><h1>方案規劃管理助教系統</h1><p class="sub">組長彙整版｜彙整十章、檢查連貫性、匯出修訂後初稿</p><a href="/management-learning.html">← 返回管理實務延伸學習</a></header>
+<header><small>ALLEN MIND LAB · MANAGEMENT & LEADERSHIP</small><h1>方案規劃管理助教系統</h1><p class="sub">個人與團隊方案規劃支持｜彙整內容、檢查連貫性、匯出修訂後初稿</p><a href="/management-learning.html">← 返回管理實務延伸學習</a></header>
 <main class="wrap">
-<section class="panel"><strong id="titleLine">尚未命名方案</strong><span class="badge" id="stateBadge" style="margin-left:8px">0/10 章已彙整</span><div class="progress"><div id="bar" style="width:0%"></div></div><p class="muted">這不是另一個 AI 聊天室。它的任務是協助組長把組員內容整理成同一份規格化初稿，再把整份報告交給自己的 AI 進行整合評析。</p></section>
-<nav class="steps" aria-label="主要流程"><button class="step active" data-step="1">1 上傳／貼上</button><button class="step" data-step="2">2 產生評析指令</button><button class="step" data-step="3">3 修訂文稿</button><button class="step" data-step="4">4 匯出交作業</button></nav>
+<section class="panel"><strong id="titleLine">尚未命名方案</strong><span class="badge" id="stateBadge" style="margin-left:8px">0/10 章已彙整</span><div class="progress"><div id="bar" style="width:0%"></div></div><p class="muted">這不是另一個 AI 聊天室。個人可以整理自己的計畫草稿，團隊也能彙整不同成員的內容，再透過自己的 AI 進行整合評析。現行十章架構以職能治療管理學為基礎，其他計畫類型請依實際需求調整。</p></section>
+<nav class="steps" aria-label="主要流程"><button class="step active" data-step="1">1 上傳／貼上</button><button class="step" data-step="2">2 產生評析指令</button><button class="step" data-step="3">3 修訂文稿</button><button class="step" data-step="4">4 匯出初稿</button></nav>
 
 <section id="p1" class="panel">
-<h2>第一步｜組長彙整組員內容</h2><p>可以貼上已彙整的整份報告，也可以逐章貼入十位組員交來的內容。系統會統一章節標題與順序，並顯示哪些章節仍待補。</p>
-<div class="grid"><label class="field">小組名稱<input id="group" placeholder="例如：第3組"></label><label class="field">方案名稱<input id="project" placeholder="例如：社區失智日間復能方案"></label></div>
+<h2>第一步｜彙整方案內容</h2><p>可貼上個人撰寫的完整草稿，也可逐章貼入團隊成員的內容。系統會依現行十章架構整理標題與順序，並顯示哪些章節仍待補。</p>
+<div class="grid"><label class="field">小組／撰寫者名稱<input id="group" placeholder="例如：第3組或個人計畫"></label><label class="field">方案名稱<input id="project" placeholder="例如：社區失智日間復能方案"></label></div>
 <div class="hint"><strong>匯入方式</strong><p class="muted">支援 .txt、.md、.html 文字檔。Word 檔建議先複製文字貼上，或另存純文字再上傳；本靜態網頁不讀取 Word 格式。</p><div class="actions"><label class="btn secondary">上傳文字檔<input id="fileInput" type="file" accept=".txt,.md,.html,.htm,text/plain,text/markdown,text/html" multiple hidden></label><button class="btn secondary" id="pasteFull">貼上／更新整份報告</button><button class="btn secondary" id="loadDemo">載入虛構示範</button></div><p class="status" id="importStatus"></p></div>
-<div id="fullBox" class="hidden"><label class="field">完整報告文字<textarea id="fullReport" rows="12" placeholder="若組員已先彙整成一份報告，可貼在這裡。系統會嘗試依「第1章／第十章」等標題拆分，無法拆分時仍可作為整份報告進行評析。"></textarea></label><div class="actions"><button class="btn" id="splitFull">嘗試拆成十章</button><button class="btn secondary" id="useFullOnly">保留為整份報告</button></div></div>
+<div id="fullBox" class="hidden"><label class="field">完整報告文字<textarea id="fullReport" rows="12" placeholder="若已有一份完整草稿，可貼在這裡。系統會嘗試依「第1章／第十章」等標題拆分，無法拆分時仍可作為整份報告進行評析。"></textarea></label><div class="actions"><button class="btn" id="splitFull">嘗試拆成十章</button><button class="btn secondary" id="useFullOnly">保留為整份報告</button></div></div>
 <div id="chapters"></div>
 <div class="actions"><button class="btn" id="saveStep1">儲存彙整內容</button><button class="btn secondary" id="to2">下一步：產生評析指令 →</button></div>
 </section>
 
 <section id="p2" class="panel hidden">
-<h2>第二步｜請自己的 AI 評析整份報告</h2><p>系統會把十章內容整理成一份已設計好的提問詞。組長複製後貼到自己的 ChatGPT 或其他可用 AI，請它檢查優點、缺漏、矛盾與跨章連貫性。</p>
+<h2>第二步｜請自己的 AI 評析整份報告</h2><p>系統會把十章內容整理成一份已設計好的提問詞。使用者複製後貼到自己的 ChatGPT 或其他可用 AI，請它檢查優點、缺漏、矛盾與跨章連貫性。</p>
 <div class="warning"><strong>資料安全提醒</strong><br>複製到外部 AI 前，請先移除未經授權的個資、病歷、機構內部資料及敏感內容。AI 評析不等於事實查證或正式評分。</div>
 <div class="review-list" id="basicChecks"></div>
 <label class="field">評析時希望 AI 特別注意的地方（選填）<textarea id="focus" rows="3" placeholder="例如：請特別檢查服務量、人力配置、財務估算與成果指標是否一致。"></textarea></label>
@@ -30,20 +30,20 @@
 </section>
 
 <section id="p3" class="panel hidden">
-<h2>第三步｜依評析建議修訂文稿</h2><p>不用把 AI 對話逐輪貼回來。只要把最重要的評析重點與小組決定記下來，再修訂十章內容即可。</p>
+<h2>第三步｜依評析建議修訂文稿</h2><p>不用把 AI 對話逐輪貼回來。只要把最重要的評析重點與修訂決定記下來，再修訂十章內容即可。</p>
 <label class="field">AI 評析重點摘要（選填）<textarea id="analysis" rows="7" placeholder="貼上或整理 AI 評析中最重要的優點、缺漏、矛盾與建議。"></textarea></label>
-<div class="hint"><strong>小組修訂判斷</strong><p class="muted">AI 建議不必照單全收。請由組長與相關章節負責人確認是否採用、修改或暫不採用。</p><label class="field">本次最重要的修訂決定<textarea id="decision" rows="4" placeholder="例如：決定統一服務量假設，第4章每場8人，第7章財務估算同步重算；原每場20人收入估算不採用。"></textarea></label></div>
+<div class="hint"><strong>修訂判斷</strong><p class="muted">AI 建議不必照單全收。請由撰寫者或相關團隊成員確認是否採用、修改或暫不採用。</p><label class="field">本次最重要的修訂決定<textarea id="decision" rows="4" placeholder="例如：決定統一服務量假設，第4章每場8人，第7章財務估算同步重算；原每場20人收入估算不採用。"></textarea></label></div>
 <h3>修訂後十章內容</h3><p class="muted">可直接在下方修訂，也可貼入已在 Word 或 AI 對話中整理好的章節。</p><div id="revChapters"></div>
 <div class="actions"><button class="btn" id="saveRevised">儲存修訂版</button><button class="btn secondary" id="to4">下一步：匯出初稿 →</button></div><p class="status" id="revStatus"></p>
 </section>
 
 <section id="p4" class="panel hidden">
-<h2>第四步｜匯出修訂後版本</h2><p>匯出前先快速確認十章是否完整、待查證事項是否有標示、AI 評析建議是否已由小組判斷處理。</p>
+<h2>第四步｜匯出修訂後版本</h2><p>匯出前先快速確認十章是否完整、待查證事項是否有標示、AI 評析建議是否已由使用者或團隊判斷處理。</p>
 <div class="review-list" id="finalChecks"></div>
 <div class="actions"><button class="btn" id="downloadTxt">下載 TXT 初稿</button><button class="btn secondary" id="downloadDoc">下載 Word 可開啟版</button><button class="btn secondary" id="downloadJson">下載備份 JSON</button><label class="btn secondary">匯入備份 JSON<input id="jsonInput" type="file" accept=".json,application/json" hidden></label><button class="btn warn" id="reset">清空本機資料</button></div>
-<p class="muted">Word 可開啟版為 HTML 文件格式，可用 Word 開啟後另存為 .docx。本工具不保證排版已符合學校正式格式，仍需小組最後校閱。</p><p class="status" id="exportStatus"></p>
+<p class="muted">Word 可開啟版為 HTML 文件格式，可用 Word 開啟後另存為 .docx。本工具不保證排版已符合學校正式格式，仍需使用者最後校閱。</p><p class="status" id="exportStatus"></p>
 </section>
-<footer class="footer">Allen Mind Lab · Building A Meaningful Life. 本系統協助小組規格化與整合初稿；正式內容品質、資料查證及作業繳交責任仍由學生小組負責。</footer>
+<footer class="footer">Allen Mind Lab · Building A Meaningful Life. 本系統協助個人與團隊整理及整合初稿；內容品質、資料查證、專業判斷與最終使用責任仍由使用者負責。</footer>
 </main>
 <script>
 'use strict';
