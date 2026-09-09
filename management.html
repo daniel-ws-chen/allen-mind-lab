@@ -70,6 +70,16 @@ h3{color:var(--navy);line-height:1.35}
   .topic-hero{padding-top:76px}
 }
 
+
+.management-tool-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:stretch;margin-top:24px}
+.management-tool-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:30px;box-shadow:0 14px 34px rgba(15,23,42,.06)}
+.management-tool-card h3{margin-top:0;color:var(--navy);font-size:1.45rem}
+.management-tool-card p{color:var(--muted)}
+.management-tool-card .btn{margin-right:10px;margin-bottom:10px}
+.management-tool-note{background:var(--cream);border-left:4px solid var(--gold);border-radius:0 16px 16px 0;padding:24px}
+.management-tool-note h3{margin-top:0;color:var(--navy)}
+@media(max-width:860px){.management-tool-grid{grid-template-columns:1fr}}
+
 /* AML_DOMAIN_CATALOG_CSS_START */
 /* AML domain article catalog: scoped, responsive, no changes to existing cards. */
 .aml-domain-catalog{padding-top:44px}
@@ -178,6 +188,7 @@ h3{color:var(--navy);line-height:1.35}
 <a href="/education.html"><span>Education</span><small>教學、學習與能力建立</small></a>
 <a href="/management.html"><span>Management &amp; Leadership</span><small>組織、團隊與品質系統</small></a>
 <a href="/ai.html"><span>AI × Practice</span><small>讓科技放大專業實踐</small></a>
+      <a href="/tools.html"><span>Tools</span><small>小工具與教學支持</small></a>
 </div>
 </div>
 </details>
@@ -185,6 +196,7 @@ h3{color:var(--navy);line-height:1.35}
 <a href="/recognition.html">Recognition</a>
 <a href="/publications.html">Publications</a>
 <a href="/articles.html">Articles</a>
+<a href="/tools.html">Tools</a>
 <a href="/contact.html">Contact</a>
 </div>
 <button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button>
@@ -201,6 +213,7 @@ h3{color:var(--navy);line-height:1.35}
 <a href="/education.html"><span>Education</span><small>教學、學習與能力建立</small></a>
 <a href="/management.html"><span>Management &amp; Leadership</span><small>組織、團隊與品質系統</small></a>
 <a href="/ai.html"><span>AI × Practice</span><small>讓科技放大專業實踐</small></a>
+      <a href="/tools.html"><span>Tools</span><small>小工具與教學支持</small></a>
 </div>
 </div>
 </details>
@@ -277,6 +290,30 @@ h3{color:var(--navy);line-height:1.35}
 </div>
 <div class="path-grid"><a class="path-card" href="pbs.html"><small>MANAGEMENT → PBS</small><h3>把個案策略變成團隊能力</h3><p>好策略若只存在熟手腦中，就很難穩定；管理要把它轉成共同語言與支持流程。</p></a><a class="path-card" href="education.html"><small>MANAGEMENT → EDUCATION</small><h3>讓經驗能夠被教、被學、被複製</h3><p>教育訓練若能連到督導與流程，才更容易成為組織能力。</p></a><a class="path-card" href="ai.html"><small>MANAGEMENT → AI</small><h3>重新設計知識與工作流程</h3><p>AI 的價值不只在省時間，也在減少重工、整理資訊與提升判斷品質。</p></a></div>
 </section>
+<section aria-labelledby="management-coach-title" class="wrap" id="management-coach">
+<div class="section-head">
+<div class="eyebrow">AML TOOL · MANAGEMENT</div>
+<h2 id="management-coach-title">方案規劃管理助教系統</h2>
+<p class="lead">組長彙整、跨章檢查與修訂後初稿匯出。</p>
+<p>協助職能治療管理學小組組長彙整十章內容、統一基本格式、產生整份報告 AI 評析指令，並依小組討論修訂後匯出共同初稿。</p>
+</div>
+<div class="management-tool-grid">
+<article class="management-tool-card">
+<h3>給組長的一件法器</h3>
+<p>當十位組員各自完成不同章節時，系統協助把分散內容收回同一個方案架構，降低格式不一、章節缺漏與跨章矛盾的風險。</p>
+<a class="btn" href="tools/management-coach/">開啟方案規劃管理助教 →</a>
+<a class="btn" href="articles/management-coach-leader-workflow.html">閱讀設計說明 →</a>
+<p style="font-size:.9rem;color:var(--muted);margin-bottom:0">學生仍使用自己的 AI 帳號取得評析；本工具不自動傳送內容，也不提供正式評分。</p>
+</article>
+<aside class="management-tool-note">
+<h3>四步驟</h3>
+<p><strong>1. 彙整十章</strong><br>貼上或上傳組員內容。</p>
+<p><strong>2. 產生評析指令</strong><br>請自己的 AI 檢查整份方案。</p>
+<p><strong>3. 依建議修訂</strong><br>由小組判斷採用、修改或暫不採用。</p>
+<p><strong>4. 匯出初稿</strong><br>產出可供繳交前校閱的統一版本。</p>
+</aside>
+</div>
+</section>
 <!-- AML_DOMAIN_CATALOG_START -->
 <section aria-labelledby="domain-articles-title" class="wrap aml-domain-catalog" data-domain="management" id="domain-articles">
 <div class="aml-domain-catalog__head">
@@ -285,9 +322,9 @@ h3{color:var(--navy);line-height:1.35}
 <h2 id="domain-articles-title">本領域全部文章</h2>
 <p>依 Articles 的正式分類收錄；同一篇文章可能屬於多個領域，以下各篇均可獨立閱讀。</p>
 </div>
-<div aria-label="本領域收錄 7 篇文章" class="aml-domain-catalog__count"><strong>07</strong>篇文章</div>
+<div aria-label="本領域收錄 8 篇文章" class="aml-domain-catalog__count"><strong>08</strong>篇文章</div>
 </div>
-<div class="aml-domain-catalog__grid"><a class="aml-domain-catalog__card" href="articles/pbs-support-transition-real-life.html"><div class="aml-domain-catalog__meta">2026.09.09 · PBS × OT × Management</div><h3>走出治療室以後</h3><p>從澳洲 NDIS 行為支持者調查出發，探討諮詢型支持與情支中心密集介入的銜接，以及服務對象、照顧者、環境資源、轉銜期程與高風險家庭服務網絡。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ai-review-quality-collaboration.html"><div class="aml-domain-catalog__meta">2026.09.08 · AI × Practice</div><h3>當 GPT 開始審 GPT</h3><p>從四篇教材的製作經驗出發，分享如何透過不同 GPT 的分工、反覆審修、文獻檢視與人工驗收，重新思考 AI 時代的品質協作。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ot-management-decision-accountability.html"><div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div><h3>從管理決策到當責文化</h3><p>讓責任、資源與團隊成長形成良性循環。從有限理性、資源合作到公平當責與人員發展。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ot-management-leadership-team-change.html"><div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div><h3>管理與領導：如何帶領團隊一起前進？</h3><p>從共同方向、授權與領導風格，到組織變革與持續發展，理解如何讓職能治療團隊共同前進。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ot-management-functions-quality-improvement.html"><div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div><h3>從管理五大功能到品質改善</h3><p>讓職能治療服務有系統地運作，從管理五大功能、SOP 到持續改善，建立可執行、可追蹤的專業服務系統。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ot-management-why-management-matters.html"><div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div><h3>職能治療師為什麼需要學管理？</h3><p>從專業執行者走向管理者，理解職能治療服務背後的目標、資源、團隊、品質與組織支持。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/helper-support-system.html"><div class="aml-domain-catalog__meta">2026.09.01 · Management &amp; Leadership</div><h3>助人者也需要被支持：自我照顧之外，還有團隊與組織的責任</h3><p>從個人的自我覺察、團隊求援與換手機制，到組織支持、
+<div class="aml-domain-catalog__grid"><a class="aml-domain-catalog__card" href="articles/management-coach-leader-workflow.html"><div class="aml-domain-catalog__meta">2026.09.09 · Management × AI × Education</div><h3>當組長不再一個人救火</h3><p>介紹方案規劃管理助教系統如何協助小組組長彙整十章內容、統一格式、檢查跨章連貫性，並保留學生查證與管理判斷責任。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/pbs-support-transition-real-life.html"><div class="aml-domain-catalog__meta">2026.09.09 · PBS × OT × Management</div><h3>走出治療室以後</h3><p>從澳洲 NDIS 行為支持者調查出發，探討諮詢型支持與情支中心密集介入的銜接，以及服務對象、照顧者、環境資源、轉銜期程與高風險家庭服務網絡。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ai-review-quality-collaboration.html"><div class="aml-domain-catalog__meta">2026.09.08 · AI × Practice</div><h3>當 GPT 開始審 GPT</h3><p>從四篇教材的製作經驗出發，分享如何透過不同 GPT 的分工、反覆審修、文獻檢視與人工驗收，重新思考 AI 時代的品質協作。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ot-management-decision-accountability.html"><div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div><h3>從管理決策到當責文化</h3><p>讓責任、資源與團隊成長形成良性循環。從有限理性、資源合作到公平當責與人員發展。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ot-management-leadership-team-change.html"><div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div><h3>管理與領導：如何帶領團隊一起前進？</h3><p>從共同方向、授權與領導風格，到組織變革與持續發展，理解如何讓職能治療團隊共同前進。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ot-management-functions-quality-improvement.html"><div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div><h3>從管理五大功能到品質改善</h3><p>讓職能治療服務有系統地運作，從管理五大功能、SOP 到持續改善，建立可執行、可追蹤的專業服務系統。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/ot-management-why-management-matters.html"><div class="aml-domain-catalog__meta">2026.09.07 · Management &amp; Leadership</div><h3>職能治療師為什麼需要學管理？</h3><p>從專業執行者走向管理者，理解職能治療服務背後的目標、資源、團隊、品質與組織支持。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a><a class="aml-domain-catalog__card" href="articles/helper-support-system.html"><div class="aml-domain-catalog__meta">2026.09.01 · Management &amp; Leadership</div><h3>助人者也需要被支持：自我照顧之外，還有團隊與組織的責任</h3><p>從個人的自我覺察、團隊求援與換手機制，到組織支持、
     CARE 框架與缺工時代的工作重新設計。</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a></div>
 <div class="aml-domain-catalog__all">
 <a class="btn secondary" href="articles.html">探索全部文章 →</a>
