@@ -1,0 +1,15 @@
+# Cloudflare Workers Static Assets exclusions
+# Prevent Git metadata and local/build-only files from being uploaded as public assets.
+
+**/.git
+**/.git/**
+**/node_modules
+**/node_modules/**
+**/.DS_Store
+**/.wrangler
+**/.wrangler/**
+.dev.vars*
+.env*
+wrangler.jsonc
+README_*.txt
+.assetsignore
