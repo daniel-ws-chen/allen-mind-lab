@@ -1,8 +1,11 @@
 {
   "name": "allen-mind-lab",
-  "compatibility_date": "2026-09-02",
+  "compatibility_date": "2026-09-10",
+  "build": {
+    "command": "node build-dist.mjs"
+  },
   "assets": {
-    "directory": "."
+    "directory": "./dist"
   }
 }
 // AML automatic deployment
