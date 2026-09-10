@@ -26,7 +26,7 @@ h1{font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.1;margin:14px 0 18px;font-fa
 .wrap{max-width:980px;margin:auto;padding:64px 7vw 80px}
 .intro{max-width:760px;margin-bottom:28px}
 .intro h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.2;color:var(--navy);margin:8px 0 12px;font-family:Georgia,"Times New Roman",serif}
-.intro p{color:var(--muted)}
+.intro p{color:var(--muted)}.intro-note{margin-top:10px;font-size:.94rem;color:#788292}
 .wish-card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:clamp(24px,5vw,42px);box-shadow:0 12px 34px rgba(15,23,42,.05)}
 fieldset{border:0;margin:0 0 28px;padding:0}
 legend,.field-label{display:block;color:var(--navy);font-weight:800;margin-bottom:10px}
@@ -124,14 +124,15 @@ input:focus,textarea:focus,select:focus,.btn:focus-visible,a:focus-visible{outli
   <div class="intro">
     <div class="kicker">WHAT SHOULD AML BUILD NEXT?</div>
     <h2>你出題，AML 收到。</h2>
-    <p>第一版先保持簡單：網站不建立帳號、不儲存表單，也不把資料送到第三方服務。按下「寄出願望」後，只會開啟你自己的郵件程式，最後仍由你決定是否寄出。</p>
+    <p>有些文章，從一個問題開始；有些工具，從一個不方便開始。如果你有一個「希望有人整理清楚」的主題，或一個「如果有這個工具就好了」的念頭，歡迎留下來。</p>
+    <p class="intro-note">送出時會開啟你自己的郵件程式，AML 網站不會儲存表單內容。</p>
   </div>
 
   <section class="wish-card" aria-labelledby="wish-form-title">
     <h2 id="wish-form-title" style="margin-top:0;color:var(--navy);font-size:1.55rem">我的 AML Wish</h2>
     <form id="aml-wish-form">
       <fieldset>
-        <legend>我想許願……</legend>
+        <legend>這次想許願：</legend>
         <div class="choice-grid">
           <label class="choice">
             <input type="radio" name="wishType" value="article" checked/>
