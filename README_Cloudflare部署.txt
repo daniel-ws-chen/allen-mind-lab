@@ -71,3 +71,4 @@ ALLEN MIND LAB · BUILDING A MEANINGFUL LIFE.
 - RSS
 - analytics（如需要）
 - allenmindlab.org 正式綁定
+2026-09-10：觸發 Cloudflare dist 結構部署測試
