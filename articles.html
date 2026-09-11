@@ -459,6 +459,32 @@
 .aml-series-all:hover{text-decoration:underline}
 @media(max-width:900px){.aml-series-directory{padding:66px 6vw}.aml-series-grid{grid-template-columns:1fr}.aml-series-card{padding:24px}}
 @media(max-width:560px){.aml-article-search-row{padding-left:12px}.aml-article-toolbar{align-items:stretch;flex-direction:column}.aml-article-toolbar label{justify-content:space-between}.aml-article-toolbar select{min-width:140px}.aml-series-card{padding:21px}.aml-series-links a{padding:12px}.aml-series-links a>small{padding-left:0}}
+
+/* AML Articles 1.5 — reader-first navigation */
+.aml-reader-entry{padding:72px 6vw;background:#fbfaf6;border-bottom:1px solid var(--line)}
+.aml-reader-entry__wrap,.aml-topic-halls__wrap{max-width:1180px;margin:0 auto}
+.aml-reader-entry__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.aml-reader-entry__card{display:flex;flex-direction:column;min-height:220px;padding:26px;border:1px solid var(--line);border-radius:20px;background:#fff;text-decoration:none;color:var(--ink);transition:.2s ease}
+.aml-reader-entry__card:hover{transform:translateY(-3px);border-color:#c7a76a;box-shadow:0 14px 34px rgba(15,23,42,.07)}
+.aml-reader-entry__card:focus-visible,.aml-topic-hall:focus-visible{outline:3px solid #315d8b;outline-offset:3px}
+.aml-reader-entry__kicker{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#9a7a40}
+.aml-reader-entry__card h3{font-family:Georgia,"Noto Serif TC",serif;font-size:1.45rem;line-height:1.45;color:var(--navy);margin:12px 0 10px}
+.aml-reader-entry__card p{color:var(--muted);line-height:1.8;margin:0 0 18px;flex:1}
+.aml-reader-entry__go{font-weight:800;color:#315d8b}
+.aml-topic-halls{padding:76px 6vw;background:#fff}
+.aml-topic-halls__head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:28px}
+.aml-topic-halls__head p{max-width:640px;margin:0;color:var(--muted);line-height:1.8}
+.aml-topic-halls__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.aml-topic-hall{display:flex;flex-direction:column;padding:24px;border-radius:18px;border:1px solid var(--line);background:#fbfaf7;text-decoration:none;color:var(--ink);transition:.2s ease}
+.aml-topic-hall:hover{transform:translateY(-2px);border-color:#c7a76a;background:#fff}
+.aml-topic-hall__meta{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#9a7a40;font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.aml-topic-hall h3{font-size:1.22rem;line-height:1.45;color:var(--navy);margin:12px 0 8px}
+.aml-topic-hall p{font-size:.92rem;line-height:1.7;color:var(--muted);margin:0 0 16px;flex:1}
+.aml-topic-hall__go{font-size:.9rem;font-weight:800;color:#315d8b}
+.aml-browse-note{max-width:1180px;margin:0 auto 18px;color:var(--muted);font-size:.93rem;line-height:1.75}
+@media(max-width:980px){.aml-reader-entry__grid{grid-template-columns:1fr}.aml-topic-halls__grid{grid-template-columns:1fr 1fr}.aml-topic-halls__head{display:block}.aml-topic-halls__head p{margin-top:12px}}
+@media(max-width:620px){.aml-reader-entry,.aml-topic-halls{padding:58px 6vw}.aml-topic-halls__grid{grid-template-columns:1fr}.aml-reader-entry__card{min-height:0}}
+
 </style>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <!-- AML SEO / Social Preview -->
@@ -534,65 +560,44 @@
 <h1>Articles</h1>
 <p>Ideas · Practice · Reflection<br/>關於專業、管理、教育、科技與生活的持續書寫。不是為了大量更新，而是把值得留下的經驗整理成可閱讀、可思考、可使用的內容。</p>
 </header>
-<section class="start-reading" id="start-reading">
-<div class="start-reading-wrap">
-<div class="eyebrow">Start Reading</div>
-<h2 class="title">第一次來到 AML，可以從這裡開始。</h2>
-<p class="lead">
-      不必先理解所有分類。可以從一個你正在關心的問題進入，
-      再沿著文章慢慢認識 Allen Mind Lab 的思考方式。
-    </p>
-<div class="start-reading-grid">
-<a class="start-reading-card" href="articles/ai-human-occupation-moho.html">
-<div class="start-reading-no">01 · OT &amp; HUMAN OCCUPATION</div>
-<h3>當 AI 開始參與我們的選擇</h3>
-<p>
-          從 MOHO 看人、職能與環境，理解生成式 AI 如何進入能力、
-          習慣、判斷、選擇與職能生活。
-        </p>
-<div class="start-reading-link">從 OT 開始 →</div>
-</a>
-<a class="start-reading-card" href="articles/pbs-being-seen.html">
-<div class="start-reading-no">02 · PBS IN PRACTICE</div>
-<h3>當「被看見」成為高挑戰行為</h3>
-<p>
-          從功能理解、事前預防與替代行為，到冰山下的需要與安全邊界，
-          看見行為背後的人。
-        </p>
-<div class="start-reading-link">從 PBS 開始 →</div>
-</a>
-<a class="start-reading-card" href="articles/helper-support-system.html">
-<div class="start-reading-no">03 · SUPPORTING THE HELPER</div>
-<h3>助人者也需要被支持</h3>
-<p>
-          從個人的自我覺察，走向團隊求援、組織責任與工作重新設計，
-          看見助人工作背後的支持系統。
-        </p>
-<div class="start-reading-link">從助人者支持開始 →</div>
-</a>
-</div>
-</div>
-</section>
-<section class="intro">
+<section class="aml-reader-entry" id="start-reading">
+<div class="aml-reader-entry__wrap">
+<div class="eyebrow">Choose Your Way In</div>
+<h2 class="title">先從你現在需要的東西開始。</h2>
+<p class="lead">不必先弄懂整個網站。AML 目前最常被使用的兩條路徑，是課堂延伸學習與 PBS 實務閱讀；如果只是想逛逛，也可以直接搜尋全部文章。</p>
+<div class="aml-reader-entry__grid">
+<a class="aml-reader-entry__card" href="/management-learning.html"><span class="aml-reader-entry__kicker">For Students · 課堂延伸</span><h3>我是大學生，想找管理學相關文章</h3><p>從管理基礎、組織策略、領導團隊到 KPI 與品質改善，用閱讀路徑把課堂概念串起來。</p><span class="aml-reader-entry__go">進入管理實務延伸學習 →</span></a>
+<a class="aml-reader-entry__card" href="/pbs.html"><span class="aml-reader-entry__kicker">For Practitioners · 實務工作</span><h3>我是 PBS 實務工作者，想找可以帶回現場的內容</h3><p>從行為功能、情境適配、轉銜支持到第一線團隊系統，依正在處理的問題進入。</p><span class="aml-reader-entry__go">進入 PBS 主題館 →</span></a>
+<a class="aml-reader-entry__card" href="#browse-articles"><span class="aml-reader-entry__kicker">Browse · 自由探索</span><h3>我有一個關鍵字，想直接找文章</h3><p>使用主題篩選、關鍵字搜尋與排序，快速找到需要的文章，不必照發布順序閱讀。</p><span class="aml-reader-entry__go">搜尋全部文章 →</span></a>
+</div></div></section>
+<section class="aml-topic-halls" id="topic-halls"><div class="aml-topic-halls__wrap">
+<div class="aml-topic-halls__head"><div><div class="eyebrow">Featured Topic Halls</div><h2 class="title">特色主題館</h2></div><p>主題館不是另一份文章清單，而是把相關文章、工具與閱讀脈絡放在一起。先進館，再決定要讀哪一篇。</p></div>
+<div class="aml-topic-halls__grid">
+<a class="aml-topic-hall" href="/management.html"><div class="aml-topic-hall__meta"><span>Management &amp; Leadership</span><span>12 篇</span></div><h3>管理與領導</h3><p>適合管理學學生、主管與需要把專業服務變成可持續系統的工作者。</p><span class="aml-topic-hall__go">進入主題館 →</span></a>
+<a class="aml-topic-hall" href="/pbs.html"><div class="aml-topic-hall__meta"><span>Positive Behaviour Support</span><span>4 篇</span></div><h3>PBS 正向行為支持</h3><p>從理解功能到現場支持、跨情境適配與轉銜，聚焦真正會遇到的實務問題。</p><span class="aml-topic-hall__go">進入主題館 →</span></a>
+<a class="aml-topic-hall" href="/ot.html"><div class="aml-topic-hall__meta"><span>OT &amp; Human Occupation</span><span>6 篇</span></div><h3>職能治療與人類職能</h3><p>從人的生活、角色、環境與參與出發，連接 OT、管理、PBS 與科技。</p><span class="aml-topic-hall__go">進入主題館 →</span></a>
+<a class="aml-topic-hall" href="/ai.html"><div class="aml-topic-hall__meta"><span>AI × Practice</span><span>6 篇</span></div><h3>AI × 實務</h3><p>把 AI 放進真實工作流程，同時保留人的判斷、查證與責任。</p><span class="aml-topic-hall__go">進入主題館 →</span></a>
+</div></div></section>
+<section class="intro" id="browse-articles">
 <div class="eyebrow">Explore by Topic</div>
-<h2 class="title">依主題探索，找到你正在關心的問題。</h2>
-<p class="lead">文章會依主題分類，也允許跨領域。未來每一篇文章都使用一致的 AML 結構與安全檢核，讓網站內容愈來愈完整，而不是愈來愈凌亂。</p>
+<h2 class="title">搜尋、篩選，或直接進入你熟悉的主題。</h2>
+<p class="lead">同一篇文章可能跨越多個領域。你可以用主題按鈕縮小範圍，也可以直接輸入關鍵字；學生與實務工作者都不必從第一篇一路往下找。</p>
 <div class="aml-article-search"><label for="aml-article-query">搜尋文章</label><div class="aml-article-search-row"><input aria-controls="aml-article-grid" autocomplete="off" id="aml-article-query" placeholder="搜尋標題、摘要或關鍵字…" type="search"/><button hidden="" id="aml-article-clear" type="button">清除</button></div></div><div class="filters">
-<button aria-pressed="true" class="filter-btn active" data-filter="all" type="button">全部 <span class="filter-count">(16)</span></button>
-<button aria-pressed="false" class="filter-btn" data-filter="ot" type="button">OT &amp; Human Occupation <span class="filter-count">(5)</span></button>
-<button aria-pressed="false" class="filter-btn" data-filter="pbs" type="button">PBS <span class="filter-count">(3)</span></button>
-<button aria-pressed="false" class="filter-btn" data-filter="management" type="button">Management <span class="filter-count">(6)</span></button>
-<button aria-pressed="false" class="filter-btn" data-filter="education" type="button">Education <span class="filter-count">(1)</span></button>
-<button aria-pressed="false" class="filter-btn" data-filter="ai" type="button">AI × Practice <span class="filter-count">(4)</span></button>
+<button aria-pressed="true" class="filter-btn active" data-filter="all" type="button">全部 <span class="filter-count">(18)</span></button>
+<button aria-pressed="false" class="filter-btn" data-filter="ot" type="button">OT &amp; Human Occupation <span class="filter-count">(6)</span></button>
+<button aria-pressed="false" class="filter-btn" data-filter="pbs" type="button">PBS <span class="filter-count">(4)</span></button>
+<button aria-pressed="false" class="filter-btn" data-filter="management" type="button">Management <span class="filter-count">(12)</span></button>
+<button aria-pressed="false" class="filter-btn" data-filter="education" type="button">Education <span class="filter-count">(5)</span></button>
+<button aria-pressed="false" class="filter-btn" data-filter="ai" type="button">AI × Practice <span class="filter-count">(6)</span></button>
 <button aria-pressed="false" class="filter-btn" data-filter="mind" type="button">Mind &amp; Well-being <span class="filter-count">(4)</span></button>
 <button aria-pressed="false" class="filter-btn" data-filter="notes" type="button">AML Notes <span class="filter-count">(2)</span></button>
 </div>
 </section>
-<section class="aml-series-directory" id="featured-series"><div class="aml-series-wrap"><div class="eyebrow">Featured Series</div><h2>沿著同一個問題，繼續深入。</h2><p class="aml-series-intro">Domains 告訴我們知識在哪裡；Series 則讓思考沿著同一個問題繼續往前走。</p><div class="aml-series-grid"><article class="aml-series-card"><span class="aml-series-label">Management &amp; Leadership</span><h3>管理實務延伸學習</h3><p>從專業執行者走向管理者，理解服務系統、團隊領導與實務決策。</p><ol class="aml-series-links"><li><a href="articles/ot-management-why-management-matters.html"><span>01</span>職能治療師為什麼需要學管理？</a></li><li><a href="articles/ot-management-functions-quality-improvement.html"><span>02</span>從管理五大功能到品質改善</a></li><li><a href="articles/ot-management-leadership-team-change.html"><span>03</span>管理與領導：如何帶領團隊一起前進？</a></li><li><a href="articles/ot-management-decision-accountability.html"><span>04</span>從管理決策到當責文化</a></li></ol><a class="aml-series-all" href="/management-learning.html">閱讀管理學專區 →</a></article><article class="aml-series-card"><span class="aml-series-label">Supporting the Helper</span><h3>助人者支持系列</h3><p>從自我覺察、團隊與組織支持，到數位工作邊界，重新思考第一線工作者如何被支持，而不只是被要求繼續撐住。</p><ol class="aml-series-links"><li><a href="articles/helper-self-awareness.html"><span>01</span><strong>看見自己｜心安方能助人，理明方能成事</strong><small>從體力、情緒、期待與關係界線開始自我覺察。</small></a></li><li><a href="articles/helper-support-system.html"><span>02</span><strong>建立支持｜助人者也需要被支持</strong><small>從個人韌性走向團隊求援、組織責任與工作重新設計。</small></a></li><li><a href="articles/digital-communication-boundaries.html"><span>03</span><strong>重新設計工作｜不是不想回，是不能一直在線</strong><small>用數位邊界與 AI 第二雙眼睛，降低第一線溝通負荷與風險。</small></a></li></ol></article></div></div></section>
+<section class="aml-series-directory" id="featured-series"><div class="aml-series-wrap"><div class="eyebrow">Featured Series</div><h2>沿著同一個問題，繼續深入。</h2><p class="aml-series-intro">Domains 告訴我們知識在哪裡；Series 則讓思考沿著同一個問題繼續往前走。</p><div class="aml-series-grid"><article class="aml-series-card"><span class="aml-series-label">Management &amp; Leadership</span><h3>管理實務延伸學習</h3><p>為大學生與實務工作者整理的管理閱讀路徑。核心文章依「基礎 → 策略 → 評估」逐步延伸，完整館藏請進專區瀏覽。</p><ol class="aml-series-links"><li><a href="articles/ot-management-why-management-matters.html"><span>01</span>職能治療師為什麼需要學管理？</a></li><li><a href="articles/ot-management-organizational-planning.html"><span>02</span>組織為什麼存在？</a></li><li><a href="articles/ot-management-strategy-swot.html"><span>03</span>好的策略，不是從填 SWOT 開始</a></li><li><a href="articles/ot-management-kpi-data-pdca.html"><span>04</span>我們做了很多，然後呢？</a></li></ol><a class="aml-series-all" href="/management-learning.html">查看 12 篇管理相關文章與閱讀路徑 →</a></article><article class="aml-series-card"><span class="aml-series-label">Supporting the Helper</span><h3>助人者支持系列</h3><p>從自我覺察、團隊與組織支持，到數位工作邊界，重新思考第一線工作者如何被支持，而不只是被要求繼續撐住。</p><ol class="aml-series-links"><li><a href="articles/helper-self-awareness.html"><span>01</span><strong>看見自己｜心安方能助人，理明方能成事</strong><small>從體力、情緒、期待與關係界線開始自我覺察。</small></a></li><li><a href="articles/helper-support-system.html"><span>02</span><strong>建立支持｜助人者也需要被支持</strong><small>從個人韌性走向團隊求援、組織責任與工作重新設計。</small></a></li><li><a href="articles/digital-communication-boundaries.html"><span>03</span><strong>重新設計工作｜不是不想回，是不能一直在線</strong><small>用數位邊界與 AI 第二雙眼睛，降低第一線溝通負荷與風險。</small></a></li></ol></article></div></div></section>
 <section id="articles">
 <div class="eyebrow">Latest Articles</div>
 <h2 class="title">全部文章</h2>
-<div class="aml-article-toolbar"><p aria-live="polite" id="aml-article-result-count" role="status">目前共有 16 篇文章</p><label for="aml-article-sort">排序 <select id="aml-article-sort"><option value="newest">最新優先</option><option value="oldest">最舊優先</option><option value="title">標題排序</option></select></label></div><div class="article-grid" id="aml-article-grid"><a class="article-card" data-category="management education" data-date="2026-09-11" data-keywords="KPI 資料治理 PDCA 計畫評估 情支中心 職能治療 管理實務延伸學習" data-order="0" href="articles/ot-management-kpi-data-pdca.html"><div class="meta">2026.09.11</div><span class="tag">Management &amp; Leadership</span><h2>我們做了很多，然後呢？</h2><p>從情支中心的成效評估出發，重新理解 KPI、資料治理與 PDCA：做了很多不等於有效，真正重要的是資料能否回答價值與改善問題。</p><div class="read">Read Article →</div></a><a class="article-card" data-category="management education" data-date="2026-09-10" data-keywords="策略規劃 SWOT TOWS 利害關係人 SMART 情支中心 嚴重情緒行為支持中心 職能治療 管理實務延伸學習" data-order="1" href="articles/ot-management-strategy-swot.html">
+<div class="aml-article-toolbar"><p aria-live="polite" id="aml-article-result-count" role="status">目前共有 18 篇文章</p><label for="aml-article-sort">排序 <select id="aml-article-sort"><option value="newest">最新優先</option><option value="oldest">最舊優先</option><option value="title">標題排序</option></select></label></div><div class="article-grid" id="aml-article-grid"><a class="article-card" data-category="management education" data-date="2026-09-11" data-keywords="KPI 資料治理 PDCA 計畫評估 情支中心 職能治療 管理實務延伸學習" data-order="0" href="articles/ot-management-kpi-data-pdca.html"><div class="meta">2026.09.11</div><span class="tag">Management &amp; Leadership</span><h2>我們做了很多，然後呢？</h2><p>從情支中心的成效評估出發，重新理解 KPI、資料治理與 PDCA：做了很多不等於有效，真正重要的是資料能否回答價值與改善問題。</p><div class="read">Read Article →</div></a><a class="article-card" data-category="management education" data-date="2026-09-10" data-keywords="策略規劃 SWOT TOWS 利害關係人 SMART 情支中心 嚴重情緒行為支持中心 職能治療 管理實務延伸學習" data-order="1" href="articles/ot-management-strategy-swot.html">
 <div class="meta">2026.09.10</div>
 <span class="tag">Management &amp; Leadership</span>
 <h2>好的策略，不是從填 SWOT 開始</h2>
@@ -835,7 +840,12 @@
   clear.addEventListener("click",()=>{search.value="";render();search.focus();});
   sort.addEventListener("change",render);
   reset.addEventListener("click",resetAll);
-  render();
+  const requestedTopic=new URLSearchParams(window.location.search).get("topic");
+  if(requestedTopic && buttons.some(btn=>btn.dataset.filter===requestedTopic)){
+    setFilter(requestedTopic,false);
+  }else{
+    render();
+  }
 })();
 </script>
 <script defer="" src="aml-site.js"></script>
