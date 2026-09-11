@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <rss version="2.0">
   <channel>
+<item><title>機會很多，但不是每一個都要抓住</title><link>https://allenmindlab.com/articles/ot-management-service-development-choice</link><guid>https://allenmindlab.com/articles/ot-management-service-development-choice</guid><pubDate>Fri, 11 Sep 2026 14:27:00 +0800</pubDate><description>從需求、專業與組織三個面向重新思考 OT 服務發展：做得到不等於最適合做，真正成熟的服務發展，是在有限資源中選出最值得投入的方向。</description></item>
+
 <item><title>我們做了很多，然後呢？</title><link>https://allenmindlab.com/articles/ot-management-kpi-data-pdca</link><guid>https://allenmindlab.com/articles/ot-management-kpi-data-pdca</guid><pubDate>Fri, 11 Sep 2026 09:48:00 +0800</pubDate><description>從情支中心的成效評估出發，重新理解 KPI、資料治理與 PDCA：做了很多不等於有效，真正重要的是資料能否回答價值與改善問題。</description></item>
 
 <item>
@@ -18,7 +20,7 @@
     <link>https://allenmindlab.com/articles</link>
     <description>關於職能治療、PBS、管理、教育、AI 與身心福祉，分享值得留下的內容。</description>
     <language>zh-TW</language>
-    <lastBuildDate>Fri, 11 Sep 2026 09:48:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 14:27:00 +0800</lastBuildDate>
     <item>
       <title>當組長不再一個人救火：用 AI 與管理系統整合小組方案</title>
       <link>https://allenmindlab.com/articles/management-coach-leader-workflow</link>
