@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <rss version="2.0">
   <channel>
+<item><title>當學生已經有了 AI，老師還要教什麼？</title><link>https://allenmindlab.com/articles/ai-era-teaching-learning</link><guid>https://allenmindlab.com/articles/ai-era-teaching-learning</guid><pubDate>Fri, 11 Sep 2026 16:15:00 +0800</pubDate><description>當 AI 已能摘要教材、整理重點與產生答案，課堂更值得留下什麼？從 Knowledge Work、Reasoning Work 到 Human Work，重新思考 AI 時代教師、學生與課堂的分工。</description></item>
+
 <item><title>讓改變走得更遠</title><link>https://allenmindlab.com/articles/ot-management-transition-support-life</link><guid>https://allenmindlab.com/articles/ot-management-transition-support-life</guid><pubDate>Fri, 11 Sep 2026 15:00:00 +0800</pubDate><description>情緒行為穩定不是服務的終點。真正的轉銜，是找出有效的支持條件，把能力、策略與支持網絡帶進下一段生活，讓新的環境逐漸有能力承接改變，陪一個人繼續往前走。</description></item>
 
 <item><title>機會很多，但不是每一個都要抓住</title><link>https://allenmindlab.com/articles/ot-management-service-development-choice</link><guid>https://allenmindlab.com/articles/ot-management-service-development-choice</guid><pubDate>Fri, 11 Sep 2026 14:27:00 +0800</pubDate><description>從需求、專業與組織三個面向重新思考 OT 服務發展：做得到不等於最適合做，真正成熟的服務發展，是在有限資源中選出最值得投入的方向。</description></item>
@@ -22,7 +24,7 @@
     <link>https://allenmindlab.com/articles</link>
     <description>關於職能治療、PBS、管理、教育、AI 與身心福祉，分享值得留下的內容。</description>
     <language>zh-TW</language>
-    <lastBuildDate>Fri, 11 Sep 2026 15:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 11 Sep 2026 16:15:00 +0800</lastBuildDate>
     <item>
       <title>當組長不再一個人救火：用 AI 與管理系統整合小組方案</title>
       <link>https://allenmindlab.com/articles/management-coach-leader-workflow</link>
