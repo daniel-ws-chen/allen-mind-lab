@@ -42,6 +42,17 @@ for (const name of readdirSync(root)) {
   cpSync(src, dst, { recursive: true });
 }
 
+// Optimized site assets replace the legacy PNG hero banners in production.
+// Keep the originals in the repository as source/archive files, but do not ship
+// them to the public dist once the WebP versions exist.
+for (const legacyAsset of [
+  "images/allen-banner.png",
+  "images/allen-banner-mobile.png"
+]) {
+  const target = join(dist, legacyAsset);
+  if (existsSync(target)) rmSync(target, { force: true });
+}
+
 function countFiles(dir) {
   let count = 0;
   for (const name of readdirSync(dir)) {
