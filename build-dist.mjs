@@ -42,12 +42,17 @@ for (const name of readdirSync(root)) {
   cpSync(src, dst, { recursive: true });
 }
 
-// Optimized site assets replace the legacy PNG hero banners in production.
-// Keep the originals in the repository as source/archive files, but do not ship
-// them to the public dist once the WebP versions exist.
+// Optimized site assets replace legacy/source PNGs in production.
+// Keep originals in the repository as source/archive files, but do not ship
+// them to public dist when current pages use their WebP equivalents.
 for (const legacyAsset of [
   "images/allen-banner.png",
-  "images/allen-banner-mobile.png"
+  "images/allen-banner-mobile.png",
+  "images/articles/ai-human-occupation-moho-hero.png",
+  "images/articles/3c-vs-ai.png",
+  "images/articles/moho-concept.png",
+  "images/articles/ai-moho-four-layers.png",
+  "images/articles/human-ai-feedback-loop.png"
 ]) {
   const target = join(dist, legacyAsset);
   if (existsSync(target)) rmSync(target, { force: true });

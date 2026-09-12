@@ -373,3 +373,19 @@
   .aml-global-nav .aml-desktop-links{gap:14px;font-size:.84rem}
   .aml-global-nav{gap:14px}
 }
+
+/* ===== AML Related Reading Network v1 ===== */
+.aml-related-reading{background:#f6f1e7;border-top:1px solid #e7e0d4;padding:58px 7vw 64px}
+.aml-related-reading__inner{max-width:1120px;margin:0 auto}
+.aml-related-reading__kicker{color:#9a7439;font-size:.76rem;font-weight:800;letter-spacing:.16em}
+.aml-related-reading h2{margin:8px 0 8px;color:#071a33;font-family:Georgia,"Times New Roman","Noto Serif TC",serif;font-size:clamp(1.75rem,3.3vw,2.55rem);line-height:1.3}
+.aml-related-reading__inner>p{margin:0 0 26px;color:#657081}
+.aml-related-reading__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.aml-related-reading__card{display:flex;min-width:0;min-height:178px;flex-direction:column;padding:22px;border:1px solid #e0d7c7;border-radius:20px;background:#fff;color:#142031;text-decoration:none;transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}
+.aml-related-reading__card:hover{border-color:#c7a76a;transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,23,42,.06)}
+.aml-related-reading__card:focus-visible{outline:3px solid rgba(199,167,106,.5);outline-offset:3px}
+.aml-related-reading__label{display:block;margin-bottom:10px;color:#8a6a32;font-size:.75rem;font-weight:800;letter-spacing:.06em}
+.aml-related-reading__card strong{color:#071a33;font-size:1.05rem;line-height:1.55}
+.aml-related-reading__go{margin-top:auto;padding-top:18px;color:#5b6572;font-size:.88rem;font-weight:700}
+.aml-related-reading__all{display:inline-block;margin-top:24px;color:#071a33;font-weight:800;text-decoration:none}
+@media(max-width:820px){.aml-related-reading{padding:46px 6vw 52px}.aml-related-reading__grid{grid-template-columns:1fr}.aml-related-reading__card{min-height:0}}
