@@ -1,14 +1,10 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
-  <channel>
+<channel><item><title>當 AI 愈來愈強，人為什麼反而更需要修行？</title><link>https://allenmindlab.com/articles/ai-cultivation-inner-life</link><guid>https://allenmindlab.com/articles/ai-cultivation-inner-life</guid><pubDate>Sat, 12 Sep 2026 22:55:00 +0800</pubDate><description>當 AI 不斷擴張人的外在能力，修行或許提醒我們重新整理內在方向。從效率、時間、離線練習到日常生活，思考科技、修行與人的合一。</description></item>
 <item><title>當學生已經有了 AI，老師還要教什麼？</title><link>https://allenmindlab.com/articles/ai-era-teaching-learning</link><guid>https://allenmindlab.com/articles/ai-era-teaching-learning</guid><pubDate>Fri, 11 Sep 2026 16:15:00 +0800</pubDate><description>當 AI 已能摘要教材、整理重點與產生答案，課堂更值得留下什麼？從 Knowledge Work、Reasoning Work 到 Human Work，重新思考 AI 時代教師、學生與課堂的分工。</description></item>
-
 <item><title>讓改變走得更遠</title><link>https://allenmindlab.com/articles/ot-management-transition-support-life</link><guid>https://allenmindlab.com/articles/ot-management-transition-support-life</guid><pubDate>Fri, 11 Sep 2026 15:00:00 +0800</pubDate><description>情緒行為穩定不是服務的終點。真正的轉銜，是找出有效的支持條件，把能力、策略與支持網絡帶進下一段生活，讓新的環境逐漸有能力承接改變，陪一個人繼續往前走。</description></item>
-
 <item><title>機會很多，但不是每一個都要抓住</title><link>https://allenmindlab.com/articles/ot-management-service-development-choice</link><guid>https://allenmindlab.com/articles/ot-management-service-development-choice</guid><pubDate>Fri, 11 Sep 2026 14:27:00 +0800</pubDate><description>從需求、專業與組織三個面向重新思考 OT 服務發展：做得到不等於最適合做，真正成熟的服務發展，是在有限資源中選出最值得投入的方向。</description></item>
-
 <item><title>我們做了很多，然後呢？</title><link>https://allenmindlab.com/articles/ot-management-kpi-data-pdca</link><guid>https://allenmindlab.com/articles/ot-management-kpi-data-pdca</guid><pubDate>Fri, 11 Sep 2026 09:48:00 +0800</pubDate><description>從情支中心的成效評估出發，重新理解 KPI、資料治理與 PDCA：做了很多不等於有效，真正重要的是資料能否回答價值與改善問題。</description></item>
-
 <item>
 <title>好的策略，不是從填 SWOT 開始</title>
 <link>https://allenmindlab.com/articles/ot-management-strategy-swot</link>
@@ -16,91 +12,89 @@
 <pubDate>Thu, 10 Sep 2026 23:10:00 +0800</pubDate>
 <description>從成立嚴重情緒行為支持中心的教學案例，理解 SWOT、TOWS、利害關係人分析、策略情境與 SMART 如何從分析走向真正的策略選擇。</description>
 </item>
-
-    <item><title>為什麼同一份 PBS 計畫，換個地方就不一定有效？</title><link>https://allenmindlab.com/articles/pbs-plan-contextual-fit</link><guid>https://allenmindlab.com/articles/pbs-plan-contextual-fit</guid><pubDate>Thu, 10 Sep 2026 00:00:00 +0800</pubDate><description>同一份 PBS 計畫到了不同情境，為什麼可能產生不同結果？從行為功能、情境適配、能力建立與持續調整，理解正向行為支持如何走進真實生活。</description></item><item><title>當 AI 越來越會管事，管理者該如何帶人？</title><link>https://allenmindlab.com/articles/ai-manager-leadership-human-ai-collaboration</link><guid>https://allenmindlab.com/articles/ai-manager-leadership-human-ai-collaboration</guid><pubDate>Thu, 10 Sep 2026 06:30:00 +0800</pubDate><description>當 AI 能協助排程、追蹤、分析與績效管理，管理者的價值是否需要重新定義？從管理與領導、人機協作、組織設計到當責，思考 AI 時代主管的新角色。</description></item>
+<item><title>為什麼同一份 PBS 計畫，換個地方就不一定有效？</title><link>https://allenmindlab.com/articles/pbs-plan-contextual-fit</link><guid>https://allenmindlab.com/articles/pbs-plan-contextual-fit</guid><pubDate>Thu, 10 Sep 2026 00:00:00 +0800</pubDate><description>同一份 PBS 計畫到了不同情境，為什麼可能產生不同結果？從行為功能、情境適配、能力建立與持續調整，理解正向行為支持如何走進真實生活。</description></item><item><title>當 AI 越來越會管事，管理者該如何帶人？</title><link>https://allenmindlab.com/articles/ai-manager-leadership-human-ai-collaboration</link><guid>https://allenmindlab.com/articles/ai-manager-leadership-human-ai-collaboration</guid><pubDate>Thu, 10 Sep 2026 06:30:00 +0800</pubDate><description>當 AI 能協助排程、追蹤、分析與績效管理，管理者的價值是否需要重新定義？從管理與領導、人機協作、組織設計到當責，思考 AI 時代主管的新角色。</description></item>
 <item><title>組織為什麼存在？從願景、使命到可執行的服務方向</title><link>https://allenmindlab.com/articles/ot-management-organizational-planning</link><guid>https://allenmindlab.com/articles/ot-management-organizational-planning</guid><pubDate>Wed, 09 Sep 2026 23:03:00 +0800</pubDate><description>從願景、使命與組織目標出發，透過 5P 理解醫療、長照與社區的組織規劃，讓職能治療服務從專業理念走向可執行的服務方向。</description></item>
-
-    <title>Allen Mind Lab — Articles</title>
-    <link>https://allenmindlab.com/articles</link>
-    <description>關於職能治療、PBS、管理、教育、AI 與身心福祉，分享值得留下的內容。</description>
-    <language>zh-TW</language>
-    <lastBuildDate>Fri, 11 Sep 2026 16:15:00 +0800</lastBuildDate>
-    <item>
-      <title>當組長不再一個人救火：用 AI 與管理系統整合小組方案</title>
-      <link>https://allenmindlab.com/articles/management-coach-leader-workflow</link>
-      <guid>https://allenmindlab.com/articles/management-coach-leader-workflow</guid>
-      <pubDate>Wed, 09 Sep 2026 15:56:00 +0800</pubDate>
-      <description>介紹方案規劃管理助教系統如何協助職能治療管理學小組組長彙整十章內容、統一格式、檢查跨章連貫性，並保留學生查證與管理判斷責任。</description>
-    </item>
-    <item><title>走出治療室以後：專業支持如何延續到真實生活？</title><link>https://allenmindlab.com/articles/pbs-support-transition-real-life</link><guid>https://allenmindlab.com/articles/pbs-support-transition-real-life</guid><pubDate>Wed, 09 Sep 2026 00:00:00 +0800</pubDate><description>從澳洲 NDIS 行為支持者調查出發，探討諮詢型支持與情支中心密集介入的銜接，以及服務對象、照顧者、環境資源、轉銜期程與高風險家庭服務網絡。</description></item><item>
-      <title>從管理決策到當責文化</title>
-      <link>https://allenmindlab.com/articles/ot-management-decision-accountability</link>
-      <guid>https://allenmindlab.com/articles/ot-management-decision-accountability</guid>
-      <pubDate>Mon, 07 Sep 2026 15:20:00 +0800</pubDate>
-      <description>從有限理性、賽局與資源協調，到當責、Just Culture、事件改善與績效回饋，理解職能治療管理者如何在限制中做決策，並讓組織持續成長。</description>
-    </item>
-    <item>
-      <title>管理與領導：如何帶領團隊一起前進？</title>
-      <link>https://allenmindlab.com/articles/ot-management-leadership-team-change</link>
-      <guid>https://allenmindlab.com/articles/ot-management-leadership-team-change</guid>
-      <pubDate>Mon, 07 Sep 2026 13:52:00 +0800</pubDate>
-      <description>從管理與領導的差異、願景、X／Y 理論、授權與領導風格，到 Kotter 組織變革與團隊永續，理解如何帶領職能治療團隊共同前進。</description>
-    </item>
-    <item>
-      <title>從管理五大功能到品質改善</title>
-      <link>https://allenmindlab.com/articles/ot-management-functions-quality-improvement</link>
-      <guid>https://allenmindlab.com/articles/ot-management-functions-quality-improvement</guid>
-      <pubDate>Mon, 07 Sep 2026 12:38:00 +0800</pubDate>
-      <description>從管理五大功能到 SOP 與品質改善，以失智日間復能團體為例，理解職能治療服務如何建立流程、配置資源、維持品質並持續精進。</description>
-    </item>
-    <item>
-      <title>職能治療師為什麼需要學管理？</title>
-      <link>https://allenmindlab.com/articles/ot-management-why-management-matters</link>
-      <guid>https://allenmindlab.com/articles/ot-management-why-management-matters</guid>
-      <pubDate>Mon, 07 Sep 2026 00:00:00 +0800</pubDate>
-      <description>從專業執行者走向管理者，理解職能治療服務背後的目標、資源、團隊、品質與組織支持。</description>
-    </item>
-    <item>
-      <title>當 AI 開始參與我們的選擇</title>
-      <link>https://allenmindlab.com/articles/ai-human-occupation-moho</link>
-      <guid>https://allenmindlab.com/articles/ai-human-occupation-moho</guid>
-      <pubDate>Fri, 04 Sep 2026 00:00:00 +0800</pubDate>
-      <description>從 MOHO 看生成式 AI 如何影響人的能力、習慣、選擇與環境，以及我們正在形成什麼樣的職能生活。</description>
-    </item>
-    <item>
-      <title>當「被看見」成為高挑戰行為</title>
-      <link>https://allenmindlab.com/articles/pbs-being-seen</link>
-      <guid>https://allenmindlab.com/articles/pbs-being-seen</guid>
-      <pubDate>Thu, 03 Sep 2026 00:00:00 +0800</pubDate>
-      <description>從 PBS 的事前預防、積極忽略與替代行為，到冰山下的需求與安全邊界，重新理解「被看見」背後的行為與關係。</description>
-    </item>
-    <item>
-      <title>不是不想回，是不能一直在線</title>
-      <link>https://allenmindlab.com/articles/digital-communication-boundaries</link>
-      <guid>https://allenmindlab.com/articles/digital-communication-boundaries</guid>
-      <pubDate>Wed, 02 Sep 2026 00:00:00 +0800</pubDate>
-      <description>當數位溝通侵入工作之外的生活，重新思考私人 LINE、官方帳號與 AI 幕僚如何協助第一線服務建立可持續的邊界。</description>
-    </item>
-    <item>
-      <title>助人者也需要被支持：自我照顧之外，還有團隊與組織的責任</title>
-      <link>https://allenmindlab.com/articles/helper-support-system</link>
-      <guid>https://allenmindlab.com/articles/helper-support-system</guid>
-      <pubDate>Tue, 01 Sep 2026 06:00:00 +0800</pubDate>
-      <description>從個人的自我覺察、團隊求援與換手機制，到組織支持與工作重新設計。</description>
-    </item>
-    <item>
-      <title>心安方能助人，理明方能成事：助人工作者也需要評估自己的狀態</title>
-      <link>https://allenmindlab.com/articles/helper-self-awareness</link>
-      <guid>https://allenmindlab.com/articles/helper-self-awareness</guid>
-      <pubDate>Mon, 31 Aug 2026 00:00:00 +0800</pubDate>
-      <description>助人工作者也需要回頭評估自己的體力、情緒、期待與關係邊界。</description>
-    </item>
-    <item>
-      <title>醫療照顧身體，修習安頓身心</title>
-      <link>https://allenmindlab.com/articles/medical-care-and-inner-practice</link>
-      <guid>https://allenmindlab.com/articles/medical-care-and-inner-practice</guid>
-      <pubDate>Mon, 31 Aug 2026 00:00:00 +0800</pubDate>
-      <description>在正規醫療處遇之外，從生活修習與自我照顧思考如何安頓身心。</description>
-    </item>
-  </channel>
+<title>Allen Mind Lab — Articles</title>
+<link>https://allenmindlab.com/articles</link>
+<description>關於職能治療、PBS、管理、教育、AI 與身心福祉，分享值得留下的內容。</description>
+<language>zh-TW</language>
+<lastBuildDate>Fri, 11 Sep 2026 16:15:00 +0800</lastBuildDate>
+<item>
+<title>當組長不再一個人救火：用 AI 與管理系統整合小組方案</title>
+<link>https://allenmindlab.com/articles/management-coach-leader-workflow</link>
+<guid>https://allenmindlab.com/articles/management-coach-leader-workflow</guid>
+<pubDate>Wed, 09 Sep 2026 15:56:00 +0800</pubDate>
+<description>介紹方案規劃管理助教系統如何協助職能治療管理學小組組長彙整十章內容、統一格式、檢查跨章連貫性，並保留學生查證與管理判斷責任。</description>
+</item>
+<item><title>走出治療室以後：專業支持如何延續到真實生活？</title><link>https://allenmindlab.com/articles/pbs-support-transition-real-life</link><guid>https://allenmindlab.com/articles/pbs-support-transition-real-life</guid><pubDate>Wed, 09 Sep 2026 00:00:00 +0800</pubDate><description>從澳洲 NDIS 行為支持者調查出發，探討諮詢型支持與情支中心密集介入的銜接，以及服務對象、照顧者、環境資源、轉銜期程與高風險家庭服務網絡。</description></item><item>
+<title>從管理決策到當責文化</title>
+<link>https://allenmindlab.com/articles/ot-management-decision-accountability</link>
+<guid>https://allenmindlab.com/articles/ot-management-decision-accountability</guid>
+<pubDate>Mon, 07 Sep 2026 15:20:00 +0800</pubDate>
+<description>從有限理性、賽局與資源協調，到當責、Just Culture、事件改善與績效回饋，理解職能治療管理者如何在限制中做決策，並讓組織持續成長。</description>
+</item>
+<item>
+<title>管理與領導：如何帶領團隊一起前進？</title>
+<link>https://allenmindlab.com/articles/ot-management-leadership-team-change</link>
+<guid>https://allenmindlab.com/articles/ot-management-leadership-team-change</guid>
+<pubDate>Mon, 07 Sep 2026 13:52:00 +0800</pubDate>
+<description>從管理與領導的差異、願景、X／Y 理論、授權與領導風格，到 Kotter 組織變革與團隊永續，理解如何帶領職能治療團隊共同前進。</description>
+</item>
+<item>
+<title>從管理五大功能到品質改善</title>
+<link>https://allenmindlab.com/articles/ot-management-functions-quality-improvement</link>
+<guid>https://allenmindlab.com/articles/ot-management-functions-quality-improvement</guid>
+<pubDate>Mon, 07 Sep 2026 12:38:00 +0800</pubDate>
+<description>從管理五大功能到 SOP 與品質改善，以失智日間復能團體為例，理解職能治療服務如何建立流程、配置資源、維持品質並持續精進。</description>
+</item>
+<item>
+<title>職能治療師為什麼需要學管理？</title>
+<link>https://allenmindlab.com/articles/ot-management-why-management-matters</link>
+<guid>https://allenmindlab.com/articles/ot-management-why-management-matters</guid>
+<pubDate>Mon, 07 Sep 2026 00:00:00 +0800</pubDate>
+<description>從專業執行者走向管理者，理解職能治療服務背後的目標、資源、團隊、品質與組織支持。</description>
+</item>
+<item>
+<title>當 AI 開始參與我們的選擇</title>
+<link>https://allenmindlab.com/articles/ai-human-occupation-moho</link>
+<guid>https://allenmindlab.com/articles/ai-human-occupation-moho</guid>
+<pubDate>Fri, 04 Sep 2026 00:00:00 +0800</pubDate>
+<description>從 MOHO 看生成式 AI 如何影響人的能力、習慣、選擇與環境，以及我們正在形成什麼樣的職能生活。</description>
+</item>
+<item>
+<title>當「被看見」成為高挑戰行為</title>
+<link>https://allenmindlab.com/articles/pbs-being-seen</link>
+<guid>https://allenmindlab.com/articles/pbs-being-seen</guid>
+<pubDate>Thu, 03 Sep 2026 00:00:00 +0800</pubDate>
+<description>從 PBS 的事前預防、積極忽略與替代行為，到冰山下的需求與安全邊界，重新理解「被看見」背後的行為與關係。</description>
+</item>
+<item>
+<title>不是不想回，是不能一直在線</title>
+<link>https://allenmindlab.com/articles/digital-communication-boundaries</link>
+<guid>https://allenmindlab.com/articles/digital-communication-boundaries</guid>
+<pubDate>Wed, 02 Sep 2026 00:00:00 +0800</pubDate>
+<description>當數位溝通侵入工作之外的生活，重新思考私人 LINE、官方帳號與 AI 幕僚如何協助第一線服務建立可持續的邊界。</description>
+</item>
+<item>
+<title>助人者也需要被支持：自我照顧之外，還有團隊與組織的責任</title>
+<link>https://allenmindlab.com/articles/helper-support-system</link>
+<guid>https://allenmindlab.com/articles/helper-support-system</guid>
+<pubDate>Tue, 01 Sep 2026 06:00:00 +0800</pubDate>
+<description>從個人的自我覺察、團隊求援與換手機制，到組織支持與工作重新設計。</description>
+</item>
+<item>
+<title>心安方能助人，理明方能成事：助人工作者也需要評估自己的狀態</title>
+<link>https://allenmindlab.com/articles/helper-self-awareness</link>
+<guid>https://allenmindlab.com/articles/helper-self-awareness</guid>
+<pubDate>Mon, 31 Aug 2026 00:00:00 +0800</pubDate>
+<description>助人工作者也需要回頭評估自己的體力、情緒、期待與關係邊界。</description>
+</item>
+<item>
+<title>醫療照顧身體，修習安頓身心</title>
+<link>https://allenmindlab.com/articles/medical-care-and-inner-practice</link>
+<guid>https://allenmindlab.com/articles/medical-care-and-inner-practice</guid>
+<pubDate>Mon, 31 Aug 2026 00:00:00 +0800</pubDate>
+<description>在正規醫療處遇之外，從生活修習與自我照顧思考如何安頓身心。</description>
+</item>
+</channel>
 </rss>
