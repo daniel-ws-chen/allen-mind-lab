@@ -4,10 +4,10 @@
   "generatedAt": "2026-09-14",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 26,
+    "total": 27,
     "management": 14,
-    "pbs": 8,
-    "ot": 9,
+    "pbs": 9,
+    "ot": 10,
     "ai": 9,
     "education": 6,
     "mind": 6,
@@ -62,6 +62,57 @@
     }
   },
   "articles": [
+    {
+      "slug": "research-update-life-skills-bst-fire-safety",
+      "title": "知道怎麼做，和真的做得到，是兩回事",
+      "summary": "知道生活技能的正確答案，不代表真實情境中做得到。從智能與發展障礙成人火災安全研究，探討任務分析、行為技能訓練、提示、回饋、類化與維持，以及 OT 與 PBS 如何真正把能力教進生活。",
+      "date": "2026-09-14",
+      "domains": [
+        "ot",
+        "pbs"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [
+        "pbs"
+      ],
+      "tag": "OT & Human Occupation × PBS",
+      "cardMeta": "2026.09.14 · Research Update · OT × PBS",
+      "keywords": [
+        "OT",
+        "occupational therapy",
+        "PBS",
+        "Positive Behaviour Support",
+        "Behavioral Skills Training",
+        "BST",
+        "life skills",
+        "IDD",
+        "task analysis",
+        "prompting",
+        "generalization",
+        "maintenance",
+        "fire safety",
+        "生活技能",
+        "任務分析",
+        "類化",
+        "維持"
+      ],
+      "articlePath": "/articles/research-update-life-skills-bst-fire-safety.html",
+      "order": -1,
+      "canonical": "https://allenmindlab.com/articles/research-update-life-skills-bst-fire-safety",
+      "hero": "/images/articles/research-update-life-skills-bst-fire-safety-hero.webp",
+      "ogImage": "/images/articles/research-update-life-skills-bst-fire-safety-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "next",
+          "label": "延伸閱讀 為什麼同一份 PBS 計畫，換個地方就不一定有效？ →",
+          "href": "/articles/pbs-plan-contextual-fit.html"
+        }
+      ]
+    },
     {
       "slug": "pbs-emotion-escalation-deescalation",
       "title": "當情緒升高時，為什麼講道理常常沒有用？",
