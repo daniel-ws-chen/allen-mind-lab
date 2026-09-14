@@ -1001,6 +1001,37 @@
 
 
 .aml-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+
+/* ===== AML Home Featured Reading Carousel v1 ===== */
+.home-reading{background:#faf8f3;overflow:hidden}
+.home-reading__head{display:flex;justify-content:space-between;gap:28px;align-items:end;margin-bottom:34px}
+.home-reading__head .section-lead{margin-bottom:0}
+.home-reading__controls{display:flex;gap:10px;flex:0 0 auto}
+.home-reading__control{width:46px;height:46px;border-radius:50%;border:1px solid #d9d1c2;background:#fff;color:var(--navy);font-size:1.25rem;cursor:pointer;transition:.2s ease;display:grid;place-items:center}
+.home-reading__control:hover{transform:translateY(-2px);border-color:var(--gold);color:#8a6a2f}
+.home-reading__viewport{overflow:hidden}
+.home-reading__track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:3px 2px 20px;scrollbar-width:none}
+.home-reading__track::-webkit-scrollbar{display:none}
+.home-reading__card{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start;background:#fff;border:1px solid #e7e1d6;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.05);transition:.25s ease;display:flex;flex-direction:column;min-width:0}
+.home-reading__card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(15,23,42,.09)}
+.home-reading__image{aspect-ratio:16/10;overflow:hidden;background:#ece7dc;display:block}
+.home-reading__image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.home-reading__card:hover .home-reading__image img{transform:scale(1.025)}
+.home-reading__body{padding:23px 23px 25px;display:flex;flex-direction:column;flex:1}
+.home-reading__meta{font-size:.74rem;font-weight:800;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.home-reading__tag{display:inline-flex;align-self:flex-start;padding:5px 10px;border-radius:999px;background:#f4efe5;color:#775f32;font-size:.76rem;font-weight:800;margin-bottom:13px}
+.home-reading__card h3{font-family:Georgia,"Times New Roman",serif;color:var(--navy);font-size:1.35rem;line-height:1.42;margin:0 0 12px}
+.home-reading__card p{color:var(--muted);font-size:.94rem;margin:0 0 18px}
+.home-reading__link{margin-top:auto;color:#8a6a2f;font-size:.88rem;font-weight:800;letter-spacing:.04em}
+.home-reading__foot{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:12px}
+.home-reading__dots{display:flex;gap:8px;align-items:center}
+.home-reading__dot{width:8px;height:8px;border:0;border-radius:50%;padding:0;background:#cfc6b7;cursor:pointer;transition:.2s ease}
+.home-reading__dot.is-active{width:24px;border-radius:999px;background:var(--gold)}
+.home-reading__all{font-size:.9rem;font-weight:800;color:#8a6a2f}
+@media(max-width:980px){.home-reading__card{flex-basis:calc((100% - 20px)/2)}}
+@media(max-width:680px){.home-reading__head{align-items:start;flex-direction:column}.home-reading__controls{align-self:flex-end}.home-reading__card{flex-basis:88%}.home-reading__foot{align-items:flex-start;flex-direction:column}.home-reading__all{align-self:flex-end}}
+@media(prefers-reduced-motion:reduce){.home-reading__track{scroll-behavior:auto}.home-reading__card,.home-reading__image img,.home-reading__control{transition:none}}
 </style>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <!-- AML SEO / Social Preview -->
@@ -1225,19 +1256,47 @@
 </article>
 </div>
 </section>
-<section class="thoughts reveal" id="thoughts">
-<div class="eyebrow">Latest Article · Notes from the Lab</div>
-<h2 class="section-title">
-    持續書寫，讓經驗成為可以被傳遞的智慧。
-  </h2>
-<p class="section-lead">
-    關於職能治療、PBS、管理、教育、AI、健康與生命反思，
-    文章專區持續整理從實務現場長出來的問題與思考。
-  </p>
-<article class="latest-article">
-<a aria-label="閱讀：研究新知｜AI 愈方便，人反而更需要留白？" class="latest-article__image" href="articles/research-update-ai-digital-burnout-meditation.html"><img alt="研究新知｜AI 愈方便，人反而更需要留白？" height="1055" loading="lazy" src="images/articles/research-update-ai-digital-burnout-meditation-hero.webp" width="1491"/></a>
-<div><div class="latest-article__meta">2026.09.14 · NEW</div><span class="latest-article__tag">研究新知 · AI × Mind</span><h3>研究新知｜AI 愈方便，人反而更需要留白？</h3><p>從兩篇近期研究出發，看 AI 資訊負荷、數位倦怠、短期冥想與注意力恢復。</p><div class="latest-article__actions"><a class="latest-article__btn primary" href="articles/research-update-ai-digital-burnout-meditation.html">Read Article →</a><a class="latest-article__btn" href="articles.html">Explore All Articles</a></div></div>
+<section class="home-reading reveal" id="featured-reading" aria-labelledby="featured-reading-title">
+<div class="home-reading__head">
+<div>
+<div class="eyebrow">Featured Reading · 本期精選閱讀</div>
+<h2 class="section-title" id="featured-reading-title">讓首頁跟著館藏一起生長。</h2>
+<p class="section-lead">從最新文章到 Management、PBS、OT、Education、AI 與 Mind 的代表閱讀，首頁會持續帶出不同入口；想深入時，再回到 Articles 總館或主題館繼續探索。</p>
+</div>
+<div class="home-reading__controls" aria-label="精選文章輪播控制">
+<button class="home-reading__control" type="button" data-carousel-prev aria-label="上一組精選文章">←</button>
+<button class="home-reading__control" type="button" data-carousel-next aria-label="下一組精選文章">→</button>
+</div>
+</div>
+<div class="home-reading__viewport">
+<div class="home-reading__track" data-carousel-track tabindex="0" aria-label="AML 精選文章">
+<article class="home-reading__card">
+<a class="home-reading__image" href="articles/research-update-ai-digital-burnout-meditation.html" aria-label="閱讀：AI 愈方便，人反而更需要留白？"><img src="images/articles/research-update-ai-digital-burnout-meditation-hero.webp" alt="AI 愈方便，人反而更需要留白？" loading="lazy"/></a>
+<div class="home-reading__body"><div class="home-reading__meta">2026.09.14 · NEW</div><span class="home-reading__tag">Research Update · AI × Mind</span><h3>AI 愈方便，人反而更需要留白？</h3><p>從數位倦怠與短期冥想研究，看 AI 時代的資訊負荷與內在整理。</p><a class="home-reading__link" href="articles/research-update-ai-digital-burnout-meditation.html">Read Article →</a></div>
 </article>
+<article class="home-reading__card">
+<a class="home-reading__image" href="articles/ai-era-teaching-learning.html" aria-label="閱讀：當學生已經有了 AI，老師還要教什麼？"><img src="images/articles/ai-era-teaching-learning-hero.webp" alt="當學生已經有了 AI，老師還要教什麼？" loading="lazy"/></a>
+<div class="home-reading__body"><div class="home-reading__meta">EDUCATION × AI</div><span class="home-reading__tag">Education & Learning</span><h3>當學生已經有了 AI，老師還要教什麼？</h3><p>當取得答案的成本快速下降，重新思考教師、課堂與學習者真正不可外包的工作。</p><a class="home-reading__link" href="articles/ai-era-teaching-learning.html">Read Article →</a></div>
+</article>
+<article class="home-reading__card">
+<a class="home-reading__image" href="articles/pbs-emotion-escalation-deescalation.html" aria-label="閱讀：當情緒升高時，為什麼講道理常常沒有用？"><img src="images/articles/pbs-emotion-escalation-deescalation.webp" alt="當情緒升高時，為什麼講道理常常沒有用？" loading="lazy"/></a>
+<div class="home-reading__body"><div class="home-reading__meta">PBS CORE · 01</div><span class="home-reading__tag">Positive Behaviour Support</span><h3>當情緒升高時，為什麼講道理常常沒有用？</h3><p>從情緒曲線、同理到第一線降溫對話，先理解當下，再決定如何支持。</p><a class="home-reading__link" href="articles/pbs-emotion-escalation-deescalation.html">Read Article →</a></div>
+</article>
+<article class="home-reading__card">
+<a class="home-reading__image" href="articles/ot-management-why-management-matters.html" aria-label="閱讀：為什麼職能治療師需要懂管理？"><img src="images/articles/ot-management-why-management-matters-hero.webp" alt="為什麼職能治療師需要懂管理？" loading="lazy"/></a>
+<div class="home-reading__body"><div class="home-reading__meta">MANAGEMENT · CORE</div><span class="home-reading__tag">Management & Leadership</span><h3>為什麼職能治療師需要懂管理？</h3><p>從專業服務走向組織、團隊與系統，看管理如何決定一項好服務能不能真正落地。</p><a class="home-reading__link" href="articles/ot-management-why-management-matters.html">Read Article →</a></div>
+</article>
+<article class="home-reading__card">
+<a class="home-reading__image" href="articles/ai-human-occupation-moho.html" aria-label="閱讀：當 AI 開始參與我們的選擇"><img src="images/articles/ai-human-occupation-moho-hero.webp" alt="當 AI 開始參與我們的選擇" loading="lazy"/></a>
+<div class="home-reading__body"><div class="home-reading__meta">OT × AI · FEATURED</div><span class="home-reading__tag">OT & Human Occupation</span><h3>當 AI 開始參與我們的選擇</h3><p>從 MOHO 看生成式 AI 如何進入意志、習慣化、表現能力與環境。</p><a class="home-reading__link" href="articles/ai-human-occupation-moho.html">Read Article →</a></div>
+</article>
+<article class="home-reading__card">
+<a class="home-reading__image" href="articles/ai-cultivation-inner-life.html" aria-label="閱讀：當 AI 愈來愈強，人為什麼反而更需要修行？"><img src="images/articles/ai-cultivation-inner-life-hero.webp" alt="當 AI 愈來愈強，人為什麼反而更需要修行？" loading="lazy"/></a>
+<div class="home-reading__body"><div class="home-reading__meta">AI × INNER LIFE</div><span class="home-reading__tag">Mind & Well-being</span><h3>當 AI 愈來愈強，人為什麼反而更需要修行？</h3><p>從外在能力的擴張，到內在世界的整理：工具愈強，方向反而愈需要由人自己決定。</p><a class="home-reading__link" href="articles/ai-cultivation-inner-life.html">Read Article →</a></div>
+</article>
+</div>
+</div>
+<div class="home-reading__foot"><div class="home-reading__dots" data-carousel-dots aria-label="選擇精選文章組"></div><a class="home-reading__all" href="articles.html">Explore All 26 Articles →</a></div>
 </section>
 <section class="practice-tools-home reveal" id="practice-tools-home">
 <div class="eyebrow">Practice Tools</div>
@@ -1469,6 +1528,66 @@
 
   window.addEventListener("scroll", revealOnScroll);
   revealOnScroll();
+</script>
+
+<script>
+(() => {
+  const track = document.querySelector('[data-carousel-track]');
+  if (!track) return;
+  const cards = Array.from(track.querySelectorAll('.home-reading__card'));
+  const prev = document.querySelector('[data-carousel-prev]');
+  const next = document.querySelector('[data-carousel-next]');
+  const dotsWrap = document.querySelector('[data-carousel-dots]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = null;
+
+  const visibleCount = () => window.innerWidth <= 680 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
+  const pageCount = () => Math.max(1, Math.ceil(cards.length / visibleCount()));
+  const pageWidth = () => track.clientWidth + 20;
+  const currentPage = () => Math.min(pageCount()-1, Math.round(track.scrollLeft / pageWidth()));
+
+  function renderDots(){
+    dotsWrap.innerHTML = '';
+    for(let i=0;i<pageCount();i++){
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.className='home-reading__dot';
+      dot.setAttribute('aria-label',`前往第 ${i+1} 組精選文章`);
+      dot.addEventListener('click',()=>go(i));
+      dotsWrap.appendChild(dot);
+    }
+    updateDots();
+  }
+  function updateDots(){
+    const p=currentPage();
+    Array.from(dotsWrap.children).forEach((dot,i)=>dot.classList.toggle('is-active',i===p));
+  }
+  function go(page){
+    const total=pageCount();
+    const target=(page+total)%total;
+    track.scrollTo({left:target*pageWidth(),behavior:reduceMotion?'auto':'smooth'});
+    window.setTimeout(updateDots, reduceMotion?0:350);
+  }
+  function advance(){ go(currentPage()+1); }
+  function start(){
+    if(reduceMotion) return;
+    stop();
+    timer=window.setInterval(advance,7000);
+  }
+  function stop(){ if(timer){window.clearInterval(timer);timer=null;} }
+
+  prev?.addEventListener('click',()=>{stop();go(currentPage()-1);start();});
+  next?.addEventListener('click',()=>{stop();go(currentPage()+1);start();});
+  track.addEventListener('scroll',()=>window.requestAnimationFrame(updateDots));
+  track.addEventListener('mouseenter',stop);
+  track.addEventListener('mouseleave',start);
+  track.addEventListener('focusin',stop);
+  track.addEventListener('focusout',start);
+  window.addEventListener('resize',()=>{renderDots();go(0);});
+
+  renderDots();
+  start();
+})();
 </script>
 <script defer="" src="aml-site.js"></script>
 </body>
