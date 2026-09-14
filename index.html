@@ -1137,7 +1137,7 @@
 <p class="section-lead">第一次來到 Allen Mind Lab，可以先從閱讀、探索或實務工具開始。</p>
 <div aria-label="AML 館藏總覽" class="aml-library-snapshot" role="navigation">
 <a class="aml-library-snapshot__item" href="articles.html">
-<strong>26</strong><span>Articles</span><small>文章館藏</small>
+<strong data-articles-total>26</strong><span>Articles</span><small>文章館藏</small>
 </a>
 <a class="aml-library-snapshot__item" href="#labs">
 <strong>6</strong><span>Domains</span><small>主題領域</small>
@@ -1296,7 +1296,7 @@
 </article>
 </div>
 </div>
-<div class="home-reading__foot"><div class="home-reading__dots" data-carousel-dots aria-label="選擇精選文章組"></div><a class="home-reading__all" href="articles.html">Explore All 26 Articles →</a></div>
+<div class="home-reading__foot"><div class="home-reading__dots" data-carousel-dots aria-label="選擇精選文章組"></div><a class="home-reading__all" href="articles.html" data-articles-all-link>Explore All 26 Articles →</a></div>
 </section>
 <section class="practice-tools-home reveal" id="practice-tools-home">
 <div class="eyebrow">Practice Tools</div>
@@ -1531,22 +1531,116 @@
 </script>
 
 <script>
-(() => {
+(async () => {
   const track = document.querySelector('[data-carousel-track]');
   if (!track) return;
-  const cards = Array.from(track.querySelectorAll('.home-reading__card'));
+
+  const totalNode = document.querySelector('[data-articles-total]');
+  const allLink = document.querySelector('[data-articles-all-link]');
+  const dotsWrap = document.querySelector('[data-carousel-dots]');
   const prev = document.querySelector('[data-carousel-prev]');
   const next = document.querySelector('[data-carousel-next]');
-  const dotsWrap = document.querySelector('[data-carousel-dots]');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let timer = null;
 
+  function normalizeText(value){
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function renderFeaturedFromManifest(data){
+    if (!data || !Array.isArray(data.articles)) return false;
+
+    const total = Number(data.counts?.total) || data.articles.length;
+    if (totalNode) totalNode.textContent = String(total);
+    if (allLink) allLink.textContent = `Explore All ${total} Articles →`;
+
+    const bySlug = new Map(data.articles.map(article => [article.slug, article]));
+    let featured = [];
+
+    if (Array.isArray(data.featuredReading) && data.featuredReading.length){
+      featured = data.featuredReading.map(slug => bySlug.get(slug)).filter(Boolean);
+    } else {
+      featured = data.articles
+        .filter(article => article.featured)
+        .sort((a,b) => (a.featuredRank ?? 999) - (b.featuredRank ?? 999));
+    }
+
+    if (!featured.length) return false;
+
+    const fragment = document.createDocumentFragment();
+    featured.forEach(article => {
+      const card = document.createElement('article');
+      card.className = 'home-reading__card';
+
+      const href = article.articlePath || `/articles/${article.slug}.html`;
+      const hero = article.hero || article.ogImage || '';
+      const meta = article.featuredMeta || {};
+      const kicker = normalizeText(meta.kicker || article.cardMeta || article.date || '');
+      const tag = normalizeText(meta.tag || article.tag || article.primaryDomain || 'AML');
+      const title = normalizeText(article.title);
+      const summary = normalizeText(article.summary);
+
+      const imageLink = document.createElement('a');
+      imageLink.className = 'home-reading__image';
+      imageLink.href = href;
+      imageLink.setAttribute('aria-label', `閱讀：${title}`);
+      if (hero){
+        const img = document.createElement('img');
+        img.src = hero;
+        img.alt = title;
+        img.loading = 'lazy';
+        imageLink.appendChild(img);
+      }
+
+      const body = document.createElement('div');
+      body.className = 'home-reading__body';
+
+      const metaNode = document.createElement('div');
+      metaNode.className = 'home-reading__meta';
+      metaNode.textContent = kicker;
+
+      const tagNode = document.createElement('span');
+      tagNode.className = 'home-reading__tag';
+      tagNode.textContent = tag;
+
+      const h3 = document.createElement('h3');
+      h3.textContent = title;
+
+      const p = document.createElement('p');
+      p.textContent = summary;
+
+      const link = document.createElement('a');
+      link.className = 'home-reading__link';
+      link.href = href;
+      link.textContent = 'Read Article →';
+
+      body.append(metaNode, tagNode, h3, p, link);
+      card.append(imageLink, body);
+      fragment.appendChild(card);
+    });
+
+    track.replaceChildren(fragment);
+    return true;
+  }
+
+  try {
+    const response = await fetch('/data/articles-manifest.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Manifest HTTP ${response.status}`);
+    const data = await response.json();
+    renderFeaturedFromManifest(data);
+  } catch (error) {
+    // 靜態 HTML 是正式 fallback：manifest 載入失敗時，首頁仍可正常使用。
+    console.info('AML manifest fallback active.', error);
+  }
+
+  const cards = () => Array.from(track.querySelectorAll('.home-reading__card'));
   const visibleCount = () => window.innerWidth <= 680 ? 1 : (window.innerWidth <= 980 ? 2 : 3);
-  const pageCount = () => Math.max(1, Math.ceil(cards.length / visibleCount()));
+  const pageCount = () => Math.max(1, Math.ceil(cards().length / visibleCount()));
   const pageWidth = () => track.clientWidth + 20;
   const currentPage = () => Math.min(pageCount()-1, Math.round(track.scrollLeft / pageWidth()));
 
   function renderDots(){
+    if (!dotsWrap) return;
     dotsWrap.innerHTML = '';
     for(let i=0;i<pageCount();i++){
       const dot=document.createElement('button');
@@ -1559,6 +1653,7 @@
     updateDots();
   }
   function updateDots(){
+    if (!dotsWrap) return;
     const p=currentPage();
     Array.from(dotsWrap.children).forEach((dot,i)=>dot.classList.toggle('is-active',i===p));
   }
@@ -1570,7 +1665,7 @@
   }
   function advance(){ go(currentPage()+1); }
   function start(){
-    if(reduceMotion) return;
+    if(reduceMotion || cards().length <= visibleCount()) return;
     stop();
     timer=window.setInterval(advance,7000);
   }
