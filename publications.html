@@ -26,16 +26,9 @@
       line-height:1.75;
     }
     a{text-decoration:none;color:inherit}
-    nav{
-      position:fixed;top:0;left:0;right:0;z-index:100;
-      height:72px;display:flex;justify-content:space-between;align-items:center;
-      padding:0 6vw;background:rgba(8,22,38,.92);backdrop-filter:blur(12px);color:white;
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .brand{font-weight:800;letter-spacing:.12em}
-    .navlinks{display:flex;gap:24px;font-size:.9rem}
-    .navlinks a{color:#e5e7eb;transition:.2s}
-    .navlinks a:hover{color:var(--gold)}
+    /* Global navigation is controlled by aml-site.css.
+       Keep page-local styles away from generic <nav> selectors so the
+       publication overview navigation is not accidentally fixed at the top. */
     .hero{
       min-height:58vh;display:flex;align-items:center;padding:130px 8vw 90px;
       background:radial-gradient(circle at 78% 30%,rgba(199,167,106,.18),transparent 28%),
@@ -123,7 +116,6 @@
     }
     .reveal.active{opacity:1;transform:translateY(0)}
     @media(max-width:900px){
-      .navlinks{display:none}
       section{padding:75px 6vw}
       .hero{padding:120px 6vw 75px}
       .featured-box{grid-template-columns:1fr}
