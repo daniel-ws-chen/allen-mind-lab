@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-15",
+  "generatedAt": "2026-09-15T22:17:00+08:00",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 28,
-    "management": 15,
-    "pbs": 10,
+    "total": 29,
     "ot": 10,
-    "ai": 9,
-    "education": 6,
     "mind": 6,
+    "pbs": 11,
+    "education": 6,
+    "management": 15,
+    "ai": 9,
     "notes": 2
   },
   "featuredReading": [
@@ -62,6 +62,56 @@
     }
   },
   "articles": [
+    {
+      "slug": "pbs-emotional-cycle-intervention-timing",
+      "title": "明明是在幫他冷靜，為什麼結果可能完全不同？",
+      "summary": "同樣是安撫、轉移或提供偏好活動，為什麼有時能預防危機，有時卻可能形成不同的學習結果？從情緒週期、行為功能與介入時機，整理第一線支持的判斷。",
+      "date": "2026-09-15",
+      "domains": [
+        "pbs"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [],
+      "tag": "PBS × Behavior Function",
+      "cardMeta": "2026.09.15 · PBS × Behavior Function",
+      "keywords": [
+        "PBS",
+        "Positive Behaviour Support",
+        "正向行為支持",
+        "情緒週期",
+        "行為功能",
+        "介入時機",
+        "precursor behavior",
+        "functional analysis",
+        "FCT",
+        "危機支持",
+        "替代行為"
+      ],
+      "articlePath": "/articles/pbs-emotional-cycle-intervention-timing.html",
+      "order": -1,
+      "canonical": "https://allenmindlab.com/articles/pbs-emotional-cycle-intervention-timing",
+      "hero": "/images/articles/pbs-emotional-cycle-intervention-timing-hero.webp",
+      "ogImage": "/images/articles/pbs-emotional-cycle-intervention-timing-hero.png",
+      "series": [],
+      "featured": true,
+      "featuredRank": 2,
+      "featuredMeta": {
+        "kicker": "PBS × BEHAVIOR FUNCTION · NEW",
+        "tag": "Intervention Timing"
+      },
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "延伸閱讀 ← 當情緒升高時，為什麼講道理常常沒有用？",
+          "href": "/articles/pbs-emotion-escalation-deescalation.html"
+        },
+        {
+          "kind": "next",
+          "label": "延伸閱讀 當「被看見」成為高挑戰行為 →",
+          "href": "/articles/pbs-being-seen.html"
+        }
+      ]
+    },
     {
       "slug": "management-pbs-cross-system-services",
       "title": "每個單位都完成任務了，為什麼服務還是會斷掉？",
