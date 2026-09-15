@@ -14,12 +14,10 @@
     "notes": 2
   },
   "featuredReading": [
-    "management-pbs-cross-system-services",
-    "research-update-ai-digital-burnout-meditation",
     "ai-era-teaching-learning",
-    "pbs-emotion-escalation-deescalation",
-    "ot-management-why-management-matters",
-    "ai-human-occupation-moho"
+    "pbs-emotional-cycle-intervention-timing",
+    "management-pbs-cross-system-services",
+    "ai-cultivation-inner-life"
   ],
   "series": {
     "pbs-core": {
@@ -96,7 +94,7 @@
       "featured": true,
       "featuredRank": 2,
       "featuredMeta": {
-        "kicker": "PBS × BEHAVIOR FUNCTION · NEW",
+        "kicker": "2026.09.15 · PBS",
         "tag": "Intervention Timing"
       },
       "navigation": [
@@ -154,7 +152,7 @@
       "featured": true,
       "featuredRank": 1,
       "featuredMeta": {
-        "kicker": "MANAGEMENT × PBS · NEW",
+        "kicker": "2026.09.15 · MANAGEMENT × PBS",
         "tag": "Cross-system Services"
       },
       "navigation": [
@@ -486,7 +484,7 @@
       "featured": true,
       "featuredRank": 6,
       "featuredMeta": {
-        "kicker": "AI × MIND",
+        "kicker": "2026.09.12 · AI × MIND",
         "tag": "AI × Inner Life"
       },
       "navigation": [
@@ -554,7 +552,7 @@
       "featured": true,
       "featuredRank": 2,
       "featuredMeta": {
-        "kicker": "EDUCATION · AI",
+        "kicker": "2026.09.11 · EDUCATION × AI",
         "tag": "Education × AI × Practice"
       },
       "navigation": [
