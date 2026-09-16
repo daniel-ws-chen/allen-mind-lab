@@ -1085,8 +1085,8 @@
       "articlePath": "/articles/management-coach-leader-workflow.html",
       "order": 13,
       "canonical": "https://allenmindlab.com/articles/management-coach-leader-workflow",
-      "hero": null,
-      "ogImage": null,
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.png",
       "series": [
         "ai-human-guided-8"
       ],
