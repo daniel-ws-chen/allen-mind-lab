@@ -1,25 +1,25 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-15T22:17:00+08:00",
+  "generatedAt": "2026-09-16T09:30:00+08:00",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 29,
+    "total": 30,
     "ot": 10,
     "mind": 6,
-    "pbs": 11,
+    "pbs": 12,
     "education": 6,
     "management": 15,
     "ai": 9,
     "notes": 2
   },
   "featuredReading": [
+    "autism-support-intervention-map",
     "ai-era-teaching-learning",
     "pbs-emotional-cycle-intervention-timing",
     "management-pbs-cross-system-services",
     "ai-cultivation-inner-life",
-    "research-update-life-skills-bst-fire-safety",
-    "ai-human-occupation-moho"
+    "research-update-life-skills-bst-fire-safety"
   ],
   "series": {
     "pbs-core": {
@@ -62,6 +62,58 @@
     }
   },
   "articles": [
+    {
+      "slug": "autism-support-intervention-map",
+      "title": "從「情緒行為問題」到完整支持：重新理解自閉症的介入地圖",
+      "summary": "自閉症者的「情緒行為問題」背後，可能牽涉溝通、感官、環境、睡眠、疼痛與生活不可預測等因素。從鞏固基礎、串接系統到整合應用，重新理解不同介入各自的位置。",
+      "date": "2026-09-16",
+      "domains": [
+        "pbs"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [],
+      "tag": "PBS × Autism × Support Map",
+      "cardMeta": "2026.09.16 · PBS × Autism",
+      "keywords": [
+        "Autism",
+        "自閉症",
+        "PBS",
+        "AAC",
+        "情緒行為",
+        "感官調節",
+        "功能性理解",
+        "正向行為支持",
+        "tDCS",
+        "rTMS",
+        "神經調節",
+        "介入地圖",
+        "完整支持"
+      ],
+      "articlePath": "/articles/autism-support-intervention-map.html",
+      "order": -3,
+      "canonical": "https://allenmindlab.com/articles/autism-support-intervention-map",
+      "hero": "/images/articles/autism-support-intervention-map-hero.webp",
+      "ogImage": "/images/articles/autism-support-intervention-map-hero.png",
+      "series": [],
+      "featured": true,
+      "featuredRank": 1,
+      "featuredMeta": {
+        "kicker": "2026.09.16 · PBS × AUTISM",
+        "tag": "Support Map"
+      },
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 明明是在幫他冷靜，為什麼結果可能完全不同？",
+          "href": "/articles/pbs-emotional-cycle-intervention-timing.html"
+        },
+        {
+          "kind": "next",
+          "label": "延伸閱讀 當「被看見」成為高挑戰行為 →",
+          "href": "/articles/pbs-being-seen.html"
+        }
+      ]
+    },
     {
       "slug": "pbs-emotional-cycle-intervention-timing",
       "title": "明明是在幫他冷靜，為什麼結果可能完全不同？",
@@ -107,8 +159,8 @@
         },
         {
           "kind": "next",
-          "label": "延伸閱讀 當「被看見」成為高挑戰行為 →",
-          "href": "/articles/pbs-being-seen.html"
+          "label": "下一篇 從「情緒行為問題」到完整支持 →",
+          "href": "/articles/autism-support-intervention-map.html"
         }
       ]
     },
