@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-16T09:30:00+08:00",
+  "generatedAt": "2026-09-16T11:30:00+08:00",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
     "total": 30,
@@ -31,20 +31,6 @@
         "pbs-system-team-support"
       ]
     },
-    "pbs-guided-8": {
-      "title": "PBS Guided Reading · 8 Articles",
-      "description": "理解當下 → 理解功能 → 守住安全 → 支持支持者 → 建立系統 → 情境適配 → 轉銜支持 → 回到生活",
-      "items": [
-        "pbs-emotion-escalation-deescalation",
-        "pbs-being-seen",
-        "pbs-crisis-safety-repair",
-        "helper-support-system",
-        "pbs-system-team-support",
-        "pbs-plan-contextual-fit",
-        "pbs-support-transition-real-life",
-        "ot-management-transition-support-life"
-      ]
-    },
     "management-core-9": {
       "title": "Management Core Reading · 9 Articles",
       "description": "從管理起點、品質、領導、決策，到策略、評估、服務發展與轉銜",
@@ -57,6 +43,22 @@
         "ot-management-strategy-swot",
         "ot-management-kpi-data-pdca",
         "ot-management-service-development-choice",
+        "ot-management-transition-support-life"
+      ]
+    },
+    "pbs-guided-10": {
+      "title": "PBS Guided Reading · 10 Articles",
+      "description": "理解當下 → 理解功能 → 守住安全 → 支持支持者 → 建立系統 → 建立能力 → 情境適配 → 轉銜支持 → 跨系統承接 → 回到生活",
+      "items": [
+        "pbs-emotion-escalation-deescalation",
+        "pbs-being-seen",
+        "pbs-crisis-safety-repair",
+        "helper-support-system",
+        "pbs-system-team-support",
+        "research-update-life-skills-bst-fire-safety",
+        "pbs-plan-contextual-fit",
+        "pbs-support-transition-real-life",
+        "management-pbs-cross-system-services",
         "ot-management-transition-support-life"
       ]
     }
@@ -202,7 +204,13 @@
       "canonical": "https://allenmindlab.com/articles/management-pbs-cross-system-services",
       "hero": "/images/articles/management-pbs-cross-system-services-hero.webp",
       "ogImage": "/images/articles/management-pbs-cross-system-services-hero.png",
-      "series": [],
+      "series": [
+        {
+          "id": "pbs-guided-10",
+          "order": 9,
+          "label": "跨系統承接"
+        }
+      ],
       "featured": true,
       "featuredRank": 1,
       "featuredMeta": {
@@ -212,13 +220,13 @@
       "navigation": [
         {
           "kind": "previous",
-          "label": "延伸閱讀 ← 讓改變走得更遠",
-          "href": "/articles/ot-management-transition-support-life.html"
+          "label": "上一站 ← 走出治療室以後",
+          "href": "/articles/pbs-support-transition-real-life.html"
         },
         {
           "kind": "next",
-          "label": "延伸閱讀 走出治療室以後 →",
-          "href": "/articles/pbs-support-transition-real-life.html"
+          "label": "下一站 讓改變走得更遠 →",
+          "href": "/articles/ot-management-transition-support-life.html"
         }
       ]
     },
@@ -261,7 +269,13 @@
       "canonical": "https://allenmindlab.com/articles/research-update-life-skills-bst-fire-safety",
       "hero": "/images/articles/research-update-life-skills-bst-fire-safety-hero.webp",
       "ogImage": "/images/articles/research-update-life-skills-bst-fire-safety-hero.png",
-      "series": [],
+      "series": [
+        {
+          "id": "pbs-guided-10",
+          "order": 6,
+          "label": "建立能力"
+        }
+      ],
       "featured": false,
       "featuredRank": null,
       "featuredMeta": {
@@ -270,8 +284,13 @@
       },
       "navigation": [
         {
+          "kind": "previous",
+          "label": "上一站 ← 好策略不是一個老師很厲害，而是整個系統知道怎麼支持",
+          "href": "/articles/pbs-system-team-support.html"
+        },
+        {
           "kind": "next",
-          "label": "延伸閱讀 為什麼同一份 PBS 計畫，換個地方就不一定有效？ →",
+          "label": "下一站 為什麼同一份 PBS 計畫，換個地方就不一定有效？ →",
           "href": "/articles/pbs-plan-contextual-fit.html"
         }
       ]
@@ -312,7 +331,7 @@
           "label": "理解當下"
         },
         {
-          "id": "pbs-guided-8",
+          "id": "pbs-guided-10",
           "order": 1,
           "label": "理解當下"
         }
@@ -367,7 +386,7 @@
           "label": "守住安全"
         },
         {
-          "id": "pbs-guided-8",
+          "id": "pbs-guided-10",
           "order": 3,
           "label": "守住安全"
         }
@@ -425,7 +444,7 @@
           "label": "建立系統"
         },
         {
-          "id": "pbs-guided-8",
+          "id": "pbs-guided-10",
           "order": 5,
           "label": "建立系統"
         }
@@ -441,8 +460,8 @@
         },
         {
           "kind": "next",
-          "label": "下一站 為什麼同一份 PBS 計畫，換個地方就不一定有效？ →",
-          "href": "/articles/pbs-plan-contextual-fit.html"
+          "label": "下一站 知道怎麼做，和真的做得到，是兩回事 →",
+          "href": "/articles/research-update-life-skills-bst-fire-safety.html"
         }
       ]
     },
@@ -667,8 +686,8 @@
       "ogImage": "/images/articles/ot-management-transition-support-life-hero.png",
       "series": [
         {
-          "id": "pbs-guided-8",
-          "order": 8,
+          "id": "pbs-guided-10",
+          "order": 10,
           "label": "回到生活"
         },
         {
@@ -683,8 +702,8 @@
       "navigation": [
         {
           "kind": "previous",
-          "label": "上一站 ← 走出治療室以後",
-          "href": "/articles/pbs-support-transition-real-life.html"
+          "label": "上一站 ← 每個單位都完成任務了，為什麼服務還是會斷掉？",
+          "href": "/articles/management-pbs-cross-system-services.html"
         }
       ]
     },
@@ -884,8 +903,8 @@
       "ogImage": "/images/articles/pbs-support-transition-real-life-social.png",
       "series": [
         {
-          "id": "pbs-guided-8",
-          "order": 6,
+          "id": "pbs-guided-10",
+          "order": 7,
           "label": "情境適配"
         }
       ],
@@ -895,8 +914,8 @@
       "navigation": [
         {
           "kind": "previous",
-          "label": "上一站 ← 好策略不是一個老師很厲害，而是整個系統知道怎麼支持",
-          "href": "/articles/pbs-system-team-support.html"
+          "label": "上一站 ← 知道怎麼做，和真的做得到，是兩回事",
+          "href": "/articles/research-update-life-skills-bst-fire-safety.html"
         },
         {
           "kind": "next",
@@ -1106,8 +1125,8 @@
       "ogImage": "/images/articles/pbs-support-transition-real-life-social.png",
       "series": [
         {
-          "id": "pbs-guided-8",
-          "order": 7,
+          "id": "pbs-guided-10",
+          "order": 8,
           "label": "轉銜支持"
         }
       ],
@@ -1122,8 +1141,8 @@
         },
         {
           "kind": "next",
-          "label": "下一站 讓改變走得更遠 →",
-          "href": "/articles/ot-management-transition-support-life.html"
+          "label": "下一站 每個單位都完成任務了，為什麼服務還是會斷掉？ →",
+          "href": "/articles/management-pbs-cross-system-services.html"
         }
       ]
     },
@@ -1461,7 +1480,7 @@
       "ogImage": "/images/articles/pbs-being-seen.png",
       "series": [
         {
-          "id": "pbs-guided-8",
+          "id": "pbs-guided-10",
           "order": 2,
           "label": "理解功能"
         }
@@ -1551,7 +1570,7 @@
       "ogImage": "/images/articles/helper-support-system.png",
       "series": [
         {
-          "id": "pbs-guided-8",
+          "id": "pbs-guided-10",
           "order": 4,
           "label": "支持支持者"
         }
