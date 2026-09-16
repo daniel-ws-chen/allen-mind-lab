@@ -16,6 +16,7 @@ const skipExact = new Set([
   "wrangler.jsonc",
   "wrangler.toml",
   "build-dist.mjs",
+  "validate-aml.mjs",
   "package.json",
   "package-lock.json",
   "README_fix.txt"
@@ -52,7 +53,8 @@ for (const legacyAsset of [
   "images/articles/3c-vs-ai.png",
   "images/articles/moho-concept.png",
   "images/articles/ai-moho-four-layers.png",
-  "images/articles/human-ai-feedback-loop.png"
+  "images/articles/human-ai-feedback-loop.png",
+  "articles/article-template.html"
 ]) {
   const target = join(dist, legacyAsset);
   if (existsSync(target)) rmSync(target, { force: true });
