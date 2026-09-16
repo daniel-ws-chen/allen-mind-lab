@@ -17,6 +17,7 @@ const skipExact = new Set([
   "wrangler.toml",
   "build-dist.mjs",
   "validate-aml.mjs",
+  "publish-aml-article.mjs",
   "package.json",
   "package-lock.json",
   "README_fix.txt"
@@ -25,7 +26,8 @@ const skipExact = new Set([
 const skipPrefixes = [
   "README_",
   ".env",
-  ".dev.vars"
+  ".dev.vars",
+  ".aml-publish"
 ];
 
 function shouldSkip(name) {
