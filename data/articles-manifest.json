@@ -61,6 +61,20 @@
         "management-pbs-cross-system-services",
         "ot-management-transition-support-life"
       ]
+    },
+    "ai-human-guided-8": {
+      "title": "AI × Human Practice Guided Reading · 8 Articles",
+      "description": "數位邊界 → 資訊負荷 → 內在方向 → 職能選擇 → 學習 → 工作流程 → 品質協作 → 領導責任",
+      "items": [
+        "digital-communication-boundaries",
+        "research-update-ai-digital-burnout-meditation",
+        "ai-cultivation-inner-life",
+        "ai-human-occupation-moho",
+        "ai-era-teaching-learning",
+        "management-coach-leader-workflow",
+        "ai-review-quality-collaboration",
+        "ai-manager-leadership-human-ai-collaboration"
+      ]
     }
   },
   "articles": [
@@ -501,7 +515,9 @@
       "canonical": "https://allenmindlab.com/articles/research-update-ai-digital-burnout-meditation",
       "hero": "/images/articles/research-update-ai-digital-burnout-meditation-hero.webp",
       "ogImage": "/images/articles/research-update-ai-digital-burnout-meditation-social.png",
-      "series": [],
+      "series": [
+        "ai-human-guided-8"
+      ],
       "featured": true,
       "featuredRank": 1,
       "featuredMeta": {
@@ -511,13 +527,13 @@
       "navigation": [
         {
           "kind": "previous",
-          "label": "相關閱讀 ← 當 AI 愈來愈強，人為什麼反而更需要修行？",
-          "href": "/articles/ai-cultivation-inner-life.html"
+          "label": "上一篇 ← 不是不想回，是不能一直在線",
+          "href": "/articles/digital-communication-boundaries.html"
         },
         {
           "kind": "next",
-          "label": "延伸閱讀 當學生已經有了 AI，老師還要教什麼？ →",
-          "href": "/articles/ai-era-teaching-learning.html"
+          "label": "接著閱讀 當 AI 愈來愈強，人為什麼反而更需要修行？ →",
+          "href": "/articles/ai-cultivation-inner-life.html"
         }
       ]
     },
@@ -556,7 +572,9 @@
       "canonical": "https://allenmindlab.com/articles/ai-cultivation-inner-life",
       "hero": "/images/articles/ai-cultivation-inner-life-hero.webp",
       "ogImage": "/images/articles/ai-cultivation-inner-life-social.png",
-      "series": [],
+      "series": [
+        "ai-human-guided-8"
+      ],
       "featured": true,
       "featuredRank": 6,
       "featuredMeta": {
@@ -566,13 +584,13 @@
       "navigation": [
         {
           "kind": "previous",
-          "label": "相關閱讀 ← 醫療照顧身體，修習安頓身心",
-          "href": "/articles/medical-care-and-inner-practice.html"
+          "label": "上一篇 ← AI 愈方便，人反而更需要留白？",
+          "href": "/articles/research-update-ai-digital-burnout-meditation.html"
         },
         {
           "kind": "next",
-          "label": "接著閱讀 AI 愈方便，人反而更需要留白？ →",
-          "href": "/articles/research-update-ai-digital-burnout-meditation.html"
+          "label": "接著閱讀 當 AI 開始參與我們的選擇 →",
+          "href": "/articles/ai-human-occupation-moho.html"
         }
       ]
     },
@@ -624,7 +642,9 @@
       "canonical": "https://allenmindlab.com/articles/ai-era-teaching-learning",
       "hero": "/images/articles/ai-era-teaching-learning-hero.webp",
       "ogImage": "/images/articles/ai-era-teaching-learning-social.png",
-      "series": [],
+      "series": [
+        "ai-human-guided-8"
+      ],
       "featured": true,
       "featuredRank": 2,
       "featuredMeta": {
@@ -956,7 +976,9 @@
       "canonical": "https://allenmindlab.com/articles/ai-manager-leadership-human-ai-collaboration",
       "hero": "/images/articles/ai-manager-leadership-human-ai-collaboration-hero.webp",
       "ogImage": "/images/articles/ai-manager-leadership-human-ai-collaboration-hero.png",
-      "series": [],
+      "series": [
+        "ai-human-guided-8"
+      ],
       "featured": false,
       "featuredRank": null,
       "featuredMeta": null,
@@ -1065,7 +1087,9 @@
       "canonical": "https://allenmindlab.com/articles/management-coach-leader-workflow",
       "hero": null,
       "ogImage": null,
-      "series": [],
+      "series": [
+        "ai-human-guided-8"
+      ],
       "featured": false,
       "featuredRank": null,
       "featuredMeta": null,
@@ -1181,7 +1205,9 @@
       "canonical": "https://allenmindlab.com/articles/ai-review-quality-collaboration",
       "hero": "/images/articles/ai-review-quality-collaboration-hero.webp",
       "ogImage": "/images/articles/ai-review-quality-collaboration-social.png",
-      "series": [],
+      "series": [
+        "ai-human-guided-8"
+      ],
       "featured": false,
       "featuredRank": null,
       "featuredMeta": null,
@@ -1436,7 +1462,9 @@
       "canonical": "https://allenmindlab.com/articles/ai-human-occupation-moho",
       "hero": "/images/articles/ai-human-occupation-moho-hero.webp",
       "ogImage": "/images/articles/ai-human-occupation-moho-social.png",
-      "series": [],
+      "series": [
+        "ai-human-guided-8"
+      ],
       "featured": true,
       "featuredRank": 5,
       "featuredMeta": {
@@ -1444,6 +1472,11 @@
         "tag": "OT & Human Occupation"
       },
       "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 當 AI 愈來愈強，人為什麼反而更需要修行？",
+          "href": "/articles/ai-cultivation-inner-life.html"
+        },
         {
           "kind": "next",
           "label": "接著閱讀 當學生已經有了 AI，老師還要教什麼？ →",
@@ -1521,7 +1554,9 @@
       "canonical": "https://allenmindlab.com/articles/digital-communication-boundaries",
       "hero": "/images/articles/digital-communication-boundaries.webp",
       "ogImage": "/images/articles/digital-communication-boundaries.png",
-      "series": [],
+      "series": [
+        "ai-human-guided-8"
+      ],
       "featured": false,
       "featuredRank": null,
       "featuredMeta": null,
@@ -1533,8 +1568,8 @@
         },
         {
           "kind": "next",
-          "label": "接著閱讀 當 GPT 開始審 GPT →",
-          "href": "/articles/ai-review-quality-collaboration.html"
+          "label": "接著閱讀 AI 愈方便，人反而更需要留白？ →",
+          "href": "/articles/research-update-ai-digital-burnout-meditation.html"
         }
       ]
     },
