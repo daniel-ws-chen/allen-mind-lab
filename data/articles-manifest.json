@@ -1,19 +1,20 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-16T11:30:00+08:00",
+  "generatedAt": "2026-09-17T04:45:53.217Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 30,
+    "total": 31,
     "ot": 10,
     "mind": 6,
     "pbs": 12,
-    "education": 6,
+    "education": 7,
     "management": 15,
-    "ai": 9,
+    "ai": 10,
     "notes": 2
   },
   "featuredReading": [
+    "ai-practice-refined-learning",
     "autism-support-intervention-map",
     "ai-era-teaching-learning",
     "pbs-emotional-cycle-intervention-timing",
@@ -78,6 +79,49 @@
     }
   },
   "articles": [
+    {
+      "slug": "ai-practice-refined-learning",
+      "title": "當知識不再稀缺：AI 時代，教育真正要教的是把答案帶進真實世界",
+      "summary": "AI 降低了產生第一版答案的成本，但真正的學習仍需要判斷、實踐、回饋與修正。本文提出「實踐淬煉學習」工作框架，重新想像未來較理想的人機共學情境。",
+      "date": "2026-09-17",
+      "domains": [
+        "education",
+        "ai"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "AI × Education",
+      "cardMeta": "2026.09.17 · AI × Education",
+      "keywords": [
+        "AI Education",
+        "生成式 AI",
+        "未來教育",
+        "教師專業判斷",
+        "實踐學習",
+        "反思學習",
+        "實踐淬煉學習",
+        "Practice-Refined Learning",
+        "人機協作"
+      ],
+      "articlePath": "/articles/ai-practice-refined-learning.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ai-practice-refined-learning",
+      "hero": "/images/articles/ai-practice-refined-learning-hero.webp",
+      "ogImage": "/images/articles/ai-practice-refined-learning-hero.png",
+      "series": [],
+      "featured": true,
+      "featuredRank": 1,
+      "featuredMeta": "NEW · AI × Education",
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "前站 ← 當學生已經有了 AI，老師還要教什麼？",
+          "href": "/articles/ai-era-teaching-learning.html"
+        }
+      ]
+    },
     {
       "slug": "autism-support-intervention-map",
       "title": "從「情緒行為問題」到完整支持：重新理解自閉症的介入地圖",
