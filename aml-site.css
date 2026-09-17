@@ -678,3 +678,9 @@
 @media(max-width:980px){.aml-pbs-guided__grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.aml-pbs-guided{padding:20px 6vw 58px}.aml-pbs-guided__grid{grid-template-columns:1fr}.aml-pbs-guided__step{min-height:0}}
 /* ===== /AML Article Footer Navigation Standard v1 ===== */
+
+
+/* AML curated reading refinement 2026-09-17 */
+@media (min-width: 760px) {
+  .aml-pbs-core__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
