@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-17T04:45:53.217Z",
+  "generatedAt": "2026-09-17T06:49:44.213Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 31,
-    "ot": 10,
-    "mind": 6,
+    "total": 32,
+    "ot": 11,
+    "mind": 7,
     "pbs": 12,
     "education": 7,
     "management": 15,
@@ -79,6 +79,49 @@
     }
   },
   "articles": [
+    {
+      "slug": "emptiness-meets-moho",
+      "title": "當空性遇見 MOHO",
+      "summary": "空性提醒我們，人不是固定的；MOHO 則讓我們看見，人的生活樣貌持續在意志、習慣、能力與環境中生成。這篇 AML Notes 讓兩種語言彼此對話。",
+      "date": "2026-09-17",
+      "domains": [
+        "ot",
+        "mind"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [
+        "mind"
+      ],
+      "tag": "AML Notes · OT × Mind",
+      "cardMeta": "2026.09.17 · AML Notes",
+      "keywords": [
+        "MOHO",
+        "Model of Human Occupation",
+        "空性",
+        "緣起",
+        "自性清淨",
+        "放光明",
+        "職能治療",
+        "職能適應",
+        "occupational adaptation",
+        "becoming"
+      ],
+      "articlePath": "/articles/emptiness-meets-moho.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/emptiness-meets-moho",
+      "hero": "/images/articles/emptiness-meets-moho-hero.webp",
+      "ogImage": "/images/articles/emptiness-meets-moho-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "延伸前站 ← 當 AI 開始參與我們的選擇",
+          "href": "/articles/ai-human-occupation-moho.html"
+        }
+      ]
+    },
     {
       "slug": "ai-practice-refined-learning",
       "title": "當知識不再稀缺：AI 時代，教育真正要教的是把答案帶進真實世界",
