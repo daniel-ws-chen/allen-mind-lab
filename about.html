@@ -403,6 +403,44 @@ section{padding:92px 8vw}
   letter-spacing:.08em;
 }
 
+
+/* ===== AML Perspective Note ===== */
+.aml-perspective-note{
+  padding:72px 8vw;
+  background:#f5f1e8;
+}
+.aml-perspective-note__inner{
+  max-width:1180px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);
+  gap:42px;
+  align-items:center;
+}
+.aml-perspective-note__quote{
+  padding:30px 32px;
+  border-left:3px solid #b58b45;
+  background:rgba(255,255,255,.58);
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.25rem,2vw,1.75rem);
+  line-height:1.75;
+  color:#243342;
+}
+.aml-perspective-note__link{
+  display:inline-flex;
+  margin-top:18px;
+  font-weight:700;
+  color:#23384a;
+  text-decoration:none;
+  border-bottom:1px solid #b58b45;
+  padding-bottom:4px;
+}
+.aml-perspective-note__link:hover{opacity:.72}
+@media (max-width:800px){
+  .aml-perspective-note{padding:58px 6vw}
+  .aml-perspective-note__inner{grid-template-columns:1fr;gap:26px}
+}
+
 /* ===== AML Unified Footer v1 ===== */
 .aml-footer{
   background:#101719;
@@ -884,6 +922,24 @@ border-radius:999px;background:#f5f0e6;color:#71562d;font-size:.82rem;font-weigh
 <h3>讓知識回到可以被使用的形式</h3>
 <p>透過文章、教學、工具與交流，把想法從腦中帶到現場，持續接受回饋並重新優化。</p>
 </article>
+</div>
+</section>
+
+<section class="aml-perspective-note" id="how-aml-sees-people">
+<div class="aml-perspective-note__inner">
+<div>
+<div class="eyebrow">How AML Sees People</div>
+<h2 class="section-title">人不是一個完成的名詞。</h2>
+<p class="section-lead">
+  AML 關心的不只是功能能不能改善，而是人在生活參與、關係與環境中，如何重新看見選擇、意義與可能。
+  這篇 AML Notes，讓佛學的空性與職能治療的 MOHO 展開一場跨領域對話。
+</p>
+<a class="aml-perspective-note__link" href="/articles/emptiness-meets-moho.html">AML Notes｜當空性遇見 MOHO →</a>
+</div>
+<div class="aml-perspective-note__quote">
+  人不是一個完成的名詞，<br/>
+  而是在生活參與中，持續生成的生命。
+</div>
 </div>
 </section>
 <section class="framework-section" id="framework">
