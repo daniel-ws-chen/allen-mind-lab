@@ -158,7 +158,7 @@ function generateArticle(c,m){
 }
 
 function articleCard(c){
-  return `<a class="article-card${c.featured?' latest-feature':''}" data-category="${escAttr(c.domains.join(' '))}" data-date="${c.date}" data-keywords="${escAttr(c.keywords.join(' '))}" data-order="${c.order ?? -4}" href="articles/${c.slug}.html"><div class="meta">${esc(c.cardMeta)}</div><span class="tag">${esc(c.tag)}</span><h2>${esc(c.title)}</h2><p>${esc(c.summary)}</p><div class="read">Read Article →</div></a>`;
+  return `<a class="article-card${c.featured?' latest-feature':''}" data-category="${escAttr(c.domains.join(' '))}" data-date="${c.date}" data-keywords="${escAttr(c.keywords.join(' '))}" data-order="${c.order ?? -4}" href="articles/${c.slug}.html"><div class="meta">${fmtDateDot(c.date)}</div><span class="tag">${esc(c.tag)}</span><h2>${esc(c.title)}</h2><p>${esc(c.summary)}</p><div class="read">Read Article →</div></a>`;
 }
 function domainCard(c){ return `<a class="aml-domain-catalog__card" href="articles/${c.slug}.html"><div class="aml-domain-catalog__meta">${esc(c.cardMeta)}</div><h3>${esc(c.title)}</h3><p>${esc(c.summary)}</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a>`; }
 
