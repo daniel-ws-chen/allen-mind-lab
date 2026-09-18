@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-18T15:57:52.026Z",
+  "generatedAt": "2026-09-18T16:07:41.260Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 40,
+    "total": 41,
     "ot": 19,
-    "mind": 7,
+    "mind": 8,
     "pbs": 12,
     "education": 7,
     "management": 23,
@@ -79,6 +79,42 @@
     }
   },
   "articles": [
+    {
+      "slug": "cultivation-first-thought",
+      "title": "原來，修行是第一個念頭開始改變",
+      "summary": "從 ATM 暫停服務到已打烊的晚餐店，一個下班後的小插曲，記錄面對生活不如預期時，第一個念頭如何慢慢改變。",
+      "date": "2026-09-18",
+      "domains": [
+        "mind"
+      ],
+      "primaryDomain": "mind",
+      "crossDomains": [],
+      "tag": "AML Notes",
+      "cardMeta": "2026.09.18 · Mind & Well-being",
+      "keywords": [
+        "AML Notes",
+        "修行",
+        "生活覺察",
+        "心念",
+        "日常練習",
+        "mind"
+      ],
+      "articlePath": "/articles/cultivation-first-thought.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/cultivation-first-thought",
+      "hero": "/images/articles/cultivation-first-thought-hero.webp",
+      "ogImage": "/images/articles/cultivation-first-thought-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "相關閱讀 ← 當 AI 愈來愈強，人為什麼反而更需要修行？",
+          "href": "/articles/ai-cultivation-inner-life.html"
+        }
+      ]
+    },
     {
       "slug": "ot-management-health-service-last-mile",
       "title": "從倡議到普及：健康服務的最後一哩路",
