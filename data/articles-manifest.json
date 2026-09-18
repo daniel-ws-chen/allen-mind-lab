@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-17T06:49:44.213Z",
+  "generatedAt": "2026-09-18T04:04:22.639Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 32,
-    "ot": 11,
+    "total": 34,
+    "ot": 13,
     "mind": 7,
     "pbs": 12,
     "education": 7,
-    "management": 15,
+    "management": 17,
     "ai": 10,
     "notes": 2
   },
@@ -79,6 +79,91 @@
     }
   },
   "articles": [
+    {
+      "slug": "ot-management-cross-system-service-integration",
+      "title": "跨系統職能治療服務管理：如何把不同系統真正接起來？",
+      "summary": "跨系統管理不只是找到資源，而是讓資源形成有方向、能執行、可持續的支持系統。從六種整合角色、三階段管理到八步驟流程，理解如何把服務真正接起來。",
+      "date": "2026-09-18",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "Management & Leadership × OT & Human Occupation",
+      "cardMeta": "2026.09.18 · 管理學延伸學習 · 第11週",
+      "keywords": [
+        "職能治療管理",
+        "跨系統合作",
+        "系統整合",
+        "服務管理",
+        "服務轉銜",
+        "照護協調",
+        "持續改善"
+      ],
+      "articlePath": "/articles/ot-management-cross-system-service-integration.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-cross-system-service-integration",
+      "hero": "/images/articles/ot-management-cross-system-service-integration-hero.webp",
+      "ogImage": "/images/articles/ot-management-cross-system-service-integration-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 跨專業合作與跨系統合作：差別到底在哪裡？",
+          "href": "/articles/ot-management-interprofessional-cross-system-collaboration.html"
+        }
+      ]
+    },
+    {
+      "slug": "ot-management-interprofessional-cross-system-collaboration",
+      "title": "跨專業合作與跨系統合作：差別到底在哪裡？",
+      "summary": "跨專業合作處理「人怎麼一起工作」，跨系統合作則進一步處理「服務怎麼接得起來」。從治療室外的生活現場，看懂服務為什麼會在制度交界處中斷。",
+      "date": "2026-09-18",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "Management & Leadership × OT & Human Occupation",
+      "cardMeta": "2026.09.18 · 管理學延伸學習 · 第11週",
+      "keywords": [
+        "職能治療管理",
+        "跨專業合作",
+        "跨系統合作",
+        "服務整合",
+        "轉銜",
+        "服務連續性",
+        "系統斷層"
+      ],
+      "articlePath": "/articles/ot-management-interprofessional-cross-system-collaboration.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-interprofessional-cross-system-collaboration",
+      "hero": "/images/articles/ot-management-interprofessional-cross-system-collaboration-hero.webp",
+      "ogImage": "/images/articles/ot-management-interprofessional-cross-system-collaboration-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "延伸前站 ← 每個單位都完成任務了，為什麼服務還是會斷掉？",
+          "href": "/articles/management-pbs-cross-system-services.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 跨系統職能治療服務管理：如何把不同系統真正接起來？ →",
+          "href": "/articles/ot-management-cross-system-service-integration.html"
+        }
+      ]
+    },
     {
       "slug": "emptiness-meets-moho",
       "title": "當空性遇見 MOHO",
