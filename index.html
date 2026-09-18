@@ -172,6 +172,7 @@
       font-weight:800;
     }
 
+    .card h3 small{display:block;margin-top:5px;color:#8a7960;font-size:.72rem;font-weight:700;letter-spacing:.02em}
     .card h3{
       color:var(--navy);
       margin:12px 0;
@@ -709,14 +710,17 @@
 
     /* ===== Start Here vNext ===== */
     .start-here{background:#fffdf9}
-    .start-here-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
-    .start-card{display:block;padding:28px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#faf7f0);transition:.25s ease;box-shadow:0 8px 24px rgba(15,23,42,.04)}
-    .start-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(15,23,42,.08)}
-    .start-card .num{margin-bottom:10px}
-    .start-card h3{margin:0 0 10px;color:var(--navy);font-size:1.2rem}
-    .start-card p{margin:0;color:var(--muted)}
-    .start-card .more{margin-top:18px}
-    .start-here-audience{margin:14px 0 0;max-width:850px;color:#7c6f5d;font-size:.94rem;font-weight:600}
+    .start-here-audience{margin:14px 0 0;max-width:850px;color:#7c6f5d;font-size:.98rem;font-weight:700}
+    .reader-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:34px}
+    .reader-card{display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:start;padding:26px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#faf7f0);transition:.25s ease;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+    .reader-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(15,23,42,.08);border-color:#d8c8a8}
+    .reader-card--wide{grid-column:1 / -1}
+    .reader-icon{grid-row:1 / span 4;display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:#f2eadc;font-size:1.35rem}
+    .reader-card .num{margin:1px 0 8px;font-size:.78rem;letter-spacing:.08em}
+    .reader-card h3{margin:0 0 9px;color:var(--navy);font-size:1.16rem}
+    .reader-card p{margin:0;color:var(--muted);line-height:1.75}
+    .reader-card .more{margin-top:16px}
+    .start-here .aml-library-snapshot{margin-top:30px}
 
     /* ===== Practice Tools vNext ===== */
     .practice-tools-home{background:linear-gradient(135deg,#f8f4ec,#fffdf9)}
@@ -727,8 +731,7 @@
     .practice-tool-points{display:grid;gap:10px}
     .practice-tool-point{padding:12px 14px;border-radius:14px;background:#faf7f0;color:#536071;font-size:.94rem}
     .practice-tool-note{margin-top:16px;color:#747d88;font-size:.84rem}
-    @media(max-width:1120px){.start-here-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:700px){.start-here-grid{grid-template-columns:1fr}.practice-tool-card{grid-template-columns:1fr}}
+    @media(max-width:760px){.reader-guide-grid{grid-template-columns:1fr}.reader-card--wide{grid-column:auto}.reader-card{grid-template-columns:auto 1fr}.practice-tool-card{grid-template-columns:1fr}}
 
     /* ===== Professional Footprint vNext ===== */
     .professional-footprint{
@@ -1148,52 +1151,52 @@
 </div>
 </section>
 <section class="start-here reveal" id="start-here">
-<div class="eyebrow">Start Here</div>
-<h2 class="section-title">你現在想找什麼？</h2>
-<p class="section-lead">不必先理解網站架構。從你此刻的需要開始：理解一個議題、把方法帶回現場、依主題深入探索，或和 AML 交流合作。</p>
-<p class="start-here-audience">給正在服務現場、教學現場、管理現場工作的人，也給想把生活理解得更深的人。</p>
-<div aria-label="AML 館藏總覽" class="aml-library-snapshot" role="navigation">
-<a class="aml-library-snapshot__item" href="articles.html">
-<strong data-articles-total="">26</strong><span>Articles</span><small>文章館藏</small>
+<div class="eyebrow">Reader Guide</div>
+<h2 class="section-title">第一次來 AML？從你的角色開始。</h2>
+<p class="section-lead">不用先懂 OT、PBS 或管理學，也不用先研究網站架構。先找到最接近你的身分，AML 會把適合的文章、工具與館藏入口放在前面。</p>
+<p class="start-here-audience">不是把專業變簡單，而是把進入專業的路變簡單。</p>
+<div class="reader-guide-grid" aria-label="AML 讀者導航">
+<a class="reader-card" href="pbs.html">
+<div class="reader-icon" aria-hidden="true">🤝</div>
+<div class="num">01 · 助人工作者</div>
+<h3>我在第一線陪伴與支持他人</h3>
+<p>適合社工、心理、輔導、特教與第一線支持人員。從 PBS、情緒行為支持、危機應對、團隊合作與服務設計開始。</p>
+<span class="more">從支持實務開始 →</span>
 </a>
-<a class="aml-library-snapshot__item" href="#labs">
-<strong>6</strong><span>Domains</span><small>主題領域</small>
+<a class="reader-card" href="ot.html">
+<div class="reader-icon" aria-hidden="true">🧭</div>
+<div class="num">02 · 專業人士</div>
+<h3>我想把專業做得更完整</h3>
+<p>適合 OT、醫療、復健、社政與教育專業。可從跨系統合作、管理、專業倡議、研究與服務整合深入。</p>
+<span class="more">進入專業館藏 →</span>
 </a>
-<a class="aml-library-snapshot__item" href="tools.html">
-<strong>4</strong><span>Tools</span><small>實務工具</small>
+<a class="reader-card" href="management-learning.html">
+<div class="reader-icon" aria-hidden="true">🎓</div>
+<div class="num">03 · 醫健相關科系學生</div>
+<h3>我正在學習專業，也準備走進現場</h3>
+<p>適合 OT、PT、ST、護理、社工、心理與特教學生。從管理學延伸閱讀、專業角色、跨專業合作與 AI 學習開始。</p>
+<span class="more">進入學生學習入口 →</span>
 </a>
-<a class="aml-library-snapshot__item aml-library-snapshot__item--text" href="research.html">
-<strong>Research</strong><span>Academic Work</span><small>研究與學術軌跡</small>
+<a class="reader-card" href="articles.html">
+<div class="reader-icon" aria-hidden="true">🏡</div>
+<div class="num">04 · 教養與照顧者</div>
+<h3>我想更理解正在陪伴的人</h3>
+<p>適合家長、照顧者與機構工作者。從情緒行為、日常支持、溝通、生活參與與資源轉銜相關文章開始。</p>
+<span class="more">找適合的文章 →</span>
 </a>
-<a class="aml-library-snapshot__item aml-library-snapshot__item--text" href="publications.html">
-<strong>Publications</strong><span>Books &amp; Works</span><small>出版與專業成果</small>
+<a class="reader-card reader-card--wide" href="articles.html">
+<div class="reader-icon" aria-hidden="true">☕</div>
+<div class="num">05 · 想先輕鬆逛逛</div>
+<h3>我沒有特定身分，只想找值得看的內容</h3>
+<p>從最新文章與精選館藏開始，不需要先懂專業名詞。沿著感興趣的主題慢慢探索就好。</p>
+<span class="more">看看最近在寫什麼 →</span>
 </a>
 </div>
-<div class="start-here-grid">
-<a class="start-card" href="articles.html">
-<div class="num">01 · UNDERSTAND</div>
-<h3>想先理解一個議題</h3>
-<p>從實務現場、研究與教學長出的文章開始，建立概念，再沿著相關文章繼續深入。</p>
-<span class="more">閱讀文章 →</span>
-</a>
-<a class="start-card" href="#practice-tools-home">
-<div class="num">02 · USE</div>
-<h3>想把方法帶回現場</h3>
-<p>使用 AML 的實務工具，協助整理資訊、形成假設、準備討論與支持策略。</p>
-<span class="more">使用實務工具 →</span>
-</a>
-<a class="start-card" href="#labs">
-<div class="num">03 · EXPLORE</div>
-<h3>想依主題深入探索</h3>
-<p>從 OT、PBS、管理、教育、AI 到身心福祉，進入六個彼此連結的知識領域。</p>
-<span class="more">探索六大館藏 →</span>
-</a>
-<a class="start-card" href="contact.html">
-<div class="num">04 · CONNECT</div>
-<h3>想交流、授課或合作</h3>
-<p>演講授課、專業交流、出版媒體或跨領域合作，都可以從這裡開始聯繫 AML。</p>
-<span class="more">Contact AML →</span>
-</a>
+<div aria-label="AML 館藏總覽" class="aml-library-snapshot" role="navigation">
+<a class="aml-library-snapshot__item" href="articles.html"><strong data-articles-total="">34</strong><span>Articles</span><small>文章館藏</small></a>
+<a class="aml-library-snapshot__item" href="#labs"><strong>6</strong><span>Domains</span><small>主題領域</small></a>
+<a class="aml-library-snapshot__item" href="tools.html"><strong>4</strong><span>Tools</span><small>實務工具</small></a>
+<a class="aml-library-snapshot__item aml-library-snapshot__item--text" href="resources.html"><strong>Resources</strong><span>Selected Network</span><small>精選外部資源</small></a>
 </div>
 </section>
 <section class="labs" id="labs">
@@ -1210,39 +1213,39 @@
 <div class="cards">
 <a class="card reveal" href="ot.html">
 <div class="num">01</div>
-<h3>OT &amp; Human Occupation</h3>
+<h3>職能治療與生活參與 <small>OT &amp; Human Occupation</small></h3>
 <p>職能、參與、環境、生活意義與人本服務。</p>
-<span class="more">Explore →</span>
+<span class="more">探索館藏 →</span>
 </a>
 <a class="card reveal" href="pbs.html">
 <div class="num">02</div>
-<h3>PBS</h3>
+<h3>正向行為支持 <small>PBS</small></h3>
 <p>正向行為支持、功能分析、團隊支持與生活品質。</p>
-<span class="more">Explore →</span>
+<span class="more">探索館藏 →</span>
 </a>
 <a class="card reveal" href="management.html">
 <div class="num">03</div>
-<h3>Management &amp; Leadership</h3>
+<h3>管理與領導 <small>Management &amp; Leadership</small></h3>
 <p>組織管理、跨系統合作、策略與服務設計。</p>
-<span class="more">Explore →</span>
+<span class="more">探索館藏 →</span>
 </a>
 <a class="card reveal" href="education.html">
 <div class="num">04</div>
-<h3>Education</h3>
+<h3>教育與學習 <small>Education</small></h3>
 <p>案例導向教學、課程設計、學習活動與人才培育。</p>
-<span class="more">Explore →</span>
+<span class="more">探索館藏 →</span>
 </a>
 <a class="card reveal" href="ai.html">
 <div class="num">05</div>
-<h3>AI × Practice</h3>
+<h3>AI 與數位實踐 <small>AI × Practice</small></h3>
 <p>生成式 AI、知識管理、視覺設計與工作流程創新。</p>
-<span class="more">Explore →</span>
+<span class="more">探索館藏 →</span>
 </a>
 <a class="card reveal" href="mind.html">
 <div class="num">06</div>
-<h3>Mind &amp; Well-being</h3>
+<h3>身心與自我照顧 <small>Mind &amp; Well-being</small></h3>
 <p>健康促進、身心安頓、修習與生命反思。</p>
-<span class="more">Explore →</span>
+<span class="more">探索館藏 →</span>
 </a>
 </div>
 </section>
