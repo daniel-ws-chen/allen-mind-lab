@@ -482,6 +482,22 @@
 
 
 .aml-topic-hall__meta>span:last-child{white-space:nowrap;flex:0 0 auto;min-width:max-content}.aml-topic-hall__meta>span:first-child{min-width:0}
+
+/* ===== AML Notes editorial hero v2 ===== */
+body{background:#fffdf9}
+.hero{padding:132px 8vw 72px;background:linear-gradient(110deg,#fffdf9 0%,#fbf7ef 58%,#f3eee4 100%);color:var(--navy);position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero:after{content:"";position:absolute;right:7vw;top:118px;width:310px;height:210px;border-radius:48% 52% 46% 54%;background:radial-gradient(circle at 35% 35%,rgba(199,167,106,.20),rgba(199,167,106,.05) 55%,transparent 70%);transform:rotate(-8deg);pointer-events:none}
+.hero .eyebrow{color:#a67c35}
+.hero h1{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:clamp(3rem,6vw,5.6rem);letter-spacing:.02em;color:var(--navy);margin-bottom:18px}
+.hero p{max-width:760px;color:#657181;font-size:1.05rem;position:relative;z-index:1}
+.hero p strong{color:var(--navy)}
+.notes-intro{padding:58px 8vw 34px;background:#fffdf9}
+.notes-intro .title{font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:clamp(2rem,3.4vw,3.2rem)}
+#notes{padding:26px 8vw 84px;background:#fffdf9}
+#notes>.intro{padding:0;background:transparent}
+#notes .article-grid{padding:0!important;margin:34px auto 0!important;max-width:none!important}
+@media(max-width:980px){.hero:after{opacity:.45;right:-70px}.notes-intro{padding:50px 6vw 28px}#notes{padding:22px 6vw 68px}}
+
 </style>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <!-- AML SEO / Social Preview -->
@@ -555,9 +571,9 @@
 <a href="/contact.html">Contact</a>
 </div>
 </nav>
-<header class="hero" id="aml-main"><div class="eyebrow">AML Notes · 小品集</div><h1>把生活留下來。</h1><p>Articles，把事情說清楚。<br/>Notes，把生活留下來。<br/><br/>這裡收的是短一些、近一些的文字：生活裡的一個念頭、一個畫面，一次值得記住的轉變。</p></header>
-<section class="intro"><div class="eyebrow">Notes from the Lab</div><h2 class="title">生活，也是思考與實踐發生的地方。</h2><p class="lead">不一定每一次書寫都需要完整的研究與論證。有些內容值得留下，是因為它讓我們重新看見生活、職能、關係與自己。</p></section>
-<section id="notes"><div class="intro"><div class="eyebrow">AML NOTES COLLECTION</div><h2 class="title">小品集</h2><p class="lead">從最新的一則開始，也可以隨意挑一篇慢慢讀。</p></div><div class="article-grid" style="max-width:1180px;margin:0 auto 90px;padding:0 24px;">
+<header class="hero" id="aml-main"><div class="eyebrow">AML NOTES COLLECTION</div><h1>小品集</h1><p><strong>把生活留下來。</strong><br/>不一定從一個專業問題開始，也可能只是一個念頭、一段生活、一場修習，或某個值得停下來想一想的瞬間。</p></header>
+<section class="notes-intro"><div class="eyebrow">Notes from the Lab</div><h2 class="title">生活，也是思考與實踐發生的地方。</h2><p class="lead">Articles，把事情說清楚；Notes，把生活留下來。從最新的一則開始，也可以隨意挑一篇慢慢讀。</p></section>
+<section id="notes"><div class="article-grid" style="max-width:1180px;margin:0 auto 90px;padding:0 24px;">
 <a class="article-card" href="/articles/cultivation-first-thought.html"><div class="meta">2026.09.18 · AML Notes</div><span class="tag">Mind &amp; Well-being</span><h2>原來，修行是第一個念頭開始改變</h2><p>從 ATM 暫停服務到已打烊的晚餐店，一個下班後的小插曲，記錄面對生活不如預期時，第一個念頭如何慢慢改變。</p><div class="read">Read Note →</div></a>
 <a class="article-card" href="/articles/emptiness-meets-moho.html"><div class="meta">2026.09.17 · AML Notes</div><span class="tag">OT × Mind</span><h2>當空性遇見 MOHO</h2><p>空性提醒我們，人不是固定的；MOHO 則讓我們看見，人的生活樣貌持續在意志、習慣、能力與環境中生成。</p><div class="read">Read Note →</div></a>
 <a class="article-card" href="/articles/helper-self-awareness.html"><div class="meta">AML Notes</div><span class="tag">Mind &amp; Well-being</span><h2>心安方能助人，理明方能成事</h2><p>從助人工作回到自身，整理體力、情緒、期待與關係界線，讓支持別人之前，也能看見自己。</p><div class="read">Read Note →</div></a>
