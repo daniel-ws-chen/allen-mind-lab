@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-18T08:02:11.952Z",
+  "generatedAt": "2026-09-18T09:09:52.561Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 36,
-    "ot": 15,
+    "total": 38,
+    "ot": 17,
     "mind": 7,
     "pbs": 12,
     "education": 7,
-    "management": 19,
+    "management": 21,
     "ai": 10,
     "notes": 2
   },
@@ -80,6 +80,93 @@
   },
   "articles": [
     {
+      "slug": "ot-management-professional-advocacy-system-improvement",
+      "title": "專業如何成為制度優化的力量？",
+      "summary": "從第一線經驗出發，整理辨識問題、建立證據、找到夥伴、提出方案、試行與評估的制度改善路徑，看專業如何從服務走向倡議與治理。",
+      "date": "2026-09-18",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "Management & Leadership × OT & Human Occupation",
+      "cardMeta": "2026.09.18 · Management & Leadership × OT & Human Occupation",
+      "keywords": [
+        "職能治療",
+        "專業倡議",
+        "制度優化",
+        "品質改善",
+        "利害關係人",
+        "公共政策",
+        "制度治理",
+        "管理學"
+      ],
+      "articlePath": "/articles/ot-management-professional-advocacy-system-improvement.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-professional-advocacy-system-improvement",
+      "hero": "/images/articles/ot-management-professional-advocacy-system-improvement-hero.webp",
+      "ogImage": "/images/articles/ot-management-professional-advocacy-system-improvement-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 治療室以外：影響專業實踐的公共政策",
+          "href": "/articles/ot-management-public-policy-professional-practice.html"
+        }
+      ]
+    },
+    {
+      "slug": "ot-management-public-policy-professional-practice",
+      "title": "治療室以外：影響專業實踐的公共政策",
+      "summary": "從服務資格、專業角色、資源配置到可近性與績效指標，看懂公共政策如何塑造 OT 的服務樣貌，以及第一線如何從理解制度走向回饋制度。",
+      "date": "2026-09-18",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "Management & Leadership × OT & Human Occupation",
+      "cardMeta": "2026.09.18 · Management & Leadership × OT & Human Occupation",
+      "keywords": [
+        "職能治療",
+        "公共政策",
+        "服務可近性",
+        "資源配置",
+        "長照3.0",
+        "特殊教育",
+        "復健病房",
+        "管理學"
+      ],
+      "articlePath": "/articles/ot-management-public-policy-professional-practice.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-public-policy-professional-practice",
+      "hero": "/images/articles/ot-management-public-policy-professional-practice-hero.webp",
+      "ogImage": "/images/articles/ot-management-public-policy-professional-practice-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 在不同領域，OT 怎麼提供真正需要的服務？",
+          "href": "/articles/ot-management-needs-based-service-design.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 專業如何成為制度優化的力量？ →",
+          "href": "/articles/ot-management-professional-advocacy-system-improvement.html"
+        }
+      ]
+    },
+    {
       "slug": "ot-management-needs-based-service-design",
       "title": "在不同領域，OT 怎麼提供真正需要的服務？",
       "summary": "同樣的 OT 專業進入不同場域，服務方式不能只是複製貼上。從需求分析、服務設計、資源配置到成效與持續改善，看專業素養如何轉化成真正有用的服務。",
@@ -117,6 +204,11 @@
           "kind": "previous",
           "label": "上一篇 ← 醫療、復健與長照怎麼接？",
           "href": "/articles/ot-management-care-transition-continuity.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 治療室以外：影響專業實踐的公共政策 →",
+          "href": "/articles/ot-management-public-policy-professional-practice.html"
         }
       ]
     },
