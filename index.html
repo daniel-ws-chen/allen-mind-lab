@@ -1034,6 +1034,19 @@
 @media(max-width:980px){.home-reading__card{flex-basis:calc((100% - 20px)/2)}}
 @media(max-width:680px){.home-reading__head{align-items:start;flex-direction:column}.home-reading__controls{align-self:flex-end}.home-reading__card{flex-basis:88%}.home-reading__foot{align-items:flex-start;flex-direction:column}.home-reading__all{align-self:flex-end}}
 @media(prefers-reduced-motion:reduce){.home-reading__track{scroll-behavior:auto}.home-reading__card,.home-reading__image img,.home-reading__control{transition:none}}
+
+    /* ===== AML Resource Network ===== */
+    .resource-network{padding:84px 6vw;background:linear-gradient(180deg,#fff 0%,#f7fafc 100%);}
+    .resource-network__head{max-width:780px;margin:0 auto 30px;text-align:center;}
+    .resource-network__grid{max-width:980px;margin:28px auto 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+    .resource-card{display:block;padding:26px 28px;border:1px solid rgba(15,23,42,.10);border-radius:22px;background:#fff;text-decoration:none;color:inherit;box-shadow:0 10px 28px rgba(15,23,42,.05);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+    .resource-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(15,23,42,.09);border-color:rgba(79,70,229,.22);}
+    .resource-card__type{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:10px;}
+    .resource-card h3{margin:0 0 10px;font-size:1.28rem;color:#172033;}
+    .resource-card p{margin:0;color:#566173;line-height:1.8;}
+    .resource-card .more{display:inline-block;margin-top:16px;font-weight:700;color:#4156a7;}
+    .resource-network__note{max-width:880px;margin:22px auto 0;color:#6b7280;font-size:.92rem;line-height:1.75;text-align:center;}
+    @media(max-width:760px){.resource-network{padding:64px 5vw}.resource-network__grid{grid-template-columns:1fr}.resource-card{padding:22px}}
 </style>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <!-- AML SEO / Social Preview -->
@@ -1469,6 +1482,7 @@
 <a href="recognition.html">Recognition</a>
 <a href="articles.html">Articles</a><a href="/tools.html">Tools</a>
 <a href="publications.html">Publications</a>
+<a href="resources.html">Resources</a>
 <a href="contact.html">Contact</a>
 <a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Newsletter</a>
 </div>
