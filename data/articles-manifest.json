@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-18T04:04:22.639Z",
+  "generatedAt": "2026-09-18T08:02:11.952Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 34,
-    "ot": 13,
+    "total": 36,
+    "ot": 15,
     "mind": 7,
     "pbs": 12,
     "education": 7,
-    "management": 17,
+    "management": 19,
     "ai": 10,
     "notes": 2
   },
@@ -80,6 +80,93 @@
   },
   "articles": [
     {
+      "slug": "ot-management-needs-based-service-design",
+      "title": "在不同領域，OT 怎麼提供真正需要的服務？",
+      "summary": "同樣的 OT 專業進入不同場域，服務方式不能只是複製貼上。從需求分析、服務設計、資源配置到成效與持續改善，看專業素養如何轉化成真正有用的服務。",
+      "date": "2026-09-18",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "Management & Leadership × OT & Human Occupation",
+      "cardMeta": "2026.09.18 · Management & Leadership × OT & Human Occupation",
+      "keywords": [
+        "職能治療",
+        "服務設計",
+        "需求分析",
+        "資源配置",
+        "跨專業合作",
+        "Output Outcome Value",
+        "PDCA",
+        "管理學"
+      ],
+      "articlePath": "/articles/ot-management-needs-based-service-design.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-needs-based-service-design",
+      "hero": "/images/articles/ot-management-needs-based-service-design-hero.webp",
+      "ogImage": "/images/articles/ot-management-needs-based-service-design-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 醫療、復健與長照怎麼接？",
+          "href": "/articles/ot-management-care-transition-continuity.html"
+        }
+      ]
+    },
+    {
+      "slug": "ot-management-care-transition-continuity",
+      "title": "醫療、復健與長照怎麼接？",
+      "summary": "從急性醫療、PAC、復健病房到長照與社區生活，整理不同制度的位置與常見轉銜斷點，看懂真正的連續性照護如何讓每一段服務接得上。",
+      "date": "2026-09-18",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "Management & Leadership × OT & Human Occupation",
+      "cardMeta": "2026.09.18 · Management & Leadership × OT & Human Occupation",
+      "keywords": [
+        "長照3.0",
+        "PAC",
+        "急性後期照護",
+        "復健病房",
+        "長照ABC",
+        "連續性照護",
+        "跨系統轉銜",
+        "職能治療"
+      ],
+      "articlePath": "/articles/ot-management-care-transition-continuity.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-care-transition-continuity",
+      "hero": "/images/articles/ot-management-care-transition-continuity-hero.webp",
+      "ogImage": "/images/articles/ot-management-care-transition-continuity-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 跨系統職能治療服務管理：如何把不同系統真正接起來？",
+          "href": "/articles/ot-management-cross-system-service-integration.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 在不同領域，OT 怎麼提供真正需要的服務？ →",
+          "href": "/articles/ot-management-needs-based-service-design.html"
+        }
+      ]
+    },
+    {
       "slug": "ot-management-cross-system-service-integration",
       "title": "跨系統職能治療服務管理：如何把不同系統真正接起來？",
       "summary": "跨系統管理不只是找到資源，而是讓資源形成有方向、能執行、可持續的支持系統。從六種整合角色、三階段管理到八步驟流程，理解如何把服務真正接起來。",
@@ -116,6 +203,11 @@
           "kind": "previous",
           "label": "上一篇 ← 跨專業合作與跨系統合作：差別到底在哪裡？",
           "href": "/articles/ot-management-interprofessional-cross-system-collaboration.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 醫療、復健與長照怎麼接？ →",
+          "href": "/articles/ot-management-care-transition-continuity.html"
         }
       ]
     },
