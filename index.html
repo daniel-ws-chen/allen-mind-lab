@@ -1050,6 +1050,93 @@
     .resource-card .more{display:inline-block;margin-top:16px;font-weight:700;color:#4156a7;}
     .resource-network__note{max-width:880px;margin:22px auto 0;color:#6b7280;font-size:.92rem;line-height:1.75;text-align:center;}
     @media(max-width:760px){.resource-network{padding:64px 5vw}.resource-network__grid{grid-template-columns:1fr}.resource-card{padding:22px}}
+
+
+/* ===== AML Homepage Hero 2.0: reader-first entry ===== */
+.hero.hero-v2{
+  margin-top:72px;
+  background:
+    radial-gradient(circle at 84% 18%, rgba(199,167,106,.18), transparent 28%),
+    linear-gradient(135deg,#0b1b2d 0%,#102a45 58%,#173c57 100%);
+  color:#fff;
+  overflow:hidden;
+}
+.hero-v2__inner{
+  max-width:1240px;
+  margin:0 auto;
+  padding:clamp(72px,8vw,116px) 8vw clamp(62px,7vw,96px);
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);
+  gap:64px;
+  align-items:center;
+}
+.hero-v2__eyebrow{
+  color:#dcc38f;
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+.hero-v2 h1{
+  margin:0;
+  max-width:820px;
+  font-family:Georgia,"Noto Serif TC","Times New Roman",serif;
+  font-size:clamp(2.7rem,5.5vw,5.6rem);
+  line-height:1.12;
+  letter-spacing:-.02em;
+  color:#fff;
+}
+.hero-v2__lead{
+  max-width:760px;
+  margin:26px 0 0;
+  color:#d7e1eb;
+  font-size:clamp(1.02rem,1.6vw,1.22rem);
+  line-height:1.9;
+}
+.hero-v2__actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.hero-v2__btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:0 22px;border-radius:999px;
+  font-weight:800;transition:.2s ease;
+}
+.hero-v2__btn--primary{background:#c7a76a;color:#0d1b2a}
+.hero-v2__btn--secondary{border:1px solid rgba(255,255,255,.42);color:#fff;background:rgba(255,255,255,.04)}
+.hero-v2__btn:hover{transform:translateY(-2px)}
+.hero-v2__aside{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.07);
+  border-radius:28px;
+  padding:30px;
+  backdrop-filter:blur(8px);
+}
+.hero-v2__aside strong{display:block;color:#fff;font-size:1.15rem;margin-bottom:12px}
+.hero-v2__aside p{margin:0;color:#cbd5df;font-size:.96rem}
+.hero-v2__topics{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.hero-v2__topics span{padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08);color:#e7edf3;font-size:.8rem}
+
+.about-visual{
+  border-radius:24px;overflow:hidden;border:1px solid var(--line);background:#fff;
+  box-shadow:0 16px 38px rgba(15,23,42,.08);
+}
+.about-visual img{display:block;width:100%;height:360px;object-fit:cover;object-position:26% center}
+.about-visual__footer{padding:18px 20px 20px;background:#fff}
+.about-visual__footer .quote{margin:0 0 14px;font-size:1.06rem}
+.about-link{font-weight:800;color:#8b6b31}
+
+@media(max-width:900px){
+  .hero-v2__inner{grid-template-columns:1fr;gap:30px;padding-left:6vw;padding-right:6vw}
+  .hero-v2__aside{max-width:680px}
+  .about-visual img{height:310px;object-position:26% center}
+}
+@media(max-width:620px){
+  .hero-v2 h1{font-size:clamp(2.25rem,12vw,3.5rem)}
+  .hero-v2__actions{flex-direction:column;align-items:stretch}
+  .hero-v2__btn{width:100%}
+  .hero-v2__aside{padding:22px}
+  .about-visual img{height:270px;object-position:24% center}
+}
+
 </style>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <!-- AML SEO / Social Preview -->
@@ -1121,35 +1208,26 @@
 <a href="/contact.html">Contact</a>
 </div>
 </nav>
-<header class="hero" id="aml-main">
-<h1 class="aml-sr-only">Allen Mind Lab｜Building A Meaningful Life</h1>
-<picture>
-<source media="(max-width: 768px)" srcset="images/allen-banner-mobile.webp"/>
-<img alt="Allen Chen - Allen Mind Lab" decoding="async" fetchpriority="high" src="images/allen-banner.webp"/>
-</picture>
-</header>
-<section class="reveal" id="about">
-<div class="about-grid">
+<header class="hero hero-v2" id="aml-main">
+<div class="hero-v2__inner">
 <div>
-<div class="eyebrow">About Allen</div>
-<h2 class="section-title">
-        專業，是理解人的一種方法。
-      </h2>
-<p class="section-lead">
-        Allen Mind Lab 是一個持續整理、實驗與分享的知識實踐空間。
-        從職能治療、正向行為支持與管理實務出發，
-        延伸到教育、AI 應用，以及對生命與幸福的思考；
-        讓專業知識不只被閱讀，也能被帶回現場使用。
-      </p>
+<div class="hero-v2__eyebrow">Allen Mind Lab · Better People. A Kinder World.</div>
+<h1>從專業出發，<br/>讓知識走回生活。</h1>
+<p class="hero-v2__lead">這裡整理職能治療、正向行為支持、管理、教育、AI 與身心實踐。你不需要先懂專業名詞；先從自己的角色與問題出發，再慢慢往深處走。</p>
+<div class="hero-v2__actions">
+<a class="hero-v2__btn hero-v2__btn--primary" href="#start-here">第一次來？從這裡開始 →</a>
+<a class="hero-v2__btn hero-v2__btn--secondary" href="/articles.html">瀏覽文章館藏</a>
 </div>
-<div class="quote">
-      我關心的不只是功能是否改善，
-      而是人能不能重新參與生活、
-      建立關係，
-      並找到屬於自己的意義。
-    </div>
 </div>
-</section>
+<aside class="hero-v2__aside" aria-label="AML 網站定位">
+<strong>不是把專業變簡單，而是把進入專業的路變簡單。</strong>
+<p>先找到你需要的方向。想深入時，完整文章、工具與專業館藏都還在。</p>
+<div class="hero-v2__topics" aria-label="AML 主題">
+<span>職能治療</span><span>PBS</span><span>管理</span><span>教育</span><span>AI</span><span>身心實踐</span>
+</div>
+</aside>
+</div>
+</header>
 <section class="start-here reveal" id="start-here">
 <div class="eyebrow">Reader Guide</div>
 <h2 class="section-title">第一次來 AML？從你的角色開始。</h2>
@@ -1197,6 +1275,25 @@
 <a class="aml-library-snapshot__item" href="#labs"><strong>6</strong><span>Domains</span><small>主題領域</small></a>
 <a class="aml-library-snapshot__item" href="tools.html"><strong>4</strong><span>Tools</span><small>實務工具</small></a>
 <a class="aml-library-snapshot__item aml-library-snapshot__item--text" href="resources.html"><strong>Resources</strong><span>Selected Network</span><small>精選外部資源</small></a>
+</div>
+</section>
+<section class="reveal" id="about">
+<div class="about-grid">
+<div>
+<div class="eyebrow">About Allen</div>
+<h2 class="section-title">專業，是理解人的一種方法。</h2>
+<p class="section-lead">Allen Mind Lab 是一個持續整理、實驗與分享的知識實踐空間。從職能治療、正向行為支持與管理實務出發，延伸到教育、AI 應用，以及對生命與幸福的思考；讓專業知識不只被閱讀，也能被帶回現場使用。</p>
+</div>
+<div class="about-visual">
+<picture>
+<source media="(max-width: 768px)" srcset="images/allen-banner-mobile.webp"/>
+<img alt="Allen Chen - Allen Mind Lab" loading="lazy" src="images/allen-banner.webp"/>
+</picture>
+<div class="about-visual__footer">
+<div class="quote">我關心的不只是功能是否改善，而是人能不能重新參與生活、建立關係，並找到屬於自己的意義。</div>
+<a class="about-link" href="/about.html">認識 Allen 與 AML →</a>
+</div>
+</div>
 </div>
 </section>
 <section class="labs" id="labs">
