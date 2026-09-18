@@ -41,7 +41,9 @@ function validateConfig(c){
   for(const d of c.domains) if(!DOMAIN_PAGES[d]) die(`Unknown domain '${d}'.`);
   c.keywords ??=[]; c.relatedReading ??=[]; c.series ??=[]; c.navigation ??={};
   c.tag ??= c.domains.map(d=>DOMAIN_LABELS[d]).join(' × ');
-  c.cardMeta ??= `${fmtDateDot(c.date)} · ${c.tag}`;
+  // Topic-hall cards use one stable public convention: date + domain taxonomy only.
+  // Do not place series/teaching labels such as 延伸閱讀、課後學習、Research Update in cardMeta.
+  c.cardMeta = `${fmtDateDot(c.date)} · ${c.domains.map(d=>DOMAIN_LABELS[d]).join(' × ')}`;
   c.eyebrow ??= c.tag.toUpperCase();
   c.heroAlt ??= `${c.title} AML 主視覺`;
   c.articleRole ??='Article'; c.collectionRole ??='';
