@@ -207,7 +207,7 @@ function newManifest(c,m){
 function patchReciprocalPrevious(html,c){
   if(!c.reciprocalPrevious || !c.navigation.previous) return html;
   const label=esc(c.title); const href=`/articles/${c.slug}.html`;
-  const re=/<a class="aml-article-footer-nav__card aml-article-footer-nav__card--next"[\s\S]*?<\/a>/i;
+  const re=/<(?:a|div) class="aml-article-footer-nav__card aml-article-footer-nav__card--next"(?: href="[^"]*")?>[\s\S]*?<\/(?:a|div)>/i;
   const repl=`<a class="aml-article-footer-nav__card aml-article-footer-nav__card--next" href="${href}"><small>下一篇</small><strong>${label} →</strong></a>`;
   if(!re.test(html)) { warn('Could not patch reciprocal previous article footer; leaving unchanged.'); return html; }
   return html.replace(re,repl);
