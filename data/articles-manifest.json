@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-18T09:09:52.561Z",
+  "generatedAt": "2026-09-18T15:57:52.026Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 38,
-    "ot": 17,
+    "total": 40,
+    "ot": 19,
     "mind": 7,
     "pbs": 12,
     "education": 7,
-    "management": 21,
+    "management": 23,
     "ai": 10,
     "notes": 2
   },
@@ -80,6 +80,93 @@
   },
   "articles": [
     {
+      "slug": "ot-management-health-service-last-mile",
+      "title": "從倡議到普及：健康服務的最後一哩路",
+      "summary": "服務存在只是起點。從健康公平、可近性、合理調整與竭盡所能的服務思維，重新思考如何讓真正需要的人走得進來、接得上。",
+      "date": "2026-09-18",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "管理與領導 × 職能治療與生活參與",
+      "cardMeta": "2026.09.18 · Management & Leadership × OT & Human Occupation",
+      "keywords": [
+        "健康公平",
+        "服務可近性",
+        "合理調整",
+        "竭盡所能",
+        "Whatever it takes",
+        "職能治療",
+        "健康服務",
+        "跨系統服務"
+      ],
+      "articlePath": "/articles/ot-management-health-service-last-mile.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-health-service-last-mile",
+      "hero": "/images/articles/ot-management-health-service-last-mile-hero.webp",
+      "ogImage": "/images/articles/ot-management-health-service-last-mile-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 如何從一個案例出發，凝聚成集體力量？",
+          "href": "/articles/ot-management-case-to-collective-action.html"
+        }
+      ]
+    },
+    {
+      "slug": "ot-management-case-to-collective-action",
+      "title": "如何從一個案例出發，凝聚成集體力量？",
+      "summary": "從第一線個案、重複問題與資料整理，到專業組織承接與制度對話，看懂個人經驗如何逐步形成集體力量。",
+      "date": "2026-09-18",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "管理與領導 × 職能治療與生活參與",
+      "cardMeta": "2026.09.18 · Management & Leadership × OT & Human Occupation",
+      "keywords": [
+        "專業組織",
+        "職能治療",
+        "制度參與",
+        "集體治理",
+        "專業倡議",
+        "公會",
+        "學會",
+        "全聯會"
+      ],
+      "articlePath": "/articles/ot-management-case-to-collective-action.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-case-to-collective-action",
+      "hero": "/images/articles/ot-management-case-to-collective-action-hero.webp",
+      "ogImage": "/images/articles/ot-management-case-to-collective-action-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 專業如何成為制度優化的力量？",
+          "href": "/articles/ot-management-professional-advocacy-system-improvement.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 從倡議到普及：健康服務的最後一哩路 →",
+          "href": "/articles/ot-management-health-service-last-mile.html"
+        }
+      ]
+    },
+    {
       "slug": "ot-management-professional-advocacy-system-improvement",
       "title": "專業如何成為制度優化的力量？",
       "summary": "從第一線經驗出發，整理辨識問題、建立證據、找到夥伴、提出方案、試行與評估的制度改善路徑，看專業如何從服務走向倡議與治理。",
@@ -117,6 +204,11 @@
           "kind": "previous",
           "label": "上一篇 ← 治療室以外：影響專業實踐的公共政策",
           "href": "/articles/ot-management-public-policy-professional-practice.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 如何從一個案例出發，凝聚成集體力量？ →",
+          "href": "/articles/ot-management-case-to-collective-action.html"
         }
       ]
     },
