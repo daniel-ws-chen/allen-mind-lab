@@ -709,13 +709,14 @@
 
     /* ===== Start Here vNext ===== */
     .start-here{background:#fffdf9}
-    .start-here-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+    .start-here-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:34px}
     .start-card{display:block;padding:28px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#faf7f0);transition:.25s ease;box-shadow:0 8px 24px rgba(15,23,42,.04)}
     .start-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(15,23,42,.08)}
     .start-card .num{margin-bottom:10px}
     .start-card h3{margin:0 0 10px;color:var(--navy);font-size:1.2rem}
     .start-card p{margin:0;color:var(--muted)}
     .start-card .more{margin-top:18px}
+    .start-here-audience{margin:14px 0 0;max-width:850px;color:#7c6f5d;font-size:.94rem;font-weight:600}
 
     /* ===== Practice Tools vNext ===== */
     .practice-tools-home{background:linear-gradient(135deg,#f8f4ec,#fffdf9)}
@@ -726,7 +727,8 @@
     .practice-tool-points{display:grid;gap:10px}
     .practice-tool-point{padding:12px 14px;border-radius:14px;background:#faf7f0;color:#536071;font-size:.94rem}
     .practice-tool-note{margin-top:16px;color:#747d88;font-size:.84rem}
-    @media(max-width:900px){.start-here-grid{grid-template-columns:1fr}.practice-tool-card{grid-template-columns:1fr}}
+    @media(max-width:1120px){.start-here-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:700px){.start-here-grid{grid-template-columns:1fr}.practice-tool-card{grid-template-columns:1fr}}
 
     /* ===== Professional Footprint vNext ===== */
     .professional-footprint{
@@ -1118,10 +1120,10 @@
         專業，是理解人的一種方法。
       </h2>
 <p class="section-lead">
-        Allen Mind Lab 不只是一個個人網站，
-        而是一個持續實驗、整合與分享的空間。
-        這裡記錄職能治療、正向行為支持、管理實務、
-        教育創新、AI 應用，以及對生命與幸福的思考。
+        Allen Mind Lab 是一個持續整理、實驗與分享的知識實踐空間。
+        從職能治療、正向行為支持與管理實務出發，
+        延伸到教育、AI 應用，以及對生命與幸福的思考；
+        讓專業知識不只被閱讀，也能被帶回現場使用。
       </p>
 </div>
 <div class="quote">
@@ -1134,8 +1136,9 @@
 </section>
 <section class="start-here reveal" id="start-here">
 <div class="eyebrow">Start Here</div>
-<h2 class="section-title">從這裡開始，找到最適合入口。</h2>
-<p class="section-lead">第一次來到 Allen Mind Lab，可以先從閱讀、探索或實務工具開始。</p>
+<h2 class="section-title">你現在想找什麼？</h2>
+<p class="section-lead">不必先理解網站架構。從你此刻的需要開始：理解一個議題、把方法帶回現場、依主題深入探索，或和 AML 交流合作。</p>
+<p class="start-here-audience">給正在服務現場、教學現場、管理現場工作的人，也給想把生活理解得更深的人。</p>
 <div aria-label="AML 館藏總覽" class="aml-library-snapshot" role="navigation">
 <a class="aml-library-snapshot__item" href="articles.html">
 <strong data-articles-total="">26</strong><span>Articles</span><small>文章館藏</small>
@@ -1155,22 +1158,28 @@
 </div>
 <div class="start-here-grid">
 <a class="start-card" href="articles.html">
-<div class="num">01 · READ</div>
-<h3>閱讀文章</h3>
-<p>從實務現場長出的觀察、整理與反思，持續累積成可閱讀、可思考的內容。</p>
-<span class="more">Explore Articles →</span>
-</a>
-<a class="start-card" href="#labs">
-<div class="num">02 · EXPLORE</div>
-<h3>探索主題</h3>
-<p>從 OT、PBS、管理、教育、AI 到身心福祉，依興趣進入不同知識領域。</p>
-<span class="more">Explore Domains →</span>
+<div class="num">01 · UNDERSTAND</div>
+<h3>想先理解一個議題</h3>
+<p>從實務現場、研究與教學長出的文章開始，建立概念，再沿著相關文章繼續深入。</p>
+<span class="more">閱讀文章 →</span>
 </a>
 <a class="start-card" href="#practice-tools-home">
-<div class="num">03 · USE</div>
-<h3>使用工具</h3>
-<p>把概念帶回現場，使用 AML 的實務工具協助整理案例、形成假設與支持策略。</p>
-<span class="more">Explore Practice Tools →</span>
+<div class="num">02 · USE</div>
+<h3>想把方法帶回現場</h3>
+<p>使用 AML 的實務工具，協助整理資訊、形成假設、準備討論與支持策略。</p>
+<span class="more">使用實務工具 →</span>
+</a>
+<a class="start-card" href="#labs">
+<div class="num">03 · EXPLORE</div>
+<h3>想依主題深入探索</h3>
+<p>從 OT、PBS、管理、教育、AI 到身心福祉，進入六個彼此連結的知識領域。</p>
+<span class="more">探索六大館藏 →</span>
+</a>
+<a class="start-card" href="contact.html">
+<div class="num">04 · CONNECT</div>
+<h3>想交流、授課或合作</h3>
+<p>演講授課、專業交流、出版媒體或跨領域合作，都可以從這裡開始聯繫 AML。</p>
+<span class="more">Contact AML →</span>
 </a>
 </div>
 </section>
