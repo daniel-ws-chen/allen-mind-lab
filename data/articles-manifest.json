@@ -93,7 +93,7 @@
         "ot"
       ],
       "tag": "Management & Leadership × OT & Human Occupation",
-      "cardMeta": "2026.09.18 · 管理學延伸學習 · 第11週",
+      "cardMeta": "2026.09.18 · Management & Leadership × OT & Human Occupation",
       "keywords": [
         "職能治療管理",
         "跨系統合作",
@@ -133,7 +133,7 @@
         "ot"
       ],
       "tag": "Management & Leadership × OT & Human Occupation",
-      "cardMeta": "2026.09.18 · 管理學延伸學習 · 第11週",
+      "cardMeta": "2026.09.18 · Management & Leadership × OT & Human Occupation",
       "keywords": [
         "職能治療管理",
         "跨專業合作",
@@ -178,7 +178,7 @@
         "mind"
       ],
       "tag": "AML Notes · OT × Mind",
-      "cardMeta": "2026.09.17 · AML Notes",
+      "cardMeta": "2026.09.17 · OT & Human Occupation × Mind & Well-being",
       "keywords": [
         "MOHO",
         "Model of Human Occupation",
@@ -221,7 +221,7 @@
         "ai"
       ],
       "tag": "AI × Education",
-      "cardMeta": "2026.09.17 · AI × Education",
+      "cardMeta": "2026.09.17 · AI × Practice × Education",
       "keywords": [
         "AI Education",
         "生成式 AI",
@@ -261,7 +261,7 @@
       "primaryDomain": "pbs",
       "crossDomains": [],
       "tag": "PBS × Autism × Support Map",
-      "cardMeta": "2026.09.16 · PBS × Autism",
+      "cardMeta": "2026.09.16 · PBS",
       "keywords": [
         "Autism",
         "自閉症",
@@ -313,7 +313,7 @@
       "primaryDomain": "pbs",
       "crossDomains": [],
       "tag": "PBS × Behavior Function",
-      "cardMeta": "2026.09.15 · PBS × Behavior Function",
+      "cardMeta": "2026.09.15 · PBS",
       "keywords": [
         "PBS",
         "Positive Behaviour Support",
@@ -366,7 +366,7 @@
         "pbs"
       ],
       "tag": "Management & Leadership × PBS × Cross-system Services",
-      "cardMeta": "2026.09.15 · Management × PBS",
+      "cardMeta": "2026.09.15 · Management & Leadership × PBS",
       "keywords": [
         "Management",
         "Leadership",
@@ -430,7 +430,7 @@
         "pbs"
       ],
       "tag": "OT & Human Occupation × PBS",
-      "cardMeta": "2026.09.14 · Research Update · OT × PBS",
+      "cardMeta": "2026.09.14 · OT & Human Occupation × PBS",
       "keywords": [
         "OT",
         "occupational therapy",
@@ -492,7 +492,7 @@
       "primaryDomain": "pbs",
       "crossDomains": [],
       "tag": "PBS",
-      "cardMeta": "2026.09.14 · PBS 課後延伸學習 01",
+      "cardMeta": "2026.09.14 · PBS",
       "keywords": [
         "PBS",
         "正向行為支持",
@@ -547,7 +547,7 @@
       "primaryDomain": "pbs",
       "crossDomains": [],
       "tag": "PBS",
-      "cardMeta": "2026.09.14 · PBS 課後延伸學習 02",
+      "cardMeta": "2026.09.14 · PBS",
       "keywords": [
         "PBS",
         "正向行為支持",
@@ -604,7 +604,7 @@
       "primaryDomain": "pbs",
       "crossDomains": [],
       "tag": "PBS",
-      "cardMeta": "2026.09.14 · PBS 課後延伸學習 03",
+      "cardMeta": "2026.09.14 · PBS",
       "keywords": [
         "PBS",
         "正向行為支持",
@@ -665,7 +665,7 @@
         "mind"
       ],
       "tag": "AI × Practice × Mind & Well-being",
-      "cardMeta": "2026.09.14",
+      "cardMeta": "2026.09.14 · AI × Practice × Mind & Well-being",
       "keywords": [
         "AI",
         "information",
@@ -723,7 +723,7 @@
         "mind"
       ],
       "tag": "AI × Practice × Mind & Well-being",
-      "cardMeta": "2026.09.12",
+      "cardMeta": "2026.09.12 · AI × Practice × Mind & Well-being",
       "keywords": [
         "AI",
         "修行",
@@ -782,7 +782,7 @@
         "ot"
       ],
       "tag": "Education × AI × OT",
-      "cardMeta": "2026.09.11",
+      "cardMeta": "2026.09.11 · OT & Human Occupation × AI × Practice × Education",
       "keywords": [
         "AI",
         "教育",
@@ -852,7 +852,7 @@
         "ot"
       ],
       "tag": "Management & Leadership × PBS × OT",
-      "cardMeta": "2026.09.11",
+      "cardMeta": "2026.09.11 · Management & Leadership × OT & Human Occupation × PBS",
       "keywords": [
         "轉銜服務",
         "情緒行為支持",
@@ -913,7 +913,7 @@
         "ot"
       ],
       "tag": "Management & Leadership × OT",
-      "cardMeta": "2026.09.11",
+      "cardMeta": "2026.09.11 · Management & Leadership × OT & Human Occupation",
       "keywords": [
         "OT",
         "服務發展",
@@ -970,7 +970,7 @@
         "education"
       ],
       "tag": "Management & Leadership",
-      "cardMeta": "2026.09.11",
+      "cardMeta": "2026.09.11 · Management & Leadership × Education",
       "keywords": [
         "KPI",
         "資料治理",
@@ -1022,7 +1022,7 @@
         "education"
       ],
       "tag": "Management & Leadership",
-      "cardMeta": "2026.09.10",
+      "cardMeta": "2026.09.10 · Management & Leadership × Education",
       "keywords": [
         "策略規劃",
         "SWOT",
@@ -1073,7 +1073,7 @@
       "primaryDomain": "pbs",
       "crossDomains": [],
       "tag": "PBS × Disability Services",
-      "cardMeta": "2026.09.10",
+      "cardMeta": "2026.09.10 · PBS",
       "keywords": [
         "PBS",
         "正向行為支持",
@@ -1130,7 +1130,7 @@
         "ai"
       ],
       "tag": "Management & Leadership × AI",
-      "cardMeta": "2026.09.10",
+      "cardMeta": "2026.09.10 · Management & Leadership × AI × Practice",
       "keywords": [
         "AI",
         "管理者",
@@ -1181,7 +1181,7 @@
         "education"
       ],
       "tag": "Management & Leadership",
-      "cardMeta": "2026.09.09",
+      "cardMeta": "2026.09.09 · Management & Leadership × Education",
       "keywords": [
         "組織規劃",
         "願景",
@@ -1240,7 +1240,7 @@
         "education"
       ],
       "tag": "Management × AI × Education",
-      "cardMeta": "2026.09.09",
+      "cardMeta": "2026.09.09 · Management & Leadership × AI × Practice × Education",
       "keywords": [
         "管理學",
         "方案規劃",
@@ -1294,7 +1294,7 @@
         "management"
       ],
       "tag": "PBS × OT × Management",
-      "cardMeta": "2026.09.09",
+      "cardMeta": "2026.09.09 · Management & Leadership × OT & Human Occupation × PBS",
       "keywords": [
         "PBS",
         "正向行為支持",
@@ -1356,7 +1356,7 @@
         "management"
       ],
       "tag": "AI × Practice",
-      "cardMeta": "2026.09.08",
+      "cardMeta": "2026.09.08 · Management & Leadership × AI × Practice",
       "keywords": [
         "GPT",
         "AI",
@@ -1410,7 +1410,7 @@
         "ot"
       ],
       "tag": "Management & Leadership",
-      "cardMeta": "2026.09.07",
+      "cardMeta": "2026.09.07 · Management & Leadership × OT & Human Occupation",
       "keywords": [
         "決策",
         "有限理性",
@@ -1474,7 +1474,7 @@
         "ot"
       ],
       "tag": "Management & Leadership",
-      "cardMeta": "2026.09.07",
+      "cardMeta": "2026.09.07 · Management & Leadership × OT & Human Occupation",
       "keywords": [
         "領導",
         "團隊",
@@ -1532,7 +1532,7 @@
         "ot"
       ],
       "tag": "Management & Leadership",
-      "cardMeta": "2026.09.07",
+      "cardMeta": "2026.09.07 · Management & Leadership × OT & Human Occupation",
       "keywords": [
         "management",
         "ot"
@@ -1579,7 +1579,7 @@
         "ot"
       ],
       "tag": "Management & Leadership",
-      "cardMeta": "2026.09.07",
+      "cardMeta": "2026.09.07 · Management & Leadership × OT & Human Occupation",
       "keywords": [
         "management",
         "ot"
@@ -1624,7 +1624,7 @@
         "ai"
       ],
       "tag": "OT × AI",
-      "cardMeta": "2026.09.04",
+      "cardMeta": "2026.09.04 · OT & Human Occupation × AI × Practice",
       "keywords": [
         "ot",
         "ai"
@@ -1672,7 +1672,7 @@
         "education"
       ],
       "tag": "PBS",
-      "cardMeta": "2026.09.03",
+      "cardMeta": "2026.09.03 · PBS × Education × Mind & Well-being",
       "keywords": [
         "pbs",
         "mind",
@@ -1717,7 +1717,7 @@
       "primaryDomain": "ai",
       "crossDomains": [],
       "tag": "AI & Practice",
-      "cardMeta": "2026.09.02",
+      "cardMeta": "2026.09.02 · AI × Practice",
       "keywords": [
         "ai"
       ],
@@ -1763,7 +1763,7 @@
         "ai"
       ],
       "tag": "Management & Leadership",
-      "cardMeta": "2026.09.01 · ANCHOR ARTICLE",
+      "cardMeta": "2026.09.01 · Management & Leadership × PBS × AI × Practice × Mind & Well-being",
       "keywords": [
         "management",
         "mind",
@@ -1812,7 +1812,7 @@
         "notes"
       ],
       "tag": "Mind & Well-being",
-      "cardMeta": "2026.08.31",
+      "cardMeta": "2026.08.31 · Mind & Well-being",
       "keywords": [
         "mind",
         "notes"
@@ -1848,7 +1848,7 @@
         "notes"
       ],
       "tag": "Mind & Well-being",
-      "cardMeta": "2026.08.31",
+      "cardMeta": "2026.08.31 · Mind & Well-being",
       "keywords": [
         "mind",
         "notes"
