@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Allen Mind Lab</title>
-  <meta name="description" content="聯繫 Allen Mind Lab｜演講、授課、專業交流、出版媒體與內容合作邀約。" />
+  <meta name="description" content="聯繫 Allen Mind Lab｜演講、授課、專業交流、出版媒體、內容合作與優質資源推薦。" />
 
   <style>
     :root{
@@ -496,6 +496,85 @@
   }
 }
 
+/* ===== AML Resource Network on Contact ===== */
+.resource-network{
+  background:linear-gradient(180deg,#fffdf9 0%,#f6f1e8 100%);
+}
+.resource-network-grid{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:28px;
+  margin-top:36px;
+}
+.resource-network-card{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:32px;
+  background:white;
+  box-shadow:0 14px 34px rgba(15,23,42,.05);
+}
+.resource-network-card h3{
+  margin:0 0 10px;
+  color:var(--navy);
+  font-size:1.35rem;
+}
+.resource-network-card p{
+  margin:0 0 18px;
+  color:var(--muted);
+}
+.resource-network-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:20px;
+}
+.resource-network-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 18px;
+  border-radius:999px;
+  border:1px solid var(--gold);
+  color:var(--navy);
+  font-weight:800;
+  transition:.2s;
+}
+.resource-network-btn:hover{
+  background:var(--gold);
+  transform:translateY(-2px);
+}
+.resource-network-btn.primary{
+  background:var(--navy);
+  border-color:var(--navy);
+  color:white;
+}
+.resource-network-btn.primary:hover{
+  background:var(--navy2);
+  border-color:var(--navy2);
+}
+.resource-principles{
+  display:grid;
+  gap:12px;
+  margin-top:8px;
+}
+.resource-principle{
+  padding:14px 16px;
+  border-radius:14px;
+  background:#f8f6f1;
+  color:#55606b;
+}
+.resource-principle strong{
+  color:var(--navy);
+}
+.resource-network-note{
+  margin-top:20px;
+  font-size:.9rem;
+  color:#778089;
+}
+@media(max-width:900px){
+  .resource-network-grid{grid-template-columns:1fr;}
+}
+
 </style>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
@@ -504,13 +583,13 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Allen Mind Lab">
   <meta property="og:title" content="Contact | Allen Mind Lab">
-  <meta property="og:description" content="聯繫 Allen Mind Lab｜演講、授課、專業交流、出版媒體與內容合作邀約。">
+  <meta property="og:description" content="聯繫 Allen Mind Lab｜演講、授課、專業交流、出版媒體、內容合作與優質資源推薦。">
   <meta property="og:url" content="https://allenmindlab.com/contact">
   <meta property="og:image" content="https://allenmindlab.com/images/allen-banner.png">
   <meta property="og:image:alt" content="Allen Mind Lab">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact | Allen Mind Lab">
-  <meta name="twitter:description" content="聯繫 Allen Mind Lab｜演講、授課、專業交流、出版媒體與內容合作邀約。">
+  <meta name="twitter:description" content="聯繫 Allen Mind Lab｜演講、授課、專業交流、出版媒體、內容合作與優質資源推薦。">
   <meta name="twitter:image" content="https://allenmindlab.com/images/allen-banner.png">
   <link rel="stylesheet" href="aml-site.css">
 </head>
@@ -738,6 +817,43 @@
   </p>
 </section>
 
+<section class="resource-network reveal" aria-labelledby="resource-network-title">
+  <div class="eyebrow">AML Resource Network</div>
+  <h2 id="resource-network-title" class="section-title">好資源，也歡迎一起分享。</h2>
+  <p class="section-lead">
+    Allen Mind Lab 不追求大量收錄，而是持續整理與本站關注議題高度相關、內容品質穩定、具有公共價值的優質網站與專業資源。
+  </p>
+
+  <div class="resource-network-grid">
+    <div class="resource-network-card">
+      <h3>查看 AML 精選資源</h3>
+      <p>
+        目前收錄的網站皆經人工挑選，希望讓讀者能從 AML 延伸到更多值得長期追蹤的專業內容。
+      </p>
+      <div class="resource-network-actions">
+        <a class="resource-network-btn primary" href="/resources.html">查看精選資源 →</a>
+      </div>
+    </div>
+
+    <div class="resource-network-card">
+      <h3>推薦優質網站</h3>
+      <p>
+        如果您知道值得長期追蹤的專業網站、公益平台或知識資源，也歡迎推薦給 AML。
+      </p>
+      <div class="resource-principles">
+        <div class="resource-principle"><strong>收錄原則：</strong>專業可信、內容穩定、具有公共價值。</div>
+        <div class="resource-principle"><strong>收錄方式：</strong>由 AML 人工檢視後決定是否納入。</div>
+      </div>
+      <div class="resource-network-actions">
+        <a class="resource-network-btn" href="mailto:daniel.ws.chen@gmail.com?subject=%E6%8E%A8%E8%96%A6%E5%84%AA%E8%B3%AA%E7%B6%B2%E7%AB%99%E7%B5%A6%20Allen%20Mind%20Lab">推薦優質網站 →</a>
+      </div>
+      <div class="resource-network-note">
+        這裡不是交換連結，而是策展式收錄；推薦不代表一定收錄。
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="note reveal">
 
   <div class="eyebrow">Professional Connection</div>
@@ -792,6 +908,7 @@
         <a href="articles.html">Articles</a>
         <a href="publications.html">Publications</a>
         <a href="contact.html">Contact</a>
+        <a href="resources.html">Resources</a>
         <a href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">Newsletter</a>
       </div>
 
