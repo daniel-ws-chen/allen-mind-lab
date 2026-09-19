@@ -799,3 +799,18 @@
 .aml-nav-panel--explore a{white-space:nowrap}
 .aml-nav-panel a[aria-current="page"]{color:#e5e7eb;background:rgba(255,255,255,.045)}
 @media(max-width:420px){.aml-nav-panel--explore a{white-space:normal}}
+
+/* AML 2.0 Navigation v1.1 — viewport width / horizontal overflow fix */
+.aml-global-nav{
+  box-sizing:border-box !important;
+  width:100% !important;
+  max-width:100% !important;
+}
+.aml-global-nav .aml-brand,
+.aml-global-nav .aml-desktop-links{
+  min-width:0;
+}
+@media (min-width:1281px){
+  .aml-global-nav{padding-left:clamp(28px,5vw,88px)!important;padding-right:clamp(28px,5vw,88px)!important}
+}
+/* ===== /AML 2.0 Navigation v1.1 ===== */
