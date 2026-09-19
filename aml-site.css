@@ -729,3 +729,20 @@
 .aml-route-card b{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:#9a7439;font-size:1.15rem}
 @media(max-width:900px){.aml-footer-links{grid-template-columns:repeat(2,minmax(0,1fr))}.aml-route-map__grid{grid-template-columns:1fr}}
 @media(max-width:620px){.aml-footer-links{grid-template-columns:1fr}.aml-route-map{padding:42px 6vw 48px}}
+
+
+/* ===== AML IA v2.1 · Navigation + Typography calibration ===== */
+.aml-global-nav{max-width:none;min-height:68px;padding-left:max(28px,5vw)!important;padding-right:max(28px,5vw)!important;gap:20px}
+.aml-global-nav .aml-brand{font-size:.98rem;letter-spacing:.11em}
+.aml-desktop-links{gap:16px;font-size:.86rem}
+.aml-explore>summary{white-space:nowrap}
+@media(max-width:1280px){.aml-desktop-links{display:none!important}.aml-menu-toggle{display:flex}}
+@media(max-width:700px){.aml-global-nav{min-height:62px;padding-left:20px!important;padding-right:20px!important}.aml-global-nav .aml-brand{font-size:.86rem}}
+/* Entry-page reading rhythm */
+.aml-route-map p,.aml-collection-intro__head p,.aml-curated-reading__head p{max-width:760px}
+@media(max-width:700px){
+  .resource-hero{padding:48px 6vw 38px}
+  .resource-hero h1{font-size:clamp(2rem,10vw,2.85rem);line-height:1.12}
+  .resource-hero p{font-size:1rem;line-height:1.75}
+}
+/* ===== /AML IA v2.1 ===== */
