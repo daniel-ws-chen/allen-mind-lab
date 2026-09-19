@@ -814,3 +814,21 @@
   .aml-global-nav{padding-left:clamp(28px,5vw,88px)!important;padding-right:clamp(28px,5vw,88px)!important}
 }
 /* ===== /AML 2.0 Navigation v1.1 ===== */
+
+/* AML 2.0 Content Display System v1.0 */
+/* Curated reading: one full-width poster per row; preserve the whole artwork. */
+body .aml-curated-grid{grid-template-columns:1fr;gap:34px}
+body .aml-curated-card{grid-template-columns:1fr;min-height:0}
+body .aml-curated-card__media{min-height:0;background:#f5f2ec}
+body .aml-curated-card__media img{width:100%;height:auto;min-height:0;max-height:none;aspect-ratio:auto;object-fit:contain}
+body .aml-curated-card__body{padding:24px 28px 28px}
+body .aml-curated-card__go{margin-top:16px}
+/* Domain libraries: compact chronological index instead of card wall. */
+body .aml-domain-catalog__grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid #e4dccf}
+body .aml-domain-catalog__card{display:grid;grid-template-columns:minmax(190px,260px) minmax(0,1fr);column-gap:28px;row-gap:6px;align-items:start;background:transparent;border:0;border-bottom:1px solid #e4dccf;border-radius:0;box-shadow:none;padding:20px 6px;transform:none}
+body .aml-domain-catalog__card:hover{transform:none;background:rgba(255,255,255,.48);border-color:#e4dccf}
+body .aml-domain-catalog__meta{grid-column:1;grid-row:1 / span 3;overflow-wrap:anywhere;line-height:1.65}
+body .aml-domain-catalog__card h3{grid-column:2;font-size:1.12rem;line-height:1.45;margin:0}
+body .aml-domain-catalog__card p{grid-column:2;font-size:.92rem;line-height:1.7;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+body .aml-domain-catalog__read{display:none}
+@media(max-width:760px){body .aml-domain-catalog__card{grid-template-columns:1fr;gap:7px;padding:18px 2px}body .aml-domain-catalog__meta,body .aml-domain-catalog__card h3,body .aml-domain-catalog__card p{grid-column:1;grid-row:auto}}
