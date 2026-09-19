@@ -713,3 +713,56 @@
 .aml-tool-grid--featured{margin-bottom:6px}
 @media(max-width:980px){.aml-curated-grid{grid-template-columns:1fr}.aml-curated-card{grid-template-columns:34% 1fr}.aml-curated-card__media img{min-height:260px}}
 @media(max-width:700px){.aml-collection-intro{padding-top:30px}.aml-collection-keys{grid-template-columns:1fr}.aml-curated-card{grid-template-columns:1fr}.aml-curated-card__media img{height:auto;min-height:0;aspect-ratio:16/9}.aml-curated-card__body{padding:22px}.aml-curated-reading{padding-bottom:42px}}
+
+
+/* ===== AML Entry Readability v1 ===== */
+/* Reader-first tuning for major landing/entry pages only. */
+body.aml-entry-page{
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body.aml-entry-page main p,
+body.aml-entry-page main li{
+  line-height:1.82;
+}
+body.aml-entry-page main p{
+  font-size:max(1rem, 16px);
+}
+body.aml-entry-page main h1,
+body.aml-entry-page main h2,
+body.aml-entry-page main h3{
+  text-wrap:balance;
+}
+body.aml-entry-page main h2{line-height:1.25}
+body.aml-entry-page main h3{line-height:1.35}
+body.aml-entry-page main a:not(.btn):not(.button):not(.go){
+  text-underline-offset:.16em;
+}
+body.aml-entry-page .aml-desktop-links{font-size:.92rem}
+body.aml-entry-page .aml-global-footer{font-size:.94rem}
+body.aml-entry-page .aml-footer-copy{color:#b4bec2}
+body.aml-entry-page .aml-footer-bottom{color:#98a4a9}
+body.aml-entry-page .aml-footer-group h4{font-size:.82rem}
+
+/* Resources: align visual rhythm and readability with current AML entry pages. */
+body.aml-entry-page .resource-hero p{color:#46566c;font-size:1.1rem}
+body.aml-entry-page .resource-principles span{font-size:.92rem;color:#31545a}
+body.aml-entry-page .resource-item{min-height:0}
+body.aml-entry-page .resource-item p{color:#46566a;font-size:1rem}
+body.aml-entry-page .resource-item__meta{font-size:.8rem}
+body.aml-entry-page .resource-item h2{font-size:clamp(1.45rem,2.2vw,1.75rem);line-height:1.35}
+body.aml-entry-page .resource-item:nth-child(3)::before{background:linear-gradient(90deg,#7a6a42,#2f7f7a)}
+body.aml-entry-page .resource-item:nth-child(3) .resource-item__meta{background:#f5f1e7;color:#6b5b35}
+body.aml-entry-page .resource-item:nth-child(3) .why{background:#faf8f2}
+body.aml-entry-page .resource-item .go{font-size:1rem}
+body.aml-entry-page .resource-note{font-size:1rem;color:#62543f}
+
+@media(max-width:760px){
+  body.aml-entry-page main p,
+  body.aml-entry-page main li{line-height:1.78}
+  body.aml-entry-page .resource-hero h1{font-size:clamp(2.15rem,10vw,3.25rem);line-height:1.12}
+  body.aml-entry-page .resource-hero p{font-size:1.03rem}
+  body.aml-entry-page .resource-item{border-radius:20px;padding:24px 22px}
+  body.aml-entry-page .resource-item h2{font-size:1.45rem}
+  body.aml-entry-page .resource-note{padding:20px;font-size:.98rem}
+}
