@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-18T16:07:41.260Z",
+  "generatedAt": "2026-09-19T02:00:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 41,
+    "total": 42,
     "ot": 19,
-    "mind": 8,
+    "mind": 9,
     "pbs": 12,
     "education": 7,
     "management": 23,
@@ -80,6 +80,44 @@
   },
   "articles": [
     {
+      "slug": "schedule-empty-space",
+      "title": "你的 schedule，有沒有一格寫著「放空」？",
+      "summary": "當工作、訊息與手機填滿每一段空白，也許可以留一小格，不工作、不學習，暫時降低外界輸入。順便想想：放空、冥想與睡覺，有什麼不同？",
+      "date": "2026-09-19",
+      "domains": [
+        "mind"
+      ],
+      "primaryDomain": "mind",
+      "crossDomains": [],
+      "tag": "AML Notes",
+      "cardMeta": "2026.09.19 · AML Notes",
+      "keywords": [
+        "AML Notes",
+        "放空",
+        "留白",
+        "資訊輸入",
+        "冥想",
+        "睡眠",
+        "生活節奏",
+        "數位生活"
+      ],
+      "articlePath": "/articles/schedule-empty-space.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/schedule-empty-space",
+      "hero": "/images/articles/schedule-empty-space-hero.webp",
+      "ogImage": "/images/articles/schedule-empty-space-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 原來，修行是第一個念頭開始改變",
+          "href": "/articles/cultivation-first-thought.html"
+        }
+      ]
+    },
+    {
       "slug": "cultivation-first-thought",
       "title": "原來，修行是第一個念頭開始改變",
       "summary": "從 ATM 暫停服務到已打烊的晚餐店，一個下班後的小插曲，記錄面對生活不如預期時，第一個念頭如何慢慢改變。",
@@ -112,6 +150,11 @@
           "kind": "previous",
           "label": "相關閱讀 ← 當 AI 愈來愈強，人為什麼反而更需要修行？",
           "href": "/articles/ai-cultivation-inner-life.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 你的 schedule，有沒有一格寫著「放空」？ →",
+          "href": "/articles/schedule-empty-space.html"
         }
       ]
     },
