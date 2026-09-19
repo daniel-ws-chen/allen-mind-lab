@@ -746,3 +746,10 @@
   .resource-hero p{font-size:1rem;line-height:1.75}
 }
 /* ===== /AML IA v2.1 ===== */
+
+
+/* AML 2.0 — simplified reader-first navigation */
+.aml-desktop-links{gap:clamp(18px,2.2vw,34px);font-size:.94rem;font-weight:700}
+.aml-desktop-links a{letter-spacing:.02em}
+@media (max-width:900px){.aml-desktop-links{display:none!important}.aml-menu-toggle{display:flex!important}}
+@media (min-width:901px){.aml-menu-toggle{display:none!important}.aml-mobile-menu{display:none!important}}
