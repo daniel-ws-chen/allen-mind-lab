@@ -11,7 +11,7 @@
     "education": 7,
     "management": 23,
     "ai": 10,
-    "notes": 3
+    "notes": 6
   },
   "featuredReading": [
     "pbs-support-transition-real-life",
@@ -124,10 +124,13 @@
       "summary": "當工作、訊息與手機填滿每一段空白，也許可以留一小格，不工作、不學習，暫時降低外界輸入。順便想想：放空、冥想與睡覺，有什麼不同？",
       "date": "2026-09-19",
       "domains": [
-        "mind"
+        "mind",
+        "notes"
       ],
       "primaryDomain": "mind",
-      "crossDomains": [],
+      "crossDomains": [
+        "notes"
+      ],
       "tag": "AML Notes",
       "cardMeta": "2026.09.19 · AML Notes",
       "keywords": [
@@ -162,10 +165,13 @@
       "summary": "從 ATM 暫停服務到已打烊的晚餐店，一個下班後的小插曲，記錄面對生活不如預期時，第一個念頭如何慢慢改變。",
       "date": "2026-09-18",
       "domains": [
-        "mind"
+        "mind",
+        "notes"
       ],
       "primaryDomain": "mind",
-      "crossDomains": [],
+      "crossDomains": [
+        "notes"
+      ],
       "tag": "AML Notes",
       "cardMeta": "2026.09.18 · Mind & Well-being",
       "keywords": [
@@ -565,11 +571,13 @@
       "date": "2026-09-17",
       "domains": [
         "ot",
-        "mind"
+        "mind",
+        "notes"
       ],
       "primaryDomain": "ot",
       "crossDomains": [
-        "mind"
+        "mind",
+        "notes"
       ],
       "tag": "AML Notes · OT × Mind",
       "cardMeta": "2026.09.17 · OT & Human Occupation × Mind & Well-being",
