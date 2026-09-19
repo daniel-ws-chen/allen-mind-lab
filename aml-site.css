@@ -23,9 +23,6 @@
 .aml-skip-link:focus{top:12px}
 
 .aml-global-nav{
-  box-sizing:border-box;
-  max-width:100%;
-  overflow:visible;
   position:sticky !important;
   top:0 !important;
   left:auto !important;
@@ -785,3 +782,14 @@
 #articles .article-card .read,#articles .article-card img{display:none!important}
 #articles .article-card[hidden]{display:none!important}
 @media(max-width:680px){#articles .article-card{grid-template-columns:1fr;grid-template-rows:auto;padding:16px 0!important;gap:5px}#articles .article-card .meta,#articles .article-card .tag,#articles .article-card h2,#articles .article-card p{grid-column:1;grid-row:auto}#articles .article-card .meta{display:inline}#articles .article-card .tag{font-size:.7rem}#articles .article-card p{-webkit-line-clamp:2}}
+
+/* AML 2.0 Phase 2.3 — article index collision fix */
+#articles .article-card{grid-template-columns:minmax(180px,220px) minmax(0,1fr);align-items:start}
+#articles .article-card .meta,
+#articles .article-card .tag,
+#articles .article-card h2,
+#articles .article-card p{min-width:0}
+#articles .article-card .tag{display:block!important;width:100%;max-width:100%;white-space:normal!important;overflow-wrap:anywhere;word-break:normal;letter-spacing:.035em}
+#articles .article-card h2,#articles .article-card p{overflow-wrap:anywhere}
+@media(max-width:860px){#articles .article-card{grid-template-columns:150px minmax(0,1fr);column-gap:18px}}
+@media(max-width:680px){#articles .article-card{grid-template-columns:1fr}}
