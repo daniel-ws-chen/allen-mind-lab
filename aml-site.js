@@ -2,7 +2,7 @@
   /* ===== Accessible Explore & Mobile Navigation ===== */
   const toggle = document.querySelector(".aml-menu-toggle");
   const menu = document.querySelector(".aml-mobile-menu");
-  const exploreMenus = Array.from(document.querySelectorAll(".aml-explore"));
+  const exploreMenus = Array.from(document.querySelectorAll(".aml-nav-group"));
 
   const closeExplore = (except = null) => {
     exploreMenus.forEach(details => {
@@ -57,7 +57,7 @@
 
   document.addEventListener("click", e => {
     const target = e.target;
-    if (!target.closest(".aml-explore")) closeExplore();
+    if (!target.closest(".aml-nav-group")) closeExplore();
     if (menu?.classList.contains("is-open") &&
         !menu.contains(target) && !toggle?.contains(target)) {
       closeMenu();

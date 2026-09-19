@@ -793,3 +793,9 @@
 #articles .article-card h2,#articles .article-card p{overflow-wrap:anywhere}
 @media(max-width:860px){#articles .article-card{grid-template-columns:150px minmax(0,1fr);column-gap:18px}}
 @media(max-width:680px){#articles .article-card{grid-template-columns:1fr}}
+
+/* AML 2.0 Navigation v1.0 — About / Explore / Resources & Contact */
+.aml-nav-panel--explore{min-width:280px;max-height:min(70vh,560px);overflow:auto}
+.aml-nav-panel--explore a{white-space:nowrap}
+.aml-nav-panel a[aria-current="page"]{color:#e5e7eb;background:rgba(255,255,255,.045)}
+@media(max-width:420px){.aml-nav-panel--explore a{white-space:normal}}
