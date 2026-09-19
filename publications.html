@@ -715,6 +715,44 @@
   window.addEventListener("scroll", revealOnScroll);
   revealOnScroll();
 </script>
+<script>
+/* AML 2.0 navigation: keep only one desktop dropdown open at a time. */
+(function () {
+  const nav = document.querySelector('.aml-global-nav');
+  if (!nav) return;
+  const groups = Array.from(nav.querySelectorAll('.aml-desktop-links .aml-nav-group'));
+  if (!groups.length) return;
+
+  function closeAll(except) {
+    groups.forEach(group => {
+      if (group !== except) group.removeAttribute('open');
+    });
+  }
+
+  groups.forEach(group => {
+    group.addEventListener('toggle', () => {
+      if (group.open) closeAll(group);
+    });
+  });
+
+  document.addEventListener('pointerdown', event => {
+    if (!nav.contains(event.target)) closeAll();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeAll();
+      const active = document.activeElement;
+      if (active && active.matches('.aml-nav-group summary')) active.blur();
+    }
+  });
+
+  nav.addEventListener('click', event => {
+    const link = event.target.closest('.aml-nav-panel a, .aml-nav-direct');
+    if (link) closeAll();
+  });
+})();
+</script>
 <script defer="" src="aml-site.js"></script>
 </body>
 </html>

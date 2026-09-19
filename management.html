@@ -225,6 +225,44 @@ h3{color:var(--navy);line-height:1.35}
 </div>
 </section>
 <section aria-label="繼續探索" class="aml-route-map"><div class="aml-route-map__inner"><div class="aml-route-map__kicker">CONTINUE EXPLORING</div><h2>下一站，可以往這裡走</h2><p>不必回到首頁重新找路；沿著相關主題繼續探索。</p><div class="aml-route-map__grid"><a class="aml-route-card" href="/management-learning.html"><strong>Management Learning</strong><span>進入管理學延伸學習專區</span><b aria-hidden="true">→</b></a><a class="aml-route-card" href="/tools.html"><strong>Tools</strong><span>使用方案規劃與實務工具</span><b aria-hidden="true">→</b></a><a class="aml-route-card" href="/education.html"><strong>Education</strong><span>延伸到教學與人才培育</span><b aria-hidden="true">→</b></a></div></div></section><footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>探索內容</h4><a href="/articles.html">探索中心</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>使用與聯繫</h4><a href="/tools.html">實用工具</a><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
+<script>
+/* AML 2.0 navigation: keep only one desktop dropdown open at a time. */
+(function () {
+  const nav = document.querySelector('.aml-global-nav');
+  if (!nav) return;
+  const groups = Array.from(nav.querySelectorAll('.aml-desktop-links .aml-nav-group'));
+  if (!groups.length) return;
+
+  function closeAll(except) {
+    groups.forEach(group => {
+      if (group !== except) group.removeAttribute('open');
+    });
+  }
+
+  groups.forEach(group => {
+    group.addEventListener('toggle', () => {
+      if (group.open) closeAll(group);
+    });
+  });
+
+  document.addEventListener('pointerdown', event => {
+    if (!nav.contains(event.target)) closeAll();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeAll();
+      const active = document.activeElement;
+      if (active && active.matches('.aml-nav-group summary')) active.blur();
+    }
+  });
+
+  nav.addEventListener('click', event => {
+    const link = event.target.closest('.aml-nav-panel a, .aml-nav-direct');
+    if (link) closeAll();
+  });
+})();
+</script>
 <script defer="" src="aml-site.js"></script>
 <script defer="True" src="/aml-domain-sync.js"></script></body>
 </html>
