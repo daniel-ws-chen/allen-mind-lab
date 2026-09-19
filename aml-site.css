@@ -832,3 +832,22 @@ body .aml-domain-catalog__card h3{grid-column:2;font-size:1.12rem;line-height:1.
 body .aml-domain-catalog__card p{grid-column:2;font-size:.92rem;line-height:1.7;margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 body .aml-domain-catalog__read{display:none}
 @media(max-width:760px){body .aml-domain-catalog__card{grid-template-columns:1fr;gap:7px;padding:18px 2px}body .aml-domain-catalog__meta,body .aml-domain-catalog__card h3,body .aml-domain-catalog__card p{grid-column:1;grid-row:auto}}
+
+/* AML 2.0 Article Global Sync v1 — desktop article poster sizing */
+@media (min-width: 900px){
+  body .hero-image{
+    box-sizing:border-box !important;
+    width:100% !important;
+    max-width:1100px !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+  body .hero-image img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    max-width:100% !important;
+    object-fit:contain !important;
+  }
+}
+/* ===== /AML 2.0 Article Global Sync v1 ===== */
