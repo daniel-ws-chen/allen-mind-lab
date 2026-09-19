@@ -23,6 +23,9 @@
 .aml-skip-link:focus{top:12px}
 
 .aml-global-nav{
+  box-sizing:border-box;
+  max-width:100%;
+  overflow:visible;
   position:sticky !important;
   top:0 !important;
   left:auto !important;
