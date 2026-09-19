@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-19T02:00:00.000Z",
+  "generatedAt": "2026-09-19T12:00:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 42,
+    "total": 43,
     "ot": 19,
-    "mind": 9,
+    "mind": 10,
     "pbs": 12,
     "education": 7,
     "management": 23,
     "ai": 10,
-    "notes": 2
+    "notes": 3
   },
   "featuredReading": [
     "pbs-support-transition-real-life",
@@ -78,6 +78,46 @@
     }
   },
   "articles": [
+    {
+      "slug": "if-life-had-a-homepage",
+      "title": "如果人生也有一個首頁",
+      "summary": "從整理 AML 網站的一個小發現，想到人生裡有些東西放在首頁、有些收進館藏，也有些知道它還在就好。",
+      "date": "2026-09-19",
+      "domains": [
+        "mind",
+        "notes"
+      ],
+      "primaryDomain": "mind",
+      "crossDomains": [
+        "notes"
+      ],
+      "tag": "AML Notes",
+      "cardMeta": "2026.09.19 · AML Notes",
+      "keywords": [
+        "AML Notes",
+        "人生首頁",
+        "生活整理",
+        "選擇",
+        "留白",
+        "A meaningful life",
+        "Allen Mind Lab 2.0"
+      ],
+      "articlePath": "/articles/if-life-had-a-homepage.html",
+      "order": -5,
+      "canonical": "https://allenmindlab.com/articles/if-life-had-a-homepage",
+      "hero": "/images/articles/if-life-had-a-homepage-hero.webp",
+      "ogImage": "/images/articles/if-life-had-a-homepage-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 你的 schedule，有沒有一格寫著「放空」？",
+          "href": "/articles/schedule-empty-space.html"
+        }
+      ]
+    },
     {
       "slug": "schedule-empty-space",
       "title": "你的 schedule，有沒有一格寫著「放空」？",
