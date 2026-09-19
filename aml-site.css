@@ -714,55 +714,18 @@
 @media(max-width:980px){.aml-curated-grid{grid-template-columns:1fr}.aml-curated-card{grid-template-columns:34% 1fr}.aml-curated-card__media img{min-height:260px}}
 @media(max-width:700px){.aml-collection-intro{padding-top:30px}.aml-collection-keys{grid-template-columns:1fr}.aml-curated-card{grid-template-columns:1fr}.aml-curated-card__media img{height:auto;min-height:0;aspect-ratio:16/9}.aml-curated-card__body{padding:22px}.aml-curated-reading{padding-bottom:42px}}
 
-
-/* ===== AML Entry Readability v1 ===== */
-/* Reader-first tuning for major landing/entry pages only. */
-body.aml-entry-page{
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-body.aml-entry-page main p,
-body.aml-entry-page main li{
-  line-height:1.82;
-}
-body.aml-entry-page main p{
-  font-size:max(1rem, 16px);
-}
-body.aml-entry-page main h1,
-body.aml-entry-page main h2,
-body.aml-entry-page main h3{
-  text-wrap:balance;
-}
-body.aml-entry-page main h2{line-height:1.25}
-body.aml-entry-page main h3{line-height:1.35}
-body.aml-entry-page main a:not(.btn):not(.button):not(.go){
-  text-underline-offset:.16em;
-}
-body.aml-entry-page .aml-desktop-links{font-size:.92rem}
-body.aml-entry-page .aml-global-footer{font-size:.94rem}
-body.aml-entry-page .aml-footer-copy{color:#b4bec2}
-body.aml-entry-page .aml-footer-bottom{color:#98a4a9}
-body.aml-entry-page .aml-footer-group h4{font-size:.82rem}
-
-/* Resources: align visual rhythm and readability with current AML entry pages. */
-body.aml-entry-page .resource-hero p{color:#46566c;font-size:1.1rem}
-body.aml-entry-page .resource-principles span{font-size:.92rem;color:#31545a}
-body.aml-entry-page .resource-item{min-height:0}
-body.aml-entry-page .resource-item p{color:#46566a;font-size:1rem}
-body.aml-entry-page .resource-item__meta{font-size:.8rem}
-body.aml-entry-page .resource-item h2{font-size:clamp(1.45rem,2.2vw,1.75rem);line-height:1.35}
-body.aml-entry-page .resource-item:nth-child(3)::before{background:linear-gradient(90deg,#7a6a42,#2f7f7a)}
-body.aml-entry-page .resource-item:nth-child(3) .resource-item__meta{background:#f5f1e7;color:#6b5b35}
-body.aml-entry-page .resource-item:nth-child(3) .why{background:#faf8f2}
-body.aml-entry-page .resource-item .go{font-size:1rem}
-body.aml-entry-page .resource-note{font-size:1rem;color:#62543f}
-
-@media(max-width:760px){
-  body.aml-entry-page main p,
-  body.aml-entry-page main li{line-height:1.78}
-  body.aml-entry-page .resource-hero h1{font-size:clamp(2.15rem,10vw,3.25rem);line-height:1.12}
-  body.aml-entry-page .resource-hero p{font-size:1.03rem}
-  body.aml-entry-page .resource-item{border-radius:20px;padding:24px 22px}
-  body.aml-entry-page .resource-item h2{font-size:1.45rem}
-  body.aml-entry-page .resource-note{padding:20px;font-size:.98rem}
-}
+/* ===== AML Information Architecture v2 ===== */
+.aml-footer-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 34px}
+.aml-route-map{background:#f7f3eb;border-top:1px solid #e6dfd2;padding:52px 7vw 58px;color:#17212b}
+.aml-route-map__inner{max-width:1120px;margin:0 auto}
+.aml-route-map__kicker{font-size:.74rem;letter-spacing:.16em;font-weight:800;color:#92703c;margin-bottom:8px}
+.aml-route-map h2{font-family:Georgia,'Noto Serif TC',serif;font-size:clamp(1.55rem,2.3vw,2.15rem);margin:0 0 8px;color:#17212b}
+.aml-route-map p{margin:0 0 24px;color:#667078;line-height:1.8;font-size:.98rem}
+.aml-route-map__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.aml-route-card{position:relative;display:block;background:#fff;border:1px solid #e4ddd0;border-radius:15px;padding:19px 42px 19px 19px;color:#17212b;text-decoration:none;box-shadow:0 5px 18px rgba(30,35,40,.04);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+.aml-route-card:hover,.aml-route-card:focus-visible{transform:translateY(-2px);border-color:#c7a76a;box-shadow:0 10px 24px rgba(30,35,40,.08)}
+.aml-route-card strong{display:block;font-size:1rem;margin-bottom:5px}
+.aml-route-card span{display:block;color:#6e777d;font-size:.86rem;line-height:1.6}
+.aml-route-card b{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:#9a7439;font-size:1.15rem}
+@media(max-width:900px){.aml-footer-links{grid-template-columns:repeat(2,minmax(0,1fr))}.aml-route-map__grid{grid-template-columns:1fr}}
+@media(max-width:620px){.aml-footer-links{grid-template-columns:1fr}.aml-route-map{padding:42px 6vw 48px}}
