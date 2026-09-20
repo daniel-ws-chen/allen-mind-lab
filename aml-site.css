@@ -894,3 +894,33 @@ body .aml-domain-catalog__read{display:none}
 @media(max-width:900px){.aml-topic-halls__grid--seven,.aml-paths-home__grid{grid-template-columns:1fr 1fr}.aml-choice-strip__inner{grid-template-columns:1fr}.aml-choice-strip__actions{justify-content:flex-start}}
 @media(max-width:620px){.aml-topic-halls__grid--seven,.aml-paths-home__grid{grid-template-columns:1fr}.aml-stage-card{grid-template-columns:48px 1fr;padding:21px 18px;gap:12px}.aml-stage-card__num{font-size:1.35rem}.aml-choice-strip{padding:50px 6vw}}
 /* ===== /AML 2.0 IA v3 ===== */
+
+
+/* ===== AML 2.0 Reading Paths v3.1 — route page consistency ===== */
+.aml-compact-hero{padding-top:clamp(120px,11vw,154px);padding-left:6vw;padding-right:6vw;padding-bottom:58px}
+.aml-compact-hero .eyebrow,.aml-compact-hero h1,.aml-compact-hero p{max-width:980px;margin-left:auto;margin-right:auto}
+.aml-compact-hero h1{font-size:clamp(2.35rem,4.8vw,4.25rem);line-height:1.18;letter-spacing:-.025em;margin-top:14px;margin-bottom:20px}
+.aml-compact-hero p{font-size:1.04rem;line-height:1.9;color:#d6dde6}
+.aml-stage-path{padding-top:48px}
+.aml-stage-path__rail{position:relative;gap:18px}
+.aml-stage-path__rail::before{content:"";position:absolute;left:35px;top:34px;bottom:34px;width:1px;background:#d8c7a8;z-index:0}
+.aml-stage-card{position:relative;z-index:1;grid-template-columns:72px minmax(0,1fr);padding:28px 30px;border-radius:20px;box-shadow:0 8px 22px rgba(24,31,38,.035)}
+.aml-stage-card__num{display:flex;align-items:center;justify-content:center;width:52px;height:52px;padding:0;border-radius:50%;background:#f6efe2;border:1px solid #dcc9a6;font-size:1.28rem}
+.aml-stage-card h2{font-size:1.56rem;margin-top:4px}
+.aml-stage-card p{max-width:760px;margin-bottom:15px}
+.aml-stage-links{display:grid;gap:8px;margin-top:4px}
+.aml-stage-links a{display:block;padding:9px 12px;border-radius:10px;background:#f7f8fa;color:#315d8b;line-height:1.55}
+.aml-stage-links a:hover{background:#eef2f6;text-decoration:none}
+.aml-paths-home__grid{align-items:stretch}
+.aml-path-home-card{min-height:240px;padding:30px 28px}
+.aml-path-home-card h2{font-size:1.55rem}
+.aml-paths-home__note{max-width:920px;margin-left:auto;margin-right:auto;margin-top:32px}
+.aml-route-tool{padding:54px 6vw;background:#fff;border-top:1px solid #ebe4d8;border-bottom:1px solid #ebe4d8}
+.aml-route-tool__inner{max-width:980px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:34px;align-items:center}
+.aml-route-tool h2{font-family:Georgia,'Noto Serif TC',serif;font-size:1.7rem;color:#17212b;margin:6px 0 10px}
+.aml-route-tool p{margin:0;color:#667078;line-height:1.8;max-width:700px}
+.aml-route-tool__actions{display:grid;gap:10px;min-width:210px}
+.aml-route-tool__actions a{display:block;padding:11px 14px;border:1px solid #d8c8aa;border-radius:10px;text-decoration:none;font-weight:700;color:#315d8b;background:#fffdf9}
+.aml-route-tool__actions a:hover{border-color:#b68a4a;background:#f8f4ec}
+@media(max-width:700px){.aml-stage-path__rail::before{left:23px}.aml-stage-card{grid-template-columns:48px minmax(0,1fr);padding:22px 18px;gap:12px}.aml-stage-card__num{width:42px;height:42px;font-size:1.05rem}.aml-stage-card h2{font-size:1.35rem}.aml-route-tool__inner{grid-template-columns:1fr}.aml-route-tool__actions{min-width:0}.aml-compact-hero{padding-top:108px;padding-bottom:46px}.aml-compact-hero h1{font-size:2.2rem}}
+/* ===== /AML 2.0 Reading Paths v3.1 ===== */
