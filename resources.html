@@ -226,7 +226,53 @@
     .resources{padding:42px 5vw 66px}
     .resource-grid{grid-template-columns:1fr}
     .resource-item{min-height:auto;padding:26px}
+    .resource-share{padding:26px 22px;}
+    .resource-share-grid{grid-template-columns:1fr;}
   }
+
+  .resource-share{
+    margin:42px 0 0;
+    padding:34px 36px;
+    border:1px solid rgba(14,29,46,.12);
+    border-radius:22px;
+    background:rgba(255,255,255,.58);
+  }
+  .resource-share .kicker{margin-bottom:10px;}
+  .resource-share h2{
+    margin:0 0 12px;
+    font-size:clamp(1.7rem,3vw,2.35rem);
+    line-height:1.25;
+    color:#102033;
+  }
+  .resource-share > p{
+    max-width:850px;
+    margin:0 0 22px;
+    line-height:1.9;
+    color:#5d6875;
+  }
+  .resource-share-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .resource-share-card{
+    padding:22px 24px;
+    border:1px solid rgba(14,29,46,.10);
+    border-radius:16px;
+    background:#fff;
+  }
+  .resource-share-card h3{margin:0 0 9px;font-size:1.05rem;color:#102033;}
+  .resource-share-card p{margin:0;color:#65707c;line-height:1.75;}
+  .resource-share-principles{display:grid;gap:6px;margin-top:14px;font-size:.92rem;color:#66717d;}
+  .resource-share-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+  .resource-share-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:11px 16px;border-radius:999px;text-decoration:none;font-weight:800;
+    border:1px solid rgba(14,29,46,.16);color:#102033;background:#f8f5ee;
+  }
+  .resource-share-btn:hover{transform:translateY(-1px);}
+  .resource-share-note{margin-top:12px;font-size:.86rem;color:#7a838d;line-height:1.65;}
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AML Resource Network｜精選資源","url":"https://allenmindlab.com/resources.html","description":"Allen Mind Lab 精選站外資源。","isPartOf":{"@type":"WebSite","name":"Allen Mind Lab","url":"https://allenmindlab.com/"}}</script>
 </head>
@@ -272,6 +318,32 @@
 <a class="go" href="https://sites.google.com/view/daan-class" rel="noopener noreferrer" target="_blank">前往大安氣功推廣網頁 ↗</a>
 </article>
 </div>
+
+<section aria-labelledby="resource-share-title" class="resource-share">
+<div class="kicker">Share a Good Resource</div>
+<h2 id="resource-share-title">好資源，也歡迎一起分享。</h2>
+<p>Allen Mind Lab 不追求大量收錄，而是持續整理與本站關注議題高度相關、內容品質穩定、具有公共價值的網站與專業資源。如果你知道值得長期追蹤的研究、工具、網站、公益平台或學習素材，也歡迎推薦給 AML。</p>
+<div class="resource-share-grid">
+<div class="resource-share-card">
+<h3>AML 如何收錄資源？</h3>
+<p>每一項外部資源都會由 AML 人工檢視，重點不在數量，而在是否值得讀者繼續探索與長期追蹤。</p>
+<div class="resource-share-principles">
+<div><strong>收錄原則：</strong>專業可信、內容穩定、具有公共價值。</div>
+<div><strong>策展方向：</strong>與 AML 關注的專業、實踐與生活議題具有延伸價值。</div>
+</div>
+</div>
+<div class="resource-share-card">
+<h3>推薦優質資源</h3>
+<p>分享網址時，可以簡單告訴我們這項資源的特色，以及你認為它值得被更多讀者看見的原因。</p>
+<div class="resource-share-actions">
+<a class="resource-share-btn" href="mailto:daniel.ws.chen@gmail.com?subject=%E6%8E%A8%E8%96%A6%E5%84%AA%E8%B3%AA%E8%B3%87%E6%BA%90%E7%B5%A6%20Allen%20Mind%20Lab">推薦優質資源 →</a>
+<a class="resource-share-btn" href="/contact.html">其他交流與合作 →</a>
+</div>
+<div class="resource-share-note">這裡不是交換連結，而是策展式收錄；推薦不代表一定收錄。</div>
+</div>
+</div>
+</section>
+
 <div class="resource-note"><strong>外部資源說明：</strong>本頁僅提供精選站外資源導覽。各網站之內容、服務與更新由其經營者自行負責；AML 的收錄代表其內容與本站關注議題具有延伸價值，不等同對所有內容、個別醫療建議或服務成效之背書。</div>
 </section>
 </main>
