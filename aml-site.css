@@ -851,3 +851,46 @@ body .aml-domain-catalog__read{display:none}
   }
 }
 /* ===== /AML 2.0 Article Global Sync v1 ===== */
+
+
+/* ===== AML 2.0 IA v3 — five primary menus / collections vs guided paths ===== */
+.aml-nav-panel--collection{min-width:270px;max-height:min(72vh,620px);overflow:auto}
+.aml-nav-panel--paths{min-width:230px}
+@media(min-width:1041px){.aml-desktop-links{display:flex!important}.aml-menu-toggle{display:none!important}.aml-desktop-links{gap:3px;font-size:.88rem}.aml-nav-group summary,.aml-nav-direct{padding:10px 9px}}
+@media(max-width:1040px){.aml-desktop-links{display:none!important}.aml-menu-toggle{display:flex!important}}
+.aml-footer-links{grid-template-columns:repeat(5,minmax(0,1fr));gap:28px 24px}
+@media(max-width:1100px){.aml-footer-links{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.aml-footer-links{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.aml-footer-links{grid-template-columns:1fr}}
+.aml-topic-halls__grid--seven{grid-template-columns:repeat(3,minmax(0,1fr))}
+.aml-topic-hall--notes{background:#f5f0e6;border-color:#d6c39b}
+.aml-choice-strip{padding:64px 6vw;background:#f5f2ec;border-top:1px solid #e5ddcf;border-bottom:1px solid #e5ddcf}
+.aml-choice-strip__inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(260px,.7fr);gap:40px;align-items:center}
+.aml-choice-strip h2{font-family:Georgia,'Noto Serif TC',serif;font-size:clamp(1.8rem,3vw,2.6rem);margin:.25em 0 .4em;color:#17212b}
+.aml-choice-strip p{margin:0;color:#667078;line-height:1.8;max-width:720px}
+.aml-choice-strip__actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.aml-compact-hero{padding-bottom:56px}
+.aml-paths-home{padding:64px 6vw 76px;max-width:1180px;margin:0 auto}
+.aml-paths-home__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.aml-path-home-card{display:flex;flex-direction:column;min-height:260px;padding:30px;border:1px solid #ded6c8;border-radius:22px;background:#fff;color:#17212b;text-decoration:none;box-shadow:0 8px 24px rgba(30,35,40,.04);transition:.2s}
+.aml-path-home-card:hover{transform:translateY(-3px);border-color:#c7a76a;box-shadow:0 14px 28px rgba(30,35,40,.08)}
+.aml-path-home-card span{font-size:.75rem;letter-spacing:.1em;font-weight:800;color:#92703c}
+.aml-path-home-card h2{font-family:Georgia,'Noto Serif TC',serif;font-size:1.65rem;line-height:1.35;margin:18px 0 12px}
+.aml-path-home-card p{color:#667078;line-height:1.8;margin:0 0 24px;flex:1}
+.aml-path-home-card b{color:#315d8b}
+.aml-paths-home__note{margin-top:28px;padding:22px 24px;border-left:4px solid #c7a76a;background:#f7f4ee;border-radius:4px 14px 14px 4px;line-height:1.8;color:#59636b}
+.aml-paths-home__note strong{display:block;color:#17212b;margin-bottom:4px}
+.aml-paths-home__note p{margin:0}.aml-paths-home__note a{color:#315d8b;font-weight:700}
+.aml-stage-path{padding:58px 6vw 76px;background:#f7f5f0}
+.aml-stage-path__rail{max-width:980px;margin:0 auto;display:grid;gap:14px}
+.aml-stage-card{display:grid;grid-template-columns:72px minmax(0,1fr);gap:22px;padding:25px 28px;background:#fff;border:1px solid #ded6c8;border-radius:18px}
+.aml-stage-card__num{font-family:Georgia,serif;font-size:1.7rem;color:#b18542;font-weight:700;padding-top:4px}
+.aml-stage-card span{font-size:.72rem;letter-spacing:.12em;font-weight:800;color:#92703c}
+.aml-stage-card h2{margin:5px 0 8px;color:#17212b;font-family:Georgia,'Noto Serif TC',serif;font-size:1.5rem}
+.aml-stage-card p{margin:0 0 13px;color:#667078;line-height:1.75}
+.aml-stage-links{display:flex;gap:10px 20px;flex-wrap:wrap}
+.aml-stage-links a{color:#315d8b;font-weight:700;text-decoration:none;font-size:.94rem}
+.aml-stage-links a:hover{text-decoration:underline}
+@media(max-width:900px){.aml-topic-halls__grid--seven,.aml-paths-home__grid{grid-template-columns:1fr 1fr}.aml-choice-strip__inner{grid-template-columns:1fr}.aml-choice-strip__actions{justify-content:flex-start}}
+@media(max-width:620px){.aml-topic-halls__grid--seven,.aml-paths-home__grid{grid-template-columns:1fr}.aml-stage-card{grid-template-columns:48px 1fr;padding:21px 18px;gap:12px}.aml-stage-card__num{font-size:1.35rem}.aml-choice-strip{padding:50px 6vw}}
+/* ===== /AML 2.0 IA v3 ===== */

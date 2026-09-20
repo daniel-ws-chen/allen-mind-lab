@@ -78,7 +78,7 @@
         if (url.origin === location.origin &&
             normalizePath(url.pathname) === currentPath) {
           a.setAttribute("aria-current", "page");
-          a.closest(".aml-explore")?.querySelector("summary")
+          a.closest(".aml-nav-group")?.querySelector("summary")
             ?.setAttribute("aria-current", "page");
         }
       } catch (_) {}
