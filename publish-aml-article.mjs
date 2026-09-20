@@ -7,6 +7,11 @@ const root = process.cwd();
 const DOMAIN_PAGES = { ot:'ot.html', mind:'mind.html', pbs:'pbs.html', education:'education.html', management:'management.html', ai:'ai.html' };
 const DOMAIN_LABELS = { ot:'OT & Human Occupation', mind:'Mind & Well-being', pbs:'PBS', education:'Education', management:'Management & Leadership', ai:'AI × Practice' };
 const DOMAIN_HUB_LABELS = { ot:'OT 特色館', mind:'Mind 特色館', pbs:'PBS 特色館', education:'Education 特色館', management:'Management 特色館', ai:'AI 特色館' };
+const READING_PATHS = {
+  management:{page:'management-learning.html',label:'管理實務學習'},
+  pbs:{page:'pbs-learning.html',label:'PBS 實務學習'},
+  helper:{page:'helper-learning.html',label:'助人者永續實踐'}
+};
 
 function die(msg, code=1){ console.error(`\n✗ ${msg}`); process.exit(code); }
 function ok(msg){ console.log(`✓ ${msg}`); }
@@ -48,6 +53,10 @@ function validateConfig(c){
   c.heroAlt ??= `${c.title} AML 主視覺`;
   c.articleRole ??='Article'; c.collectionRole ??='';
   c.featured ??=false; c.featuredRank ??=null;
+  c.isNote ??=false; c.readingPaths ??=[]; c.homepageFeatured ??=false;
+  if(!Array.isArray(c.readingPaths)) die('readingPaths must be an array, e.g. [{"id":"helper","stage":5}].');
+  c.readingPaths=c.readingPaths.map(x=>typeof x==='string'?{id:x,stage:null}:x);
+  for(const rp of c.readingPaths){ if(!rp?.id || !READING_PATHS[rp.id]) die(`Unknown reading path '${rp?.id||''}'. Use: ${Object.keys(READING_PATHS).join(', ')}`); if(!Number.isInteger(rp.stage)||rp.stage<1||rp.stage>5) die(`readingPaths '${rp.id}' requires integer stage 1-5.`); }
   c.rss ??=true; c.sitemap ??=true;
   c.reciprocalPrevious ??=false;
   return c;
@@ -162,11 +171,29 @@ function articleCard(c){
 }
 function domainCard(c){ return `<a class="aml-domain-catalog__card" href="articles/${c.slug}.html"><div class="aml-domain-catalog__meta">${esc(c.cardMeta)}</div><h3>${esc(c.title)}</h3><p>${esc(c.summary)}</p><span class="aml-domain-catalog__read">閱讀文章 →</span></a>`; }
 
-function updateArticlesPage(html,c,total){
-  const marker='<div class="article-grid" id="aml-article-grid">'; if(!html.includes(marker)) die('articles.html grid marker not found.');
+function updateLibraryPage(html,c,total){
+  const marker='<div class="article-grid" id="aml-article-grid">'; if(!html.includes(marker)) die('library.html grid marker not found.');
   html=html.replace(marker,marker+articleCard(c));
   html=html.replace(/目前共有 \d+ 篇文章/g,`目前共有 ${total} 篇文章`);
   return html;
+}
+function noteCard(c){ return `<a class="article-card" href="/articles/${c.slug}.html"><div class="meta">${fmtDateDot(c.date)} · AML Notes</div><span class="tag">${esc(c.tag)}</span><h2>${esc(c.title)}</h2><p>${esc(c.summary)}</p><div class="read">Read Note →</div></a>`; }
+function updateNotesPage(html,c){
+  const marker='<section id="notes"><div class="article-grid"'; const pos=html.indexOf(marker); if(pos<0) die('notes.html notes grid marker not found.');
+  const open=html.indexOf('>',pos+marker.length); if(open<0) die('notes.html notes grid opening tag not found.');
+  return html.slice(0,open+1)+noteCard(c)+html.slice(open+1);
+}
+function readingPathLink(c){ return `<a href="/articles/${c.slug}.html">${esc(c.title)} →</a>`; }
+function updateReadingPathPage(html,c,rp){
+  const marker=`<!-- AML_READING_PATH:${rp.id}:stage-${rp.stage} -->`;
+  if(!html.includes(marker)) die(`${READING_PATHS[rp.id].page} marker not found: ${marker}`);
+  return html.replace(marker,marker+readingPathLink(c));
+}
+function homepageCard(c){ return `<article class="home-reading__card"><a aria-label="閱讀：${escAttr(c.title)}" class="home-reading__image" href="/articles/${c.slug}.html"><img alt="${escAttr(c.title)}" loading="lazy" src="/images/articles/${c.slug}-hero.webp"/></a><div class="home-reading__body"><div class="home-reading__meta">${esc(DOMAIN_LABELS[c.primaryDomain])}</div><h3>${esc(c.title)}</h3><p>${esc(c.summary)}</p><a class="home-reading__link" href="/articles/${c.slug}.html">閱讀文章 →</a></div></article>`; }
+function updateHomepageFeatured(html,c){
+  const track='<div aria-label="AML 精選文章" class="home-reading__track" data-carousel-track="" tabindex="0">';
+  if(!html.includes(track)) die('index.html featured-reading track marker not found.');
+  return html.replace(track,track+homepageCard(c));
 }
 function updateDomainPage(html,c,count){
   const marker='<div class="aml-domain-catalog__grid">'; if(!html.includes(marker)) die(`${c.primaryDomain} domain grid marker not found.`);
@@ -193,7 +220,7 @@ function newManifest(c,m){
   const nav=[];
   if(c.navigation.previous) nav.push({kind:'previous',label:`${c.navigation.previous.kind||'上一篇'} ← ${c.navigation.previous.label||m.articles.find(a=>a.slug===c.navigation.previous.slug)?.title||''}`,href:`/articles/${c.navigation.previous.slug}.html`});
   if(c.navigation.next) nav.push({kind:'next',label:`${c.navigation.next.kind||'下一篇'} ${c.navigation.next.label||m.articles.find(a=>a.slug===c.navigation.next.slug)?.title||''} →`,href:`/articles/${c.navigation.next.slug}.html`});
-  const a={slug:c.slug,title:c.title,summary:c.summary,date:c.date,domains:c.domains,primaryDomain:c.primaryDomain,crossDomains:c.crossDomains,tag:c.tag,cardMeta:c.cardMeta,keywords:c.keywords,articlePath:`/articles/${c.slug}.html`,order:c.order ?? -4,canonical:`https://allenmindlab.com/articles/${c.slug}`,hero:`/images/articles/${c.slug}-hero.webp`,ogImage:`/images/articles/${c.slug}-hero.png`,series:c.series,featured:c.featured,featuredRank:c.featuredRank,featuredMeta:c.featuredMeta||undefined,navigation:nav};
+  const a={slug:c.slug,title:c.title,summary:c.summary,date:c.date,domains:c.domains,primaryDomain:c.primaryDomain,crossDomains:c.crossDomains,tag:c.tag,cardMeta:c.cardMeta,keywords:c.keywords,articlePath:`/articles/${c.slug}.html`,order:c.order ?? -4,canonical:`https://allenmindlab.com/articles/${c.slug}`,hero:`/images/articles/${c.slug}-hero.webp`,ogImage:`/images/articles/${c.slug}-hero.png`,series:c.series,featured:c.featured,featuredRank:c.featuredRank,featuredMeta:c.featuredMeta||undefined,navigation:nav,readingPaths:c.readingPaths,isNote:c.isNote};
   Object.keys(a).forEach(k=>a[k]===undefined&&delete a[k]);
   m.articles.unshift(a); m.generatedAt=nowIso(); m.counts.total=m.articles.length;
   for(const d of Object.keys(DOMAIN_PAGES)) m.counts[d]=m.articles.filter(x=>x.domains?.includes(d)).length;
@@ -224,9 +251,13 @@ function prepare(c){
   write(join(changes,'articles',`${c.slug}.html`),generateArticle(c,m));
   // Manifest
   const m2=newManifest(c,structuredClone(m)); write(join(changes,'data','articles-manifest.json'),jsonPretty(m2));
-  // Static fallback pages
-  write(join(changes,'articles.html'),updateArticlesPage(read(join(root,'articles.html')),c,m2.counts.total));
+  // Library + domain pages
+  write(join(changes,'library.html'),updateLibraryPage(read(join(root,'library.html')),c,m2.counts.total));
   for(const d of c.domains){ const f=DOMAIN_PAGES[d]; const cc={...c,primaryDomain:d}; write(join(changes,f),updateDomainPage(read(join(root,f)),cc,m2.counts[d])); }
+  // Optional collection / curation surfaces
+  if(c.isNote) write(join(changes,'notes.html'),updateNotesPage(read(join(root,'notes.html')),c));
+  for(const rp of c.readingPaths){ const info=READING_PATHS[rp.id]; const f=info.page; const source=existsSync(join(changes,f))?read(join(changes,f)):read(join(root,f)); write(join(changes,f),updateReadingPathPage(source,c,rp)); }
+  if(c.homepageFeatured) write(join(changes,'index.html'),updateHomepageFeatured(read(join(root,'index.html')),c));
   // sitemap/rss
   if(c.sitemap) write(join(changes,'sitemap.xml'),updateSitemap(read(join(root,'sitemap.xml')),c));
   if(c.rss) write(join(changes,'rss.xml'),updateRss(read(join(root,'rss.xml')),c));
@@ -239,7 +270,18 @@ function prepare(c){
       write(join(changes,'data','articles-manifest.json'),jsonPretty(mm));
     }
   }
-  write(join(stage,'CHANGELOG.txt'),`AML semi-auto publish\nslug: ${c.slug}\nprepared: ${nowIso()}\n\nFiles:\n${listFiles(changes).join('\n')}\n`);
+  const plan=[
+    `Library: library.html`,
+    `Domains: ${c.domains.map(d=>DOMAIN_PAGES[d]).join(', ')}`,
+    `AML Notes: ${c.isNote?'YES':'no'}`,
+    `Reading paths: ${c.readingPaths.length?c.readingPaths.map(r=>`${READING_PATHS[r.id].label} / Stage ${r.stage}`).join(', '):'none'}`,
+    `Homepage featured: ${c.homepageFeatured?'YES':'no'}`,
+    `RSS: ${c.rss?'YES':'no'}`,
+    `Sitemap: ${c.sitemap?'YES':'no'}`
+  ];
+  write(join(stage,'PUBLISH_PLAN.txt'),`AML 2.0 publish plan\nslug: ${c.slug}\nprepared: ${nowIso()}\n\n${plan.join('\n')}\n`);
+  write(join(stage,'CHANGELOG.txt'),`AML 2.0 semi-auto publish\nslug: ${c.slug}\nprepared: ${nowIso()}\n\nFiles:\n${listFiles(changes).join('\n')}\n`);
+  console.log('\nPublish plan'); for(const line of plan) console.log(`  - ${line}`);
   ok(`Prepared ${listFiles(changes).length} staged file(s) under ${relative(root,changes)}.`);
   console.log('No live site files were modified.');
 }
@@ -265,14 +307,14 @@ function validateStage(c){
 function apply(c,yes){ if(!yes) die('Apply requires explicit --yes. Nothing was changed.'); const changes=join(stagePath(c),'changes'); if(!existsSync(changes)) die('No staged changes. Run prepare first.'); overlay(changes,root); ok(`Applied ${listFiles(changes).length} staged file(s) to repository.`); }
 function packageStage(c){
   const stage=stagePath(c),changes=join(stage,'changes'); if(!existsSync(changes)) die('No staged changes. Run prepare first.');
-  const pkg=join(stage,'github-upload'); safeRm(pkg); cpSync(changes,pkg,{recursive:true}); cpSync(join(stage,'CHANGELOG.txt'),join(pkg,'CHANGELOG.txt'));
+  const pkg=join(stage,'github-upload'); safeRm(pkg); cpSync(changes,pkg,{recursive:true}); cpSync(join(stage,'CHANGELOG.txt'),join(pkg,'CHANGELOG.txt')); if(existsSync(join(stage,'PUBLISH_PLAN.txt'))) cpSync(join(stage,'PUBLISH_PLAN.txt'),join(pkg,'PUBLISH_PLAN.txt'));
   const zipPath=join(stage,`AML_${c.slug}_GitHub_Update.zip`); if(existsSync(zipPath)) rmSync(zipPath,{force:true});
   const zip=spawnSync('zip',['-qr',zipPath,'.'],{cwd:pkg,encoding:'utf8'});
   if(zip.status===0) ok(`Package ready: ${relative(root,zipPath)}`); else warn(`Package folder ready at ${relative(root,pkg)}; 'zip' command unavailable, so ZIP was not created.`);
 }
 function init(slug){
   if(!slugOk(slug)) die('init slug must be lowercase kebab-case.'); const dir=join(root,'.aml-publish',slug); ensureDir(dir);
-  const cfg={slug,title:'',subtitle:'',seoDescription:'',summary:'',date:new Date().toISOString().slice(0,10),eyebrow:'',primaryDomain:'pbs',crossDomains:[],tag:'',cardMeta:'',keywords:[],heroAlt:'',bodyFile:'body.html',heroWebp:'hero.webp',ogImage:'hero.png',relatedReading:[],navigation:{routeLabel:'',seriesLinkLabel:'',previous:null,next:null,hub:null},reciprocalPrevious:false,series:[],featured:false,featuredRank:null,rss:true,sitemap:true,articleRole:'Article',collectionRole:''};
+  const cfg={slug,title:'',subtitle:'',seoDescription:'',summary:'',date:new Date().toISOString().slice(0,10),eyebrow:'',primaryDomain:'pbs',crossDomains:[],tag:'',cardMeta:'',keywords:[],heroAlt:'',bodyFile:'body.html',heroWebp:'hero.webp',ogImage:'hero.png',relatedReading:[],navigation:{routeLabel:'',seriesLinkLabel:'',previous:null,next:null,hub:null},reciprocalPrevious:false,series:[],featured:false,featuredRank:null,isNote:false,readingPaths:[],homepageFeatured:false,rss:true,sitemap:true,articleRole:'Article',collectionRole:''};
   const p=join(dir,'article.json'); if(!existsSync(p)) write(p,jsonPretty(cfg)); if(!existsSync(join(dir,'body.html'))) write(join(dir,'body.html'),'<!-- AML_TOC -->\n<p>文章開場。</p>\n<h2>第一節</h2>\n<p>正文。</p>\n');
   ok(`Draft workspace created: ${relative(root,dir)}`);
 }
