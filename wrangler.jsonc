@@ -1,12 +1,20 @@
 {
   "name": "allen-mind-lab",
+  "main": "./worker/index.js",
   "compatibility_date": "2026-09-10",
+
   "build": {
     "command": "node build-dist.mjs"
   },
+
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
   },
+
   "d1_databases": [
     {
       "binding": "DB",
@@ -15,4 +23,5 @@
     }
   ]
 }
+
 // AML automatic deployment
