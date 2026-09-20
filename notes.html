@@ -498,23 +498,74 @@ body{background:#fffdf9}
 #notes .article-grid{padding:0!important;margin:34px auto 0!important;max-width:none!important}
 @media(max-width:980px){.hero:after{opacity:.45;right:-70px}.notes-intro{padding:50px 6vw 28px}#notes{padding:22px 6vw 68px}}
 
+
+/* ===== AML Notes Quiet Edition ===== */
+.notes-hero{
+  min-height:auto;
+  padding:150px 8vw 72px;
+  background:
+    radial-gradient(circle at 82% 42%,rgba(199,167,106,.10),transparent 22%),
+    linear-gradient(180deg,#fbf7ef 0%,#fffdf9 100%);
+  color:var(--navy);
+  border-bottom:1px solid var(--line);
+}
+.notes-hero .eyebrow{margin-bottom:18px}
+.notes-hero h1{
+  font-size:clamp(3rem,5.2vw,5.2rem);
+  line-height:1.08;
+  margin:0 0 18px;
+  letter-spacing:.02em;
+}
+.notes-hero p{
+  max-width:820px;
+  color:#66717d;
+  font-size:1.04rem;
+  margin:0;
+}
+.notes-hero p strong{color:var(--navy);font-size:1.08rem}
+.notes-intro{padding:64px 8vw 28px;background:var(--paper)}
+.notes-intro .title{font-size:clamp(1.55rem,2.4vw,2.25rem);margin-bottom:10px}
+#notes{padding:20px 8vw 72px}
+#notes .article-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;max-width:1120px!important;margin:0 auto!important;padding:0!important}
+#notes .article-card{min-height:230px;padding:24px 25px;border-radius:18px}
+#notes .article-card h2{font-size:1.18rem}
+#notes .tag{opacity:.76}
+.notes-bridge{padding:68px 8vw;background:#f7f2e9;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.notes-bridge__inner{max-width:980px;margin:auto;display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}
+.notes-bridge .title{font-size:clamp(1.65rem,2.6vw,2.4rem);margin-bottom:8px}
+.notes-bridge .lead{margin:0}
+.notes-bridge__links{display:flex;gap:12px;flex-wrap:wrap}
+.notes-link{display:inline-flex;align-items:center;padding:11px 17px;border-radius:999px;border:1px solid #d8cdbb;background:#fff;color:var(--navy);font-weight:800;white-space:nowrap}
+.notes-link--primary{background:var(--navy);border-color:var(--navy);color:#fff}
+.notes-closing{padding:74px 8vw;text-align:center;background:#fffdf9}
+.notes-closing p{max-width:620px;margin:0 auto;color:#7d8792}
+@media(max-width:820px){
+  .notes-hero{padding:122px 6vw 58px}
+  .notes-hero h1{font-size:clamp(2.65rem,13vw,4rem)}
+  .notes-intro{padding:52px 6vw 22px}
+  #notes{padding:14px 6vw 58px}
+  #notes .article-grid{grid-template-columns:1fr!important}
+  .notes-bridge{padding:56px 6vw}
+  .notes-bridge__inner{grid-template-columns:1fr;align-items:start}
+}
+
 </style>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <!-- AML SEO / Social Preview -->
-<link href="https://allenmindlab.com/articles" rel="canonical"/>
+<link href="https://allenmindlab.com/notes" rel="canonical"/>
 <meta content="website" property="og:type"/>
 <meta content="Allen Mind Lab" property="og:site_name"/>
-<meta content="Articles | Allen Mind Lab" property="og:title"/>
-<meta content="Allen Mind Lab 文章專區：職能治療、正向行為支持、管理、教育、AI 與身心福祉。" property="og:description"/>
-<meta content="https://allenmindlab.com/articles" property="og:url"/>
+<meta content="AML Notes｜小品集 — Allen Mind Lab" property="og:title"/>
+<meta content="AML 小品集：把生活留下來。收錄念頭、生活、修習與值得停下來想一想的片刻。" property="og:description"/>
+<meta content="https://allenmindlab.com/notes" property="og:url"/>
 <meta content="https://allenmindlab.com/images/allen-banner.png" property="og:image"/>
 <meta content="Allen Mind Lab" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="Articles | Allen Mind Lab" name="twitter:title"/>
-<meta content="Allen Mind Lab 文章專區：職能治療、正向行為支持、管理、教育、AI 與身心福祉。" name="twitter:description"/>
+<meta content="AML Notes｜小品集 — Allen Mind Lab" name="twitter:title"/>
+<meta content="AML 小品集：把生活留下來。收錄念頭、生活、修習與值得停下來想一想的片刻。" name="twitter:description"/>
 <meta content="https://allenmindlab.com/images/allen-banner.png" name="twitter:image"/>
 <link href="aml-site.css" rel="stylesheet"/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Articles｜Allen Mind Lab","url":"https://allenmindlab.com/articles","description":"探索 Allen Mind Lab 的職能治療、PBS、管理、教育、AI 與身心反思文章。依主題、系列與關鍵字搜尋，找到適合自己的閱讀路徑。","inLanguage":"zh-Hant","isPartOf":{"@type":"WebSite","name":"Allen Mind Lab","url":"https://allenmindlab.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AML Notes｜小品集","url":"https://allenmindlab.com/notes","description":"AML 小品集：把生活留下來。收錄念頭、生活、修習與值得停下來想一想的片刻。","inLanguage":"zh-Hant","isPartOf":{"@type":"WebSite","name":"Allen Mind Lab","url":"https://allenmindlab.com/"}}</script>
 </head>
 <body>
 <a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
@@ -525,15 +576,20 @@ body{background:#fffdf9}
 <a class="aml-nav-direct" href="/tools.html">實用工具</a>
 <details class="aml-nav-group"><summary>資源與聯繫</summary><div class="aml-nav-panel"><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></details>
 </div><button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button><div class="aml-mobile-menu" id="aml-mobile-menu"><span class="aml-mobile-label">關於 AML</span><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a><span class="aml-mobile-label">主題館藏</span><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a><span class="aml-mobile-label">閱讀路徑</span><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a><span class="aml-mobile-label">實用工具</span><a href="/tools.html">AML 工具箱</a><span class="aml-mobile-label">資源與聯繫</span><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></nav>
-<header class="hero" id="aml-main"><div class="eyebrow">AML NOTES COLLECTION</div><h1>小品集</h1><p><strong>把生活留下來。</strong><br/>不一定從一個專業問題開始，也可能只是一個念頭、一段生活、一場修習，或某個值得停下來想一想的瞬間。</p></header>
-<section class="notes-intro"><div class="eyebrow">Notes from the Lab</div><h2 class="title">生活，也是思考與實踐發生的地方。</h2><p class="lead">Articles，把事情說清楚；Notes，把生活留下來。從最新的一則開始，也可以隨意挑一篇慢慢讀。</p></section>
+<header class="hero notes-hero" id="aml-main"><div class="eyebrow">AML NOTES COLLECTION</div><h1>小品集</h1><p><strong>把生活留下來。</strong><br/>不一定從一個專業問題開始，也可能只是一個念頭、一段生活、一場修習，或某個值得停下來想一想的瞬間。</p></header>
+<section class="notes-intro"><div class="eyebrow">Notes from the Lab</div><h2 class="title">生活，也是思考與實踐發生的地方。</h2><p class="lead">Articles，把事情說清楚；Notes，把生活留下來。從最新一則開始，也可以隨意挑一篇，慢慢讀。</p></section>
 <section id="notes"><div class="article-grid" style="max-width:1180px;margin:0 auto 90px;padding:0 24px;"><a class="article-card" href="/articles/if-life-had-a-homepage.html"><div class="meta">2026.09.19 · AML Notes</div><span class="tag">Mind &amp; Well-being</span><h2>如果人生也有一個首頁</h2><p>從整理 AML 網站的一個小發現，想到人生裡有些東西放在首頁、有些收進館藏，也有些知道它還在就好。</p><div class="read">Read Note →</div></a>
 <a class="article-card" href="/articles/schedule-empty-space.html"><div class="meta">2026.09.19 · AML Notes</div><span class="tag">Mind &amp; Well-being</span><h2>你的 schedule，有沒有一格寫著「放空」？</h2><p>當每一段空白都被工作、訊息與手機填滿，也許可以留一小格，暫時不再把新的東西放進來。</p><div class="read">Read Note →</div></a>
 <a class="article-card" href="/articles/cultivation-first-thought.html"><div class="meta">2026.09.18 · AML Notes</div><span class="tag">Mind &amp; Well-being</span><h2>原來，修行是第一個念頭開始改變</h2><p>從 ATM 暫停服務到已打烊的晚餐店，一個下班後的小插曲，記錄面對生活不如預期時，第一個念頭如何慢慢改變。</p><div class="read">Read Note →</div></a>
 <a class="article-card" href="/articles/emptiness-meets-moho.html"><div class="meta">2026.09.17 · AML Notes</div><span class="tag">OT × Mind</span><h2>當空性遇見 MOHO</h2><p>空性提醒我們，人不是固定的；MOHO 則讓我們看見，人的生活樣貌持續在意志、習慣、能力與環境中生成。</p><div class="read">Read Note →</div></a>
 <a class="article-card" href="/articles/helper-self-awareness.html"><div class="meta">AML Notes</div><span class="tag">Mind &amp; Well-being</span><h2>心安方能助人，理明方能成事</h2><p>從助人工作回到自身，整理體力、情緒、期待與關係界線，讓支持別人之前，也能看見自己。</p><div class="read">Read Note →</div></a>
 <a class="article-card" href="/articles/medical-care-and-inner-practice.html"><div class="meta">AML Notes</div><span class="tag">Mind &amp; Well-being</span><h2>醫療照顧身體，修習安頓身心</h2><p>在醫療與內在修習之間，思考身體照顧、心念整理與日常實踐如何彼此補充。</p><div class="read">Read Note →</div></a></div></section>
-<section class="intro" style="padding-top:0"><div class="eyebrow">KEEP EXPLORING</div><h2 class="title">想讀完整一點的內容？</h2><p class="lead">回到 Articles，繼續探索專業、管理、教育、AI、PBS 與人類職能。</p><p><a class="aml-series-all" href="/articles.html">瀏覽全部 Articles →</a></p></section>
+<section class="notes-bridge">
+<div class="notes-bridge__inner">
+<div><div class="eyebrow">KEEP EXPLORING</div><h2 class="title">想讀完整一點的內容？</h2><p class="lead">小品留白，長文展開。需要深入一個主題時，可以回到完整館藏或沿著閱讀路徑繼續。</p></div>
+<div class="notes-bridge__links"><a class="notes-link notes-link--primary" href="/library.html">完整文章館藏 →</a><a class="notes-link" href="/reading-paths.html">閱讀路徑 →</a></div>
+</div>
+</section>
 <section class="newsletter reveal" id="newsletter">
 <div class="newsletter-wrap">
 <div>
@@ -558,24 +614,8 @@ body{background:#fffdf9}
 </div>
 </div>
 </section>
-<section class="framework">
-<div class="eyebrow">AML Editorial Structure</div>
-<h2 class="title">每篇文章，都有共同的骨架。</h2>
-<p class="lead">不是把所有文章寫成同一個樣子，而是確保讀者知道：這篇文章為什麼值得讀、經驗如何轉成思考、最後可以帶走什麼。</p>
-<div class="steps">
-<div class="step"><strong>01 · Opening</strong>情境與起點</div>
-<div class="step"><strong>02 · Observation</strong>看見了什麼</div>
-<div class="step"><strong>03 · Reflection</strong>如何理解</div>
-<div class="step"><strong>04 · Takeaway</strong>可以帶走什麼</div>
-<div class="step"><strong>05 · Closing</strong>留下最後一句</div>
-</div>
-</section>
-<section class="ending">
-<h2 class="title">把經驗寫下來，<br/>讓它成為可以被傳遞的智慧。</h2>
-<p>NOTES FROM THE LAB · ALLEN MIND LAB</p>
-<a class="btn" href="index.html">← Back to Home</a>
-</section>
-<section aria-label="繼續探索" class="aml-route-map"><div class="aml-route-map__inner"><div class="aml-route-map__kicker">CONTINUE EXPLORING</div><h2>下一站，可以往這裡走</h2><p>不必回到首頁重新找路；沿著相關主題繼續探索。</p><div class="aml-route-map__grid"><a class="aml-route-card" href="/articles.html"><strong>Articles</strong><span>想深入閱讀：進入完整文章館藏</span><b aria-hidden="true">→</b></a><a class="aml-route-card" href="/mind.html"><strong>Mind &amp; Well-being</strong><span>探索更多身心與生活主題</span><b aria-hidden="true">→</b></a><a class="aml-route-card" href="/resources.html"><strong>Resources</strong><span>延伸到 AML 精選外部資源</span><b aria-hidden="true">→</b></a></div></div></section><footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>實用工具</h4><a href="/tools.html">AML 工具箱</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
+<section class="notes-closing"><div class="eyebrow">ALLEN MIND LAB · NOTES</div><p>有些內容適合完整說明；有些，只需要留下一個可以繼續想的地方。</p></section>
+<footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>實用工具</h4><a href="/tools.html">AML 工具箱</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
 <script>
 (function(){
   "use strict";
