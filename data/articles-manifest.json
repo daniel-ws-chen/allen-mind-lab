@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-19T12:00:00.000Z",
+  "generatedAt": "2026-09-20T06:53:23.274Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 43,
-    "ot": 19,
-    "mind": 10,
+    "total": 44,
+    "ot": 20,
+    "mind": 11,
     "pbs": 12,
     "education": 7,
     "management": 23,
@@ -78,6 +78,47 @@
     }
   },
   "articles": [
+    {
+      "slug": "caregiver-stress-coping-skills",
+      "title": "壓力不是只能撐過去",
+      "summary": "長期照顧的壓力，往往不是突然撐不住，而是逐漸習慣了「一直很累」。本文從職能治療觀點，整理照顧者可觀察的壓力訊號與日常可用的壓力因應技巧，也提醒：有些問題需要改變的，不是自己，而是環境與支持系統。",
+      "date": "2026-09-20",
+      "domains": [
+        "mind",
+        "ot"
+      ],
+      "primaryDomain": "mind",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "Mind & Well-being × OT & Human Occupation",
+      "cardMeta": "2026.09.20 · Mind & Well-being × OT & Human Occupation",
+      "keywords": [
+        "照顧者",
+        "壓力調適",
+        "壓力因應技巧",
+        "職能治療",
+        "職能平衡",
+        "有意義的職能活動",
+        "照顧者壓力",
+        "MOHO"
+      ],
+      "articlePath": "/articles/caregiver-stress-coping-skills.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/caregiver-stress-coping-skills",
+      "hero": "/images/articles/caregiver-stress-coping-skills-hero.webp",
+      "ogImage": "/images/articles/caregiver-stress-coping-skills-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "延伸前站 ← 助人者也需要被支持",
+          "href": "/articles/helper-support-system.html"
+        }
+      ]
+    },
     {
       "slug": "if-life-had-a-homepage",
       "title": "如果人生也有一個首頁",
