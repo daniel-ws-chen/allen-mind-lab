@@ -6,6 +6,13 @@
   },
   "assets": {
     "directory": "./dist"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aml-infection-control-pilot",
+      "database_id": "89114e21-2e9d-431a-ad61-cee8ccacf08f"
+    }
+  ]
 }
 // AML automatic deployment
