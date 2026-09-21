@@ -924,3 +924,17 @@ body .aml-domain-catalog__read{display:none}
 .aml-route-tool__actions a:hover{border-color:#b68a4a;background:#f8f4ec}
 @media(max-width:700px){.aml-stage-path__rail::before{left:23px}.aml-stage-card{grid-template-columns:48px minmax(0,1fr);padding:22px 18px;gap:12px}.aml-stage-card__num{width:42px;height:42px;font-size:1.05rem}.aml-stage-card h2{font-size:1.35rem}.aml-route-tool__inner{grid-template-columns:1fr}.aml-route-tool__actions{min-width:0}.aml-compact-hero{padding-top:108px;padding-bottom:46px}.aml-compact-hero h1{font-size:2.2rem}}
 /* ===== /AML 2.0 Reading Paths v3.1 ===== */
+
+/* ===== AML Reading Paths — question-first entry 2026-09-22 ===== */
+.aml-paths-home--guided{padding-top:54px}
+.aml-paths-question{max-width:760px;margin:0 auto 30px;text-align:center}
+.aml-paths-question>span{display:block;color:#92703c;font-size:.74rem;font-weight:800;letter-spacing:.14em}
+.aml-paths-question h2{margin:10px 0 10px;color:#17212b;font-family:Georgia,'Noto Serif TC',serif;font-size:clamp(1.85rem,3.2vw,2.7rem);line-height:1.35}
+.aml-paths-question p{margin:0;color:#667078;line-height:1.85}
+.aml-paths-home__grid--situations{grid-template-columns:repeat(2,minmax(0,1fr))}
+.aml-path-home-card--situation{min-height:285px}
+.aml-path-home-card--situation h2{font-size:clamp(1.35rem,2vw,1.65rem);line-height:1.5}
+.aml-path-home-card--wide{grid-column:1 / -1;min-height:220px}
+.aml-paths-home__note--simple{margin-top:38px}
+@media(max-width:760px){.aml-paths-home--guided{padding-top:44px}.aml-paths-question{text-align:left}.aml-paths-home__grid--situations{grid-template-columns:1fr}.aml-path-home-card--wide{grid-column:auto}.aml-path-home-card--situation{min-height:0}}
+/* ===== /AML Reading Paths — question-first entry ===== */
