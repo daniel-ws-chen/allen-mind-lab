@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-20T06:53:23.274Z",
+  "generatedAt": "2026-09-21T12:30:54.287Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 44,
-    "ot": 20,
-    "mind": 11,
+    "total": 45,
+    "ot": 21,
+    "mind": 12,
     "pbs": 12,
     "education": 7,
     "management": 23,
@@ -79,6 +79,51 @@
   },
   "articles": [
     {
+      "slug": "adhd-adolescent-development-support",
+      "title": "在長大以前，我們能為 ADHD 青少年守住什麼？",
+      "summary": "從成人 ADHD 的需求往前追問：在青少年到成年初期，如何守住成功經驗、自我效能、同儕歸屬，並逐步把外部支架轉化為自己的生活策略。",
+      "date": "2026-09-21",
+      "domains": [
+        "ot",
+        "mind"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [
+        "mind"
+      ],
+      "tag": "OT & Human Occupation × Mind & Well-being",
+      "cardMeta": "2026.09.21 · OT & Human Occupation × Mind & Well-being",
+      "keywords": [
+        "ADHD",
+        "青少年 ADHD",
+        "成人 ADHD",
+        "職能治療",
+        "自我效能",
+        "自尊",
+        "同儕關係",
+        "執行功能",
+        "代償策略",
+        "轉銜支持"
+      ],
+      "articlePath": "/articles/adhd-adolescent-development-support.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/adhd-adolescent-development-support",
+      "hero": "/images/articles/adhd-adolescent-development-support-hero.webp",
+      "ogImage": "/images/articles/adhd-adolescent-development-support-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 壓力不是只能撐過去",
+          "href": "/articles/caregiver-stress-coping-skills.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "caregiver-stress-coping-skills",
       "title": "壓力不是只能撐過去",
       "summary": "長期照顧的壓力，往往不是突然撐不住，而是逐漸習慣了「一直很累」。本文從職能治療觀點，整理照顧者可觀察的壓力訊號與日常可用的壓力因應技巧，也提醒：有些問題需要改變的，不是自己，而是環境與支持系統。",
@@ -116,6 +161,11 @@
           "kind": "previous",
           "label": "延伸前站 ← 助人者也需要被支持",
           "href": "/articles/helper-support-system.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 在長大以前，我們能為 ADHD 青少年守住什麼？ →",
+          "href": "/articles/adhd-adolescent-development-support.html"
         }
       ]
     },
