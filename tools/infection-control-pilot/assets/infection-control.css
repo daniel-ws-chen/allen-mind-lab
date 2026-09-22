@@ -208,3 +208,38 @@ body[data-page="dashboard"] #people,
 body[data-page="dashboard"] #daily{
   display:none !important;
 }
+
+/* ===== Pilot 1.0.5 shared login screen ===== */
+.auth-shell{
+  min-height:calc(100vh - 70px);
+  display:grid;
+  place-items:center;
+  padding:34px 18px;
+  background:linear-gradient(180deg,#f4f8f8 0%,#eef4f4 100%);
+}
+.auth-card{
+  width:min(440px,100%);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:26px;
+  box-shadow:0 12px 36px #20333b14;
+}
+.auth-brand{font-size:13px;font-weight:800;color:var(--accent);margin-bottom:10px}
+.auth-card h1{margin:0 0 8px;font-size:26px}
+.auth-fields{display:grid;gap:13px;margin:20px 0 14px}
+.auth-fields label{display:grid;gap:6px;font-size:12px;color:var(--muted)}
+.auth-fields input{
+  width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;
+  padding:11px 12px;font-size:15px;background:#fff;color:var(--ink)
+}
+.auth-fields input:focus{outline:2px solid #bfd8d5;outline-offset:1px}
+.auth-login-btn{width:100%;padding:11px 16px;font-size:15px}
+.auth-error{
+  margin-top:12px;padding:10px 12px;border-radius:10px;
+  background:#fff0ef;border:1px solid #e4b1ac;color:#8a332c;font-size:12px;
+}
+.auth-security-note{
+  margin-top:16px;padding:12px 13px;border-radius:12px;
+  background:#fff8e7;border:1px solid #ead39a;font-size:12px;line-height:1.65;
+}
