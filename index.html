@@ -1,46 +1,1711 @@
 <!DOCTYPE html>
 
-<html lang="zh-Hant"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>個案通報｜AML 感控作業管理助手 Pilot 1.0.2</title><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><link href="./assets/infection-control.css" rel="stylesheet"/></head><body data-page="case">
-<header><div class="brand"><div><b>AML 感控作業管理助手</b> <span class="pill">Pilot 1.0.2</span></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end"><div class="muted">一次建檔・持續追蹤・多表輸出</div><a aria-label="返回 Allen Mind Lab 主網站" class="home-link" href="/">← 返回 AML 主網站</a></div></div></header>
-<main>
-<section class="card login" id="login"><h1>授權人員登入</h1><p class="muted">護理師工作流程測試版：本階段測試「一次建檔・持續追蹤・多表輸出」。正式文件請下載院方原格式 Word／Excel，人工確認內容後再列印或送出。目前登入僅作為 Pilot 測試入口，尚未啟用正式帳號、OTP、角色權限與稽核紀錄。</p><div class="field"><label>授權 Email</label><input id="email" placeholder="name@example.org" type="email"/></div><div class="actions"><button class="primary" onclick="mockLogin()">進入測試系統</button></div><div class="notice">⚠️ Pilot 測試階段僅使用虛構／去識別資料。請勿輸入真實姓名、身分證字號、疾病史或可識別健康資料。</div></section>
-<section class="hidden" id="app"><nav aria-label="感控工作區" class="workspace-nav">
-<a data-nav="case" href="./index.html"><span>1</span><b>個案通報</b><small>建立／更正事件與個案</small></a>
-<a data-nav="cluster" href="./cluster.html"><span>2</span><b>疑似群聚／全院資料</b><small>疫情擴大時啟用</small></a>
-<a data-nav="tracking" href="./tracking.html"><span>3</span><b>隔離區追蹤</b><small>每日症狀與解除追蹤</small></a>
-<a data-nav="dashboard" href="./dashboard.html"><span>4</span><b>儀表板／表單輸出</b><small>全院概況與文件</small></a>
-</nav><div class="page-intro card" id="pageIntro">
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Allen Mind Lab | Building A Meaningful Life</title>
+<meta content="Allen Mind Lab｜Allen Chen 陳威勝的個人品牌網站，涵蓋職能治療、PBS、管理、教育、AI、健康促進與出版品。" name="description"/>
+<style>
+    :root{
+      --navy:#0d1b2a;
+      --navy2:#14263b;
+      --gold:#c7a76a;
+      --cream:#f6f1e8;
+      --paper:#fffdf9;
+      --ink:#1f2933;
+      --muted:#6b7280;
+      --line:#e7e1d6;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+      color:var(--ink);
+      background:var(--paper);
+      line-height:1.7;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    .aml-global-nav{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:100;
+      height:72px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:0 6vw;
+      background:rgba(8,22,38,.9);
+      backdrop-filter:blur(12px);
+      color:white;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .brand{
+      font-weight:800;
+      letter-spacing:.12em;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:24px;
+      font-size:.9rem;
+    }
+
+    .navlinks a{
+      color:#e5e7eb;
+      transition:.2s;
+    }
+
+    .navlinks a:hover{color:var(--gold)}
+
+    .hero{
+      margin-top:72px;
+      width:100%;
+      background:var(--navy);
+      overflow:hidden;
+    }
+
+    .hero picture{
+      display:block;
+      width:100%;
+    }
+
+    .hero img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    section{padding:95px 8vw}
+
+    .eyebrow{
+      color:var(--gold);
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      margin-bottom:12px;
+    }
+
+    .section-title{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(1.9rem,3.2vw,3rem);
+      color:var(--navy);
+      margin:0 0 20px;
+    }
+
+    .section-lead{
+      max-width:850px;
+      font-size:1.08rem;
+      color:var(--muted);
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:60px;
+      align-items:start;
+    }
+
+    .quote{
+      border-left:3px solid var(--gold);
+      padding-left:25px;
+      font-size:1.3rem;
+      color:var(--navy);
+      font-weight:700;
+    }
+
+    .labs{background:var(--cream)}
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      margin-top:40px;
+    }
+
+    .card{
+      position:relative;
+      overflow:hidden;
+      background:white;
+      padding:30px;
+      border-radius:22px;
+      border:1px solid #ebe6dc;
+      min-height:220px;
+      transition:.25s ease;
+      box-shadow:0 8px 24px rgba(15,23,42,.04);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:4px;
+      background:linear-gradient(90deg,var(--gold),#e7cf9b);
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:.3s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 18px 40px rgba(15,23,42,.10);
+    }
+
+    .card:hover::before{transform:scaleX(1)}
+    .card:hover h3{color:var(--gold)}
+
+    .num{
+      color:var(--gold);
+      font-size:.8rem;
+      letter-spacing:.15em;
+      font-weight:800;
+    }
+
+    .card h3 small{display:block;margin-top:5px;color:#8a7960;font-size:.72rem;font-weight:700;letter-spacing:.02em}
+    .card h3{
+      color:var(--navy);
+      margin:12px 0;
+      transition:.2s;
+    }
+
+    .card p{
+      color:var(--muted);
+      margin:0;
+    }
+
+    .more{
+      display:inline-block;
+      margin-top:22px;
+      color:var(--gold);
+      font-size:.9rem;
+      font-weight:700;
+      letter-spacing:.05em;
+    }
+
+    .journey{
+      background:var(--navy);
+      color:white;
+    }
+
+    .journey .section-title{color:white}
+    .journey .section-lead{color:#cbd5e1}
+
+    .timeline{
+      margin-top:40px;
+      padding-left:28px;
+      border-left:1px solid rgba(199,167,106,.4);
+    }
+
+    .timeitem{margin-bottom:34px}
+    .timeitem small{color:var(--gold);font-weight:800}
+    .timeitem h3{margin:6px 0}
+
+    .works-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:22px;
+      margin-top:36px;
+    }
+
+    .work{
+      padding:32px;
+      border-radius:22px;
+      border:1px solid #e5e7eb;
+      background:linear-gradient(180deg,white,#fbfaf7);
+      transition:.25s;
+    }
+
+    .work:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 35px rgba(15,23,42,.08);
+    }
+
+    .work h3{color:var(--navy);margin-top:0}
+
+    .publications{
+      background:#f8f4ec;
+    }
+
+    .research-home{background:#fffdf9}
+    .research-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px;max-width:900px}
+    .research-stat{padding:24px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,#fff,#faf7f0)}
+    .research-stat strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:2rem;color:var(--navy)}
+    .research-stat span{color:var(--muted);font-size:.92rem}
+    @media(max-width:720px){.research-stats{grid-template-columns:1fr}}
+
+    .pub-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:38px;
+    }
+
+    .pub-card{
+      background:white;
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px;
+      box-shadow:0 8px 24px rgba(15,23,42,.04);
+      transition:.25s ease;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .pub-card:hover{
+      transform:translateY(-5px);
+      box-shadow:0 18px 40px rgba(15,23,42,.08);
+    }
+
+    .pub-cover{
+      width:100%;
+      max-width:220px;
+      aspect-ratio: 2 / 3;
+      object-fit:contain;
+      align-self:center;
+      border-radius:12px;
+      background:white;
+      box-shadow:0 8px 18px rgba(15,23,42,.12);
+      border:1px solid #ede8df;
+      margin-bottom:20px;
+    }
+
+    .pub-tag{
+      display:inline-block;
+      align-self:flex-start;
+      padding:4px 10px;
+      border-radius:999px;
+      background:var(--cream);
+      color:#8c6f38;
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+    }
+
+    .pub-card h3{
+      color:var(--navy);
+      margin:0 0 10px;
+      line-height:1.45;
+      font-size:1.14rem;
+    }
+
+    .pub-meta{
+      color:#64748b;
+      font-size:.9rem;
+      margin-bottom:10px;
+    }
+
+    .pub-card p{
+      color:var(--muted);
+      margin:0;
+    }
+
+    .pub-actions{
+      margin-top:26px;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .pub-btn{
+      display:inline-block;
+      padding:11px 20px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      color:var(--navy);
+      font-weight:800;
+      transition:.2s;
+    }
+
+    .pub-btn:hover{
+      background:var(--gold);
+      transform:translateY(-2px);
+    }
+
+    .thoughts{background:#faf8f3}
+
+
+    .recognition-home{
+      background:linear-gradient(135deg,#0d1b2a,#172c43);
+      color:white;
+    }
+
+    .recognition-home .section-title{color:white}
+    .recognition-home .section-lead{color:#cbd5e1}
+
+    .recognition-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-top:38px;
+    }
+
+    .recognition-card{
+      padding:26px;
+      border-radius:20px;
+      border:1px solid rgba(199,167,106,.26);
+      background:rgba(255,255,255,.045);
+    }
+
+    .recognition-card .r-year{
+      color:var(--gold);
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:1.15rem;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+
+    .recognition-card h3{
+      color:white;
+      margin:0 0 8px;
+      line-height:1.5;
+      font-size:1.03rem;
+    }
+
+    .recognition-card p{
+      color:#aeb9c5;
+      margin:0;
+      font-size:.9rem;
+    }
+
+    .recognition-btn{
+      display:inline-block;
+      margin-top:28px;
+      padding:11px 20px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      color:white;
+      font-weight:800;
+      transition:.2s;
+    }
+
+    .recognition-btn:hover{
+      background:var(--gold);
+      color:var(--navy);
+      transform:translateY(-2px);
+    }
+
+    @media(max-width:820px){
+      .recognition-grid{grid-template-columns:1fr}
+    }
+
+
+    .ending{
+      text-align:center;
+      padding:120px 8vw;
+      background:linear-gradient(135deg,#f5efe3,white);
+    }
+
+    .ending-title{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(1.9rem,3.2vw,3rem);
+      font-weight:700;
+      color:var(--navy);
+      line-height:1.45;
+    }
+
+    .ending-brand{
+      color:var(--gold);
+      font-weight:800;
+      margin-top:30px;
+      letter-spacing:.1em;
+    }
+
+    footer{
+      padding:30px 8vw;
+      background:var(--navy);
+      color:#cbd5e1;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:20px;
+      font-size:.9rem;
+    }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(35px);
+      transition:opacity .8s ease,transform .8s ease;
+    }
+
+    .reveal.active{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:980px){
+      .navlinks{display:none}
+      section{padding:75px 6vw}
+      .about-grid,.cards,.works-grid,.pub-grid{grid-template-columns:1fr}
+      .hero picture{display:block;width:100%;}
+      .hero img{display:block;width:100%;height:auto;min-height:0;object-fit:contain;object-position:center;}
+      .pub-cover{max-width:180px;}
+    }
+  
+    .newsletter{
+      background:linear-gradient(135deg,#0d1b2a,#18324f);
+      color:white;
+    }
+
+    .newsletter-wrap{
+      display:grid;
+      grid-template-columns:240px 1fr;
+      gap:46px;
+      align-items:center;
+    }
+
+    .newsletter-icon{
+      width:220px;
+      max-width:100%;
+      border-radius:28px;
+      box-shadow:0 16px 36px rgba(0,0,0,.18);
+      display:block;
+    }
+
+    .newsletter .section-title{color:white}
+
+    .newsletter .section-lead{
+      color:#d5dde6;
+    }
+
+    .newsletter-btn{
+      display:inline-block;
+      margin-top:24px;
+      padding:12px 22px;
+      border-radius:999px;
+      background:#c7a76a;
+      color:#0d1b2a;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .newsletter-btn:hover{
+      transform:translateY(-2px);
+      filter:brightness(1.04);
+    }
+
+    .newsletter-note{
+      margin-top:14px;
+      color:#aeb8c5;
+      font-size:.88rem;
+    }
+
+    @media(max-width:900px){
+      .newsletter-wrap{
+        grid-template-columns:1fr;
+      }
+      .newsletter-icon{
+        width:170px;
+      }
+    }
+
+
+/* ===== AML Unified Footer v1 ===== */
+.aml-footer{
+  background:#101719;
+  color:#d7dde0;
+  padding:72px 8vw 30px;
+  border-top:1px solid rgba(199,167,106,.22);
+}
+.aml-footer-top{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:64px;
+  align-items:start;
+  padding-bottom:44px;
+}
+.aml-footer-brand{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:2rem;
+  color:white;
+  margin-bottom:8px;
+}
+.aml-footer-brand span{
+  color:#c7a76a;
+  font-size:1rem;
+  margin-left:8px;
+  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
+}
+.aml-footer-tagline{
+  color:#c7a76a;
+  font-weight:800;
+  letter-spacing:.08em;
+  margin-bottom:16px;
+}
+.aml-footer-copy{
+  max-width:650px;
+  color:#9eaaaf;
+  line-height:1.8;
+}
+.aml-footer-links{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px 40px;
+}
+.aml-footer-group h4{
+  margin:0 0 13px;
+  color:#c7a76a;
+  font-size:.78rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.aml-footer-group a{
+  display:block;
+  color:#c8d0d4;
+  margin:7px 0;
+  font-size:.93rem;
+  transition:.2s;
+}
+.aml-footer-group a:hover{
+  color:#c7a76a;
+  transform:translateX(2px);
+}
+.aml-footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);
+  padding-top:24px;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  flex-wrap:wrap;
+  color:#7f8b90;
+  font-size:.84rem;
+}
+.aml-footer-mini-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.aml-footer-mini-links a{
+  color:#9aa6ab;
+}
+.aml-footer-mini-links a:hover{
+  color:#c7a76a;
+}
+@media(max-width:900px){
+  .aml-footer{
+    padding:58px 6vw 26px;
+  }
+  .aml-footer-top{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .aml-footer-links{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(max-width:560px){
+  .aml-footer-links{
+    grid-template-columns:1fr;
+  }
+}
+
+
+    /* ===== Latest Article Feature ===== */
+    .latest-article{
+      display:grid;
+      grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);
+      gap:42px;
+      align-items:center;
+      margin-top:38px;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:26px;
+      background:linear-gradient(145deg,#fff,#faf6ee);
+      box-shadow:0 14px 38px rgba(15,23,42,.06);
+    }
+
+    .latest-article__image{
+      display:block;
+      overflow:hidden;
+      border-radius:18px;
+      box-shadow:0 14px 32px rgba(13,27,42,.12);
+    }
+
+    .latest-article__image img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .latest-article__meta{
+      color:#8c6f38;
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+    }
+
+    .latest-article__tag{
+      display:inline-block;
+      padding:5px 10px;
+      border-radius:999px;
+      background:var(--cream);
+      color:#8c6f38;
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.06em;
+      margin-bottom:14px;
+    }
+
+    .latest-article h3{
+      margin:0 0 14px;
+      color:var(--navy);
+      font-family:Georgia,"Noto Serif TC","Times New Roman",serif;
+      font-size:clamp(1.55rem,3vw,2.45rem);
+      line-height:1.35;
+    }
+
+    .latest-article p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.85;
+    }
+
+    .latest-article__actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+
+    .latest-article__btn{
+      display:inline-block;
+      padding:11px 19px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .latest-article__btn.primary{
+      background:var(--navy);
+      border-color:var(--navy);
+      color:white;
+    }
+
+    .latest-article__btn:hover{
+      transform:translateY(-2px);
+    }
+
+    @media(max-width:900px){
+      .latest-article{
+        grid-template-columns:1fr;
+        gap:26px;
+        padding:22px;
+      }
+    }
+
+
+    /* ===== Start Here vNext ===== */
+    .start-here{background:#fffdf9}
+    .start-here-audience{margin:14px 0 0;max-width:850px;color:#7c6f5d;font-size:.98rem;font-weight:700}
+    .reader-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:34px}
+    .reader-card{display:grid;grid-template-columns:auto 1fr;column-gap:16px;align-items:start;padding:26px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#faf7f0);transition:.25s ease;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+    .reader-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(15,23,42,.08);border-color:#d8c8a8}
+    .reader-card--wide{grid-column:1 / -1}
+    .reader-icon{grid-row:1 / span 4;display:grid;place-items:center;width:48px;height:48px;border-radius:16px;background:#f2eadc;font-size:1.35rem}
+    .reader-card .num{margin:1px 0 8px;font-size:.78rem;letter-spacing:.08em}
+    .reader-card h3{margin:0 0 9px;color:var(--navy);font-size:1.16rem}
+    .reader-card p{margin:0;color:var(--muted);line-height:1.75}
+    .reader-card .more{margin-top:16px}
+    .start-here .aml-library-snapshot{margin-top:30px}
+
+    /* ===== Practice Tools vNext ===== */
+    .practice-tools-home{background:linear-gradient(135deg,#f8f4ec,#fffdf9)}
+    .practice-tool-card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:32px;align-items:center;margin-top:36px;padding:32px;border:1px solid #dfd3bb;border-radius:24px;background:white;box-shadow:0 12px 32px rgba(15,23,42,.05)}
+    .practice-tool-card h3{margin:0 0 8px;color:var(--navy);font-size:1.45rem}
+    .practice-tool-sub{color:#8a6b35;font-weight:800;margin-bottom:14px}
+    .practice-tool-card p{margin:0;color:var(--muted)}
+    .practice-tool-points{display:grid;gap:10px}
+    .practice-tool-point{padding:12px 14px;border-radius:14px;background:#faf7f0;color:#536071;font-size:.94rem}
+    .practice-tool-note{margin-top:16px;color:#747d88;font-size:.84rem}
+    @media(max-width:760px){.reader-guide-grid{grid-template-columns:1fr}.reader-card--wide{grid-column:auto}.reader-card{grid-template-columns:auto 1fr}.practice-tool-card{grid-template-columns:1fr}}
+
+    /* ===== Professional Footprint vNext ===== */
+    .professional-footprint{
+      background:#f8f4ec;
+    }
+
+    .footprint-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:22px;
+      margin-top:38px;
+    }
+
+    .footprint-card{
+      display:flex;
+      flex-direction:column;
+      min-height:270px;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:white;
+      box-shadow:0 10px 28px rgba(15,23,42,.05);
+      transition:.25s ease;
+    }
+
+    .footprint-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 16px 36px rgba(15,23,42,.08);
+    }
+
+    .footprint-card .num{
+      margin-bottom:10px;
+    }
+
+    .footprint-card h3{
+      margin:0 0 12px;
+      color:var(--navy);
+      font-size:1.2rem;
+    }
+
+    .footprint-card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .footprint-highlight{
+      margin-top:18px;
+      padding-top:16px;
+      border-top:1px solid var(--line);
+      color:#6e5b35;
+      font-size:.9rem;
+      line-height:1.7;
+    }
+
+    .footprint-card .more{
+      margin-top:auto;
+      padding-top:22px;
+    }
+
+    @media(max-width:900px){
+      .footprint-grid{grid-template-columns:1fr}
+    }
+
+    /* ===== Professional Journey vNext ===== */
+    .professional-journey{
+      background:linear-gradient(135deg,#0d1b2a,#172c43);
+      color:white;
+    }
+    .professional-journey .section-title{color:white}
+    .professional-journey .section-lead{color:#cbd5e1}
+    .journey-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:44px;
+      margin-top:40px;
+      align-items:start;
+    }
+    .journey-path{
+      padding-left:24px;
+      border-left:1px solid rgba(199,167,106,.38);
+    }
+    .journey-item{margin-bottom:28px}
+    .journey-item:last-child{margin-bottom:0}
+    .journey-item small{
+      display:block;
+      color:var(--gold);
+      font-weight:800;
+      letter-spacing:.1em;
+      margin-bottom:5px;
+    }
+    .journey-item h3{margin:0 0 6px;color:white}
+    .journey-item p{margin:0;color:#aeb9c5}
+    .focus-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .focus-card{
+      padding:22px;
+      border-radius:18px;
+      border:1px solid rgba(199,167,106,.22);
+      background:rgba(255,255,255,.045);
+    }
+    .focus-card h3{margin:0 0 8px;color:white;font-size:1rem}
+    .focus-card p{margin:0;color:#aeb9c5;font-size:.9rem}
+
+    /* ===== Stay Connected vNext ===== */
+    .stay-connected{background:#fffdf9}
+    .connect-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      margin-top:36px;
+    }
+    .connect-card{
+      padding:30px;
+      border:1px solid var(--line);
+      border-radius:22px;
+      background:linear-gradient(145deg,#fff,#faf6ee);
+      box-shadow:0 12px 32px rgba(15,23,42,.05);
+    }
+    .connect-card.dark{
+      background:linear-gradient(135deg,#0d1b2a,#18324f);
+      border-color:rgba(199,167,106,.22);
+      color:white;
+    }
+    .connect-card h3{margin:0 0 10px;color:var(--navy);font-size:1.25rem}
+    .connect-card.dark h3{color:white}
+    .connect-card p{margin:0;color:var(--muted)}
+    .connect-card.dark p{color:#cbd5e1}
+    .connect-actions{margin-top:20px}
+    .connect-btn{
+      display:inline-block;
+      padding:11px 18px;
+      border-radius:999px;
+      border:1px solid var(--gold);
+      font-weight:800;
+      transition:.2s ease;
+    }
+    .connect-btn:hover{transform:translateY(-2px)}
+    .connect-card.dark .connect-btn{background:var(--gold);color:var(--navy)}
+    .connect-note{
+      margin-top:14px;
+      color:#7f8791;
+      font-size:.84rem;
+      line-height:1.65;
+    }
+    .connect-card.dark .connect-note{color:#9eabb9}
+    @media(max-width:900px){
+      .journey-grid,.connect-grid{grid-template-columns:1fr}
+      .focus-grid{grid-template-columns:1fr}
+    }
+
+
+    /* ===== Featured OT Reading ===== */
+    .featured-ot{
+      background:linear-gradient(145deg,#f7f2e8,#fffdf9);
+      border-top:1px solid #ece4d6;
+      border-bottom:1px solid #ece4d6;
+    }
+
+    .featured-ot-wrap{
+      display:grid;
+      grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+      gap:46px;
+      align-items:center;
+      max-width:1180px;
+      margin:0 auto;
+    }
+
+    .featured-ot-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 11px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid #dfd3bb;
+      color:#806634;
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.1em;
+      margin-bottom:16px;
+    }
+
+    .featured-ot h2{
+      margin:0 0 16px;
+      color:var(--navy);
+      font-family:Georgia,"Noto Serif TC","Times New Roman",serif;
+      font-size:clamp(1.8rem,3.2vw,3rem);
+      line-height:1.35;
+    }
+
+    .featured-ot-lead{
+      margin:0;
+      color:var(--muted);
+      line-height:1.9;
+      max-width:720px;
+    }
+
+    .featured-ot-card{
+      padding:30px;
+      border-radius:24px;
+      background:#fff;
+      border:1px solid var(--line);
+      box-shadow:0 14px 36px rgba(15,23,42,.06);
+    }
+
+    .featured-ot-meta{
+      color:#8c6f38;
+      font-size:.8rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      margin-bottom:10px;
+    }
+
+    .featured-ot-card h3{
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:1.42rem;
+      line-height:1.45;
+    }
+
+    .featured-ot-sub{
+      margin:0 0 18px;
+      color:#657083;
+      line-height:1.8;
+    }
+
+    .featured-ot-tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:9px;
+      margin:18px 0 22px;
+    }
+
+    .featured-ot-tag{
+      padding:7px 11px;
+      border-radius:999px;
+      background:#f8f4ec;
+      border:1px solid #e7ddcb;
+      color:#655433;
+      font-size:.78rem;
+      font-weight:750;
+    }
+
+    .featured-ot-btn{
+      display:inline-block;
+      padding:11px 18px;
+      border-radius:999px;
+      background:var(--navy);
+      color:#fff;
+      font-weight:800;
+      transition:.2s ease;
+    }
+
+    .featured-ot-btn:hover{
+      transform:translateY(-2px);
+      text-decoration:none;
+    }
+
+    @media(max-width:900px){
+      .featured-ot-wrap{
+        grid-template-columns:1fr;
+        gap:26px;
+      }
+
+      .featured-ot-card{
+        padding:24px;
+      }
+    }
+
+
+.aml-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+
+/* ===== AML Home Featured Reading Carousel v1 ===== */
+.home-reading{background:#faf8f3;overflow:hidden}
+.home-reading__head{display:flex;justify-content:space-between;gap:28px;align-items:end;margin-bottom:34px}
+.home-reading__head .section-lead{margin-bottom:0}
+.home-reading__controls{display:flex;gap:10px;flex:0 0 auto}
+.home-reading__control{width:46px;height:46px;border-radius:50%;border:1px solid #d9d1c2;background:#fff;color:var(--navy);font-size:1.25rem;cursor:pointer;transition:.2s ease;display:grid;place-items:center}
+.home-reading__control:hover{transform:translateY(-2px);border-color:var(--gold);color:#8a6a2f}
+.home-reading__viewport{overflow:hidden}
+.home-reading__track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:3px 2px 20px;scrollbar-width:none}
+.home-reading__track::-webkit-scrollbar{display:none}
+.home-reading__card{flex:0 0 calc((100% - 40px)/3);scroll-snap-align:start;background:#fff;border:1px solid #e7e1d6;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.05);transition:.25s ease;display:flex;flex-direction:column;min-width:0}
+.home-reading__card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(15,23,42,.09)}
+.home-reading__image{aspect-ratio:16/10;overflow:hidden;background:#ece7dc;display:block}
+.home-reading__image img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+.home-reading__card:hover .home-reading__image img{transform:scale(1.025)}
+.home-reading__body{padding:23px 23px 25px;display:flex;flex-direction:column;flex:1}
+.home-reading__meta{font-size:.74rem;font-weight:800;letter-spacing:.12em;color:var(--gold);text-transform:uppercase;margin-bottom:10px}
+.home-reading__card h3{font-family:Georgia,"Times New Roman",serif;color:var(--navy);font-size:1.35rem;line-height:1.42;margin:0 0 12px}
+.home-reading__card p{color:var(--muted);font-size:.94rem;margin:0 0 18px}
+.home-reading__link{margin-top:auto;color:#8a6a2f;font-size:.88rem;font-weight:800;letter-spacing:.04em}
+.home-reading__foot{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:12px}
+.home-reading__dots{display:flex;gap:8px;align-items:center}
+.home-reading__dot{width:8px;height:8px;border:0;border-radius:50%;padding:0;background:#cfc6b7;cursor:pointer;transition:.2s ease}
+.home-reading__dot.is-active{width:24px;border-radius:999px;background:var(--gold)}
+.home-reading__all{font-size:.9rem;font-weight:800;color:#8a6a2f}
+@media(max-width:980px){.home-reading__card{flex-basis:calc((100% - 20px)/2)}}
+@media(max-width:680px){.home-reading__head{align-items:start;flex-direction:column}.home-reading__controls{align-self:flex-end}.home-reading__card{flex-basis:88%}.home-reading__foot{align-items:flex-start;flex-direction:column}.home-reading__all{align-self:flex-end}}
+@media(prefers-reduced-motion:reduce){.home-reading__track{scroll-behavior:auto}.home-reading__card,.home-reading__image img,.home-reading__control{transition:none}}
+
+    /* ===== AML Resource Network ===== */
+    .resource-network{padding:84px 6vw;background:linear-gradient(180deg,#fff 0%,#f7fafc 100%);}
+    .resource-network__head{max-width:780px;margin:0 auto 30px;text-align:center;}
+    .resource-network__grid{max-width:980px;margin:28px auto 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+    .resource-card{display:block;padding:26px 28px;border:1px solid rgba(15,23,42,.10);border-radius:22px;background:#fff;text-decoration:none;color:inherit;box-shadow:0 10px 28px rgba(15,23,42,.05);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;}
+    .resource-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(15,23,42,.09);border-color:rgba(79,70,229,.22);}
+    .resource-card__type{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:10px;}
+    .resource-card h3{margin:0 0 10px;font-size:1.28rem;color:#172033;}
+    .resource-card p{margin:0;color:#566173;line-height:1.8;}
+    .resource-card .more{display:inline-block;margin-top:16px;font-weight:700;color:#4156a7;}
+    .resource-network__note{max-width:880px;margin:22px auto 0;color:#6b7280;font-size:.92rem;line-height:1.75;text-align:center;}
+    @media(max-width:760px){.resource-network{padding:64px 5vw}.resource-network__grid{grid-template-columns:1fr}.resource-card{padding:22px}}
+</style>
+<link href="favicon.svg" rel="icon" type="image/svg+xml"/>
+<!-- AML SEO / Social Preview -->
+<link href="https://allenmindlab.com/" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="Allen Mind Lab" property="og:site_name"/>
+<meta content="Allen Mind Lab | Building A Meaningful Life" property="og:title"/>
+<meta content="Allen Mind Lab｜Allen Chen 陳威勝的個人品牌網站，涵蓋職能治療、PBS、管理、教育、AI、健康促進與出版品。" property="og:description"/>
+<meta content="https://allenmindlab.com/" property="og:url"/>
+<meta content="https://allenmindlab.com/images/allen-banner.png" property="og:image"/>
+<meta content="Allen Mind Lab" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Allen Mind Lab | Building A Meaningful Life" name="twitter:title"/>
+<meta content="Allen Mind Lab｜Allen Chen 陳威勝的個人品牌網站，涵蓋職能治療、PBS、管理、教育、AI、健康促進與出版品。" name="twitter:description"/>
+<meta content="https://allenmindlab.com/images/allen-banner.png" name="twitter:image"/>
+<link href="aml-site.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Allen Mind Lab","url":"https://allenmindlab.com/","description":"Allen Mind Lab｜Allen Chen 陳威勝的個人品牌網站，涵蓋職能治療、PBS、管理、教育、AI、健康促進與出版品。","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"Allen Mind Lab","url":"https://allenmindlab.com/"}}</script>
+<style>
+/* AML 2.0 six-domain representative carousel: one complete poster at a time. */
+.home-reading__card{flex:0 0 100%}
+.home-reading__image{aspect-ratio:auto;background:#f5f2ec}
+.home-reading__image img{width:100%;height:auto;max-height:none;object-fit:contain}
+.home-reading__body{padding:24px 28px 28px}
+@media(max-width:680px){.home-reading__card{flex-basis:100%}}
+</style>
+<style>
+/* AML 2.0 Index Featured Carousel v1.1 — complete poster, compact viewport */
+#featured-reading .container{max-width:1240px;margin-left:auto;margin-right:auto}
+#featured-reading .home-reading__viewport{max-width:1180px;margin:0 auto}
+#featured-reading .home-reading__card{max-width:1180px;margin:0 auto}
+#featured-reading .home-reading__image{display:flex;align-items:center;justify-content:center;background:#f5f2ec}
+#featured-reading .home-reading__image img{width:100%;height:auto;max-height:min(58vh,560px);object-fit:contain}
+#featured-reading .home-reading__body{padding:20px 26px 24px}
+@media(max-width:680px){
+  #featured-reading .home-reading__image img{max-height:none}
+  #featured-reading .home-reading__body{padding:20px 20px 22px}
+}
+/* ===== /AML 2.0 Index Featured Carousel v1.1 ===== */
+</style>
+
+<style>
+/* AML 2.0 Index Featured Carousel v1.2 — compact information panel */
+@media (min-width:681px){
+  #featured-reading .home-reading__body{padding:14px 22px 16px;display:grid;grid-template-columns:1fr auto;column-gap:22px;align-items:start}
+  #featured-reading .home-reading__meta{grid-column:1;margin:0 0 5px;font-size:.70rem}
+  #featured-reading .home-reading__card h3{grid-column:1;margin:0 0 5px;font-size:1.18rem;line-height:1.32}
+  #featured-reading .home-reading__card p{grid-column:1;margin:0;font-size:.86rem;line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  #featured-reading .home-reading__link{grid-column:2;grid-row:1 / span 3;align-self:center;margin:0;white-space:nowrap}
+}
+/* ===== /AML 2.0 Index Featured Carousel v1.2 ===== */
+
+/* AML 2.0 Index Carousel v1.3 — Compact Showcase */
+@media (min-width: 901px){
+  #featured-reading .container{max-width:1120px;margin-left:auto;margin-right:auto}
+  #featured-reading .home-reading__viewport,
+  #featured-reading .home-reading__card{max-width:1040px;margin-left:auto;margin-right:auto}
+  #featured-reading .home-reading__image{padding:0 34px;background:#f5f2ec}
+  #featured-reading .home-reading__image img{width:auto;max-width:100%;max-height:min(54vh,520px);object-fit:contain}
+  #featured-reading .home-reading__body{padding:12px 22px 14px}
+  #featured-reading .home-reading__header{max-width:1040px;margin-left:auto;margin-right:auto}
+  #featured-reading .home-reading__foot{max-width:1040px;margin-left:auto;margin-right:auto}
+}
+/* ===== /AML 2.0 Index Carousel v1.3 ===== */
+</style>
+</head>
+<body>
+<a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
+<nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
+<details class="aml-nav-group"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
+<details class="aml-nav-group"><summary>主題館藏</summary><div class="aml-nav-panel aml-nav-panel--collection"><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a></div></details>
+<details class="aml-nav-group"><summary>閱讀路徑</summary><div class="aml-nav-panel aml-nav-panel--paths"><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div></details>
+<a class="aml-nav-direct" href="/tools.html">實用工具</a>
+<details class="aml-nav-group"><summary>資源與聯繫</summary><div class="aml-nav-panel"><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></details>
+</div><button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button><div class="aml-mobile-menu" id="aml-mobile-menu"><span class="aml-mobile-label">關於 AML</span><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a><span class="aml-mobile-label">主題館藏</span><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a><span class="aml-mobile-label">閱讀路徑</span><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a><span class="aml-mobile-label">實用工具</span><a href="/tools.html">AML 工具箱</a><span class="aml-mobile-label">資源與聯繫</span><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></nav>
+<header class="hero" id="aml-main">
+<h1 class="aml-sr-only">Allen Mind Lab｜Building A Meaningful Life</h1>
+<picture>
+<source media="(max-width: 768px)" srcset="images/allen-banner-mobile.webp"/>
+<img alt="Allen Chen - Allen Mind Lab" decoding="async" fetchpriority="high" src="images/allen-banner.webp"/>
+</picture>
+</header>
+<section class="reveal" id="about">
+<div class="about-grid">
 <div>
-<div class="eyebrow" id="pageEyebrow">工作區</div>
-<h1 id="pageTitle">個案通報</h1>
-<p class="muted" id="pageDescription">先完成事件與個案建檔；院內表單即可依目前生活區資料產出。</p>
+<div class="eyebrow">About Allen</div>
+<h2 class="section-title">
+        專業，是理解人的一種方法。
+      </h2>
+<p class="section-lead">
+        Allen Mind Lab 是一個持續整理、實驗與分享的知識實踐空間。
+        從職能治療、正向行為支持與管理實務出發，
+        延伸到教育、AI 應用，以及對生命與幸福的思考；
+        讓專業知識不只被閱讀，也能被帶回現場使用。
+      </p>
 </div>
-<div class="flow-hint" id="pageFlowHint">通報 → 追蹤 → 儀表板</div>
+<div class="quote">
+      我關心的不只是功能是否改善，
+      而是人能不能重新參與生活、
+      建立關係，
+      並找到屬於自己的意義。
+    </div>
 </div>
-<div class="card hero" id="heroCard"><div class="toolbar"><div><h1>護理師感控工作台</h1><div class="muted" id="heroSub">尚未建立測試事件｜請從下方開始</div><div style="margin-top:8px"><span class="muted mini" id="cloudStatus">☁️ 尚未連線雲端工作區</span> <span class="pill">NURSE01</span></div></div><div class="actions" style="margin-top:0"><button class="primary" onclick="startNewRegionalEvent()">＋ 1｜新增個案通報</button><button class="secondary" onclick="closeCurrentRegion()">結案／封存目前感控區</button></div></div><div id="eventSwitcher" style="margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fafcfc"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><b>全院疫情總覽</b><div class="muted mini" id="outbreakSummary">尚未建立分區事件</div></div><div class="actions" id="regionTabs" style="margin-top:0"></div></div><div class="muted mini" style="margin-top:8px">步驟1完成後產出生活區院內文件；步驟2完成後，群聚事件造冊、預防性投藥及衛生局附件固定使用全院疫情資料。AML 不自行判定是否構成群聚。</div></div><div class="kpis"><div class="kpi"><span class="muted">事件狀態</span><strong id="kpiStatus">未建立</strong></div><div class="kpi"><span class="muted">感染個案</span><strong id="kpiCases">0</strong></div><div class="kpi"><span class="muted">接觸人員</span><strong id="kpiContacts">0</strong></div><div class="kpi"><span class="muted">今日追蹤</span><strong id="kpiDaily">0</strong></div></div></div>
-<div class="card safety" id="safetyCard" style="margin-top:18px"><div class="toolbar"><div><h2 class="section-title" style="margin:0">資料保護｜Pilot 驗收模式</h2><div class="muted mini">正式資料以「更正／作廢／結案」取代直接刪除；已結案區域保留歷程，但不納入目前全院疫情與正式輸出。</div></div><button class="danger mini" onclick="resetEvent()">🧹 重設全部 Pilot 測試資料</button></div><div class="muted mini" id="archivedRegions" style="margin-top:10px">尚無已結案感控區。</div></div>
-<div class="grid" id="overviewGrid" style="margin-top:18px"><div class="card" id="overviewCard"><h2 class="section-title">目前事件</h2><div id="eventTitle"><b>尚未建立事件</b></div><p class="muted" id="eventMeta">建立後，事件層級資料會自動顯示在這裡。</p><div class="progress"><i id="eventProgress" style="width:0%"></i></div><div class="actions"><button class="primary" onclick="document.getElementById('daily').scrollIntoView({behavior:'smooth'})">開始今日追蹤</button><button class="secondary" onclick="document.getElementById('people').scrollIntoView({behavior:'smooth'})">個案／接觸者</button></div><h2 class="section-title" style="margin-top:24px">今日感控提醒</h2><div class="muted mini" id="todayReminders">建立事件後，系統會依目前資料自動提示今天還缺什麼，不需要另外打勾回報。</div></div>
-<div class="card" id="documentCard"><h2 class="section-title">文件中心｜依流程分軌產出</h2><div class="notice"><b>Pilot 1.0.2：1 個案通報＝院內表單；2 全院資料＝衛生局／群聚表單</b><br/>完成「1｜個案通報／院內感控」即可產出該生活區院內文件；群聚事件造冊、預防性投藥與衛生局附件屬全院群聚通報流程，必須完成「2｜全院資料」後才啟用。現階段仍僅使用虛構／去識別資料，正式授權完成前請勿輸入真實個資或健康資料。</div><div id="preflightPanel" style="margin:14px 0;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fafcfc"><div class="toolbar"><div><b>正式文件完成度</b><div class="muted mini">下載前先自動檢查；選填未完成不阻擋輸出，只有資料矛盾才阻擋。</div></div><span class="status wait" id="preflightBadge">尚未檢查</span></div><div class="kpis" style="grid-template-columns:repeat(4,1fr);margin-top:12px"><div class="kpi"><span class="muted">系統已完成</span><strong id="pfDone">0</strong></div><div class="kpi"><span class="muted">需要確認</span><strong id="pfConfirm">0</strong></div><div class="kpi"><span class="muted">待補／選填</span><strong id="pfMissing">0</strong></div><div class="kpi"><span class="muted">資料矛盾</span><strong id="pfConflict">0</strong></div></div><div class="mini muted" id="preflightDetails" style="margin-top:10px"></div><div class="actions"><button class="secondary mini" onclick="showPreflightDetails()">查看缺漏／一次補資料</button></div></div><div id="nineReportPanel" style="margin:14px 0;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff"><div class="toolbar"><div><b>正式報表驗收</b><div class="muted mini">院內文件＝完成 1 後依目前生活區產出；群聚／衛生局文件＝完成 2 後以全院資料彙整。</div></div><span class="status wait" id="nineReportBadge">待驗收</span></div><div id="nineReportRows" style="margin-top:10px"></div><div class="mini muted" id="nineReportLogic" style="margin-top:10px"></div></div><h3 style="margin:18px 0 6px;color:var(--accent)">📁 1｜個案通報完成後：院內感控文件</h3>
-<div class="notice" style="margin-bottom:8px"><b>單一生活區即可產出。</b><br/>這一區只使用目前個案通報／感控區資料，不要求先完成衛生局群聚通報。</div>
-<div class="doc"><span>1｜紅／黃區感控措施單</span><span><span class="status wait" id="stMeasures">資料不足</span> <button class="secondary mini" onclick="previewDoc('measures')">資料預覽</button> <button class="primary mini" onclick="downloadWord('measures')">下載原格式 Word</button></span></div>
-<div class="doc"><span>2｜感控措施會辦單</span><span><span class="status wait" id="stMemo">資料不足</span> <button class="secondary mini" onclick="previewDoc('memo')">資料預覽</button> <button class="primary mini" onclick="downloadWord('memo')">下載原格式 Word</button></span></div>
-<div class="doc"><span>3｜走動式稽查表</span><span><span class="status wait" id="stAudit">資料不足</span> <button class="secondary mini" onclick="previewDoc('audit')">資料預覽</button> <button class="primary mini" onclick="downloadWord('audit')">下載原格式 Word</button></span></div>
-<div class="doc"><span>4｜特照室清潔紀錄表</span><span><span class="status wait" id="stClean">資料不足</span> <button class="secondary mini" onclick="previewDoc('clean')">資料預覽</button> <button class="primary mini" onclick="downloadWord('clean')">下載原格式 Word</button></span></div>
-<div class="doc"><span>5｜URI／每日追蹤</span><span><span class="status wait" id="stDailyXlsx">資料不足</span> <button class="primary mini" onclick="downloadExcel('daily')">下載追蹤 Excel</button></span></div>
-<div class="doc" style="margin-top:12px;border-top:2px solid #d9e4e2;padding-top:16px"><span>✨ 院內表單一次輸出<div class="muted mini" style="margin-top:4px">完成 1｜個案通報後即可下載目前所有進行中感控區的院內文件</div></span><span><button class="primary mini" onclick="downloadInternalBundle()">下載院內表單（ZIP）</button></span></div>
-<h3 style="margin:22px 0 6px;color:var(--accent);border-top:2px solid #d9e4e2;padding-top:16px">🏛️ 2｜全院資料完成後：群聚／衛生局文件</h3>
-<div class="notice" style="margin-bottom:8px"><b>全院資料才啟用。</b><br/>群聚事件造冊表、預防性投藥名單及衛生局附件皆以全院進行中感控區彙整；未完成「2｜全院資料」時不開放正式產出。</div>
-<div class="doc"><span>1｜群聚事件造冊暨每日追蹤（全院彙整）</span><span><span class="status wait" id="stRoster">未啟用</span> <button class="primary mini" onclick="downloadExcel('roster')">下載全院 Excel</button></span></div>
-<div class="doc"><span>2｜預防性投藥名單（全院彙整）</span><span><span class="status wait" id="stProph">未啟用</span> <button class="primary mini" onclick="downloadExcel('proph')">下載全院 Excel</button></span></div>
-<div class="doc"><span>3｜衛生局附件1｜上呼吸道及不明原因發燒群聚事件造冊表</span><span><span class="status wait" id="stHB1">未啟用</span> <button class="secondary mini" onclick="previewHealth('roster')">資料預覽</button> <button class="primary mini" onclick="downloadHealthRoster()">下載衛生局原格式 Excel</button></span></div>
-<div class="doc"><span>4｜衛生局附件2｜群聚事件疫調報告</span><span><span class="status wait" id="stHB2">未啟用</span> <button class="secondary mini" onclick="previewHealth('epi')">統計／Epi-curve 預覽</button> <button class="primary mini" onclick="downloadHealthEpiDOCX()">下載衛生局原格式 Word</button></span></div>
-<div class="doc" style="margin-top:12px;border-top:2px solid #d9e4e2;padding-top:16px"><span>✨ 群聚／衛生局表單一次輸出<div class="muted mini" style="margin-top:4px">完成 2｜全院資料後，才可一次下載全院群聚與衛生局文件</div></span><span><button class="primary mini" onclick="downloadHealthBundle()">下載群聚／衛生局表單（ZIP）</button></span></div></div></div>
-<div class="card" id="newEvent" style="margin-top:18px"><h2 class="section-title" id="eventFormTitle">1｜個案通報／院內感控</h2><div class="notice hidden" id="hospitalScopeNotice" style="margin-bottom:14px"><b>全院資料｜衛生局群聚事件欄位</b><br/>只有需要彙整全院資料／辦理衛生局群聚通報時才填寫。單一生活區個案不會因建立感控事件而被要求填寫這些欄位。</div><div class="form"><div class="field"><label>感控原因</label><select id="disease"><option>A型流感</option><option>B型流感</option><option>疑似A型流感（未快篩）</option><option>疑似B型流感（未快篩）</option><option>上呼吸道感染</option><option>COVID-19</option><option>腸胃炎／疑似諾羅病毒</option><option>腸病毒</option><option>疥瘡</option><option>水痘</option><option>其他</option></select></div><div class="field hb-field hidden"><label>群聚類別（衛生局）</label><select id="clusterType"><option>上呼吸道感染</option><option>不明原因發燒</option><option>其他</option></select></div><div class="field hb-field hidden"><label>群聚事件名稱</label><input id="clusterName" placeholder="例如：2-7區 A型流感群聚事件"/></div><div class="field hb-field hidden"><label>衛生局群聚事件編號</label><input id="clusterNo" placeholder="尚未取得可先留白"/></div><div class="field hb-field hidden"><label>通報日期</label><input id="reportDate" type="date"/></div><div class="field hb-field hidden"><label>通報來源</label><select id="reportSource"><option>機構主動通報</option><option>衛生單位通知</option><option>其他</option></select></div><div class="field hb-field hidden"><label>機構／場所類別</label><input id="facilityType" value="身心障礙福利機構"/></div><div class="field hb-field hidden"><label>主要症狀</label><input id="mainSymptoms" placeholder="例如：發燒、咳嗽、流鼻水"/></div><div class="field"><label>事件涵蓋服務對象總人數</label><input id="residentPopulation" min="0" placeholder="測試數字，例如：40" type="number"/></div><div class="field"><label>事件涵蓋工作人員總人數</label><input id="staffPopulation" min="0" placeholder="測試數字，例如：12" type="number"/></div><div class="field hb-field hidden"><label>全院服務對象總人數（衛生局版）</label><input id="hospitalResidentPopulation" min="0" placeholder="全院母數，未知可留白" type="number"/></div><div class="field hb-field hidden"><label>全院工作人員總人數（衛生局版）</label><input id="hospitalStaffPopulation" min="0" placeholder="全院母數，未知可留白" type="number"/></div><div class="field"><label>小家／生活區</label><select id="area"><option value="">請選擇</option><option>1-1</option><option>1-2</option><option>2-1</option><option>2-2</option><option>3-1</option><option>3-2</option><option>2-6</option><option>2-7</option><option>2-8</option><option>3-6</option><option>3-7</option><option>3-8</option><option>4-5</option><option>4-6</option><option>活力</option><option>行政區</option></select><span class="muted mini">既有事件自動沿用目前感控區；新增感控區事件時才需選擇一次。</span></div><div class="field"><label>紅區</label><input id="red" placeholder="例如：測試特照室"/></div><div class="field"><label>黃區</label><input id="yellow" placeholder="例如：測試生活區"/></div><div class="field"><label>啟動日期時間</label><input id="start" type="datetime-local"/></div><div class="field"><label>預計解除日期時間</label><input id="end" type="datetime-local"/></div><div class="field"><label>解除隔離／紫外線消毒時間</label><input id="uvEnd" type="datetime-local"/></div><div class="field"><label>通知相關單位</label><select id="notify"><option>依現行會辦流程通知</option><option>尚未通知</option><option>已完成通知</option></select></div><div class="field full"><label>事件備註</label><textarea id="eventNote" placeholder="只輸入必要的事件層級資訊"></textarea></div></div><div class="notice hidden" id="eventEditNotice" style="margin-top:14px"><b>已儲存事件仍可更正。</b><br/>直接修改上方欄位後按「更新／儲存事件」即可；系統會保留更正前與更正後內容於稽核紀錄。若修正生活區，請確認未與其他進行中感控區重複。</div><div class="actions"><button class="primary" id="eventSaveBtn" onclick="saveEvent()">儲存事件</button><button class="secondary" id="eventCloseBtn" onclick="closeCurrentRegion()">結案／封存目前感控區</button></div><p class="muted mini" id="eventMsg"></p></div>
-<div class="card" id="people" style="margin-top:18px"><div class="toolbar"><h2 class="section-title" style="margin:0">個案／接觸者資料 <span class="pill">1｜個案通報</span> <span class="pill">人員時間軸</span></h2><span class="muted mini">Pilot 請使用 A01、B02 等去識別代號</span></div><div class="notice" style="margin-top:14px"><b>同一生活區可同時出現不同診斷。</b><br/>疾病／診斷改放在人員層級並保留日期歷程；例如「上呼吸道感染 → 疑似流感 → A型流感」不覆蓋舊資料。大量接觸者可使用批次建立。</div><h3 style="margin:18px 0 8px">基本資料</h3><div class="form"><div class="field"><label>人員代號</label><input id="personCode" placeholder="例如：A01"/></div><div class="field"><label>身分類型</label><select id="personType"><option>服務對象</option><option>工作人員</option></select></div><div class="field"><label>所屬小家／生活區</label><select id="personArea"><option value="">請選擇</option><option>1-1</option><option>1-2</option><option>2-1</option><option>2-2</option><option>3-1</option><option>3-2</option><option>2-6</option><option>2-7</option><option>2-8</option><option>3-6</option><option>3-7</option><option>3-8</option><option>4-5</option><option>4-6</option><option>活力</option><option>行政區</option></select><span class="muted mini">預設沿用目前感控區；跨區接觸者可改選其他生活區。</span></div><div class="field"><label>性別（衛生局欄位）</label><select id="personSex"><option value="">未填</option><option>男</option><option>女</option><option>其他</option></select></div><div class="field"><label>出生日期（Pilot 可留白）</label><input id="personBirth" type="date"/></div><div class="field"><label>入住／到職日期（Pilot 可留白）</label><input id="personEntry" type="date"/></div></div><h3 style="margin:18px 0 8px">本次事件</h3><div class="form"><div class="field"><label>事件角色</label><select id="personRole"><option>感染個案</option><option>密切接觸者</option></select></div><div class="field"><label>發病／開始追蹤日期</label><input id="onset" type="date"/></div><div class="field"><label>目前狀態</label><select id="personStatus"><option>追蹤中</option><option>就醫</option><option>隔離照護</option><option>住院</option><option>已解除追蹤</option></select></div><div class="field"><label>隔離／照護區</label><input id="personZone" placeholder="例如：紅區／黃區"/></div><div class="field"><label>目前／初始診斷</label><input id="personDiagnosis" list="diagnosisOptions" placeholder="例如：疑似A型流感（未快篩）、A型流感；接觸者可留白"/><datalist id="diagnosisOptions"><option value="A型流感"><option value="B型流感"><option value="疑似A型流感（未快篩）"><option value="疑似B型流感（未快篩）"><option value="上呼吸道感染"><option value="COVID-19"><option value="腸胃炎／疑似諾羅病毒"><option value="腸病毒"><option value="疥瘡"><option value="水痘"></option></option></option></option></option></option></option></option></option></option></datalist></div><div class="field"><label>診斷日期</label><input id="diagnosisDate" type="date"/><span class="muted mini">後續診斷改變請用名單中的「＋診斷」新增歷程，不覆蓋舊紀錄。</span></div></div><h3 style="margin:18px 0 8px">健康事件 <span class="muted mini">皆為選填；有資料就填一次，相關 Word／Excel 自動共用</span></h3><div class="form"><div class="field"><label>就醫日期</label><input id="visitDate" type="date"/></div><div class="field"><label>採檢日期</label><input id="testDate" type="date"/></div><div class="field"><label>檢驗結果</label><select id="personTestResult"><option value="">未填</option><option>待結果</option><option>陰性</option><option>陽性</option></select></div><div class="field"><label>抗病毒藥物</label><select id="antiviral"><option value="">未填</option><option>未使用</option><option>治療性使用</option><option>預防性使用</option></select></div><div class="field"><label>住院狀態</label><select id="hospitalized"><option value="">未填</option><option>未住院</option><option>住院中</option><option>已出院</option></select></div><div class="field"><label>疫苗資料</label><select id="vaccination"><option value="">未填／待確認</option><option>已接種</option><option>未接種</option><option>不適用</option></select></div></div><div class="actions"><button class="primary" id="personSaveBtn" onclick="savePerson()">＋ 新增一位</button><button class="secondary hidden" id="personCancelEditBtn" onclick="cancelPersonEdit()">取消修改</button><button class="secondary" onclick="toggleBatchContacts()">📋 批次建立接觸者</button></div><p class="muted mini" id="personEditMsg"></p><div class="hidden" id="batchContacts" style="margin-top:14px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fafcfc"><b>批次建立接觸者｜多欄位一次輸入</b><p class="muted mini">先設定這一批的共同值，再逐列輸入或直接從 Excel 複製貼上。每列最多 7 欄：代號、身分類型、生活區、接觸／開始追蹤日期、目前狀態、症狀、備註。後面欄位可留白，空白時自動沿用共同值。</p><div class="form" style="margin-top:10px"><div class="field"><label>共同生活區</label><select id="batchArea"><option value="">沿用目前感控區</option><option>1-1</option><option>1-2</option><option>2-1</option><option>2-2</option><option>3-1</option><option>3-2</option><option>2-6</option><option>2-7</option><option>2-8</option><option>3-6</option><option>3-7</option><option>3-8</option><option>4-5</option><option>4-6</option><option>活力</option><option>行政區</option></select></div><div class="field"><label>共同接觸／開始追蹤日期</label><input id="batchOnset" type="date"/></div><div class="field"><label>共同目前狀態</label><select id="batchStatus"><option>追蹤中</option><option>就醫</option><option>隔離照護</option><option>住院</option><option>已解除追蹤</option></select></div></div><textarea id="batchContactText" placeholder="B01	服務對象	2-7	2026-09-18	追蹤中	無	同房接觸
-B02	服務對象				咳嗽
-B03	工作人員"></textarea><div class="actions"><button class="primary" onclick="previewBatchContacts()">預覽批次名單</button><button class="secondary" onclick="toggleBatchContacts(false)">取消</button></div><div class="hidden" id="batchPreview" style="margin-top:14px"><div class="notice" id="batchPreviewSummary"></div><div style="overflow:auto"><table class="table"><thead><tr><th>代號</th><th>身分</th><th>生活區</th><th>接觸／追蹤日</th><th>狀態</th><th>症狀</th><th>備註</th></tr></thead><tbody id="batchPreviewBody"></tbody></table></div><div class="actions"><button class="primary" onclick="confirmBatchContacts()">確認一次建立</button><button class="secondary" onclick="document.getElementById('batchPreview').classList.add('hidden')">返回修改</button></div></div></div><div class="muted mini" id="peopleEmpty" style="margin-top:14px">尚無人員資料。</div><table class="table hidden" id="peopleTable"><thead><tr><th>代號</th><th>身分</th><th>角色</th><th>區域</th><th>發病／追蹤</th><th>目前診斷</th><th>診斷歷程</th><th>狀態</th><th></th></tr></thead><tbody id="peopleBody"></tbody></table></div>
-<div class="card" id="daily" style="margin-top:18px"><h2 class="section-title">每日追蹤 <span class="pill">1｜個案通報</span> <span class="pill">0.4.1 輸入減量</span></h2><div class="notice"><b>能選不打字：</b>無症狀／無異常可一鍵完成；有症狀時再展開詳細欄位。</div><div class="form"><div class="field"><label>追蹤日期</label><input id="dailyDate" type="date"/></div><div class="field"><label>人員代號</label><select id="dailyPerson"><option value="">請先新增人員</option></select></div></div><div class="actions"><button class="primary" onclick="quickNormal()">✓ 無症狀／無異常，一鍵完成</button><button class="secondary" onclick="toggleDailyDetail(true)">有症狀／需詳細紀錄</button></div><div class="form hidden" id="dailyDetail" style="margin-top:14px"><div class="field"><label>體溫（°C）</label><input id="temp" placeholder="例如：38.2" step="0.1" type="number"/></div><div class="field"><label>症狀（可複選）</label><div class="checkgrid" id="symptomChecks"><label><input type="checkbox" value="發燒"/> 發燒</label><label><input type="checkbox" value="咳嗽"/> 咳嗽</label><label><input type="checkbox" value="流鼻水／鼻塞"/> 流鼻水／鼻塞</label><label><input type="checkbox" value="喉嚨痛"/> 喉嚨痛</label><label><input type="checkbox" value="頭痛"/> 頭痛</label><label><input type="checkbox" value="肌肉痠痛"/> 肌肉痠痛</label><label><input type="checkbox" value="倦怠"/> 倦怠</label><label><input type="checkbox" value="腹瀉"/> 腹瀉</label><label><input type="checkbox" value="嘔吐"/> 嘔吐</label></div><input id="symptomOther" placeholder="其他症狀（選填）" style="margin-top:8px"/></div><div class="field"><label>就醫狀態</label><select id="medicalStatus"><option>未就醫</option><option>已就醫</option><option>已採檢</option></select><input id="medicalOther" placeholder="補充說明（選填）" style="margin-top:8px"/></div><div class="field"><label>檢驗結果</label><select id="testResult"><option>未檢驗</option><option>待結果</option><option>陰性</option><option>陽性</option></select></div><div class="field"><label>處置</label><select id="actionSelect"><option>持續健康監測</option><option>安排就醫</option><option>依醫囑服藥</option><option>隔離照護</option><option>其他</option></select><input id="actionOther" placeholder="其他處置／補充（選填）" style="margin-top:8px"/></div><div class="field full"><label>備註</label><textarea id="dailyNote" placeholder="必要時補充"></textarea></div></div><div class="actions hidden" id="detailActions"><button class="primary" onclick="addDaily()">儲存詳細追蹤</button><button class="secondary" onclick="toggleDailyDetail(false)">收起</button></div><div class="muted mini" id="dailyEmpty" style="margin-top:14px">尚無每日追蹤紀錄。</div><table class="table hidden" id="dailyTable"><thead><tr><th>日期</th><th>代號</th><th>體溫</th><th>症狀</th><th>處置</th><th></th></tr></thead><tbody id="dailyBody"></tbody></table></div>
-<div class="card" id="feedbackCard" style="margin-top:18px"><h2 class="section-title">護理同仁測試回饋</h2><p class="muted">請先用一個完整的虛構案例跑過「事件 → 人員 → 今日追蹤」，再評分。</p><div class="form"><div class="field"><label>操作是否直覺？</label><select id="fbEasy"><option value="">請選擇</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div><div class="field"><label>是否可能減少重複輸入？</label><select id="fbSave"><option value="">請選擇</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div><div class="field full"><label>最卡的地方／希望新增什麼？</label><input id="fbText" placeholder="例如：希望生活區名冊可以直接帶入"/></div></div><div class="actions"><button class="primary" onclick="saveFeedback()">儲存測試回饋</button><button class="secondary" onclick="downloadFeedback()">匯出回饋 JSON</button></div><p class="muted" id="fbMsg"></p></div>
-<div class="card" id="scopeCard" style="margin-top:18px"><h2 class="section-title">Pilot 1.0.2 測試範圍</h2><p>本版進入9表驗收前的資料保護階段：新增 Pilot 測試資料重設（二次確認＋RESET）、感控區結案／封存、以及人員與每日追蹤「作廢留痕」；已結案資料不納入目前全院疫情與正式輸出。新增事件與人員「編輯／更正」並保留更正前後稽核紀錄；已儲存感控事件可修改原因、母數、生活區、紅黃區與起訖時間等欄位，生活區更正會檢查進行中事件是否重複；感染類別新增疑似流感、COVID-19、腸胃炎／疑似諾羅、腸病毒、疥瘡、水痘。並保留下載前文件完成度與 Preflight：能由既有資料自動帶入者直接帶入；資料矛盾先攔截；真正需要專業判斷者保留人工確認。既有 DOCX／Excel 產檔引擎與 Epi-curve 保持不變。院內文件 1～4 採院方原始 Word 母版；院內文件 5 與群聚／衛生局文件 1～4 採原始 Excel／Word 母版。測試資料以 D1 雲端工作區保存，並保留目前瀏覽器 localStorage 作為暫時性本機備援。</p><div class="notice">⚠️ 請勿輸入真實姓名、身分證字號、疾病史或其他可識別健康資料。正式業務使用前仍需完成 OTP、角色權限、稽核紀錄、安全後端，並完成指定 Word／Excel 原表版型逐欄驗證。</div></div>
-</section><section class="hidden print-sheet" id="printArea"></section><div class="footer">Allen Mind Lab｜感控作業管理助手 Pilot 1.0.2</div></main>
-<script src="./assets/infection-control-app.js"></script></body></html>
+</section>
+<section class="start-here reveal" id="start-here">
+<div class="eyebrow">Reader Guide</div>
+<h2 class="section-title">第一次來 AML？從你的角色開始。</h2>
+<p class="section-lead">不用先懂 OT、PBS 或管理學，也不用先研究網站架構。先找到最接近你的身分，AML 會把適合的文章、工具與館藏入口放在前面。</p>
+<p class="start-here-audience">不是把專業變簡單，而是把進入專業的路變簡單。</p>
+<div aria-label="AML 讀者導航" class="reader-guide-grid">
+<a class="reader-card" href="pbs.html">
+<div aria-hidden="true" class="reader-icon">🤝</div>
+<div class="num">01 · 助人工作者</div>
+<h3>我在第一線陪伴與支持他人</h3>
+<p>適合社工、心理、輔導、特教與第一線支持人員。從 PBS、情緒行為支持、危機應對、團隊合作與服務設計開始。</p>
+<span class="more">從支持實務開始 →</span>
+</a>
+<a class="reader-card" href="ot.html">
+<div aria-hidden="true" class="reader-icon">🧭</div>
+<div class="num">02 · 專業人士</div>
+<h3>我想把專業做得更完整</h3>
+<p>適合 OT、醫療、復健、社政與教育專業。可從跨系統合作、管理、專業倡議、研究與服務整合深入。</p>
+<span class="more">進入專業館藏 →</span>
+</a>
+<a class="reader-card" href="management-learning.html">
+<div aria-hidden="true" class="reader-icon">🎓</div>
+<div class="num">03 · 醫健相關科系學生</div>
+<h3>我正在學習專業，也準備走進現場</h3>
+<p>適合 OT、PT、ST、護理、社工、心理與特教學生。從管理學延伸閱讀、專業角色、跨專業合作與 AI 學習開始。</p>
+<span class="more">進入學生學習入口 →</span>
+</a>
+<a class="reader-card" href="articles.html">
+<div aria-hidden="true" class="reader-icon">🏡</div>
+<div class="num">04 · 教養與照顧者</div>
+<h3>我想更理解正在陪伴的人</h3>
+<p>適合家長、照顧者與機構工作者。從情緒行為、日常支持、溝通、生活參與與資源轉銜相關文章開始。</p>
+<span class="more">找適合的文章 →</span>
+</a>
+<a class="reader-card reader-card--wide" href="articles.html">
+<div aria-hidden="true" class="reader-icon">☕</div>
+<div class="num">05 · 想先輕鬆逛逛</div>
+<h3>我沒有特定身分，只想找值得看的內容</h3>
+<p>從最新文章與精選館藏開始，不需要先懂專業名詞。沿著感興趣的主題慢慢探索就好。</p>
+<span class="more">看看最近在寫什麼 →</span>
+</a>
+</div>
+<div aria-label="AML 館藏總覽" class="aml-library-snapshot" role="navigation">
+<a class="aml-library-snapshot__item" href="articles.html"><strong data-articles-total="">34</strong><span>Articles</span><small>文章館藏</small></a>
+<a class="aml-library-snapshot__item" href="#labs"><strong>6</strong><span>Domains</span><small>主題領域</small></a>
+<a class="aml-library-snapshot__item" href="tools.html"><strong>4</strong><span>Tools</span><small>實務工具</small></a>
+<a class="aml-library-snapshot__item aml-library-snapshot__item--text" href="resources.html"><strong>Resources</strong><span>Selected Network</span><small>精選外部資源</small></a>
+</div>
+</section>
+<section class="labs" id="labs">
+<div class="eyebrow">Explore AML</div>
+<h2 class="section-title">
+    六個探索面向，
+    一個共同核心。
+  </h2>
+<p class="section-lead">
+    所有主題最後都回到同一件事：
+    如何讓人活得更有選擇、
+    更有參與，也更有意義。
+  </p>
+<div class="cards">
+<a class="card reveal" href="ot.html">
+<div class="num">01</div>
+<h3>職能治療與生活參與 <small>OT &amp; Human Occupation</small></h3>
+<p>職能、參與、環境、生活意義與人本服務。</p>
+<span class="more">探索館藏 →</span>
+</a>
+<a class="card reveal" href="pbs.html">
+<div class="num">02</div>
+<h3>正向行為支持 <small>PBS</small></h3>
+<p>正向行為支持、功能分析、團隊支持與生活品質。</p>
+<span class="more">探索館藏 →</span>
+</a>
+<a class="card reveal" href="management.html">
+<div class="num">03</div>
+<h3>管理與領導 <small>Management &amp; Leadership</small></h3>
+<p>組織管理、跨系統合作、策略與服務設計。</p>
+<span class="more">探索館藏 →</span>
+</a>
+<a class="card reveal" href="education.html">
+<div class="num">04</div>
+<h3>教育與學習 <small>Education</small></h3>
+<p>案例導向教學、課程設計、學習活動與人才培育。</p>
+<span class="more">探索館藏 →</span>
+</a>
+<a class="card reveal" href="ai.html">
+<div class="num">05</div>
+<h3>AI 與數位實踐 <small>AI × Practice</small></h3>
+<p>生成式 AI、知識管理、視覺設計與工作流程創新。</p>
+<span class="more">探索館藏 →</span>
+</a>
+<a class="card reveal" href="mind.html">
+<div class="num">06</div>
+<h3>身心與自我照顧 <small>Mind &amp; Well-being</small></h3>
+<p>健康促進、身心安頓、修習與生命反思。</p>
+<span class="more">探索館藏 →</span>
+</a>
+</div>
+</section>
+<section class="featured-ot reveal" id="featured-ot">
+<div class="featured-ot-wrap">
+<div>
+<div class="featured-ot-kicker">FEATURED OT READING · 核心閱讀</div>
+<h2>
+        從「人如何生活」出發，<br/>
+        看見 AML 的職能治療視角。
+      </h2>
+<p class="featured-ot-lead">
+        Allen Mind Lab 的主題橫跨 PBS、管理、教育、AI 與身心福祉，
+        但底層始終關心同一件事：人如何在環境中形成選擇、建立習慣、
+        發揮能力，並參與對自己有意義的生活。
+      </p>
+</div>
+<article class="featured-ot-card">
+<div class="featured-ot-meta">MOHO × AI · OT &amp; HUMAN OCCUPATION</div>
+<h3>當 AI 開始參與我們的選擇</h3>
+<p class="featured-ot-sub">
+        從 Model of Human Occupation（MOHO）看生成式 AI 如何進入人的意志、
+        習慣化、表現能力與環境，重新思考 AI 時代的職能生活。
+      </p>
+<div aria-label="MOHO 核心概念" class="featured-ot-tags">
+<span class="featured-ot-tag">Volition｜意志</span>
+<span class="featured-ot-tag">Habituation｜習慣化</span>
+<span class="featured-ot-tag">Performance Capacity｜表現能力</span>
+<span class="featured-ot-tag">Environment｜環境</span>
+</div>
+<a class="featured-ot-btn" href="articles/ai-human-occupation-moho.html">
+        Read Featured OT Article →
+      </a>
+</article>
+</div>
+</section>
+<section aria-labelledby="featured-reading-title" class="home-reading reveal" id="featured-reading">
+<div class="home-reading__head">
+<div>
+<div class="eyebrow">Six Domains · 六大領域代表閱讀</div>
+<h2 class="section-title" id="featured-reading-title">六個領域，各從一篇最能代表 AML 的文章開始。</h2>
+<p class="section-lead">每個領域只選一篇作為入口。不是追逐最新，而是讓第一次來到 AML 的讀者，用六篇文章看見職能、身心、PBS、教育、管理與 AI 如何彼此連結。</p>
+</div>
+<div aria-label="精選文章輪播控制" class="home-reading__controls">
+<button aria-label="上一組精選文章" class="home-reading__control" data-carousel-prev="" type="button">←</button>
+<button aria-label="下一組精選文章" class="home-reading__control" data-carousel-next="" type="button">→</button>
+</div>
+</div>
+<div class="home-reading__viewport">
+<div aria-label="AML 精選文章" class="home-reading__track" data-carousel-track="" tabindex="0"><article class="home-reading__card"><a aria-label="閱讀：走出治療室以後" class="home-reading__image" href="/articles/pbs-support-transition-real-life.html"><img alt="走出治療室以後" loading="lazy" src="/images/articles/pbs-support-transition-real-life-hero.webp"/></a><div class="home-reading__body"><div class="home-reading__meta">OT｜職能治療與人類職能</div><h3>走出治療室以後</h3><p>從澳洲 NDIS 行為支持者調查出發，探討諮詢型支持與情支中心密集介入的銜接，以及服務對象、照顧者、環境資源、轉銜期程與高風險家庭服務網絡。</p><a class="home-reading__link" href="/articles/pbs-support-transition-real-life.html">閱讀文章 →</a></div></article><article class="home-reading__card"><a aria-label="閱讀：AI 愈方便，人反而更需要留白？" class="home-reading__image" href="/articles/research-update-ai-digital-burnout-meditation.html"><img alt="AI 愈方便，人反而更需要留白？" loading="lazy" src="/images/articles/research-update-ai-digital-burnout-meditation-hero.webp"/></a><div class="home-reading__body"><div class="home-reading__meta">Mind｜身心與福祉</div><h3>AI 愈方便，人反而更需要留白？</h3><p>從 AI 資訊偶遇與大學生數位倦怠，到短期 self-compassion meditation 研究，思考 AI 時代如何管理資訊輸入、注意力與恢復空間。</p><a class="home-reading__link" href="/articles/research-update-ai-digital-burnout-meditation.html">閱讀文章 →</a></div></article><article class="home-reading__card"><a aria-label="閱讀：當情緒升高時，為什麼講道理常常沒有用？" class="home-reading__image" href="/articles/pbs-emotion-escalation-deescalation.html"><img alt="當情緒升高時，為什麼講道理常常沒有用？" loading="lazy" src="/images/articles/pbs-emotion-escalation-deescalation.webp"/></a><div class="home-reading__body"><div class="home-reading__meta">PBS｜正向行為支持</div><h3>當情緒升高時，為什麼講道理常常沒有用？</h3><p>當情緒升高時，講更多道理不一定更有效。從可用能力、情緒曲線、同理與低負荷對話，理解 PBS 第一線降溫的判斷。</p><a class="home-reading__link" href="/articles/pbs-emotion-escalation-deescalation.html">閱讀文章 →</a></div></article><article class="home-reading__card"><a aria-label="閱讀：當知識不再稀缺：AI 時代，教育真正要教的是把答案帶進真實世界" class="home-reading__image" href="/articles/ai-practice-refined-learning.html"><img alt="當知識不再稀缺：AI 時代，教育真正要教的是把答案帶進真實世界" loading="lazy" src="/images/articles/ai-practice-refined-learning-hero.webp"/></a><div class="home-reading__body"><div class="home-reading__meta">Education｜教育與學習</div><h3>當知識不再稀缺：AI 時代，教育真正要教的是把答案帶進真實世界</h3><p>AI 降低了產生第一版答案的成本，但真正的學習仍需要判斷、實踐、回饋與修正。本文提出「實踐淬煉學習」工作框架，重新想像未來較理想的人機共學情境。</p><a class="home-reading__link" href="/articles/ai-practice-refined-learning.html">閱讀文章 →</a></div></article><article class="home-reading__card"><a aria-label="閱讀：職能治療師為什麼需要學管理？" class="home-reading__image" href="/articles/ot-management-why-management-matters.html"><img alt="職能治療師為什麼需要學管理？" loading="lazy" src="/images/articles/ot-management-why-management-matters-hero.webp"/></a><div class="home-reading__body"><div class="home-reading__meta">Management｜管理與領導</div><h3>職能治療師為什麼需要學管理？</h3><p>從專業執行者走向管理者，理解職能治療服務背後的目標、資源、團隊、品質與組織支持。</p><a class="home-reading__link" href="/articles/ot-management-why-management-matters.html">閱讀文章 →</a></div></article><article class="home-reading__card"><a aria-label="閱讀：當 AI 開始參與我們的選擇" class="home-reading__image" href="/articles/ai-human-occupation-moho.html"><img alt="當 AI 開始參與我們的選擇" loading="lazy" src="/images/articles/ai-human-occupation-moho-hero.webp"/></a><div class="home-reading__body"><div class="home-reading__meta">AI｜AI × 實務</div><h3>當 AI 開始參與我們的選擇</h3><p>從 MOHO 看 3C 到 AI：科技如何從延伸行動，走進人的能力、 習慣、判斷、選擇與職能生活。</p><a class="home-reading__link" href="/articles/ai-human-occupation-moho.html">閱讀文章 →</a></div></article></div>
+</div>
+<div class="home-reading__foot"><div aria-label="選擇精選文章組" class="home-reading__dots" data-carousel-dots=""></div><a class="home-reading__all" data-articles-all-link="" href="articles.html">Explore All Articles →</a></div>
+</section>
+<section class="practice-tools-home reveal" id="practice-tools-home">
+<div class="eyebrow">Practice Tools</div>
+<h2 class="section-title">把知識帶回現場。</h2>
+<p class="section-lead">AML 的實務工具不是替代專業判斷，而是協助整理資訊、形成假設，讓團隊更容易開始討論與修正。</p>
+<div class="practice-tool-card">
+<div>
+<div class="num">AML TOOL · PBS</div>
+<h3>AML PBS Companion</h3>
+<div class="practice-tool-sub">正向行為支持實務夥伴</div>
+<p>協助第一線工作者整理情緒行為案例、進行 ABC 分析、提出功能假設與 PBS 策略草稿。</p>
+<p class="practice-tool-note">AI 作為整理與思考輔助，不取代現場觀察、專業評估與團隊判斷。</p>
+<a class="pub-btn" href="pbs.html" style="margin-top:22px;">Explore Tool →</a>
+</div>
+<div class="practice-tool-points">
+<div class="practice-tool-point">ABC 行為分析</div>
+<div class="practice-tool-point">行為功能假設</div>
+<div class="practice-tool-point">PBS 支持策略草稿</div>
+<div class="practice-tool-point">去識別化與專業安全提醒</div>
+</div>
+</div>
+</section>
+<section class="professional-journey reveal" id="professional-journey">
+<div class="eyebrow">Professional Journey</div>
+<h2 class="section-title">從專業出發，走向系統與教育。</h2>
+<p class="section-lead">
+    從職能治療臨床起步，逐步走向管理、跨專業合作、PBS、健康促進、AI 與教學；
+    角色不斷改變，關心人的核心沒有改變。
+  </p>
+<div class="journey-grid">
+<div class="journey-path">
+<div class="journey-item">
+<small>24 · PRACTICE</small>
+<h3>從職能治療出發</h3>
+<p>以職能、參與與生活為起點，理解人的需要與環境。</p>
+</div>
+<div class="journey-item">
+<small>MANAGEMENT</small>
+<h3>從個別服務走向團隊與系統</h3>
+<p>把臨床經驗延伸到組織管理、跨系統合作與服務設計。</p>
+</div>
+<div class="journey-item">
+<small>INTEGRATION</small>
+<h3>PBS × 健康促進 × AI</h3>
+<p>把不同方法整合成支持人、支持團隊與改善工作流程的工具。</p>
+</div>
+<div class="journey-item">
+<small>48 · EDUCATION</small>
+<h3>重返杏壇</h3>
+<p>將多年實務經驗重新帶回教室，轉化為案例、方法與可傳遞的知識。</p>
+</div>
+</div>
+<div class="focus-grid">
+<div class="focus-card">
+<h3>Positive Behavior Support</h3>
+<p>從行為功能分析、支持策略，到主管培訓與團隊文化。</p>
+</div>
+<div class="focus-card">
+<h3>Occupational Therapy Management</h3>
+<p>把策略、人力、品質與成果管理帶回職能治療教育與實務。</p>
+</div>
+<div class="focus-card">
+<h3>AI × Education</h3>
+<p>生成式 AI 導入課程、行政、知識整理與工作流程。</p>
+</div>
+<div class="focus-card">
+<h3>AML Visual System</h3>
+<p>用視覺、海報與敘事，讓複雜知識更容易理解與使用。</p>
+</div>
+</div>
+</div>
+</section>
+<section class="professional-footprint reveal" id="professional-footprint">
+<div class="eyebrow">Professional Footprint</div>
+<h2 class="section-title">研究、出版與專業軌跡。</h2>
+<p class="section-lead">
+    首頁只保留三個入口；完整的研究成果、著作與媒體／獲獎紀錄，
+    分別收錄在各自專頁中。
+  </p>
+<div class="footprint-grid">
+<a class="footprint-card" href="research.html">
+<div class="num">01 · RESEARCH</div>
+<h3>Research &amp; Academic Work</h3>
+<p>從職能治療、感覺處理與精神復健，到身心障礙服務、健康照護與實證實務。</p>
+<div class="footprint-highlight">
+        6 篇期刊論文 · 11 篇研討會論文與海報 · 3 項研究計畫與成果報告
+      </div>
+<span class="more">Explore Research →</span>
+</a>
+<a class="footprint-card" href="publications.html">
+<div class="num">02 · PUBLICATIONS</div>
+<h3>Books &amp; Professional Publications</h3>
+<p>從精神健康職能治療、臨床病歷書寫到感覺統合，將專業知識轉化為可閱讀與使用的內容。</p>
+<div class="footprint-highlight">
+        著作與專業譯作，橫跨職能治療、精神健康、感覺統合、自閉症與教育實務。
+      </div>
+<span class="more">Explore Publications →</span>
+</a>
+<a class="footprint-card" href="recognition.html">
+<div class="num">03 · RECOGNITION</div>
+<h3>Recognition &amp; Media</h3>
+<p>記錄不同階段的重要肯定、公共創新、人物專訪與媒體報導。</p>
+<div class="footprint-highlight">
+        2010 臺北市政府模範公務人員 · 2009 創意提案「創新獎」優勝 · 歷年媒體與專業紀錄
+      </div>
+<span class="more">Explore Recognition →</span>
+</a>
+</div>
+</section>
+<section class="stay-connected reveal" id="stay-connected">
+<div class="eyebrow">Stay Connected</div>
+<h2 class="section-title">找一個適合的方式，持續和 AML 保持連結。</h2>
+<p class="section-lead">
+    官方 LINE 適合快速進入文章與實務工具；Notes from the Lab 則用來接收較完整的內容更新與長篇分享。
+  </p>
+<div class="connect-grid">
+<article class="connect-card">
+<div class="eyebrow">OFFICIAL LINE</div>
+<h3>Allen Mind Lab 官方 LINE</h3>
+<p>快速進入最新文章、實務工具與 AML 相關內容，作為日常探索與連結入口。</p>
+<div class="connect-actions">
+<a class="connect-btn" href="https://line.me/R/ti/p/%40468pnsft" rel="noopener noreferrer" target="_blank">
+          加入 AML 官方 LINE →
+        </a>
+</div>
+<div class="connect-note">
+        LINE ID：@468pnsft。此帳號不作為緊急求助管道。
+      </div>
+</article>
+<article class="connect-card dark">
+<div class="eyebrow">NOTES FROM THE LAB</div>
+<h3>訂閱 AML 電子報</h3>
+<p>不追求天天更新，只分享值得留下的文章、實務觀察、AI 應用與生命反思。</p>
+<div class="connect-actions">
+<a class="connect-btn" href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">
+          Subscribe｜訂閱 Notes from the Lab →
+        </a>
+</div>
+<div class="connect-note">
+        訂閱服務由 Buttondown 提供，可隨時取消訂閱。
+      </div>
+</article>
+</div>
+</section>
+<section class="reveal" id="contact-home" style="background:#fffdf9;">
+<div class="eyebrow">Contact</div>
+<h2 class="section-title">
+    Let’s Connect.
+  </h2>
+<p class="section-lead">
+    演講、授課、專業交流、出版媒體與合作邀約，
+    歡迎透過 Allen Mind Lab 與我聯繫。
+  </p>
+<p style="margin-top:26px;">
+<a href="contact.html" style="display:inline-block;padding:11px 20px;border-radius:999px;border:1px solid #c7a76a;color:#0d1b2a;font-weight:800;">
+      Contact Allen →
+    </a>
+</p>
+</section>
+<section class="ending reveal">
+<div class="ending-title">
+    美感，讓人駐足。<br/>
+    智慧，讓人沉澱。<br/>
+    價值，讓人同行。
+  </div>
+<div class="ending-brand">
+    ALLEN MIND LAB · BUILDING A MEANINGFUL LIFE.
+  </div>
+</section>
+<footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>實用工具</h4><a href="/tools.html">AML 工具箱</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
+<script>
+  const reveals = document.querySelectorAll(".reveal");
+
+  function revealOnScroll(){
+    reveals.forEach((element) => {
+      const windowHeight = window.innerHeight;
+      const elementTop = element.getBoundingClientRect().top;
+
+      if(elementTop < windowHeight - 100){
+        element.classList.add("active");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
+</script>
+<script>
+(async () => {
+  const track = document.querySelector('[data-carousel-track]');
+  if (!track) return;
+
+  const totalNode = document.querySelector('[data-articles-total]');
+  const allLink = document.querySelector('[data-articles-all-link]');
+  const dotsWrap = document.querySelector('[data-carousel-dots]');
+  const prev = document.querySelector('[data-carousel-prev]');
+  const next = document.querySelector('[data-carousel-next]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = null;
+
+  function normalizeText(value){
+    return String(value || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function renderFeaturedFromManifest(data){
+    if (!data || !Array.isArray(data.articles)) return false;
+
+    const total = Number(data.counts?.total) || data.articles.length;
+    if (totalNode) totalNode.textContent = String(total);
+    if (allLink) allLink.textContent = 'Explore All Articles →';
+
+    const bySlug = new Map(data.articles.map(article => [article.slug, article]));
+    let featured = [];
+
+    if (Array.isArray(data.featuredReading) && data.featuredReading.length){
+      featured = data.featuredReading.map(slug => bySlug.get(slug)).filter(Boolean);
+    } else {
+      featured = data.articles
+        .filter(article => article.featured)
+        .sort((a,b) => (a.featuredRank ?? 999) - (b.featuredRank ?? 999));
+    }
+
+    if (!featured.length) return false;
+
+    const fragment = document.createDocumentFragment();
+    featured.forEach(article => {
+      const card = document.createElement('article');
+      card.className = 'home-reading__card';
+
+      const href = article.articlePath || `/articles/${article.slug}.html`;
+      const hero = article.hero || article.ogImage || '';
+      const meta = article.featuredMeta || {};
+      const kicker = normalizeText(meta.kicker || article.cardMeta || article.date || '');
+      const title = normalizeText(article.title);
+      const summary = normalizeText(article.summary);
+
+      const imageLink = document.createElement('a');
+      imageLink.className = 'home-reading__image';
+      imageLink.href = href;
+      imageLink.setAttribute('aria-label', `閱讀：${title}`);
+      if (hero){
+        const img = document.createElement('img');
+        img.src = hero;
+        img.alt = title;
+        img.loading = 'lazy';
+        imageLink.appendChild(img);
+      }
+
+      const body = document.createElement('div');
+      body.className = 'home-reading__body';
+
+      const metaNode = document.createElement('div');
+      metaNode.className = 'home-reading__meta';
+      metaNode.textContent = kicker;
+
+
+      const h3 = document.createElement('h3');
+      h3.textContent = title;
+
+      const p = document.createElement('p');
+      p.textContent = summary;
+
+      const link = document.createElement('a');
+      link.className = 'home-reading__link';
+      link.href = href;
+      link.textContent = 'Read Article →';
+
+      body.append(metaNode, h3, p, link);
+      card.append(imageLink, body);
+      fragment.appendChild(card);
+    });
+
+    track.replaceChildren(fragment);
+    return true;
+  }
+
+  try {
+    const response = await fetch('/data/articles-manifest.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error(`Manifest HTTP ${response.status}`);
+    const data = await response.json();
+    renderFeaturedFromManifest(data);
+  } catch (error) {
+    // 靜態 HTML 是正式 fallback：manifest 載入失敗時，首頁仍可正常使用。
+    console.info('AML manifest fallback active.', error);
+  }
+
+  const cards = () => Array.from(track.querySelectorAll('.home-reading__card'));
+  let activeIndex = 0;
+
+  const visibleCount = () => 1;
+  const maxIndex = () => Math.max(0, cards().length - visibleCount());
+
+  function nearestIndex(){
+    const list = cards();
+    if (!list.length) return 0;
+    let best = 0;
+    let bestDistance = Infinity;
+    list.forEach((card, i) => {
+      const distance = Math.abs(card.offsetLeft - track.scrollLeft);
+      if (distance < bestDistance){
+        bestDistance = distance;
+        best = i;
+      }
+    });
+    return Math.min(best, maxIndex());
+  }
+
+  function renderDots(){
+    if (!dotsWrap) return;
+    dotsWrap.innerHTML = '';
+    for(let i=0;i<=maxIndex();i++){
+      const dot=document.createElement('button');
+      dot.type='button';
+      dot.className='home-reading__dot';
+      dot.setAttribute('aria-label',`前往第 ${i+1} 個精選位置`);
+      dot.addEventListener('click',()=>{ stop(); go(i); start(); });
+      dotsWrap.appendChild(dot);
+    }
+    updateDots();
+  }
+
+  function updateDots(){
+    if (!dotsWrap) return;
+    activeIndex = nearestIndex();
+    Array.from(dotsWrap.children).forEach((dot,i)=>dot.classList.toggle('is-active',i===activeIndex));
+  }
+
+  function go(index){
+    const list = cards();
+    if (!list.length) return;
+    const max = maxIndex();
+    const target = index > max ? 0 : (index < 0 ? max : index);
+    activeIndex = target;
+    track.scrollTo({
+      left: list[target].offsetLeft,
+      behavior: reduceMotion ? 'auto' : 'smooth'
+    });
+    window.setTimeout(updateDots, reduceMotion ? 0 : 450);
+  }
+
+  function advance(){ go(nearestIndex()+1); }
+  function start(){
+    if(reduceMotion || cards().length <= visibleCount()) return;
+    stop();
+    timer=window.setInterval(advance,7000);
+  }
+  function stop(){ if(timer){window.clearInterval(timer);timer=null;} }
+
+  prev?.addEventListener('click',()=>{ stop(); go(nearestIndex()-1); start(); });
+  next?.addEventListener('click',()=>{ stop(); go(nearestIndex()+1); start(); });
+  track.addEventListener('scroll',()=>window.requestAnimationFrame(updateDots));
+  track.addEventListener('mouseenter',stop);
+  track.addEventListener('mouseleave',start);
+  track.addEventListener('focusin',stop);
+  track.addEventListener('focusout',start);
+  track.addEventListener('touchstart',stop,{passive:true});
+  track.addEventListener('touchend',start,{passive:true});
+  document.addEventListener('visibilitychange',()=>{ document.hidden ? stop() : start(); });
+  window.addEventListener('resize',()=>{
+    activeIndex=Math.min(nearestIndex(),maxIndex());
+    renderDots();
+    go(activeIndex);
+  });
+
+  renderDots();
+  start();
+})();
+</script>
+<script>
+/* AML 2.0 navigation: keep only one desktop dropdown open at a time. */
+(function () {
+  const nav = document.querySelector('.aml-global-nav');
+  if (!nav) return;
+  const groups = Array.from(nav.querySelectorAll('.aml-desktop-links .aml-nav-group'));
+  if (!groups.length) return;
+
+  function closeAll(except) {
+    groups.forEach(group => {
+      if (group !== except) group.removeAttribute('open');
+    });
+  }
+
+  groups.forEach(group => {
+    group.addEventListener('toggle', () => {
+      if (group.open) closeAll(group);
+    });
+  });
+
+  document.addEventListener('pointerdown', event => {
+    if (!nav.contains(event.target)) closeAll();
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeAll();
+      const active = document.activeElement;
+      if (active && active.matches('.aml-nav-group summary')) active.blur();
+    }
+  });
+
+  nav.addEventListener('click', event => {
+    const link = event.target.closest('.aml-nav-panel a, .aml-nav-direct');
+    if (link) closeAll();
+  });
+})();
+</script>
+<script defer="" src="aml-site.js"></script>
+</body>
+</html>
