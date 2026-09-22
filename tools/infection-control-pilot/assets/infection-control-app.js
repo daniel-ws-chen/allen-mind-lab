@@ -1,1 +1,525 @@
 
+const KEY='aml_ic_pilot05';const LEGACY_KEY='aml_ic_pilot04';const WORKSPACE_ID='NURSE01';let state={event:null,people:[],daily:[],regionalEvents:[],activeEventId:null,outbreak:null,auditLog:[]};let cloudSaveTimer=null;
+function regionSnapshot(){return state.event?{id:state.activeEventId||('EVT-'+Date.now()),event:structuredClone(state.event),people:structuredClone(state.people||[]),daily:structuredClone(state.daily||[])}:null}
+function saveActiveRegion(){if(!state.event)return;const snap=regionSnapshot();state.activeEventId=snap.id;const i=(state.regionalEvents||[]).findIndex(x=>x.id===snap.id);if(i>=0)state.regionalEvents[i]=snap;else state.regionalEvents.push(snap);if(!state.outbreak)state.outbreak={id:'OUTBREAK-'+Date.now(),disease:state.event.disease||'',clusterType:state.event.clusterType||'',clusterName:state.event.clusterName||`全院 ${state.event.disease||'群聚'}事件`,clusterNo:state.event.clusterNo||'',reportDate:state.event.reportDate||'',reportSource:state.event.reportSource||'',facilityType:state.event.facilityType||'身心障礙福利機構',mainSymptoms:state.event.mainSymptoms||''}}
+function allRegions(){saveActiveRegion();return (state.regionalEvents||[]).filter(x=>x&&x.event&&!x.archived)}
+function hospitalState(){const regs=allRegions(),ob=state.outbreak||{},people=[],daily=[];let resPop=0,staffPop=0;for(const r of regs){resPop+=Number(r.event.residentPopulation||0);staffPop+=Number(r.event.staffPopulation||0);const map=new Map();for(const p of r.people||[]){const np={...structuredClone(p),id:`${r.id}:${p.id}`,sourceArea:r.event.area||p.area||''};map.set(String(p.id),np.id);people.push(np)}for(const d of r.daily||[])daily.push({...structuredClone(d),personId:map.get(String(d.personId))||`${r.id}:${d.personId}`})}const starts=regs.map(r=>r.event.start).filter(Boolean).sort(),ends=regs.map(r=>r.event.end).filter(Boolean).sort();const disease=ob.disease||regs[0]?.event.disease||'',areas=[...new Set(regs.map(r=>r.event.area).filter(Boolean))];return{event:{...(regs[0]?.event||{}),...ob,disease,area:areas.join('、')||'全院',clusterName:ob.clusterName||`全院 ${disease||'疫情'}資料`,residentPopulation:String(ob.hospitalResidentPopulation||''),staffPopulation:String(ob.hospitalStaffPopulation||''),start:starts[0]||'',end:ends.at(-1)||'',red:areas.join('、'),yellow:areas.join('、')},people,daily}}
+function withHospitalScope(fn){saveActiveRegion();const keep={event:state.event,people:state.people,daily:state.daily};const h=hospitalState();state.event=h.event;state.people=h.people;state.daily=h.daily;try{return fn()}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily}}
+async function withHospitalScopeAsync(fn){saveActiveRegion();const keep={event:state.event,people:state.people,daily:state.daily};const h=hospitalState();state.event=h.event;state.people=h.people;state.daily=h.daily;try{return await fn()}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily}}
+function switchRegionalEvent(id){saveActiveRegion();viewingHospitalData=false;const r=(state.regionalEvents||[]).find(x=>x.id===id);if(!r)return;state.activeEventId=r.id;state.event=structuredClone(r.event);state.people=structuredClone(r.people||[]);state.daily=structuredClone(r.daily||[]);localStorage.setItem(KEY,JSON.stringify(state));render();scheduleCloudSave();window.scrollTo({top:0,behavior:'smooth'})}
+function startNewRegionalEvent(){saveActiveRegion();viewingHospitalData=false;state.activeEventId=null;state.event=null;state.people=[];state.daily=[];render();document.getElementById('newEvent').scrollIntoView({behavior:'smooth'});document.getElementById('eventMsg').textContent='新增分區感控事件：請填寫生活區與啟動時間；既有分區資料不會被清除。'}
+
+function setCloudStatus(text,kind='muted'){const x=document.getElementById('cloudStatus');if(!x)return;x.textContent=text;x.className=kind==='ok'?'status':kind==='warn'?'status wait':'muted mini'}
+function normalizePeople(xs){return Array.isArray(xs)?xs.map(p=>{const hist=Array.isArray(p.diagnosisHistory)?p.diagnosisHistory:[];if(!hist.length&&p.diagnosis)hist.push({id:'DX-MIGRATED-'+(p.id||Date.now()),date:p.diagnosisDate||p.testDate||p.onset||'',diagnosis:p.diagnosis,note:'既有資料轉入'});return {...p,sex:p.sex||'',birth:p.birth||'',entry:p.entry||'',zone:p.zone||'',visitDate:p.visitDate||'',testDate:p.testDate||'',testResult:p.testResult||'',antiviral:p.antiviral||'',hospitalized:p.hospitalized||'',vaccination:p.vaccination||'',diagnosisHistory:hist}}):[]}
+function personRegion(p){const raw=String(p?.area||'').trim();const m=raw.match(/\d+\s*-\s*\d+/);return (m?m[0]:raw).replace(/\s+/g,'')}
+function repairMixedLegacyRegion(base){if((base.regionalEvents||[]).length!==1)return base;const src=base.regionalEvents[0],people=normalizePeople(src.people||[]),areas=[...new Set(people.map(personRegion).filter(Boolean))];if(areas.length<2)return base;const originalArea=String(src.event?.area||'').replace(/\s+/g,'');const daily=Array.isArray(src.daily)?src.daily:[];const rebuilt=areas.map((area,idx)=>{const ps=people.filter(p=>personRegion(p)===area),ids=new Set(ps.map(p=>String(p.id))),isOriginal=area===originalArea;const ev={...structuredClone(src.event||{}),area};if(!isOriginal){ev.start='';ev.end='';ev.uvEnd='';ev.red='';ev.yellow='';ev.note=[ev.note,'由 Pilot 0.9.0a 依既有人員所屬區域復原；請確認本區事件起訖時間與紅／黃區。'].filter(Boolean).join('；')}return{id:isOriginal?src.id:`EVT-RECOVERED-${area.replace(/[^A-Za-z0-9_-]/g,'-')}-${idx}`,event:ev,people:ps,daily:daily.filter(d=>ids.has(String(d.personId)))}});const active=rebuilt.find(r=>r.event.area.replace(/\s+/g,'')===originalArea)||rebuilt[0];base.regionalEvents=rebuilt;base.activeEventId=active.id;base.event=structuredClone(active.event);base.people=structuredClone(active.people);base.daily=structuredClone(active.daily);base._recoveredRegions=true;return base}
+function normalizeState(x){const base={event:x&&x.event&&typeof x.event==='object'?x.event:null,people:normalizePeople(x&&x.people),daily:Array.isArray(x&&x.daily)?x.daily:[],regionalEvents:Array.isArray(x&&x.regionalEvents)?x.regionalEvents.map(r=>({id:r.id,event:r.event,people:normalizePeople(r.people),daily:Array.isArray(r.daily)?r.daily:[],archived:!!r.archived,archivedAt:r.archivedAt||'',archiveReason:r.archiveReason||''})):[],activeEventId:x&&x.activeEventId||null,outbreak:x&&x.outbreak||null,auditLog:Array.isArray(x&&x.auditLog)?x.auditLog:[]};if(base.event&&!base.regionalEvents.length){const id='EVT-MIGRATED';base.activeEventId=id;base.regionalEvents=[{id,event:structuredClone(base.event),people:structuredClone(base.people),daily:structuredClone(base.daily)}];base.outbreak={id:'OUTBREAK-MIGRATED',disease:base.event.disease||'',clusterType:base.event.clusterType||'',clusterName:base.event.clusterName||`全院 ${base.event.disease||'群聚'}事件`,clusterNo:base.event.clusterNo||'',reportDate:base.event.reportDate||'',reportSource:base.event.reportSource||'',facilityType:base.event.facilityType||'身心障礙福利機構',mainSymptoms:base.event.mainSymptoms||''}}return repairMixedLegacyRegion(base)}
+function loadLocal(){try{const raw=localStorage.getItem(KEY)||localStorage.getItem(LEGACY_KEY);const x=JSON.parse(raw||'null');if(x&&typeof x==='object')state=normalizeState(x)}catch(e){};render()}
+async function loadCloud(){setCloudStatus('☁️ 正在讀取雲端資料…');try{const r=await fetch(`/api/infection-control/state/${WORKSPACE_ID}`,{cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status}`);const j=await r.json();if(j.success&&j.found&&j.data&&typeof j.data==='object'){state=normalizeState(j.data);localStorage.setItem(KEY,JSON.stringify(state));render();setCloudStatus('☁️ 已載入雲端資料','ok')}else{setCloudStatus('☁️ 雲端尚無資料；目前使用本機測試資料','muted')}}catch(e){console.error('Pilot cloud load failed:',e);setCloudStatus('⚠️ 雲端讀取失敗；目前使用本機備援','warn')}}
+async function saveCloud(){setCloudStatus('☁️ 正在儲存…');try{const r=await fetch(`/api/infection-control/state/${WORKSPACE_ID}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(state)});if(!r.ok)throw new Error(`HTTP ${r.status}`);const j=await r.json();if(!j.success)throw new Error(j.message||'save failed');setCloudStatus('☁️ 已儲存至雲端','ok')}catch(e){setCloudStatus('⚠️ 雲端儲存失敗；本機資料仍已保留','warn')}}
+function scheduleCloudSave(){clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(saveCloud,350)}
+function persist(){saveActiveRegion();localStorage.setItem(KEY,JSON.stringify(state));render();scheduleCloudSave()}
+async function mockLogin(){sessionStorage.setItem('aml_ic_pilot_auth','1');document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');loadLocal();applyWorkspaceMode();window.scrollTo(0,0);await loadCloud();applyWorkspaceMode()}
+function v(id){return document.getElementById(id).value.trim()}
+function saveEvent(){
+ if(viewingHospitalData){
+  if(!state.outbreak)state.outbreak={id:'OUTBREAK-'+Date.now()};
+  Object.assign(state.outbreak,{healthBureauEnabled:true,disease:state.event?.disease||state.outbreak.disease||'',clusterType:v('clusterType'),clusterName:v('clusterName'),clusterNo:v('clusterNo'),reportDate:v('reportDate'),reportSource:v('reportSource'),facilityType:v('facilityType'),mainSymptoms:v('mainSymptoms'),hospitalResidentPopulation:v('hospitalResidentPopulation'),hospitalStaffPopulation:v('hospitalStaffPopulation')});
+  persist();document.getElementById('eventMsg').textContent='✓ 全院／衛生局群聚事件資料已儲存。單區事件資料未被改動。';return;
+ }
+ const area=v('area'),start=v('start');if(!area||!start){document.getElementById('eventMsg').textContent='請至少填寫生活區與啟動日期時間。';return}
+ const duplicate=(state.regionalEvents||[]).find(r=>r&&r.event&&!r.archived&&r.id!==state.activeEventId&&r.event.area===area);if(duplicate){document.getElementById('eventMsg').textContent=`此生活區「${area}」已有進行中的感控事件，請確認是否選錯區域。`;return}
+ const before=state.event?structuredClone(state.event):null;
+ state.event={...(before||{}),disease:v('disease'),residentPopulation:v('residentPopulation'),staffPopulation:v('staffPopulation'),area,red:v('red'),yellow:v('yellow'),start,end:v('end'),uvEnd:v('uvEnd')||v('end'),notify:v('notify'),note:v('eventNote')};
+ if(!state.activeEventId)state.activeEventId='EVT-'+Date.now();
+ if(before&&JSON.stringify(before)!==JSON.stringify(state.event)){state.auditLog=state.auditLog||[];state.auditLog.push({id:'AUD-'+Date.now(),time:new Date().toISOString(),action:'更正感控事件',reason:'使用者重新儲存事件資料',area:state.event.area||'',eventId:state.activeEventId,before,after:structuredClone(state.event)})}
+ if(!state.outbreak)state.outbreak={id:'OUTBREAK-'+Date.now(),disease:state.event.disease||''};else if(!state.outbreak.disease)state.outbreak.disease=state.event.disease||'';
+ persist();document.getElementById('eventMsg').textContent=before?'✓ 事件資料已更新；更正前內容已保留稽核紀錄。':'✓ 測試事件已先保存在本機，並同步至雲端。';
+}
+function resetEvent(){const x=prompt('這是 Pilot 驗收專用功能。\n將清除 NURSE01 全部測試事件、人員、診斷歷程、每日追蹤與作廢／結案紀錄，並同步覆寫雲端。\n\n若確定要重設，請輸入 RESET：','');if(x!=='RESET'){if(x!==null)alert('未輸入 RESET，未清除任何資料。');return}if(!confirm('最後確認：真的要清除全部 Pilot 測試資料？此操作無法復原。'))return;state={event:null,people:[],daily:[],regionalEvents:[],activeEventId:null,outbreak:null,auditLog:[]};localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);render();scheduleCloudSave();alert('Pilot 測試資料已重設。系統模板與9份報表格式未受影響。');}
+function closeCurrentRegion(){if(!state.event||!state.activeEventId){alert('目前沒有可結案的感控區。');return}saveActiveRegion();const r=(state.regionalEvents||[]).find(x=>x.id===state.activeEventId);if(!r)return;const reason=prompt(`結案／封存 ${r.event?.area||'目前感控區'} 的原因或備註：`,'感控作業結束');if(reason===null)return;if(!confirm(`確認結案 ${r.event?.area||'目前感控區'}？\n\n結案後：\n• 保留歷史資料，可回查摘要\n• 不納入目前全院疫情統計\n• 不納入全案 ZIP 正式輸出`))return;r.archived=true;r.archivedAt=new Date().toISOString();r.archiveReason=reason.trim()||'感控作業結束';state.auditLog=state.auditLog||[];state.auditLog.push({id:'AUD-'+Date.now(),time:r.archivedAt,action:'結案感控區',reason:r.archiveReason,area:r.event?.area||'',eventId:r.id});const next=(state.regionalEvents||[]).find(x=>x&&x.event&&!x.archived);if(next){state.activeEventId=next.id;state.event=structuredClone(next.event);state.people=structuredClone(next.people||[]);state.daily=structuredClone(next.daily||[])}else{state.activeEventId=null;state.event=null;state.people=[];state.daily=[]}persist();alert('已結案並封存；歷史資料仍保留。')}
+function viewArchivedSummary(id){saveActiveRegion();const r=(state.regionalEvents||[]).find(x=>x.id===id&&x.archived);if(!r)return;const cases=(r.people||[]).filter(p=>p.role==='感染個案').length,contacts=(r.people||[]).filter(p=>p.role==='密切接觸者').length;alert(`【已結案感控區】\n生活區：${r.event?.area||'—'}\n期間：${fmt(r.event?.start)} → ${fmt(r.event?.end)}\n感染個案：${cases} 人\n接觸者：${contacts} 人\n結案時間：${fmt((r.archivedAt||'').slice(0,16))}\n結案原因：${r.archiveReason||'—'}\n\n此資料目前僅供回查，不納入目前疫情與正式輸出。`)}
+function currentDiagnosis(p){const h=(p?.diagnosisHistory||[]).filter(x=>x&&x.diagnosis).slice().sort((a,b)=>String(a.date||'').localeCompare(String(b.date||''))||Number(a.id||0)-Number(b.id||0));return h.length?h.at(-1):null}
+let editingPersonId=null;
+let viewingHospitalData=false;
+function clearPersonForm(){['personCode','personBirth','personEntry','onset','personZone','personDiagnosis','diagnosisDate','visitDate','testDate'].forEach(x=>document.getElementById(x).value='');['personSex','personTestResult','antiviral','hospitalized','vaccination'].forEach(x=>document.getElementById(x).selectedIndex=0);document.getElementById('personType').selectedIndex=0;document.getElementById('personRole').selectedIndex=0;document.getElementById('personStatus').selectedIndex=0;document.getElementById('personArea').value=state.event?.area||''}
+function savePerson(){const code=v('personCode');if(!code){alert('請填人員代號，例如 A01。');return}if(state.people.some(p=>p.code===code&&p.id!==editingPersonId)){alert('此代號已存在，請使用另一個代號。');return}const dx=v('personDiagnosis'),dxDate=v('diagnosisDate');const base={code,type:v('personType'),role:v('personRole'),area:(v('personArea')||state.event?.area||''),sex:v('personSex'),birth:v('personBirth'),entry:v('personEntry'),onset:v('onset'),status:v('personStatus'),zone:v('personZone'),visitDate:v('visitDate'),testDate:v('testDate'),testResult:v('personTestResult'),antiviral:v('antiviral'),hospitalized:v('hospitalized'),vaccination:v('vaccination')};
+if(editingPersonId!==null){const p=state.people.find(x=>x.id===editingPersonId);if(!p)return;const before=structuredClone(p),hist=Array.isArray(p.diagnosisHistory)?p.diagnosisHistory:[],current=currentDiagnosis(p);Object.assign(p,base);if(dx){if(current){const target=hist.find(x=>x.id===current.id);if(target){target.diagnosis=dx;target.date=dxDate}}else hist.push({id:Date.now()+1,date:dxDate,diagnosis:dx,note:'更正時補登'})}else if(current){const target=hist.find(x=>x.id===current.id);if(target){target.diagnosis='';target.date=dxDate}}p.diagnosisHistory=hist;state.auditLog=state.auditLog||[];state.auditLog.push({id:'AUD-'+Date.now(),time:new Date().toISOString(),action:'更正人員資料',reason:'使用者於工作台編輯更正',area:state.event?.area||'',personId:p.id,before,after:structuredClone(p)});editingPersonId=null;persist();clearPersonForm();document.getElementById('personEditMsg').textContent='✓ 已完成更正，原資料已留存在稽核紀錄。';return}
+const diagnosisHistory=dx?[{id:Date.now()+1,date:dxDate,diagnosis:dx,note:''}]:[];state.people.push({id:Date.now(),...base,diagnosisHistory});persist();clearPersonForm();document.getElementById('personEditMsg').textContent=''}
+function editPerson(id){const p=state.people.find(x=>x.id===id);if(!p)return;editingPersonId=id;const dx=currentDiagnosis(p);const set=(id,val)=>{const el=document.getElementById(id);if(el)el.value=val??''};set('personCode',p.code);set('personType',p.type);set('personRole',p.role);set('personArea',p.area);set('personSex',p.sex);set('personBirth',p.birth);set('personEntry',p.entry);set('onset',p.onset);set('personStatus',p.status);set('personZone',p.zone);set('personDiagnosis',dx?.diagnosis||'');set('diagnosisDate',dx?.date||'');set('visitDate',p.visitDate);set('testDate',p.testDate);set('personTestResult',p.testResult);set('antiviral',p.antiviral);set('hospitalized',p.hospitalized);set('vaccination',p.vaccination);document.getElementById('personSaveBtn').textContent='✓ 儲存修改';document.getElementById('personCancelEditBtn').classList.remove('hidden');document.getElementById('personEditMsg').textContent=`正在更正 ${p.code}｜此功能用於修正誤登；若是病程真的改變，請使用名單中的「＋診斷」。`;document.getElementById('people').scrollIntoView({behavior:'smooth',block:'start'})}
+function cancelPersonEdit(){editingPersonId=null;clearPersonForm();const b=document.getElementById('personSaveBtn');if(b)b.textContent='＋ 新增一位';const c=document.getElementById('personCancelEditBtn');if(c)c.classList.add('hidden');const m=document.getElementById('personEditMsg');if(m)m.textContent=''}
+function addDiagnosis(id){const p=state.people.find(x=>x.id===id);if(!p)return;const diagnosis=prompt(`新增 ${p.code} 的診斷／狀態（不會覆蓋舊紀錄）：`,currentDiagnosis(p)?.diagnosis||'');if(diagnosis===null||!diagnosis.trim())return;const date=prompt('診斷／狀態變更日期（YYYY-MM-DD）：',localISODate());if(date===null)return;if(date&&!/^\d{4}-\d{2}-\d{2}$/.test(date.trim())){alert('日期格式請使用 YYYY-MM-DD；若日期尚未確認可留白。');return}p.diagnosisHistory=Array.isArray(p.diagnosisHistory)?p.diagnosisHistory:[];p.diagnosisHistory.push({id:Date.now(),date:date.trim(),diagnosis:diagnosis.trim(),note:''});persist()}
+function toggleBatchContacts(force){const x=document.getElementById('batchContacts');if(!x)return;const show=typeof force==='boolean'?force:x.classList.contains('hidden');x.classList.toggle('hidden',!show);if(show){const a=document.getElementById('batchArea');if(a&&!a.value)a.value=state.event?.area||'';document.getElementById('batchContactText').focus()}else{const p=document.getElementById('batchPreview');if(p)p.classList.add('hidden')}}
+let batchContactDraft=[];
+function parseBatchContactLine(line,i){const parts=line.split(/\t|,/).map(x=>x.trim());const code=parts[0]||'',typeRaw=parts[1]||'服務對象',type=/工作|員工|staff/i.test(typeRaw)?'工作人員':'服務對象',area=parts[2]||v('batchArea')||state.event?.area||'',onset=parts[3]||v('batchOnset')||'',status=parts[4]||v('batchStatus')||'追蹤中',symptoms=parts[5]||'',note=parts[6]||'';return {row:i+1,code,type,area,onset,status,symptoms,note}}
+function previewBatchContacts(){if(!state.event){alert('請先建立感控事件。');return}const raw=v('batchContactText');if(!raw){alert('請先貼上或輸入接觸者名單。');return}const existing=new Set(state.people.map(p=>String(p.code).toUpperCase())),seen=new Set(),valid=[],issues=[];raw.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).forEach((line,i)=>{const r=parseBatchContactLine(line,i);if(!r.code){issues.push(`第${r.row}列缺少代號`);return}if(existing.has(r.code.toUpperCase())||seen.has(r.code.toUpperCase())){issues.push(`${r.code}：代號已存在或本批重複`);return}if(r.onset&&!/^\d{4}-\d{2}-\d{2}$/.test(r.onset)){issues.push(`${r.code}：日期格式不正確`);return}seen.add(r.code.toUpperCase());valid.push(r)});batchContactDraft=valid;const body=document.getElementById('batchPreviewBody');body.innerHTML=valid.map(r=>`<tr><td>${esc(r.code)}</td><td>${esc(r.type)}</td><td>${esc(r.area||'—')}</td><td>${esc(r.onset||'—')}</td><td>${esc(r.status)}</td><td>${esc(r.symptoms||'—')}</td><td>${esc(r.note||'—')}</td></tr>`).join('');document.getElementById('batchPreviewSummary').innerHTML=`辨識到 <b>${valid.length}</b> 筆可建立接觸者${issues.length?`；<b>${issues.length}</b> 筆需修正：${esc(issues.join('、'))}`:'，可確認後一次建立。'}<br><span class="mini">服務對象 ${valid.filter(x=>x.type==='服務對象').length} 人｜工作人員 ${valid.filter(x=>x.type==='工作人員').length} 人</span>`;document.getElementById('batchPreview').classList.remove('hidden')}
+function confirmBatchContacts(){if(!batchContactDraft.length){alert('目前沒有可建立的接觸者，請先預覽名單。');return}const now=Date.now();batchContactDraft.forEach((r,i)=>state.people.push({id:now+i+1,code:r.code,type:r.type,role:'密切接觸者',area:r.area,sex:'',birth:'',entry:'',onset:r.onset,status:r.status,zone:state.event?.yellow||'',visitDate:'',testDate:'',testResult:'',antiviral:'',hospitalized:'',vaccination:'',initialSymptoms:r.symptoms,note:r.note,diagnosisHistory:[]}));const n=batchContactDraft.length;batchContactDraft=[];persist();document.getElementById('batchContactText').value='';document.getElementById('batchOnset').value='';document.getElementById('batchPreview').classList.add('hidden');toggleBatchContacts(false);alert(`已一次建立 ${n} 位接觸者。`)}
+function batchAddContacts(){previewBatchContacts()}
+function removePerson(id){const p=state.people.find(x=>x.id===id);if(!p)return;const reason=prompt(`作廢 ${p.code} 這筆人員資料的原因：\n例如：重複建立、誤登、測試資料`,'');if(reason===null||!reason.trim())return;if(!confirm(`確認將 ${p.code} 標記為作廢？\n作廢後不納入9份報表，但會保留稽核痕跡。`))return;state.auditLog=state.auditLog||[];state.auditLog.push({id:'AUD-'+Date.now(),time:new Date().toISOString(),action:'作廢人員',reason:reason.trim(),area:state.event?.area||'',record:structuredClone(p),daily:structuredClone(state.daily.filter(d=>d.personId===id))});state.people=state.people.filter(x=>x.id!==id);state.daily=state.daily.filter(d=>d.personId!==id);persist()}
+function toggleDailyDetail(show){document.getElementById('dailyDetail').classList.toggle('hidden',!show);document.getElementById('detailActions').classList.toggle('hidden',!show)}
+function selectedSymptoms(){const xs=[...document.querySelectorAll('#symptomChecks input:checked')].map(x=>x.value);const other=v('symptomOther');if(other)xs.push(other);return xs.join('、')||'無'}
+function quickNormal(){const pid=Number(document.getElementById('dailyPerson').value),date=v('dailyDate');if(!pid||!date){alert('請先選擇人員並確認追蹤日期。');return}state.daily.push({id:Date.now(),personId:pid,date,temp:'',symptoms:'無症狀',medical:'未就醫／未檢驗',action:'持續健康監測',note:'',quick:true});persist();}
+function addDaily(){const pid=Number(document.getElementById('dailyPerson').value),date=v('dailyDate');if(!pid||!date){alert('請選擇人員並填寫追蹤日期。');return}const ms=v('medicalStatus'),mo=v('medicalOther'),tr=v('testResult');const medical=[ms,tr,mo].filter(Boolean).join('／');const as=v('actionSelect'),ao=v('actionOther');const action=as==='其他'?(ao||'其他'):([as,ao].filter(Boolean).join('／'));state.daily.push({id:Date.now(),personId:pid,date,temp:v('temp'),symptoms:selectedSymptoms(),medical,action,note:v('dailyNote')});persist();['temp','symptomOther','medicalOther','actionOther','dailyNote'].forEach(x=>document.getElementById(x).value='');document.querySelectorAll('#symptomChecks input').forEach(x=>x.checked=false);document.getElementById('medicalStatus').selectedIndex=0;document.getElementById('testResult').selectedIndex=0;document.getElementById('actionSelect').selectedIndex=0;toggleDailyDetail(false)}
+function removeDaily(id){const d=state.daily.find(x=>x.id===id);if(!d)return;const p=state.people.find(x=>x.id===d.personId);const reason=prompt(`作廢 ${p?.code||'此人'} ${d.date||''} 的追蹤紀錄原因：`,'');if(reason===null||!reason.trim())return;state.auditLog=state.auditLog||[];state.auditLog.push({id:'AUD-'+Date.now(),time:new Date().toISOString(),action:'作廢每日追蹤',reason:reason.trim(),area:state.event?.area||'',record:structuredClone(d)});state.daily=state.daily.filter(x=>x.id!==id);persist()}
+function fmt(x){if(!x)return '—';return x.replace('T',' ')}
+function localISODate(d=new Date()){const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
+function eventStats(){const cases=state.people.filter(p=>p.role==='感染個案'),contacts=state.people.filter(p=>p.role==='密切接觸者'),resCases=cases.filter(p=>p.type==='服務對象').length,staffCases=cases.filter(p=>p.type==='工作人員').length,resPop=Number(state.event?.residentPopulation||0),staffPop=Number(state.event?.staffPopulation||0),totalPop=resPop+staffPop,totalCases=cases.length,validPop=totalPop>0&&totalCases<=totalPop&&resCases<=resPop&&staffCases<=staffPop;return{cases,contacts,resCases,staffCases,resPop,staffPop,totalPop,totalCases,attackRate:validPop?((totalCases/totalPop)*100).toFixed(1):'',populationValid:validPop,visits:cases.filter(p=>p.visitDate||p.status==='就醫').length,positive:cases.filter(p=>p.testResult==='陽性').length,antiviral:cases.filter(p=>/使用/.test(p.antiviral||'')&&!/未使用/.test(p.antiviral||'')).length,hospitalized:cases.filter(p=>/住院中|已出院/.test(p.hospitalized||'')||p.status==='住院').length}}
+function healthBureauActive(){return state.outbreak?.healthBureauEnabled===true}
+function preflightReport(){
+ const h=hospitalState(),e=state.event||{},cases=state.people.filter(p=>p.role==='感染個案'),allCases=h.people.filter(p=>p.role==='感染個案');
+ const missing=[],conflicts=[],confirm=[];let done=0;
+ const req=[['感控原因',e.disease],['生活區',e.area],['啟動日期時間',e.start],['事件涵蓋服務對象母數',e.residentPopulation],['事件涵蓋工作人員母數',e.staffPopulation]];
+ req.forEach(([n,v])=>v!==''&&v!=null?done++:missing.push(n));
+ if(cases.length)done++;else missing.push('至少1名感染個案');
+ cases.forEach(p=>{if(p.type)done++;else missing.push(`${p.code} 身分類型`);if(p.area)done++;else missing.push(`${p.code} 所屬生活區`);if(p.onset)done++;else missing.push(`${p.code} 發病日期`);[['性別',p.sex],['出生日期',p.birth],['入住／到職日期',p.entry],['就醫日期',p.visitDate],['採檢日期',p.testDate],['檢驗結果',p.testResult],['抗病毒藥物',p.antiviral],['住院狀態',p.hospitalized],['疫苗資料',p.vaccination]].forEach(([n,v])=>v?done++:confirm.push(`${p.code} ${n}`))});
+ const st=eventStats();if(st.resPop&&st.resCases>st.resPop)conflicts.push(`服務對象發病 ${st.resCases} 人，大於本區服務對象母數 ${st.resPop} 人`);if(st.staffPop&&st.staffCases>st.staffPop)conflicts.push(`工作人員發病 ${st.staffCases} 人，大於本區工作人員母數 ${st.staffPop} 人`);if(st.totalPop&&st.totalCases>st.totalPop)conflicts.push(`總發病 ${st.totalCases} 人，大於本區總母數 ${st.totalPop} 人`);
+ const hr=Number(state.outbreak?.hospitalResidentPopulation||0),hs=Number(state.outbreak?.hospitalStaffPopulation||0),hRes=allCases.filter(p=>p.type==='服務對象').length,hStaff=allCases.filter(p=>p.type==='工作人員').length;if(healthBureauActive()){if(hr)done++;else missing.push('全院服務對象總人數（衛生局版）');if(hs)done++;else missing.push('全院工作人員總人數（衛生局版）');if(hr&&hRes>hr)conflicts.push(`全院服務對象發病 ${hRes} 人，大於全院服務對象母數 ${hr} 人`);if(hs&&hStaff>hs)conflicts.push(`全院工作人員發病 ${hStaff} 人，大於全院工作人員母數 ${hs} 人`);['接觸史／可能感染途徑','衛生局處置與專業研判','平面配置圖','結案分類'].forEach(x=>confirm.push(x));}
+ return{done,missing:[...new Set(missing)],conflicts:[...new Set(conflicts)],confirm:[...new Set(confirm)]};
+}
+function nineReportAudit(){
+ const e=state.event||{},people=state.people||[],h=hospitalState(),cases=people.filter(p=>p.role==='感染個案'),hCases=h.people.filter(p=>p.role==='感染個案'),hContacts=h.people.filter(p=>p.role==='密切接觸者');
+ const areaBase=!!(e.area&&e.start),hasPeople=people.length>0,hasCase=cases.length>0,hHasPeople=h.people.length>0,hHasCase=hCases.length>0,hb=healthBureauActive();
+ const reports=[
+  {no:'1',name:'紅／黃區感控措施單',scope:'目前生活區｜步驟1',ok:areaBase,note:areaBase?'個案通報完成即可產出':'尚缺生活區／啟動日期'},
+  {no:'2',name:'感控措施會辦單',scope:'目前生活區｜步驟1',ok:areaBase&&hasCase,note:!areaBase?'尚缺事件資料':!hasCase?'尚缺感染個案':'個案通報完成即可產出'},
+  {no:'3',name:'走動式稽查表',scope:'目前生活區｜步驟1',ok:areaBase,note:areaBase?'個案通報完成即可產出':'尚缺事件資料'},
+  {no:'4',name:'特照室清潔紀錄表',scope:'目前生活區｜步驟1',ok:areaBase,note:areaBase?'個案通報完成即可產出':'尚缺事件資料'},
+  {no:'5',name:'URI／每日追蹤',scope:'目前生活區｜步驟1',ok:areaBase&&hasPeople,note:!hasPeople?'尚缺追蹤人員':'可依每日紀錄持續更新'},
+  {no:'1',name:'群聚事件造冊暨每日追蹤',scope:'全院｜步驟2',ok:hb&&hHasPeople,note:!hb?'需先完成 2｜全院資料':(hHasPeople?'全院資料可彙整':'全院尚缺人員')},
+  {no:'2',name:'預防性投藥名單',scope:'全院｜步驟2',ok:hb&&hContacts.length>0,note:!hb?'需先完成 2｜全院資料':(!hContacts.length?'全院尚缺密切接觸者':'全院基本名單可產出')},
+  {no:'3｜衛生局附件1',name:'群聚事件造冊表',scope:'全院｜步驟2',ok:hb&&hHasPeople,note:!hb?'需先完成 2｜全院資料':(hHasPeople?'全院人員可彙整':'全院尚缺人員')},
+  {no:'4｜衛生局附件2',name:'群聚事件疫調報告',scope:'全院｜步驟2',ok:hb&&hHasCase,note:!hb?'需先完成 2｜全院資料':(!hHasCase?'全院尚缺感染個案':hCases.some(p=>p.onset)?'全院統計／Epi curve 可建立':'統計可建立；Epi curve 待發病日')}
+ ];
+ const logic=[];const st=eventStats(),hr=Number(state.outbreak?.hospitalResidentPopulation||0),hs=Number(state.outbreak?.hospitalStaffPopulation||0),hRes=hCases.filter(p=>p.type==='服務對象').length,hStaff=hCases.filter(p=>p.type==='工作人員').length;
+ if(st.resPop&&st.resCases>st.resPop)logic.push(`目前生活區：服務對象感染個案 ${st.resCases} 人 > 母數 ${st.resPop} 人`);
+ if(st.staffPop&&st.staffCases>st.staffPop)logic.push(`目前生活區：工作人員感染個案 ${st.staffCases} 人 > 母數 ${st.staffPop} 人`);
+ if(hb&&hr&&hRes>hr)logic.push(`全院：服務對象感染個案 ${hRes} 人 > 母數 ${hr} 人`);
+ if(hb&&hs&&hStaff>hs)logic.push(`全院：工作人員感染個案 ${hStaff} 人 > 母數 ${hs} 人`);
+ return{reports,logic,ready:reports.filter(x=>x.ok).length};
+}
+function renderNineReportAudit(){const box=document.getElementById('nineReportRows'),badge=document.getElementById('nineReportBadge'),logic=document.getElementById('nineReportLogic');if(!box||!badge)return;const a=nineReportAudit();box.innerHTML=a.reports.map(r=>`<div class="doc"><span><b>${r.no} ${esc(r.name)}</b><div class="muted mini">資料範圍：${esc(r.scope)}</div></span><span><span class="status ${r.ok?'':'wait'}">${r.ok?'可產出':'待補資料'}</span><div class="muted mini" style="margin-top:4px;text-align:right">${esc(r.note)}</div></span></div>`).join('');badge.className=a.logic.length?'status danger':(a.ready===9?'status':'status wait');badge.textContent=a.logic.length?'有邏輯矛盾':`${a.ready}/9 可產出`;logic.innerHTML=a.logic.length?`🔴 跨表邏輯檢查：${a.logic.map(esc).join('；')}`:'🟢 目前未發現分子大於母數的跨表矛盾；正式送出前仍須逐表人工核對。';}
+function renderPreflight(){const r=preflightReport(),badge=document.getElementById('preflightBadge');if(!badge)return;document.getElementById('pfDone').textContent=r.done;document.getElementById('pfConfirm').textContent=r.confirm.length;document.getElementById('pfMissing').textContent=r.missing.length;document.getElementById('pfConflict').textContent=r.conflicts.length;badge.className=r.conflicts.length?'status danger':(r.missing.length?'status wait':'status');badge.textContent=r.conflicts.length?'請先修正':(r.missing.length?'可產出・尚有選填':'可產出');const d=document.getElementById('preflightDetails');d.innerHTML=r.conflicts.length?`🔴 ${esc(r.conflicts[0])}${r.conflicts.length>1?`；另有 ${r.conflicts.length-1} 項矛盾`:''}`:r.missing.length?`🟡 可先產出；尚可補：${r.missing.slice(0,3).map(esc).join('、')}${r.missing.length>3?'…':''}`:'🟢 必要資料未發現矛盾；下載後仍請人工確認正式內容。'}
+function showPreflightDetails(){const r=preflightReport(),parts=[];if(r.conflicts.length)parts.push('【請先修正】\n'+r.conflicts.map(x=>'• '+x).join('\n'));if(r.missing.length)parts.push('【待補／選填（不阻擋輸出）】\n'+r.missing.map(x=>'• '+x).join('\n'));if(r.confirm.length)parts.push('【下載後／送出前仍需人工確認】\n'+r.confirm.map(x=>'• '+x).join('\n'));alert(parts.join('\n\n')||'目前未發現必要資料缺漏或矛盾。');}
+function assertPreflightForFormalOutput(){const r=preflightReport();if(r.conflicts.length){alert('正式文件暫停產出：\n'+r.conflicts.map(x=>'• '+x).join('\n')+'\n\n請先修正資料矛盾。');return false}return true}
+function renderTodayReminders(today){const box=document.getElementById('todayReminders');if(!box)return;if(!state.event){box.innerHTML='建立事件後，系統會依目前資料自動提示今天還缺什麼，不需要另外打勾回報。';return}const people=state.people;const doneIds=new Set(state.daily.filter(d=>d.date===today).map(d=>Number(d.personId)));const pending=people.filter(p=>!doneIds.has(Number(p.id)));const hasCase=people.some(p=>p.role==='感染個案');const hasContact=people.some(p=>p.role==='密切接觸者');let items=[];if(!people.length)items.push('⚠️ 尚未建立感染個案／接觸人員名單');else if(pending.length)items.push(`🔔 今日症狀追蹤尚缺 ${pending.length} 人：${pending.slice(0,5).map(p=>esc(p.code)).join('、')}${pending.length>5?'…':''}`);else items.push('✓ 今日列管人員追蹤已完成');if(!hasCase)items.push('⚠️ 2｜感控措施會辦單尚缺感染個案');if(healthBureauActive()&&!hospitalState().people.some(p=>p.role==='密切接觸者'))items.push('⚠️ 全院群聚通報已啟用，但 2｜預防性投藥名單尚缺密切接觸者');if(people.length)items.push(`📋 5｜院內每日追蹤 Excel 可依目前資料更新`);if(healthBureauActive()&&hospitalState().people.length)items.push('🏛️ 1｜全院群聚事件造冊表可彙整產出');if(state.event&&hasCase)items.push('📄 1～4｜院內 Word 文件已可依目前資料產出');if(healthBureauActive()&&state.event&&people.length)items.push('🏛️ 衛生局附件1已具備基礎事件／人員資料');if(healthBureauActive()&&state.event&&hasCase){const st=eventStats();items.push(st.totalPop?'🏛️ 衛生局附件2統計母數已具備；Preflight 通過後才計算侵襲率':'⚠️ 衛生局附件2尚缺事件涵蓋總人數，侵襲率暫不計算')}box.innerHTML=items.map(x=>`<div class="task">${x}</div>`).join('')}
+function renderEventSwitcher(){const tabs=document.getElementById('regionTabs'),sum=document.getElementById('outbreakSummary'),arch=document.getElementById('archivedRegions');if(!tabs||!sum)return;saveActiveRegion();const all=state.regionalEvents||[],regs=all.filter(r=>r&&r.event&&!r.archived),archived=all.filter(r=>r&&r.event&&r.archived),h=hospitalState(),cases=h.people.filter(p=>p.role==='感染個案').length;sum.textContent=regs.length?`${state.outbreak?.disease||h.event.disease||'疫情事件'}｜${regs.length} 個進行中感控區｜全院 ${cases} 例${state._recoveredRegions?'｜已依既有名單復原分區，請確認各區起訖時間':''}`:'目前無進行中感控區';tabs.innerHTML=regs.map(r=>{const n=(r.people||[]).filter(p=>p.role==='感染個案').length,active=r.id===state.activeEventId;return `<button class="${active?'primary':'secondary'} mini" onclick="switchRegionalEvent('${r.id}')">${esc(r.event.area||'未命名區')}｜${n}例</button>`}).join('')+(regs.length?`<button class="${viewingHospitalData?'primary':'secondary'} mini" onclick="showHospitalData()">2｜全院資料</button><button class="secondary mini" onclick="previewHospitalSummary()">全院疫情總覽</button>`:'');if(arch)arch.innerHTML=archived.length?`<b>歷史／已結案 ${archived.length} 區：</b> `+archived.map(r=>`<button class="secondary mini" onclick="viewArchivedSummary('${r.id}')">${esc(r.event.area||'未命名區')}｜已結案</button>`).join(' '):'尚無已結案感控區。'}
+function syncEventForm(e){if(!e)return;const fields={disease:e.disease,residentPopulation:e.residentPopulation,staffPopulation:e.staffPopulation,area:e.area,red:e.red,yellow:e.yellow,start:e.start,end:e.end,uvEnd:e.uvEnd,notify:e.notify,eventNote:e.note};Object.entries(fields).forEach(([id,val])=>{const el=document.getElementById(id);if(el&&document.activeElement!==el)el.value=val??''})}
+function syncHospitalForm(){const o=state.outbreak||{};const fields={clusterType:o.clusterType,clusterName:o.clusterName,clusterNo:o.clusterNo,reportDate:o.reportDate,reportSource:o.reportSource,facilityType:o.facilityType||'身心障礙福利機構',mainSymptoms:o.mainSymptoms,hospitalResidentPopulation:o.hospitalResidentPopulation,hospitalStaffPopulation:o.hospitalStaffPopulation};Object.entries(fields).forEach(([id,val])=>{const el=document.getElementById(id);if(el&&document.activeElement!==el)el.value=val??''})}
+function showHospitalData(){saveActiveRegion();viewingHospitalData=true;render();document.getElementById('newEvent')?.scrollIntoView({behavior:'smooth'});document.getElementById('eventMsg').textContent='目前為「2｜全院資料」模式：此處才顯示衛生局群聚事件欄位；單區個案不需填寫。'}
+function previewHospitalSummary(){return withHospitalScope(()=>previewHealthRegional('epi'))}
+function render(){const e=state.event;renderEventSwitcher();syncEventForm(e);if(viewingHospitalData)syncHospitalForm();document.querySelectorAll('.hb-field').forEach(x=>x.classList.toggle('hidden',!viewingHospitalData));const hbn=document.getElementById('hospitalScopeNotice');if(hbn)hbn.classList.toggle('hidden',!viewingHospitalData);const eft=document.getElementById('eventFormTitle');if(eft)eft.textContent=viewingHospitalData?'2｜全院資料／衛生局群聚事件':(e?'1｜個案通報／院內感控（可更正）':'1｜個案通報／院內感控');const esb=document.getElementById('eventSaveBtn');if(esb)esb.textContent=viewingHospitalData?'儲存全院／衛生局資料':(e?'更新／儲存事件':'儲存事件');const ecb=document.getElementById('eventCloseBtn');if(ecb)ecb.classList.toggle('hidden',viewingHospitalData);const een=document.getElementById('eventEditNotice');if(een)een.classList.toggle('hidden',viewingHospitalData||!e);renderPreflight();renderNineReportAudit();const ea=document.getElementById('area');if(ea){ea.value=e?.area||'';ea.disabled=!!viewingHospitalData}const pa=document.getElementById('personArea');if(pa)pa.value=e?.area||'';const hr=document.getElementById('hospitalResidentPopulation'),hs=document.getElementById('hospitalStaffPopulation');if(hr&&document.activeElement!==hr)hr.value=state.outbreak?.hospitalResidentPopulation||'';if(hs&&document.activeElement!==hs)hs.value=state.outbreak?.hospitalStaffPopulation||'';document.getElementById('kpiStatus').textContent=e?'進行中':'未建立';document.getElementById('kpiCases').textContent=state.people.filter(p=>p.role==='感染個案').length;document.getElementById('kpiContacts').textContent=state.people.filter(p=>p.role==='密切接觸者').length;const today=localISODate();document.getElementById('kpiDaily').textContent=state.daily.filter(d=>d.date===today).length;if(e){document.getElementById('heroSub').textContent=`${e.disease}｜${e.area}｜測試事件`;document.getElementById('eventTitle').innerHTML=`<b>${esc(e.area)}｜${esc(e.disease)}</b>`;document.getElementById('eventMeta').textContent=`${fmt(e.start)} → ${fmt(e.end)} ｜ 紅區：${e.red||'—'} ｜ 黃區：${e.yellow||'—'}`;document.getElementById('eventProgress').style.width='60%';updateDocStatus()}else{document.getElementById('heroSub').textContent='尚未建立測試事件｜請從下方開始';document.getElementById('eventTitle').innerHTML='<b>尚未建立事件</b>';document.getElementById('eventMeta').textContent='建立後，事件層級資料會自動顯示在這裡。';document.getElementById('eventProgress').style.width='0%';updateDocStatus()}
+const psb=document.getElementById('personSaveBtn'),pcb=document.getElementById('personCancelEditBtn');if(psb)psb.textContent=editingPersonId!==null?'✓ 儲存修改':'＋ 新增一位';if(pcb)pcb.classList.toggle('hidden',editingPersonId===null);
+const pb=document.getElementById('peopleBody');pb.innerHTML='';state.people.forEach(p=>{const dx=currentDiagnosis(p),hist=(p.diagnosisHistory||[]).filter(x=>x&&x.diagnosis).slice().sort((a,b)=>String(a.date||'').localeCompare(String(b.date||'')));const histText=hist.length?hist.map(x=>`${x.date||'日期待確認'} ${x.diagnosis}`).join(' → '):'—';pb.insertAdjacentHTML('beforeend',`<tr><td>${esc(p.code)}</td><td>${esc(p.type)}</td><td>${esc(p.role)}</td><td>${esc(p.area||'—')}</td><td>${esc(p.onset||'—')}</td><td>${dx?`${esc(dx.diagnosis)}<br><span class="muted mini">${esc(dx.date||'日期待確認')}</span>`:'—'}</td><td class="mini">${esc(histText)}</td><td>${esc(p.status)}</td><td><button class="secondary mini" onclick="editPerson(${p.id})">編輯／更正</button> <button class="secondary mini" onclick="addDiagnosis(${p.id})">＋診斷</button> <button class="secondary mini" onclick="removePerson(${p.id})">作廢</button></td></tr>`)});document.getElementById('peopleEmpty').classList.toggle('hidden',state.people.length>0);document.getElementById('peopleTable').classList.toggle('hidden',state.people.length===0);
+const sel=document.getElementById('dailyPerson');const old=sel.value;sel.innerHTML=state.people.length?'<option value="">請選擇</option>':'<option value="">請先新增人員</option>';state.people.forEach(p=>sel.insertAdjacentHTML('beforeend',`<option value="${p.id}">${esc(p.code)}｜${esc(p.role)}</option>`));if([...sel.options].some(o=>o.value===old))sel.value=old;
+const db=document.getElementById('dailyBody');db.innerHTML='';state.daily.slice().reverse().forEach(d=>{const p=state.people.find(x=>x.id===d.personId);db.insertAdjacentHTML('beforeend',`<tr><td>${esc(d.date)}</td><td>${esc(p?p.code:'—')}</td><td>${esc(d.temp||'—')}</td><td>${esc(d.symptoms||'—')}</td><td>${esc(d.action||'—')}</td><td><button class="secondary mini" onclick="removeDaily(${d.id})">作廢</button></td></tr>`)});document.getElementById('dailyEmpty').classList.toggle('hidden',state.daily.length>0);document.getElementById('dailyTable').classList.toggle('hidden',state.daily.length===0);if(!document.getElementById('dailyDate').value)document.getElementById('dailyDate').value=today;renderTodayReminders(today);}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function saveFeedback(){const d={time:new Date().toISOString(),easy:v('fbEasy'),save:v('fbSave'),note:v('fbText')};localStorage.setItem('aml_ic_feedback',JSON.stringify(d));document.getElementById('fbMsg').textContent='✓ 已儲存在這台裝置的瀏覽器中。'}
+function downloadFeedback(){const d=localStorage.getItem('aml_ic_feedback')||'{}';const b=new Blob([d],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='aml-infection-control-feedback.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+
+function updateDocStatus(){
+ const e=state.event, hasEvent=!!(e&&e.area&&e.start), hasCase=state.people.some(p=>p.role==='感染個案');
+ const set=(id,ok,label='資料已備妥',off='資料不足')=>{const x=document.getElementById(id);if(!x)return;x.textContent=ok?label:off;x.classList.toggle('wait',!ok)};
+ set('stMeasures',hasEvent);set('stAudit',hasEvent);set('stClean',hasEvent);set('stMemo',hasEvent&&hasCase,hasEvent&&hasCase?'資料已備妥':'尚缺感染個案');set('stDailyXlsx',hasEvent&&state.people.length>0,hasEvent&&state.people.length>0?'可更新':'尚缺人員');
+ const hs=hospitalState(),hHas=!!hs.event&&hs.people.length>0,hCase=hs.people.some(p=>p.role==='感染個案'),hContact=hs.people.some(p=>p.role==='密切接觸者');
+ if(!healthBureauActive()){
+  ['stRoster','stProph','stHB1','stHB2'].forEach(id=>{const x=document.getElementById(id);if(x){x.textContent='需先完成 2｜全院資料';x.classList.add('wait')}});
+ }else{
+  set('stRoster',hHas,hHas?'全院資料可彙整':'尚缺人員');set('stProph',hContact,hContact?'全院基本名單可產出':'尚缺密切接觸者');set('stHB1',hHas,hHas?'全院資料可彙整':'尚缺人員');set('stHB2',hCase,hCase?(hs.people.some(p=>p.role==='感染個案'&&p.onset)?'全院統計／曲線可預覽':'全院統計可預覽・曲線待發病日'):'尚缺感染個案');
+ }
+}
+function rocDate(x,withTime=false){if(!x)return '—';const d=new Date(x);if(isNaN(d))return x;const y=d.getFullYear()-1911,m=d.getMonth()+1,day=d.getDate();let z=`${y}/${m}/${day}`;if(withTime)z+=` ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;return z}
+function primaryCase(){return state.people.find(p=>p.role==='感染個案')}
+function docHead(title,type){return `<div class="no-print actions"><button class="primary" onclick="downloadWord('${type}')">下載原格式 Word</button><button class="secondary" onclick="closePreview()">返回工作台</button></div><h2>${title}｜資料預覽</h2><p class="print-note"><b>資料預覽：</b>本頁只供核對即將帶入母版的資料。正式文件請下載原格式 Word，人工確認內容後再列印及簽章。</p>`}
+function previewDoc(type){if(!state.event){alert('請先建立感控事件。');return}if(type==='memo'&&!primaryCase()){alert('會辦單尚缺感染個案，請先新增感染個案。');return}const e=state.event,p=primaryCase();let h='';
+ if(type==='measures'){h=`<div class="no-print actions"><button class="primary" onclick="downloadWord('measures')">下載原格式 Word</button><button class="secondary" onclick="closePreview()">返回工作台</button></div><h2>感控措施單｜資料預覽</h2><p class="print-note"><b>資料預覽：</b>以下為即將帶入院方正式 Word 母版的內容；正式文件請下載原格式 Word，人工確認內容後再列印及簽章。</p><table><tr><th>生活區</th><td>${esc(e.area)}</td></tr><tr><th>感控原因</th><td>${esc(e.disease)}密切接觸</td></tr><tr><th>紅區</th><td>${esc(e.red||'—')}</td></tr><tr><th>黃區／活動區</th><td>${esc(e.yellow||e.area||'—')}</td></tr><tr><th>特殊照顧期間</th><td>${rocDate(e.start,true)} ～ ${rocDate(e.end,true)}</td></tr></table><p class="print-note">※ 管制原則、動線說明、圖片及簽名欄均沿用院方原始 Word 母版。</p>`}
+ if(type==='memo'){h=`<div class="no-print actions"><button class="primary" onclick="downloadWord('memo')">下載原格式 Word</button><button class="secondary" onclick="closePreview()">返回工作台</button></div><h2>感控措施會辦單｜資料預覽</h2><p class="print-note"><b>資料預覽：</b>以下為即將帶入院方正式 Word 母版的內容；正式文件請下載原格式 Word，人工確認內容後再列印及簽章。簽核仍由執行人員完成。</p><table><tr><th>生活區</th><td>${esc(e.area)}</td></tr><tr><th>原因</th><td>${esc(e.disease)}密切接觸</td></tr><tr><th>日期</th><td>${rocDate(e.start)}</td></tr><tr><th>照顧時間</th><td>${rocDate(e.start,true)} ～ ${rocDate(e.end,true)}</td></tr><tr><th>確診者</th><td>${esc(p.code)}（${esc(e.red||p.area||'—')}）</td></tr><tr><th>密切接觸者／黃區</th><td>${esc(e.yellow||'—')}</td></tr><tr><th>紫外線燈消毒／解除日期</th><td>${rocDate(e.uvEnd||e.end,true)}</td></tr><tr><th>照顧措施</th><td>如附件，衛教內容同步生活區、警衛室、洗衣房張貼執行</td></tr><tr><th>營養師</th><td>通知廚工，餐車放於動線外</td></tr><tr><th>秘書室</th><td>洗衣房單獨收送衣物；清潔班每日收垃圾；警衛大門控管量測體溫登錄</td></tr><tr><th>社工課</th><td>社會局通報（初報／解除由人工確認）</td></tr></table><p class="print-note">※ 本頁僅供資料核對，不模擬正式 Word 版面。</p>`}
+ if(type==='audit'){const items=['落實相關照護工作人員正確洗手','防疫物資擺放正確','感控動線維護','污物清潔動線（含包布衣類）','中央空調'];let rows=items.map(x=>`<tr><td>${x}</td><td>□是　□待改進　□否　　備註：</td></tr>`).join('');h=docHead('感控區走動式查核表','audit')+`<table><tr><th>感控區</th><td>${esc(e.red||e.area)}</td><th>感控期間</th><td>${rocDate(e.start)}～${rocDate(e.end)}</td></tr><tr><th>感控原因</th><td colspan="3">${esc(e.disease)}</td></tr><tr><th>日期／簽名</th><td colspan="3">____________________</td></tr>${rows}</table><p>填寫說明：日期由左至右填寫。</p>`}
+ if(type==='clean'){const floor=((e.red||e.area||'').match(/(\d+)\s*樓/)||[])[1]||'—';h=`<div class="no-print actions"><button class="primary" onclick="downloadWord('clean')">下載原格式 Word</button><button class="secondary" onclick="closePreview()">返回工作台</button></div><h2>特照室清潔紀錄表｜資料預覽</h2><p class="print-note"><b>資料預覽：</b>以下資料將帶入院方正式 Word 母版；實際清潔完成情形與執行者簽名仍由現場人員逐次填寫。</p><table><tr><th>樓層</th><td>${esc(floor)}樓</td></tr><tr><th>清潔紀錄起始日</th><td>${rocDate(e.start)}</td></tr><tr><th>自動建立日期</th><td>自啟動日起連續 28 日日期欄</td></tr><tr><th>固定清潔項目</th><td>床、床旁桌、櫃子、床旁椅、地板、洗手台、衛浴刷洗、窗台、門把</td></tr></table><p class="print-note">※ 清潔勾記與簽名不由系統代填。</p>`}
+
+ const a=document.getElementById('printArea');a.innerHTML=h;a.classList.remove('hidden');document.getElementById('app').classList.add('hidden');window.scrollTo(0,0)
+}
+
+function epiSeries(){
+ const cases=state.people.filter(p=>p.role==='感染個案'&&p.onset);
+ const counts={};cases.forEach(p=>{counts[p.onset]=(counts[p.onset]||0)+1});
+ return Object.keys(counts).sort().map(date=>({date,count:counts[date]}));
+}
+function epiChartHTML(){
+ const series=epiSeries();
+ if(!series.length)return '<div class="notice">尚無感染個案發病日期，因此暫時無法產生 Epi-curve。補上發病日期後會自動出現，不需要另外輸入。</div>';
+ const max=Math.max(...series.map(x=>x.count),1);
+ const bars=series.map(x=>{const h=Math.max(18,Math.round((x.count/max)*150));return `<div style="flex:1;min-width:52px;text-align:center"><div style="height:165px;display:flex;align-items:flex-end;justify-content:center"><div style="width:70%;max-width:48px;height:${h}px;background:var(--accent);border-radius:7px 7px 0 0;display:flex;align-items:flex-start;justify-content:center;color:white;font-weight:700;padding-top:5px">${x.count}</div></div><div style="font-size:11px;margin-top:6px;white-space:nowrap">${esc(x.date.slice(5).replace('-','/'))}</div></div>`}).join('');
+ return `<div style="border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0"><div style="font-weight:750;margin-bottom:4px">Epi-curve｜依發病日期</div><div class="muted mini">縱軸：發病人數　橫軸：發病日期</div><div style="display:flex;align-items:flex-end;gap:8px;overflow-x:auto;padding-top:8px">${bars}</div></div>`;
+}
+function epidemicSummaryRows(){
+ const cases=state.people.filter(p=>p.role==='感染個案');
+ const byType=['服務對象','工作人員'].map(type=>{const xs=cases.filter(p=>p.type===type),pop=type==='服務對象'?Number(state.event?.residentPopulation||0):Number(state.event?.staffPopulation||0);return {type,cases:xs.length,pop,rate:pop?((xs.length/pop)*100).toFixed(1)+'%':'待補母數',visits:xs.filter(p=>p.visitDate||p.status==='就醫').length,positive:xs.filter(p=>p.testResult==='陽性').length,antiviral:xs.filter(p=>/使用/.test(p.antiviral||'')&&!/未使用/.test(p.antiviral||'')).length,hospitalized:xs.filter(p=>/住院中|已出院/.test(p.hospitalized||'')||p.status==='住院').length}});
+ return byType;
+}
+function eventNarrativeDraft(){
+ const e=state.event,st=eventStats(),series=epiSeries();
+ const dates=series.map(x=>x.date);const first=dates[0]||'',last=dates.at(-1)||'';
+ const parts=[];
+ parts.push(`${e.clusterName||`${e.area||'本區'} ${e.disease||'群聚事件'}`}目前登錄感染個案 ${st.totalCases} 人（服務對象 ${st.resCases} 人、工作人員 ${st.staffCases} 人）。`);
+ if(first)parts.push(`已記錄之發病日期介於 ${first}${last&&last!==first?` 至 ${last}`:''}。`);
+ if(st.totalPop)parts.push(`事件涵蓋總人數 ${st.totalPop} 人，依目前登錄資料計算整體侵襲率為 ${st.attackRate}%。`);else parts.push('事件涵蓋總人數尚未完整，因此整體侵襲率暫不計算。');
+ parts.push(`目前資料顯示就醫 ${st.visits} 人、檢驗陽性 ${st.positive} 人、使用抗病毒藥物 ${st.antiviral} 人、住院 ${st.hospitalized} 人。`);
+ if(e.mainSymptoms)parts.push(`事件層級登錄之主要症狀為：${e.mainSymptoms}。`);
+ return parts.join('');
+}
+function previewHealthRegional(type){if(!state.event){alert('請先建立感控事件。');return}const e=state.event;const cases=state.people.filter(p=>p.role==='感染個案');const contacts=state.people.filter(p=>p.role==='密切接觸者');const onset=cases.filter(p=>p.onset).map(p=>p.onset).sort();const medical=state.daily.filter(d=>d.medical&&d.medical!=='未就醫／未檢驗');const positive=state.daily.filter(d=>/陽性/.test(d.medical||''));let h=`<div class="no-print actions"><button class="secondary" onclick="closePreview()">返回工作台</button></div>`;
+if(type==='roster'){h+=`<h2>衛生局附件1｜全院疫情資料預覽</h2><p class="notice"><b>資料範圍：全院。</b> 不受目前生活區切換影響。</p><p class="print-note"><b>目前狀態：</b>已接上衛生局附件1 Excel 母版。以下先確認目前可自動帶入的共用資料；Pilot 尚未收集的身分證、出生日期等欄位會保留空白，絕不自行推測。</p><table><tr><th>群聚類別</th><td>${esc(e.clusterType||'—')}</td></tr><tr><th>事件名稱</th><td>${esc(e.clusterName||`${e.area} ${e.disease}`)}</td></tr><tr><th>事件編號</th><td>${esc(e.clusterNo||'尚未填寫')}</td></tr><tr><th>通報日期／來源</th><td>${esc(e.reportDate||'—')}／${esc(e.reportSource||'—')}</td></tr><tr><th>機構類別</th><td>${esc(e.facilityType||'—')}</td></tr><tr><th>感染個案／接觸者</th><td>${cases.length}／${contacts.length}</td></tr><tr><th>主要症狀</th><td>${esc(e.mainSymptoms||'—')}</td></tr></table>`}
+if(type==='epi'){const st=eventStats(),rows=epidemicSummaryRows();h+=`<h2>衛生局附件2｜全院疫情統計與 Epi-curve 預覽</h2><p class="notice"><b>資料範圍：全院。</b> 不受目前生活區切換影響；供衛生局進行疫情與群聚研判。</p><p class="print-note"><b>Pilot 0.8：</b>以下數字與流行曲線由目前全院相關生活區／感控區資料自動彙整；供衛生局掌握全院疫情與研判是否構成群聚。AML 僅整理事實，不自行判定群聚。</p><table><tr><th>群聚事件</th><td>${esc(e.clusterName||`${e.area} ${e.disease}`)}</td></tr><tr><th>感染個案／接觸者</th><td>${st.totalCases}／${st.contacts.length}</td></tr><tr><th>總母數</th><td>${st.totalPop||'待補'}</td></tr><tr><th>整體侵襲率</th><td>${st.attackRate?st.attackRate+'%':'待補事件涵蓋總人數後自動計算'}</td></tr><tr><th>最早發病日</th><td>${esc(onset[0]||'—')}</td></tr><tr><th>就醫／陽性／抗病毒／住院</th><td>${st.visits}／${st.positive}／${st.antiviral}／${st.hospitalized}</td></tr><tr><th>主要症狀</th><td>${esc(e.mainSymptoms||'—')}</td></tr></table><h3>疫情概況｜自動統計</h3><table><tr><th>人員類別</th><th>發病人數</th><th>母數</th><th>侵襲率</th><th>就醫</th><th>陽性</th><th>抗病毒</th><th>住院</th></tr>${rows.map(r=>`<tr><td>${r.type}</td><td>${r.cases}</td><td>${r.pop||'待補'}</td><td>${r.rate}</td><td>${r.visits}</td><td>${r.positive}</td><td>${r.antiviral}</td><td>${r.hospitalized}</td></tr>`).join('')}</table>${epiChartHTML()}<h3>疫情事件描述｜系統草稿</h3><div class="notice" style="background:#fafcfc;border-color:var(--line)">${esc(eventNarrativeDraft())}</div><p class="print-note">※ 此段只依目前已登錄的事實組句，供護理師核對與修改；可能感染途徑、接觸史、專業判斷與結案判定不由系統推測。</p>`}
+const a=document.getElementById('printArea');a.innerHTML=h;a.classList.remove('hidden');document.getElementById('app').classList.add('hidden');window.scrollTo(0,0)}
+
+function previewHealth(type){if(!healthBureauActive()){alert('目前尚未啟用衛生局群聚通報資料。請先點選「2｜全院資料」並儲存衛生局欄位。');return}return withHospitalScope(()=>previewHealthRegional(type))}
+function xmlEsc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]))}
+function wRun(text,bold=false,size=22){return `<w:r><w:rPr>${bold?'<w:b/>':''}<w:sz w:val="${size}"/><w:szCs w:val="${size}"/><w:rFonts w:eastAsia="Microsoft JhengHei" w:ascii="Arial" w:hAnsi="Arial"/></w:rPr><w:t xml:space="preserve">${xmlEsc(text)}</w:t></w:r>`}
+function wP(text='',opts={}){const jc=opts.center?'<w:jc w:val="center"/>':'';const sp=opts.after===0?'<w:spacing w:after="0"/>':'<w:spacing w:after="80"/>';return `<w:p><w:pPr>${jc}${sp}</w:pPr>${wRun(text,!!opts.bold,opts.size||22)}</w:p>`}
+function wCell(text,width=4500,bold=false){return `<w:tc><w:tcPr><w:tcW w:w="${width}" w:type="dxa"/><w:vAlign w:val="center"/></w:tcPr>${wP(text,{bold,after:0})}</w:tc>`}
+function wTable(rows,widths){return `<w:tbl><w:tblPr><w:tblW w:w="0" w:type="auto"/><w:tblBorders><w:top w:val="single" w:sz="6"/><w:left w:val="single" w:sz="6"/><w:bottom w:val="single" w:sz="6"/><w:right w:val="single" w:sz="6"/><w:insideH w:val="single" w:sz="4"/><w:insideV w:val="single" w:sz="4"/></w:tblBorders></w:tblPr>${rows.map(r=>`<w:tr>${r.map((x,i)=>wCell(x,widths?.[i]||4500,i===0)).join('')}</w:tr>`).join('')}</w:tbl>`}
+function wordBody(type){const e=state.event,p=primaryCase();if(type==='measures'){
+ const paras=[
+ '一般上呼吸道感染管制原則：','★共通事項：','一、停止聯課及交叉活動，採原生活區活動。','二、每日上、下午由教保人員落實服務對象量測體溫。','三、於生活區內，工作人員須全程配戴口罩，有症狀之服務對象與能配合配戴口罩之者，亦須配戴口罩。','四、服務對象於生活區內單獨寢室休息，由專責教保人員照顧。','五、生活區由教保人員每日早、中、晚以 1,000PPM (1：50) 漂白水擦拭桌面、傢俱、地板、廁所。','六、餐廳統一送餐至生活區，服務對象與教保人員皆於區內用餐。','七、護理人員於特殊照護期間，每日入區評估服務對象有無上呼吸道症狀，並安排就醫。','★有症狀者：','一、為了落實隔離措施，安排同一寢室休息、馬桶單獨使用，沐浴時安排在最後時段，日常生活由專責教保人員照顧。','二、加強服務對象保暖度，並補充水份至少1,500CC/天，暫時停止活動多休息。','三、保持適當通風。','四、盡量戴上口罩，尤其是離開寢室時。','五、外展服務對象若發燒及身體不適請假在區休息。','六、保持清潔習慣，在急性期儘可能少碰觸周圍擺設。','★同區無症狀者（潛伏期與健康者）：','一、可於區內進行活動。','二、可至室外通風處進行活動，離開生活區時配戴口罩，並洗淨雙手。','三、需避免接觸或與他區服務對象進行活動。','★通勤服務對象/職訓服務對象：','一、搭乘交通車前，予量測體溫；如體溫異常依現行流程處理。','二、搭乘交通車時，與其他生活區服務對象分開，間隔1個座位。','三、暫停職訓，採原區活動，並依規定向職訓場所請假。','★工作人員：','一、每日入生活區前落實量測體溫；如有發燒或身體不適，通報課室主管並知會護理站，勿入區服務。','二、入區前洗手及戴口罩。','三、值班工作人員如需照護支援其他區時，依現行人力調派流程避免交互感染。','★動線管控說明：',`一、${e.area||'生活區'}前設置感控動線隔離。`,`二、${e.yellow||e.area||'黃區'}採原區活動。`,'三、洗衣依後送、後收及感染性衣物現行流程辦理。','四、工作人員飲水及用餐區域使用後立即清潔消毒。'];
+ return wP(`${e.area||''}`,{center:true,bold:true,size:28})+wP(`${e.disease||''}  密切接觸紅區 (${e.red||'—'})`,{center:true,bold:true,size:26})+wP(`特殊照顧期間：${rocDate(e.start,true)}~${rocDate(e.end,true)}`,{center:true,bold:true,size:24})+paras.map((x,i)=>wP(x,{bold:x.startsWith('★')||x.endsWith('原則：'),size:21})).join('')+wP('確認後簽名',{bold:true})+wTable([['生活區工作人員：',''],['洗衣房：',''],['警衛室：',''],['清潔班／廚房：','']], [3000,6000]);
+ }
+ const pc=p||{code:'—'};return wP('附件三、感控措施會辦單',{center:true,size:20})+wP(`${e.area||''} 感控措施會辦單`,{center:true,bold:true,size:30})+wTable([
+ ['原因',`${e.disease||'—'}密切接觸`],['日期',rocDate(e.start)],['照顧時間',`${rocDate(e.start,true)}  ～  ${rocDate(e.end,true)}`],['照顧措施','如附件，衛教內容同步生活區、警衛室、洗衣房張貼執行'],['隔離',`是，確診者：${pc.code}（${e.red||pc.area||'—'}）`],['密切接觸者',`${e.yellow||'—'}（黃區）`],['紫外線燈消毒',`解除隔離當日 ${rocDate(e.uvEnd||e.end,true)}`],['營養師','通知廚工，餐車放於動線外'],['秘書室','洗衣房單獨收送衣物；清潔班每日收垃圾；警衛大門控管量測體溫登錄'],['社工課','社會局通報 □初報  □解除（結報預計____月____日）']], [2200,6800])+wP('會辦／簽核',{bold:true})+wTable([['保健課',''],['教保課',''],['秘書',''],['營養師',''],['社工課',''],['職發課',''],['副院長',''],['院長','']], [2500,6500]);
+}
+async function makeTemplateDocx(templatePath, values){
+ if(typeof JSZip==='undefined')throw new Error('Word 產生元件尚未載入，請確認網路連線後重新整理。');
+ const res=await fetch(templatePath,{cache:'no-store'});
+ if(!res.ok)throw new Error(`無法讀取院方 Word 母版（HTTP ${res.status}）。`);
+ const zip=await JSZip.loadAsync(await res.arrayBuffer());
+ const f=zip.file('word/document.xml');
+ if(!f)throw new Error('Word 母版缺少 document.xml。');
+ let xml=await f.async('string');
+ for(const [key,val] of Object.entries(values))xml=xml.split(key).join(xmlEsc(val));
+ zip.file('word/document.xml',xml);
+ return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+async function makeMeasuresFromTemplate(){
+ const e=state.event;if(!e)throw new Error('感控措施單資料不足。');
+ const pad=n=>String(n).padStart(2,'0');
+ const roc=(x,time=false)=>{if(!x)return '';const d=new Date(x);if(isNaN(d))return String(x);let z=`${d.getFullYear()-1911}/${pad(d.getMonth()+1)}/${pad(d.getDate())}`;if(time)z+=` ${pad(d.getHours())}:${pad(d.getMinutes())}`;return z};
+ return makeTemplateDocx('./templates/measures-template.docx',{
+  '{{AREA}}':e.area||'', '{{REASON}}':e.disease||'', '{{RED}}':e.red||'', '{{YELLOW}}':e.yellow||e.area||'', '{{START}}':roc(e.start,true), '{{END}}':roc(e.end,true)
+ });
+}
+async function makeMemoFromTemplate(){
+ if(typeof JSZip==='undefined')throw new Error('Word 產生元件尚未載入，請確認網路連線後重新整理。');
+ const e=state.event,p=primaryCase();
+ if(!e||!p)throw new Error('會辦單資料不足。');
+ const res=await fetch('./templates/memo-template.docx',{cache:'no-store'});
+ if(!res.ok)throw new Error(`無法讀取院方 Word 母版（HTTP ${res.status}）。`);
+ const zip=await JSZip.loadAsync(await res.arrayBuffer());
+ const f=zip.file('word/document.xml');
+ if(!f)throw new Error('Word 母版缺少 document.xml。');
+ let xml=await f.async('string');
+ const pad=n=>String(n).padStart(2,'0');
+ const roc=(x,time=false)=>{if(!x)return '';const d=new Date(x);if(isNaN(d))return String(x);let z=`${d.getFullYear()-1911}/${pad(d.getMonth()+1)}/${pad(d.getDate())}`;if(time)z+=` ${pad(d.getHours())}:${pad(d.getMinutes())}`;return z};
+ const values={
+  '{{AREA}}':e.area||'',
+  '{{REASON}}':`${e.disease||''}密切接觸`,
+  '{{DATE}}':roc(e.start),
+  '{{START}}':roc(e.start,true),
+  '{{END}}':roc(e.end,true),
+  '{{UV_END}}':roc(e.uvEnd||e.end,true),
+  '{{CASE}}':p.code||'',
+  '{{RED}}':e.red||p.area||'',
+  '{{YELLOW}}':e.yellow||e.area||''
+ };
+ for(const [key,val] of Object.entries(values))xml=xml.split(key).join(xmlEsc(val));
+ zip.file('word/document.xml',xml);
+ return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+async function makeAuditFromTemplate(){
+ const e=state.event;if(!e)throw new Error('走動式稽查表資料不足。');
+ const pad=n=>String(n).padStart(2,'0');
+ const roc=(x)=>{if(!x)return '';const d=new Date(x);if(isNaN(d))return String(x);return `${d.getFullYear()-1911}/${pad(d.getMonth()+1)}/${pad(d.getDate())}`};
+ const shortDate=(x)=>{if(!x)return '';const d=new Date(x);if(isNaN(d))return '';return `${d.getMonth()+1}/${d.getDate()}`};
+ return makeTemplateDocx('./templates/audit-template.docx',{
+  '{{AUDIT_AREA}}':e.red||e.area||'', '{{PERIOD}}':`${roc(e.start)}~${roc(e.end)}`, '{{REASON}}':e.disease||'', '{{AUDIT_DATE}}':shortDate(e.start)
+ });
+}
+async function makeCleanFromTemplate(){
+ const e=state.event;if(!e)throw new Error('特照室清潔紀錄表資料不足。');
+ const base=e.start?new Date(e.start):null;
+ const validBase=base&&!isNaN(base);
+ const source=e.red||e.area||'';const m=source.match(/(\d+)\s*樓/);const values={'[[FLOOR]]':m?m[1]:''};
+ for(let i=1;i<=28;i++){
+  if(validBase){const d=new Date(base);d.setDate(base.getDate()+i-1);values[`[[D${i}]]`]=`${d.getMonth()+1}/${d.getDate()}`;}
+  else values[`[[D${i}]]`]='';
+ }
+ return makeTemplateDocx('./templates/clean-template.docx',values);
+}
+async function makeDocx(type){if(type==='memo')return makeMemoFromTemplate();if(type==='measures')return makeMeasuresFromTemplate();if(type==='audit')return makeAuditFromTemplate();if(type==='clean')return makeCleanFromTemplate();if(typeof JSZip==='undefined')throw new Error('Word 產生元件尚未載入，請確認網路連線後重新整理。');const zip=new JSZip();const content=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/><Override PartName="/docProps/app.xml" ContentType="application/vnd.openxmlformats-officedocument.extended-properties+xml"/></Types>`;const rels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties" Target="docProps/app.xml"/></Relationships>`;const docRels=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`;const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:rPr><w:rFonts w:eastAsia="Microsoft JhengHei" w:ascii="Arial" w:hAnsi="Arial"/><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:style></w:styles>`;const documentXml=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${wordBody(type)}<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="850" w:right="850" w:bottom="850" w:left="850" w:header="400" w:footer="400" w:gutter="0"/></w:sectPr></w:body></w:document>`;const now=new Date().toISOString();const core=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:title>AML 感控作業管理助手 Pilot 0.5</dc:title><dc:creator>Allen Mind Lab</dc:creator><dcterms:created xsi:type="dcterms:W3CDTF">${now}</dcterms:created></cp:coreProperties>`;const app=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Properties xmlns="http://schemas.openxmlformats.org/officeDocument/2006/extended-properties"><Application>AML 感控作業管理助手</Application></Properties>`;zip.file('[Content_Types].xml',content);zip.folder('_rels').file('.rels',rels);zip.folder('word').file('document.xml',documentXml).file('styles.xml',styles).folder('_rels').file('document.xml.rels',docRels);zip.folder('docProps').file('core.xml',core).file('app.xml',app);return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});}
+
+function colLetters(ref){return String(ref).match(/^[A-Z]+/)[0]}
+function setInlineCell(doc,ref,value){const ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main';let c=[...doc.getElementsByTagNameNS(ns,'c')].find(x=>x.getAttribute('r')===ref);if(!c)return;while(c.firstChild)c.removeChild(c.firstChild);c.setAttribute('t','inlineStr');const is=doc.createElementNS(ns,'is'),t=doc.createElementNS(ns,'t');t.setAttribute('xml:space','preserve');t.textContent=String(value??'');is.appendChild(t);c.appendChild(is)}
+function normalizeExcelView(doc,zoom=60){const ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main';const views=doc.getElementsByTagNameNS(ns,'sheetViews')[0];if(!views)return;const view=views.getElementsByTagNameNS(ns,'sheetView')[0];if(!view)return;view.setAttribute('view','normal');view.setAttribute('topLeftCell','A1');view.setAttribute('zoomScale',String(zoom));view.setAttribute('zoomScaleNormal',String(zoom));view.setAttribute('zoomScalePageLayoutView',String(zoom));const sels=[...view.getElementsByTagNameNS(ns,'selection')];sels.forEach(sel=>{sel.setAttribute('activeCell','A1');sel.setAttribute('sqref','A1')})}
+function cloneDataRows(doc,templateRowNo,startRow,count){const ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main',sheetData=doc.getElementsByTagNameNS(ns,'sheetData')[0],rows=[...sheetData.getElementsByTagNameNS(ns,'row')],tpl=rows.find(r=>Number(r.getAttribute('r'))===templateRowNo);if(!tpl)return;rows.filter(r=>Number(r.getAttribute('r'))>=startRow).forEach(r=>sheetData.removeChild(r));for(let i=0;i<count;i++){const nr=startRow+i,row=tpl.cloneNode(true);row.setAttribute('r',nr);[...row.getElementsByTagNameNS(ns,'c')].forEach(c=>c.setAttribute('r',colLetters(c.getAttribute('r'))+nr));sheetData.appendChild(row)}}
+function isoAdd(dateStr,n){const d=new Date(dateStr);d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)}
+function latestDailyFor(pid){return state.daily.filter(d=>d.personId===pid).sort((a,b)=>String(a.date).localeCompare(String(b.date))).at(-1)}
+function dailyOn(pid,date){return state.daily.filter(d=>d.personId===pid&&d.date===date).at(-1)}
+function dailyText(d){if(!d)return '';return [d.temp?`體溫${d.temp}℃`:'',d.symptoms||'',d.medical||'',d.action||'',d.note||''].filter(Boolean).join('；')}
+
+function symptomHit(sy,words){return words.some(w=>String(sy||'').includes(w))}
+function healthMedicalInfo(p){
+ const rows=state.daily.filter(d=>d.personId===p.id).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+ const dailyVisit=rows.find(d=>/已就醫|已採檢/.test(d.medical||''));
+ const dailyTests=rows.filter(d=>!/未檢驗/.test(d.medical||'') && /待結果|陰性|陽性|已採檢/.test(d.medical||''));
+ // 0.9.3：固定健康事件只填一次；正式文件優先使用人員主檔，舊的每日追蹤仍可作為 fallback。
+ const visit=p.visitDate?{date:p.visitDate,medical:'已就醫'}:dailyVisit;
+ const test=(p.testDate||p.testResult)?{date:p.testDate||dailyTests.at(-1)?.date||'',medical:[p.testResult,p.testDate?'已採檢':''].filter(Boolean).join('／')}:dailyTests.at(-1);
+ return {visit,test,latest:rows.at(-1),visitDate:p.visitDate||dailyVisit?.date||'',testDate:p.testDate||dailyTests.at(-1)?.date||'',testResult:p.testResult||((dailyTests.at(-1)?.medical||'').match(/陽性|陰性|待結果/)?.[0]||''),antiviral:p.antiviral||'',hospitalized:p.hospitalized||'',vaccination:p.vaccination||''};
+}
+async function makeHealthBureauRosterExcel(){
+ if(typeof JSZip==='undefined')throw new Error('Excel 產生元件尚未載入。');
+ const r=await fetch('./templates/health-bureau-roster-template.xlsx',{cache:'no-store'});
+ if(!r.ok)throw new Error(`無法讀取衛生局附件1母版（HTTP ${r.status}）`);
+ const zip=await JSZip.loadAsync(await r.arrayBuffer()),parser=new DOMParser(),ser=new XMLSerializer();
+ // sheet1：基本資料及措施。只帶入目前系統確定掌握的事件資料；其餘官方欄位保留人工確認。
+ let x=await zip.file('xl/worksheets/sheet1.xml').async('string'),doc=parser.parseFromString(x,'application/xml');
+ normalizeExcelView(doc,70);
+ setInlineCell(doc,'A1',`機構名稱: 臺北市立陽明教養院    群聚編號: ${state.event.clusterNo||''}`);
+ zip.file('xl/worksheets/sheet1.xml',ser.serializeToString(doc));
+ // sheet2：群聚通報個案資料。官方母版目前提供 10 筆空白列，Pilot 先依原表容量輸出，不改表格結構。
+ x=await zip.file('xl/worksheets/sheet2.xml').async('string');doc=parser.parseFromString(x,'application/xml');normalizeExcelView(doc,55);
+ const people=state.people.slice(0,10);
+ people.forEach((p,i)=>{
+  const row=5+i,info=healthMedicalInfo(p),d=info.latest,sy=d?.symptoms||'',test=info.test;
+  setInlineCell(doc,`A${row}`,i+1);setInlineCell(doc,`B${row}`,p.code||'');setInlineCell(doc,`C${row}`,p.area||state.event.area||'');
+  setInlineCell(doc,`G${row}`,p.onset?rocDate(p.onset):'');
+  if(info.visitDate)setInlineCell(doc,`H${row}`,rocDate(info.visitDate));
+  [['K',['發燒']],['L',['咳嗽']],['M',['喉嚨痛']],['N',['呼吸急促']],['O',['流鼻水','鼻塞']],['P',['肌肉痠痛','肌肉酸痛']],['Q',['頭痛']],['R',['倦怠','厭倦']],['S',['腹瀉']],['T',['嘔吐']],['U',['黏液','血絲']],['V',['水瀉']]].forEach(([c,ws])=>setInlineCell(doc,`${c}${row}`,symptomHit(sy,ws)?'●':''));
+  const known=['發燒','咳嗽','喉嚨痛','呼吸急促','流鼻水','鼻塞','肌肉痠痛','肌肉酸痛','頭痛','倦怠','厭倦','腹瀉','嘔吐','黏液','血絲','水瀉','無症狀','無'];
+  const other=sy && !known.some(w=>sy.includes(w)) ? sy : '';
+  setInlineCell(doc,`W${row}`,other);
+  if(test){setInlineCell(doc,`X${row}`,`${test.date?rocDate(test.date):''}${test.date?'／':''}${info.testResult||'已採檢'}`);setInlineCell(doc,`AE${row}`,info.testResult||'');}
+  else setInlineCell(doc,`Y${row}`,'●');
+  setInlineCell(doc,`AG${row}`,p.status||'');setInlineCell(doc,`AH${row}`,dailyText(d));setInlineCell(doc,`AI${row}`,state.event.note||'');
+ });
+ zip.file('xl/worksheets/sheet2.xml',ser.serializeToString(doc));
+ // sheet3：每日追蹤。沿用官方母版日期欄，不重畫表格；只在日期能對應時填入追蹤內容。
+ x=await zip.file('xl/worksheets/sheet3.xml').async('string');doc=parser.parseFromString(x,'application/xml');normalizeExcelView(doc,60);
+ const ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main';
+ const cells=[...doc.getElementsByTagNameNS(ns,'c')];
+ function excelSerialToISO(n){const d=new Date(Date.UTC(1899,11,30)+Number(n)*86400000);return d.toISOString().slice(0,10)}
+ const dateCols={};cells.filter(c=>/^[A-Z]+2$/.test(c.getAttribute('r')||'')).forEach(c=>{const vv=c.getElementsByTagNameNS(ns,'v')[0]?.textContent;if(vv&&!isNaN(Number(vv)))dateCols[excelSerialToISO(vv)]=colLetters(c.getAttribute('r'))});
+ people.forEach((p,i)=>{const row=4+i;setInlineCell(doc,`A${row}`,i+1);setInlineCell(doc,`B${row}`,p.area||state.event.area||'');setInlineCell(doc,`C${row}`,p.code||'');setInlineCell(doc,`D${row}`,p.type||'');state.daily.filter(d=>d.personId===p.id).forEach(d=>{const c=dateCols[d.date];if(c)setInlineCell(doc,`${c}${row}`,dailyText(d))})});
+ zip.file('xl/worksheets/sheet3.xml',ser.serializeToString(doc));
+ return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+}
+async function downloadHealthRosterRegional(){
+ if(!state.event){alert('請先建立感控事件。');return}if(!state.people.length){alert('請先新增感染個案／接觸者。');return}
+ if(state.people.length>10){alert('衛生局附件1目前母版提供 10 筆個案列，本次先輸出前 10 筆；請人工確認是否需依衛生局格式增頁。');}
+ try{const blob=await makeHealthBureauRosterExcel(),date=(state.event.start||'').slice(0,10).replaceAll('-',''),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`衛生局附件1_上呼吸道及不明原因發燒群聚事件造冊表_${state.event.area||'測試區'}_${date||'Pilot'}.xlsx`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}catch(err){alert('衛生局附件1產生失敗：'+err.message)}
+}
+
+async function makeRosterExcel(){if(typeof JSZip==='undefined')throw new Error('Excel 產生元件尚未載入。');const r=await fetch('./templates/roster-template.xlsx',{cache:'no-store'});if(!r.ok)throw new Error(`無法讀取群聚造冊母版（HTTP ${r.status}）`);const zip=await JSZip.loadAsync(await r.arrayBuffer()),parser=new DOMParser(),ser=new XMLSerializer();let x=await zip.file('xl/worksheets/sheet1.xml').async('string'),doc=parser.parseFromString(x,'application/xml');normalizeExcelView(doc,30);const people=state.people.slice(0,20);cloneDataRows(doc,4,4,Math.max(1,people.length));people.forEach((p,i)=>{const row=4+i,d=latestDailyFor(p.id);setInlineCell(doc,`A${row}`,i+1);setInlineCell(doc,`B${row}`,p.code);setInlineCell(doc,`C${row}`,`${p.area||state.event.area}\n${p.type}`);setInlineCell(doc,`E${row}`,p.onset?rocDate(p.onset):'');const sy=(d?.symptoms||'');[['I','發燒'],['J','咳嗽'],['K','喉嚨痛'],['M','流鼻水'],['N','肌肉'],['O','頭痛'],['P','倦怠'],['Q','腹瀉'],['R','嘔吐']].forEach(([c,k])=>setInlineCell(doc,`${c}${row}`,sy.includes(k)?'V':''));setInlineCell(doc,`U${row}`,sy==='無症狀'?'':sy);const mi=healthMedicalInfo(p),medicalSummary=d?.medical||[mi.visitDate?'已就醫 '+rocDate(mi.visitDate):'',mi.testDate?'採檢 '+rocDate(mi.testDate):'',mi.testResult].filter(Boolean).join('／');setInlineCell(doc,`V${row}`,medicalSummary);setInlineCell(doc,`AE${row}`,p.status||mi.hospitalized||'');setInlineCell(doc,`AF${row}`,dailyText(d));setInlineCell(doc,`AG${row}`,state.event.note||'')});zip.file('xl/worksheets/sheet1.xml',ser.serializeToString(doc));x=await zip.file('xl/worksheets/sheet2.xml').async('string');doc=parser.parseFromString(x,'application/xml');normalizeExcelView(doc,65);cloneDataRows(doc,3,3,Math.max(1,people.length));const dates=Array.from({length:6},(_,i)=>isoAdd(state.event.start,i));dates.forEach((dt,i)=>setInlineCell(doc,`${String.fromCharCode(68+i)}2`,dt));people.forEach((p,i)=>{const row=3+i;setInlineCell(doc,`A${row}`,i+1);setInlineCell(doc,`B${row}`,p.code);setInlineCell(doc,`C${row}`,`${p.area||state.event.area}\n${p.type}`);dates.forEach((dt,j)=>setInlineCell(doc,`${String.fromCharCode(68+j)}${row}`,dailyText(dailyOn(p.id,dt))))});zip.file('xl/worksheets/sheet2.xml',ser.serializeToString(doc));let wb=await zip.file('xl/workbook.xml').async('string');wb=wb.replace(/群聚通報個案資料!\$A\$1:\$AG\$\d+/g,`群聚通報個案資料!$A$1:$AG$${Math.max(4,3+people.length)}`).replace(/每日追蹤!\$A\$1:\$I\$\d+/g,`每日追蹤!$A$1:$I$${Math.max(3,2+people.length)}`);zip.file('xl/workbook.xml',wb);return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})}
+async function makeProphExcel(){if(typeof JSZip==='undefined')throw new Error('Excel 產生元件尚未載入。');const r=await fetch('./templates/prophylaxis-template.xlsx',{cache:'no-store'});if(!r.ok)throw new Error(`無法讀取預防性投藥母版（HTTP ${r.status}）`);const zip=await JSZip.loadAsync(await r.arrayBuffer()),parser=new DOMParser(),ser=new XMLSerializer();let x=await zip.file('xl/worksheets/sheet1.xml').async('string'),doc=parser.parseFromString(x,'application/xml');normalizeExcelView(doc,60);const contacts=state.people.filter(p=>p.role==='密切接觸者').slice(0,51);contacts.forEach((p,i)=>{const row=3+i;setInlineCell(doc,`A${row}`,i+1);setInlineCell(doc,`B${row}`,p.code);setInlineCell(doc,`C${row}`,p.type==='服務對象'?'住民':'工作人員');setInlineCell(doc,`G${row}`,'密切接觸者');setInlineCell(doc,`H${row}`,p.type==='服務對象'?'1.住院病人':'2.醫護人員/工作人員')});zip.file('xl/worksheets/sheet1.xml',ser.serializeToString(doc));return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})}
+async function makeDailyExcel(){
+ const base=await makeRosterExcel();const zip=await JSZip.loadAsync(await base.arrayBuffer()),parser=new DOMParser(),ser=new XMLSerializer();
+ const wbPath='xl/workbook.xml',relPath='xl/_rels/workbook.xml.rels',ctPath='[Content_Types].xml';
+ let wb=parser.parseFromString(await zip.file(wbPath).async('string'),'application/xml');const sheets=wb.getElementsByTagName('sheets')[0],arr=[...wb.getElementsByTagName('sheet')];
+ if(arr.length>1){const first=arr[0],rid=first.getAttribute('r:id')||first.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships','id');sheets.removeChild(first);[...wb.getElementsByTagName('definedName')].filter(x=>(x.textContent||'').includes('群聚通報個案資料')).forEach(x=>x.parentNode&&x.parentNode.removeChild(x));const view=wb.getElementsByTagName('workbookView')[0];if(view)view.setAttribute('activeTab','0');zip.file(wbPath,ser.serializeToString(wb));
+  let rel=parser.parseFromString(await zip.file(relPath).async('string'),'application/xml'),target='';[...rel.getElementsByTagName('Relationship')].forEach(x=>{if(x.getAttribute('Id')===rid){target=x.getAttribute('Target')||'';x.parentNode.removeChild(x)}});zip.file(relPath,ser.serializeToString(rel));
+  const sheetPath=target?('xl/'+target.replace(/^\//,'').replace(/^xl\//,'')):'xl/worksheets/sheet1.xml';zip.remove(sheetPath);
+  let ct=parser.parseFromString(await zip.file(ctPath).async('string'),'application/xml');[...ct.getElementsByTagName('Override')].forEach(x=>{if((x.getAttribute('PartName')||'').endsWith('/'+sheetPath))x.parentNode.removeChild(x)});zip.file(ctPath,ser.serializeToString(ct));
+ }
+ return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+}
+async function downloadExcel(type){
+ if(!assertPreflightForFormalOutput())return;if(!state.event){alert('請先完成 1｜個案通報。');return}
+ if(type==='daily'){if(!state.people.length){alert('每日追蹤尚缺個案／接觸者資料。');return}try{const blob=await makeDailyExcel(),date=(state.event.start||'').slice(0,10).replaceAll('-',''),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`07_URI每日追蹤_${state.event.area}_${date}.xlsx`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}catch(err){alert('每日追蹤 Excel 產生失敗：'+err.message)}return}
+ if(!healthBureauActive()){alert('此表屬全院群聚／衛生局流程。請先完成「2｜全院資料」並儲存後再產出。');return}
+ const h=hospitalState();if(!h.people.length){alert('全院尚無可彙整的人員資料。');return}if(type==='proph'&&!h.people.some(p=>p.role==='密切接觸者')){alert('全院預防性投藥名單尚缺密切接觸者。');return}
+ try{const maker=type==='proph'?makeProphExcel:makeRosterExcel;const blob=await withHospitalScopeAsync(()=>maker()),date=(h.event.start||'').slice(0,10).replaceAll('-',''),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=type==='proph'?`02_預防性投藥名單_全院_${date}.xlsx`:`01_群聚事件造冊暨每日追蹤_全院_${date}.xlsx`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}catch(err){alert('全院 Excel 檔產生失敗：'+err.message)}
+}
+
+
+async function downloadInternalBundle(){
+ if(!assertPreflightForFormalOutput())return;saveActiveRegion();const regs=allRegions();if(!regs.length){alert('請先完成至少一個「1｜個案通報」。');return}
+ const keep={event:structuredClone(state.event),people:structuredClone(state.people||[]),daily:structuredClone(state.daily||[]),activeEventId:state.activeEventId};const issues=[];
+ try{const z=new JSZip();for(const r of regs){state.event=structuredClone(r.event);state.people=structuredClone(r.people||[]);state.daily=structuredClone(r.daily||[]);state.activeEventId=r.id;const area=String(r.event?.area||'未命名區').replace(/[\/:*?"<>|]/g,'_'),folder=z.folder(area);const jobs=[['01_感控措施單.docx',makeMeasuresFromTemplate],['02_感控措施會辦單.docx',makeMemoFromTemplate],['03_走動式稽查表.docx',makeAuditFromTemplate],['04_特照室清潔紀錄表.docx',makeCleanFromTemplate],['05_URI每日追蹤.xlsx',makeDailyExcel]];for(const [name,fn] of jobs){try{folder.file(name,await fn())}catch(err){issues.push(`${area}｜${name}：${err.message}`)}}}
+  z.file('README_院內表單.txt',['AML 感控作業管理助手 Pilot 1.0','', '本 ZIP 僅包含完成「1｜個案通報／院內感控」即可產出的院內文件。','群聚事件造冊表與預防性投藥名單屬「2｜全院資料／衛生局群聚事件」流程，不包含於此 ZIP。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='AML_院內感控表單.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`院內表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('院內表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
+}
+async function downloadHealthBundle(){
+ if(!healthBureauActive()){alert('請先完成「2｜全院資料／衛生局群聚事件」並儲存後，再產出群聚／衛生局表單。');return}if(!assertPreflightForFormalOutput())return;saveActiveRegion();const h=hospitalState();if(!h.people.length){alert('全院尚無可彙整的人員資料。');return}
+ const keep={event:structuredClone(state.event),people:structuredClone(state.people||[]),daily:structuredClone(state.daily||[]),activeEventId:state.activeEventId};const issues=[];
+ try{state.event=h.event;state.people=h.people;state.daily=h.daily;const z=new JSZip();try{z.file('01_群聚事件造冊暨每日追蹤_全院.xlsx',await makeRosterExcel())}catch(err){issues.push(`01 群聚事件造冊：${err.message}`)}try{z.file('02_預防性投藥名單_全院.xlsx',await makeProphExcel())}catch(err){issues.push(`02 預防性投藥名單：${err.message}`)}try{z.file('03_衛生局附件1_上呼吸道及不明原因發燒群聚事件造冊表_全院.xlsx',await makeHealthBureauRosterExcel())}catch(err){issues.push(`衛生局附件1：${err.message}`)}try{z.file('04_衛生局附件2_群聚事件疫調報告_全院.docx',await makeHealthEpiDOCX())}catch(err){issues.push(`衛生局附件2：${err.message}`)}z.file('README_群聚衛生局表單.txt',['AML 感控作業管理助手 Pilot 1.0','', '本 ZIP 僅在完成「2｜全院資料／衛生局群聚事件」後產出，資料範圍固定為全院進行中感控事件彙整。','包含：1 群聚事件造冊、2 預防性投藥名單、3 衛生局附件1、4 衛生局附件2。','AML 僅彙整既有資料，不自行判定是否構成群聚。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),date=(h.event.start||'').slice(0,10).replaceAll('-',''),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`AML_群聚衛生局表單_全院_${date||'Pilot'}.zip`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`群聚／衛生局表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('群聚／衛生局表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
+}
+async function downloadWord(type){if(!assertPreflightForFormalOutput())return;if(!state.event){alert('請先建立感控事件。');return}if(type==='memo'&&!primaryCase()){alert('會辦單尚缺感染個案，請先新增感染個案。');return}try{const blob=await makeDocx(type);const e=state.event;const label=type==='measures'?'感控措施單':type==='memo'?'感控措施會辦單':type==='audit'?'走動式稽查表':'特照室清潔紀錄表';const date=(e.start||'').slice(0,10).replaceAll('-','');const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${label}_${e.area||'測試區'}_${date||'Pilot'}.docx`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}catch(err){alert('Word 檔產生失敗：'+err.message)}}
+
+function closePreview(){document.getElementById('printArea').classList.add('hidden');document.getElementById('app').classList.remove('hidden');window.scrollTo(0,0)}
+window.addEventListener('pageshow',()=>{const app=document.getElementById('app');if(app&&!app.classList.contains('hidden')){loadLocal();loadCloud()}});
+
+function odtEsc(s){return String(s??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
+function odtParagraphs(doc){return Array.from(doc.getElementsByTagNameNS('urn:oasis:names:tc:opendocument:xmlns:text:1.0','p'))}
+function setOdtParagraph(doc,starts,text){const p=odtParagraphs(doc).find(x=>(x.textContent||'').trim().startsWith(starts));if(!p)return false;p.textContent=text;return true}
+function setOdtNextParagraph(doc,starts,text){const ps=odtParagraphs(doc),i=ps.findIndex(x=>(x.textContent||'').trim().startsWith(starts));if(i<0||!ps[i+1])return false;ps[i+1].textContent=text;return true}
+function checkbox(on){return on?'☒':'☐'}
+function rocShort(d){if(!d)return '';const [y,m,day]=String(d).slice(0,10).split('-').map(Number);return `${y-1911}/${String(m).padStart(2,'0')}/${String(day).padStart(2,'0')}`}
+async function downloadHealthRoster(){if(!healthBureauActive()){alert('目前尚未啟用衛生局群聚通報資料。請先點選「2｜全院資料」並儲存衛生局欄位。');return}if(!assertPreflightForFormalOutput())return;return withHospitalScopeAsync(()=>downloadHealthRosterRegional())}
+function healthEpiNarrative(){const st=eventStats(),e=state.event,onsets=st.cases.filter(p=>p.onset).map(p=>p.onset).sort();let x=[];x.push(`${e.clusterName||`${e.area} ${e.disease}`}目前登錄發病個案${st.totalCases}人（服務對象${st.residentCases.length}人、工作人員${st.staffCases.length}人）。`);if(onsets.length)x.push(`目前最早發病日為${rocShort(onsets[0])}。`);x.push(`已登錄就醫${st.visits}人、檢驗陽性${st.positive}人、使用抗病毒藥物${st.antiviral}人、住院${st.hospitalized}人。`);if(st.totalPop)x.push(`事件涵蓋總人數${st.totalPop}人，整體侵襲率${st.attackRate}%。`);else x.push('事件涵蓋總人數尚未補齊，侵襲率待確認。');x.push('以上為系統依既有結構化紀錄產生之草稿，接觸史、可能感染途徑、專業判斷及結案分類請由護理師／承辦人確認後填寫。');return x.join('')}
+function odfDateSerial(d){if(!d)return 0;const parts=String(d).slice(0,10).split('-').map(Number);if(parts.length<3||parts.some(n=>!Number.isFinite(n)))return 0;return Math.round((Date.UTC(parts[0],parts[1]-1,parts[2])-Date.UTC(1899,11,30))/86400000)}
+function firstNs(el,ns,name){return el?el.getElementsByTagNameNS(ns,name)[0]||null:null}
+function setChartCell(doc,cell,value,isDate=false){if(!cell)return;const office='urn:oasis:names:tc:opendocument:xmlns:office:1.0',textns='urn:oasis:names:tc:opendocument:xmlns:text:1.0';cell.setAttributeNS(office,'office:value-type','float');cell.setAttributeNS(office,'office:value',String(value));let p=firstNs(cell,textns,'p');if(!p){p=doc.createElementNS(textns,'text:p');cell.appendChild(p)}p.textContent=isDate?'':String(value)}
+async function updateOdtEmbeddedEpiChart(zip){const entry=zip.file('Object 1/content.xml');if(!entry)return false;const xml=await entry.async('string');if(!xml)return false;const parser=new DOMParser(),ser=new XMLSerializer(),doc=parser.parseFromString(xml,'application/xml');if(doc.getElementsByTagName('parsererror').length)return false;const tableNs='urn:oasis:names:tc:opendocument:xmlns:table:1.0',chartNs='urn:oasis:names:tc:opendocument:xmlns:chart:1.0';const table=firstNs(doc,tableNs,'table');if(!table)return false;let rows=Array.from(table.getElementsByTagNameNS(tableNs,'table-row'));if(rows.length<2)return false;const series=epiSeries();if(!series.length)return false;const header=rows[0],template=rows[rows.length-1];for(let i=rows.length-1;i>=1;i--)rows[i].parentNode.removeChild(rows[i]);const parent=header.parentNode;series.forEach(item=>{const row=template.cloneNode(true),cells=Array.from(row.getElementsByTagNameNS(tableNs,'table-cell'));setChartCell(doc,cells[0],odfDateSerial(item.date),true);setChartCell(doc,cells[1],item.count,false);parent.appendChild(row)});const n=series.length+1,cats=firstNs(doc,chartNs,'categories'),serEl=firstNs(doc,chartNs,'series'),points=firstNs(doc,chartNs,'data-point');if(cats)cats.setAttributeNS(tableNs,'table:cell-range-address',`local-table.$A$2:.$A$${n}`);if(serEl)serEl.setAttributeNS(chartNs,'chart:values-cell-range-address',`local-table.$B$2:.$B$${n}`);if(points)points.setAttributeNS(chartNs,'chart:repeated',String(series.length));const title=firstNs(doc,chartNs,'title');if(title){const p=firstNs(title,'urn:oasis:names:tc:opendocument:xmlns:text:1.0','p');if(p)p.textContent='群聚事件發病人數'}zip.file('Object 1/content.xml',ser.serializeToString(doc));return true}
+function wordParas(doc){return Array.from(doc.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main','p'))}
+function wordText(el){return Array.from(el.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main','t')).map(x=>x.textContent||'').join('')}
+function setWordText(doc,el,text){
+ if(!el)return false;
+ const ns='http://schemas.openxmlformats.org/wordprocessingml/2006/main';
+ Array.from(el.childNodes).forEach(n=>{if(!(n.nodeType===1&&n.localName==='pPr'))el.removeChild(n)});
+ const r=doc.createElementNS(ns,'w:r'),t=doc.createElementNS(ns,'w:t');t.setAttribute('xml:space','preserve');t.textContent=String(text??'');r.appendChild(t);el.appendChild(r);return true;
+}
+function setWordParagraph(doc,starts,text){const p=wordParas(doc).find(x=>wordText(x).trim().startsWith(starts));return setWordText(doc,p,text)}
+function setWordNextParagraph(doc,starts,text){const ps=wordParas(doc),i=ps.findIndex(x=>wordText(x).trim().startsWith(starts));return i>=0&&ps[i+1]?setWordText(doc,ps[i+1],text):false}
+function wordCells(doc){return Array.from(doc.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main','tc'))}
+function setWordCellText(doc,cell,text){if(!cell)return false;const p=cell.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main','p')[0];return setWordText(doc,p,text)}
+function rocLong(d){if(!d)return '';const [y,m,day]=String(d).slice(0,10).split('-').map(Number);return `${y-1911}年${m}月${day}日`}
+function healthEpiDocNarrative(){return eventNarrativeDraft()+' 本段為系統依既有紀錄產生之草稿，請承辦人確認後再正式送出。'}
+function chartNodesByNS(doc,ns,local){return Array.from(doc.getElementsByTagNameNS(ns,local))}
+function clearChildren(el){while(el&&el.firstChild)el.removeChild(el.firstChild)}
+function appendChartPoint(doc,parent,idx,value,ns){const pt=doc.createElementNS(ns,'c:pt');pt.setAttribute('idx',String(idx));const v=doc.createElementNS(ns,'c:v');v.textContent=String(value);pt.appendChild(v);parent.appendChild(pt)}
+async function updateHealthEpiWordChart(zip){
+ const entry=zip.file('word/charts/chart1.xml');if(!entry)return false;
+ const xml=await entry.async('string'),parser=new DOMParser(),ser=new XMLSerializer(),doc=parser.parseFromString(xml,'application/xml');
+ if(doc.getElementsByTagName('parsererror').length)return false;
+ const c='http://schemas.openxmlformats.org/drawingml/2006/chart',a='http://schemas.openxmlformats.org/drawingml/2006/main';
+ const raw=epiSeries(),series=raw.length?raw:[{date:'待補',count:0}],labels=series.map(x=>x.date==='待補'?'待補':String(x.date).slice(5).replace('-','/')),values=series.map(x=>Number(x.count)||0);
+ const title=chartNodesByNS(doc,c,'title')[0];if(title){const t=chartNodesByNS(title,a,'t')[0];if(t)t.textContent=raw.length?'群聚事件發病人數':'群聚事件發病人數（待補發病日期）'}
+ const strCache=chartNodesByNS(doc,c,'strCache').find(x=>x.parentNode&&x.parentNode.localName==='strRef'&&x.parentNode.parentNode&&x.parentNode.parentNode.localName==='cat');
+ if(strCache){const pc=chartNodesByNS(strCache,c,'ptCount')[0];if(pc)pc.setAttribute('val',String(labels.length));chartNodesByNS(strCache,c,'pt').forEach(x=>x.remove());labels.forEach((v,i)=>appendChartPoint(doc,strCache,i,v,c))}
+ const numCache=chartNodesByNS(doc,c,'numCache')[0];
+ if(numCache){const pc=chartNodesByNS(numCache,c,'ptCount')[0];if(pc)pc.setAttribute('val',String(values.length));chartNodesByNS(numCache,c,'pt').forEach(x=>x.remove());values.forEach((v,i)=>appendChartPoint(doc,numCache,i,v,c))}
+ const maxVal=Math.max(1,...values),valAx=chartNodesByNS(doc,c,'valAx')[0];if(valAx){const scaling=chartNodesByNS(valAx,c,'scaling')[0],max=scaling&&chartNodesByNS(scaling,c,'max')[0];if(max)max.setAttribute('val',String(Math.max(2,maxVal+1)))}
+ zip.file('word/charts/chart1.xml',ser.serializeToString(doc));return true
+}
+async function makeHealthEpiDOCX(){
+ if(typeof JSZip==='undefined')throw new Error('Word 產生元件尚未載入，請確認網路連線後重新整理。');
+ const r=await fetch('./templates/health-bureau-epi-template.docx',{cache:'no-store'});
+ if(!r.ok)throw new Error(`無法讀取衛生局附件2 Word 母版（HTTP ${r.status}）`);
+ const buf=await r.arrayBuffer();if(!buf||!buf.byteLength)throw new Error('衛生局附件2 Word 母版內容為空。');
+ const zip=await JSZip.loadAsync(buf),entry=zip.file('word/document.xml');if(!entry)throw new Error('衛生局附件2 Word 母版結構不完整。');
+ const xml=await entry.async('string'),parser=new DOMParser(),ser=new XMLSerializer(),doc=parser.parseFromString(xml,'application/xml');
+ if(doc.getElementsByTagName('parsererror').length)throw new Error('衛生局附件2 Word XML 無法解析。');
+ const e=state.event,st=eventStats(),series=epiSeries(),first=series[0]?.date||'',last=series.at(-1)?.date||first;
+ const resRate=st.resPop?((st.resCases/st.resPop)*100).toFixed(1):'',staffRate=st.staffPop?((st.staffCases/st.staffPop)*100).toFixed(1):'';
+ setWordParagraph(doc,'群聚事件編號：',`群聚事件編號：${e.clusterNo||''}　通報日期：${e.reportDate?rocLong(e.reportDate):''}`);
+ setWordParagraph(doc,'群聚類別：',`群聚類別：${checkbox(e.clusterType==='上呼吸道感染')}上呼吸道感染　${checkbox(e.clusterType==='不明原因發燒')}不明原因發燒群聚`);
+ setWordParagraph(doc,'群聚事件名稱：',`群聚事件名稱：${e.clusterName||`${e.area||''} ${e.disease||''}`.trim()}`);
+ const src=e.reportSource||'';setWordParagraph(doc,'通報來源：',`通報來源：${checkbox(/系統/.test(src))}疾病管制署相關通報系統　${checkbox(/電話/.test(src))}電話　${checkbox(/傳真/.test(src))}傳真　${checkbox(/簡訊/.test(src))}簡訊　${src&&!/系統|電話|傳真|簡訊/.test(src)?'其他：'+src:''}`);
+ setWordParagraph(doc,'發生縣市鄉鎮：','發生縣市鄉鎮：臺北市　北投區');
+ setWordParagraph(doc,'機構/場所名稱：','機構/場所名稱：臺北市立陽明教養院');
+ setWordParagraph(doc,'群聚事件主要範圍：',`群聚事件主要範圍：${e.area||''}`);
+ setWordParagraph(doc,'群聚事件主要症狀：',`群聚事件主要症狀：${e.mainSymptoms||'待確認'}`);
+ setWordParagraph(doc,'疫情期間(發病日起〜迄)：',`疫情期間(發病日起〜迄)：${first?rocLong(first):'待補'}${last&&last!==first?'〜'+rocLong(last):''}`);
+ setWordParagraph(doc,'□住民/□收容人/□住院病人/□學生/□士兵：共有',`☒住民/☐收容人/☐住院病人/☐學生/☐士兵：共有 ${st.resCases} 人。`);
+ const ps=wordParas(doc),staffLines=ps.filter(x=>wordText(x).trim().startsWith('□工作人員/□管理人員/□醫護人員/□教職員工/□軍(士)官：共有'));
+ if(staffLines[0])setWordText(doc,staffLines[0],`☒工作人員/☐管理人員/☐醫護人員/☐教職員工/☐軍(士)官：共有 ${st.staffCases} 人。`);
+ const totalLines=ps.filter(x=>wordText(x).trim().startsWith('總計'));
+ if(totalLines[0])setWordText(doc,totalLines[0],`總計 ${st.totalCases} 人。`);
+ const residentPopLine=ps.find(x=>wordText(x).trim().startsWith('□住民/□收容人/□住院病人/□學生/□士兵：共有_____'));
+ if(residentPopLine)setWordText(doc,residentPopLine,`☒住民/☐收容人/☐住院病人/☐學生/☐士兵：共有 ${st.resPop||'待補'} 人。`);
+ if(staffLines[1])setWordText(doc,staffLines[1],`☒工作人員/☐管理人員/☐醫護人員/☐教職員工/☐軍(士)官：共有 ${st.staffPop||'待補'} 人。`);
+ if(totalLines[1])setWordText(doc,totalLines[1],`總計 ${st.totalPop||'待補'} 人。`);
+ setWordParagraph(doc,'侵襲率：',`侵襲率：${st.attackRate?st.attackRate+'% ('+st.totalCases+'/'+st.totalPop+')':'待補母數後自動計算'}。`);
+ setWordNextParagraph(doc,'疫情事件描述：',healthEpiDocNarrative());
+ // 疫情概況表：保留衛生局表格，只填目前可由結構化資料可靠計算的欄位。
+ const tables=Array.from(doc.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main','tbl'));
+ const summary=tables.find(t=>wordText(t).includes('快篩陽性/快篩人數'));
+ if(summary){const rows=Array.from(summary.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main','tr'));
+  const fill=(row,vals)=>{if(!row)return;const cs=Array.from(row.getElementsByTagNameNS('http://schemas.openxmlformats.org/wordprocessingml/2006/main','tc'));vals.forEach((v,i)=>setWordCellText(doc,cs[i],v))};
+  fill(rows[1],[e.area||'', '住民', first?rocShort(first):'', `${st.resCases}/${st.resPop||'待補'}${resRate?' ('+resRate+'%)':''}`, String(st.cases.filter(p=>p.type==='服務對象'&&(p.visitDate||p.status==='就醫')).length), `${st.cases.filter(p=>p.type==='服務對象'&&p.testResult==='陽性').length}/${st.cases.filter(p=>p.type==='服務對象'&&p.testResult&&p.testResult!=='未檢驗').length}`, String(st.cases.filter(p=>p.type==='服務對象'&&/使用/.test(p.antiviral||'')&&!/未使用/.test(p.antiviral||'')).length), String(st.cases.filter(p=>p.type==='服務對象'&&(/住院中|已出院/.test(p.hospitalized||'')||p.status==='住院')).length)]);
+  fill(rows[2],[e.area||'', '工作人員', first?rocShort(first):'', `${st.staffCases}/${st.staffPop||'待補'}${staffRate?' ('+staffRate+'%)':''}`, String(st.cases.filter(p=>p.type==='工作人員'&&(p.visitDate||p.status==='就醫')).length), `${st.cases.filter(p=>p.type==='工作人員'&&p.testResult==='陽性').length}/${st.cases.filter(p=>p.type==='工作人員'&&p.testResult&&p.testResult!=='未檢驗').length}`, String(st.cases.filter(p=>p.type==='工作人員'&&/使用/.test(p.antiviral||'')&&!/未使用/.test(p.antiviral||'')).length), String(st.cases.filter(p=>p.type==='工作人員'&&(/住院中|已出院/.test(p.hospitalized||'')||p.status==='住院')).length)]);
+  fill(rows[3],['總計','', '', `${st.totalCases}/${st.totalPop||'待補'}${st.attackRate?' ('+st.attackRate+'%)':''}`,String(st.visits),`${st.positive}/${st.cases.filter(p=>p.testResult&&p.testResult!=='未檢驗').length}`,String(st.antiviral),String(st.hospitalized)]);
+ }
+ setWordParagraph(doc,'截至___月___日總計發病人數',`截至${last?rocLong(last):'目前'}總計發病人數 ${st.totalCases} 人，新冠快篩 ${st.cases.filter(p=>p.testResult&&p.testResult!=='未檢驗').length} 人，${st.positive} 人為陽性。`);
+ setWordParagraph(doc,'本事件有症狀人員共計',`本事件有症狀人員共計 ${st.totalCases} 位，${st.visits} 人就醫後 ${st.antiviral} 人使用抗病毒藥劑(含自費)。`);
+ zip.file('word/document.xml',ser.serializeToString(doc));
+ await updateHealthEpiWordChart(zip);
+ return zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+}
+async function downloadHealthEpiDOCXRegional(){
+ if(!state.event){alert('請先建立感控事件。');return}
+ try{const blob=await makeHealthEpiDOCX(),date=(state.event.start||'').slice(0,10).replaceAll('-',''),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`衛生局附件2_群聚事件疫調報告_${state.event.area||'測試區'}_${date||'Pilot'}.docx`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}catch(err){alert('衛生局附件2 Word 產生失敗：'+err.message)}
+}
+async function downloadHealthEpiDOCX(){if(!healthBureauActive()){alert('目前尚未啟用衛生局群聚通報資料。請先點選「2｜全院資料」並儲存衛生局欄位。');return}if(!assertPreflightForFormalOutput())return;return withHospitalScopeAsync(()=>downloadHealthEpiDOCXRegional())}
+
+
+/* ===== Pilot 1.0 workspace shell ===== */
+function amlPage(){
+  return document.body?.dataset?.page || 'case';
+}
+function applyWorkspaceMode(){
+  const page=amlPage();
+  const meta={
+    case:{
+      eyebrow:'1｜輸入工作區',
+      title:'個案通報',
+      desc:'先建立／更正感控事件，再登錄感染個案與接觸者。完成後即可由儀表板產出院內表單。',
+      hint:'通報 → 追蹤 → 儀表板'
+    },
+    cluster:{
+      eyebrow:'2｜條件式輸入工作區',
+      title:'疑似群聚／全院資料',
+      desc:'只有疫情擴大、需要全院彙整或辦理衛生局群聚通報時才使用；單一生活區個案不必填寫。',
+      hint:'事件擴大 → 全院彙整 → 衛生局文件'
+    },
+    tracking:{
+      eyebrow:'3｜每日作業工作區',
+      title:'感控隔離區追蹤',
+      desc:'集中處理進行中感控區的每日症狀、就醫／檢驗與解除追蹤紀錄。',
+      hint:'選感控區 → 今日追蹤 → 更新狀態'
+    },
+    dashboard:{
+      eyebrow:'4｜管理／輸出工作區',
+      title:'全院資料儀表板與表單輸出',
+      desc:'查看進行中疫情、缺漏提醒與正式文件。完成個案通報即可產出院內表單；完成全院資料後才開放群聚／衛生局文件。',
+      hint:'全院概況 → 資料驗收 → 表單輸出'
+    }
+  }[page];
+  if(meta){
+    const e=document.getElementById('pageEyebrow'),t=document.getElementById('pageTitle'),
+          d=document.getElementById('pageDescription'),h=document.getElementById('pageFlowHint');
+    if(e)e.textContent=meta.eyebrow;if(t)t.textContent=meta.title;if(d)d.textContent=meta.desc;if(h)h.textContent=meta.hint;
+  }
+  document.querySelectorAll('.workspace-nav a').forEach(a=>{
+    if(a.dataset.nav===page)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+  });
+
+  // Cluster workspace uses the existing hospital-scope data model, but removes regional-only fields.
+  if(page==='cluster'){
+    if(!viewingHospitalData){
+      try{ showHospitalData(); }catch(_){ viewingHospitalData=true; try{render();}catch(__){} }
+    }
+    ['residentPopulation','staffPopulation','area','red','yellow','end','uvEnd','notify'].forEach(id=>{
+      const el=document.getElementById(id);
+      const f=el?.closest('.field');
+      if(f)f.classList.add('page-hidden');
+    });
+    const evtNote=document.getElementById('eventNote');
+    if(evtNote) evtNote.placeholder='可記錄全院群聚通報必要補充事項';
+  } else {
+    // Each non-cluster page should behave as a regional-event view.
+    if(viewingHospitalData){
+      viewingHospitalData=false;
+      try{render();}catch(_){}
+    }
+  }
+
+  // Focus the tracking selector on the active region and make the dashboard read-only in spirit.
+  if(page==='tracking'){
+    const title=document.querySelector('#trackingCard .section-title');
+    if(title) title.innerHTML='感控隔離區每日追蹤 <span class="pill">每日作業</span>';
+  }
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+  if(sessionStorage.getItem('aml_ic_pilot_auth')==='1'){
+    setTimeout(()=>mockLogin(),0);
+  }
+});
