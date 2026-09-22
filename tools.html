@@ -5,14 +5,14 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>AML Tools｜小工具專區｜Allen Mind Lab</title>
-<meta content="Allen Mind Lab 實用工具專區：從 PBS、方案規劃、轉銜支持到感控工作流程，將專業方法轉成可直接使用、持續改進的工作工具。" name="description"/>
+<meta content="Allen Mind Lab 實用工具專區：從 PBS、方案規劃、轉銜支持到感控工作流程，將專業方法轉成可直接使用、持續改進的工作工具；另設 AML Wish 讀者參與入口。" name="description"/>
 <link href="https://allenmindlab.com/tools" rel="canonical"/>
 <link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
 <link href="/aml-site.css" rel="stylesheet"/>
 <meta content="website" property="og:type"/>
 <meta content="Allen Mind Lab" property="og:site_name"/>
 <meta content="AML Tools｜小工具專區" property="og:title"/>
-<meta content="把專業方法轉成可以直接使用的工作流程：PBS、方案規劃、轉銜支持、感控管理與讀者參與。" property="og:description"/>
+<meta content="把專業方法轉成可以直接使用的工作流程：PBS、方案規劃、轉銜支持與感控管理；AML Wish 則作為獨立的讀者參與入口。" property="og:description"/>
 <meta content="https://allenmindlab.com/tools" property="og:url"/>
 <style>
 :root{--navy:#071a33;--navy2:#0d294a;--gold:#c7a76a;--cream:#f6f1e7;--ink:#142031;--muted:#657081;--white:#fff;--line:#e7e0d4}
@@ -39,6 +39,26 @@
 .tools-hero:after{content:"";position:absolute;right:-12vw;top:-180px;width:520px;height:520px;border:1px solid rgba(199,167,106,.22);border-radius:50%;box-shadow:0 0 0 70px rgba(199,167,106,.045),0 0 0 140px rgba(199,167,106,.025);pointer-events:none}
 .tools-hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.tools-hero-tags span{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);border-radius:999px;padding:6px 12px;font-size:.82rem;color:#eef4f8}
 .tool-lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 24px}.tool-lanes a{text-decoration:none;background:#f6f1e7;border:1px solid #e3d7bf;border-radius:18px;padding:15px 17px;display:grid;grid-template-columns:34px 1fr;column-gap:10px;align-items:center}.tool-lanes a>span{grid-row:1/3;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#071a33;color:#fff;font-size:.78rem;font-weight:800}.tool-lanes b{color:#071a33;font-size:.95rem}.tool-lanes small{color:#7b7468;font-size:.76rem}.tool-kind{display:inline-flex;margin-left:8px;padding:3px 8px;border-radius:999px;background:#f4f1ea;color:#6f5b35;font-size:.68rem;font-weight:800;vertical-align:middle}.tool-card{position:relative;overflow:hidden}.tool-card:before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:linear-gradient(90deg,#071a33 0 28%,#c7a76a 28% 48%,transparent 48%)}.tool-card--featured{border-color:#d5bd86;background:linear-gradient(180deg,#fffdf8,#fff)}.tool-card--featured:before{height:4px;background:linear-gradient(90deg,#c7a76a,#e6d3a4)}.tool-status{display:flex;align-items:center;gap:7px;font-size:.75rem;color:#6b7280;margin:-2px 0 10px}.tool-status b{color:#274c43}.status-dot{width:8px;height:8px;border-radius:50%;background:#4d8878;box-shadow:0 0 0 4px rgba(77,136,120,.12)}.pilot-badge{font-size:.66rem;vertical-align:middle;border:1px solid #c7a76a;border-radius:999px;padding:3px 8px;color:#8a6a32;white-space:nowrap}.tool-card h3{letter-spacing:-.01em}.tool-card p{line-height:1.75}.tool-card ul{line-height:1.85}.actions .btn{transition:transform .16s ease,box-shadow .16s ease}.actions .btn:hover{transform:translateY(-1px);box-shadow:0 7px 18px rgba(7,26,51,.12)}
+
+.tool-lanes--two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
+
+/* AML Wish: reader participation, intentionally distinct from tool cards */
+.wish-community{margin-top:54px;padding:34px 36px 36px;border:1px solid #e5d7bb;border-radius:30px;background:linear-gradient(135deg,#fffaf0 0%,#fff 58%,#f7f2e8 100%);position:relative;overflow:hidden;box-shadow:0 14px 34px rgba(80,63,31,.06)}
+.wish-community:before{content:"";position:absolute;width:250px;height:250px;border-radius:50%;right:-90px;top:-120px;background:rgba(199,167,106,.10)}
+.wish-community:after{content:"";position:absolute;width:140px;height:140px;border-radius:50%;left:-70px;bottom:-90px;background:rgba(13,41,74,.045)}
+.wish-community__eyebrow{position:relative;z-index:1;color:#8a6a32;font-size:.76rem;font-weight:900;letter-spacing:.16em;margin-bottom:16px}
+.wish-community__grid{position:relative;z-index:1;display:grid;grid-template-columns:72px minmax(0,1fr) 260px;gap:24px;align-items:center}
+.wish-community__mark{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:#fff;border:1px solid #dbc28d;color:#a57a2f;font-size:1.55rem;transform:rotate(-4deg);box-shadow:0 8px 20px rgba(80,63,31,.08)}
+.wish-community__label{display:inline-block;color:#745d34;background:#f4ead4;border-radius:999px;padding:5px 11px;font-size:.75rem;font-weight:800}
+.wish-community h2{margin:10px 0 8px;color:var(--navy);font-size:clamp(1.7rem,2.5vw,2.35rem);font-family:Georgia,"Times New Roman",serif;line-height:1.2}
+.wish-community__lead{margin:0;color:#566273;max-width:680px;font-size:1.02rem}
+.wish-community__notes{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 0}.wish-community__notes span{font-size:.78rem;color:#655b4a;border:1px dashed #d8c7a5;background:rgba(255,255,255,.72);padding:5px 10px;border-radius:999px}
+.wish-community__privacy{font-size:.84rem;color:#7a746a;margin:14px 0 0}
+.wish-community__actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px}.wish-btn{display:inline-block;text-decoration:none;background:#fff;border:1px solid #c7a76a;color:#725622;border-radius:999px;padding:10px 17px;font-weight:900;box-shadow:0 5px 14px rgba(80,63,31,.06)}.wish-btn:hover{background:#f8eed9}.wish-link{color:#53657a;text-decoration:none;font-weight:800;font-size:.9rem}.wish-link:hover{text-decoration:underline}
+.wish-community__quote{font-family:Georgia,"Noto Serif TC",serif;color:#8a6a32;font-size:1.05rem;line-height:1.75;padding:22px;border-left:1px solid #ddcfb4}
+@media(max-width:880px){.tool-lanes--two{grid-template-columns:1fr;max-width:none}.wish-community__grid{grid-template-columns:56px 1fr}.wish-community__quote{grid-column:2;border-left:0;border-top:1px solid #ddcfb4;padding:16px 0 0}.wish-community{padding:28px 24px}}
+@media(max-width:560px){.wish-community__grid{grid-template-columns:1fr}.wish-community__mark{display:none}.wish-community__quote{grid-column:1}.wish-community{padding:24px 20px;border-radius:24px}}
+
 @media(max-width:820px){.tool-lanes{grid-template-columns:1fr}.tool-kind{margin-left:6px}}
 
 </style>
@@ -52,14 +72,13 @@
 </div><button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button><div class="aml-mobile-menu" id="aml-mobile-menu"><span class="aml-mobile-label">關於 AML</span><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a><span class="aml-mobile-label">主題館藏</span><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a><span class="aml-mobile-label">閱讀路徑</span><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a><span class="aml-mobile-label">實用工具</span><a href="/tools.html">AML 工具箱</a><span class="aml-mobile-label">資源與聯繫</span><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></nav>
 <header class="tools-hero"><div class="tools-inner"><div class="kicker">ALLEN MIND LAB · TOOLS</div>
 <h1>把方法，變成真正能工作的工具。</h1>
-<p>從案例分析、方案規劃、轉銜支持、感控流程到 PBS 互動練習，AML Tools 把知識整理成可以工作、也可以一起練習的方法。</p>
+<p>從案例分析、方案規劃、轉銜支持到感控流程，AML Tools 把專業方法整理成可以直接帶進工作現場的實用工具。</p>
 <div class="tools-hero-tags"><span>實務導向</span><span>流程減負</span><span>人保留判斷</span></div></div></header>
 <main class="wrap" id="aml-main">
 <section aria-label="工具館特色" class="aml-collection-intro"><div class="aml-collection-intro__head"><div class="eyebrow">COLLECTION FOCUS · TOOLS</div><h2>不是多一套系統，而是少一點重工。</h2><p>每一項工具都從真實工作或教學場景出發：把重複整理交給流程，把需要理解、判斷與協作的部分留給人。</p></div><div class="aml-collection-keys"><div class="aml-collection-key"><span>PRACTICE</span><strong>從真實工作需求出發</strong></div><div class="aml-collection-key"><span>SUPPORT</span><strong>支持判斷，而不是代替判斷</strong></div><div class="aml-collection-key"><span>REUSE</span><strong>讓方法可以重複使用與改進</strong></div></div></section>
-<section aria-labelledby="aml-tools" class="aml-tools-all"><div class="aml-domain-catalog__head"><div><div class="eyebrow">AML TOOLS · 5</div><h2 id="aml-tools">實用工具</h2><p>依工作情境選擇工具。部分工具可公開使用；涉及院內工作流程者則採授權進入。</p></div><div class="aml-domain-catalog__count"><strong>05</strong>項工具</div></div><div aria-label="工具情境導覽" class="tool-lanes">
+<section aria-labelledby="aml-tools" class="aml-tools-all"><div class="aml-domain-catalog__head"><div><div class="eyebrow">AML TOOLS · 4</div><h2 id="aml-tools">實用工具</h2><p>依工作情境選擇工具。部分工具可公開使用；涉及院內工作流程者則採授權進入。</p></div><div class="aml-domain-catalog__count"><strong>04</strong>項工具</div></div><div aria-label="工具情境導覽" class="tool-lanes tool-lanes--two">
 <a href="#tool-practice"><span>01</span><b>實務支援</b><small>PBS · 轉銜 · 感控</small></a>
 <a href="#tool-learning"><span>02</span><b>學習與規劃</b><small>方案設計 · AI 協作</small></a>
-<a href="#tool-community"><span>03</span><b>參與與回饋</b><small>讓需求成為下一個工具</small></a>
 </div><div class="tool-grid"><article class="tool-card" id="tool-practice">
 <small>PBS · PRACTICE SUPPORT</small><span class="tool-kind">案例分析</span>
 <h3>AML PBS Companion</h3>
@@ -79,13 +98,24 @@
 <ul><li>授權人員登入使用</li><li>個案建檔與每日追蹤分流</li><li>院內表單與群聚／衛生局文件分流輸出</li><li>全院感控儀表板即時彙整</li></ul>
 <div class="actions"><a class="btn" href="/tools/infection-control-pilot/">進入感控作業助手 →</a></div>
 <p class="tool-related-reading">Pilot 測試版｜限授權人員使用；測試階段請勿輸入真實可識別個資。</p>
-</article><article class="tool-card" id="tool-community">
-<small>COMMUNITY · READER PARTICIPATION</small><span class="tool-kind">讀者參與</span>
-<h3>AML Wish｜向 AML 許願</h3>
-<p>下一篇文章想讀什麼？下一個 AML Tool 希望解決什麼問題？把想法整理成一封 Email，讓 AML 的下一步也能從讀者需求出發。</p>
-<ul><li>許願下一篇文章或下一個小工具</li><li>網站不儲存表單內容</li><li>由自己的郵件程式確認後寄出</li></ul>
-<div class="actions"><a class="btn" href="/wish.html">開始許願 ✨</a><a class="btn secondary" href="/contact.html">其他聯絡方式</a></div>
 </article></div></section>
+<section aria-labelledby="aml-wish" class="wish-community" id="tool-community">
+  <div class="wish-community__eyebrow">COMMUNITY · READER PARTICIPATION</div>
+  <div class="wish-community__grid">
+    <div class="wish-community__mark" aria-hidden="true">✦</div>
+    <div class="wish-community__copy">
+      <span class="wish-community__label">讀者參與 · 願望信箱</span>
+      <h2 id="aml-wish">AML Wish｜向 AML 許願</h2>
+      <p class="wish-community__lead">下一篇文章想讀什麼？下一個 AML 功能，希望幫你解決什麼？把一個念頭留給 AML，讓下一步也能從讀者需求出發。</p>
+      <div class="wish-community__notes">
+        <span>文章主題</span><span>功能構想</span><span>網站建議</span>
+      </div>
+      <p class="wish-community__privacy">網站不儲存你的許願內容；送出時會開啟自己的郵件程式，由你確認後寄出。</p>
+      <div class="wish-community__actions"><a class="wish-btn" href="/wish.html">寫下你的願望 ✨</a><a class="wish-link" href="/contact.html">其他聯絡方式 →</a></div>
+    </div>
+    <div class="wish-community__quote">有些 AML 的下一步，<br/>也許就從讀者的一個念頭開始。</div>
+  </div>
+</section>
 
 
 
