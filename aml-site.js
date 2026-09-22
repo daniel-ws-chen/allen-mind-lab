@@ -297,3 +297,108 @@
   }
 
 })();
+
+/* =========================================================
+   AML PBS Self-study: article completion return card
+   Shows only when an article is opened from the PBS course:
+   ?course=pbs&lesson=<lesson-id>
+   ========================================================= */
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('course') !== 'pbs') return;
+
+  const lesson = params.get('lesson');
+  const lessons = {
+    abc: { no: '第 1 堂', title: '先把事情看清楚' },
+    function: { no: '第 2 堂', title: '行為可能正在完成什麼' },
+    strategy: { no: '第 3 堂', title: '看似有效，不一定真的有幫助' },
+    replacement: { no: '第 4 堂', title: '不要只阻止，也要教會新的方法' },
+    emotion: { no: '第 5 堂', title: '在情緒升高以前看見訊號' },
+    family: { no: '第 6 堂', title: '先接住，再回到支持' }
+  };
+  const meta = lessons[lesson];
+  if (!meta) return;
+
+  const KEY = 'amlPbsSelfStudyV1';
+  const emptyState = () => ({
+    articles: {},
+    games: {},
+    quiz: { passed: false, score: 0, date: null, certificateId: null, name: null }
+  });
+
+  function markArticleRead() {
+    let state;
+    try {
+      const raw = JSON.parse(localStorage.getItem(KEY) || 'null');
+      state = raw && typeof raw === 'object' ? raw : emptyState();
+    } catch (e) {
+      state = emptyState();
+    }
+    state.articles = state.articles && typeof state.articles === 'object' ? state.articles : {};
+    state.games = state.games && typeof state.games === 'object' ? state.games : {};
+    state.quiz = state.quiz && typeof state.quiz === 'object' ? state.quiz : emptyState().quiz;
+    state.articles[lesson] = true;
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
+  function injectStyles() {
+    if (document.getElementById('aml-pbs-course-return-style')) return;
+    const style = document.createElement('style');
+    style.id = 'aml-pbs-course-return-style';
+    style.textContent = `
+      .aml-pbs-course-return{max-width:900px;margin:10px auto 34px;padding:0 28px;box-sizing:border-box}
+      .aml-pbs-course-return__card{border:1px solid #d9d0bf;border-radius:22px;background:linear-gradient(135deg,#fffdf9,#f6f2e9);padding:25px 26px;box-shadow:0 10px 30px rgba(12,35,63,.07)}
+      .aml-pbs-course-return__eyebrow{font-size:.76rem;font-weight:900;letter-spacing:.12em;color:#8b681f;margin-bottom:8px}
+      .aml-pbs-course-return h2{font-family:inherit;font-size:1.35rem;line-height:1.4;color:#102a4d;margin:0 0 8px}
+      .aml-pbs-course-return p{color:#5c6673;line-height:1.75;margin:0 0 17px}
+      .aml-pbs-course-return__actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+      .aml-pbs-course-return__btn{appearance:none;border:1px solid #285f55;background:#285f55;color:#fff;border-radius:999px;padding:12px 18px;font:inherit;font-weight:850;cursor:pointer;min-height:44px}
+      .aml-pbs-course-return__btn:hover{background:#214f47}
+      .aml-pbs-course-return__note{font-size:.82rem;color:#7b8490}
+      @media(max-width:640px){.aml-pbs-course-return{padding:0 18px}.aml-pbs-course-return__card{padding:21px 19px}.aml-pbs-course-return__btn{width:100%}}
+    `;
+    document.head.appendChild(style);
+  }
+
+  function renderCard() {
+    if (document.querySelector('.aml-pbs-course-return')) return;
+    injectStyles();
+
+    const section = document.createElement('section');
+    section.className = 'aml-pbs-course-return';
+    section.setAttribute('aria-label', 'PBS 自學路徑閱讀完成');
+    section.innerHTML = `
+      <div class="aml-pbs-course-return__card">
+        <div class="aml-pbs-course-return__eyebrow">PBS SELF-STUDY · ${meta.no}</div>
+        <h2>本課文章閱讀完成</h2>
+        <p>回到自學路徑，系統會標記這篇文章為已閱讀，接著可以進行本課的小遊戲。</p>
+        <div class="aml-pbs-course-return__actions">
+          <button class="aml-pbs-course-return__btn" type="button" data-aml-pbs-complete-read>✓ 完成閱讀，回到${meta.no}</button>
+          <span class="aml-pbs-course-return__note">學習進度只保存在這台裝置的瀏覽器。</span>
+        </div>
+      </div>`;
+
+    const footerNav = document.querySelector('.aml-article-footer-nav');
+    const main = document.querySelector('main');
+    if (footerNav && footerNav.parentNode) {
+      footerNav.parentNode.insertBefore(section, footerNav);
+    } else if (main && main.parentNode) {
+      main.parentNode.insertBefore(section, main.nextSibling);
+    } else {
+      document.body.appendChild(section);
+    }
+
+    const btn = section.querySelector('[data-aml-pbs-complete-read]');
+    btn.addEventListener('click', () => {
+      markArticleRead();
+      try { sessionStorage.removeItem('amlPbsSelfStudyPendingArticle'); } catch (e) {}
+      window.location.href = `/pbs-self-study.html#lesson-${lesson}`;
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderCard, { once: true });
+  } else {
+    renderCard();
+  }
+})();
