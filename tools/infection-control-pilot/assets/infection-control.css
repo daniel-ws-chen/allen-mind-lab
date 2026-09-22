@@ -192,3 +192,19 @@ body[data-page="dashboard"] #pageIntro .flow-hint{
   margin-left:8px;
   white-space:nowrap;
 }
+
+
+/* ===== Pilot 1.0.4 true physical page separation ===== */
+body[data-page="case"] #overviewGrid,
+body[data-page="case"] #daily,
+body[data-page="cluster"] #overviewGrid,
+body[data-page="cluster"] #people,
+body[data-page="cluster"] #daily,
+body[data-page="tracking"] #newEvent,
+body[data-page="tracking"] #people,
+body[data-page="tracking"] #overviewGrid,
+body[data-page="dashboard"] #newEvent,
+body[data-page="dashboard"] #people,
+body[data-page="dashboard"] #daily{
+  display:none !important;
+}
