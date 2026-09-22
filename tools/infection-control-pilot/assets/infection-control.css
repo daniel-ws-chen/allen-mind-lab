@@ -68,3 +68,115 @@ body[data-page="dashboard"] #overviewGrid{grid-template-columns:.8fr 1.2fr}
   .workspace-nav{grid-template-columns:1fr}
   .workspace-nav a{padding:11px 12px}
 }
+
+
+/* ===== Pilot 1.0.1 — true one-page-one-task isolation ===== */
+/* Shared navigation + page intro remain visible; generic workbench cards do not repeat. */
+body[data-page] #heroCard,
+body[data-page] #safetyCard,
+body[data-page] #feedbackCard,
+body[data-page] #scopeCard{
+  display:none !important;
+}
+
+/* 1｜個案通報：only event + person/contact entry */
+body[data-page="case"] #overviewGrid,
+body[data-page="case"] #trackingCard{
+  display:none !important;
+}
+body[data-page="case"] #eventCard,
+body[data-page="case"] #peopleCard{
+  display:block !important;
+}
+
+/* 2｜疑似群聚／全院資料：only the hospital/group event form */
+body[data-page="cluster"] #overviewGrid,
+body[data-page="cluster"] #peopleCard,
+body[data-page="cluster"] #trackingCard{
+  display:none !important;
+}
+body[data-page="cluster"] #eventCard{
+  display:block !important;
+}
+
+/* 3｜感控隔離區追蹤：only daily tracking */
+body[data-page="tracking"] #overviewGrid,
+body[data-page="tracking"] #eventCard,
+body[data-page="tracking"] #peopleCard,
+body[data-page="tracking"] #documentCard{
+  display:none !important;
+}
+body[data-page="tracking"] #trackingCard{
+  display:block !important;
+}
+
+/* 4｜儀表板／表單輸出：only summary + output */
+body[data-page="dashboard"] #eventCard,
+body[data-page="dashboard"] #peopleCard,
+body[data-page="dashboard"] #trackingCard{
+  display:none !important;
+}
+body[data-page="dashboard"] #overviewGrid{
+  display:grid !important;
+  grid-template-columns:minmax(280px,.8fr) minmax(420px,1.2fr);
+}
+body[data-page="dashboard"] #overviewCard,
+body[data-page="dashboard"] #documentCard{
+  display:block !important;
+}
+
+/* Stronger page identity */
+body[data-page] #pageIntro{
+  border-left:4px solid var(--accent);
+}
+body[data-page="cluster"] #pageIntro .flow-hint,
+body[data-page="tracking"] #pageIntro .flow-hint,
+body[data-page="dashboard"] #pageIntro .flow-hint{
+  background:#fff;
+}
+
+@media(max-width:900px){
+  body[data-page="dashboard"] #overviewGrid{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ===== Pilot 1.0.2 management dashboard ===== */
+.management-dashboard{display:grid;gap:14px;margin:0 0 18px}
+.dash-section-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.dash-section-head h2{margin:2px 0 5px;font-size:21px}
+.dash-kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+.dash-kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;min-height:102px;display:flex;flex-direction:column;justify-content:center}
+.dash-kpi span{font-size:12px;color:var(--muted)}
+.dash-kpi strong{font-size:28px;line-height:1.15;margin:5px 0;color:var(--ink)}
+.dash-kpi small{font-size:11px;color:var(--muted)}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.dash-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.dash-panel-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}
+.dash-bars{display:grid;gap:10px}
+.dash-bar-row{display:grid;grid-template-columns:90px 1fr 86px;gap:10px;align-items:center}
+.dash-bar-label{font-weight:700;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dash-bar-track{height:12px;background:#edf2f2;border-radius:999px;overflow:hidden}
+.dash-bar-fill{height:100%;background:var(--accent);border-radius:999px}
+.dash-bar-value{font-size:12px;text-align:right;color:var(--muted)}
+.epi-mini{display:flex;align-items:flex-end;gap:8px;min-height:170px;padding:15px 4px 0;border-bottom:1px solid var(--line)}
+.epi-col{flex:1;min-width:30px;text-align:center;display:flex;flex-direction:column;justify-content:flex-end;height:155px}
+.epi-num{font-size:11px;font-weight:800;margin-bottom:4px}
+.epi-bar{width:100%;max-width:42px;margin:0 auto;background:var(--accent);border-radius:6px 6px 0 0;min-height:3px}
+.epi-date{font-size:10px;color:var(--muted);margin-top:5px;white-space:nowrap}
+.clinical-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.clinical-item{padding:11px;border:1px solid var(--line);border-radius:12px;background:#fafcfc}
+.clinical-item span{display:block;font-size:11px;color:var(--muted)}
+.clinical-item b{font-size:21px;display:block;margin-top:4px}
+.dash-alerts{display:grid;gap:8px}
+.dash-alert{border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:12px;background:#fafcfc}
+.dash-alert.warn{background:#fff8e7;border-color:#ead39a}
+.dash-alert.danger{background:#fff0ef;border-color:#e4b1ac}
+.dash-alert.ok{background:#eff8f3;border-color:#b9d9c7}
+.table-wrap{overflow-x:auto}
+.dash-table{width:100%;border-collapse:collapse;font-size:12px}
+.dash-table th,.dash-table td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+.dash-table th{color:var(--muted);font-weight:700;background:#fafcfc}
+@media(max-width:1100px){.dash-kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.dash-grid{grid-template-columns:1fr}.dash-kpis{grid-template-columns:1fr 1fr}.clinical-grid{grid-template-columns:1fr 1fr}}

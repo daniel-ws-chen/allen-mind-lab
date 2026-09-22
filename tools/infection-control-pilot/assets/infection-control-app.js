@@ -111,7 +111,7 @@ function render(){const e=state.event;renderEventSwitcher();syncEventForm(e);if(
 const psb=document.getElementById('personSaveBtn'),pcb=document.getElementById('personCancelEditBtn');if(psb)psb.textContent=editingPersonId!==null?'✓ 儲存修改':'＋ 新增一位';if(pcb)pcb.classList.toggle('hidden',editingPersonId===null);
 const pb=document.getElementById('peopleBody');pb.innerHTML='';state.people.forEach(p=>{const dx=currentDiagnosis(p),hist=(p.diagnosisHistory||[]).filter(x=>x&&x.diagnosis).slice().sort((a,b)=>String(a.date||'').localeCompare(String(b.date||'')));const histText=hist.length?hist.map(x=>`${x.date||'日期待確認'} ${x.diagnosis}`).join(' → '):'—';pb.insertAdjacentHTML('beforeend',`<tr><td>${esc(p.code)}</td><td>${esc(p.type)}</td><td>${esc(p.role)}</td><td>${esc(p.area||'—')}</td><td>${esc(p.onset||'—')}</td><td>${dx?`${esc(dx.diagnosis)}<br><span class="muted mini">${esc(dx.date||'日期待確認')}</span>`:'—'}</td><td class="mini">${esc(histText)}</td><td>${esc(p.status)}</td><td><button class="secondary mini" onclick="editPerson(${p.id})">編輯／更正</button> <button class="secondary mini" onclick="addDiagnosis(${p.id})">＋診斷</button> <button class="secondary mini" onclick="removePerson(${p.id})">作廢</button></td></tr>`)});document.getElementById('peopleEmpty').classList.toggle('hidden',state.people.length>0);document.getElementById('peopleTable').classList.toggle('hidden',state.people.length===0);
 const sel=document.getElementById('dailyPerson');const old=sel.value;sel.innerHTML=state.people.length?'<option value="">請選擇</option>':'<option value="">請先新增人員</option>';state.people.forEach(p=>sel.insertAdjacentHTML('beforeend',`<option value="${p.id}">${esc(p.code)}｜${esc(p.role)}</option>`));if([...sel.options].some(o=>o.value===old))sel.value=old;
-const db=document.getElementById('dailyBody');db.innerHTML='';state.daily.slice().reverse().forEach(d=>{const p=state.people.find(x=>x.id===d.personId);db.insertAdjacentHTML('beforeend',`<tr><td>${esc(d.date)}</td><td>${esc(p?p.code:'—')}</td><td>${esc(d.temp||'—')}</td><td>${esc(d.symptoms||'—')}</td><td>${esc(d.action||'—')}</td><td><button class="secondary mini" onclick="removeDaily(${d.id})">作廢</button></td></tr>`)});document.getElementById('dailyEmpty').classList.toggle('hidden',state.daily.length>0);document.getElementById('dailyTable').classList.toggle('hidden',state.daily.length===0);if(!document.getElementById('dailyDate').value)document.getElementById('dailyDate').value=today;renderTodayReminders(today);}
+const db=document.getElementById('dailyBody');db.innerHTML='';state.daily.slice().reverse().forEach(d=>{const p=state.people.find(x=>x.id===d.personId);db.insertAdjacentHTML('beforeend',`<tr><td>${esc(d.date)}</td><td>${esc(p?p.code:'—')}</td><td>${esc(d.temp||'—')}</td><td>${esc(d.symptoms||'—')}</td><td>${esc(d.action||'—')}</td><td><button class="secondary mini" onclick="removeDaily(${d.id})">作廢</button></td></tr>`)});document.getElementById('dailyEmpty').classList.toggle('hidden',state.daily.length>0);document.getElementById('dailyTable').classList.toggle('hidden',state.daily.length===0);if(!document.getElementById('dailyDate').value)document.getElementById('dailyDate').value=today;renderTodayReminders(today);renderManagementDashboard();}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function saveFeedback(){const d={time:new Date().toISOString(),easy:v('fbEasy'),save:v('fbSave'),note:v('fbText')};localStorage.setItem('aml_ic_feedback',JSON.stringify(d));document.getElementById('fbMsg').textContent='✓ 已儲存在這台裝置的瀏覽器中。'}
 function downloadFeedback(){const d=localStorage.getItem('aml_ic_feedback')||'{}';const b=new Blob([d],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='aml-infection-control-feedback.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
@@ -343,12 +343,12 @@ async function downloadInternalBundle(){
  if(!assertPreflightForFormalOutput())return;saveActiveRegion();const regs=allRegions();if(!regs.length){alert('請先完成至少一個「1｜個案通報」。');return}
  const keep={event:structuredClone(state.event),people:structuredClone(state.people||[]),daily:structuredClone(state.daily||[]),activeEventId:state.activeEventId};const issues=[];
  try{const z=new JSZip();for(const r of regs){state.event=structuredClone(r.event);state.people=structuredClone(r.people||[]);state.daily=structuredClone(r.daily||[]);state.activeEventId=r.id;const area=String(r.event?.area||'未命名區').replace(/[\/:*?"<>|]/g,'_'),folder=z.folder(area);const jobs=[['01_感控措施單.docx',makeMeasuresFromTemplate],['02_感控措施會辦單.docx',makeMemoFromTemplate],['03_走動式稽查表.docx',makeAuditFromTemplate],['04_特照室清潔紀錄表.docx',makeCleanFromTemplate],['05_URI每日追蹤.xlsx',makeDailyExcel]];for(const [name,fn] of jobs){try{folder.file(name,await fn())}catch(err){issues.push(`${area}｜${name}：${err.message}`)}}}
-  z.file('README_院內表單.txt',['AML 感控作業管理助手 Pilot 1.0','', '本 ZIP 僅包含完成「1｜個案通報／院內感控」即可產出的院內文件。','群聚事件造冊表與預防性投藥名單屬「2｜全院資料／衛生局群聚事件」流程，不包含於此 ZIP。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='AML_院內感控表單.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`院內表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('院內表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
+  z.file('README_院內表單.txt',['AML 感控作業管理助手 Pilot 1.0.2','', '本 ZIP 僅包含完成「1｜個案通報／院內感控」即可產出的院內文件。','群聚事件造冊表與預防性投藥名單屬「2｜全院資料／衛生局群聚事件」流程，不包含於此 ZIP。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='AML_院內感控表單.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`院內表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('院內表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
 }
 async function downloadHealthBundle(){
  if(!healthBureauActive()){alert('請先完成「2｜全院資料／衛生局群聚事件」並儲存後，再產出群聚／衛生局表單。');return}if(!assertPreflightForFormalOutput())return;saveActiveRegion();const h=hospitalState();if(!h.people.length){alert('全院尚無可彙整的人員資料。');return}
  const keep={event:structuredClone(state.event),people:structuredClone(state.people||[]),daily:structuredClone(state.daily||[]),activeEventId:state.activeEventId};const issues=[];
- try{state.event=h.event;state.people=h.people;state.daily=h.daily;const z=new JSZip();try{z.file('01_群聚事件造冊暨每日追蹤_全院.xlsx',await makeRosterExcel())}catch(err){issues.push(`01 群聚事件造冊：${err.message}`)}try{z.file('02_預防性投藥名單_全院.xlsx',await makeProphExcel())}catch(err){issues.push(`02 預防性投藥名單：${err.message}`)}try{z.file('03_衛生局附件1_上呼吸道及不明原因發燒群聚事件造冊表_全院.xlsx',await makeHealthBureauRosterExcel())}catch(err){issues.push(`衛生局附件1：${err.message}`)}try{z.file('04_衛生局附件2_群聚事件疫調報告_全院.docx',await makeHealthEpiDOCX())}catch(err){issues.push(`衛生局附件2：${err.message}`)}z.file('README_群聚衛生局表單.txt',['AML 感控作業管理助手 Pilot 1.0','', '本 ZIP 僅在完成「2｜全院資料／衛生局群聚事件」後產出，資料範圍固定為全院進行中感控事件彙整。','包含：1 群聚事件造冊、2 預防性投藥名單、3 衛生局附件1、4 衛生局附件2。','AML 僅彙整既有資料，不自行判定是否構成群聚。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),date=(h.event.start||'').slice(0,10).replaceAll('-',''),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`AML_群聚衛生局表單_全院_${date||'Pilot'}.zip`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`群聚／衛生局表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('群聚／衛生局表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
+ try{state.event=h.event;state.people=h.people;state.daily=h.daily;const z=new JSZip();try{z.file('01_群聚事件造冊暨每日追蹤_全院.xlsx',await makeRosterExcel())}catch(err){issues.push(`01 群聚事件造冊：${err.message}`)}try{z.file('02_預防性投藥名單_全院.xlsx',await makeProphExcel())}catch(err){issues.push(`02 預防性投藥名單：${err.message}`)}try{z.file('03_衛生局附件1_上呼吸道及不明原因發燒群聚事件造冊表_全院.xlsx',await makeHealthBureauRosterExcel())}catch(err){issues.push(`衛生局附件1：${err.message}`)}try{z.file('04_衛生局附件2_群聚事件疫調報告_全院.docx',await makeHealthEpiDOCX())}catch(err){issues.push(`衛生局附件2：${err.message}`)}z.file('README_群聚衛生局表單.txt',['AML 感控作業管理助手 Pilot 1.0.2','', '本 ZIP 僅在完成「2｜全院資料／衛生局群聚事件」後產出，資料範圍固定為全院進行中感控事件彙整。','包含：1 群聚事件造冊、2 預防性投藥名單、3 衛生局附件1、4 衛生局附件2。','AML 僅彙整既有資料，不自行判定是否構成群聚。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),date=(h.event.start||'').slice(0,10).replaceAll('-',''),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`AML_群聚衛生局表單_全院_${date||'Pilot'}.zip`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`群聚／衛生局表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('群聚／衛生局表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
 }
 async function downloadWord(type){if(!assertPreflightForFormalOutput())return;if(!state.event){alert('請先建立感控事件。');return}if(type==='memo'&&!primaryCase()){alert('會辦單尚缺感染個案，請先新增感染個案。');return}try{const blob=await makeDocx(type);const e=state.event;const label=type==='measures'?'感控措施單':type==='memo'?'感控措施會辦單':type==='audit'?'走動式稽查表':'特照室清潔紀錄表';const date=(e.start||'').slice(0,10).replaceAll('-','');const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${label}_${e.area||'測試區'}_${date||'Pilot'}.docx`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}catch(err){alert('Word 檔產生失敗：'+err.message)}}
 
@@ -450,7 +450,7 @@ async function downloadHealthEpiDOCXRegional(){
 async function downloadHealthEpiDOCX(){if(!healthBureauActive()){alert('目前尚未啟用衛生局群聚通報資料。請先點選「2｜全院資料」並儲存衛生局欄位。');return}if(!assertPreflightForFormalOutput())return;return withHospitalScopeAsync(()=>downloadHealthEpiDOCXRegional())}
 
 
-/* ===== Pilot 1.0 workspace shell ===== */
+/* ===== Pilot 1.0.2 workspace shell ===== */
 function amlPage(){
   return document.body?.dataset?.page || 'case';
 }
@@ -523,3 +523,96 @@ window.addEventListener('DOMContentLoaded',()=>{
     setTimeout(()=>mockLogin(),0);
   }
 });
+
+
+function renderManagementDashboard(){
+ if(document.body?.dataset?.page!=='dashboard')return;
+ const regs=allRegions();
+ const h=hospitalState();
+ const people=h.people||[], daily=h.daily||[];
+ const cases=people.filter(p=>p.role==='感染個案');
+ const contacts=people.filter(p=>p.role==='密切接觸者');
+ const resCases=cases.filter(p=>p.type==='服務對象').length;
+ const staffCases=cases.filter(p=>p.type==='工作人員').length;
+ const today=localISODate();
+ const doneToday=new Set(daily.filter(d=>d.date===today).map(d=>String(d.personId)));
+ const followTotal=people.length, followDone=people.filter(p=>doneToday.has(String(p.id))).length;
+ const followRate=followTotal?Math.round(followDone/followTotal*100):null;
+ const positive=cases.filter(p=>p.testResult==='陽性').length;
+ const hospitalized=cases.filter(p=>/住院中|已出院/.test(p.hospitalized||'')||p.status==='住院').length;
+ const antiviral=cases.filter(p=>/使用/.test(p.antiviral||'')&&!/未使用/.test(p.antiviral||'')).length;
+ const setText=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val};
+ setText('dashRegions',regs.length);
+ setText('dashRegionsNote',regs.length?regs.map(r=>r.event?.area||'未命名區').join('、'):'目前無進行中感控區');
+ setText('dashCases',cases.length);
+ setText('dashCasesNote',`服務對象 ${resCases}｜工作人員 ${staffCases}`);
+ setText('dashContacts',contacts.length);
+ setText('dashContactsNote',contacts.length?'目前全院列管接觸者':'尚無列管接觸者');
+ setText('dashFollowRate',followRate===null?'—':followRate+'%');
+ setText('dashFollowNote',followTotal?`今日完成 ${followDone}/${followTotal} 人`:'尚無列管人員');
+ setText('dashPositive',positive);
+ setText('dashPositiveNote',cases.length?`感染個案 ${cases.length} 人中已登錄陽性 ${positive} 人`:'尚無感染個案');
+ setText('dashHospitalAntiviral',`${hospitalized} / ${antiviral}`);
+ setText('dashLastUpdate',`更新：${new Date().toLocaleString('zh-TW',{hour12:false})}`);
+
+ // Area distribution
+ const areaBox=document.getElementById('dashAreaBars');
+ if(areaBox){
+   const rows=regs.map(r=>{
+     const ps=r.people||[], c=ps.filter(p=>p.role==='感染個案').length, ct=ps.filter(p=>p.role==='密切接觸者').length;
+     return {area:r.event?.area||'未命名區',cases:c,contacts:ct,total:c+ct};
+   }).sort((a,b)=>b.cases-a.cases||b.contacts-a.contacts);
+   const max=Math.max(1,...rows.map(x=>x.total));
+   areaBox.innerHTML=rows.length?rows.map(x=>`<div class="dash-bar-row"><div class="dash-bar-label">${esc(x.area)}</div><div class="dash-bar-track"><div class="dash-bar-fill" style="width:${Math.max(4,x.total/max*100)}%"></div></div><div class="dash-bar-value">${x.cases}例／${x.contacts}接觸</div></div>`).join(''):'<div class="muted">尚無進行中感控區資料</div>';
+ }
+
+ // Epi curve by onset
+ const epiBox=document.getElementById('dashEpiCurve');
+ if(epiBox){
+   const counts={};
+   cases.forEach(p=>{if(p.onset)counts[p.onset]=(counts[p.onset]||0)+1});
+   const pts=Object.entries(counts).sort((a,b)=>a[0].localeCompare(b[0]));
+   const max=Math.max(1,...pts.map(x=>x[1]));
+   epiBox.innerHTML=pts.length?pts.map(([date,n])=>`<div class="epi-col"><div class="epi-num">${n}</div><div class="epi-bar" style="height:${Math.max(6,n/max*120)}px"></div><div class="epi-date">${esc(date.slice(5))}</div></div>`).join(''):'<div class="muted" style="align-self:center;width:100%;text-align:center">尚無感染個案發病日期資料</div>';
+ }
+
+ // Clinical stats
+ const clinical=document.getElementById('dashClinicalStats');
+ if(clinical){
+   const visits=cases.filter(p=>p.visitDate||p.status==='就醫').length;
+   const tested=cases.filter(p=>p.testDate||p.testResult).length;
+   clinical.innerHTML=[
+    ['已就醫',visits],['已檢驗',tested],['檢驗陽性',positive],['住院',hospitalized],
+    ['抗病毒用藥',antiviral],['服務對象病例',resCases],['工作人員病例',staffCases],['群聚通報',healthBureauActive()?'已啟用':'未啟用']
+   ].map(([k,v])=>`<div class="clinical-item"><span>${k}</span><b>${v}</b></div>`).join('');
+ }
+
+ // Alerts
+ const alertBox=document.getElementById('dashAlerts');
+ if(alertBox){
+   const alerts=[];
+   if(!regs.length)alerts.push({k:'ok',t:'目前無進行中感控區。'});
+   if(followTotal && followDone<followTotal)alerts.push({k:'warn',t:`今日尚有 ${followTotal-followDone} 人未完成追蹤。`});
+   if(regs.length>=2&&!healthBureauActive())alerts.push({k:'warn',t:`目前已有 ${regs.length} 個進行中感控區；如符合機構通報流程，可至「2｜疑似群聚／全院資料」完成全院彙整。`});
+   const missingOnset=cases.filter(p=>!p.onset).length;
+   if(missingOnset)alerts.push({k:'warn',t:`有 ${missingOnset} 名感染個案尚缺發病日期，流行曲線可能低估。`});
+   const missingTest=cases.filter(p=>!p.testResult).length;
+   if(missingTest)alerts.push({k:'warn',t:`有 ${missingTest} 名感染個案尚未登錄檢驗結果。`});
+   if(healthBureauActive())alerts.push({k:'ok',t:'全院／衛生局群聚資料已啟用，可由下方文件中心產出群聚／衛生局文件。'});
+   const pf=preflightReport();
+   if(pf.conflicts.length)alerts.push({k:'danger',t:`資料一致性警示：${pf.conflicts[0]}`});
+   alertBox.innerHTML=(alerts.length?alerts:[{k:'ok',t:'目前未發現需特別提示的資料缺漏。'}]).map(a=>`<div class="dash-alert ${a.k}">${esc(a.t)}</div>`).join('');
+ }
+
+ // Region table
+ const table=document.getElementById('dashRegionTable');
+ if(table){
+   table.innerHTML=regs.length?regs.map(r=>{
+     const ps=r.people||[], c=ps.filter(p=>p.role==='感染個案').length, ct=ps.filter(p=>p.role==='密切接觸者').length;
+     const ids=new Set(ps.map(p=>String(p.id)));
+     const done=new Set((r.daily||[]).filter(d=>d.date===today).map(d=>String(d.personId)));
+     const todayDone=[...ids].filter(id=>done.has(id)).length;
+     return `<tr><td><b>${esc(r.event?.area||'未命名區')}</b></td><td>${esc(r.event?.disease||'—')}</td><td>${c}</td><td>${ct}</td><td>${todayDone}/${ps.length}</td><td>${esc((r.event?.start||'').slice(0,10)||'—')}</td><td>${esc((r.event?.end||'').slice(0,10)||'—')}</td></tr>`;
+   }).join(''):'<tr><td colspan="7" class="muted">尚無進行中感控區</td></tr>';
+ }
+}
