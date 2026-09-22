@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="zh-Hant"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>個案通報｜AML 感控作業管理助手 Pilot 1.0.2</title><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><link href="./assets/infection-control.css" rel="stylesheet"/></head><body data-page="case">
+<html lang="zh-Hant"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>全院儀表板／表單輸出｜AML 感控作業管理助手 Pilot 1.0.2</title><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><link href="./assets/infection-control.css" rel="stylesheet"/></head><body data-page="dashboard">
 <header><div class="brand"><div><b>AML 感控作業管理助手</b> <span class="pill">Pilot 1.0.2</span></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end"><div class="muted">一次建檔・持續追蹤・多表輸出</div><a aria-label="返回 Allen Mind Lab 主網站" class="home-link" href="/">← 返回 AML 主網站</a></div></div></header>
 <main>
 <section class="card login" id="login"><h1>授權人員登入</h1><p class="muted">護理師工作流程測試版：本階段測試「一次建檔・持續追蹤・多表輸出」。正式文件請下載院方原格式 Word／Excel，人工確認內容後再列印或送出。目前登入僅作為 Pilot 測試入口，尚未啟用正式帳號、OTP、角色權限與稽核紀錄。</p><div class="field"><label>授權 Email</label><input id="email" placeholder="name@example.org" type="email"/></div><div class="actions"><button class="primary" onclick="mockLogin()">進入測試系統</button></div><div class="notice">⚠️ Pilot 測試階段僅使用虛構／去識別資料。請勿輸入真實姓名、身分證字號、疾病史或可識別健康資料。</div></section>
@@ -19,7 +19,53 @@
 </div>
 <div class="card hero" id="heroCard"><div class="toolbar"><div><h1>護理師感控工作台</h1><div class="muted" id="heroSub">尚未建立測試事件｜請從下方開始</div><div style="margin-top:8px"><span class="muted mini" id="cloudStatus">☁️ 尚未連線雲端工作區</span> <span class="pill">NURSE01</span></div></div><div class="actions" style="margin-top:0"><button class="primary" onclick="startNewRegionalEvent()">＋ 1｜新增個案通報</button><button class="secondary" onclick="closeCurrentRegion()">結案／封存目前感控區</button></div></div><div id="eventSwitcher" style="margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fafcfc"><div style="display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap"><div><b>全院疫情總覽</b><div class="muted mini" id="outbreakSummary">尚未建立分區事件</div></div><div class="actions" id="regionTabs" style="margin-top:0"></div></div><div class="muted mini" style="margin-top:8px">步驟1完成後產出生活區院內文件；步驟2完成後，群聚事件造冊、預防性投藥及衛生局附件固定使用全院疫情資料。AML 不自行判定是否構成群聚。</div></div><div class="kpis"><div class="kpi"><span class="muted">事件狀態</span><strong id="kpiStatus">未建立</strong></div><div class="kpi"><span class="muted">感染個案</span><strong id="kpiCases">0</strong></div><div class="kpi"><span class="muted">接觸人員</span><strong id="kpiContacts">0</strong></div><div class="kpi"><span class="muted">今日追蹤</span><strong id="kpiDaily">0</strong></div></div></div>
 <div class="card safety" id="safetyCard" style="margin-top:18px"><div class="toolbar"><div><h2 class="section-title" style="margin:0">資料保護｜Pilot 驗收模式</h2><div class="muted mini">正式資料以「更正／作廢／結案」取代直接刪除；已結案區域保留歷程，但不納入目前全院疫情與正式輸出。</div></div><button class="danger mini" onclick="resetEvent()">🧹 重設全部 Pilot 測試資料</button></div><div class="muted mini" id="archivedRegions" style="margin-top:10px">尚無已結案感控區。</div></div>
-<div class="grid" id="overviewGrid" style="margin-top:18px"><div class="card" id="overviewCard"><h2 class="section-title">目前事件</h2><div id="eventTitle"><b>尚未建立事件</b></div><p class="muted" id="eventMeta">建立後，事件層級資料會自動顯示在這裡。</p><div class="progress"><i id="eventProgress" style="width:0%"></i></div><div class="actions"><button class="primary" onclick="document.getElementById('daily').scrollIntoView({behavior:'smooth'})">開始今日追蹤</button><button class="secondary" onclick="document.getElementById('people').scrollIntoView({behavior:'smooth'})">個案／接觸者</button></div><h2 class="section-title" style="margin-top:24px">今日感控提醒</h2><div class="muted mini" id="todayReminders">建立事件後，系統會依目前資料自動提示今天還缺什麼，不需要另外打勾回報。</div></div>
+<section class="management-dashboard" id="managementDashboard">
+<div class="dash-section-head">
+<div>
+<div class="eyebrow">全院感控戰情室</div>
+<h2>院內感控即時概況</h2>
+<p class="muted">依目前已登錄的個案、接觸者、每日追蹤與全院群聚資料自動彙整；不替代專業判斷或衛生局群聚認定。</p>
+</div>
+<span class="status wait" id="dashLastUpdate">等待資料</span>
+</div>
+<div class="dash-kpis">
+<div class="dash-kpi"><span>進行中感控區</span><strong id="dashRegions">0</strong><small id="dashRegionsNote">—</small></div>
+<div class="dash-kpi"><span>感染個案</span><strong id="dashCases">0</strong><small id="dashCasesNote">服務對象 0｜工作人員 0</small></div>
+<div class="dash-kpi"><span>密切接觸者</span><strong id="dashContacts">0</strong><small id="dashContactsNote">列管中</small></div>
+<div class="dash-kpi"><span>今日追蹤完成率</span><strong id="dashFollowRate">—</strong><small id="dashFollowNote">尚無列管人員</small></div>
+<div class="dash-kpi"><span>檢驗陽性</span><strong id="dashPositive">0</strong><small id="dashPositiveNote">依已登錄檢驗結果</small></div>
+<div class="dash-kpi"><span>住院／抗病毒</span><strong id="dashHospitalAntiviral">0 / 0</strong><small>住院／使用抗病毒藥物</small></div>
+</div>
+<div class="dash-grid">
+<section class="dash-panel">
+<div class="dash-panel-title"><b>各生活區疫情分布</b><span class="muted mini">感染個案／接觸者</span></div>
+<div class="dash-bars" id="dashAreaBars"><div class="muted">尚無資料</div></div>
+</section>
+<section class="dash-panel">
+<div class="dash-panel-title"><b>發病日流行曲線</b><span class="muted mini">依感染個案發病日期</span></div>
+<div class="epi-mini" id="dashEpiCurve"><div class="muted">尚無發病日期資料</div></div>
+</section>
+</div>
+<div class="dash-grid">
+<section class="dash-panel">
+<div class="dash-panel-title"><b>疫情處置概況</b><span class="muted mini">衛生局疫調常用統計</span></div>
+<div class="clinical-grid" id="dashClinicalStats"></div>
+</section>
+<section class="dash-panel">
+<div class="dash-panel-title"><b>管理提醒</b><span class="muted mini">依目前資料自動提示</span></div>
+<div class="dash-alerts" id="dashAlerts"><div class="muted">目前無提醒</div></div>
+</section>
+</div>
+<section class="dash-panel">
+<div class="dash-panel-title"><b>進行中感控區一覽</b><span class="muted mini">供主管快速掌握各區狀況</span></div>
+<div class="table-wrap">
+<table class="dash-table">
+<thead><tr><th>生活區</th><th>感控原因</th><th>感染個案</th><th>接觸者</th><th>今日追蹤</th><th>啟動日</th><th>預計解除</th></tr></thead>
+<tbody id="dashRegionTable"><tr><td class="muted" colspan="7">尚無進行中感控區</td></tr></tbody>
+</table>
+</div>
+</section>
+</section><div class="grid" id="overviewGrid" style="margin-top:18px"><div class="card" id="overviewCard"><h2 class="section-title">目前事件</h2><div id="eventTitle"><b>尚未建立事件</b></div><p class="muted" id="eventMeta">建立後，事件層級資料會自動顯示在這裡。</p><div class="progress"><i id="eventProgress" style="width:0%"></i></div><div class="actions"><button class="primary" onclick="document.getElementById('daily').scrollIntoView({behavior:'smooth'})">開始今日追蹤</button><button class="secondary" onclick="document.getElementById('people').scrollIntoView({behavior:'smooth'})">個案／接觸者</button></div><h2 class="section-title" style="margin-top:24px">今日感控提醒</h2><div class="muted mini" id="todayReminders">建立事件後，系統會依目前資料自動提示今天還缺什麼，不需要另外打勾回報。</div></div>
 <div class="card" id="documentCard"><h2 class="section-title">文件中心｜依流程分軌產出</h2><div class="notice"><b>Pilot 1.0.2：1 個案通報＝院內表單；2 全院資料＝衛生局／群聚表單</b><br/>完成「1｜個案通報／院內感控」即可產出該生活區院內文件；群聚事件造冊、預防性投藥與衛生局附件屬全院群聚通報流程，必須完成「2｜全院資料」後才啟用。現階段仍僅使用虛構／去識別資料，正式授權完成前請勿輸入真實個資或健康資料。</div><div id="preflightPanel" style="margin:14px 0;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fafcfc"><div class="toolbar"><div><b>正式文件完成度</b><div class="muted mini">下載前先自動檢查；選填未完成不阻擋輸出，只有資料矛盾才阻擋。</div></div><span class="status wait" id="preflightBadge">尚未檢查</span></div><div class="kpis" style="grid-template-columns:repeat(4,1fr);margin-top:12px"><div class="kpi"><span class="muted">系統已完成</span><strong id="pfDone">0</strong></div><div class="kpi"><span class="muted">需要確認</span><strong id="pfConfirm">0</strong></div><div class="kpi"><span class="muted">待補／選填</span><strong id="pfMissing">0</strong></div><div class="kpi"><span class="muted">資料矛盾</span><strong id="pfConflict">0</strong></div></div><div class="mini muted" id="preflightDetails" style="margin-top:10px"></div><div class="actions"><button class="secondary mini" onclick="showPreflightDetails()">查看缺漏／一次補資料</button></div></div><div id="nineReportPanel" style="margin:14px 0;padding:14px;border:1px solid var(--line);border-radius:12px;background:#fff"><div class="toolbar"><div><b>正式報表驗收</b><div class="muted mini">院內文件＝完成 1 後依目前生活區產出；群聚／衛生局文件＝完成 2 後以全院資料彙整。</div></div><span class="status wait" id="nineReportBadge">待驗收</span></div><div id="nineReportRows" style="margin-top:10px"></div><div class="mini muted" id="nineReportLogic" style="margin-top:10px"></div></div><h3 style="margin:18px 0 6px;color:var(--accent)">📁 1｜個案通報完成後：院內感控文件</h3>
 <div class="notice" style="margin-bottom:8px"><b>單一生活區即可產出。</b><br/>這一區只使用目前個案通報／感控區資料，不要求先完成衛生局群聚通報。</div>
 <div class="doc"><span>1｜紅／黃區感控措施單</span><span><span class="status wait" id="stMeasures">資料不足</span> <button class="secondary mini" onclick="previewDoc('measures')">資料預覽</button> <button class="primary mini" onclick="downloadWord('measures')">下載原格式 Word</button></span></div>
