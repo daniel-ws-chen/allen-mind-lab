@@ -46,6 +46,18 @@
     }
   };
 
+
+  const STUDY_KEY='amlPbsSelfStudyV1';
+  function markGameDone(id){
+    try{
+      const empty={articles:{},games:{},quiz:{passed:false,score:0,date:null,certificateId:null,name:null}};
+      const current=JSON.parse(localStorage.getItem(STUDY_KEY)||'null');
+      const state=current&&typeof current==='object'?{...empty,...current,articles:{...(current.articles||{})},games:{...(current.games||{})},quiz:{...empty.quiz,...(current.quiz||{})}}:empty;
+      state.games[id]=true;
+      localStorage.setItem(STUDY_KEY,JSON.stringify(state));
+    }catch(e){}
+  }
+
   const dialog = document.getElementById('pbs-practice-dialog');
   if (!dialog) return;
   const titleEl = dialog.querySelector('[data-quiz-title]');
@@ -53,7 +65,7 @@
   const stepEl = dialog.querySelector('[data-quiz-step]');
   const bodyEl = dialog.querySelector('[data-quiz-body]');
   const closeBtns = dialog.querySelectorAll('[data-quiz-close]');
-  let lesson=null, index=0, answered=false;
+  let lesson=null, lessonId=null, index=0, answered=false;
 
   function render(){
     const item=lesson.questions[index]; answered=false;
@@ -75,14 +87,21 @@
     });
   }
   function finish(){
+    markGameDone(lessonId);
     stepEl.textContent='完成';
-    bodyEl.innerHTML=`<div class="pbs-finish"><div class="pbs-finish-icon">✓</div><h4>練習完成</h4><p>你剛剛做的，不只是選答案，而是在練習 <strong>先觀察、再理解、再選擇回應</strong>。</p><p class="pbs-finish-note">PBS 不靠單一事件下結論。真正使用在個案時，仍要結合多次觀察、團隊討論與個別差異。</p><button type="button" class="pbs-next" data-quiz-close>回到互動練習室</button></div>`;
+    bodyEl.innerHTML=`<div class="pbs-finish"><div class="pbs-finish-icon">✓</div><h4>練習完成</h4><p>你剛剛做的，不只是選答案，而是在練習 <strong>先觀察、再理解、再選擇回應</strong>。</p><p class="pbs-finish-note">PBS 不靠單一事件下結論。真正使用在個案時，仍要結合多次觀察、團隊討論與個別差異。</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><a class="pbs-next" href="/pbs-self-study.html" style="text-decoration:none">回到自學路徑</a><button type="button" class="pbs-next" data-quiz-close>留在互動專區</button></div></div>`;
     bodyEl.querySelector('[data-quiz-close]').addEventListener('click',()=>dialog.close());
   }
   document.querySelectorAll('[data-pbs-lesson]').forEach(btn=>btn.addEventListener('click',()=>{
-    lesson=lessons[btn.dataset.pbsLesson]; if(!lesson)return; index=0;
+    lessonId=btn.dataset.pbsLesson; lesson=lessons[lessonId]; if(!lesson)return; index=0;
     titleEl.textContent=lesson.title; introEl.textContent=lesson.intro; render(); dialog.showModal();
   }));
   closeBtns.forEach(b=>b.addEventListener('click',()=>dialog.close()));
   dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+
+  const wanted=new URLSearchParams(location.search).get('lesson');
+  if(wanted && lessons[wanted]){
+    const btn=document.querySelector(`[data-pbs-lesson="${wanted}"]`);
+    if(btn) setTimeout(()=>btn.click(),120);
+  }
 })();
