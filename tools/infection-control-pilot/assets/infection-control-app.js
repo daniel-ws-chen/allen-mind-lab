@@ -19,7 +19,17 @@ async function loadCloud(){setCloudStatus('☁️ 正在讀取雲端資料…');
 async function saveCloud(){setCloudStatus('☁️ 正在儲存…');try{const r=await fetch(`/api/infection-control/state/${WORKSPACE_ID}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(state)});if(!r.ok)throw new Error(`HTTP ${r.status}`);const j=await r.json();if(!j.success)throw new Error(j.message||'save failed');setCloudStatus('☁️ 已儲存至雲端','ok')}catch(e){setCloudStatus('⚠️ 雲端儲存失敗；本機資料仍已保留','warn')}}
 function scheduleCloudSave(){clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(saveCloud,350)}
 function persist(){saveActiveRegion();localStorage.setItem(KEY,JSON.stringify(state));render();scheduleCloudSave()}
-async function mockLogin(){sessionStorage.setItem('aml_ic_pilot_auth','1');document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');loadLocal();applyWorkspaceMode();window.scrollTo(0,0);await loadCloud();applyWorkspaceMode()}
+async function mockLogin(){
+  sessionStorage.setItem('aml_ic_pilot_auth','1');
+  const login=document.getElementById('login'),app=document.getElementById('app');
+  if(login)login.classList.add('hidden');
+  if(app)app.classList.remove('hidden');
+  loadLocal();
+  applyWorkspaceMode();
+  window.scrollTo(0,0);
+  await loadCloud();
+  applyWorkspaceMode();
+}
 function v(id){return document.getElementById(id).value.trim()}
 function saveEvent(){
  if(viewingHospitalData){
@@ -343,12 +353,12 @@ async function downloadInternalBundle(){
  if(!assertPreflightForFormalOutput())return;saveActiveRegion();const regs=allRegions();if(!regs.length){alert('請先完成至少一個「1｜個案通報」。');return}
  const keep={event:structuredClone(state.event),people:structuredClone(state.people||[]),daily:structuredClone(state.daily||[]),activeEventId:state.activeEventId};const issues=[];
  try{const z=new JSZip();for(const r of regs){state.event=structuredClone(r.event);state.people=structuredClone(r.people||[]);state.daily=structuredClone(r.daily||[]);state.activeEventId=r.id;const area=String(r.event?.area||'未命名區').replace(/[\/:*?"<>|]/g,'_'),folder=z.folder(area);const jobs=[['01_感控措施單.docx',makeMeasuresFromTemplate],['02_感控措施會辦單.docx',makeMemoFromTemplate],['03_走動式稽查表.docx',makeAuditFromTemplate],['04_特照室清潔紀錄表.docx',makeCleanFromTemplate],['05_URI每日追蹤.xlsx',makeDailyExcel]];for(const [name,fn] of jobs){try{folder.file(name,await fn())}catch(err){issues.push(`${area}｜${name}：${err.message}`)}}}
-  z.file('README_院內表單.txt',['AML 感控作業管理助手 Pilot 1.0.2','', '本 ZIP 僅包含完成「1｜個案通報／院內感控」即可產出的院內文件。','群聚事件造冊表與預防性投藥名單屬「2｜全院資料／衛生局群聚事件」流程，不包含於此 ZIP。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='AML_院內感控表單.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`院內表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('院內表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
+  z.file('README_院內表單.txt',['AML 感控作業管理助手 Pilot 1.0.3','', '本 ZIP 僅包含完成「1｜個案通報／院內感控」即可產出的院內文件。','群聚事件造冊表與預防性投藥名單屬「2｜全院資料／衛生局群聚事件」流程，不包含於此 ZIP。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='AML_院內感控表單.zip';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`院內表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('院內表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
 }
 async function downloadHealthBundle(){
  if(!healthBureauActive()){alert('請先完成「2｜全院資料／衛生局群聚事件」並儲存後，再產出群聚／衛生局表單。');return}if(!assertPreflightForFormalOutput())return;saveActiveRegion();const h=hospitalState();if(!h.people.length){alert('全院尚無可彙整的人員資料。');return}
  const keep={event:structuredClone(state.event),people:structuredClone(state.people||[]),daily:structuredClone(state.daily||[]),activeEventId:state.activeEventId};const issues=[];
- try{state.event=h.event;state.people=h.people;state.daily=h.daily;const z=new JSZip();try{z.file('01_群聚事件造冊暨每日追蹤_全院.xlsx',await makeRosterExcel())}catch(err){issues.push(`01 群聚事件造冊：${err.message}`)}try{z.file('02_預防性投藥名單_全院.xlsx',await makeProphExcel())}catch(err){issues.push(`02 預防性投藥名單：${err.message}`)}try{z.file('03_衛生局附件1_上呼吸道及不明原因發燒群聚事件造冊表_全院.xlsx',await makeHealthBureauRosterExcel())}catch(err){issues.push(`衛生局附件1：${err.message}`)}try{z.file('04_衛生局附件2_群聚事件疫調報告_全院.docx',await makeHealthEpiDOCX())}catch(err){issues.push(`衛生局附件2：${err.message}`)}z.file('README_群聚衛生局表單.txt',['AML 感控作業管理助手 Pilot 1.0.2','', '本 ZIP 僅在完成「2｜全院資料／衛生局群聚事件」後產出，資料範圍固定為全院進行中感控事件彙整。','包含：1 群聚事件造冊、2 預防性投藥名單、3 衛生局附件1、4 衛生局附件2。','AML 僅彙整既有資料，不自行判定是否構成群聚。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),date=(h.event.start||'').slice(0,10).replaceAll('-',''),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`AML_群聚衛生局表單_全院_${date||'Pilot'}.zip`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`群聚／衛生局表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('群聚／衛生局表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
+ try{state.event=h.event;state.people=h.people;state.daily=h.daily;const z=new JSZip();try{z.file('01_群聚事件造冊暨每日追蹤_全院.xlsx',await makeRosterExcel())}catch(err){issues.push(`01 群聚事件造冊：${err.message}`)}try{z.file('02_預防性投藥名單_全院.xlsx',await makeProphExcel())}catch(err){issues.push(`02 預防性投藥名單：${err.message}`)}try{z.file('03_衛生局附件1_上呼吸道及不明原因發燒群聚事件造冊表_全院.xlsx',await makeHealthBureauRosterExcel())}catch(err){issues.push(`衛生局附件1：${err.message}`)}try{z.file('04_衛生局附件2_群聚事件疫調報告_全院.docx',await makeHealthEpiDOCX())}catch(err){issues.push(`衛生局附件2：${err.message}`)}z.file('README_群聚衛生局表單.txt',['AML 感控作業管理助手 Pilot 1.0.3','', '本 ZIP 僅在完成「2｜全院資料／衛生局群聚事件」後產出，資料範圍固定為全院進行中感控事件彙整。','包含：1 群聚事件造冊、2 預防性投藥名單、3 衛生局附件1、4 衛生局附件2。','AML 僅彙整既有資料，不自行判定是否構成群聚。',...(issues.length?['','【待確認】',...issues.map(x=>'• '+x)]:[])].join('\n'));const blob=await z.generateAsync({type:'blob',mimeType:'application/zip'}),date=(h.event.start||'').slice(0,10).replaceAll('-',''),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`AML_群聚衛生局表單_全院_${date||'Pilot'}.zip`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);if(issues.length)alert(`群聚／衛生局表單已完成可產出部分；另有 ${issues.length} 項待確認。`)}catch(err){alert('群聚／衛生局表單產生失敗：'+err.message)}finally{state.event=keep.event;state.people=keep.people;state.daily=keep.daily;state.activeEventId=keep.activeEventId;render()}
 }
 async function downloadWord(type){if(!assertPreflightForFormalOutput())return;if(!state.event){alert('請先建立感控事件。');return}if(type==='memo'&&!primaryCase()){alert('會辦單尚缺感染個案，請先新增感染個案。');return}try{const blob=await makeDocx(type);const e=state.event;const label=type==='measures'?'感控措施單':type==='memo'?'感控措施會辦單':type==='audit'?'走動式稽查表':'特照室清潔紀錄表';const date=(e.start||'').slice(0,10).replaceAll('-','');const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`${label}_${e.area||'測試區'}_${date||'Pilot'}.docx`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}catch(err){alert('Word 檔產生失敗：'+err.message)}}
 
@@ -450,7 +460,7 @@ async function downloadHealthEpiDOCXRegional(){
 async function downloadHealthEpiDOCX(){if(!healthBureauActive()){alert('目前尚未啟用衛生局群聚通報資料。請先點選「2｜全院資料」並儲存衛生局欄位。');return}if(!assertPreflightForFormalOutput())return;return withHospitalScopeAsync(()=>downloadHealthEpiDOCXRegional())}
 
 
-/* ===== Pilot 1.0.2 workspace shell ===== */
+/* ===== Pilot 1.0.3 workspace shell ===== */
 function amlPage(){
   return document.body?.dataset?.page || 'case';
 }
@@ -519,8 +529,20 @@ function applyWorkspaceMode(){
 }
 
 window.addEventListener('DOMContentLoaded',()=>{
+  const login=document.getElementById('login');
+  const app=document.getElementById('app');
   if(sessionStorage.getItem('aml_ic_pilot_auth')==='1'){
-    setTimeout(()=>mockLogin(),0);
+    if(login)login.classList.add('hidden');
+    if(app)app.classList.remove('hidden');
+    try{loadLocal();}catch(_){}
+    try{applyWorkspaceMode();}catch(_){}
+    setTimeout(async()=>{
+      try{await loadCloud();}catch(_){}
+      try{applyWorkspaceMode();}catch(_){}
+    },0);
+  }else{
+    if(login)login.classList.remove('hidden');
+    if(app)app.classList.add('hidden');
   }
 });
 
@@ -616,3 +638,20 @@ function renderManagementDashboard(){
    }).join(''):'<tr><td colspan="7" class="muted">尚無進行中感控區</td></tr>';
  }
 }
+
+function amlLogout(){
+  sessionStorage.removeItem('aml_ic_pilot_auth');
+  location.href='./index.html';
+}
+window.addEventListener('DOMContentLoaded',()=>{
+  const header=document.querySelector('header .right, header .actions, header');
+  if(header && !document.getElementById('amlLogoutBtn')){
+    const b=document.createElement('button');
+    b.id='amlLogoutBtn';
+    b.type='button';
+    b.className='btn ghost logout-btn';
+    b.textContent='登出';
+    b.onclick=amlLogout;
+    if(sessionStorage.getItem('aml_ic_pilot_auth')==='1') header.appendChild(b);
+  }
+});
