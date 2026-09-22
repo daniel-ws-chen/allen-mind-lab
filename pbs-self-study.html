@@ -36,11 +36,11 @@
 </style>
 </head>
 <body>
-<header class="study-hero"><div class="study-inner"><a class="study-back" href="/pbs.html">← 回到 PBS 特色館</a><div class="kicker">AML MICRO-LEARNING · PBS</div><h1>PBS 自學路徑</h1><p>以既有 PBS 特色館文章為基礎。每堂先讀一篇文章，再玩一個短情境互動；完成 6 堂後進行總複習測驗，通過後可產生 AML 線上非正式自學完訓證明。</p><div class="study-flow"><span>① 閱讀文章</span><span>② 玩小遊戲</span><span>③ 完成 6 堂</span><span>④ 總複習測驗</span><span>⑤ 完訓證明</span></div></div></header>
+<header class="study-hero"><div class="study-inner"><a class="study-back" href="/pbs.html">← 回到 PBS 特色館</a><div class="kicker">AML MICRO-LEARNING · PBS</div><h1>PBS 自學路徑</h1><p>以既有 PBS 特色館文章為基礎。每堂先讀一篇文章，再玩一個短情境互動；完成 6 堂後進行總複習測驗，通過後可產生 AML 線上非正式自學完訓證明。</p><div class="study-flow"><span>① 閱讀文章</span><span>② 玩小遊戲</span><span>③ 完成 6 堂</span><span>④ 總複習測驗</span><span>⑤ 完訓證明</span><p style="margin:14px 0 0;color:#6f7b89;font-size:.92rem">閱讀文章將在同一頁開啟；讀完後按瀏覽器「上一頁」返回，自學進度會自動標記為已閱讀。</p></div></div></header>
 <main class="study-wrap" id="aml-main">
 <section class="progress-panel"><div><h2>你的自學進度</h2><p>進度只儲存在這台裝置的瀏覽器，不需登入，也不會上傳個人資料。</p><div class="progress-bar"><span data-progress-bar></span></div></div><div class="progress-ring"><strong data-progress-count>0 / 12</strong><span>文章＋互動完成項目</span></div></section>
 <section class="lesson-grid">
-    <article class="lesson-card" data-lesson="abc">
+    <article class="lesson-card" data-lesson="abc" id="lesson-abc">
       <div class="lesson-card__top">
         <span class="lesson-no">LESSON 01 · OBSERVE</span>
         <span class="lesson-game">🔍 ABC 偵探</span>
@@ -48,7 +48,7 @@
       <h2>先把事情看清楚</h2>
       <p class="lesson-article">核心文章｜當「被看見」成為高挑戰行為</p>
       <div class="lesson-actions">
-        <a class="btn" href="/articles/pbs-being-seen.html" target="_blank" rel="noopener">閱讀文章 ↗</a>
+        <a class="btn" href="/articles/pbs-being-seen.html" data-article-link="abc">閱讀文章 →</a>
         <button class="btn ghost" type="button" data-mark-read="abc">標記文章已讀</button>
         <a class="btn game" href="/tools/pbs-interactive/?lesson=abc">玩小遊戲 →</a>
       </div>
@@ -58,7 +58,7 @@
       </div>
     </article>
 
-    <article class="lesson-card" data-lesson="function">
+    <article class="lesson-card" data-lesson="function" id="lesson-function">
       <div class="lesson-card__top">
         <span class="lesson-no">LESSON 02 · FUNCTION</span>
         <span class="lesson-game">🧠 功能猜猜看</span>
@@ -66,7 +66,7 @@
       <h2>行為可能正在完成什麼？</h2>
       <p class="lesson-article">核心文章｜為什麼同一份 PBS 計畫，換個地方就不一定有效？</p>
       <div class="lesson-actions">
-        <a class="btn" href="/articles/pbs-plan-contextual-fit.html" target="_blank" rel="noopener">閱讀文章 ↗</a>
+        <a class="btn" href="/articles/pbs-plan-contextual-fit.html" data-article-link="function">閱讀文章 →</a>
         <button class="btn ghost" type="button" data-mark-read="function">標記文章已讀</button>
         <a class="btn game" href="/tools/pbs-interactive/?lesson=function">玩小遊戲 →</a>
       </div>
@@ -76,7 +76,7 @@
       </div>
     </article>
 
-    <article class="lesson-card" data-lesson="strategy">
+    <article class="lesson-card" data-lesson="strategy" id="lesson-strategy">
       <div class="lesson-card__top">
         <span class="lesson-no">LESSON 03 · STRATEGY</span>
         <span class="lesson-game">🚦 策略紅綠燈</span>
@@ -84,7 +84,7 @@
       <h2>看似有效，不一定真的有幫助</h2>
       <p class="lesson-article">核心文章｜明明是在幫他冷靜，為什麼結果可能完全不同？</p>
       <div class="lesson-actions">
-        <a class="btn" href="/articles/pbs-emotional-cycle-intervention-timing.html" target="_blank" rel="noopener">閱讀文章 ↗</a>
+        <a class="btn" href="/articles/pbs-emotional-cycle-intervention-timing.html" data-article-link="strategy">閱讀文章 →</a>
         <button class="btn ghost" type="button" data-mark-read="strategy">標記文章已讀</button>
         <a class="btn game" href="/tools/pbs-interactive/?lesson=strategy">玩小遊戲 →</a>
       </div>
@@ -94,7 +94,7 @@
       </div>
     </article>
 
-    <article class="lesson-card" data-lesson="replacement">
+    <article class="lesson-card" data-lesson="replacement" id="lesson-replacement">
       <div class="lesson-card__top">
         <span class="lesson-no">LESSON 04 · SKILL</span>
         <span class="lesson-game">🧩 替代行為小幫手</span>
@@ -102,7 +102,7 @@
       <h2>不要只阻止，也要教會新的方法</h2>
       <p class="lesson-article">核心文章｜知道怎麼做，和真的做得到，是兩回事</p>
       <div class="lesson-actions">
-        <a class="btn" href="/articles/research-update-life-skills-bst-fire-safety.html" target="_blank" rel="noopener">閱讀文章 ↗</a>
+        <a class="btn" href="/articles/research-update-life-skills-bst-fire-safety.html" data-article-link="replacement">閱讀文章 →</a>
         <button class="btn ghost" type="button" data-mark-read="replacement">標記文章已讀</button>
         <a class="btn game" href="/tools/pbs-interactive/?lesson=replacement">玩小遊戲 →</a>
       </div>
@@ -112,7 +112,7 @@
       </div>
     </article>
 
-    <article class="lesson-card" data-lesson="emotion">
+    <article class="lesson-card" data-lesson="emotion" id="lesson-emotion">
       <div class="lesson-card__top">
         <span class="lesson-no">LESSON 05 · EMOTION</span>
         <span class="lesson-game">🌡️ 情緒溫度計</span>
@@ -120,7 +120,7 @@
       <h2>在情緒升高以前看見訊號</h2>
       <p class="lesson-article">核心文章｜當情緒升高時，為什麼講道理常常沒有用？</p>
       <div class="lesson-actions">
-        <a class="btn" href="/articles/pbs-emotion-escalation-deescalation.html" target="_blank" rel="noopener">閱讀文章 ↗</a>
+        <a class="btn" href="/articles/pbs-emotion-escalation-deescalation.html" data-article-link="emotion">閱讀文章 →</a>
         <button class="btn ghost" type="button" data-mark-read="emotion">標記文章已讀</button>
         <a class="btn game" href="/tools/pbs-interactive/?lesson=emotion">玩小遊戲 →</a>
       </div>
@@ -130,7 +130,7 @@
       </div>
     </article>
 
-    <article class="lesson-card" data-lesson="family">
+    <article class="lesson-card" data-lesson="family" id="lesson-family">
       <div class="lesson-card__top">
         <span class="lesson-no">LESSON 06 · SUPPORT</span>
         <span class="lesson-game">💬 支持回應小幫手</span>
@@ -138,7 +138,7 @@
       <h2>先接住，再回到支持</h2>
       <p class="lesson-article">核心文章｜危機現場真正重要的，是讓所有人安全下來</p>
       <div class="lesson-actions">
-        <a class="btn" href="/articles/pbs-crisis-safety-repair.html" target="_blank" rel="noopener">閱讀文章 ↗</a>
+        <a class="btn" href="/articles/pbs-crisis-safety-repair.html" data-article-link="family">閱讀文章 →</a>
         <button class="btn ghost" type="button" data-mark-read="family">標記文章已讀</button>
         <a class="btn game" href="/tools/pbs-interactive/?lesson=family">玩小遊戲 →</a>
       </div>

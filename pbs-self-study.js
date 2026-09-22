@@ -41,6 +41,24 @@
       quiz.textContent=unlocked?'開始總複習 →':'尚未解鎖';
     }
   }
+  const PENDING_KEY = 'amlPbsSelfStudyPendingArticle';
+  document.querySelectorAll('[data-article-link]').forEach(link=>{
+    link.addEventListener('click',()=>{
+      const id=link.dataset.articleLink;
+      if(id) sessionStorage.setItem(PENDING_KEY,id);
+    });
+  });
+  function completePendingArticle(){
+    const id=sessionStorage.getItem(PENDING_KEY);
+    if(!id || !IDS.includes(id)) return;
+    sessionStorage.removeItem(PENDING_KEY);
+    const state=load();
+    state.articles[id]=true;
+    save(state);
+    render();
+    const card=document.getElementById(`lesson-${id}`) || document.querySelector(`[data-lesson="${id}"]`);
+    if(card){ setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'center'}),80); }
+  }
   document.querySelectorAll('[data-mark-read]').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const id=btn.dataset.markRead;
@@ -50,6 +68,6 @@
     });
   });
   window.addEventListener('storage', e=>{ if(e.key===KEY) render(); });
-  window.addEventListener('pageshow', render);
+  window.addEventListener('pageshow', ()=>{ render(); completePendingArticle(); });
   render();
 })();
