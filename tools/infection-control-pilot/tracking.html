@@ -1,9 +1,33 @@
 <!DOCTYPE html>
 
-<html lang="zh-Hant"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>感控隔離區追蹤｜AML 感控作業管理助手 Pilot 1.0.4</title><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><link href="./assets/infection-control.css" rel="stylesheet"/></head><body data-page="tracking">
-<header><div class="brand"><div><b>AML 感控作業管理助手</b> <span class="pill">Pilot 1.0.4</span></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end"><div class="muted">一次建檔・持續追蹤・多表輸出</div><a aria-label="返回 Allen Mind Lab 主網站" class="home-link" href="/">← 返回 AML 主網站</a></div></div></header>
+<html lang="zh-Hant"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>感控隔離區追蹤｜AML 感控作業管理助手 Pilot 1.0.5</title><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><link href="./assets/infection-control.css" rel="stylesheet"/></head><body data-page="tracking">
+<header><div class="brand"><div><b>AML 感控作業管理助手</b> <span class="pill">Pilot 1.0.5</span></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end"><div class="muted">一次建檔・持續追蹤・多表輸出</div><a aria-label="返回 Allen Mind Lab 主網站" class="home-link" href="/">← 返回 AML 主網站</a></div></div></header>
 <main>
-<section class="card login" id="login"><h1>授權人員登入</h1><p class="muted">護理師工作流程測試版：本階段測試「一次建檔・持續追蹤・多表輸出」。正式文件請下載院方原格式 Word／Excel，人工確認內容後再列印或送出。目前登入僅作為 Pilot 測試入口，尚未啟用正式帳號、OTP、角色權限與稽核紀錄。</p><div class="field"><label>授權 Email</label><input id="email" placeholder="name@example.org" type="email"/></div><div class="actions"><button class="primary" onclick="mockLogin()">進入測試系統</button></div><div class="notice">⚠️ Pilot 測試階段僅使用虛構／去識別資料。請勿輸入真實姓名、身分證字號、疾病史或可識別健康資料。</div><p class="muted auth-note" id="pilotAuthNote">本工具限授權人員使用。請先完成驗證碼授權；驗證成功後，本次瀏覽工作階段可於四個工作區間切換，不需重複驗證。</p></section>
+<section class="card login" id="login">
+<div class="auth-shell">
+<div class="auth-card">
+<div class="auth-brand">AML 感控作業管理助手 <span class="pill">Pilot 1.0.5</span></div>
+<h1>授權人員登入</h1>
+<p class="muted">本工具限院內授權人員使用。Pilot 階段採共用帳號密碼，登入一次後可於四個工作區間切換。</p>
+<div class="auth-fields">
+<label>
+<span>帳號</span>
+<input autocomplete="username" id="authUsername" placeholder="請輸入帳號" type="text"/>
+</label>
+<label>
+<span>密碼</span>
+<input autocomplete="current-password" id="authPassword" placeholder="請輸入密碼" type="password"/>
+</label>
+</div>
+<button class="btn primary auth-login-btn" id="authLoginBtn" type="button">登入系統</button>
+<div class="auth-error hidden" id="authError" role="alert">帳號或密碼錯誤，請重新輸入。</div>
+<div class="auth-security-note">
+<b>⚠ Pilot 測試提醒</b><br/>
+          此版本為前端簡易授權，適合測試流程與限制一般誤入；正式處理可識別個資前，應改用伺服器端身分驗證與個別帳號。
+        </div>
+</div>
+</div>
+</section>
 <section class="hidden" id="app"><nav aria-label="感控工作區" class="workspace-nav">
 <a data-nav="case" href="./index.html"><span>1</span><b>個案通報</b><small>建立／更正事件與個案</small></a>
 <a data-nav="cluster" href="./cluster.html"><span>2</span><b>疑似群聚／全院資料</b><small>疫情擴大時啟用</small></a>
@@ -17,13 +41,6 @@
 </div>
 <div class="flow-hint" id="pageFlowHint">通報 → 追蹤 → 儀表板</div>
 </div>
-
-
-
-
-
 <div class="card" id="daily" style="margin-top:18px"><h2 class="section-title">每日追蹤 <span class="pill">1｜個案通報</span> <span class="pill">0.4.1 輸入減量</span></h2><div class="notice"><b>能選不打字：</b>無症狀／無異常可一鍵完成；有症狀時再展開詳細欄位。</div><div class="form"><div class="field"><label>追蹤日期</label><input id="dailyDate" type="date"/></div><div class="field"><label>人員代號</label><select id="dailyPerson"><option value="">請先新增人員</option></select></div></div><div class="actions"><button class="primary" onclick="quickNormal()">✓ 無症狀／無異常，一鍵完成</button><button class="secondary" onclick="toggleDailyDetail(true)">有症狀／需詳細紀錄</button></div><div class="form hidden" id="dailyDetail" style="margin-top:14px"><div class="field"><label>體溫（°C）</label><input id="temp" placeholder="例如：38.2" step="0.1" type="number"/></div><div class="field"><label>症狀（可複選）</label><div class="checkgrid" id="symptomChecks"><label><input type="checkbox" value="發燒"/> 發燒</label><label><input type="checkbox" value="咳嗽"/> 咳嗽</label><label><input type="checkbox" value="流鼻水／鼻塞"/> 流鼻水／鼻塞</label><label><input type="checkbox" value="喉嚨痛"/> 喉嚨痛</label><label><input type="checkbox" value="頭痛"/> 頭痛</label><label><input type="checkbox" value="肌肉痠痛"/> 肌肉痠痛</label><label><input type="checkbox" value="倦怠"/> 倦怠</label><label><input type="checkbox" value="腹瀉"/> 腹瀉</label><label><input type="checkbox" value="嘔吐"/> 嘔吐</label></div><input id="symptomOther" placeholder="其他症狀（選填）" style="margin-top:8px"/></div><div class="field"><label>就醫狀態</label><select id="medicalStatus"><option>未就醫</option><option>已就醫</option><option>已採檢</option></select><input id="medicalOther" placeholder="補充說明（選填）" style="margin-top:8px"/></div><div class="field"><label>檢驗結果</label><select id="testResult"><option>未檢驗</option><option>待結果</option><option>陰性</option><option>陽性</option></select></div><div class="field"><label>處置</label><select id="actionSelect"><option>持續健康監測</option><option>安排就醫</option><option>依醫囑服藥</option><option>隔離照護</option><option>其他</option></select><input id="actionOther" placeholder="其他處置／補充（選填）" style="margin-top:8px"/></div><div class="field full"><label>備註</label><textarea id="dailyNote" placeholder="必要時補充"></textarea></div></div><div class="actions hidden" id="detailActions"><button class="primary" onclick="addDaily()">儲存詳細追蹤</button><button class="secondary" onclick="toggleDailyDetail(false)">收起</button></div><div class="muted mini" id="dailyEmpty" style="margin-top:14px">尚無每日追蹤紀錄。</div><table class="table hidden" id="dailyTable"><thead><tr><th>日期</th><th>代號</th><th>體溫</th><th>症狀</th><th>處置</th><th></th></tr></thead><tbody id="dailyBody"></tbody></table></div>
-
-
-</section><section class="hidden print-sheet" id="printArea"></section><div class="footer">Allen Mind Lab｜感控作業管理助手 Pilot 1.0.4</div></main>
+</section><section class="hidden print-sheet" id="printArea"></section><div class="footer">Allen Mind Lab｜感控作業管理助手 Pilot 1.0.5</div></main>
 <script src="./assets/infection-control-app.js"></script></body></html>
