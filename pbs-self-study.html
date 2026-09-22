@@ -22,6 +22,7 @@
 .progress-panel h2{margin:0 0 6px;color:var(--navy);font-size:1.4rem}.progress-panel p{margin:0;color:var(--muted);font-size:.93rem}
 .progress-ring{min-width:170px;text-align:right}.progress-ring strong{display:block;font-size:1.9rem;color:var(--green)}
 .progress-bar{height:10px;background:#edf0ec;border-radius:99px;overflow:hidden;margin-top:10px}.progress-bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,#4f8b7b,#c7a76a);transition:width .25s ease}
+.progress-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}.reset-progress-btn{appearance:none;border:1px solid #d8cec0;background:#fff;color:#7a4b42;border-radius:999px;padding:8px 13px;font:inherit;font-size:.82rem;font-weight:800;cursor:pointer}.reset-progress-btn:hover{background:#fff6f3;border-color:#c99f94}.reset-progress-btn:focus-visible{outline:3px solid rgba(39,95,84,.25);outline-offset:2px}.reset-progress-note{color:#7a8390;font-size:.8rem}
 .lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.lesson-card{background:#fff;border:1px solid #e8e1d7;border-radius:22px;padding:22px;box-shadow:0 8px 26px rgba(7,26,51,.04)}
 .lesson-card.is-done{border-color:#a7ccb9;background:linear-gradient(180deg,#fbfffc,#fff)}.lesson-card__top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
 .lesson-no{font-size:.73rem;letter-spacing:.12em;font-weight:900;color:#9a6d22}.lesson-game{font-size:.83rem;font-weight:800;color:#345b52}
@@ -38,7 +39,7 @@
 <body>
 <header class="study-hero"><div class="study-inner"><a class="study-back" href="/pbs.html">← 回到 PBS 特色館</a><div class="kicker">AML MICRO-LEARNING · PBS</div><h1>PBS 自學路徑</h1><p>以既有 PBS 特色館文章為基礎。每堂先讀一篇文章，再玩一個短情境互動；完成 6 堂後進行總複習測驗，通過後可產生 AML 線上非正式自學完訓證明。</p><div class="study-flow"><span>① 閱讀文章</span><span>② 玩小遊戲</span><span>③ 完成 6 堂</span><span>④ 總複習測驗</span><span>⑤ 完訓證明</span><p style="margin:14px 0 0;color:#6f7b89;font-size:.92rem">閱讀文章將在同一頁開啟；讀完後按瀏覽器「上一頁」返回，自學進度會自動標記為已閱讀。</p></div></div></header>
 <main class="study-wrap" id="aml-main">
-<section class="progress-panel"><div><h2>你的自學進度</h2><p>進度只儲存在這台裝置的瀏覽器，不需登入，也不會上傳個人資料。</p><div class="progress-bar"><span data-progress-bar></span></div></div><div class="progress-ring"><strong data-progress-count>0 / 12</strong><span>文章＋互動完成項目</span></div></section>
+<section class="progress-panel"><div><h2>你的自學進度</h2><p>進度只儲存在這台裝置的瀏覽器，不需登入，也不會上傳個人資料。</p><div class="progress-bar"><span data-progress-bar></span></div><div class="progress-tools"><button class="reset-progress-btn" type="button" data-reset-progress>清除學習紀錄</button><span class="reset-progress-note">共用電腦或手機時，可清除後讓下一位使用者重新開始。</span></div></div><div class="progress-ring"><strong data-progress-count>0 / 12</strong><span>文章＋互動完成項目</span></div></section>
 <section class="lesson-grid">
     <article class="lesson-card" data-lesson="abc" id="lesson-abc">
       <div class="lesson-card__top">

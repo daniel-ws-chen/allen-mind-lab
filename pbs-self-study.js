@@ -59,6 +59,18 @@
     const card=document.getElementById(`lesson-${id}`) || document.querySelector(`[data-lesson="${id}"]`);
     if(card){ setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'center'}),80); }
   }
+  const resetBtn=document.querySelector('[data-reset-progress]');
+  if(resetBtn){
+    resetBtn.addEventListener('click',()=>{
+      const ok=window.confirm('確定要清除這台裝置上的 PBS 自學紀錄嗎？\n\n文章閱讀、互動遊戲、總測驗與完訓證明紀錄都會歸零，且無法復原。');
+      if(!ok) return;
+      localStorage.removeItem(KEY);
+      sessionStorage.removeItem(PENDING_KEY);
+      render();
+      window.scrollTo({top:0,behavior:'smooth'});
+      setTimeout(()=>window.alert('學習紀錄已清除，現在可以讓下一位使用者重新開始。'),120);
+    });
+  }
   document.querySelectorAll('[data-mark-read]').forEach(btn=>{
     btn.addEventListener('click',()=>{
       const id=btn.dataset.markRead;
