@@ -89,7 +89,10 @@
   function finish(){
     markGameDone(lessonId);
     stepEl.textContent='完成';
-    bodyEl.innerHTML=`<div class="pbs-finish"><div class="pbs-finish-icon">✓</div><h4>練習完成</h4><p>你剛剛做的，不只是選答案，而是在練習 <strong>先觀察、再理解、再選擇回應</strong>。</p><p class="pbs-finish-note">PBS 不靠單一事件下結論。真正使用在個案時，仍要結合多次觀察、團隊討論與個別差異。</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center"><a class="pbs-next" href="/pbs-self-study.html" style="text-decoration:none">回到自學路徑</a><button type="button" class="pbs-next" data-quiz-close>留在互動專區</button></div></div>`;
+    const lessonNames={abc:'第 1 堂',function:'第 2 堂',strategy:'第 3 堂',replacement:'第 4 堂',emotion:'第 5 堂',family:'第 6 堂'};
+    const backLabel=lessonNames[lessonId]||'自學路徑';
+    const backHref=`/pbs-self-study.html#lesson-${lessonId}`;
+    bodyEl.innerHTML=`<div class="pbs-finish"><div class="pbs-finish-icon">✓</div><h4>練習完成</h4><p>你剛剛做的，不只是選答案，而是在練習 <strong>先觀察、再理解、再選擇回應</strong>。</p><p class="pbs-finish-note">PBS 不靠單一事件下結論。真正使用在個案時，仍要結合多次觀察、團隊討論與個別差異。</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px"><a class="pbs-next" href="${backHref}" style="text-decoration:none;font-weight:900">✓ 完成並回到 ${backLabel}</a><button type="button" class="pbs-next" data-quiz-close>留在互動專區</button></div><p style="margin-top:14px;font-size:.86rem;color:#6b7280">回到自學頁後，系統會自動顯示「遊戲已完成」。</p></div>`;
     bodyEl.querySelector('[data-quiz-close]').addEventListener('click',()=>dialog.close());
   }
   document.querySelectorAll('[data-pbs-lesson]').forEach(btn=>btn.addEventListener('click',()=>{
