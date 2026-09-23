@@ -61,9 +61,17 @@
   transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease,color .2s ease;
 }
 .aml-global-nav .aml-brand::before{
-  content:"△";
-  font-size:1.12em;
-  line-height:1;
+  content:"M";
+  display:inline-block;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:1.18em;
+  font-weight:900;
+  font-style:italic;
+  line-height:.82;
+  letter-spacing:-.18em;
+  padding-right:.16em;
+  transform:scaleX(.82) translateY(-1px);
+  transform-origin:center;
   color:#d5b15c;
   text-shadow:0 0 12px rgba(213,177,92,.28);
 }
