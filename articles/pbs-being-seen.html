@@ -405,6 +405,18 @@
     "description":"當挑戰行為的功能是取得關注，回應與否都可能成為兩難。從 PBS 的事前預防、積極忽略與替代行為，到冰山下的需要與安全邊界，重新理解「被看見」背後的行為與關係。"
   }
   </script>
+
+<style id="aml-pbs-reading-complete-style">
+.aml-course-reading-complete{display:none;margin:42px 0 14px;padding:24px 26px;border:1px solid #d8c8aa;border-radius:18px;background:linear-gradient(135deg,#fffaf0,#f4f8f5);box-shadow:0 10px 28px rgba(7,26,51,.05)}
+.aml-course-reading-complete.is-visible{display:block}
+.aml-course-reading-complete__kicker{margin:0 0 6px;color:#8a641f;font-size:.78rem;font-weight:900;letter-spacing:.12em}
+.aml-course-reading-complete h2{margin:0 0 8px!important;font-size:1.35rem!important;color:#0b2848!important}
+.aml-course-reading-complete p{margin:0 0 16px!important;color:#5f6977;font-size:.94rem}
+.aml-course-reading-complete button{appearance:none;border:1px solid #285f55;background:#285f55;color:#fff;border-radius:999px;padding:11px 18px;font:inherit;font-weight:900;cursor:pointer}
+.aml-course-reading-complete button:hover{filter:brightness(.96)}
+.aml-course-reading-complete button:focus-visible{outline:3px solid rgba(39,95,84,.25);outline-offset:3px}
+@media(max-width:640px){.aml-course-reading-complete{padding:20px}.aml-course-reading-complete button{width:100%}}
+</style>
 </head>
 
 <body>
@@ -1722,6 +1734,13 @@
     </div>
   </section>
 
+
+<section class="aml-course-reading-complete" data-pbs-reading-complete aria-label="PBS 自學閱讀完成">
+  <div class="aml-course-reading-complete__kicker">PBS SELF-STUDY · CORE READING</div>
+  <h2>完成這篇核心閱讀了嗎？</h2>
+  <p>確認已讀到文章底部後，再完成本次閱讀紀錄；返回自學路徑後即可繼續本堂互動挑戰。</p>
+  <button type="button">✓ 完成閱讀，返回 PBS 自學路徑</button>
+</section>
 </main>
 
 
@@ -1736,5 +1755,31 @@
   <!-- AML Global Script -->
   <script src="/aml-site.js" defer></script>
 
+
+<script id="aml-pbs-reading-complete-script">
+(() => {
+  const params=new URLSearchParams(location.search);
+  const course=params.get('course');
+  const lesson=params.get('lesson');
+  const expected="abc";
+  const box=document.querySelector('[data-pbs-reading-complete]');
+  if(!box || course!=='pbs' || lesson!==expected) return;
+  box.classList.add('is-visible');
+  const btn=box.querySelector('button');
+  if(!btn) return;
+  btn.addEventListener('click',()=>{
+    const KEY='amlPbsSelfStudyV1';
+    let state;
+    try{ state=JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){ state=null; }
+    if(!state || typeof state!=='object') state={articles:{},games:{},quiz:{passed:false,score:0,date:null,certificateId:null,name:null}};
+    state.articles=state.articles && typeof state.articles==='object' ? state.articles : {};
+    state.games=state.games && typeof state.games==='object' ? state.games : {};
+    state.quiz=state.quiz && typeof state.quiz==='object' ? state.quiz : {passed:false,score:0,date:null,certificateId:null,name:null};
+    state.articles[expected]=true;
+    localStorage.setItem(KEY, JSON.stringify(state));
+    location.href='/pbs-self-study.html#lesson-'+expected;
+  });
+})();
+</script>
 </body>
 </html>
