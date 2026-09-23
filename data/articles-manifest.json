@@ -1,12 +1,12 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-22T14:37:18.844Z",
+  "generatedAt": "2026-09-23T01:55:37.445Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 46,
-    "ot": 21,
-    "mind": 12,
+    "total": 47,
+    "ot": 22,
+    "mind": 13,
     "pbs": 13,
     "education": 8,
     "management": 23,
@@ -78,6 +78,48 @@
     }
   },
   "articles": [
+    {
+      "slug": "adult-adhd-sensory-processing",
+      "title": "不是只有專不專心：從感覺處理看成人 ADHD",
+      "summary": "成人 ADHD 的日常困難不一定只有「專不專心」。從感覺處理出發，理解自己如何回應聲音、光線、活動與身體訊號，有助於自我覺察、調節環境與活動，並在需要時找到適合的支持。",
+      "date": "2026-09-23",
+      "domains": [
+        "ot",
+        "mind"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [
+        "mind"
+      ],
+      "tag": "OT & Human Occupation × Mind & Well-being",
+      "cardMeta": "2026.09.23 · OT & Human Occupation × Mind & Well-being",
+      "keywords": [
+        "adult adhd",
+        "sensory processing",
+        "sensory profile",
+        "感覺處理",
+        "成人 ADHD",
+        "自我調節",
+        "職能治療"
+      ],
+      "articlePath": "/articles/adult-adhd-sensory-processing.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/adult-adhd-sensory-processing",
+      "hero": "/images/articles/adult-adhd-sensory-processing-hero.webp",
+      "ogImage": "/images/articles/adult-adhd-sensory-processing-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 在長大以前，我們能為 ADHD 青少年守住什麼？",
+          "href": "/articles/adhd-adolescent-development-support.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "pbs-self-study-entry",
       "title": "從文章到互動問答：讓 PBS 自學有一個更容易開始的入口",
@@ -161,6 +203,11 @@
           "kind": "previous",
           "label": "上一篇 ← 壓力不是只能撐過去",
           "href": "/articles/caregiver-stress-coping-skills.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 不是只有專不專心：從感覺處理看成人 ADHD →",
+          "href": "/articles/adult-adhd-sensory-processing.html"
         }
       ],
       "readingPaths": [],
