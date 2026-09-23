@@ -402,3 +402,17 @@
     renderCard();
   }
 })();
+
+/* AML 互動實驗室：全站中文導覽名稱 */
+(function () {
+  const rename = (selector, from, to) => {
+    document.querySelectorAll(selector).forEach((el) => {
+      if (el.textContent.trim() === from) el.textContent = to;
+    });
+  };
+  rename('a[href="/tools.html"]', 'Interactive Lab', '互動實驗室');
+  rename('.aml-mobile-label', 'Interactive Lab', '互動實驗室');
+  document.querySelectorAll('.aml-footer-group h4').forEach((el) => {
+    if (el.textContent.trim() === 'Interactive Lab') el.textContent = '互動實驗室';
+  });
+})();
