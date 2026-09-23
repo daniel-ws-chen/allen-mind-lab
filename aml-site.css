@@ -993,3 +993,39 @@ body .aml-domain-catalog__read{display:none}
 .aml-paths-home__note--simple{margin-top:38px}
 @media(max-width:760px){.aml-paths-home--guided{padding-top:44px}.aml-paths-question{text-align:left}.aml-paths-home__grid--situations{grid-template-columns:1fr}.aml-path-home-card--wide{grid-column:auto}.aml-path-home-card--situation{min-height:0}}
 /* ===== /AML Reading Paths — question-first entry ===== */
+
+/* ===== AML 2.0 Brand Logo v1.0 · 2026-09-23 ===== */
+.aml-global-nav .aml-brand{
+  width:232px;
+  height:52px;
+  min-height:0;
+  padding:0;
+  border:0;
+  border-radius:0;
+  background:transparent url('/images/aml-nav-logo.png') left center/contain no-repeat;
+  box-shadow:none;
+  overflow:hidden;
+  text-indent:-9999px;
+  font-size:0;
+  letter-spacing:0;
+  flex:0 0 auto;
+  transition:opacity .2s ease,transform .2s ease,filter .2s ease;
+}
+.aml-global-nav .aml-brand::before,
+.aml-global-nav .aml-brand::after{content:none!important;display:none!important}
+.aml-global-nav .aml-brand:hover,
+.aml-global-nav .aml-brand:focus-visible{
+  border:0;
+  background:transparent url('/images/aml-nav-logo.png') left center/contain no-repeat;
+  box-shadow:none;
+  transform:translateY(-1px);
+  opacity:.96;
+  filter:drop-shadow(0 4px 10px rgba(213,177,92,.16));
+}
+@media(max-width:700px){
+  .aml-global-nav .aml-brand{width:190px;height:44px;padding:0;min-height:0}
+}
+@media(max-width:390px){
+  .aml-global-nav .aml-brand{width:166px;height:40px}
+}
+/* ===== /AML 2.0 Brand Logo v1.0 ===== */
