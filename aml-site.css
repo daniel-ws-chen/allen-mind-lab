@@ -43,10 +43,56 @@
 }
 
 .aml-global-nav .aml-brand{
-  color:white;
-  font-weight:800;
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-height:42px;
+  padding:7px 13px 6px;
+  border:1px solid rgba(213,177,92,.55);
+  border-radius:10px;
+  background:linear-gradient(135deg,rgba(213,177,92,.12),rgba(255,255,255,.025));
+  color:#e6c66f;
+  font-weight:900;
   letter-spacing:.12em;
   white-space:nowrap;
+  text-decoration:none !important;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.035),0 5px 18px rgba(0,0,0,.12);
+  transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease,color .2s ease;
+}
+.aml-global-nav .aml-brand::before{
+  content:"△";
+  font-size:1.12em;
+  line-height:1;
+  color:#d5b15c;
+  text-shadow:0 0 12px rgba(213,177,92,.28);
+}
+.aml-global-nav .aml-brand::after{
+  content:"BACK TO AML MAP";
+  position:absolute;
+  left:13px;
+  bottom:-14px;
+  opacity:0;
+  color:#d5b15c;
+  font-size:.54rem;
+  font-weight:800;
+  letter-spacing:.12em;
+  pointer-events:none;
+  transform:translateY(-3px);
+  transition:opacity .2s ease,transform .2s ease;
+}
+.aml-global-nav .aml-brand:hover,
+.aml-global-nav .aml-brand:focus-visible{
+  color:#f4d98b;
+  border-color:rgba(230,198,111,.95);
+  background:linear-gradient(135deg,rgba(213,177,92,.2),rgba(255,255,255,.05));
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 7px 24px rgba(213,177,92,.12);
+  transform:translateY(-1px);
+}
+.aml-global-nav .aml-brand:hover::after,
+.aml-global-nav .aml-brand:focus-visible::after{
+  opacity:.88;
+  transform:translateY(0);
 }
 
 .aml-desktop-links{
@@ -197,7 +243,8 @@
 }
 @media(max-width:620px){
   .aml-global-nav{min-height:64px}
-  .aml-global-nav .aml-brand{font-size:.9rem}
+  .aml-global-nav .aml-brand{font-size:.82rem;padding:6px 10px;gap:7px;min-height:38px}
+  .aml-global-nav .aml-brand::after{display:none}
   .aml-global-footer{padding:54px 6vw 26px !important}
   .aml-footer-links{grid-template-columns:1fr}
   .aml-footer-brand{font-size:1.7rem}
