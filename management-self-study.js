@@ -60,10 +60,11 @@
   }));
   const reset=document.querySelector('[data-reset-progress]');
   if(reset)reset.addEventListener('click',()=>{
-    if(!confirm('確定要清除這台裝置上的管理學自學紀錄嗎？\n\n文章、漫畫挑戰、Reflection Bonus、主測驗與完訓證明都會歸零。'))return;
+    if(!confirm('確定要清除這台裝置上的管理學自學紀錄嗎？\n\n文章閱讀、漫畫挑戰、Reflection Bonus、主測驗與完訓證明都會歸零，且無法復原。'))return;
     localStorage.removeItem(KEY);
     render();
     window.scrollTo({top:0,behavior:'smooth'});
+    setTimeout(()=>window.alert('學習紀錄已清除，現在可以讓下一位使用者重新開始。'),120);
   });
   window.addEventListener('storage',e=>{if(e.key===KEY)render();});
   window.addEventListener('pageshow',render);
