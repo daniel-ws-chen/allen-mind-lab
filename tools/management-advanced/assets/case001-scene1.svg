@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+<rect width="1200" height="620" rx="26" fill="#fffaf0"/>
+<rect x="36" y="36" width="1128" height="548" rx="24" fill="#eef4f7" stroke="#28435f" stroke-width="5"/>
+<text x="70" y="90" font-family="Arial,Noto Sans TC" font-size="26" font-weight="900" fill="#496175">SCENE A｜新任務</text>
+<rect x="78" y="128" width="430" height="118" rx="18" fill="#fff" stroke="#d7dedf" stroke-width="3"/>
+<text x="108" y="180" font-family="Arial,Noto Sans TC" font-size="34" font-weight="900" fill="#203246">董事會：</text>
+<text x="108" y="225" font-family="Arial,Noto Sans TC" font-size="34" font-weight="800" fill="#203246">「下季推出一個新服務。」</text>
+<text x="182" y="350" font-size="92">👔</text>
+<text x="690" y="150" font-family="Arial,Noto Sans TC" font-size="34" font-weight="900" fill="#203246">團隊提出 3 個方案</text>
+<g font-family="Arial,Noto Sans TC" font-size="28" font-weight="800" fill="#203246">
+<rect x="620" y="190" width="420" height="74" rx="16" fill="#fff" stroke="#d7dedf"/><text x="650" y="238">① 社區跌倒預防</text>
+<rect x="620" y="286" width="420" height="74" rx="16" fill="#fff" stroke="#d7dedf"/><text x="650" y="334">② 照顧者支持團體</text>
+<rect x="620" y="382" width="420" height="74" rx="16" fill="#fff" stroke="#d7dedf"/><text x="650" y="430">③ 線上復健諮詢</text>
+</g>
+<text x="620" y="515" font-family="Arial,Noto Sans TC" font-size="26" font-weight="700" fill="#5a6978">現在還不知道哪一個該先做。</text>
+</svg>

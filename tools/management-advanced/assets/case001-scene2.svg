@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+<rect width="1200" height="620" rx="26" fill="#fffaf0"/>
+<rect x="36" y="36" width="1128" height="548" rx="24" fill="#eef4f7" stroke="#28435f" stroke-width="5"/>
+<text x="70" y="90" font-family="Arial,Noto Sans TC" font-size="26" font-weight="900" fill="#496175">SCENE B｜限制出現</text>
+<text x="110" y="172" font-family="Arial,Noto Sans TC" font-size="48" font-weight="900" fill="#203246">每週只有 8 小時</text>
+<text x="110" y="225" font-family="Arial,Noto Sans TC" font-size="30" font-weight="800" fill="#5a6978">可投入新服務的人力</text>
+<g fill="#d4a846"><rect x="120" y="310" width="90" height="150" rx="12"/><rect x="240" y="270" width="90" height="190" rx="12"/><rect x="360" y="340" width="90" height="120" rx="12"/></g>
+<text x="660" y="175" font-family="Arial,Noto Sans TC" font-size="42" font-weight="900" fill="#203246">三個方案</text>
+<text x="660" y="230" font-family="Arial,Noto Sans TC" font-size="42" font-weight="900" fill="#a34f49">不能一起做</text>
+<rect x="650" y="300" width="360" height="110" rx="18" fill="#fff" stroke="#d7dedf" stroke-width="3"/>
+<text x="688" y="350" font-family="Arial,Noto Sans TC" font-size="28" font-weight="800" fill="#203246">真正的問題：</text>
+<text x="688" y="392" font-family="Arial,Noto Sans TC" font-size="30" font-weight="900" fill="#203246">先做哪一個？</text>
+</svg>

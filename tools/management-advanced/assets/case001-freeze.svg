@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1c355a"/><stop offset="1" stop-color="#31557f"/></linearGradient></defs>
+<rect width="1200" height="620" rx="26" fill="#fffaf0"/>
+<rect x="36" y="36" width="1128" height="548" rx="24" fill="url(#g)" stroke="#28435f" stroke-width="5"/>
+<text x="86" y="104" font-family="Arial,Noto Sans TC" font-size="26" font-weight="900" fill="#dce7f2">FREEZE｜停一下</text>
+<text x="600" y="240" text-anchor="middle" font-family="Arial,Noto Sans TC" font-size="64" font-weight="900" fill="#fff">等等。</text>
+<text x="600" y="326" text-anchor="middle" font-family="Arial,Noto Sans TC" font-size="42" font-weight="900" fill="#fff">先選一個，才有機會做好。</text>
+<text x="600" y="398" text-anchor="middle" font-family="Arial,Noto Sans TC" font-size="34" font-weight="800" fill="#e8f0f8">現在換你做策略取捨。</text>
+<circle cx="1018" cy="265" r="58" fill="#fff" opacity=".94"/><circle cx="1018" cy="265" r="34" fill="none" stroke="#3c5d86" stroke-width="10"/><line x1="1042" y1="289" x2="1082" y2="329" stroke="#3c5d86" stroke-width="12" stroke-linecap="round"/>
+</svg>
