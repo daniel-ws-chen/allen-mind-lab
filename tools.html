@@ -81,6 +81,13 @@
 
 
 .lab-game--soon{cursor:default;opacity:.92}.lab-game--soon:hover{transform:none;box-shadow:none}.lab-game__go--muted{background:rgba(255,255,255,.18)!important;color:#fff!important;border:1px solid rgba(255,255,255,.28)}
+
+/* AI assistants & practical tools — task-focused, intentionally quieter than exploration */
+.ai-tools-intro{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;padding:30px 32px;margin-top:38px;border:1px solid #dfe5ea;border-radius:26px;background:linear-gradient(135deg,#f5f7f9 0%,#fff 72%)}
+.ai-tools-intro .eyebrow{color:#66788d;font-size:.76rem;font-weight:900;letter-spacing:.16em}.ai-tools-intro h2{margin:6px 0 8px;color:#071a33;font:700 clamp(1.65rem,2.6vw,2.25rem)/1.2 Georgia,"Times New Roman",serif}.ai-tools-intro p{margin:0;max-width:760px;color:#5d6673}.ai-tools-intro__note{max-width:250px;padding:12px 14px;border-radius:16px;background:#fff;border:1px solid #e0e5e9;color:#657081;font-size:.82rem;line-height:1.6}
+.tool-subhead{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin:18px 2px 0}.tool-subhead:after{content:"";height:1px;flex:1;background:#e4e7eb}.tool-subhead span{font-size:.75rem;font-weight:900;letter-spacing:.15em;color:#7d6b4e}.tool-subhead b{font-size:.92rem;color:#071a33}.tool-card--assistant{background:linear-gradient(180deg,#fff,#fbfcfd);border-color:#dfe6eb}.tool-card--assistant:before{background:linear-gradient(90deg,#5f7893 0 42%,#c7a76a 42% 62%,transparent 62%)}.tool-card--workflow{min-height:300px;background:#fff}.tool-card--workflow:before{background:linear-gradient(90deg,#788b81 0 34%,#c7a76a 34% 50%,transparent 50%)}.tool-type-kicker{display:inline-flex;align-items:center;gap:7px;margin:0 0 10px;padding:5px 10px;border-radius:999px;background:#f2f5f7;color:#53677c;font-size:.7rem;font-weight:900}.tool-type-kicker--workflow{background:#f3f6f3;color:#50695b}.tool-card .actions .btn{font-size:.9rem}.ai-tools-footnote{grid-column:1/-1;margin-top:2px;padding:14px 16px;border-left:3px solid #c7a76a;background:#faf8f3;color:#6b6f75;font-size:.84rem;border-radius:0 12px 12px 0}
+@media(max-width:820px){.ai-tools-intro{grid-template-columns:1fr;padding:24px}.ai-tools-intro__note{max-width:none}.tool-subhead{align-items:flex-start;flex-direction:column;gap:5px}.tool-subhead:after{display:none}}
+
 </style>
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
@@ -103,26 +110,16 @@
 <div class="lab-section-title"><span class="lab-section-title__eyebrow">SELF EXPLORATION · 認識自己</span><h3>不是答對，而是更了解自己。</h3><p>從日常感覺經驗出發，整理什麼容易讓你進入狀態、什麼容易讓你耗竭，以及可以怎麼調整。</p></div>
 <a class="lab-coming" href="/tools/sensory/" aria-label="開始我的感覺使用說明書"><span class="lab-coming__icon" aria-hidden="true">🧠</span><div class="lab-coming__body"><span class="lab-coming__eyebrow">SENSORY PROCESSING × DAILY LIFE</span><strong>我的感覺使用說明書</strong><span class="lab-coming__lead">每個人接收、整理與回應感覺刺激的方式都不一樣。從專注、情緒到生活參與，看看自己的感覺模式如何影響每天的狀態。</span><span class="lab-coming__tags"><span class="lab-coming__tag">🎯 專注效率</span><span class="lab-coming__tag">🌿 情緒調節</span><span class="lab-coming__tag">🤝 生活參與</span></span></div><span class="lab-coming__go">開始探索 →</span></a></div></section><section class="lab-method" aria-label="互動實驗室學習方式"><div class="lab-method__line"><span><b>PLAY</b> 玩</span><span><b>OBSERVE</b> 看</span><span><b>DISCOVER</b> 想</span><span><b>LEARN</b> 學</span></div></section>
 <main class="wrap" id="aml-main">
-<section aria-labelledby="tool-practice" class="aml-tools-all"><div class="tool-grid"><div class="lab-zone-head lab-zone-head--tools"><div><div class="eyebrow">AI ASSISTANTS & TOOLS · 助理與工具</div><h2>AI 助理與實務工具</h2><p>當你已經有明確任務，再往下使用 AI 助理、助教與實務工作工具。這一區不搶前面的探索體驗，而是在需要時提供支援。</p></div><span class="lab-zone-badge">任務支援</span></div><article class="tool-card" id="tool-practice">
-<small>PBS · PRACTICE SUPPORT</small><span class="tool-kind">案例分析</span>
-<h3>AML PBS Companion</h3>
-<p>正向行為支持實務夥伴。協助第一線工作者整理情緒行為案例、進行 ABC 分析、提出功能假設與 PBS 策略草稿，作為團隊討論與教學的輔助工具。</p>
-<ul><li>ABC 與功能假設整理</li><li>PBS 策略草案</li><li>團隊討論與教學輔助</li></ul>
-<div class="actions"><a class="btn" href="https://chatgpt.com/g/g-6a17ee42c9588191abb89a20d3625d8f" rel="noopener noreferrer" target="_blank">開啟 Companion ↗</a><a class="btn secondary" href="/pbs.html#ai-tool">查看 PBS 頁面</a></div><p class="tool-related-reading">相關閱讀｜<a href="/articles/pbs-being-seen.html">當「被看見」成為高挑戰行為</a></p>
-</article><article class="tool-card" id="tool-planning">
-<small>MANAGEMENT · LEARNING SUPPORT</small><span class="tool-kind">方案規劃</span>
-<h3>方案規劃管理助教系統</h3>
-<p>協助個人與團隊從構想到完整方案，透過統一架構、內容彙整、跨章連貫性檢查與 AI 評析，逐步完成有系統的計畫初稿。</p>
-<ul><li>個人撰寫與團隊彙整</li><li>跨章連貫性檢查</li><li>修訂後初稿匯出</li></ul>
-<div class="actions"><a class="btn" href="/tools/management-coach/">開啟助教系統 →</a><a class="btn secondary" href="/articles/management-coach-leader-workflow.html">閱讀設計說明</a></div>
-</article><article class="tool-card"><small>PBS · TRANSITION SUPPORT</small><span class="tool-kind">轉銜支持</span><h3>情緒行為支持服務轉銜評估與建議表</h3><p>從服務對象、照顧者與環境資源三個面向，整理已建立的能力、承接條件與後續支持需求，協助團隊在結案前形成具體的轉銜建議。</p><ul><li>三大專業評估面向與 PBS 技巧檢核</li><li>資源銜接、風險與後續支持建議</li><li>Word 可編輯範本 · CC BY 4.0</li></ul><div class="actions"><a class="btn" href="/tools/pbs-transition-assessment.html">查看工具與下載 →</a><a class="btn secondary" download="" href="/downloads/aml-pbs-transition-assessment-v1.0.docx">下載 Word</a></div><p class="tool-related-reading">相關閱讀｜<a href="/articles/ot-management-transition-support-life.html">讓改變走得更遠</a></p></article><article class="tool-card tool-card--featured">
-<div class="tool-status"><span class="status-dot"></span><b>授權使用</b><span>Workflow Pilot</span></div><small>HEALTHCARE · WORKFLOW PILOT</small><span class="tool-kind">感控流程</span>
-<h3>感控作業管理助手 <span class="pilot-badge">PILOT 1.0</span></h3>
-<p>將院內感控流程拆成四個清楚工作區：個案通報、疑似群聚／全院資料、每日追蹤，以及全院儀表板與表單輸出。</p>
-<ul><li>授權人員登入使用</li><li>個案建檔與每日追蹤分流</li><li>院內表單與群聚／衛生局文件分流輸出</li><li>全院感控儀表板即時彙整</li></ul>
-<div class="actions"><a class="btn" href="/tools/infection-control-pilot/">進入感控作業助手 →</a></div>
-<p class="tool-related-reading">Pilot 測試版｜限授權人員使用；測試階段請勿輸入真實可識別個資。</p>
-</article></div></section>
+<section aria-labelledby="tool-practice" class="aml-tools-all"><div class="tool-grid">
+<div class="ai-tools-intro"><div><div class="eyebrow">AI ASSISTANTS & PRACTICE TOOLS · 任務支援</div><h2>有明確任務時，再來找工具。</h2><p>前面適合探索；這裡適合工作。當你已經知道要分析案例、規劃方案、整理轉銜，或處理特定工作流程，再選擇相對應的助理或工具。</p></div><div class="ai-tools-intro__note">AI 可協助整理、提問與產生草稿；專業判斷、查證與最終決策仍由使用者負責。</div></div>
+<div class="tool-subhead"><span>AI ASSISTANTS</span><b>助理／助教</b></div>
+<article class="tool-card tool-card--assistant" id="tool-practice"><div class="tool-type-kicker">🤝 AI 實務夥伴</div><small>PBS · PRACTICE SUPPORT</small><h3>AML PBS Companion</h3><p>把零散的情緒行為紀錄整理成可討論的 PBS 線索：ABC、功能假設、支持策略與團隊討論草稿。</p><ul><li>ABC 與功能假設整理</li><li>PBS 支持策略草案</li><li>案例研討與教學討論輔助</li></ul><div class="actions"><a class="btn" href="https://chatgpt.com/g/g-6a17ee42c9588191abb89a20d3625d8f" rel="noopener noreferrer" target="_blank">開啟 Companion ↗</a><a class="btn secondary" href="/pbs.html#ai-tool">了解使用情境</a></div><p class="tool-related-reading">相關閱讀｜<a href="/articles/pbs-being-seen.html">當「被看見」成為高挑戰行為</a></p></article>
+<article class="tool-card tool-card--assistant" id="tool-planning"><div class="tool-type-kicker">🎓 AI 管理助教</div><small>MANAGEMENT · LEARNING SUPPORT</small><h3>方案規劃管理助教系統</h3><p>從構想到完整方案，協助整理章節、檢查前後邏輯與跨章連貫性，適合個人撰寫與小組方案作業。</p><ul><li>個人撰寫與團隊彙整</li><li>跨章連貫性與一致性檢查</li><li>修訂後方案初稿整理</li></ul><div class="actions"><a class="btn" href="/tools/management-coach/">開啟助教系統 →</a><a class="btn secondary" href="/articles/management-coach-leader-workflow.html">閱讀設計說明</a></div></article>
+<div class="tool-subhead"><span>PRACTICE TOOLS</span><b>實務工具</b></div>
+<article class="tool-card tool-card--workflow"><div class="tool-type-kicker tool-type-kicker--workflow">🧭 轉銜整理</div><small>PBS · TRANSITION SUPPORT</small><h3>情緒行為支持服務轉銜評估與建議表</h3><p>將服務對象、照顧者與環境資源整理成一份可承接的轉銜摘要，協助團隊在結案前確認後續支持條件。</p><ul><li>三大評估面向與 PBS 技巧檢核</li><li>資源銜接、風險與後續支持</li><li>Word 可編輯範本 · CC BY 4.0</li></ul><div class="actions"><a class="btn" href="/tools/pbs-transition-assessment.html">查看工具 →</a><a class="btn secondary" download href="/downloads/aml-pbs-transition-assessment-v1.0.docx">下載 Word</a></div><p class="tool-related-reading">相關閱讀｜<a href="/articles/ot-management-transition-support-life.html">讓改變走得更遠</a></p></article>
+<article class="tool-card tool-card--workflow tool-card--featured"><div class="tool-status"><span class="status-dot"></span><b>授權使用</b><span>Workflow Pilot</span></div><div class="tool-type-kicker tool-type-kicker--workflow">🩺 工作流程</div><small>HEALTHCARE · WORKFLOW PILOT</small><h3>感控作業管理助手 <span class="pilot-badge">PILOT 1.0</span></h3><p>把個案通報、疑似群聚、每日追蹤與表單輸出整理成清楚工作區，協助授權人員減少重複整理。</p><ul><li>授權人員登入使用</li><li>個案建檔與追蹤分流</li><li>院內與衛生局表單分流輸出</li><li>全院感控儀表板彙整</li></ul><div class="actions"><a class="btn" href="/tools/infection-control-pilot/">進入感控作業助手 →</a></div><p class="tool-related-reading">Pilot 測試版｜測試階段請勿輸入真實可識別個資。</p></article>
+<div class="ai-tools-footnote">工具的角色是把工作做得更清楚，而不是替代專業判斷。需要查證的內容，仍請回到原始資料、專業指引與團隊討論。</div>
+</div></section>
 <section aria-labelledby="aml-wish" class="wish-community" id="tool-community">
 <div class="wish-community__eyebrow">COMMUNITY · READER PARTICIPATION</div>
 <div class="wish-community__grid">
