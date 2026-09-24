@@ -14,7 +14,7 @@
       <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.12"/>
     </filter>
     <style>
-      .panel{fill:#fff;stroke:#23394a;stroke-width:4}
+      .panel{fill:#fff;stroke:#23394a;stroke-width:4}.freezePanel{fill:url(#freeze);stroke:#23394a;stroke-width:4}
       .small{font:700 24px 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; fill:#27384c}
       .tiny{font:700 20px 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; fill:#566475}
       .title{font:900 52px 'Noto Sans TC', 'Microsoft JhengHei', Arial, sans-serif; fill:#10253f}
@@ -38,7 +38,7 @@
     <rect class="panel" x="940" y="72" width="420" height="270" rx="18" fill="url(#bg)"/>
     <rect class="panel" x="40" y="370" width="420" height="270" rx="18" fill="url(#bg)"/>
     <rect class="panel" x="490" y="370" width="420" height="270" rx="18" fill="url(#bg)"/>
-    <rect class="panel" x="940" y="370" width="420" height="270" rx="18" fill="url(#freeze)"/>
+    <rect class="freezePanel" x="940" y="370" width="420" height="270" rx="18"/>
   </g>
 
   <!-- panel numbers -->
@@ -113,10 +113,10 @@
   <text x="542" y="617" class="tiny">團隊開始把「需求」和「限制」一起看。</text>
 
   <!-- Panel 6 freeze -->
-  <text x="1148" y="505" text-anchor="middle" class="freezeBig">等等。</text>
-  <text x="1148" y="562" text-anchor="middle" class="freezeBig">現在換你做策略取捨。</text>
-  <text x="1148" y="620" text-anchor="middle" class="freezeText">不是選最熱鬧的方案，</text>
-  <text x="1148" y="656" text-anchor="middle" class="freezeText">而是選最適合現在的方案。</text>
+  <text x="1148" y="492" text-anchor="middle" class="freezeBig">等等。</text>
+  <text x="1148" y="542" text-anchor="middle" class="freezeBig" style="font-size:38px">現在換你做策略取捨。</text>
+  <text x="1148" y="588" text-anchor="middle" class="freezeText" style="font-size:24px">不是選最熱鬧的方案，</text>
+  <text x="1148" y="620" text-anchor="middle" class="freezeText" style="font-size:24px">而是選最適合現在的方案。</text>
   <circle cx="1278" cy="472" r="38" fill="#fff" opacity="0.9"/>
   <circle cx="1278" cy="472" r="22" fill="none" stroke="#3c5d86" stroke-width="6"/>
   <line x1="1294" y1="488" x2="1320" y2="514" stroke="#3c5d86" stroke-width="8" stroke-linecap="round"/>
