@@ -60,7 +60,7 @@
   }));
   const reset=document.querySelector('[data-reset-progress]');
   if(reset)reset.addEventListener('click',()=>{
-    if(!confirm('確定要清除這台裝置上的管理學自學紀錄嗎？\n\n文章閱讀、漫畫挑戰、Reflection Bonus、主測驗與完訓證明都會歸零，且無法復原。'))return;
+    if(!confirm('確定要清除這台裝置上的管理學自學紀錄嗎？\n\n文章閱讀、課後小測、Reflection Bonus、主測驗與完訓證明都會歸零，且無法復原。'))return;
     localStorage.removeItem(KEY);
     render();
     window.scrollTo({top:0,behavior:'smooth'});
