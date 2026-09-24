@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#19345a"/><stop offset="100%" stop-color="#345c87"/></linearGradient><style>
+.big{font:900 72px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#fff}.mid{font:900 42px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#f2f6fb}.small{font:800 27px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#dce8f4}.cap{font:900 24px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#f0d48d}</style></defs>
+<rect x="8" y="8" width="1184" height="604" rx="28" fill="url(#g)" stroke="#28435f" stroke-width="6"/>
+<rect x="28" y="28" width="240" height="46" rx="14" fill="#0f2744"/><text x="148" y="59" text-anchor="middle" class="cap">SCENE 04 · FREEZE</text>
+<circle cx="600" cy="205" r="74" fill="#fff" opacity=".96"/><circle cx="600" cy="205" r="40" fill="none" stroke="#31557f" stroke-width="10"/><line x1="630" y1="235" x2="682" y2="287" stroke="#31557f" stroke-width="14" stroke-linecap="round"/>
+<text x="600" y="360" text-anchor="middle" class="big">等等。</text>
+<text x="600" y="432" text-anchor="middle" class="mid">數字變好 ≠ 真的變好</text>
+<text x="600" y="492" text-anchor="middle" class="small">先確認：樣本、分母、定義、時間範圍</text>
+<rect x="930" y="35" width="220" height="42" rx="12" fill="#17304e"/><text x="1040" y="63" text-anchor="middle" class="cap">ALLEN MIND LAB</text>
+</svg>
