@@ -33,7 +33,7 @@
       const as=card.querySelector('[data-article-status]');
       const gs=card.querySelector('[data-game-status]');
       if(as){as.textContent=a?'✓ 核心閱讀已完成':'○ 尚未完成閱讀';as.classList.toggle('ok',a);}
-      if(gs){gs.textContent=g?'✓ 挑戰已完成':'○ 挑戰未完成';gs.classList.toggle('ok',g);}
+      if(gs){gs.textContent=g?'✓ 課後小測已完成':'○ 課後小測未完成';gs.classList.toggle('ok',g);}
       const ta=card.querySelector(`[data-reflection="${id}"]`);
       if(ta&&document.activeElement!==ta)ta.value=s.reflections[id]||'';
       updateReflectionUI(id,ta?ta.value:(s.reflections[id]||''));
