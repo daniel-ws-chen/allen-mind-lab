@@ -1,35 +1,123 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="980" viewBox="0 0 1400 980">
-<defs>
-  <linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef4f7"/><stop offset=".62" stop-color="#eef4f7"/><stop offset=".62" stop-color="#e6d6b7"/><stop offset="1" stop-color="#e6d6b7"/></linearGradient>
-  <linearGradient id="freeze" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#18395e"/><stop offset="1" stop-color="#315f7f"/></linearGradient>
-  <filter id="sh"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity=".13"/></filter>
-  <style>
-    .p{fill:#fff;stroke:#23394a;stroke-width:4}.cap{font:900 24px 'Noto Sans TC','Microsoft JhengHei',Arial;fill:#4b5e72}.num{font:900 28px Arial;fill:#f3d78d}.bub{fill:#fff;stroke:#d5dcdf;stroke-width:2}.sp{font:800 25px 'Noto Sans TC','Microsoft JhengHei',Arial;fill:#203247}.sm{font:700 21px 'Noto Sans TC','Microsoft JhengHei',Arial;fill:#536476}.big{font:900 48px 'Noto Sans TC','Microsoft JhengHei',Arial;fill:#fff}.mid{font:800 30px 'Noto Sans TC','Microsoft JhengHei',Arial;fill:#dce8f2}
-  </style>
-</defs>
-<rect x="5" y="5" width="1390" height="970" rx="26" fill="#fffef9" stroke="#23394a" stroke-width="6"/>
-<g filter="url(#sh)">
-<rect class="p" x="40" y="72" width="420" height="270" rx="18" fill="url(#bg1)"/>
-<rect class="p" x="490" y="72" width="420" height="270" rx="18" fill="url(#bg1)"/>
-<rect class="p" x="940" y="72" width="420" height="270" rx="18" fill="url(#bg1)"/>
-<rect class="p" x="40" y="370" width="420" height="270" rx="18" fill="url(#bg1)"/>
-<rect class="p" x="490" y="370" width="420" height="270" rx="18" fill="url(#bg1)"/>
-<rect x="940" y="370" width="420" height="270" rx="18" fill="url(#freeze)" stroke="#23394a" stroke-width="4"/>
-</g>
-<g>
-<circle cx="82" cy="110" r="26" fill="#244164" stroke="#fff" stroke-width="4"/><text x="82" y="119" text-anchor="middle" class="num">1</text>
-<circle cx="532" cy="110" r="26" fill="#244164" stroke="#fff" stroke-width="4"/><text x="532" y="119" text-anchor="middle" class="num">2</text>
-<circle cx="982" cy="110" r="26" fill="#244164" stroke="#fff" stroke-width="4"/><text x="982" y="119" text-anchor="middle" class="num">3</text>
-<circle cx="82" cy="408" r="26" fill="#244164" stroke="#fff" stroke-width="4"/><text x="82" y="417" text-anchor="middle" class="num">4</text>
-<circle cx="532" cy="408" r="26" fill="#244164" stroke="#fff" stroke-width="4"/><text x="532" y="417" text-anchor="middle" class="num">5</text>
-<circle cx="982" cy="408" r="26" fill="#244164" stroke="#fff" stroke-width="4"/><text x="982" y="417" text-anchor="middle" class="num">6</text>
-</g>
-<text x="120" y="115" class="cap">漂亮的數字</text><text x="570" y="115" class="cap">大家都很開心</text><text x="1020" y="115" class="cap">但資料變了</text><text x="120" y="413" class="cap">再看分母</text><text x="570" y="413" class="cap">再看定義</text><text x="1020" y="413" class="cap" style="fill:#dce8f2">FREEZE｜停一下</text>
-<!--1--><rect class="bub" x="88" y="145" width="300" height="66" rx="16"/><text x="110" y="184" class="sp">滿意度：80% → 92%！</text><rect x="98" y="236" width="62" height="70" rx="8" fill="#d7a445"/><rect x="180" y="214" width="62" height="92" rx="8" fill="#d7a445"/><rect x="262" y="188" width="62" height="118" rx="8" fill="#d7a445"/><text x="100" y="330" class="sm">主管：「品質真的進步了！」</text>
-<!--2--><circle cx="608" cy="246" r="55" fill="#fde0be"/><circle cx="745" cy="246" r="55" fill="#f8ddb8"/><text x="608" y="260" text-anchor="middle" style="font:900 54px Arial">🎉</text><text x="745" y="260" text-anchor="middle" style="font:900 54px Arial">📈</text><rect class="bub" x="540" y="145" width="315" height="68" rx="16"/><text x="560" y="184" class="sp">「這個月成果很好，快放簡報！」</text><text x="545" y="330" class="sm">數字漂亮，很容易讓人直接下結論。</text>
-<!--3--><rect x="995" y="166" width="144" height="122" rx="16" fill="#fff4df" stroke="#d7bd82" stroke-width="3"/><text x="1067" y="204" text-anchor="middle" style="font:900 35px Arial;fill:#8e6220">200</text><text x="1067" y="244" text-anchor="middle" class="sm">去年回收</text><rect x="1175" y="166" width="144" height="122" rx="16" fill="#ffeae5" stroke="#dfb4aa" stroke-width="3"/><text x="1247" y="204" text-anchor="middle" style="font:900 35px Arial;fill:#a34f49">35</text><text x="1247" y="244" text-anchor="middle" class="sm">今年回收</text><text x="1002" y="330" class="sm">樣本數其實差很多。</text>
-<!--4--><rect class="bub" x="82" y="439" width="300" height="66" rx="16"/><text x="104" y="478" class="sp">跌倒件數：20 → 12</text><rect x="95" y="530" width="145" height="72" rx="14" fill="#eef3f8" stroke="#bccadc"/><text x="167" y="558" text-anchor="middle" style="font:900 31px Arial;fill:#2f5074">200 人</text><text x="167" y="589" text-anchor="middle" class="sm">去年住民</text><rect x="270" y="530" width="145" height="72" rx="14" fill="#eef3f8" stroke="#bccadc"/><text x="342" y="558" text-anchor="middle" style="font:900 31px Arial;fill:#2f5074">100 人</text><text x="342" y="589" text-anchor="middle" class="sm">今年住民</text><text x="88" y="626" class="sm">件數少了，但分母也變了。</text>
-<!--5--><rect x="540" y="462" width="320" height="72" rx="16" fill="#fff4df" stroke="#d7bd82" stroke-width="3"/><text x="700" y="500" text-anchor="middle" class="sp">去年：30 天內完成追蹤</text><rect x="540" y="548" width="320" height="72" rx="16" fill="#eef3f8" stroke="#bccadc" stroke-width="3"/><text x="700" y="586" text-anchor="middle" class="sp">今年：45 天內完成追蹤</text><text x="546" y="631" class="sm">指標名稱一樣，但定義已經不同。</text>
-<!--6--><text x="1150" y="498" text-anchor="middle" class="big">等等。</text><text x="1150" y="556" text-anchor="middle" class="big">數字變好 ≠ 真的變好</text><text x="1150" y="608" text-anchor="middle" class="mid">你要先查：樣本、分母、定義、比較條件。</text>
-<!--tip--><rect x="56" y="678" width="1288" height="220" rx="22" fill="#fffaf0" stroke="#d8cba9" stroke-width="4"/><circle cx="118" cy="739" r="42" fill="#f8e8c0"/><text x="118" y="753" text-anchor="middle" style="font:900 48px Arial">📊</text><rect x="176" y="706" width="430" height="66" rx="18" fill="#eef3f8" stroke="#cad6df" stroke-width="3"/><text x="206" y="747" class="sp" style="font-size:28px">數據提示</text><text x="188" y="812" class="sm">先確認：</text><text x="298" y="812" class="sm">樣本、分母、定義、時間範圍</text><text x="188" y="850" class="sm">再決定這個「變好」能不能成立。</text><rect x="928" y="712" width="344" height="126" rx="28" fill="#f28a2c" stroke="#fff" stroke-width="4"/><text x="1100" y="790" text-anchor="middle" style="font:900 43px 'Noto Sans TC','Microsoft JhengHei',Arial;fill:#fff">開始查數據 →</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#eef4f7"/>
+      <stop offset="60%" stop-color="#eef4f7"/>
+      <stop offset="60%" stop-color="#e7d4af"/>
+      <stop offset="100%" stop-color="#e7d4af"/>
+    </linearGradient>
+    <linearGradient id="freeze" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c355a"/>
+      <stop offset="100%" stop-color="#31557f"/>
+    </linearGradient>
+    <style>
+      .panel{stroke:#28435f;stroke-width:4}
+      .cap{font:900 26px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#496175}
+      .body{font:800 28px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#203246}
+      .tiny{font:700 21px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#4e6172}
+      .label{font:900 28px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#f4d790}
+      .freezeTitle{font:900 48px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#ffffff}
+      .freezeSub{font:800 30px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#eef4fc}
+      .tag{font:900 23px Arial,sans-serif;fill:#efd48c}
+    </style>
+  </defs>
+  <rect x="8" y="8" width="1384" height="964" rx="26" fill="#fffef9" stroke="#23394a" stroke-width="6"/>
+
+  <g>
+    <rect x="40" y="72" width="420" height="270" rx="18" fill="url(#bg)" class="panel"/>
+    <rect x="490" y="72" width="420" height="270" rx="18" fill="url(#bg)" class="panel"/>
+    <rect x="940" y="72" width="420" height="270" rx="18" fill="url(#bg)" class="panel"/>
+    <rect x="40" y="370" width="420" height="270" rx="18" fill="url(#bg)" class="panel"/>
+    <rect x="490" y="370" width="420" height="270" rx="18" fill="url(#bg)" class="panel"/>
+    <rect x="940" y="370" width="420" height="270" rx="18" fill="url(#freeze)" class="panel"/>
+  </g>
+
+  <g>
+    <circle cx="82" cy="110" r="26" fill="#25466d"/><text x="82" y="119" text-anchor="middle" class="label">1</text>
+    <circle cx="532" cy="110" r="26" fill="#25466d"/><text x="532" y="119" text-anchor="middle" class="label">2</text>
+    <circle cx="982" cy="110" r="26" fill="#25466d"/><text x="982" y="119" text-anchor="middle" class="label">3</text>
+    <circle cx="82" cy="408" r="26" fill="#25466d"/><text x="82" y="417" text-anchor="middle" class="label">4</text>
+    <circle cx="532" cy="408" r="26" fill="#25466d"/><text x="532" y="417" text-anchor="middle" class="label">5</text>
+    <circle cx="982" cy="408" r="26" fill="#25466d"/><text x="982" y="417" text-anchor="middle" class="label">6</text>
+  </g>
+
+  <text x="120" y="115" class="cap">漂亮的數字</text>
+  <text x="570" y="115" class="cap">大家都很開心</text>
+  <text x="1020" y="115" class="cap">但資料變了</text>
+  <text x="120" y="413" class="cap">再看分母</text>
+  <text x="570" y="413" class="cap">再看定義</text>
+  <text x="1020" y="413" class="cap">FREEZE｜停一下</text>
+
+  <!-- panel 1 -->
+  <rect x="96" y="145" width="230" height="68" rx="16" fill="#fff" stroke="#d7dedf" stroke-width="2"/>
+  <text x="121" y="188" class="body">滿意度：80% → 92%！</text>
+  <rect x="132" y="235" width="58" height="82" rx="8" fill="#d4a846"/>
+  <rect x="206" y="216" width="58" height="101" rx="8" fill="#d4a846"/>
+  <rect x="280" y="195" width="58" height="122" rx="8" fill="#d4a846"/>
+  <text x="118" y="330" class="tiny">數字看起來很好。</text>
+
+  <!-- panel 2 -->
+  <rect x="540" y="145" width="268" height="68" rx="16" fill="#fff" stroke="#d7dedf" stroke-width="2"/>
+  <text x="560" y="188" class="body">「這個月成果很好！」</text>
+  <circle cx="596" cy="248" r="48" fill="#f3d69f"/>
+  <circle cx="726" cy="248" r="48" fill="#f3d69f"/>
+  <text x="596" y="264" text-anchor="middle" style="font:900 46px Arial">🎉</text>
+  <text x="726" y="264" text-anchor="middle" style="font:900 46px Arial">📈</text>
+  <text x="548" y="330" class="tiny">很容易直接下結論。</text>
+
+  <!-- panel 3 -->
+  <rect x="990" y="210" width="120" height="108" rx="16" fill="#fdf2df" stroke="#d8c38c" stroke-width="3"/>
+  <text x="1050" y="260" text-anchor="middle" style="font:900 34px Arial;fill:#8d6220">200</text>
+  <text x="1050" y="298" text-anchor="middle" class="body" style="font-size:23px">去年回收</text>
+  <rect x="1160" y="210" width="120" height="108" rx="16" fill="#faebe9" stroke="#dfb8b1" stroke-width="3"/>
+  <text x="1220" y="260" text-anchor="middle" style="font:900 34px Arial;fill:#a34f49">35</text>
+  <text x="1220" y="298" text-anchor="middle" class="body" style="font-size:23px">今年回收</text>
+  <text x="1000" y="330" class="tiny">樣本數其實差很多。</text>
+
+  <!-- panel 4 -->
+  <rect x="82" y="142" width="236" height="64" rx="16" fill="#fff" stroke="#d7dedf" stroke-width="2"/>
+  <text x="101" y="183" class="body">跌倒件數：20 → 12</text>
+  <rect x="92" y="486" width="138" height="74" rx="14" fill="#eef3f8" stroke="#bccadc" stroke-width="3"/>
+  <text x="161" y="522" text-anchor="middle" style="font:900 30px Arial;fill:#2f5074">200 人</text>
+  <text x="161" y="551" text-anchor="middle" class="body" style="font-size:20px">去年住民</text>
+  <rect x="258" y="486" width="138" height="74" rx="14" fill="#eef3f8" stroke="#bccadc" stroke-width="3"/>
+  <text x="327" y="522" text-anchor="middle" style="font:900 30px Arial;fill:#2f5074">100 人</text>
+  <text x="327" y="551" text-anchor="middle" class="body" style="font-size:20px">今年住民</text>
+  <text x="88" y="610" class="tiny">件數變少，分母也變了。</text>
+
+  <!-- panel 5 -->
+  <rect x="538" y="466" width="148" height="96" rx="16" fill="#fdf2df" stroke="#d8c38c" stroke-width="3"/>
+  <text x="612" y="508" text-anchor="middle" style="font:900 29px Arial;fill:#8d6220">去年</text>
+  <text x="612" y="540" text-anchor="middle" class="body" style="font-size:22px">30 天內</text>
+  <text x="612" y="568" text-anchor="middle" class="body" style="font-size:22px">完成追蹤</text>
+  <rect x="714" y="466" width="148" height="96" rx="16" fill="#fdf2df" stroke="#d8c38c" stroke-width="3"/>
+  <text x="788" y="508" text-anchor="middle" style="font:900 29px Arial;fill:#8d6220">今年</text>
+  <text x="788" y="540" text-anchor="middle" class="body" style="font-size:22px">45 天內</text>
+  <text x="788" y="568" text-anchor="middle" class="body" style="font-size:22px">完成追蹤</text>
+  <text x="542" y="610" class="tiny">名稱一樣，但定義變了。</text>
+
+  <!-- panel 6 -->
+  <text x="1148" y="500" text-anchor="middle" class="freezeTitle">等等。</text>
+  <text x="1148" y="560" text-anchor="middle" class="freezeSub">數字變好 ≠ 真的變好</text>
+  <text x="1148" y="615" text-anchor="middle" class="freezeSub">先別急著慶祝。</text>
+  <circle cx="1278" cy="476" r="38" fill="#fff" opacity="0.92"/>
+  <circle cx="1278" cy="476" r="22" fill="none" stroke="#3c5d86" stroke-width="6"/>
+  <line x1="1294" y1="492" x2="1320" y2="518" stroke="#3c5d86" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- bottom strip -->
+  <rect x="56" y="678" width="1288" height="220" rx="22" fill="#fffaf0" stroke="#d8cba9" stroke-width="4"/>
+  <circle cx="118" cy="739" r="42" fill="#f8e8c0"/>
+  <text x="118" y="753" text-anchor="middle" style="font:900 44px Arial">📊</text>
+  <rect x="176" y="706" width="364" height="66" rx="18" fill="#eef3f8" stroke="#cad6df" stroke-width="3"/>
+  <text x="206" y="748" class="body" style="font-size:28px">數據提示</text>
+  <text x="188" y="812" class="body" style="font-size:24px">先檢查：</text>
+  <text x="304" y="812" class="body" style="font-size:24px">樣本、分母、定義</text>
+  <text x="188" y="850" class="body" style="font-size:24px">再判斷：這些數字能不能比。</text>
+  <rect x="930" y="712" width="342" height="126" rx="28" fill="#f28a2c" stroke="#fff" stroke-width="4"/>
+  <circle cx="988" cy="776" r="28" fill="#fff" opacity="0.96"/>
+  <circle cx="988" cy="776" r="16" fill="none" stroke="#f28a2c" stroke-width="6"/>
+  <line x1="999" y1="787" x2="1019" y2="807" stroke="#f28a2c" stroke-width="7" stroke-linecap="round"/>
+  <text x="1120" y="790" text-anchor="middle" style="font:900 42px 'Noto Sans TC','Microsoft JhengHei',Arial,sans-serif;fill:#fff">開始查數據 →</text>
+  <rect x="1164" y="28" width="176" height="44" rx="14" fill="#1c2f4d"/>
+  <text x="1252" y="57" text-anchor="middle" class="tag">ALLEN MIND LAB</text>
 </svg>
