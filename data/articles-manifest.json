@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-23T01:55:37.445Z",
+  "generatedAt": "2026-09-24T07:25:45.585Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 47,
+    "total": 48,
     "ot": 22,
     "mind": 13,
     "pbs": 13,
     "education": 8,
-    "management": 23,
-    "ai": 10,
+    "management": 24,
+    "ai": 11,
     "notes": 6
   },
   "featuredReading": [
@@ -78,6 +78,49 @@
     }
   },
   "articles": [
+    {
+      "slug": "management-no-single-right-answer",
+      "title": "當管理沒有唯一正解：風格可以改變，核心不能漂移",
+      "summary": "管理沒有唯一正解。真正成熟的管理，是能依情境調整風格，同時守住公平、責任與尊重；AI 的價值不是替主管裁決，而是協助看見決策模式與盲點。",
+      "date": "2026-09-24",
+      "domains": [
+        "management",
+        "ai"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "Management & Leadership × AI × Practice",
+      "cardMeta": "2026.09.24 · Management & Leadership × AI × Practice",
+      "keywords": [
+        "管理風格",
+        "情境管理",
+        "組織公平",
+        "管理判斷",
+        "AI",
+        "決策偏誤",
+        "人機協作",
+        "領導"
+      ],
+      "articlePath": "/articles/management-no-single-right-answer.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/management-no-single-right-answer",
+      "hero": "/images/articles/management-no-single-right-answer-hero.webp",
+      "ogImage": "/images/articles/management-no-single-right-answer-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "延伸前站 ← 當 AI 越來越會管事，管理者該如何帶人？",
+          "href": "/articles/ai-manager-leadership-human-ai-collaboration.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "adult-adhd-sensory-processing",
       "title": "不是只有專不專心：從感覺處理看成人 ADHD",
@@ -1745,8 +1788,8 @@
         },
         {
           "kind": "next",
-          "label": "AI 延伸 當 GPT 開始審 GPT →",
-          "href": "/articles/ai-review-quality-collaboration.html"
+          "label": "下一篇 當管理沒有唯一正解：風格可以改變，核心不能漂移 →",
+          "href": "/articles/management-no-single-right-answer.html"
         }
       ]
     },
