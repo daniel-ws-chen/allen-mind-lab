@@ -89,6 +89,20 @@
 @media(max-width:820px){.ai-tools-intro{grid-template-columns:1fr;padding:24px}.ai-tools-intro__note{max-width:none}.tool-subhead{align-items:flex-start;flex-direction:column;gap:5px}.tool-subhead:after{display:none}}
 
 </style>
+<style>
+/* AML Interactive Lab — Future Lab 4.0 */
+.labx{--lab-bg:#050912;--lab-panel:#0b1220;--lab-panel2:#0e1728;--lab-text:#f4f8ff;--lab-muted:#9fb0c8;--lab-line:rgba(159,188,228,.16);background:var(--lab-bg);color:var(--lab-text);position:relative;overflow:hidden}
+.labx a{text-decoration:none}.labx-inner{width:min(1180px,86vw);margin:0 auto}.labx-kicker{font-size:.74rem;letter-spacing:.2em;font-weight:900;color:#80eaff;text-transform:uppercase}.labx-hero{position:relative;padding:92px 0 84px;overflow:hidden;background:radial-gradient(circle at 78% 25%,rgba(57,103,255,.19),transparent 34%),radial-gradient(circle at 18% 82%,rgba(139,68,255,.16),transparent 32%),linear-gradient(145deg,#03060c 0%,#07101d 50%,#06101c 100%)}
+.labx-gridfx{position:absolute;inset:0;background-image:linear-gradient(rgba(91,132,188,.065) 1px,transparent 1px),linear-gradient(90deg,rgba(91,132,188,.065) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 92%);pointer-events:none}.labx-orb{position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}.labx-orb--a{width:440px;height:440px;right:-170px;top:-120px;border:1px solid rgba(78,204,255,.19);box-shadow:0 0 80px rgba(45,177,255,.08),inset 0 0 80px rgba(45,177,255,.05)}.labx-orb--b{width:280px;height:280px;left:-120px;bottom:-150px;border:1px solid rgba(169,83,255,.18);box-shadow:0 0 70px rgba(169,83,255,.07)}
+.labx-hero__inner{position:relative;z-index:1}.labx-system{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(98,255,211,.25);background:rgba(98,255,211,.055);padding:7px 11px;border-radius:999px;color:#91f7d9;font-size:.7rem;font-weight:900;letter-spacing:.12em;margin-bottom:24px}.labx-dot{width:7px;height:7px;border-radius:50%;background:#61f5cb;box-shadow:0 0 14px #61f5cb}.labx-hero h1{font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:clamp(2.7rem,6vw,5.8rem);letter-spacing:-.045em;line-height:.98;margin:12px 0 22px;color:#fff}.labx-manifesto{font-size:clamp(1.32rem,2.7vw,2rem);line-height:1.45;margin:0 0 20px;color:#d9e7f7}.labx-manifesto strong{color:#7fe8ff;font-weight:900;text-shadow:0 0 24px rgba(78,210,255,.25)}.labx-intro{max-width:760px;color:#9fb0c8;font-size:1rem;line-height:1.85;margin:0 0 28px}.labx-primary{display:inline-flex;align-items:center;gap:14px;background:#f6fbff;color:#07111e;border-radius:999px;padding:12px 19px;font-weight:900;box-shadow:0 0 0 1px rgba(255,255,255,.22),0 0 34px rgba(90,218,255,.12);transition:.18s ease}.labx-primary:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(255,255,255,.3),0 0 44px rgba(90,218,255,.2)}.labx-micro{margin-top:26px;color:#60748f;font-size:.68rem;font-weight:800;letter-spacing:.18em}
+.labx-halls{padding:78px 0 72px;background:linear-gradient(180deg,#050912,#070d18)}.labx-section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,.72fr);gap:38px;align-items:end;margin-bottom:30px}.labx-section-head h2,.labx-flow h2{margin:7px 0 0;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.2;color:#fff;letter-spacing:-.03em}.labx-section-head p{margin:0;color:var(--lab-muted);line-height:1.85}.labx-hall-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.labx-hall{--glow:#4bd8ff;position:relative;display:flex;min-height:310px;flex-direction:column;padding:28px;border:1px solid color-mix(in srgb,var(--glow) 32%, transparent);border-radius:26px;background:linear-gradient(155deg,color-mix(in srgb,var(--glow) 7%,#0b1220) 0%,#09101c 62%);overflow:hidden;color:#fff;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}.labx-hall:before{content:"";position:absolute;right:-80px;top:-90px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--glow) 20%, transparent),transparent 65%);pointer-events:none}.labx-hall:after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--glow),transparent);opacity:.45}.labx-hall:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--glow) 60%, transparent);box-shadow:0 18px 50px color-mix(in srgb,var(--glow) 11%, transparent)}.labx-hall--green{--glow:#68f4bd}.labx-hall--violet{--glow:#bb82ff}.labx-hall--amber{--glow:#ffd36c}.labx-hall--coming{opacity:.78;cursor:default}.labx-hall--coming:hover{transform:none;box-shadow:none}.labx-hall__status{display:inline-flex;align-items:center;gap:7px;width:max-content;color:var(--glow);font-size:.66rem;font-weight:900;letter-spacing:.12em}.labx-hall__status i{width:6px;height:6px;border-radius:50%;background:var(--glow);box-shadow:0 0 12px var(--glow)}.labx-hall__status--dev i{animation:labxPulse 1.8s infinite}@keyframes labxPulse{50%{opacity:.35;box-shadow:0 0 3px var(--glow)}}.labx-hall__code{margin-top:12px;color:#72849e;font-size:.7rem;font-weight:800;letter-spacing:.12em}.labx-hall__glyph{position:absolute;right:25px;top:26px;color:var(--glow);font-size:2.2rem;opacity:.8}.labx-hall h3{font-size:1.7rem;margin:27px 0 10px;color:#fff}.labx-hall p{margin:0;color:#a8b6ca;line-height:1.78;max-width:88%}.labx-hall__meta{margin-top:auto;padding-top:22px;color:#7f92ac;font-size:.78rem}.labx-hall__go{margin-top:13px;color:var(--glow);font-size:.82rem;font-weight:900;letter-spacing:.04em}
+.labx-guide{padding:70px 0;background:#070d18;border-top:1px solid rgba(144,177,220,.1)}.labx-section-head--compact{margin-bottom:24px}.labx-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.labx-guide-grid a{display:flex;flex-direction:column;min-height:205px;padding:23px;border:1px solid rgba(149,179,216,.14);border-radius:22px;background:rgba(255,255,255,.025);color:#fff;transition:.18s ease}.labx-guide-grid a:hover{border-color:rgba(104,219,255,.38);background:rgba(99,196,255,.055);transform:translateY(-2px)}.labx-guide-grid span{color:#6f829c;font-size:.66rem;font-weight:900;letter-spacing:.16em}.labx-guide-grid strong{font-size:1.2rem;margin:18px 0 8px}.labx-guide-grid small{font-size:.86rem;color:#9baac0;line-height:1.7}.labx-guide-grid b{margin-top:auto;padding-top:15px;color:#80eaff;font-size:.8rem}
+.labx-flow{padding:76px 0 82px;background:radial-gradient(circle at 82% 58%,rgba(180,95,255,.08),transparent 30%),#050912}.labx-flow .labx-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:58px;align-items:center}.labx-flow__copy p{color:#9fb0c8;line-height:1.85;max-width:600px}.labx-flow__steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.labx-flow__steps li{position:relative;padding:19px 20px 20px;border-radius:18px;border:1px solid rgba(143,174,214,.14);background:rgba(255,255,255,.028);min-height:126px}.labx-flow__steps span{display:block;color:#6e83a0;font-size:.7rem;font-weight:900;letter-spacing:.14em}.labx-flow__steps b{display:block;color:#fff;font-size:1.08rem;margin:12px 0 5px}.labx-flow__steps small{color:#8fa0b7;font-size:.82rem;line-height:1.6}
+#practice-tools{background:#fbfaf7}.aml-tools-all:before{content:"PRACTICE TOOLS · 實務工具庫";display:block;color:#8a6a32;font-size:.76rem;font-weight:900;letter-spacing:.16em;margin-bottom:20px}.ai-tools-intro h2:before{content:"不是來探索，而是今天就要拿來工作？";display:block;font-family:Arial,"Noto Sans TC",sans-serif;font-size:.86rem;letter-spacing:.02em;color:#687386;margin-bottom:8px;font-weight:700}
+@media(max-width:820px){.labx-inner{width:min(88vw,680px)}.labx-hero{padding:72px 0 62px}.labx-hall-grid,.labx-guide-grid,.labx-flow .labx-inner,.labx-section-head{grid-template-columns:1fr}.labx-section-head{gap:14px}.labx-hall{min-height:285px}.labx-flow .labx-inner{gap:30px}.labx-flow__steps{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.labx-hero h1{font-size:2.7rem}.labx-hall-grid,.labx-guide-grid,.labx-flow__steps{grid-template-columns:1fr}.labx-hall{min-height:270px;padding:23px}.labx-hall p{max-width:100%}.labx-manifesto br{display:none}}
+@media(prefers-reduced-motion:reduce){.labx-hall,.labx-primary,.labx-guide-grid a{transition:none}.labx-hall__status--dev i{animation:none}}
+</style>
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
 <details class="aml-nav-group"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
@@ -97,18 +111,81 @@
 <a class="aml-nav-direct" href="/tools.html">互動實驗室</a>
 <details class="aml-nav-group"><summary>資源與聯繫</summary><div class="aml-nav-panel"><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></details>
 </div><button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button><div class="aml-mobile-menu" id="aml-mobile-menu"><span class="aml-mobile-label">關於 AML</span><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a><span class="aml-mobile-label">主題館藏</span><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a><span class="aml-mobile-label">閱讀路徑</span><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a><span class="aml-mobile-label">互動實驗室</span><a href="/tools.html">玩中學與互動探索</a><span class="aml-mobile-label">資源與聯繫</span><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></nav>
-<header class="tools-hero"><div class="tools-inner"><div class="kicker">ALLEN MIND LAB · 互動實驗室</div><h1>今天想玩哪一個？</h1><p>這裡是自由探索區：不必依序、不綁完訓，從一個情境、一個選擇或一次自我覺察開始。</p></div></header>
-<section class="lab-purpose" aria-label="自學館與互動實驗室的差異"><div class="lab-purpose__box"><div><strong>想完整學一套？</strong> 自學館有閱讀、進度、挑戰與完訓；互動實驗室則保留給自由探索、情境體驗與自我發現。</div><div class="lab-purpose__links"><a href="/pbs-self-study.html">PBS 自學館 →</a><a href="/management-self-study.html">管理學自學館 →</a></div></div></section>
-<section class="lab-lobby" aria-labelledby="lab-lobby-title"><div class="lab-lobby__head"><div><div class="kicker">INTERACTIVE LAB · 小分館</div><h2 id="lab-lobby-title">先選一座小分館，再開始探索。</h2></div><p>互動內容愈來愈多，AML 把它們整理成幾座小分館。先選主題，再依自己的步調從初體驗、閱讀到進階挑戰。</p></div>
-<div class="lab-hubs-wrap"><div class="lab-section-title"><span class="lab-section-title__eyebrow">EXPLORE BY HALL · 分館入口</span><h3>不用一次看完所有遊戲。</h3><p>每一館都保留自己的探索路徑；第一次來，建議從最有興趣的一館開始。</p></div><div class="lab-hubs">
-<a class="lab-hub lab-hub--management" href="/tools/management/"><span class="lab-hub__eyebrow">MANAGEMENT · 管理學館</span><span class="lab-hub__icon" aria-hidden="true">🧭</span><h3>管理學館</h3><p>從原本的 6 個漫畫暖身開始，再探索自己的管理判斷，閱讀文章後挑戰更複雜的管理情境。</p><span class="lab-hub__tags"><span>🎮 6 題暖身</span><span>🪞 管理風格</span><span>🧠 進階判斷</span></span><span class="lab-hub__go">進入分館 →</span></a>
-<a class="lab-hub lab-hub--pbs" href="/tools/pbs-interactive/"><span class="lab-hub__eyebrow">PBS · 行為理解館</span><span class="lab-hub__icon" aria-hidden="true">🧩</span><h3>PBS 行為理解</h3><p>先從生活小情境找線索、選回應；想玩深一點，再進入行為偵探社與 PBS 自學路徑。</p><span class="lab-hub__tags"><span>🔎 找線索</span><span>💬 選回應</span><span>🕵️ 進階搜證</span></span><span class="lab-hub__go">開始探索 →</span></a>
-<a class="lab-hub" href="/tools/sensory/"><span class="lab-hub__eyebrow">SELF AWARENESS · 自我覺察館</span><span class="lab-hub__icon" aria-hidden="true">🧠</span><h3>自我覺察</h3><p>從「我的感覺處理使用說明書」開始，看見自己的感覺模式、專注狀態與日常調節方式。</p><span class="lab-hub__tags"><span>🌿 感覺處理</span><span>🎯 專注效率</span><span>🪞 認識自己</span></span><span class="lab-hub__go">開始探索 →</span></a>
-</div></div>
-<div class="lab-lobby__grid"><div class="lab-section-title"><span class="lab-section-title__eyebrow">FEATURED PATH · 目前推薦</span><h3>不知道從哪裡開始？</h3><p>可以先走今天新增的管理學路徑：暖身 → 自我覺察 → 閱讀 → 公平與判斷進階挑戰。</p></div>
-<a class="lab-game lab-game--chief" href="/tools/management/"><span class="lab-game__icon" aria-hidden="true">🏢</span><span class="lab-game__quality">管理學館 · 完整探索路徑</span><span class="lab-game__case">6 MINI GAMES → SELF AWARENESS → READING → ADVANCED</span><h3>從「我會怎麼做？」一路走到「我為什麼這樣做？」</h3><p>原本的管理學初階 6 小題已保留，並和新的管理決策實驗室、兩篇延伸閱讀及進階挑戰重新串在一起。</p><span class="lab-game__go">進入管理學館 →</span></a>
-</div></section><section class="lab-method" aria-label="互動實驗室學習方式"><div class="lab-method__line"><span><b>PLAY</b> 玩</span><span><b>OBSERVE</b> 看</span><span><b>DISCOVER</b> 想</span><span><b>LEARN</b> 學</span></div></section>
-<main class="wrap" id="aml-main">
+<div class="labx" id="aml-main">
+<header class="labx-hero">
+  <div class="labx-gridfx" aria-hidden="true"></div>
+  <div class="labx-orb labx-orb--a" aria-hidden="true"></div>
+  <div class="labx-orb labx-orb--b" aria-hidden="true"></div>
+  <div class="labx-inner labx-hero__inner">
+    <div class="labx-system"><span class="labx-dot"></span> SYSTEM STATUS · LAB ONLINE</div>
+    <div class="labx-kicker">AML INTERACTIVE LAB · FUTURE LEARNING</div>
+    <h1>互動體驗實驗室</h1>
+    <p class="labx-manifesto">不是急著告訴你答案，<br><strong>而是先讓你看見自己。</strong></p>
+    <p class="labx-intro">從管理、PBS、自我覺察到 AI 共作，先透過體驗產生問題，再沿著閱讀、自學與進階挑戰往下探索。</p>
+    <a class="labx-primary" href="#lab-halls">開始探索分館 <span aria-hidden="true">↓</span></a>
+    <div class="labx-micro">EXPERIENCE → QUESTION → LEARNING → REFLECTION</div>
+  </div>
+</header>
+
+<section class="labx-halls" id="lab-halls" aria-labelledby="labx-halls-title">
+  <div class="labx-inner">
+    <div class="labx-section-head">
+      <div><div class="labx-kicker">SELECT A LAB · 分館入口</div><h2 id="labx-halls-title">先選一座館，再開始探索。</h2></div>
+      <p>總館只負責帶路。每一座分館都有自己的初階體驗、延伸閱讀與進階挑戰，新增內容也只需要回到對應分館。</p>
+    </div>
+    <div class="labx-hall-grid">
+      <a class="labx-hall labx-hall--blue" href="/tools/management/">
+        <span class="labx-hall__status"><i></i> ONLINE</span><span class="labx-hall__code">LAB 01 · MANAGEMENT</span>
+        <span class="labx-hall__glyph" aria-hidden="true">◇</span><h3>管理學館</h3>
+        <p>從管理知識，到看見自己的決策方式；再走向公平、情境與高階判斷。</p>
+        <span class="labx-hall__meta">6 題暖身 · 管理決策 · 公平挑戰</span><span class="labx-hall__go">ENTER LAB →</span>
+      </a>
+      <a class="labx-hall labx-hall--green" href="/tools/pbs-interactive/">
+        <span class="labx-hall__status"><i></i> ONLINE</span><span class="labx-hall__code">LAB 02 · PBS</span>
+        <span class="labx-hall__glyph" aria-hidden="true">⌁</span><h3>PBS 行為理解館</h3>
+        <p>從看見行為開始，練習找線索、理解功能，逐步走向支持策略與案例思考。</p>
+        <span class="labx-hall__meta">找線索 · 選回應 · 行為偵探</span><span class="labx-hall__go">ENTER LAB →</span>
+      </a>
+      <a class="labx-hall labx-hall--violet" href="/tools/sensory/">
+        <span class="labx-hall__status"><i></i> ONLINE</span><span class="labx-hall__code">LAB 03 · SELF AWARENESS</span>
+        <span class="labx-hall__glyph" aria-hidden="true">◎</span><h3>自我覺察館</h3>
+        <p>從感覺處理開始，理解自己的運作方式、調節需求與日常效率。</p>
+        <span class="labx-hall__meta">感覺處理 · 自我探索 · 調節</span><span class="labx-hall__go">ENTER LAB →</span>
+      </a>
+      <div class="labx-hall labx-hall--amber labx-hall--coming" aria-label="AI 共作館籌備中">
+        <span class="labx-hall__status labx-hall__status--dev"><i></i> DEVELOPING</span><span class="labx-hall__code">LAB 04 · HUMAN × AI</span>
+        <span class="labx-hall__glyph" aria-hidden="true">✦</span><h3>AI 共作館</h3>
+        <p>探索人與 AI 如何一起思考、工作與判斷，也練習辨識人機協作的邊界。</p>
+        <span class="labx-hall__meta">Human · AI · Judgment</span><span class="labx-hall__go">COMING SOON</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="labx-guide" aria-labelledby="labx-guide-title">
+  <div class="labx-inner">
+    <div class="labx-section-head labx-section-head--compact"><div><div class="labx-kicker">QUICK START · 快速入口</div><h2 id="labx-guide-title">還不知道去哪一館？</h2></div><p>不用先理解整個網站，從現在最想探索的問題開始就好。</p></div>
+    <div class="labx-guide-grid">
+      <a href="/tools/management-decision-lab/"><span>PLAY</span><strong>想先玩玩看</strong><small>6 個管理情境，看見自己怎麼做決定。</small><b>開始體驗 →</b></a>
+      <a href="/tools/sensory/"><span>SELF</span><strong>想更了解自己</strong><small>從感覺處理開始，畫出自己的使用說明書。</small><b>開始探索 →</b></a>
+      <a href="/tools/pbs-interactive/"><span>PRACTICE</span><strong>想從工作情境開始</strong><small>從行為線索與管理情境，把知識放回實際判斷。</small><b>進入情境 →</b></a>
+    </div>
+  </div>
+</section>
+
+<section class="labx-flow" aria-labelledby="labx-flow-title">
+  <div class="labx-inner">
+    <div class="labx-flow__copy"><div class="labx-kicker">HOW IT WORKS · 學習路徑</div><h2 id="labx-flow-title">互動實驗室不是學習的終點，<br>而是讓學習開始的地方。</h2><p>AML 的互動設計不急著先講理論，而是讓體驗先留下問題，再把問題帶回文章、自學與更複雜的挑戰。</p></div>
+    <ol class="labx-flow__steps">
+      <li><span>01</span><b>體驗</b><small>原來我會這樣選</small></li>
+      <li><span>02</span><b>產生問題</b><small>為什麼我會這樣判斷？</small></li>
+      <li><span>03</span><b>閱讀／自學</b><small>理論怎麼理解這件事？</small></li>
+      <li><span>04</span><b>進階挑戰</b><small>換到複雜情境，我還能判斷嗎？</small></li>
+    </ol>
+  </div>
+</section>
+</div>
+<main class="wrap" id="practice-tools">
 <section aria-labelledby="tool-practice" class="aml-tools-all"><div class="tool-grid">
 <div class="ai-tools-intro"><div><div class="eyebrow">AI ASSISTANTS & PRACTICE TOOLS · 任務支援</div><h2>有明確任務時，再來找工具。</h2><p>前面適合探索；這裡適合工作。當你已經知道要分析案例、規劃方案、整理轉銜，或處理特定工作流程，再選擇相對應的助理或工具。</p></div><div class="ai-tools-intro__note">AI 可協助整理、提問與產生草稿；專業判斷、查證與最終決策仍由使用者負責。</div></div>
 <div class="tool-subhead"><span>AI ASSISTANTS</span><b>助理／助教</b></div>
