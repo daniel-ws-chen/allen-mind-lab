@@ -1,37 +1,60 @@
 (() => {
  const games={
-  ownership:{title:'到底誰要做？',intro:'CASE 001｜任務釐清、分工與追蹤',panels:['主任：下午三點前要交資料。','大家：我以為別人會做。','下午兩點半：檔案還是空的。'],qs:[
-   {q:'這個團隊眼前最需要先補強什麼？',o:['再開一次全員會議','明確指定負責人、期限與交付內容','要求大家更積極','等到有人主動接手'],a:1,e:'任務如果沒有清楚的 owner、期限與交付標準，就很容易出現「大家都知道，但沒有人真正負責」。'},
-   {q:'指定負責人後，主管下一步最合理的是？',o:['所有細節都自己做','確認資源與權限，並設定回報點','完全不再過問','每天每小時追問一次'],a:1,e:'好的管理不是丟任務，也不是微管理，而是把責任、資源與追蹤點一起說清楚。'},
-   {q:'如果下午兩點才發現進度落後，最值得反思的是？',o:['員工能力一定不足','原本缺少適當的進度追蹤機制','資料本身太難','主管應該全部自己做'],a:1,e:'若到截止前才第一次發現問題，通常代表控制與追蹤點設計得太晚。'}]},
-  priority:{title:'十個第一優先',intro:'CASE 002｜優先順序與策略取捨',panels:['各組：我們這項最重要！','主管：那十項都是第一優先。','團隊：所以到底先做哪一個？'],qs:[
-   {q:'「十個第一優先」最大的管理問題是？',o:['目標太少','缺乏真正的優先順序與取捨','員工意見太多','應該增加更多專案'],a:1,e:'當所有事情都是第一優先，就等於沒有優先。策略的核心之一就是在有限資源下做選擇。'},
-   {q:'若只能先做兩件事，最合理的依據是？',o:['誰講得最大聲','哪件事最容易','與核心目標、影響程度與資源條件的匹配','哪件事名字最好聽'],a:2,e:'優先順序應回到目標、影響與限制，而不是聲量或方便程度。'},
-   {q:'決定暫時不做某些方案，代表什麼？',o:['管理失敗','策略取捨的一部分','團隊不夠努力','主管沒有企圖心'],a:1,e:'策略不是把所有好點子都做一遍，而是知道現在最值得把資源放在哪裡。'}]},
-  kpi:{title:'KPI 真的變好了嗎？',intro:'CASE 003｜資料判讀與品質指標',panels:['去年：30 天內完成追蹤 72%。','今年改成 45 天內：91%。','主管：進步好多！'],qs:[
-   {q:'可以直接說服務品質進步了嗎？',o:['可以，因為 91% 比 72% 高','不宜，因為指標定義改變後不可直接比較','只要百分比上升就可以','只要主管認同就可以'],a:1,e:'計算窗口從 30 天改成 45 天，指標定義已不同，因此前後不能直接當成同一標準比較。'},
-   {q:'要讓 KPI 真正有意義，最重要的是？',o:['越多越好','與核心目標有直接關聯且定義穩定','每個人都設定不同算法','只看最漂亮的數字'],a:1,e:'好的 KPI 應能反映重要目標，而且定義要清楚、穩定，才有比較價值。'},
-   {q:'如果 KPI 變好，但使用者經驗沒有改善，下一步較合理的是？',o:['宣布成功','檢查指標是否真的反映想改善的結果','停止蒐集資料','增加更多報表'],a:1,e:'指標只是工具。如果數字和實際體驗脫節，就要重新檢視指標的有效性。'}]},
-  delegate:{title:'這叫授權，還是丟包？',intro:'CASE 004｜授權、責任與邊界',panels:['主管：活動你負責。','同仁：預算、目標、權限呢？','主管：你自己想辦法，我相信你。'],qs:[
-   {q:'這個情境最大的問題是？',o:['主管太信任員工','沒有把目標、資源、權限與責任界線說清楚','員工問太多','授權本來就不用說明'],a:1,e:'有效授權不是只把任務交出去，而是清楚說明目標、可用資源、決策範圍與回報方式。'},
-   {q:'下列哪個更像真正授權？',o:['你負責，全部自己想','你負責，任何小事都要先問我','目標與預算清楚，執行方式可自行決定，兩週後檢視','我自己做最快'],a:2,e:'授權的重點是保留適當自主性，同時有清楚的責任與追蹤機制。'},
-   {q:'授權之後主管是否還有責任？',o:['沒有，責任全部轉移','有，仍需提供支持並對團隊結果負管理責任','只有出問題時才有','只要口頭交代就沒有'],a:1,e:'授權會分配工作與決策權，但不會讓管理責任消失。'}]},
-  conflict:{title:'會議開完，怎麼還在吵？',intro:'CASE 005｜衝突、共同目標與協作',panels:['OT：應增加生活情境訓練。','PT：應優先肌力和平衡。','主管：不要吵，照我的做。'],qs:[
-   {q:'主管直接壓下衝突，最大的風險是？',o:['會議太短','真正的專業差異沒有被處理','大家會太開心','決策一定會更好'],a:1,e:'衝突不一定是壞事。若差異背後有重要資訊，單純壓下去可能讓問題暫時消失但沒有真正解決。'},
-   {q:'較好的下一步是？',o:['回到共同目標與個案需求，整理各專業理由','讓職位最高的人決定','兩邊各做各的','禁止再討論'],a:0,e:'把不同專業觀點拉回共同目標，可以讓衝突從「誰對誰錯」變成「如何一起解決問題」。'},
-   {q:'團隊意見不同時，最不代表什麼？',o:['可能有不同專業視角','一定代表團隊合作失敗','需要更好的協調方式','可能需要重新釐清目標'],a:1,e:'有差異不等於合作失敗，真正重要的是團隊是否有能力處理差異。'}]},
-  system:{title:'個案掉在系統縫隙裡',intro:'CASE 006｜轉銜與跨系統服務',panels:['醫院：我們已完成轉介。','社區：還沒收到完整資訊。','家屬：所以我現在到底找誰？'],qs:[
-   {q:'這個案例最主要的問題是？',o:['醫院治療次數不夠','跨系統轉銜與資訊銜接不足','家屬配合度不足','個案不需要服務'],a:1,e:'「有轉介」不等於「有銜接」。如果不同系統之間沒有接住彼此，服務仍會中斷。'},
-   {q:'較適當的改善方向是？',o:['增加一份宣傳單','建立跨單位資訊交換、角色分工與追蹤機制','請家屬自己聯絡全部單位','各單位只做自己的工作'],a:1,e:'跨系統管理的核心是讓不同服務形成連續支持，而不是單一單位做得更多。'},
-   {q:'如果同類問題反覆出現在很多個案身上，代表可能需要？',o:['只教育某一位家屬','從組織或制度層級重新設計轉銜流程','忽略它','只增加治療次數'],a:1,e:'當問題反覆影響一群人，就值得從流程、制度與資源配置層級處理。'}]}
+  ownership:{title:'到底誰要做？',intro:'CASE 001｜ROLE & TASKS｜分工、責任與追蹤',takeaway:'管理不是把事情說出去，而是把主責、協作與回報點說清楚。',panels:['主任：下午三點前要交資料。','大家：我以為別人會做。','下午兩點半：檔案還是空的。'],qs:[
+   {q:'這個案例最主要的管理問題是什麼？',o:['人手一定不夠','分工與責任不清','大家太忙所以無法改善','只要再開一次會就好'],a:1,e:'大家都知道「事情要做」，卻沒有清楚的主責人與交付標準，最核心的問題是責任界線不清。'},
+   {q:'如果主管只說「這件事你們處理一下」，最可能發生什麼？',o:['團隊自然會更有彈性','工作容易重複、遺漏或彼此等待','所有人都會更清楚自己的責任','進度一定會更快'],a:1,e:'交辦語句太模糊時，大家可能都以為別人會接手，最後出現重複、遺漏或沒有人真正負責。'},
+   {q:'較好的下一步是？',o:['再開一次會，但不做明確結論','指定主責、協作者、期限與回報點','等最積極的人主動接手','主管把工作全部收回自己做'],a:1,e:'清楚指定主責、支援角色、期限與回報點，才能把「知道要做」變成「真的有人接住」。'}]},
+
+  priority:{title:'十個第一優先',intro:'CASE 002｜PRIORITY｜優先順序與策略取捨',takeaway:'策略的核心不是把所有好點子都做，而是知道現在先做哪幾件事。',panels:['各組：我們這項最重要！','主管：那十項都是第一優先。','團隊：所以到底先做哪一個？'],qs:[
+   {q:'「十個第一優先」最大的管理問題是什麼？',o:['目標太少','缺乏真正的優先排序','員工意見太多','專案數量還不夠'],a:1,e:'當所有事情都被列為最高優先，就等於沒有真正的優先順序。'},
+   {q:'如果所有任務都是「第一優先」，團隊最可能出現什麼？',o:['執行會更集中','焦點會更清楚','資源分散、每件事都只做到一點','決策速度一定變快'],a:2,e:'沒有取捨時，有限資源會被切得更碎，團隊反而更難集中力量完成真正重要的事。'},
+   {q:'主管較好的作法是？',o:['保留十個第一優先，避免得罪任何人','根據核心目標、影響程度與資源，先選 1–2 個關鍵項目','把所有優先順序交給個別同仁自行決定','選最容易做的項目就好'],a:1,e:'優先順序要回到核心目標、預期影響與資源限制，這就是策略取捨。'}]},
+
+  kpi:{title:'KPI 真的變好了嗎？',intro:'CASE 003｜KPI & DATA｜指標判讀與資料比較',takeaway:'KPI 是幫助判斷，不是幫助自我安慰；先確認資料能不能比，再談成果。',panels:['去年：30 天內完成追蹤 72%。','今年改成 45 天內：91%。','主管：進步好多！'],qs:[
+   {q:'可以直接說服務品質進步了嗎？',o:['可以，因為 91% 明顯高於 72%','不一定，因為指標定義已經改變','只要百分比上升就可以','只要主管認為是進步就可以'],a:1,e:'30 天與 45 天是不同的測量窗口，指標定義改變後，前後數據不能直接當成同一標準比較。'},
+   {q:'面對兩個年度的 KPI，最需要先確認什麼？',o:['簡報版型是否一致','樣本、定義、時間窗口與計算方式是否一致','哪一年的數字比較漂亮','哪個部門做的報告'],a:1,e:'只有在資料定義與條件具有可比性時，數字的高低才有意義。'},
+   {q:'如果 KPI 變好了，但服務使用者實際體驗沒有改善，較合理的下一步是？',o:['直接宣布改善成功','檢查 KPI 是否真正反映想改善的結果','停止蒐集任何資料','增加更多報表數量'],a:1,e:'當數字與實際經驗脫節時，要回頭檢查指標是否抓到真正重要的成果。'}]},
+
+  delegate:{title:'這叫授權，還是丟包？',intro:'CASE 004｜LEADERSHIP｜授權、支持與責任',takeaway:'授權不是把事情甩出去，而是讓別人在有方向、權限與支持的情況下完成任務。',panels:['主管：活動你負責。','同仁：預算、目標、權限呢？','主管：你自己想辦法，我相信你。'],qs:[
+   {q:'這個情境最大的問題是什麼？',o:['主管太信任員工','沒有說清楚目標、權限、資源與責任界線','員工問太多問題','授權本來就不需要說明'],a:1,e:'有效授權不是只把任務交出去，而是要把目標、權限、資源與回報方式一起說清楚。'},
+   {q:'哪一個情境最像真正的授權？',o:['「你自己想辦法處理。」','「你負責，但所有事情都要先問我。」','「目標與預算清楚，執行方式你可決定，兩週後一起看進度。」','「我自己做最快，所以還是我來。」'],a:2,e:'真正的授權同時保留自主性與責任，也提供清楚的邊界與追蹤機制。'},
+   {q:'授權之後，主管是否還有責任？',o:['沒有，責任已經完全轉移','有，仍要提供支持並對團隊結果負管理責任','只有出問題時才有責任','只要口頭交辦完成就沒有責任'],a:1,e:'授權會分配工作與決策權，但不會讓主管的管理責任消失。'}]},
+
+  conflict:{title:'會議開完，怎麼還在吵？',intro:'CASE 005｜TEAMWORK｜溝通、衝突與協作',takeaway:'好的會議不是每個人都講過，而是最後知道共同目標、分歧點，以及接下來誰做什麼。',panels:['OT：應增加生活情境訓練。','PT：應優先肌力和平衡。','主管：不要吵，照我的做。'],qs:[
+   {q:'這個案例最核心的管理問題是什麼？',o:['會議時間太短','團隊缺少共同理解與明確結論','大家太有意見','專業越多越難合作'],a:1,e:'不同專業有不同觀點並不奇怪，真正的問題是團隊沒有把差異整理成共享理解與共同決策。'},
+   {q:'如果每個專業都只強調自己的觀點，最容易發生什麼？',o:['決策自然會更完整','形成片段化理解，彼此各說各話','工作一定更有效率','衝突會自動消失'],a:1,e:'如果缺乏共同目標與整合機制，每個專業都可能只看到自己熟悉的那一塊。'},
+   {q:'主管較好的下一步是？',o:['趕快結束討論，避免再吵','重述共同目標、整理分歧點，並確認結論與分工','讓職位最高的人直接決定','讓不同專業各做各的'],a:1,e:'把討論拉回共同目標，再整理分歧與決策，是把衝突轉成協作的重要一步。'}]},
+
+  system:{title:'個案掉在系統縫隙裡',intro:'CASE 006｜SYSTEMS｜轉銜與跨系統服務',takeaway:'完成轉介不等於完成服務；管理真正要看的是整體路徑有沒有接起來。',panels:['醫院：我們已完成轉介。','社區：還沒收到完整資訊。','家屬：所以我現在到底找誰？'],qs:[
+   {q:'這個案例最主要的問題是什麼？',o:['醫院治療次數不夠','跨系統轉銜與資訊銜接不足','家屬配合度不足','個案其實不需要後續服務'],a:1,e:'每個單位可能都有完成自己的工作，但不同系統之間沒有真正接起來，服務仍然會中斷。'},
+   {q:'如果醫院、長照與社政都完成自己的部分，卻沒有彼此對接，最可能發生什麼？',o:['服務自然會更完整','家屬仍需自己反覆說明與協調','轉銜一定會更順利','各單位工作量一定下降'],a:1,e:'缺少跨單位銜接時，整合責任常會落到家屬身上，服務也容易在交界處中斷。'},
+   {q:'較好的改善方向是？',o:['每個系統只管自己的部分','建立聯絡窗口、資訊交換與後續追蹤機制','請家屬自己整合所有資訊','增加更多轉介表單就好'],a:1,e:'跨系統管理的重點不是增加單一單位工作量，而是建立真正可運作的銜接與追蹤機制。'}]}
  };
+
  const dialog=document.getElementById('management-game-dialog'); if(!dialog)return;
  const title=dialog.querySelector('[data-title]'), intro=dialog.querySelector('[data-intro]'), body=dialog.querySelector('[data-body]');
- let game=null,index=0,answered=false;
+ let game=null,index=0,answered=false,correct=0;
  const letters=['A','B','C','D'];
- function render(){const q=game.qs[index];answered=false;body.innerHTML=`<div class="mini-comic">${game.panels.map((p,i)=>`<div class="mini-panel"><b>SCENE ${i+1}</b><p>${p}</p></div>`).join('')}</div><div class="progress">第 ${index+1} / ${game.qs.length} 題</div><div class="question"><h4>${q.q}</h4><div class="options">${q.o.map((x,i)=>`<button type="button" data-a="${i}"><span>${letters[i]}</span>${x}</button>`).join('')}</div><div class="feedback" hidden></div></div>`;body.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>choose(Number(b.dataset.a),b)));}
- function choose(n,btn){if(answered)return;answered=true;const q=game.qs[index];const bs=[...body.querySelectorAll('[data-a]')];bs.forEach((b,i)=>{b.disabled=true;if(i===q.a)b.classList.add('is-correct');});if(n!==q.a)btn.classList.add('is-wrong');const fb=body.querySelector('.feedback');fb.hidden=false;fb.className=`feedback ${n===q.a?'good':'note'}`;fb.innerHTML=`<strong>${n===q.a?'答對了 ✓':'再看一個線索'}</strong><p>${q.e}</p><button type="button" class="next">${index===game.qs.length-1?'完成這一局':'下一題 →'}</button>`;fb.querySelector('.next').addEventListener('click',()=>{if(index<game.qs.length-1){index++;render();}else finish();});}
- function finish(){body.innerHTML=`<div class="finish"><div class="finish-icon">✓</div><h4>${game.title}｜完成</h4><p>你剛剛練習的不是背管理名詞，而是從情境裡找到真正需要處理的管理問題。</p><p class="finish-note">這裡是互動實驗室的自由探索內容，不計入管理學自學館進度。可以關閉後直接挑下一局。</p><button type="button" class="next" data-finish-close>回到六局首頁</button></div>`;body.querySelector('[data-finish-close]').addEventListener('click',()=>dialog.close());}
- document.querySelectorAll('[data-game]').forEach(b=>b.addEventListener('click',()=>{game=games[b.dataset.game];if(!game)return;index=0;title.textContent=game.title;intro.textContent=game.intro;render();dialog.showModal();}));
- dialog.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>dialog.close()));dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+
+ function render(){
+   const q=game.qs[index]; answered=false;
+   body.innerHTML=`<div class="mini-comic">${game.panels.map((p,i)=>`<div class="mini-panel"><b>SCENE ${i+1}</b><p>${p}</p></div>`).join('')}</div><div class="progress">第 ${index+1} / ${game.qs.length} 題</div><div class="question"><h4>${q.q}</h4><div class="options">${q.o.map((x,i)=>`<button type="button" data-a="${i}"><span>${letters[i]}</span>${x}</button>`).join('')}</div><div class="feedback" hidden></div></div>`;
+   body.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>choose(Number(b.dataset.a),b)));
+ }
+ function choose(n,btn){
+   if(answered)return; answered=true;
+   const q=game.qs[index]; if(n===q.a) correct++;
+   const bs=[...body.querySelectorAll('[data-a]')];
+   bs.forEach((b,i)=>{b.disabled=true;if(i===q.a)b.classList.add('is-correct');}); if(n!==q.a)btn.classList.add('is-wrong');
+   const fb=body.querySelector('.feedback'); fb.hidden=false; fb.className=`feedback ${n===q.a?'good':'note'}`;
+   fb.innerHTML=`<strong>${n===q.a?'這個判斷很準 ✓':'再看一個管理線索'}</strong><p>${q.e}</p><button type="button" class="next">${index===game.qs.length-1?'完成這一局':'下一題 →'}</button>`;
+   fb.querySelector('.next').addEventListener('click',()=>{if(index<game.qs.length-1){index++;render();}else finish();});
+ }
+ function finish(){
+   body.innerHTML=`<div class="finish"><div class="finish-icon">✓</div><h4>${game.title}｜完成</h4><p><strong>${correct} / ${game.qs.length}</strong> 題做出建議判斷。這裡的重點不是分數，而是你已經練習從情境中抓出真正的管理問題。</p><p class="finish-note"><strong>這一局帶走：</strong><br>${game.takeaway}</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px"><button type="button" class="next" data-finish-close>回到六局首頁</button><a class="next" style="text-decoration:none;background:#8a6a32" href="/management-self-study.html">想完整學習 →</a></div></div>`;
+   body.querySelector('[data-finish-close]').addEventListener('click',()=>dialog.close());
+ }
+ document.querySelectorAll('[data-game]').forEach(b=>b.addEventListener('click',()=>{game=games[b.dataset.game];if(!game)return;index=0;correct=0;title.textContent=game.title;intro.textContent=game.intro;render();dialog.showModal();}));
+ dialog.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>dialog.close()));
+ dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
 })();
