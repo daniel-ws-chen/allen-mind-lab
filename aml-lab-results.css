@@ -1,0 +1,128 @@
+/* AML Interactive Lab · Unified Result System 2026-09 */
+:root{--aml-result-radius:24px;--aml-result-shadow:0 20px 48px rgba(15,23,42,.09)}
+body.lab-result-management{--result-accent:#2f80ed;--result-bright:#36c2ff;--result-soft:#eef7ff;--result-line:#cfe5fb;--result-ink:#163a5f;--result-muted:#60758b}
+body.lab-result-pbs{--result-accent:#159a7c;--result-bright:#2ed8b6;--result-soft:#ecfbf6;--result-line:#cfe9e1;--result-ink:#153e35;--result-muted:#60766f}
+body.lab-result-self{--result-accent:#7957d5;--result-bright:#c084fc;--result-soft:#f5efff;--result-line:#dfd2f7;--result-ink:#4e338d;--result-muted:#6c6280}
+body.lab-result-ai{--result-accent:#36c2ff;--result-bright:#ffb454;--result-soft:#0f2636;--result-line:#294b5e;--result-ink:#effbff;--result-muted:#a8bdc8}
+
+/* shared completion container */
+body.lab-result-management #result,
+body.lab-result-pbs #result .pbc-result-card,
+body.lab-result-self #result,
+body.lab-result-ai #result{
+  border-radius:var(--aml-result-radius)!important;
+  box-shadow:var(--aml-result-shadow)!important;
+}
+body.lab-result-management #result,
+body.lab-result-self #result{
+  border:1px solid var(--result-line)!important;
+  background:linear-gradient(180deg,#fff 0%,color-mix(in srgb,var(--result-soft) 45%,#fff) 100%)!important;
+}
+body.lab-result-pbs #result .pbc-result-card{
+  border:1px solid var(--result-line)!important;
+  background:linear-gradient(180deg,#fff 0%,#f8fffc 100%)!important;
+}
+body.lab-result-ai #result{
+  border:1px solid var(--result-line)!important;
+  background:linear-gradient(145deg,#0b1f2d,#091722)!important;
+  box-shadow:0 24px 64px rgba(0,0,0,.28),0 0 0 1px rgba(54,194,255,.05) inset!important;
+}
+
+/* result title hierarchy */
+body.lab-result-management #result>.eyebrow,
+body.lab-result-pbs #result .pbc-kicker,
+body.lab-result-self #result .kicker,
+body.lab-result-ai #result>.g-kicker,
+body.lab-result-ai #result>.kicker{
+  display:inline-flex!important;align-items:center;gap:7px;padding:6px 10px!important;
+  border-radius:999px;background:var(--result-soft);color:var(--result-accent)!important;
+  font-size:.72rem!important;font-weight:900!important;letter-spacing:.11em!important;
+}
+body.lab-result-ai #result>.g-kicker,body.lab-result-ai #result>.kicker{border:1px solid var(--result-line);background:#102736;color:var(--result-bright)!important}
+body.lab-result-management #result>h2,
+body.lab-result-pbs #result h2,
+body.lab-result-self #result h2,
+body.lab-result-ai #result>h2{margin-top:10px!important;letter-spacing:-.02em}
+
+/* three feedback cards */
+body.lab-result-management #result .feedback-grid,
+body.lab-result-pbs #result .pbc-cards,
+body.lab-result-self #result .summaries,
+body.lab-result-ai #result .g-feedback,
+body.lab-result-ai #result .summary-grid{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important;margin-top:20px!important;
+}
+body.lab-result-management #result .feedback-card,
+body.lab-result-pbs #result .pbc-mini,
+body.lab-result-self #result .summary,
+body.lab-result-ai #result .g-feedback>div,
+body.lab-result-ai #result .summary-grid>div{
+  position:relative;overflow:hidden;border:1px solid var(--result-line)!important;border-radius:18px!important;
+  padding:17px!important;background:color-mix(in srgb,var(--result-soft) 52%,#fff)!important;box-shadow:none!important;
+}
+body.lab-result-ai #result .g-feedback>div,body.lab-result-ai #result .summary-grid>div{background:#0d2432!important;color:var(--result-ink)!important}
+body.lab-result-management #result .feedback-card:before,
+body.lab-result-pbs #result .pbc-mini:before,
+body.lab-result-self #result .summary:before,
+body.lab-result-ai #result .g-feedback>div:before,
+body.lab-result-ai #result .summary-grid>div:before{
+  content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--result-accent),var(--result-bright));
+}
+body.lab-result-management #result .feedback-card small,
+body.lab-result-pbs #result .pbc-mini small,
+body.lab-result-self #result .summary small,
+body.lab-result-ai #result .g-feedback small,
+body.lab-result-ai #result .summary-grid small{color:var(--result-accent)!important;font-weight:900!important;letter-spacing:.08em}
+body.lab-result-ai #result .g-feedback small,body.lab-result-ai #result .summary-grid small{color:var(--result-bright)!important}
+
+/* maps/axes stay visually central */
+body.lab-result-management #result .axes,
+body.lab-result-pbs #result .pbc-axes,
+body.lab-result-self #result .axes,
+body.lab-result-ai #result .g-bars,
+body.lab-result-ai #result .score-grid{
+  margin:22px 0!important;padding:18px!important;border-radius:20px!important;border:1px solid var(--result-line)!important;background:color-mix(in srgb,var(--result-soft) 40%,#fff)!important;
+}
+body.lab-result-ai #result .g-bars,body.lab-result-ai #result .score-grid{background:#0a1c28!important}
+
+/* reflection / takeaway */
+body.lab-result-management #result .questionbox,
+body.lab-result-management #result .mirror,
+body.lab-result-pbs #result .pbc-review,
+body.lab-result-self #result .reflection,
+body.lab-result-ai #result .g-question,
+body.lab-result-ai #result .rule{
+  margin-top:20px!important;border:1px solid var(--result-line)!important;border-left:4px solid var(--result-accent)!important;
+  border-radius:16px!important;padding:16px 18px!important;background:color-mix(in srgb,var(--result-soft) 50%,#fff)!important;
+}
+body.lab-result-ai #result .g-question,body.lab-result-ai #result .rule{background:#0e2533!important;color:#d8edf5!important}
+
+/* next-step strip */
+body.lab-result-management #result .actions,
+body.lab-result-pbs #result .pbc-actions,
+body.lab-result-self #result .actions,
+body.lab-result-ai #result .g-actions,
+body.lab-result-ai #result .actions{
+  margin-top:24px!important;padding-top:18px!important;border-top:1px solid var(--result-line)!important;display:flex!important;gap:9px!important;flex-wrap:wrap!important;
+}
+
+/* fairness result: same system, different content type */
+body.lab-result-management #result .review{margin:22px 0!important}
+body.lab-result-management #result .mirror{display:block!important}
+
+/* accessibility + responsive */
+@media(max-width:760px){
+ body.lab-result-management #result .feedback-grid,
+ body.lab-result-pbs #result .pbc-cards,
+ body.lab-result-self #result .summaries,
+ body.lab-result-ai #result .g-feedback,
+ body.lab-result-ai #result .summary-grid{grid-template-columns:1fr!important}
+ body.lab-result-management #result .axes,
+ body.lab-result-pbs #result .pbc-axes,
+ body.lab-result-self #result .axes,
+ body.lab-result-ai #result .g-bars,
+ body.lab-result-ai #result .score-grid{padding:14px!important}
+}
+@media print{
+ body.lab-result-management #result,body.lab-result-pbs #result .pbc-result-card,body.lab-result-self #result,body.lab-result-ai #result{box-shadow:none!important}
+}
