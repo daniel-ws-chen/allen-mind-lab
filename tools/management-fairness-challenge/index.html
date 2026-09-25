@@ -50,7 +50,7 @@ body{background:linear-gradient(180deg,#f6faff 0%,#fff 52%,#f7fbff 100%)!importa
     <div class="progressrow"><b id="progressText">QUESTION 1 / 8</b><div class="progress"><i id="bar" style="width:12.5%"></i></div></div>
     <div class="panel pair"><div class="scene" id="scene"><div class="scene-badge" id="persona"></div><h2 id="title"></h2><p id="desc"></p><div class="scene-symbol" id="symbol" aria-hidden="true"></div></div><div class="question"><h3>你會怎麼處理？</h3><div class="options" id="options"></div><div class="hint">請照當下直覺選擇，不需要刻意讓前後答案一致。</div></div></div>
   </section>
-  <section id="result" class="panel result hidden"><div class="eyebrow">完成進階挑戰</div><h2>原來，這幾題其實在問同一件事</h2><p class="result-lead">剛才的 8 題中，其實藏著 4 組可比較的情境。現在再回頭看：當年資、熟悉程度、績效或過去紀錄改變時，你的處理方式有沒有跟著改變？</p><div class="review" id="review"></div><div class="mirror"><strong>AI 反思鏡</strong><span id="mirror"></span></div><div class="questionbox"><strong>帶走一個問題：</strong><br>哪些差異是真正與任務、風險或責任相關的資訊？哪些可能只是人物帶給你的印象？</div><div class="actions"><button class="btn secondary" id="again">再挑戰一次</button><a class="btn" href="/articles/management-no-single-right-answer.html">回到文章重新想一次 →</a><a class="btn secondary" href="/tools/management/">回管理學館 →</a></div><div class="more">想挑戰更複雜的多幕管理案例？ <a href="/tools/management-advanced/">前往更多進階情境 →</a></div></section>
+  <section id="result" class="panel result hidden"><div class="eyebrow">完成進階挑戰</div><h2>原來，這幾題其實在問同一件事</h2><p class="result-lead">剛才的 8 題中，其實藏著 4 組可比較的情境。現在再回頭看：當年資、熟悉程度、績效或過去紀錄改變時，你的處理方式有沒有跟著改變？</p><div class="review" id="review"></div><div class="mirror"><strong>AI 反思鏡</strong><span id="mirror"></span></div><div class="questionbox"><strong>帶走一個問題：</strong><br>哪些差異是真正與任務、風險或責任相關的資訊？哪些可能只是人物帶給你的印象？</div><div class="actions"><a class="btn" href="/tools/management-summary/">查看我的管理判斷摘要 →</a><button class="btn secondary" id="again">再挑戰一次</button><a class="btn secondary" href="/articles/management-no-single-right-answer.html">閱讀｜當管理沒有唯一正解 →</a><a class="btn secondary" href="/tools/management/">回管理學館 →</a></div><div class="more">想挑戰更複雜的多幕管理案例？ <a href="/tools/management-advanced/">前往更多進階情境 →</a></div></section>
 </main>
 <script>
 (()=>{
@@ -74,8 +74,24 @@ const pairMeta={
 let qi=0,answers=[];
 function render(){const q=questions[qi];qs('#progressText').textContent=`QUESTION ${qi+1} / ${questions.length}`;qs('#bar').style.width=((qi+1)/questions.length*100)+'%';qs('#scene').style.backgroundImage=`url('${q.img}')`;qs('#persona').textContent=q.p;qs('#title').textContent=q.t;qs('#desc').textContent=q.d;qs('#symbol').textContent=q.sym;const box=qs('#options');box.innerHTML='';q.o.forEach((txt,i)=>{const b=document.createElement('button');b.className='option';b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${txt}</span>`;b.onclick=()=>pick(i);box.appendChild(b)})}
 function pick(choice){answers.push({q:qi,pair:questions[qi].pair,choice});if(qi<questions.length-1){qi++;render();scrollTo({top:0,behavior:'smooth'})}else show()}
-function show(){qs('#play').classList.add('hidden');qs('#result').classList.remove('hidden');const order=['record','leave','process','history'];let changed=0;const review=qs('#review');review.innerHTML='';order.forEach(key=>{const idx=questions.map((q,i)=>q.pair===key?i:-1).filter(i=>i>=0),a=answers.find(x=>x.q===idx[0]),b=answers.find(x=>x.q===idx[1]),same=a&&b&&a.choice===b.choice;if(!same)changed++;const meta=pairMeta[key];const el=document.createElement('div');el.className='review-card';el.innerHTML=`<div class="review-head"><strong>${meta.name}</strong><span class="pill ${same?'':'changed'}">${same?'處理方式相同':'處理方式改變'}</span></div><p><b>隱性變項：${meta.factor}</b><br>${meta.note}<br>${same?'你維持了相同處理方式，可以再想：這個差異是否其實值得納入判斷？':'你的處理方式跟著改變了。這不代表偏心，下一步是確認這個變項是否真的與任務、風險或責任相關。'}</p>`;review.appendChild(el)});let msg='';if(changed===0)msg='四組隱性配對中，你都維持相同處理方式。你很重視一致性；可以再想一層：有些人物差異，例如能力成熟度或過去重複發生的紀錄，是否本來就應該影響管理強度？';else if(changed<=2)msg=`你在 4 組隱性配對中有 ${changed} 組改變處理方式。你的判斷同時保留一致性與情境彈性；真正值得檢查的是：哪些資訊與工作風險有關，哪些比較像熟悉感、光環或既有印象。`;else msg=`你在 4 組隱性配對中有 ${changed} 組改變處理方式。你很容易把人物背景納入管理判斷；這可能是細緻的情境判斷，也可能混入熟悉感、績效光環或過去印象。關鍵不是「有沒有改變」，而是能不能把理由說清楚。`;qs('#mirror').textContent=msg;
-try{localStorage.setItem('aml.progress.management.fairness',new Date().toISOString())}catch(e){}
+function show(){qs('#play').classList.add('hidden');qs('#result').classList.remove('hidden');const order=['record','leave','process','history'];let changed=0;const review=qs('#review');review.innerHTML='';order.forEach(key=>{const idx=questions.map((q,i)=>q.pair===key?i:-1).filter(i=>i>=0),a=answers.find(x=>x.q===idx[0]),b=answers.find(x=>x.q===idx[1]),same=a&&b&&a.choice===b.choice;if(!same)changed++;const meta=pairMeta[key];const el=document.createElement('div');el.className='review-card';el.innerHTML=`<div class="review-head"><strong>${meta.name}</strong><span class="pill ${same?'':'changed'}">${same?'處理方式相同':'處理方式改變'}</span></div><p><b>隱性變項：${meta.factor}</b><br>${meta.note}<br>${same?'你維持了相同處理方式。再確認：這個條件差異是否與任務風險、支持需求、責任程度或可預期後果有實質關聯。':'你因這個條件差異調整了做法。這本身不代表公平或不公平；請確認它是否與任務風險、支持需求、責任程度或可預期後果相關，並能清楚說明理由。'}</p>`;review.appendChild(el)});let msg='';if(changed===0)msg='四組隱性配對中，你都維持相同處理方式。你很重視一致性；下一步可以再確認：年資、熟練程度或過去紀錄等差異，在某些任務中是否確實與風險、支持需求或責任程度相關。';else if(changed<=2)msg=`你在 4 組隱性配對中有 ${changed} 組改變處理方式。你的判斷同時保留一致性與情境彈性；真正值得檢查的是：每一個改變是否都能用任務、風險、支持需求或責任差異來說明。`;else msg=`你在 4 組隱性配對中有 ${changed} 組改變處理方式。你經常把人物條件與過去資訊納入管理判斷；這不必然有問題，重點是逐組確認這些差異是否與工作本身具有實質關聯，並能用一致的標準說明。`;qs('#mirror').textContent=msg;
+try{
+  const pairResults=order.map(key=>{
+    const idx=questions.map((q,i)=>q.pair===key?i:-1).filter(i=>i>=0);
+    const a=answers.find(x=>x.q===idx[0]),b=answers.find(x=>x.q===idx[1]);
+    const same=!!(a&&b&&a.choice===b.choice);
+    const meta=pairMeta[key];
+    return {key,name:meta.name,factor:meta.factor,note:meta.note,same};
+  });
+  localStorage.setItem('aml.progress.management.fairness',new Date().toISOString());
+  localStorage.setItem('aml.management.fairness.v1',JSON.stringify({
+    savedAt:new Date().toISOString(),
+    changed,
+    total:4,
+    message:msg,
+    pairs:pairResults
+  }));
+}catch(e){}
 scrollTo({top:0,behavior:'smooth'})}
 function reset(){qi=0;answers=[];qs('#result').classList.add('hidden');qs('#intro').classList.add('hidden');qs('#play').classList.remove('hidden');render()}
 qs('#start').onclick=reset;qs('#again').onclick=reset;
