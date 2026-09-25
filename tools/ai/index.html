@@ -43,6 +43,73 @@
   .ai-readings a{padding:14px}
 }
 
+
+.ai-path-card{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;
+  align-items:center;
+  border:1px solid #2b5369;
+  border-radius:22px;
+  padding:22px 24px;
+  background:linear-gradient(145deg,rgba(14,32,45,.96),rgba(12,27,39,.98));
+  box-shadow:0 18px 42px rgba(0,0,0,.16);
+}
+.ai-path-card .eyebrow{
+  color:var(--a-gold);
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.13em;
+}
+.ai-path-card h2{
+  margin:5px 0 7px;
+  color:#fff;
+  font-size:1.55rem;
+}
+.ai-path-card p{
+  margin:0;
+  color:var(--a-muted);
+  max-width:720px;
+}
+.ai-path-cta{
+  min-width:210px;
+  min-height:48px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:11px 18px;
+  border-radius:999px;
+  text-decoration:none;
+  text-align:center;
+  font-weight:900;
+  color:#05202b;
+  background:linear-gradient(90deg,#46d7ef,#82f0ff);
+  border:1px solid rgba(130,240,255,.75);
+  box-shadow:0 0 0 1px rgba(93,232,255,.06),0 10px 26px rgba(70,215,239,.18);
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;
+}
+.ai-path-cta:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.04);
+  box-shadow:0 0 0 1px rgba(93,232,255,.12),0 14px 30px rgba(70,215,239,.24);
+}
+.ai-path-cta:focus-visible{
+  outline:3px solid rgba(255,209,102,.9);
+  outline-offset:3px;
+}
+@media(max-width:760px){
+  .ai-path-card{
+    grid-template-columns:1fr;
+    gap:16px;
+    padding:19px 18px;
+  }
+  .ai-path-cta{
+    width:100%;
+    min-width:0;
+  }
+}
+
 </style></head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools.html">← 回互動實驗室總館</a><div class="aml-lab-shell-nav__links"><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
 <header class="ai-hero"><div class="ai-inner"><div class="ai-status"><i></i> LAB 04 ONLINE</div><div class="ai-kicker">AML INTERACTIVE LAB · HUMAN × AI</div><h1>AI <span>共作館</span></h1><p>AI 不只是效率工具，也開始參與我們的整理、創作、判斷與決策形成。這一館不先教技巧，而是先練習：什麼適合交給 AI？什麼仍然需要由人承擔？</p><div class="ai-mantra"><strong>AI 可以協助思考，但責任不能外包。</strong></div><div class="ai-route"><span>01 共作傾向</span><span>02 閱讀理解</span><span>03 進階判斷</span></div></div></header>
@@ -53,5 +120,5 @@
 <article class="ai-step"><div class="ai-num">03</div><div><div class="ai-meta">ADVANCED · VERIFY & JUDGE · ONLINE</div><h3>AI 說得很有道理，你會採用嗎？</h3><p>6 個進階情境，練習辨識資料不足、過度推論、看似客觀的價值判斷，以及語氣很有自信但仍需要查證的回答。</p><div class="ai-tags"><span>6 個情境</span><span>查證</span><span>推論邊界</span><span>責任邊界</span></div></div><div class="ai-actions"><a class="ai-btn" href="/tools/ai-judgment-challenge/">開始進階挑戰 →</a></div></article>
 </section>
 <section class="ai-principles" aria-label="AI 共作館三個原則"><div><b>AI 可以整理</b><p>大量資訊、初稿、比較與模式，都可以是很好的共作起點。</p></div><div><b>人需要查證</b><p>研究、數據、政策、專業與高風險內容，不能因為語氣完整就直接採用。</p></div><div><b>責任仍在人</b><p>公平、關係、價值與最後決策，不應因為 AI 參與而失去責任歸屬。</p></div></section>
-<section class="ai-path-card" style="margin-top:18px"><div><div class="eyebrow">SYNTHESIS · PERSONAL RULES</div><h2>我的 AI 共作原則</h2><p>把初階的「怎麼分工」與進階的「怎麼判斷」放在一起，整理成一張自己真正會用的人機協作原則卡。</p></div><a class="btn" href="/tools/ai-collaboration-principles/">整理我的原則 →</a></section></main><script src="/aml-site.js"></script><footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>互動實驗室</h4><a href="/tools.html">玩中學與互動探索</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
+<section class="ai-path-card"><div><div class="eyebrow">SYNTHESIS · PERSONAL RULES</div><h2>我的 AI 共作原則</h2><p>把初階的「怎麼分工」與進階的「怎麼判斷」放在一起，整理成一張自己真正會用的人機協作原則卡。</p></div><a class="ai-path-cta" href="/tools/ai-collaboration-principles/">查看我的 AI 共作原則 →</a></section></main><script src="/aml-site.js"></script><footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>互動實驗室</h4><a href="/tools.html">玩中學與互動探索</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
 </body></html>
