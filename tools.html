@@ -88,6 +88,32 @@
 .tool-subhead{grid-column:1/-1;display:flex;align-items:center;gap:12px;margin:18px 2px 0}.tool-subhead:after{content:"";height:1px;flex:1;background:#e4e7eb}.tool-subhead span{font-size:.75rem;font-weight:900;letter-spacing:.15em;color:#7d6b4e}.tool-subhead b{font-size:.92rem;color:#071a33}.tool-card--assistant{background:linear-gradient(180deg,#fff,#fbfcfd);border-color:#dfe6eb}.tool-card--assistant:before{background:linear-gradient(90deg,#5f7893 0 42%,#c7a76a 42% 62%,transparent 62%)}.tool-card--workflow{min-height:300px;background:#fff}.tool-card--workflow:before{background:linear-gradient(90deg,#788b81 0 34%,#c7a76a 34% 50%,transparent 50%)}.tool-type-kicker{display:inline-flex;align-items:center;gap:7px;margin:0 0 10px;padding:5px 10px;border-radius:999px;background:#f2f5f7;color:#53677c;font-size:.7rem;font-weight:900}.tool-type-kicker--workflow{background:#f3f6f3;color:#50695b}.tool-card .actions .btn{font-size:.9rem}.ai-tools-footnote{grid-column:1/-1;margin-top:2px;padding:14px 16px;border-left:3px solid #c7a76a;background:#faf8f3;color:#6b6f75;font-size:.84rem;border-radius:0 12px 12px 0}
 @media(max-width:820px){.ai-tools-intro{grid-template-columns:1fr;padding:24px}.ai-tools-intro__note{max-width:none}.tool-subhead{align-items:flex-start;flex-direction:column;gap:5px}.tool-subhead:after{display:none}}
 
+
+/* AML Interactive Lab · local progress */
+.labx-progress{padding:0 0 28px;background:#07141f;color:#eefaff}
+.labx-progress__panel{border:1px solid #28485a;border-radius:24px;padding:22px;background:linear-gradient(145deg,rgba(10,29,42,.96),rgba(8,22,33,.98));box-shadow:0 16px 42px rgba(0,0,0,.14)}
+.labx-progress__head{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:end}
+.labx-progress__head h2{margin:4px 0 5px;font-size:clamp(1.45rem,3vw,2rem);color:#fff}
+.labx-progress__head p{margin:0;color:#a9c0cc;max-width:760px}
+.labx-progress__count{min-width:94px;text-align:right}
+.labx-progress__count strong{display:block;font-size:2rem;line-height:1;color:#70e7f7}
+.labx-progress__count span{font-size:.76rem;color:#8daab8}
+.labx-progress__bar{height:8px;margin:18px 0 20px;background:#132b39;border-radius:999px;overflow:hidden}
+.labx-progress__bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#5fdcf0,#9875ec);border-radius:999px;transition:width .35s ease}
+.labx-progress__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.labx-progress__card{border:1px solid #244656;border-radius:17px;padding:15px;background:#0b1f2c;text-decoration:none;color:#edfaff;min-width:0}
+.labx-progress__card:hover{border-color:#4a7a90;transform:translateY(-1px)}
+.labx-progress__card small{display:block;font-size:.68rem;letter-spacing:.12em;color:#7fa5b8;font-weight:900}
+.labx-progress__card strong{display:block;margin:5px 0 10px;font-size:1rem}
+.labx-progress__items{display:grid;gap:6px}
+.labx-progress__item{display:flex;align-items:flex-start;gap:7px;color:#8fa8b4;font-size:.8rem}
+.labx-progress__item i{width:8px;height:8px;border-radius:50%;margin-top:.43em;flex:0 0 8px;background:#34505d;box-shadow:0 0 0 3px rgba(52,80,93,.12)}
+.labx-progress__item.done{color:#dffbf5}
+.labx-progress__item.done i{background:#5ee0bf;box-shadow:0 0 0 3px rgba(94,224,191,.12)}
+.labx-progress__privacy{margin-top:14px;color:#708d9b;font-size:.75rem}
+@media(max-width:900px){.labx-progress__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.labx-progress__head{grid-template-columns:1fr}.labx-progress__count{text-align:left}.labx-progress__grid{grid-template-columns:1fr}.labx-progress__panel{padding:18px}}
+
 </style>
 <style>
 /* AML Interactive Lab — Future Lab 4.0 */
@@ -165,6 +191,42 @@
         <p>從「這件事要不要交給 AI？」開始，探索分工、查證、隱私、價值判斷與人的最後責任。</p>
         <span class="labx-hall__meta">分工 · 查證 · 責任</span><span class="labx-hall__go">ENTER LAB →</span>
       </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="labx-progress" aria-labelledby="labx-progress-title">
+  <div class="labx-inner">
+    <div class="labx-progress__panel">
+      <div class="labx-progress__head">
+        <div>
+          <div class="labx-kicker">MY LAB JOURNEY · 我的探索進度</div>
+          <h2 id="labx-progress-title">看看自己已經走到哪裡。</h2>
+          <p>不需要登入。完成互動後，這台裝置會保留簡單的本機紀錄，讓你下次回來知道可以從哪裡繼續。</p>
+        </div>
+        <div class="labx-progress__count"><strong data-lab-progress-count>0 / 8</strong><span>已完成里程碑</span></div>
+      </div>
+      <div class="labx-progress__bar" aria-hidden="true"><i data-lab-progress-bar></i></div>
+      <div class="labx-progress__grid">
+        <a class="labx-progress__card" href="/tools/management/">
+          <small>LAB 01 · MANAGEMENT</small><strong>管理學館</strong>
+          <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="mgmt-decision"><i></i>管理決策實驗室</span><span class="labx-progress__item" data-progress-key="mgmt-fairness"><i></i>公平進階挑戰</span></div>
+        </a>
+        <a class="labx-progress__card" href="/tools/pbs/">
+          <small>LAB 02 · PBS</small><strong>PBS 行為理解館</strong>
+          <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="pbs-advanced"><i></i>功能假設進階</span><span class="labx-progress__item" data-progress-key="pbs-study"><i></i>PBS 自學總複習</span></div>
+        </a>
+        <a class="labx-progress__card" href="/tools/self-awareness/">
+          <small>LAB 03 · SELF</small><strong>自我覺察館</strong>
+          <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="self-sensory"><i></i>感覺使用說明書</span><span class="labx-progress__item" data-progress-key="self-energy"><i></i>壓力與能量節奏</span></div>
+        </a>
+        <a class="labx-progress__card" href="/tools/ai/">
+          <small>LAB 04 · HUMAN × AI</small><strong>AI 共作館</strong>
+          <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="ai-initial"><i></i>AI 共作初階</span><span class="labx-progress__item" data-progress-key="ai-advanced"><i></i>AI 判斷進階</span></div>
+        </a>
+      </div>
+      <div class="labx-progress__privacy">進度只存在目前瀏覽器，不會上傳 AML。更換裝置、無痕模式或清除瀏覽器資料後，紀錄可能消失。</div>
     </div>
   </div>
 </section>
@@ -259,4 +321,40 @@
   });
 })();
 </script>
+
+<script>
+/* AML Interactive Lab · local journey progress */
+(function(){
+  const safeJSON = key => {
+    try { return JSON.parse(localStorage.getItem(key) || 'null'); }
+    catch(e){ return null; }
+  };
+  const has = key => {
+    try { return localStorage.getItem(key) !== null; }
+    catch(e){ return false; }
+  };
+  const pbs = safeJSON('amlPbsSelfStudyV1');
+  const state = {
+    'mgmt-decision': has('aml.progress.management.decision'),
+    'mgmt-fairness': has('aml.progress.management.fairness'),
+    'pbs-advanced': has('aml.progress.pbs.advanced'),
+    'pbs-study': !!(pbs && pbs.quiz && pbs.quiz.passed),
+    'self-sensory': has('aml.self.sensory.v1'),
+    'self-energy': has('aml.self.energy.v1'),
+    'ai-initial': has('aml.ai.cocreate.v1'),
+    'ai-advanced': has('aml.ai.judgment.v1')
+  };
+  let done = 0;
+  document.querySelectorAll('[data-progress-key]').forEach(el=>{
+    const ok = !!state[el.dataset.progressKey];
+    el.classList.toggle('done',ok);
+    if(ok) done++;
+  });
+  const count = document.querySelector('[data-lab-progress-count]');
+  const bar = document.querySelector('[data-lab-progress-bar]');
+  if(count) count.textContent = `${done} / 8`;
+  if(bar) bar.style.width = `${done/8*100}%`;
+})();
+</script>
+
 </body></html>
