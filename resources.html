@@ -208,14 +208,20 @@
     justify-content:center;
     text-align:center;
     background:
-      radial-gradient(circle at 24% 22%, rgba(184,154,126,.20), transparent 34%),
-      radial-gradient(circle at 78% 72%, rgba(102,139,132,.16), transparent 36%),
-      linear-gradient(135deg,#fbf8f4 0%,#f1f5f1 100%);
+      radial-gradient(circle at 22% 18%, rgba(185,152,200,.30), transparent 34%),
+      radial-gradient(circle at 80% 76%, rgba(111,79,134,.16), transparent 38%),
+      linear-gradient(135deg,#fcf9fd 0%,#f3ecf7 52%,#ebe2f0 100%);
+    border-color:rgba(111,79,134,.16);
   }
-  .resource-preview--seraphina::after{content:"AML 延伸專業空間";}
+  .resource-preview--seraphina::after{
+    content:"AML 延伸專業空間";
+    color:#6f4f86;
+    border-color:rgba(111,79,134,.14);
+    background:rgba(255,255,255,.90);
+  }
   .seraphina-mark{
     padding:20px;
-    color:#4f5d58;
+    color:#6b5d72;
   }
   .seraphina-mark strong{
     display:block;
@@ -223,7 +229,7 @@
     font-size:2rem;
     font-weight:500;
     letter-spacing:.035em;
-    color:#394743;
+    color:#5b426d;
   }
   .seraphina-mark span{
     display:block;
@@ -231,8 +237,16 @@
     font-size:.75rem;
     letter-spacing:.14em;
     text-transform:uppercase;
-    color:#7b8883;
+    color:#8c7898;
   }
+  .resource-item:last-child{
+    border-color:rgba(111,79,134,.16);
+    box-shadow:0 14px 34px rgba(85,65,98,.08);
+  }
+  .resource-item:last-child .resource-item__meta{color:#74588a;}
+  .resource-item:last-child h2{color:#5b426d;}
+  .resource-item:last-child .why{background:#faf6fc;}
+  .resource-item:last-child .go{color:#6f4f86;}
 
   .resource-item h2{
     font-size:1.65rem;
