@@ -53,7 +53,12 @@ function validateConfig(c){
   c.heroAlt ??= `${c.title} AML 主視覺`;
   c.articleRole ??='Article'; c.collectionRole ??='';
   c.featured ??=false; c.featuredRank ??=null;
-  c.isNote ??=false; c.readingPaths ??=[]; c.homepageFeatured ??=false;
+  c.isNote ??=false; c.readingPaths ??=[]; c.homepageFeatured ??=false; c.practiceBridge ??=null;
+  if(c.practiceBridge){
+    const reqBridge=['label','title','desc','href','cta'];
+    const missBridge=reqBridge.filter(k=>!c.practiceBridge[k]);
+    if(missBridge.length) die(`practiceBridge missing field(s): ${missBridge.join(', ')}`);
+  }
   if(!Array.isArray(c.readingPaths)) die('readingPaths must be an array, e.g. [{"id":"helper","stage":5}].');
   c.readingPaths=c.readingPaths.map(x=>typeof x==='string'?{id:x,stage:null}:x);
   for(const rp of c.readingPaths){ if(!rp?.id || !READING_PATHS[rp.id]) die(`Unknown reading path '${rp?.id||''}'. Use: ${Object.keys(READING_PATHS).join(', ')}`); if(!Number.isInteger(rp.stage)||rp.stage<1||rp.stage>5) die(`readingPaths '${rp.id}' requires integer stage 1-5.`); }
@@ -220,7 +225,7 @@ function newManifest(c,m){
   const nav=[];
   if(c.navigation.previous) nav.push({kind:'previous',label:`${c.navigation.previous.kind||'上一篇'} ← ${c.navigation.previous.label||m.articles.find(a=>a.slug===c.navigation.previous.slug)?.title||''}`,href:`/articles/${c.navigation.previous.slug}.html`});
   if(c.navigation.next) nav.push({kind:'next',label:`${c.navigation.next.kind||'下一篇'} ${c.navigation.next.label||m.articles.find(a=>a.slug===c.navigation.next.slug)?.title||''} →`,href:`/articles/${c.navigation.next.slug}.html`});
-  const a={slug:c.slug,title:c.title,summary:c.summary,date:c.date,domains:c.domains,primaryDomain:c.primaryDomain,crossDomains:c.crossDomains,tag:c.tag,cardMeta:c.cardMeta,keywords:c.keywords,articlePath:`/articles/${c.slug}.html`,order:c.order ?? -4,canonical:`https://allenmindlab.com/articles/${c.slug}`,hero:`/images/articles/${c.slug}-hero.webp`,ogImage:`/images/articles/${c.slug}-hero.png`,series:c.series,featured:c.featured,featuredRank:c.featuredRank,featuredMeta:c.featuredMeta||undefined,navigation:nav,readingPaths:c.readingPaths,isNote:c.isNote};
+  const a={slug:c.slug,title:c.title,summary:c.summary,date:c.date,domains:c.domains,primaryDomain:c.primaryDomain,crossDomains:c.crossDomains,tag:c.tag,cardMeta:c.cardMeta,keywords:c.keywords,articlePath:`/articles/${c.slug}.html`,order:c.order ?? -4,canonical:`https://allenmindlab.com/articles/${c.slug}`,hero:`/images/articles/${c.slug}-hero.webp`,ogImage:`/images/articles/${c.slug}-hero.png`,series:c.series,featured:c.featured,featuredRank:c.featuredRank,featuredMeta:c.featuredMeta||undefined,navigation:nav,readingPaths:c.readingPaths,isNote:c.isNote,practiceBridge:c.practiceBridge||undefined};
   Object.keys(a).forEach(k=>a[k]===undefined&&delete a[k]);
   m.articles.unshift(a); m.generatedAt=nowIso(); m.counts.total=m.articles.length;
   for(const d of Object.keys(DOMAIN_PAGES)) m.counts[d]=m.articles.filter(x=>x.domains?.includes(d)).length;
@@ -314,7 +319,7 @@ function packageStage(c){
 }
 function init(slug){
   if(!slugOk(slug)) die('init slug must be lowercase kebab-case.'); const dir=join(root,'.aml-publish',slug); ensureDir(dir);
-  const cfg={slug,title:'',subtitle:'',seoDescription:'',summary:'',date:new Date().toISOString().slice(0,10),eyebrow:'',primaryDomain:'pbs',crossDomains:[],tag:'',cardMeta:'',keywords:[],heroAlt:'',bodyFile:'body.html',heroWebp:'hero.webp',ogImage:'hero.png',relatedReading:[],navigation:{routeLabel:'',seriesLinkLabel:'',previous:null,next:null,hub:null},reciprocalPrevious:false,series:[],featured:false,featuredRank:null,isNote:false,readingPaths:[],homepageFeatured:false,rss:true,sitemap:true,articleRole:'Article',collectionRole:''};
+  const cfg={slug,title:'',subtitle:'',seoDescription:'',summary:'',date:new Date().toISOString().slice(0,10),eyebrow:'',primaryDomain:'pbs',crossDomains:[],tag:'',cardMeta:'',keywords:[],heroAlt:'',bodyFile:'body.html',heroWebp:'hero.webp',ogImage:'hero.png',relatedReading:[],navigation:{routeLabel:'',seriesLinkLabel:'',previous:null,next:null,hub:null},reciprocalPrevious:false,series:[],featured:false,featuredRank:null,isNote:false,readingPaths:[],practiceBridge:null,homepageFeatured:false,rss:true,sitemap:true,articleRole:'Article',collectionRole:''};
   const p=join(dir,'article.json'); if(!existsSync(p)) write(p,jsonPretty(cfg)); if(!existsSync(join(dir,'body.html'))) write(join(dir,'body.html'),'<!-- AML_TOC -->\n<p>文章開場。</p>\n<h2>第一節</h2>\n<p>正文。</p>\n');
   ok(`Draft workspace created: ${relative(root,dir)}`);
 }

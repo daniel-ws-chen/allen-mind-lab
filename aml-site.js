@@ -240,28 +240,165 @@
   }
 
 
-  /* ===== AML Practice Tool Bridge v1 ===== */
-  const amlPracticeToolBridge = {"/articles/pbs-being-seen":{"label":"PBS · PRACTICE TOOL","title":"把功能假設帶回現場：AML PBS Companion","desc":"如果你正在整理情緒行為案例，可用 Companion 協助彙整 ABC 資訊、形成初步功能假設與 PBS 策略草案，再由團隊依實際情境查證與修正。","href":"/tools.html","cta":"查看 PBS 實務工具 →"},"/articles/pbs-plan-contextual-fit":{"label":"PBS · PRACTICE TOOL","title":"從計畫文字走向情境判斷：AML PBS Companion","desc":"把文章中的功能、情境與支持條件帶回案例討論，協助團隊先整理資訊，再檢查策略是否真的適配當下環境。","href":"/tools.html","cta":"查看 PBS 實務工具 →"},"/articles/pbs-support-transition-real-life":{"label":"PBS · TRANSITION TOOL","title":"把轉銜條件整理成可討論的評估","desc":"使用「情緒行為支持服務轉銜評估與建議表」，從服務對象、照顧者與環境資源三個面向整理承接條件與後續支持需求。","href":"/tools/pbs-transition-assessment.html","cta":"開啟轉銜評估工具 →"},"/articles/ot-management-transition-support-life":{"label":"PBS · TRANSITION TOOL","title":"把「有效的條件」帶進下一段生活","desc":"文章談轉銜的核心是找出真正需要被帶走的支持條件；評估表可協助團隊把能力、照顧者準備與環境資源整理成具體建議。","href":"/tools/pbs-transition-assessment.html","cta":"開啟轉銜評估工具 →"},"/articles/management-coach-leader-workflow":{"label":"MANAGEMENT · LEARNING TOOL","title":"直接使用方案規劃管理助教系統","desc":"把十章方案內容交回一個共同架構，協助組長整理、檢查跨章連貫性與形成修訂版；AI 協助彙整，人仍負責查證與管理判斷。","href":"/tools/management-coach/","cta":"開啟管理助教系統 →"},"/articles/ot-management-organizational-planning":{"label":"MANAGEMENT · LEARNING TOOL","title":"把願景、使命與服務方向繼續往下做","desc":"如果你正在規劃一項服務，可用方案規劃管理助教系統把需求、價值主張、策略、人力、流程與成果逐步整理成完整方案。","href":"/tools/management-coach/","cta":"開啟管理助教系統 →"},"/articles/ot-management-strategy-swot":{"label":"MANAGEMENT · LEARNING TOOL","title":"把策略分析接回完整方案","desc":"SWOT 不是終點。可用方案規劃管理助教系統把策略選擇繼續連到人力、流程、品質、財務、合作與成果呈現。","href":"/tools/management-coach/","cta":"開啟管理助教系統 →"},"/articles/ot-management-service-development-choice":{"label":"MANAGEMENT · LEARNING TOOL","title":"把服務選擇轉成可檢驗的方案","desc":"當你已經釐清「真正缺的是什麼」，可以進一步用方案規劃管理助教系統整理服務設計、資源條件、流程與成果假設。","href":"/tools/management-coach/","cta":"開啟管理助教系統 →"}};
-  const toolBridge = amlPracticeToolBridge[currentPath];
+  /* ===== AML Practice Tool Bridge v1.1 / Reader Journey ===== */
+  const amlPracticeToolBridge = {
+    "/articles/pbs-being-seen": {
+      label: "PBS · PRACTICE TOOL",
+      title: "把功能假設帶回現場：AML PBS Companion",
+      desc: "如果你正在整理情緒行為案例，可用 Companion 協助彙整 ABC 資訊、形成初步功能假設與 PBS 策略草案，再由團隊依實際情境查證與修正。",
+      href: "/tools.html",
+      cta: "查看 PBS 實務工具 →"
+    },
+    "/articles/pbs-plan-contextual-fit": {
+      label: "PBS · PRACTICE TOOL",
+      title: "從計畫文字走向情境判斷：AML PBS Companion",
+      desc: "把文章中的功能、情境與支持條件帶回案例討論，協助團隊先整理資訊，再檢查策略是否真的適配當下環境。",
+      href: "/tools.html",
+      cta: "查看 PBS 實務工具 →"
+    },
+    "/articles/pbs-support-transition-real-life": {
+      label: "PBS · TRANSITION TOOL",
+      title: "把轉銜條件整理成可討論的評估",
+      desc: "使用「情緒行為支持服務轉銜評估與建議表」，從服務對象、照顧者與環境資源三個面向整理承接條件與後續支持需求。",
+      href: "/tools/pbs-transition-assessment.html",
+      cta: "開啟轉銜評估工具 →"
+    },
+    "/articles/ot-management-transition-support-life": {
+      label: "PBS · TRANSITION TOOL",
+      title: "把「有效的條件」帶進下一段生活",
+      desc: "文章談轉銜的核心是找出真正需要被帶走的支持條件；評估表可協助團隊把能力、照顧者準備與環境資源整理成具體建議。",
+      href: "/tools/pbs-transition-assessment.html",
+      cta: "開啟轉銜評估工具 →"
+    },
+    "/articles/management-coach-leader-workflow": {
+      label: "MANAGEMENT · LEARNING TOOL",
+      title: "直接使用方案規劃管理助教系統",
+      desc: "把十章方案內容交回一個共同架構，協助組長整理、檢查跨章連貫性與形成修訂版；AI 協助彙整，人仍負責查證與管理判斷。",
+      href: "/tools/management-coach/",
+      cta: "開啟管理助教系統 →"
+    },
+    "/articles/ot-management-organizational-planning": {
+      label: "MANAGEMENT · LEARNING TOOL",
+      title: "把願景、使命與服務方向繼續往下做",
+      desc: "如果你正在規劃一項服務，可用方案規劃管理助教系統把需求、價值主張、策略、人力、流程與成果逐步整理成完整方案。",
+      href: "/tools/management-coach/",
+      cta: "開啟管理助教系統 →"
+    },
+    "/articles/ot-management-strategy-swot": {
+      label: "MANAGEMENT · LEARNING TOOL",
+      title: "把策略分析接回完整方案",
+      desc: "SWOT 不是終點。可用方案規劃管理助教系統把策略選擇繼續連到人力、流程、品質、財務、合作與成果呈現。",
+      href: "/tools/management-coach/",
+      cta: "開啟管理助教系統 →"
+    },
+    "/articles/ot-management-service-development-choice": {
+      label: "MANAGEMENT · LEARNING TOOL",
+      title: "把服務選擇轉成可檢驗的方案",
+      desc: "當你已經釐清「真正缺的是什麼」，可以進一步用方案規劃管理助教系統整理服務設計、資源條件、流程與成果假設。",
+      href: "/tools/management-coach/",
+      cta: "開啟管理助教系統 →"
+    },
 
-  if (toolBridge && !document.querySelector(".aml-practice-bridge")) {
-    const footer = document.querySelector(".aml-global-footer");
-    if (footer) {
-      const section = document.createElement("section");
-      section.className = "aml-practice-bridge";
-      section.setAttribute("aria-labelledby", "aml-practice-bridge-title");
-      section.innerHTML = `
-        <div class="aml-practice-bridge__inner">
-          <div class="aml-practice-bridge__copy">
-            <div class="aml-practice-bridge__kicker">${toolBridge.label}</div>
-            <h2 id="aml-practice-bridge-title">${toolBridge.title}</h2>
-            <p>${toolBridge.desc}</p>
-          </div>
-          <a class="aml-practice-bridge__btn" href="${toolBridge.href}">${toolBridge.cta}</a>
-        </div>
-      `;
-      footer.parentNode.insertBefore(section, footer);
+    /* Reader Journey 1.1：優先橋接真正有自然下一步的文章 */
+    "/articles/management-no-single-right-answer": {
+      label: "MANAGEMENT · INTERACTIVE LAB",
+      title: "讀完之後，試著做一次管理判斷",
+      desc: "管理沒有唯一正解，但可以練習看見情境、利害關係與決策代價。進入管理決策實驗室，用案例試一次你的判斷。",
+      href: "/tools/management-decision-lab/",
+      cta: "進入管理決策實驗室 →"
+    },
+    "/articles/ot-management-decision-accountability": {
+      label: "MANAGEMENT · INTERACTIVE LAB",
+      title: "把當責概念帶進管理情境",
+      desc: "從文章走向情境判斷：看看不同管理選擇如何影響公平、責任、團隊信任與後續行動。",
+      href: "/tools/management/",
+      cta: "前往管理學館 →"
+    },
+    "/articles/ot-management-leadership-team-change": {
+      label: "MANAGEMENT · INTERACTIVE LAB",
+      title: "帶團隊，不只靠一種答案",
+      desc: "把領導與團隊改變放進具體情境裡練習，看看你會如何在目標、人與現實條件之間做選擇。",
+      href: "/tools/management/",
+      cta: "前往管理學館 →"
+    },
+    "/articles/pbs-emotion-escalation-deescalation": {
+      label: "PBS · INTERACTIVE LAB",
+      title: "從情緒升高，練習看見行為功能",
+      desc: "當情緒已經升高，第一步往往不是說服。進入 PBS 行為理解館，從情境線索與功能假設開始練習。",
+      href: "/tools/pbs/",
+      cta: "進入 PBS 行為理解館 →"
+    },
+    "/articles/pbs-crisis-safety-repair": {
+      label: "PBS · INTERACTIVE LAB",
+      title: "危機之後，回到理解與支持",
+      desc: "安全處理只是其中一段。透過互動案例練習從事件、前因與後果重新理解行為，為下一次支持留下線索。",
+      href: "/tools/pbs/",
+      cta: "進入 PBS 行為理解館 →"
+    },
+    "/articles/adult-adhd-sensory-processing": {
+      label: "SELF-AWARENESS · INTERACTIVE TOOL",
+      title: "把感覺處理概念帶回自己的日常",
+      desc: "如果你想從閱讀往自我探索再走一步，可以用「我的感覺使用說明書」整理自己的刺激偏好、負荷與調節線索。",
+      href: "/tools/sensory/",
+      cta: "開始我的感覺探索 →"
+    },
+    "/articles/caregiver-stress-coping-skills": {
+      label: "SELF-AWARENESS · INTERACTIVE LAB",
+      title: "看看自己的壓力與能量節奏",
+      desc: "壓力不只是一個分數，也和一天中的能量起伏、恢復方式與負荷累積有關。可用自我覺察工具整理自己的節奏。",
+      href: "/tools/energy-rhythm/",
+      cta: "探索壓力與能量節奏 →"
+    },
+    "/articles/ai-review-quality-collaboration": {
+      label: "AI · INTERACTIVE LAB",
+      title: "AI 可以幫忙，但判斷仍要留下來",
+      desc: "進入 AI 共作館，用具體情境練習哪些工作適合交給 AI、哪些需要人保留查證、責任與最後判斷。",
+      href: "/tools/ai/",
+      cta: "進入 AI 共作館 →"
+    },
+    "/articles/ai-era-teaching-learning": {
+      label: "AI · INTERACTIVE LAB",
+      title: "從『會用 AI』走向『會判斷怎麼用』",
+      desc: "把文章裡的人機分工帶進互動情境，練習辨識 AI 適合參與的位置，以及人需要保留的學習與判斷。",
+      href: "/tools/ai/",
+      cta: "進入 AI 共作館 →"
     }
+  };
+
+  const renderPracticeBridge = (toolBridge) => {
+    if (!toolBridge || document.querySelector(".aml-practice-bridge")) return;
+    const footer = document.querySelector(".aml-global-footer");
+    if (!footer) return;
+
+    const section = document.createElement("section");
+    section.className = "aml-practice-bridge";
+    section.setAttribute("aria-labelledby", "aml-practice-bridge-title");
+    section.innerHTML = `
+      <div class="aml-practice-bridge__inner">
+        <div class="aml-practice-bridge__copy">
+          <div class="aml-practice-bridge__kicker">${toolBridge.label}</div>
+          <h2 id="aml-practice-bridge-title">${toolBridge.title}</h2>
+          <p>${toolBridge.desc}</p>
+        </div>
+        <a class="aml-practice-bridge__btn" href="${toolBridge.href}">${toolBridge.cta}</a>
+      </div>
+    `;
+    footer.parentNode.insertBefore(section, footer);
+  };
+
+  const toolBridge = amlPracticeToolBridge[currentPath];
+  if (toolBridge) {
+    renderPracticeBridge(toolBridge);
+  } else if (currentPath.startsWith("/articles/")) {
+    /* 第 50 篇之後：若上稿流程在 manifest 寫入 practiceBridge，前端可自動接上。 */
+    fetch("/data/articles-manifest.json", { cache: "no-cache" })
+      .then(response => response.ok ? response.json() : null)
+      .then(manifest => {
+        const slug = currentPath.split("/").filter(Boolean).pop();
+        const article = manifest?.articles?.find(item => item.slug === slug);
+        if (article?.practiceBridge) renderPracticeBridge(article.practiceBridge);
+      })
+      .catch(() => {});
   }
 
   /* ===== AML Related Reading Network v1 ===== */
