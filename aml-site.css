@@ -1029,3 +1029,27 @@ body .aml-domain-catalog__read{display:none}
   .aml-global-nav .aml-brand{width:166px;height:40px}
 }
 /* ===== /AML 2.0 Brand Logo v1.0 ===== */
+
+
+/* AML INTERACTIVE LAB SHELL NAV */
+.aml-lab-shell-nav{
+  width:min(1120px,calc(100% - 12vw));margin:18px auto 0;
+  display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;
+}
+.aml-lab-shell-nav a{color:inherit;text-decoration:none;font-weight:850;font-size:.84rem;line-height:1.2}
+.aml-lab-shell-nav__back{display:inline-flex;align-items:center;min-height:40px;padding:8px 0}
+.aml-lab-shell-nav__links{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.aml-lab-shell-nav__links a{display:inline-flex;align-items:center;min-height:36px;padding:7px 11px;border:1px solid currentColor;border-radius:999px;opacity:.78}
+.aml-lab-shell-nav__links a:hover,.aml-lab-shell-nav__back:hover{opacity:1}
+.aml-lab-mini-footer{width:min(1120px,calc(100% - 12vw));margin:34px auto 0;padding:18px 0 28px;border-top:1px solid rgba(127,127,127,.25);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;font:700 .8rem/1.5 Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:inherit;opacity:.9}
+.aml-lab-mini-footer__links{display:flex;gap:8px;flex-wrap:wrap}
+.aml-lab-mini-footer a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(127,127,127,.35)}
+.aml-lab-mini-footer a:hover{border-bottom-color:currentColor}
+@media(max-width:620px){
+ .aml-lab-shell-nav{width:calc(100% - 10vw);margin-top:10px;align-items:flex-start}
+ .aml-lab-shell-nav__links{width:100%}
+ .aml-lab-shell-nav__links a{font-size:.76rem;min-height:34px}
+ .aml-lab-mini-footer{width:calc(100% - 10vw);display:block}
+ .aml-lab-mini-footer__links{margin-top:10px}
+}
