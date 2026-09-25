@@ -147,3 +147,70 @@ main{overflow:hidden}
 .publication-card-text{grid-template-columns:92px minmax(0,1fr);align-items:start}
 .publication-year{display:grid;place-items:center;min-height:92px;border-radius:18px;background:#efe7f3;color:#6f4f86;font-family:Georgia,serif;font-size:22px;font-weight:700}
 @media (max-width:760px){.publication-card-text{grid-template-columns:1fr}.publication-year{min-height:auto;display:inline-flex;width:max-content;padding:8px 12px;font-size:16px}}
+
+/* V3.6 — centered editorial homepage composition + stable home return */
+.hero{
+  display:block;
+  padding:0;
+}
+.hero-inner{
+  width:min(100% - 48px, 1240px);
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:minmax(0, 760px) 300px;
+  gap:96px;
+  align-items:center;
+  min-height:620px;
+  padding:44px 0 46px;
+}
+.hero-copy{max-width:none}
+.hero-art{justify-content:center}
+.portrait-card{width:300px}
+
+@media (min-width:1101px){
+  .hero{padding:0}
+  .hero-inner{
+    width:min(100% - 56px, 1260px);
+    grid-template-columns:minmax(0, 780px) 292px;
+    gap:92px;
+    min-height:610px;
+    padding:40px 0 44px;
+  }
+  .hero-copy{max-width:780px}
+  .hero h1{font-size:68px;margin:10px 0 10px}
+  .lab-title{font-size:30px}
+  .lab-title-en{font-size:18px;max-width:760px}
+  .hero-name{font-size:17px;margin-bottom:11px}
+  .lead{font-size:21px;line-height:1.5;margin-bottom:20px;max-width:690px}
+  .portrait-card{width:292px}
+}
+
+@media (min-width:1101px) and (max-height:820px){
+  .hero-inner{min-height:540px;padding:26px 0 30px}
+  .hero h1{font-size:62px}
+  .lab-title{font-size:28px}
+  .lab-title-en{font-size:16px}
+  .lead{font-size:19px}
+  .portrait-card{width:252px}
+}
+
+@media (max-width:1100px){
+  .hero-inner{
+    width:min(100% - 44px, 780px);
+    grid-template-columns:1fr;
+    gap:28px;
+    min-height:0;
+    padding:48px 0 58px;
+  }
+  .hero-art{justify-content:flex-start}
+  .portrait-card{width:min(320px,100%)}
+}
+
+@media (max-width:760px){
+  .hero{padding:0}
+  .hero-inner{
+    width:calc(100% - 44px);
+    padding:34px 0 44px;
+    gap:24px;
+  }
+}
