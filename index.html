@@ -1258,7 +1258,7 @@
     <textarea class="aml-xier-input" id="amlXierInput" maxlength="320" placeholder="例如：最近工作後腦袋一直停不下來，很難真正休息……"></textarea>
     <button class="aml-xier-submit" id="amlXierSubmit" type="button">幫我找方向 →</button>
     <div class="aml-xier-results" id="amlXierResults" aria-live="polite"></div>
-    <p class="aml-xier-foot">V1 導航只協助連結 AML 既有文章、工具與學習入口，不進行診斷或專業判定。請避免輸入可辨識個人的敏感資料；若有立即安全或醫療風險，請優先尋求當地緊急或專業協助。</p>
+    <p class="aml-xier-foot">V1 為規則式導航，只協助連結 AML 既有文章、工具與學習入口；若無法判斷或沒有適合內容，會改引導至聯絡資訊或外部資源。不進行診斷或專業判定。請避免輸入可辨識個人的敏感資料；若有立即安全或醫療風險，請優先尋求當地緊急或專業協助。</p>
   </section>
 </div>
 
@@ -1527,8 +1527,8 @@
       intro:'你提到的內容比較接近「AI 共作、查證與判斷邊界」。可以先從這幾個入口開始：',
       items:[['先做一個短探索','AI 共作初階','看看哪些工作適合自己做、哪些可以讓 AI 參與，以及何時需要確認。','/tools/ai-cocreation-lab/'],['挑戰判斷邊界','AI 說得很有道理，你會採用嗎？','練習查證、辨認推論邊界，以及把價值與責任拿回人手上。','/tools/ai-judgment-challenge/'],['看完整路徑','AI 共作館','從分工、查證到共作原則，建立比較穩定的人機協作方式。','/tools/ai/']]}
   };
-  const fallback={intro:'我還不能只靠這幾句話判斷最適合的主題。可以先從這三個入口探索，不必急著替自己分類：',
-    items:[['想找一篇內容','完整文章館藏','依主題看看目前 AML 已整理的文章。','/library.html'],['想有人帶一條路','閱讀路徑','從一個主題開始，沿著整理好的路徑往下看。','/reading-paths.html'],['想先玩再理解','Interactive Lab','從互動情境開始，看見問題後再回到文章與學習。','/tools.html']]};
+  const fallback={intro:'我目前還找不到足夠貼近的 AML 內容，不想硬替你分類。你可以改從聯絡資訊或外部資源開始：',
+    items:[['想進一步詢問','聯絡 AML','如果目前的問題需要更具體的回應，可以從聯絡資訊找到適合的聯繫方式。','/contact.html'],['找其他可靠入口','精選資源','查看 AML 整理的外部專業資源與延伸網站。','/resources.html']]};
   function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   function choose(q){
     const text=q.trim().toLowerCase();let best=null,bestScore=0;
