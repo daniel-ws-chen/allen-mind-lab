@@ -94,7 +94,9 @@ else if(score.st>=5)caution='你遇到壓力時容易提高結構與控制，記
 else if(score.re>=5)caution='你會把人的狀態納入考量，這很重要；同時也要確認支持沒有模糊責任與必要的工作標準。';
 let next='回想最近一次你對兩位同仁採取不同處理方式的事件：如果把名字與熟悉程度拿掉，你仍會做出相同決定嗎？';
 qs('#summary').textContent=(a.length?a.join('；'):'你的選擇分布相當平均，會依不同場景切換')+'。這不是人格定型，而是你目前在這六個情境中呈現的判斷模式。';
-qs('#tendency').textContent=tendencyText;qs('#strength').textContent=strength;qs('#caution').textContent=caution;qs('#nextReflection').textContent=next;scrollTo({top:0,behavior:'smooth'})}function reset(){i=0;score={st:0,re:0,sp:0,fl:0};qs('#result').classList.add('hidden');qs('#intro').classList.add('hidden');qs('#play').classList.remove('hidden');render()}qs('#start').onclick=reset;qs('#again').onclick=reset})();
+qs('#tendency').textContent=tendencyText;qs('#strength').textContent=strength;qs('#caution').textContent=caution;qs('#nextReflection').textContent=next;
+try{localStorage.setItem('aml.progress.management.decision',new Date().toISOString())}catch(e){}
+scrollTo({top:0,behavior:'smooth'})}function reset(){i=0;score={st:0,re:0,sp:0,fl:0};qs('#result').classList.add('hidden');qs('#intro').classList.add('hidden');qs('#play').classList.remove('hidden');render()}qs('#start').onclick=reset;qs('#again').onclick=reset})();
 </script>
 <footer class="aml-lab-mini-footer" aria-label="互動實驗室快速導覽"><div>Allen Mind Lab · Interactive Lab</div><div class="aml-lab-mini-footer__links"><a href="/tools/management/">管理學館</a><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></footer>
 </body></html>
