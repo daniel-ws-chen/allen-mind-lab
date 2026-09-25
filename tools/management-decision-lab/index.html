@@ -56,9 +56,9 @@ body{background:linear-gradient(180deg,#f6faff 0%,#fff 52%,#f7fbff 100%)!importa
 .panel{border-color:#d4e3f2;box-shadow:0 18px 55px rgba(33,102,209,.08)}.eyebrow,.feedback-card small{color:#168ac1}.start,.btn{background:linear-gradient(135deg,#2166d1,#168ac1);border-color:#2166d1}.progress i{background:linear-gradient(90deg,#2166d1,#36c2ff)}.scene{background:linear-gradient(145deg,#123b72,#2166d1 55%,#36aeea)}.scene-k{color:#dff7ff}.letter{background:#e8f3ff;color:#2166d1}.option:hover,.option:focus{border-color:#74b9ea;box-shadow:0 8px 20px rgba(33,102,209,.08)}.dot{background:#2166d1}.reflection{background:#edf7ff;border-color:#c9e4f5}.questionbox{border-left-color:#36c2ff;background:#f4fbff}.feedback-card.reflect{background:#f7fbff}
 </style>
 </head>
-<body>
+<body><nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/management/">← 回管理學館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
 <main class="game" id="app">
-  <div class="top"><div class="brand">AML INTERACTIVE LAB<small>MANAGEMENT · SELF AWARENESS</small></div><a class="back" href="/tools/management/">← 回管理學館</a></div>
+  <div class="top"><div class="brand">AML INTERACTIVE LAB<small>MANAGEMENT · SELF AWARENESS</small></div></div>
   <section id="intro" class="panel intro">
     <div class="intro-grid"><div class="intro-copy"><div class="eyebrow">初階體驗 · 3–5 分鐘</div><h1>如果你是主管，<br>你會怎麼做？</h1><p>6 個工作現場，沒有標準答案。先憑直覺做選擇，看看你會怎麼在結構、支持、授權與決策速度之間切換。</p><div class="promise"><span>✦ 不背管理名詞</span><span>✦ 不是人格測驗</span><span>✦ 先看見自己的判斷方式</span></div><button class="start" id="start">開始 6 個情境 →</button></div><div class="intro-art" role="img" aria-label="AML 管理決策實驗室情境示意"></div></div>
   </section>
@@ -95,4 +95,5 @@ let next='回想最近一次你對兩位同仁採取不同處理方式的事件�
 qs('#summary').textContent=(a.length?a.join('；'):'你的選擇分布相當平均，會依不同場景切換')+'。這不是人格定型，而是你目前在這六個情境中呈現的判斷模式。';
 qs('#tendency').textContent=tendencyText;qs('#strength').textContent=strength;qs('#caution').textContent=caution;qs('#nextReflection').textContent=next;scrollTo({top:0,behavior:'smooth'})}function reset(){i=0;score={st:0,re:0,sp:0,fl:0};qs('#result').classList.add('hidden');qs('#intro').classList.add('hidden');qs('#play').classList.remove('hidden');render()}qs('#start').onclick=reset;qs('#again').onclick=reset})();
 </script>
+<footer class="aml-lab-mini-footer" aria-label="互動實驗室快速導覽"><div>Allen Mind Lab · Interactive Lab</div><div class="aml-lab-mini-footer__links"><a href="/tools/management/">管理學館</a><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></footer>
 </body></html>
