@@ -85,11 +85,13 @@
       "date": "2026-09-25",
       "domains": [
         "mind",
-        "ai"
+        "ai",
+        "notes"
       ],
       "primaryDomain": "mind",
       "crossDomains": [
-        "ai"
+        "ai",
+        "notes"
       ],
       "tag": "AML Notes",
       "cardMeta": "2026.09.25 · Mind & Well-being × AI × Practice",
