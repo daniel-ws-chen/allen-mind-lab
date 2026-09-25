@@ -1241,13 +1241,13 @@
   </div>
   <p class="aml-fleet-note">Building A Meaningful Life.｜不同的起點，都可以從這裡出發。</p>
 </section>
-<div class="aml-xier-dialog" id="amlXierDialog" role="dialog" aria-modal="true" aria-labelledby="amlXierTitle" hidden>
+<div class="aml-xier-dialog" id="amlXierDialog" role="dialog" aria-modal="true" aria-labelledby="amlXierTitle" aria-describedby="amlXierIntro amlXierFoot" hidden>
   <section class="aml-xier-panel" tabindex="-1">
     <div class="aml-xier-head">
       <div><div class="aml-xier-kicker">AML HIDDEN GUIDE · 曦兒</div><h2 id="amlXierTitle">曦兒｜AML 導航</h2></div>
       <button class="aml-xier-close" id="amlXierClose" type="button" aria-label="關閉曦兒導航">×</button>
     </div>
-    <p class="aml-xier-intro">嗨，我是曦兒。可以告訴我最近遇到什麼困擾，或想處理什麼問題。我會從 AML 既有內容中，幫你找幾個適合先開始的入口。</p>
+    <p class="aml-xier-intro" id="amlXierIntro">嗨，我是曦兒。可以告訴我最近遇到什麼困擾，或想處理什麼問題。我會從 AML 既有內容中，幫你找幾個適合先開始的入口。</p>
     <div class="aml-xier-chips" aria-label="快速選擇">
       <button class="aml-xier-chip" type="button" data-xier-query="管理 團隊 帶人 方案 決策 公平">我開始帶團隊、做方案，有點卡住</button>
       <button class="aml-xier-chip" type="button" data-xier-query="情緒 行為 PBS 陪伴 支持 家人 個案">我正在陪伴一個有情緒或行為困難的人</button>
@@ -1258,7 +1258,7 @@
     <textarea class="aml-xier-input" id="amlXierInput" maxlength="320" placeholder="例如：最近工作後腦袋一直停不下來，很難真正休息……"></textarea>
     <button class="aml-xier-submit" id="amlXierSubmit" type="button">幫我找方向 →</button>
     <div class="aml-xier-results" id="amlXierResults" aria-live="polite"></div>
-    <p class="aml-xier-foot">V1 為規則式導航，只協助連結 AML 既有文章、工具與學習入口；若無法判斷或沒有適合內容，會改引導至聯絡資訊或外部資源。不進行診斷或專業判定。請避免輸入可辨識個人的敏感資料；若有立即安全或醫療風險，請優先尋求當地緊急或專業協助。</p>
+    <p class="aml-xier-foot" id="amlXierFoot">V1 為規則式導航，只協助連結 AML 既有文章、工具與學習入口；若無法判斷或沒有適合內容，會先引導至閱讀路徑、主題館藏或外部資源。不進行診斷或專業判定。請避免輸入可辨識個人的敏感資料；若有立即安全或醫療風險，請優先尋求當地緊急或專業協助。</p>
   </section>
 </div>
 
@@ -1541,11 +1541,32 @@
       g.items.map(x=>`<a class="aml-xier-card" href="${x[3]}"><small>${esc(x[0])}</small><strong>${esc(x[1])}</strong><span>${esc(x[2])}</span></a>`).join('');
     results.scrollIntoView({behavior:'smooth',block:'nearest'});
   }
-  function open(){dialog.hidden=false;document.body.style.overflow='hidden';requestAnimationFrame(()=>panel?.focus())}
-  function close(){dialog.hidden=true;document.body.style.overflow='';openBtn.focus()}
+  let lastFocused=null;
+  const focusables=()=>Array.from(dialog.querySelectorAll('button:not([disabled]),a[href],textarea:not([disabled]),input:not([disabled]),select:not([disabled]),[tabindex]:not([tabindex="-1"])')).filter(el=>!el.hidden && el.offsetParent!==null);
+  function open(){
+    lastFocused=document.activeElement;
+    dialog.hidden=false;
+    document.body.style.overflow='hidden';
+    requestAnimationFrame(()=>input?.focus());
+  }
+  function close(){
+    dialog.hidden=true;
+    document.body.style.overflow='';
+    const target=lastFocused && document.contains(lastFocused) ? lastFocused : openBtn;
+    target?.focus();
+  }
   openBtn.addEventListener('click',open);closeBtn?.addEventListener('click',close);
   dialog.addEventListener('click',e=>{if(e.target===dialog)close()});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dialog.hidden)close()});
+  document.addEventListener('keydown',e=>{
+    if(dialog.hidden)return;
+    if(e.key==='Escape'){e.preventDefault();close();return}
+    if(e.key==='Tab'){
+      const list=focusables();if(!list.length)return;
+      const first=list[0],last=list[list.length-1];
+      if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus()}
+      else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus()}
+    }
+  });
   dialog.querySelectorAll('[data-xier-query]').forEach(btn=>btn.addEventListener('click',()=>{input.value=btn.dataset.xierQuery||'';render(input.value)}));
   submit.addEventListener('click',()=>{const q=input.value.trim();if(!q){results.innerHTML='<div class="aml-xier-empty">可以先選上面的快速入口，或用一兩句話描述目前想處理的事情。</div>';input.focus();return}render(q)});
   input.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')submit.click()});
