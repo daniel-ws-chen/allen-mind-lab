@@ -126,3 +126,87 @@ body.lab-result-management #result .mirror{display:block!important}
 @media print{
  body.lab-result-management #result,body.lab-result-pbs #result .pbc-result-card,body.lab-result-self #result,body.lab-result-ai #result{box-shadow:none!important}
 }
+
+
+/* ===== AML Interactive Lab · Mobile Detail QA 2026-09 ===== */
+body[class*="lab-result-"] #result,
+body[class*="lab-result-"] #result *{min-width:0}
+body[class*="lab-result-"] #result p,
+body[class*="lab-result-"] #result span,
+body[class*="lab-result-"] #result small,
+body[class*="lab-result-"] #result strong,
+body[class*="lab-result-"] #result a{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+body.lab-result-management #result .actions a,
+body.lab-result-management #result .actions button,
+body.lab-result-pbs #result .pbc-actions a,
+body.lab-result-pbs #result .pbc-actions button,
+body.lab-result-self #result .actions a,
+body.lab-result-self #result .actions button,
+body.lab-result-ai #result .g-actions a,
+body.lab-result-ai #result .g-actions button,
+body.lab-result-ai #result .actions a,
+body.lab-result-ai #result .actions button{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+body.lab-result-management #result .axis-top,
+body.lab-result-pbs #result .pbc-axis-top,
+body.lab-result-self #result .axis-top,
+body.lab-result-ai #result .g-bar-top{
+  gap:10px;
+  flex-wrap:wrap;
+}
+@media(max-width:760px){
+  body[class*="lab-result-"] #result{border-radius:20px!important}
+  body.lab-result-management #result .feedback-card,
+  body.lab-result-pbs #result .pbc-mini,
+  body.lab-result-self #result .summary,
+  body.lab-result-ai #result .g-feedback>div,
+  body.lab-result-ai #result .summary-grid>div{
+    padding:15px!important;
+    border-radius:16px!important;
+  }
+  body.lab-result-management #result .questionbox,
+  body.lab-result-management #result .mirror,
+  body.lab-result-pbs #result .pbc-review,
+  body.lab-result-self #result .reflection,
+  body.lab-result-ai #result .g-question,
+  body.lab-result-ai #result .rule{
+    padding:14px 15px!important;
+  }
+}
+@media(max-width:520px){
+  body.lab-result-management #result .actions,
+  body.lab-result-pbs #result .pbc-actions,
+  body.lab-result-self #result .actions,
+  body.lab-result-ai #result .g-actions,
+  body.lab-result-ai #result .actions{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:9px!important;
+  }
+  body.lab-result-management #result .actions a,
+  body.lab-result-management #result .actions button,
+  body.lab-result-pbs #result .pbc-actions a,
+  body.lab-result-pbs #result .pbc-actions button,
+  body.lab-result-self #result .actions a,
+  body.lab-result-self #result .actions button,
+  body.lab-result-ai #result .g-actions a,
+  body.lab-result-ai #result .g-actions button,
+  body.lab-result-ai #result .actions a,
+  body.lab-result-ai #result .actions button{
+    width:100%!important;
+  }
+}
+@media print{
+  body[class*="lab-result-"] #result{break-inside:avoid}
+  body[class*="lab-result-"] #result .actions,
+  body[class*="lab-result-"] #result .g-actions,
+  body[class*="lab-result-"] #result .pbc-actions{display:none!important}
+}
