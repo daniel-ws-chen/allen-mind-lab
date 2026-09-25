@@ -40,7 +40,7 @@
 <section class="pbc-hero"><div class="pbc-hero__in"><div class="pbc-kicker">PBS HALL · ADVANCED CHALLENGE</div><h1>同一個行為，不一定是同一個功能</h1><p>6 個比較複雜的情境，練習把 ABC、背景因素、情緒訊號與環境變化放在一起看。這一關不追求「一眼猜中功能」，而是練習形成可以被資料檢驗的假設。</p><div class="pbc-mantra">功能分析先寫「可能」，再找證據。</div></div></section>
 <div class="pbc-progress"><b id="progLabel">CASE 1 / 6</b><div class="pbc-track"><div class="pbc-bar" id="progBar"></div></div></div>
 <section id="game"><article class="pbc-card"><div class="pbc-scene"><span class="pbc-tag" id="tag"></span><figure class="pbc-visual"><img id="sceneImage" src="" alt="" loading="eager" decoding="async"></figure><h2 id="sceneTitle"></h2><p id="sceneText"></p><div class="pbc-clues" id="clues"></div></div><div class="pbc-q"><h3 id="question"></h3><p class="prompt">選出你認為「下一步最合理」的做法，再看看解析。</p><div class="pbc-options" id="options"></div><div class="pbc-feedback" id="feedback"></div><div class="pbc-next" id="nextWrap"><button class="pbc-btn" id="nextBtn">下一題 →</button></div></div></article></section>
-<section class="pbc-result" id="result"><div class="pbc-result-card"><div class="pbc-kicker" style="color:#16866e">YOUR PBS REASONING MAP</div><h2>你的 PBS 判斷地圖</h2><p class="lead">不是「答對幾題」排行榜，而是看看你在複雜情境中，會不會保留假設、回到資料、留意情境，並把支持策略和可能功能接起來。</p><div class="pbc-axes" id="axes"></div><div class="pbc-cards"><div class="pbc-mini"><small>你的傾向</small><p id="tendency"></p></div><div class="pbc-mini"><small>可能的優勢</small><p id="strength"></p></div><div class="pbc-mini"><small>需要留意</small><p id="watch"></p></div></div><div class="pbc-review"><h3>回看你的 6 次判斷</h3><div id="review"></div></div><div class="pbc-actions"><a class="pbc-link" href="/articles/pbs-plan-contextual-fit.html">閱讀｜情境適配 →</a><a class="pbc-link primary" href="/pbs-self-study.html">下一站｜進入 PBS 自學 →</a><a class="pbc-link" href="/tools/pbs/">回 PBS 館</a></div></div></section>
+<section class="pbc-result" id="result"><div class="pbc-result-card"><div class="pbc-kicker" style="color:#16866e">YOUR PBS REASONING MAP</div><h2>你的 PBS 判斷地圖</h2><p class="lead">不是「答對幾題」排行榜，而是看看你在複雜情境中，會不會保留假設、回到資料、留意情境，並把支持策略和可能功能接起來。</p><div class="pbc-axes" id="axes"></div><div class="pbc-cards"><div class="pbc-mini"><small>你的傾向</small><p id="tendency"></p></div><div class="pbc-mini"><small>可能的優勢</small><p id="strength"></p></div><div class="pbc-mini"><small>需要留意</small><p id="watch"></p></div></div><div class="pbc-review"><h3>回看你的 6 次判斷</h3><div id="review"></div></div><div class="pbc-actions"><a class="pbc-link primary" href="/tools/pbs-summary/">查看我的 PBS 支持判斷摘要 →</a><a class="pbc-link" href="/pbs-self-study.html">進入 PBS 自學 →</a><a class="pbc-link" href="/articles/pbs-plan-contextual-fit.html">閱讀｜情境適配 →</a><a class="pbc-link" href="/tools/pbs/">回 PBS 館</a></div></div></section>
 </main>
 <script>
 (()=>{
@@ -56,8 +56,22 @@ function render(){const c=cases[idx];$("progLabel").textContent=`CASE ${idx+1} /
 function pick(i,b){const o=cases[idx].opts[i];document.querySelectorAll(".pbc-opt").forEach(x=>x.disabled=true);b.classList.add("selected");o[2].forEach((v,j)=>score[j]+=v);chosen.push({title:cases[idx].title,feedback:o[1],good:o[2].reduce((a,b)=>a+b,0)>=6});$("feedback").innerHTML=`<strong>解析｜</strong>${o[1]}`;$("feedback").classList.add("show");$("nextWrap").classList.add("show");}
 $("nextBtn").onclick=()=>{if(idx<cases.length-1){idx++;render();window.scrollTo({top:document.querySelector(".pbc-progress").offsetTop-20,behavior:"smooth"});}else finish();};
 function axis(name,val){const p=Math.round(val/12*100);return `<div class="pbc-axis"><div class="pbc-axis-top"><b>${name}</b><span>${p}%</span></div><div class="pbc-axis-track"><div class="pbc-axis-fill" style="width:${p}%"></div></div></div>`}
-function finish(){$("game").style.display="none";document.querySelector(".pbc-progress").style.display="none";$("result").classList.add("show");$("axes").innerHTML=axis("觀察與資料",score[0])+axis("功能假設",score[1])+axis("情境敏感度",score[2])+axis("支持設計",score[3]);const total=score.reduce((a,b)=>a+b,0);$("tendency").textContent=total>=38?"你通常會先保留假設，再回到資料與情境確認，而不是只看表面行為。":total>=26?"你已經會注意功能與情境，但在線索看似明顯時，偶爾仍可能太快收斂。":"你較容易先抓住一個直覺解釋；下一步可以刻意多問一句：還有什麼資料會支持或反駁這個假設？";$("strength").textContent=score[2]>=9?"你很能注意同一個行為在不同活動、場域與身體狀態下，意義可能改變。":"你已開始把 ABC 與功能連起來，這是從描述行為走向 PBS 判斷的重要一步。";$("watch").textContent=score[1]<8?"功能分析最需要避免把『可能』寫成『就是』。遇到資料不足或互相矛盾時，保留多個假設反而更專業。":"接下來可再注意：好的功能假設還要能連到可教的替代行為與可持續的環境支持。";$("review").innerHTML=chosen.map((x,i)=>`<div class="pbc-review-item"><b>${i+1}. ${x.title}</b><small>${x.good?"有保留判斷":"值得再確認"}｜${x.feedback}</small></div>`).join("");
-try{localStorage.setItem("aml.progress.pbs.advanced",new Date().toISOString())}catch(e){}
+function finish(){$("game").style.display="none";document.querySelector(".pbc-progress").style.display="none";$("result").classList.add("show");$("axes").innerHTML=axis("觀察與資料",score[0])+axis("功能假設",score[1])+axis("情境敏感度",score[2])+axis("支持設計",score[3]);const total=score.reduce((a,b)=>a+b,0);const tendencyText=total>=38?"在這組情境中，你多半會先保留假設，再回到資料與情境確認。":total>=26?"在這組情境中，你已經會注意功能與情境；遇到線索看似明顯時，可以再多留一步確認。":"在這組情境中，你較常先抓住一個直覺解釋；下一步可以多問一句：還有什麼資料會支持或反駁這個假設？";
+const strengthText=score[2]>=9?"你的選擇較常把活動、場域與身體狀態的差異納入判斷。":"你的選擇已開始把 ABC 線索與可能功能連在一起。";
+const watchText=score[1]<8?"功能分析要避免把「可能」寫成「就是」。遇到資料不足或互相矛盾時，保留多個假設較符合持續驗證的原則。":"接下來可再注意：功能假設還需要連到可教的替代行為與可持續的環境支持。";
+$("tendency").textContent=tendencyText;$("strength").textContent=strengthText;$("watch").textContent=watchText;$("review").innerHTML=chosen.map((x,i)=>`<div class="pbc-review-item"><b>${i+1}. ${x.title}</b><small>${x.good?"有保留判斷":"值得再確認"}｜${x.feedback}</small></div>`).join("");
+try{
+  localStorage.setItem("aml.progress.pbs.advanced",new Date().toISOString());
+  localStorage.setItem("aml.pbs.advanced.v1",JSON.stringify({
+    savedAt:new Date().toISOString(),
+    score:{observe:score[0],hypothesis:score[1],context:score[2],support:score[3]},
+    total,
+    tendency:tendencyText,
+    strength:strengthText,
+    watch:watchText,
+    cases:chosen
+  }));
+}catch(e){}
 window.scrollTo({top:$("result").offsetTop-20,behavior:"smooth"});}
 render();})();
 </script>
