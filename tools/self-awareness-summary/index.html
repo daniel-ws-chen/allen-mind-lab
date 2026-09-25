@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>我的自我覺察摘要｜AML Interactive Lab</title>
+<meta name="description" content="整合我的感覺使用說明書與壓力／能量節奏，形成一張可帶回生活與專業討論的自我覺察摘要。">
+<link rel="canonical" href="https://allenmindlab.com/tools/self-awareness-summary/"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/aml-site.css">
+<style>
+:root{--p:#6f50c8;--b:#c084fc;--soft:#f5efff;--line:#e0d3f4;--ink:#2c2340;--muted:#6c6280}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#faf7ff,#fff 52%,#f7f2ff);color:var(--ink);font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.7}.wrap{max-width:1000px;margin:auto;padding:38px 6vw 72px}.hero{border:1px solid var(--line);border-radius:28px;padding:30px;background:linear-gradient(135deg,#4d348d,#7957d5);color:#fff}.eyebrow{font-size:.73rem;font-weight:900;letter-spacing:.14em;color:#eadcff}.hero h1{margin:6px 0 10px;font-size:clamp(2rem,5vw,3.4rem)}.hero p{margin:0;color:#f0eaff;max-width:760px}.status{margin:22px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}.status>div,.card{border:1px solid var(--line);border-radius:20px;background:#fff;padding:18px}.status b{color:#6845ad}.ok{color:#3d8b73;font-weight:900}.miss{color:#927ca7}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card h2{margin:0 0 8px;color:#563b9b;font-size:1.18rem}.card p{margin:0;color:#655c72}.full{grid-column:1/-1}.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.principle{border:1px solid var(--line);border-radius:18px;background:var(--soft);padding:16px}.principle b{display:block;color:#6845ad;margin-bottom:5px}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.btn{display:inline-flex;text-decoration:none;border-radius:999px;padding:10px 16px;background:#6f50c8;color:#fff;font-weight:900;border:1px solid #6f50c8}.btn.alt{background:#fff;color:#6845ad;border-color:#cdb9eb}.note{margin-top:20px;border-left:4px solid var(--b);background:#faf6ff;border-radius:0 15px 15px 0;padding:15px 17px;color:#665c72}
+@media(max-width:720px){.status,.grid,.principles{grid-template-columns:1fr}.full{grid-column:auto}}@media print{.aml-lab-shell-nav,.actions,.aml-lab-mini-footer{display:none!important}.wrap{padding:0}.hero{color:#222;background:#fff}}
+</style></head><body>
+<nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/self-awareness/">← 回自我覺察館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
+<main class="wrap"><section class="hero"><div class="eyebrow">SELF-AWARENESS SYNTHESIS</div><h1>我的自我覺察摘要</h1><p>這不是新的測驗，而是把你已完成的「感覺使用說明書」與「壓力／能量節奏」放在一起，整理成比較容易帶回生活的線索。</p></section>
+<section class="status"><div><b>感覺使用說明書</b><div id="sensoryStatus"></div></div><div><b>壓力與能量節奏</b><div id="energyStatus"></div></div></section>
+<section class="grid">
+<div class="card"><h2>我容易在哪些情境耗能？</h2><p id="contexts">尚未有足夠資料。</p></div>
+<div class="card"><h2>我可以提早注意什麼？</h2><p id="warning">尚未有足夠資料。</p></div>
+<div class="card"><h2>目前哪些調整對我有幫助？</h2><p id="help">尚未有足夠資料。</p></div>
+<div class="card"><h2>我的恢復與節奏</h2><p id="rhythm">尚未有足夠資料。</p></div>
+<div class="card full"><h2>我現在最值得帶走的三個提醒</h2><div class="principles" id="principles"></div></div>
+<div class="card full"><h2>如果要繼續討論</h2><p id="nextTalk">完成前面的探索後，這裡會整理你最想理解的情境與可以尋求的支持。</p></div>
+</section>
+<div class="note"><strong>使用提醒｜</strong>這份摘要用於自我探索與生活線索整理，不等同正式評量、診斷或個別化治療建議。</div>
+<div class="actions"><a class="btn alt" href="/tools/sensory/">感覺使用說明書</a><a class="btn alt" href="/tools/energy-rhythm/">壓力與能量節奏</a><button class="btn" onclick="window.print()">列印／存成 PDF</button></div>
+</main>
+<script>
+(()=>{const get=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}},s=get('aml.self.sensory.v1'),e=get('aml.self.energy.v1');
+const $=id=>document.getElementById(id);
+$('sensoryStatus').innerHTML=s?'<span class="ok">✓ 已有探索結果</span>':'<span class="miss">尚未完成，可先做第一個互動工具。</span>';
+$('energyStatus').innerHTML=e?'<span class="ok">✓ 已有探索結果</span>':'<span class="miss">尚未完成，可先做第二個互動工具。</span>';
+if(s){const titles=(s.contexts||[]).filter(x=>x.selected&&x.selected.length).map(x=>x.title);$('contexts').textContent=titles.length?'目前較值得留意的情境包括：'+titles.join('、')+'。 '+(s.impact||''):s.impact||'目前還沒有特別突出的情境。';$('warning').textContent=s.warning||'';$('help').textContent=s.help||'';$('nextTalk').textContent=`我最近最想改善／理解：${s.focus||'尚未填寫'}　我還想弄清楚：${s.wonder||'尚未填寫'}　目前想到的支持：${s.support||'尚未填寫'}`;}
+if(e){$('rhythm').textContent=[e.tendency,e.strength,e.watch].filter(Boolean).join(' ');}
+const tips=[];if(s)tips.push({t:'先看情境',x:'與其問「我是不是太敏感」，更有用的是看哪些活動與環境最容易讓自己耗能。'});if(e){if((e.score?.recover||0)<0)tips.push({t:'把恢復排進行程',x:'如果休息總是被往後推，恢復就容易變成撐不住之後才做的事。'});else tips.push({t:'保留恢復空間',x:'你已經會把恢復納入生活安排，值得繼續保留這個習慣。'});if((e.score?.help||0)<0)tips.push({t:'求助也是調節',x:'困擾持續影響功能時，找人一起看並不是失敗，而是增加可用資源。'});else tips.push({t:'知道何時找支持',x:'適時把線索帶去討論，可以讓調整更具體。'});}
+while(tips.length<3)tips.push({t:'先觀察，再調整',x:'先記下什麼時候比較順、什麼時候特別耗能，再決定下一步。'});
+$('principles').innerHTML=tips.slice(0,3).map(x=>`<div class="principle"><b>${x.t}</b><span>${x.x}</span></div>`).join('');
+})();
+</script><script src="/aml-site.js"></script>
+<footer class="aml-lab-mini-footer"><div><strong>AML Interactive Lab · 自我覺察館</strong><span>先看見自己的運作方式，再找到適合自己的調節方法。</span></div><nav><a href="/tools/self-awareness/">回自我覺察館</a><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></nav></footer>
+</body></html>
