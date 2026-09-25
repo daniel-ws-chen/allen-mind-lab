@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-24T07:25:45.585Z",
+  "generatedAt": "2026-09-25T13:43:04.968Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 48,
+    "total": 49,
     "ot": 22,
-    "mind": 13,
+    "mind": 14,
     "pbs": 13,
     "education": 8,
     "management": 24,
-    "ai": 11,
+    "ai": 12,
     "notes": 6
   },
   "featuredReading": [
@@ -78,6 +78,48 @@
     }
   },
   "articles": [
+    {
+      "slug": "enter-the-play",
+      "title": "入戲",
+      "summary": "人生若完全不曾入戲，似乎枉費此程；真正困難的，也許不是沒有情緒，而是既能走進人生，也能在必要時稍微站遠一點，看見自己正在戲中。",
+      "date": "2026-09-25",
+      "domains": [
+        "mind",
+        "ai"
+      ],
+      "primaryDomain": "mind",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "AML Notes",
+      "cardMeta": "2026.09.25 · Mind & Well-being × AI × Practice",
+      "keywords": [
+        "入戲",
+        "人生如戲",
+        "情緒",
+        "溝通",
+        "自我覺察",
+        "AI協作",
+        "Allen Mind Lab"
+      ],
+      "articlePath": "/articles/enter-the-play.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/enter-the-play",
+      "hero": "/images/articles/enter-the-play-hero.webp",
+      "ogImage": "/images/articles/enter-the-play-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇小品 ← 如果人生也有一個首頁",
+          "href": "/articles/if-life-had-a-homepage.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": true
+    },
     {
       "slug": "management-no-single-right-answer",
       "title": "當管理沒有唯一正解：風格可以改變，核心不能漂移",
@@ -339,6 +381,11 @@
           "kind": "previous",
           "label": "上一篇 ← 你的 schedule，有沒有一格寫著「放空」？",
           "href": "/articles/schedule-empty-space.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 入戲 →",
+          "href": "/articles/enter-the-play.html"
         }
       ]
     },
