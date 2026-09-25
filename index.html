@@ -1141,6 +1141,79 @@
 }
 /* ===== /AML Fleet Map Home ===== */
 </style>
+
+<style>
+/* ===== AML 3.3 · 曦兒隱藏導航 ===== */
+.aml-xier-hotspot{
+  position:absolute;left:36.2%;top:51%;width:23%;height:46%;z-index:7;
+  border:0;background:transparent;border-radius:44% 44% 24% 24%;
+  cursor:pointer;outline-offset:5px;
+}
+.aml-xier-hotspot::before{
+  content:"";position:absolute;left:24%;top:3%;width:42%;aspect-ratio:1;border-radius:50%;
+  pointer-events:none;
+  background:radial-gradient(circle,rgba(255,248,212,.34) 0%,rgba(255,231,157,.17) 38%,rgba(255,214,102,0) 72%);
+  box-shadow:0 0 26px rgba(255,226,136,.18);
+  animation:amlXierGlow 4.4s ease-in-out infinite;
+}
+.aml-xier-hotspot::after{
+  content:"需要一點方向嗎？曦兒在這裡。";position:absolute;left:57%;top:5%;
+  transform:translate(-10px,-100%);width:max-content;max-width:240px;padding:8px 11px;border-radius:12px;
+  background:rgba(18,39,46,.90);color:#fff;font-size:.78rem;font-weight:700;line-height:1.35;
+  box-shadow:0 10px 28px rgba(14,37,42,.2);opacity:0;pointer-events:none;
+  transition:opacity .2s ease,transform .2s ease;
+}
+.aml-xier-hotspot:hover::after,.aml-xier-hotspot:focus-visible::after{opacity:1;transform:translate(0,-100%)}
+.aml-xier-hotspot:hover::before,.aml-xier-hotspot:focus-visible::before{
+  background:radial-gradient(circle,rgba(255,250,220,.48) 0%,rgba(255,226,128,.25) 42%,rgba(255,214,102,0) 74%);
+}
+@keyframes amlXierGlow{
+  0%,100%{transform:scale(.92);opacity:.42;box-shadow:0 0 18px rgba(255,226,136,.12)}
+  50%{transform:scale(1.10);opacity:.82;box-shadow:0 0 38px rgba(255,226,136,.3)}
+}
+@media (prefers-reduced-motion:reduce){.aml-xier-hotspot::before{animation:none;opacity:.62}}
+.aml-xier-dialog[hidden]{display:none}
+.aml-xier-dialog{
+  position:fixed;inset:0;z-index:9999;display:flex;align-items:flex-end;justify-content:flex-end;
+  padding:22px;background:rgba(10,28,33,.18);backdrop-filter:blur(3px);
+}
+.aml-xier-panel{
+  width:min(420px,calc(100vw - 28px));max-height:min(720px,calc(100vh - 44px));overflow:auto;
+  background:#fffdf8;border:1px solid rgba(184,143,65,.24);border-radius:24px;
+  box-shadow:0 26px 80px rgba(19,45,49,.26);padding:20px;
+}
+.aml-xier-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:10px}
+.aml-xier-kicker{font-size:.7rem;letter-spacing:.14em;font-weight:900;color:#a67520;margin-bottom:3px}
+.aml-xier-head h2{margin:0;color:#17313a;font-size:1.25rem}
+.aml-xier-close{width:38px;height:38px;border-radius:50%;border:1px solid #e4ddd0;background:#fff;color:#53625f;font-size:1.25rem;cursor:pointer}
+.aml-xier-intro{margin:0 0 14px;color:#5f706d;font-size:.92rem;line-height:1.65}
+.aml-xier-chips{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.aml-xier-chip{border:1px solid #dce8e4;background:#f8fbfa;color:#24443f;border-radius:14px;padding:10px 11px;text-align:left;font:inherit;font-size:.83rem;font-weight:800;cursor:pointer}
+.aml-xier-chip:hover,.aml-xier-chip:focus-visible{border-color:#caa55a;background:#fffaf0}
+.aml-xier-label{display:block;font-size:.8rem;font-weight:900;color:#536965;margin:4px 0 6px}
+.aml-xier-input{width:100%;min-height:86px;resize:vertical;border:1px solid #d8e3df;border-radius:14px;padding:11px 12px;font:inherit;color:#17313a;background:#fff;outline:none}
+.aml-xier-input:focus{border-color:#c79b43;box-shadow:0 0 0 3px rgba(199,155,67,.10)}
+.aml-xier-submit{width:100%;margin-top:9px;border:0;border-radius:999px;padding:11px 16px;background:linear-gradient(135deg,#b98b36,#d4aa55);color:white;font:inherit;font-weight:900;cursor:pointer}
+.aml-xier-results{display:grid;gap:9px;margin-top:15px}
+.aml-xier-result-intro{margin:0;color:#536965;font-size:.88rem;line-height:1.55}
+.aml-xier-card{display:block;text-decoration:none;border:1px solid #dfe8e5;background:#fff;border-radius:15px;padding:12px 13px;transition:.18s ease}
+.aml-xier-card:hover,.aml-xier-card:focus-visible{transform:translateY(-1px);border-color:#c8a45c;box-shadow:0 8px 22px rgba(32,67,65,.08)}
+.aml-xier-card small{display:block;color:#a67520;font-weight:900;margin-bottom:2px}
+.aml-xier-card strong{display:block;color:#17313a;margin-bottom:2px}
+.aml-xier-card span{display:block;color:#687976;font-size:.82rem;line-height:1.48}
+.aml-xier-foot{margin:14px 2px 0;color:#8a9693;font-size:.72rem;line-height:1.5}
+.aml-xier-empty{border:1px dashed #d7dfdc;border-radius:14px;padding:12px;color:#657673;background:#fafcfb;font-size:.84rem}
+@media(max-width:760px){
+  .aml-xier-hotspot{display:block!important;left:34.5%;top:48.5%;width:27%;height:49%}
+  .aml-xier-hotspot::after{display:none}
+  .aml-xier-hotspot::before{left:24%;top:8%;width:46%}
+  .aml-xier-dialog{padding:0;align-items:flex-end;background:rgba(10,28,33,.28)}
+  .aml-xier-panel{width:100%;max-height:82vh;border-radius:24px 24px 0 0;border-bottom:0;padding:19px 17px 24px}
+  .aml-xier-chips{grid-template-columns:1fr}
+}
+@media(max-width:430px){.aml-xier-hotspot{left:33%;top:47%;width:30%;height:50%}}
+/* ===== /AML 3.3 · 曦兒隱藏導航 ===== */
+</style>
 </head>
 <body>
 <a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
@@ -1158,7 +1231,7 @@
     <a class="aml-map-hotspot aml-map-hotspot--read" href="/library.html" aria-label="我想從閱讀文章開始，前往完整文章館藏"><span class="aml-sr-only">閱讀文章</span></a>
     <a class="aml-map-hotspot aml-map-hotspot--learn" href="/reading-paths.html" aria-label="我想從特定主題開始，前往主題學習與閱讀路徑"><span class="aml-sr-only">主題學習</span></a>
     <a class="aml-map-hotspot aml-map-hotspot--play" href="/tools.html" aria-label="我想從互動遊戲開始，前往 Interactive Lab"><span class="aml-sr-only">互動遊戲</span></a>
-    <a class="aml-map-hotspot aml-map-hotspot--about" href="/about.html" aria-label="我想進一步了解 AML，前往 About"><span class="aml-sr-only">了解 AML</span></a>
+    <a class="aml-map-hotspot aml-map-hotspot--about" href="/about.html" aria-label="我想進一步了解 AML，前往 About"><span class="aml-sr-only">了解 AML</span></a><button class="aml-xier-hotspot" id="amlXierOpen" type="button" aria-label="需要一點方向嗎？開啟曦兒 AML 導航" aria-haspopup="dialog"><span class="aml-sr-only">開啟曦兒 AML 導航</span></button>
   </div>
   <div class="aml-route-cards" aria-label="手機版 AML 分館入口">
     <a href="/library.html"><div><strong>📖 我想從閱讀文章開始</strong><span>前往完整文章館藏</span></div><b>→</b></a>
@@ -1168,6 +1241,27 @@
   </div>
   <p class="aml-fleet-note">Building A Meaningful Life.｜不同的起點，都可以從這裡出發。</p>
 </section>
+<div class="aml-xier-dialog" id="amlXierDialog" role="dialog" aria-modal="true" aria-labelledby="amlXierTitle" hidden>
+  <section class="aml-xier-panel" tabindex="-1">
+    <div class="aml-xier-head">
+      <div><div class="aml-xier-kicker">AML HIDDEN GUIDE · 曦兒</div><h2 id="amlXierTitle">曦兒｜AML 導航</h2></div>
+      <button class="aml-xier-close" id="amlXierClose" type="button" aria-label="關閉曦兒導航">×</button>
+    </div>
+    <p class="aml-xier-intro">嗨，我是曦兒。可以告訴我最近遇到什麼困擾，或想處理什麼問題。我會從 AML 既有內容中，幫你找幾個適合先開始的入口。</p>
+    <div class="aml-xier-chips" aria-label="快速選擇">
+      <button class="aml-xier-chip" type="button" data-xier-query="工作 管理 團隊 公平 帶人">工作／管理有點卡住</button>
+      <button class="aml-xier-chip" type="button" data-xier-query="情緒 行為 PBS 家人 支持">情緒或行為讓我困擾</button>
+      <button class="aml-xier-chip" type="button" data-xier-query="壓力 累 了解自己 感覺 能量">最近想多了解自己</button>
+      <button class="aml-xier-chip" type="button" data-xier-query="AI 人工智慧 查證 判斷 工作">不知道哪些事適合交給 AI</button>
+    </div>
+    <label class="aml-xier-label" for="amlXierInput">也可以直接用自己的話說說看</label>
+    <textarea class="aml-xier-input" id="amlXierInput" maxlength="320" placeholder="例如：最近工作後腦袋一直停不下來，很難真正休息……"></textarea>
+    <button class="aml-xier-submit" id="amlXierSubmit" type="button">幫我找方向 →</button>
+    <div class="aml-xier-results" id="amlXierResults" aria-live="polite"></div>
+    <p class="aml-xier-foot">V1 導航只協助連結 AML 既有文章、工具與學習入口，不進行診斷或專業判定。請避免輸入可辨識個人的敏感資料；若有立即安全或醫療風險，請優先尋求當地緊急或專業協助。</p>
+  </section>
+</div>
+
 </main>
 <footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>Interactive Lab</h4><a href="/tools.html">互動探索館</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
 <script>
@@ -1407,6 +1501,56 @@
 })();
 </script>
 <script defer="" src="aml-site.js"></script>
+
+<script>
+/* AML 3.3 · 曦兒隱藏導航 V1：僅導向 AML 既有內容，不呼叫外部 AI。 */
+(()=>{
+  const openBtn=document.getElementById('amlXierOpen');
+  const dialog=document.getElementById('amlXierDialog');
+  const panel=dialog?.querySelector('.aml-xier-panel');
+  const closeBtn=document.getElementById('amlXierClose');
+  const input=document.getElementById('amlXierInput');
+  const submit=document.getElementById('amlXierSubmit');
+  const results=document.getElementById('amlXierResults');
+  if(!openBtn||!dialog||!input||!submit||!results)return;
+  const groups={
+    management:{words:['管理','主管','團隊','同事','公平','帶人','領導','工作分配','衝突','績效','決策','年資','授權'],
+      intro:'你提到的內容比較接近「管理判斷、團隊與決策」。可以先從這幾個入口開始：',
+      items:[['先做一個短探索','管理決策實驗室','用情境看看自己通常如何在結構、授權、關係與參與之間做選擇。','/tools/management-decision-lab/'],['再往下一層','管理學館','把管理判斷、閱讀與進階公平反思串成一條路徑。','/tools/management/'],['先讀一篇文章','當管理沒有唯一正解','從情境管理重新思考：風格可以改變，但判斷核心不能漂移。','/articles/management-no-single-right-answer.html']]},
+    pbs:{words:['情緒','行為','打人','攻擊','自傷','破壞','拒絕','PBS','ABC','功能','孩子','家人','支持','照顧','個案','固著'],
+      intro:'你提到的內容比較接近「行為理解、情緒與支持」。AML 會建議先理解情境，再決定怎麼支持：',
+      items:[['先進入主題','PBS 行為理解館','從暖身、閱讀、進階案例到系統自學，先建立理解行為的架構。','/tools/pbs/'],['做一個進階情境','同一個行為，不一定是同一個功能','練習把 ABC、背景因素與環境變化放在一起，保留可檢驗的功能假設。','/tools/pbs-function-challenge/'],['想系統學習','PBS 自學路徑','6 堂短課＋互動＋總複習，把零散概念逐步串起來。','/pbs-self-study.html']]},
+    self:{words:['壓力','累','疲累','休息','睡','焦慮','緊張','自己','感覺','聲音','敏感','能量','恢復','ADHD','專心','分心','情緒低落'],
+      intro:'你提到的內容比較接近「自我覺察、壓力與日常調節」。我先不替你下結論，可以從這些入口看看：',
+      items:[['先做一個短探索','我的壓力與能量節奏','看看自己平常如何察覺負荷、安排恢復、調整節奏與尋求支持。','/tools/energy-rhythm/'],['再往下一層','自我覺察館','把感覺處理、壓力、調節與延伸支持放在同一條探索路徑。','/tools/self-awareness/'],['先讀一篇文章','壓力不是只能撐過去','從照顧者與日常生活角度理解壓力，找出可使用的因應方式。','/articles/caregiver-stress-coping-skills.html']]},
+    ai:{words:['AI','人工智慧','GPT','ChatGPT','查證','生成式','模型','交給AI','自動化','提示詞','幻覺','引用','資料來源'],
+      intro:'你提到的內容比較接近「AI 共作、查證與判斷邊界」。可以先從這幾個入口開始：',
+      items:[['先做一個短探索','AI 共作初階','看看哪些工作適合自己做、哪些可以讓 AI 參與，以及何時需要確認。','/tools/ai-cocreation-lab/'],['挑戰判斷邊界','AI 說得很有道理，你會採用嗎？','練習查證、辨認推論邊界，以及把價值與責任拿回人手上。','/tools/ai-judgment-challenge/'],['看完整路徑','AI 共作館','從分工、查證到共作原則，建立比較穩定的人機協作方式。','/tools/ai/']]}
+  };
+  const fallback={intro:'我還不能只靠這幾句話判斷最適合的主題。可以先從這三個入口探索，不必急著替自己分類：',
+    items:[['想找一篇內容','完整文章館藏','依主題看看目前 AML 已整理的文章。','/library.html'],['想有人帶一條路','閱讀路徑','從一個主題開始，沿著整理好的路徑往下看。','/reading-paths.html'],['想先玩再理解','Interactive Lab','從互動情境開始，看見問題後再回到文章與學習。','/tools.html']]};
+  function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+  function choose(q){
+    const text=q.trim().toLowerCase();let best=null,bestScore=0;
+    Object.values(groups).forEach(g=>{let score=0;g.words.forEach(w=>{if(text.includes(w.toLowerCase()))score+=w.length>2?2:1});if(score>bestScore){bestScore=score;best=g}});
+    return bestScore?best:fallback;
+  }
+  function render(q){
+    const g=choose(q);
+    results.innerHTML=`<p class="aml-xier-result-intro">我先不替你下結論。${esc(g.intro)}</p>`+
+      g.items.map(x=>`<a class="aml-xier-card" href="${x[3]}"><small>${esc(x[0])}</small><strong>${esc(x[1])}</strong><span>${esc(x[2])}</span></a>`).join('');
+    results.scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  function open(){dialog.hidden=false;document.body.style.overflow='hidden';requestAnimationFrame(()=>panel?.focus())}
+  function close(){dialog.hidden=true;document.body.style.overflow='';openBtn.focus()}
+  openBtn.addEventListener('click',open);closeBtn?.addEventListener('click',close);
+  dialog.addEventListener('click',e=>{if(e.target===dialog)close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!dialog.hidden)close()});
+  dialog.querySelectorAll('[data-xier-query]').forEach(btn=>btn.addEventListener('click',()=>{input.value=btn.dataset.xierQuery||'';render(input.value)}));
+  submit.addEventListener('click',()=>{const q=input.value.trim();if(!q){results.innerHTML='<div class="aml-xier-empty">可以先選上面的快速入口，或用一兩句話描述目前想處理的事情。</div>';input.focus();return}render(q)});
+  input.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter')submit.click()});
+})();
+</script>
 </body>
 </html>
 
