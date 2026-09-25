@@ -1249,10 +1249,10 @@
     </div>
     <p class="aml-xier-intro">嗨，我是曦兒。可以告訴我最近遇到什麼困擾，或想處理什麼問題。我會從 AML 既有內容中，幫你找幾個適合先開始的入口。</p>
     <div class="aml-xier-chips" aria-label="快速選擇">
-      <button class="aml-xier-chip" type="button" data-xier-query="工作 管理 團隊 公平 帶人">工作／管理有點卡住</button>
-      <button class="aml-xier-chip" type="button" data-xier-query="情緒 行為 PBS 家人 支持">情緒或行為讓我困擾</button>
-      <button class="aml-xier-chip" type="button" data-xier-query="壓力 累 了解自己 感覺 能量">最近想多了解自己</button>
-      <button class="aml-xier-chip" type="button" data-xier-query="AI 人工智慧 查證 判斷 工作">不知道哪些事適合交給 AI</button>
+      <button class="aml-xier-chip" type="button" data-xier-query="管理 團隊 帶人 方案 決策 公平">我開始帶團隊、做方案，有點卡住</button>
+      <button class="aml-xier-chip" type="button" data-xier-query="情緒 行為 PBS 陪伴 支持 家人 個案">我正在陪伴一個有情緒或行為困難的人</button>
+      <button class="aml-xier-chip" type="button" data-xier-query="壓力 累 了解自己 感覺 能量 調節 ADHD">我想更了解自己的狀態</button>
+      <button class="aml-xier-chip" type="button" data-xier-query="AI 人工智慧 共作 查證 判斷 工作">我想知道怎麼和 AI 一起工作</button>
     </div>
     <label class="aml-xier-label" for="amlXierInput">也可以直接用自己的話說說看</label>
     <textarea class="aml-xier-input" id="amlXierInput" maxlength="320" placeholder="例如：最近工作後腦袋一直停不下來，很難真正休息……"></textarea>
@@ -1514,21 +1514,21 @@
   const results=document.getElementById('amlXierResults');
   if(!openBtn||!dialog||!input||!submit||!results)return;
   const groups={
-    management:{words:['管理','主管','團隊','同事','公平','帶人','領導','工作分配','衝突','績效','決策','年資','授權'],
-      intro:'你提到的內容比較接近「管理判斷、團隊與決策」。可以先從這幾個入口開始：',
-      items:[['先做一個短探索','管理決策實驗室','用情境看看自己通常如何在結構、授權、關係與參與之間做選擇。','/tools/management-decision-lab/'],['再往下一層','管理學館','把管理判斷、閱讀與進階公平反思串成一條路徑。','/tools/management/'],['先讀一篇文章','當管理沒有唯一正解','從情境管理重新思考：風格可以改變，但判斷核心不能漂移。','/articles/management-no-single-right-answer.html']]},
-    pbs:{words:['情緒','行為','打人','攻擊','自傷','破壞','拒絕','PBS','ABC','功能','孩子','家人','支持','照顧','個案','固著'],
-      intro:'你提到的內容比較接近「行為理解、情緒與支持」。AML 會建議先理解情境，再決定怎麼支持：',
-      items:[['先進入主題','PBS 行為理解館','從暖身、閱讀、進階案例到系統自學，先建立理解行為的架構。','/tools/pbs/'],['做一個進階情境','同一個行為，不一定是同一個功能','練習把 ABC、背景因素與環境變化放在一起，保留可檢驗的功能假設。','/tools/pbs-function-challenge/'],['想系統學習','PBS 自學路徑','6 堂短課＋互動＋總複習，把零散概念逐步串起來。','/pbs-self-study.html']]},
-    self:{words:['壓力','累','疲累','休息','睡','焦慮','緊張','自己','感覺','聲音','敏感','能量','恢復','ADHD','專心','分心','情緒低落'],
-      intro:'你提到的內容比較接近「自我覺察、壓力與日常調節」。我先不替你下結論，可以從這些入口看看：',
-      items:[['先做一個短探索','我的壓力與能量節奏','看看自己平常如何察覺負荷、安排恢復、調整節奏與尋求支持。','/tools/energy-rhythm/'],['再往下一層','自我覺察館','把感覺處理、壓力、調節與延伸支持放在同一條探索路徑。','/tools/self-awareness/'],['先讀一篇文章','壓力不是只能撐過去','從照顧者與日常生活角度理解壓力，找出可使用的因應方式。','/articles/caregiver-stress-coping-skills.html']]},
-    ai:{words:['AI','人工智慧','GPT','ChatGPT','查證','生成式','模型','交給AI','自動化','提示詞','幻覺','引用','資料來源'],
-      intro:'你提到的內容比較接近「AI 共作、查證與判斷邊界」。可以先從這幾個入口開始：',
-      items:[['先做一個短探索','AI 共作初階','看看哪些工作適合自己做、哪些可以讓 AI 參與，以及何時需要確認。','/tools/ai-cocreation-lab/'],['挑戰判斷邊界','AI 說得很有道理，你會採用嗎？','練習查證、辨認推論邊界，以及把價值與責任拿回人手上。','/tools/ai-judgment-challenge/'],['看完整路徑','AI 共作館','從分工、查證到共作原則，建立比較穩定的人機協作方式。','/tools/ai/']]}
+    management:{words:['管理','主管','團隊','同事','公平','帶人','領導','工作分配','衝突','績效','決策','年資','授權','方案','專案'],
+      intro:'你提到的內容比較接近「帶團隊、做方案與管理判斷」。不用先找答案，可以先從一條較短的路徑開始：',
+      items:[['先找一條路','管理實務學習','從目標、策略與評估，逐步走到領導、服務設計與跨系統合作。','/management-learning.html'],['再做一次判斷','管理決策實驗室','用情境看看自己如何在結構、授權、關係與參與之間做選擇。','/tools/management-decision-lab/'],['先讀一篇文章','當管理沒有唯一正解','從情境管理重新思考：風格可以改變，但判斷核心不能漂移。','/articles/management-no-single-right-answer.html']]},
+    pbs:{words:['情緒','行為','打人','攻擊','自傷','破壞','拒絕','PBS','ABC','功能','孩子','家人','支持','照顧','個案','固著','陪伴'],
+      intro:'你提到的內容比較接近「陪伴情緒或行為困難的人」。先理解情境，再決定怎麼支持，通常會比急著處理行為更有幫助：',
+      items:[['先找一條路','PBS 實務學習','從情緒週期、ABC、功能理解到支持策略，逐步建立共同語言。','/pbs-learning.html'],['再做一次判斷','PBS 行為理解館','從情境與案例練習，把行為放回前因、功能與環境中理解。','/tools/pbs/'],['想系統學習','PBS 自學路徑','6 堂短課＋互動＋總複習，把零散概念逐步串起來。','/pbs-self-study.html']]},
+    self:{words:['壓力','累','疲累','休息','睡','焦慮','緊張','自己','感覺','聲音','敏感','能量','恢復','ADHD','專心','分心','情緒低落','調節','覺察'],
+      intro:'你提到的內容比較接近「想更了解自己的狀態」。我先不替你下結論，可以從覺察與日常節奏開始：',
+      items:[['先找一個入口','自我覺察館','把感覺處理、壓力、調節與延伸支持放在同一條探索路徑。','/tools/self-awareness/'],['做一個短探索','我的壓力與能量節奏','看看自己平常如何察覺負荷、安排恢復、調整節奏與尋求支持。','/tools/energy-rhythm/'],['先讀一篇文章','壓力不是只能撐過去','從日常生活角度理解壓力，找出可以實際使用的因應方式。','/articles/caregiver-stress-coping-skills.html']]},
+    ai:{words:['AI','人工智慧','GPT','ChatGPT','查證','生成式','模型','交給AI','自動化','提示詞','幻覺','引用','資料來源','共作','協作'],
+      intro:'你提到的內容比較接近「怎麼和 AI 一起工作」。可以先從分工、查證與判斷邊界開始：',
+      items:[['先看完整路徑','AI 共作館','從分工、查證到共作原則，建立比較穩定的人機協作方式。','/tools/ai/'],['再做一次判斷','AI 共作初階','看看哪些工作適合自己做、哪些可以讓 AI 參與，以及何時需要確認。','/tools/ai-cocreation-lab/'],['挑戰判斷邊界','AI 說得很有道理，你會採用嗎？','練習查證、辨認推論邊界，以及把價值與責任拿回人手上。','/tools/ai-judgment-challenge/']]}
   };
-  const fallback={intro:'我目前還找不到足夠貼近的 AML 內容，不想硬替你分類。你可以改從聯絡資訊或外部資源開始：',
-    items:[['想進一步詢問','聯絡 AML','如果目前的問題需要更具體的回應，可以從聯絡資訊找到適合的聯繫方式。','/contact.html'],['找其他可靠入口','精選資源','查看 AML 整理的外部專業資源與延伸網站。','/resources.html']]};
+  const fallback={intro:'我目前還找不到足夠貼近的 AML 內容，不想硬替你分類。先從需求導航或精選館藏慢慢找，通常會比勉強選一個分類更合適：',
+    items:[['先從問題開始','閱讀路徑總覽','不用先判斷屬於哪個領域，從你現在正在面對的情況開始找入口。','/reading-paths.html'],['先隨意逛逛','主題館藏總覽','如果還沒有明確問題，可以先從 AML 的代表文章與主題入口開始。','/articles.html'],['需要外部支持','精選資源','查看 AML 整理的外部專業資源與延伸網站。','/resources.html']]};
   function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
   function choose(q){
     const text=q.trim().toLowerCase();let best=null,bestScore=0;
