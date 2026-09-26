@@ -89,30 +89,34 @@
 @media(max-width:820px){.ai-tools-intro{grid-template-columns:1fr;padding:24px}.ai-tools-intro__note{max-width:none}.tool-subhead{align-items:flex-start;flex-direction:column;gap:5px}.tool-subhead:after{display:none}}
 
 
-/* AML Interactive Lab · local progress */
-.labx-progress{padding:0 0 28px;background:#07141f;color:#eefaff}
-.labx-progress__panel{border:1px solid #28485a;border-radius:24px;padding:22px;background:linear-gradient(145deg,rgba(10,29,42,.96),rgba(8,22,33,.98));box-shadow:0 16px 42px rgba(0,0,0,.14)}
+/* AML Interactive Lab · cockpit progress HUD */
+.labx-progress{padding:28px 0 36px;background:linear-gradient(180deg,#050b13,#07141f);color:#eefaff;border-top:1px solid rgba(96,207,255,.12)}
+.labx-progress__panel{position:relative;overflow:hidden;border:1px solid #28485a;border-radius:24px;padding:24px;background:linear-gradient(145deg,rgba(7,23,35,.98),rgba(8,18,30,.99));box-shadow:0 18px 48px rgba(0,0,0,.2),inset 0 0 40px rgba(56,182,255,.025)}
+.labx-progress__panel:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(89,151,201,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(89,151,201,.045) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.labx-progress__head,.labx-progress__bar,.labx-progress__grid,.labx-progress__privacy{position:relative;z-index:1}
 .labx-progress__head{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:end}
-.labx-progress__head h2{margin:4px 0 5px;font-size:clamp(1.45rem,3vw,2rem);color:#fff}
-.labx-progress__head p{margin:0;color:#a9c0cc;max-width:760px}
-.labx-progress__count{min-width:94px;text-align:right}
-.labx-progress__count strong{display:block;font-size:2rem;line-height:1;color:#70e7f7}
-.labx-progress__count span{font-size:.76rem;color:#8daab8}
-.labx-progress__bar{height:8px;margin:18px 0 20px;background:#132b39;border-radius:999px;overflow:hidden}
-.labx-progress__bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#5fdcf0,#9875ec);border-radius:999px;transition:width .35s ease}
+.labx-progress__head h2{margin:4px 0 5px;font-size:clamp(1.25rem,2.4vw,1.7rem);color:#fff;letter-spacing:-.02em}
+.labx-progress__head p{margin:0;color:#8fa9b8;max-width:760px;font-size:.9rem}
+.labx-progress__count{min-width:110px;text-align:right}
+.labx-progress__count strong{display:block;font:900 2rem/1 Arial,sans-serif;color:#70e7f7;text-shadow:0 0 18px rgba(112,231,247,.25)}
+.labx-progress__count span{font-size:.68rem;color:#7693a2;letter-spacing:.08em;text-transform:uppercase}
+.labx-progress__bar{height:11px;margin:18px 0 20px;background:#102733;border:1px solid rgba(106,198,231,.12);border-radius:999px;overflow:hidden;box-shadow:inset 0 0 12px rgba(0,0,0,.38)}
+.labx-progress__bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#5fdcf0 0%,#65f0ca 45%,#9875ec 100%);border-radius:999px;transition:width .35s ease;box-shadow:0 0 18px rgba(95,220,240,.28)}
 .labx-progress__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
-.labx-progress__card{border:1px solid #244656;border-radius:17px;padding:15px;background:#0b1f2c;text-decoration:none;color:#edfaff;min-width:0}
-.labx-progress__card:hover{border-color:#4a7a90;transform:translateY(-1px)}
-.labx-progress__card small{display:block;font-size:.68rem;letter-spacing:.12em;color:#7fa5b8;font-weight:900}
-.labx-progress__card strong{display:block;margin:5px 0 10px;font-size:1rem}
+.labx-progress__card{--hud:#5fdcf0;border:1px solid color-mix(in srgb,var(--hud) 30%,#244656);border-radius:17px;padding:15px;background:linear-gradient(180deg,rgba(12,31,44,.96),rgba(8,24,35,.98));text-decoration:none;color:#edfaff;min-width:0;transition:.18s ease}
+.labx-progress__card:nth-child(2){--hud:#68f4bd}.labx-progress__card:nth-child(3){--hud:#bb82ff}.labx-progress__card:nth-child(4){--hud:#ffd36c}
+.labx-progress__card:hover{border-color:color-mix(in srgb,var(--hud) 62%,transparent);transform:translateY(-2px);box-shadow:0 10px 26px color-mix(in srgb,var(--hud) 9%,transparent)}
+.labx-progress__card small{display:block;font-size:.66rem;letter-spacing:.14em;color:color-mix(in srgb,var(--hud) 76%,#8fa8b4);font-weight:900}
+.labx-progress__card strong{display:block;margin:5px 0 10px;font-size:.96rem}
+.labx-progress__meter{height:6px;margin:2px 0 12px;background:#132a36;border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.035)}
+.labx-progress__meter i{display:block;width:0;height:100%;background:var(--hud);border-radius:999px;box-shadow:0 0 10px color-mix(in srgb,var(--hud) 55%,transparent);transition:width .3s ease}
 .labx-progress__items{display:grid;gap:6px}
-.labx-progress__item{display:flex;align-items:flex-start;gap:7px;color:#8fa8b4;font-size:.8rem}
-.labx-progress__item i{width:8px;height:8px;border-radius:50%;margin-top:.43em;flex:0 0 8px;background:#34505d;box-shadow:0 0 0 3px rgba(52,80,93,.12)}
-.labx-progress__item.done{color:#dffbf5}
-.labx-progress__item.done i{background:#5ee0bf;box-shadow:0 0 0 3px rgba(94,224,191,.12)}
-.labx-progress__privacy{margin-top:14px;color:#708d9b;font-size:.75rem}
+.labx-progress__item{display:flex;align-items:flex-start;gap:7px;color:#7f99a6;font-size:.77rem}
+.labx-progress__item i{width:7px;height:7px;border-radius:50%;margin-top:.45em;flex:0 0 7px;background:#34505d;box-shadow:0 0 0 3px rgba(52,80,93,.1)}
+.labx-progress__item.done{color:#dffbf5}.labx-progress__item.done i{background:var(--hud);box-shadow:0 0 0 3px color-mix(in srgb,var(--hud) 14%,transparent),0 0 10px color-mix(in srgb,var(--hud) 35%,transparent)}
+.labx-progress__privacy{margin-top:14px;color:#617f8f;font-size:.72rem}
 @media(max-width:900px){.labx-progress__grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.labx-progress__head{grid-template-columns:1fr}.labx-progress__count{text-align:left}.labx-progress__grid{grid-template-columns:1fr}.labx-progress__panel{padding:18px}}
+@media(max-width:600px){.labx-progress__head{grid-template-columns:1fr}.labx-progress__count{text-align:left}.labx-progress__grid{grid-template-columns:1fr}.labx-progress__panel{padding:18px}.labx-progress{padding-top:18px}}
 
 </style>
 <style>
@@ -284,45 +288,33 @@
   </div>
 </section>
 
-<section class="labx-guide" aria-labelledby="labx-guide-title">
-  <div class="labx-inner">
-    <div class="labx-section-head labx-section-head--compact"><div><div class="labx-kicker">QUICK START · 快速入口</div><h2 id="labx-guide-title">還不知道去哪一館？</h2></div><p>不用先理解整個網站，從現在最想探索的問題開始就好。</p></div>
-    <div class="labx-guide-grid">
-      <a href="/tools/management-decision-lab/"><span>PLAY</span><strong>想先玩玩看</strong><small>6 個管理情境，看見自己怎麼做決定。</small><b>進入管理風格探索館 →</b></a>
-      <a href="/tools/pbs/"><span>PRACTICE</span><strong>想從行為理解開始</strong><small>先看行為線索，再走向功能、支持策略與 PBS 自學。</small><b>進入行為功能探索館 →</b></a>
-      <a href="/tools/self-awareness/"><span>SELF</span><strong>想更了解自己</strong><small>從感覺處理、能量節奏與日常調節開始探索。</small><b>進入自我覺察探索館 →</b></a>
-      <a href="/tools/ai/"><span>AI</span><strong>想試試怎麼和 AI 共作</strong><small>從分工、查證到責任邊界，練習更成熟的人機協作。</small><b>進入 AI 共作探索館 →</b></a>
-    </div>
-  </div>
-</section>
-
 <section class="labx-progress" aria-labelledby="labx-progress-title">
   <div class="labx-inner">
     <div class="labx-progress__panel">
       <div class="labx-progress__head">
         <div>
-          <div class="labx-kicker">MY LAB JOURNEY · 可選的探索紀錄</div>
-          <h2 id="labx-progress-title">想繼續上次的探索，再看這裡。</h2>
-          <p>不需要登入；完成互動後，這台裝置會保留簡單的本機紀錄。第一次來可以直接略過，先從上方選一座館開始。</p>
+          <div class="labx-kicker">MISSION STATUS · 探索進度</div>
+          <h2 id="labx-progress-title">四座探索艙，目前戰況。</h2>
+          <p>完成互動後，進度會留在這台裝置。選一座艙室繼續推進你的探索任務。</p>
         </div>
-        <div class="labx-progress__count"><strong data-lab-progress-count>0 / 8</strong><span>已完成里程碑</span></div>
+        <div class="labx-progress__count"><strong data-lab-progress-count>0 / 8</strong><span>任務節點完成</span></div>
       </div>
       <div class="labx-progress__bar" aria-hidden="true"><i data-lab-progress-bar></i></div>
       <div class="labx-progress__grid">
         <a class="labx-progress__card" href="/tools/management/">
-          <small>LAB 01 · MANAGEMENT</small><strong>管理風格探索館</strong>
+          <small>LAB 01 · MANAGEMENT</small><strong>管理風格探索館</strong><div class="labx-progress__meter"><i data-hall-meter="management"></i></div>
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="mgmt-decision"><i></i>管理決策實驗室</span><span class="labx-progress__item" data-progress-key="mgmt-fairness"><i></i>公平進階挑戰</span></div>
         </a>
         <a class="labx-progress__card" href="/tools/pbs/">
-          <small>LAB 02 · PBS</small><strong>行為功能探索館</strong>
+          <small>LAB 02 · PBS</small><strong>行為功能探索館</strong><div class="labx-progress__meter"><i data-hall-meter="pbs"></i></div>
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="pbs-advanced"><i></i>功能假設進階</span><span class="labx-progress__item" data-progress-key="pbs-study"><i></i>PBS 自學總複習</span></div>
         </a>
         <a class="labx-progress__card" href="/tools/self-awareness/">
-          <small>LAB 03 · SELF</small><strong>自我覺察探索館</strong>
+          <small>LAB 03 · SELF</small><strong>自我覺察探索館</strong><div class="labx-progress__meter"><i data-hall-meter="self"></i></div>
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="self-sensory"><i></i>感覺使用說明書</span><span class="labx-progress__item" data-progress-key="self-energy"><i></i>壓力與能量節奏</span></div>
         </a>
         <a class="labx-progress__card" href="/tools/ai/">
-          <small>LAB 04 · HUMAN × AI</small><strong>AI 共作探索館</strong>
+          <small>LAB 04 · HUMAN × AI</small><strong>AI 共作探索館</strong><div class="labx-progress__meter"><i data-hall-meter="ai"></i></div>
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="ai-initial"><i></i>任務分工</span><span class="labx-progress__item" data-progress-key="ai-advanced"><i></i>查證與判斷</span></div>
         </a>
       </div>
@@ -443,6 +435,8 @@
     const label = document.querySelector(`[data-map-state="${hall}"]`);
     if(!node || !label) return;
     const hallDone = milestones.filter(Boolean).length;
+    const meter = document.querySelector(`[data-hall-meter="${hall}"]`);
+    if(meter) meter.style.width = `${hallDone / milestones.length * 100}%`;
     node.classList.toggle('is-started', hallDone > 0 && hallDone < milestones.length);
     node.classList.toggle('is-complete', hallDone === milestones.length);
     label.textContent = hallDone === 0 ? '尚未開始' : hallDone === milestones.length ? '已完成目前里程碑' : `探索中 · ${hallDone}/${milestones.length}`;
