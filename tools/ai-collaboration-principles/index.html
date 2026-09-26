@@ -14,6 +14,7 @@
 .rule{gap:11px}.num{width:40px;height:40px;border-radius:13px}.note{padding:14px 15px}
 }
 @media(max-width:420px){.rule{grid-template-columns:1fr}.num{width:36px;height:36px}.eyebrow{letter-spacing:.1em}}
+.next-life{margin-top:22px;border:1px solid var(--line);border-radius:22px;background:#0b1d29;padding:20px}.next-life h2{margin:0 0 6px;font-size:1.25rem}.next-life p{margin:0;color:#b9ccd5}.next-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.next-grid a{display:block;border:1px solid var(--line);border-radius:16px;background:#0d2230;padding:14px;color:#eefaff;text-decoration:none;font-weight:800}.next-grid a small{display:block;margin-top:4px;color:#a9bdc7;font-weight:400;line-height:1.55}@media(max-width:760px){.next-grid{grid-template-columns:1fr}}
 @media print{.aml-lab-shell-nav,.actions,.aml-lab-mini-footer{display:none!important}.wrap{padding:0}body{background:#fff;color:#111}.hero,.card,.rule,.summary>div,.status>div{background:#fff;color:#111;border-color:#bbb}.hero p,.rule p,.summary p{color:#333}}
 </style>
 <!-- Social sharing metadata -->
@@ -32,13 +33,13 @@
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://allenmindlab.com/tools/ai-collaboration-principles/#webpage","url":"https://allenmindlab.com/tools/ai-collaboration-principles/","name":"我的 AI 共作原則｜AML Interactive Lab","description":"整合 AI 分工與判斷挑戰結果，形成一張可帶回工作、學習與創作的人機共作原則卡。","inLanguage":"zh-Hant","isPartOf":{"@id":"https://allenmindlab.com/#website"},"mainEntity":{"@id":"https://allenmindlab.com/tools/ai-collaboration-principles/#learning-resource"}},{"@type":"WebSite","@id":"https://allenmindlab.com/#website","url":"https://allenmindlab.com/","name":"Allen Mind Lab","inLanguage":"zh-Hant"},{"@type":"LearningResource","@id":"https://allenmindlab.com/tools/ai-collaboration-principles/#learning-resource","url":"https://allenmindlab.com/tools/ai-collaboration-principles/","name":"我的 AI 共作原則｜AML Interactive Lab","description":"整合 AI 分工與判斷挑戰結果，形成一張可帶回工作、學習與創作的人機共作原則卡。","inLanguage":"zh-Hant","learningResourceType":"Reflection tool","educationalUse":"reflection","isAccessibleForFree":true}]}
 </script>
 </head><body>
-<nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/ai/">← 回 AI 共作館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
+<nav class="aml-lab-shell-nav" aria-label="Interactive Lab 頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/ai/">← 回 AI 共作館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">Interactive Lab 總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
 <main class="wrap"><section class="hero"><div class="eyebrow">AI CO-CREATION SYNTHESIS</div><h1>我的 AI 共作原則</h1><p>這不是另一個 AI 測驗，而是把「我怎麼和 AI 分工」以及「我怎麼判斷 AI 的答案」收束成一張可以帶回工作、學習與創作的原則卡。</p></section>
 <section class="status"><div><b>初階｜AI 分工傾向</b><div id="initStatus"></div></div><div><b>進階｜AI 判斷防線</b><div id="advStatus"></div></div></section>
 <section class="principles" id="rules"></section>
 <section class="summary"><div><small>我的共作傾向</small><p id="tendency">尚未有足夠資料。</p></div><div><small>目前優勢</small><p id="strength">尚未有足夠資料。</p></div><div><small>最值得提醒自己</small><p id="watch">尚未有足夠資料。</p></div></section>
 <div class="note"><strong>核心原則｜</strong>AI 可以協助整理、比較、生成與提醒，但價值判斷、關係、專業責任與最後採用決定仍由人承擔。</div>
-<div class="actions"><a class="btn alt" href="/tools/ai-cocreation-lab/">重看初階體驗</a><a class="btn alt" href="/tools/ai-judgment-challenge/">重看進階挑戰</a><button class="btn" onclick="window.print()">列印／存成 PDF</button></div>
+<div class="actions"><a class="btn alt" href="/tools/ai-cocreation-lab/">重看初階體驗</a><a class="btn alt" href="/tools/ai-judgment-challenge/">重看進階挑戰</a><button class="btn" onclick="window.print()">列印／存成 PDF</button></div><section class="next-life" aria-label="把 AI 共作原則帶回日常"><div class="eyebrow">FROM PRINCIPLES TO DAILY PRACTICE</div><h2>把原則帶回真正的工作、學習與生活。</h2><p>共作原則不是完成一張卡就結束。下一步可以依目前最常使用 AI 的場景，選一條閱讀線，把判斷帶回實際任務。</p><div class="next-grid"><a href="/articles/ai-review-quality-collaboration.html">品質與查證<small>AI 審 AI 不等於查證，怎麼把人工驗收留在流程裡。</small></a><a href="/articles/ai-era-teaching-learning.html">學習與教育<small>當答案變得容易取得，人的理解、判斷與學習責任如何重新定位。</small></a><a href="/articles/ai-occupational-balance-new-equilibrium.html">職能與生活平衡<small>AI 省下時間之後，如何避免所有生活又被同一個螢幕填滿。</small></a></div></section>
 </main>
 <script>
 (()=>{const get=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}},a=get('aml.ai.cocreate.v1'),j=get('aml.ai.judgment.v1'),$=id=>document.getElementById(id);
@@ -50,5 +51,5 @@ if(!rules.length)rules.push(['先完成體驗','完成初階或進階任一關�
 $('rules').innerHTML=rules.map((r,i)=>`<article class="rule"><div class="num">${String(i+1).padStart(2,'0')}</div><div><h2>${r[0]}</h2><p>${r[1]}</p></div></article>`).join('');
 })();
 </script><script src="/aml-site.js"></script>
-<footer class="aml-lab-mini-footer"><div><strong>AML Interactive Lab · AI 共作館</strong><span>AI 可以協助思考，但責任不能外包。</span></div><nav><a href="/tools/ai/">回 AI 共作館</a><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></nav></footer>
+<footer class="aml-lab-mini-footer"><div><strong>AML Interactive Lab · AI 共作館</strong><span>AI 可以協助思考，但責任不能外包。</span></div><nav><a href="/tools/ai/">回 AI 共作館</a><a href="/tools.html">Interactive Lab 總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></nav></footer>
 </body></html>
