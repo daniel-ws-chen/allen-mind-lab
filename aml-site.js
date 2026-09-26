@@ -553,3 +553,35 @@
     if (el.textContent.trim() === 'Interactive Lab') el.textContent = '互動實驗室';
   });
 })();
+
+/* AML Interactive Lab footer: keep the two bay entrances together site-wide. */
+(function () {
+  function syncInteractiveLabFooter() {
+    document.querySelectorAll('.aml-footer-group').forEach((group) => {
+      const heading = group.querySelector('h4');
+      if (!heading) return;
+      const title = heading.textContent.trim();
+      if (title !== '互動實驗室' && title !== 'Interactive Lab') return;
+
+      heading.textContent = '互動實驗室';
+      group.querySelectorAll('a').forEach((link) => link.remove());
+
+      const explore = document.createElement('a');
+      explore.href = '/tools.html#lab-halls';
+      explore.textContent = '互動探索艙';
+
+      const support = document.createElement('a');
+      support.href = '/tools.html#practice-tools';
+      support.textContent = '智能支援艙';
+
+      group.appendChild(explore);
+      group.appendChild(support);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', syncInteractiveLabFooter, { once: true });
+  } else {
+    syncInteractiveLabFooter();
+  }
+})();
