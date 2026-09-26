@@ -1,105 +1,128 @@
-/* AML 3.3 Interactive Lab global dual-bay navigation */
+/* AML 3.3 global navigation: dual-bay + advanced self-study dropdown */
 (function () {
-  function ensureDualBayNavStyles() {
-    if (document.getElementById('aml-lab-subnav-style')) return;
+  function ensureNavStyles() {
+    if (document.getElementById('aml-global-subnav-style')) return;
     const style = document.createElement('style');
-    style.id = 'aml-lab-subnav-style';
+    style.id = 'aml-global-subnav-style';
     style.textContent = `
+      .aml-nav-group .aml-nav-panel{max-width:calc(100vw - 28px)}
+      .aml-nav-group .aml-nav-panel::after{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
       .aml-nav-group .aml-nav-panel a{position:relative;display:block;padding-left:2.15rem}
       .aml-nav-group .aml-nav-panel a::before{content:"";position:absolute;left:1rem;top:50%;width:.46rem;height:.46rem;border-radius:50%;transform:translateY(-50%);background:#d7a84f;box-shadow:0 0 10px rgba(215,168,79,.30)}
       .aml-nav-group[data-aml-lab-nav] .aml-nav-panel{min-width:240px}
-      .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav{position:relative;display:block;padding-left:2.15rem}
-      .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav::before{content:"";position:absolute;left:1rem;top:50%;width:.52rem;height:.52rem;border-radius:50%;transform:translateY(-50%);box-shadow:0 0 0 4px rgba(100,210,255,.08)}
       .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav--explore::before{background:#68dcff;box-shadow:0 0 13px rgba(104,220,255,.48)}
       .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav--support::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
-      .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav:hover,.aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav:focus-visible{background:linear-gradient(90deg,rgba(83,201,255,.10),rgba(111,103,255,.05));outline:none}
-      @media(max-width:720px){.aml-mobile-menu .aml-lab-subnav{position:relative;padding-left:1.55rem}.aml-mobile-menu .aml-lab-subnav::before{content:"";position:absolute;left:.55rem;top:50%;width:.42rem;height:.42rem;border-radius:50%;transform:translateY(-50%);background:#68dcff}.aml-mobile-menu .aml-lab-subnav--support::before{background:#8bf2c6}}
+      .aml-nav-group[data-aml-study-nav] .aml-nav-panel{min-width:230px}
+      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--home::before{background:#d7a84f;box-shadow:0 0 13px rgba(215,168,79,.38)}
+      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--management::before{background:#7da9ff;box-shadow:0 0 13px rgba(125,169,255,.42)}
+      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--pbs::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
+      .aml-nav-group .aml-nav-panel a:hover,.aml-nav-group .aml-nav-panel a:focus-visible{background:linear-gradient(90deg,rgba(215,168,79,.08),rgba(111,103,255,.04));outline:none}
+      @media(max-width:720px){
+        .aml-mobile-menu .aml-lab-subnav,.aml-mobile-menu .aml-study-subnav{position:relative;padding-left:1.55rem}
+        .aml-mobile-menu .aml-lab-subnav::before,.aml-mobile-menu .aml-study-subnav::before{content:"";position:absolute;left:.55rem;top:50%;width:.42rem;height:.42rem;border-radius:50%;transform:translateY(-50%);background:#d7a84f}
+        .aml-mobile-menu .aml-lab-subnav--explore::before{background:#68dcff}.aml-mobile-menu .aml-lab-subnav--support::before{background:#8bf2c6}
+        .aml-mobile-menu .aml-study-subnav--management::before{background:#7da9ff}.aml-mobile-menu .aml-study-subnav--pbs::before{background:#8bf2c6}
+      }
     `;
     document.head.appendChild(style);
   }
 
-  function buildDualBayNav() {
-    ensureDualBayNavStyles();
+  function makeDetails(label, attrName, links) {
+    const details = document.createElement('details');
+    details.className = 'aml-nav-group';
+    details.dataset[attrName] = 'true';
+    const summary = document.createElement('summary');
+    summary.textContent = label;
+    const panel = document.createElement('div');
+    panel.className = 'aml-nav-panel';
+    links.forEach(item => {
+      const a = document.createElement('a');
+      a.href = item.href;
+      a.className = item.className || '';
+      a.textContent = item.label;
+      panel.appendChild(a);
+    });
+    details.append(summary, panel);
+    return details;
+  }
+
+  function buildDesktopNav() {
     document.querySelectorAll('.aml-desktop-links').forEach((links) => {
-      const existing = links.querySelector('.aml-nav-group[data-aml-lab-nav]');
-      if (existing) return;
-      const direct = Array.from(links.querySelectorAll('a.aml-nav-direct, a[href="/tools.html"]')).find((a) => {
-        const t = a.textContent.trim();
-        return t === 'Interactive Lab' || t === '互動實驗室';
-      });
-      if (!direct) return;
+      // Interactive Lab
+      if (!links.querySelector('.aml-nav-group[data-aml-lab-nav]')) {
+        const direct = Array.from(links.querySelectorAll('a.aml-nav-direct, a[href="/tools.html"]')).find((a) => {
+          const t = a.textContent.trim();
+          return t === 'Interactive Lab' || t === '互動實驗室';
+        });
+        if (direct) {
+          direct.replaceWith(makeDetails('互動實驗室', 'amlLabNav', [
+            {href:'/tools.html#lab-halls', className:'aml-lab-subnav aml-lab-subnav--explore', label:'互動探索艙'},
+            {href:'/tools.html#practice-tools', className:'aml-lab-subnav aml-lab-subnav--support', label:'智能支援艙'}
+          ]));
+        }
+      }
 
-      const details = document.createElement('details');
-      details.className = 'aml-nav-group';
-      details.dataset.amlLabNav = 'true';
-      const summary = document.createElement('summary');
-      summary.textContent = '互動實驗室';
-      const panel = document.createElement('div');
-      panel.className = 'aml-nav-panel';
-      const explore = document.createElement('a');
-      explore.href = '/tools.html#lab-halls';
-      explore.className = 'aml-lab-subnav aml-lab-subnav--explore';
-      explore.textContent = '互動探索艙';
-      const support = document.createElement('a');
-      support.href = '/tools.html#practice-tools';
-      support.className = 'aml-lab-subnav aml-lab-subnav--support';
-      support.textContent = '智能支援艙';
-      panel.append(explore, support);
-      details.append(summary, panel);
-      direct.replaceWith(details);
-
-      if (!links.querySelector('a[href="/self-study.html"]')) {
-        const selfStudy = document.createElement('a');
-        selfStudy.href = '/self-study.html';
-        selfStudy.className = 'aml-nav-direct';
-        selfStudy.textContent = '進階自學室';
-        details.before(selfStudy);
+      // Advanced Self-Study Room
+      if (!links.querySelector('.aml-nav-group[data-aml-study-nav]')) {
+        const directStudy = Array.from(links.querySelectorAll('a[href="/self-study.html"], a.aml-nav-direct')).find((a) =>
+          a.getAttribute('href') === '/self-study.html' || a.textContent.trim() === '進階自學室'
+        );
+        if (directStudy) {
+          directStudy.replaceWith(makeDetails('進階自學室', 'amlStudyNav', [
+            {href:'/self-study.html', className:'aml-study-subnav aml-study-subnav--home', label:'進階自學室總覽'},
+            {href:'/management-self-study.html', className:'aml-study-subnav aml-study-subnav--management', label:'管理學自學'},
+            {href:'/pbs-self-study.html', className:'aml-study-subnav aml-study-subnav--pbs', label:'PBS 自學'}
+          ]));
+        }
       }
     });
+  }
 
+  function buildMobileNav() {
     document.querySelectorAll('.aml-mobile-menu').forEach((menu) => {
+      // Interactive Lab section
       const labels = Array.from(menu.querySelectorAll('.aml-mobile-label'));
-      const label = labels.find((el) => {
-        const t = el.textContent.trim();
-        return t === 'Interactive Lab' || t === '互動實驗室';
-      });
-      if (!label) return;
-
-      if (!menu.querySelector('a[href="/self-study.html"]')) {
-        const selfLabel = document.createElement('span');
-        selfLabel.className = 'aml-mobile-label';
-        selfLabel.textContent = '進階自學室';
-        const selfLink = document.createElement('a');
-        selfLink.href = '/self-study.html';
-        selfLink.textContent = '進入進階自學室';
-        label.before(selfLabel, selfLink);
+      const labLabel = labels.find(el => ['Interactive Lab','互動實驗室'].includes(el.textContent.trim()));
+      if (labLabel) {
+        labLabel.textContent = '互動實驗室';
+        let n = labLabel.nextElementSibling;
+        while (n && !n.classList.contains('aml-mobile-label')) {
+          const next=n.nextElementSibling;
+          if (n.matches('a[href="/tools.html"],a[href="/tools.html#lab-halls"],a[href="/tools.html#practice-tools"]')) n.remove();
+          n=next;
+        }
+        const explore=document.createElement('a'); explore.href='/tools.html#lab-halls'; explore.className='aml-lab-subnav aml-lab-subnav--explore'; explore.textContent='互動探索艙';
+        const support=document.createElement('a'); support.href='/tools.html#practice-tools'; support.className='aml-lab-subnav aml-lab-subnav--support'; support.textContent='智能支援艙';
+        labLabel.after(explore,support);
       }
 
-      label.textContent = '互動實驗室';
-      let node = label.nextElementSibling;
-      while (node && !node.classList.contains('aml-mobile-label')) {
-        const next = node.nextElementSibling;
-        if (node.matches('a[href="/tools.html"], a[href="/tools.html#lab-halls"], a[href="/tools.html#practice-tools"]')) node.remove();
-        node = next;
+      // Self-study section: normalize to one label + three links.
+      let studyLabel = Array.from(menu.querySelectorAll('.aml-mobile-label')).find(el => el.textContent.trim()==='進階自學室');
+      if (!studyLabel) {
+        studyLabel=document.createElement('span'); studyLabel.className='aml-mobile-label'; studyLabel.textContent='進階自學室';
+        if (labLabel) labLabel.before(studyLabel); else menu.appendChild(studyLabel);
       }
-      const explore = document.createElement('a');
-      explore.href = '/tools.html#lab-halls';
-      explore.className = 'aml-lab-subnav aml-lab-subnav--explore';
-      explore.textContent = '互動探索艙';
-      const support = document.createElement('a');
-      support.href = '/tools.html#practice-tools';
-      support.className = 'aml-lab-subnav aml-lab-subnav--support';
-      support.textContent = '智能支援艙';
-      label.after(explore, support);
+      let n=studyLabel.nextElementSibling;
+      while(n && !n.classList.contains('aml-mobile-label')){
+        const next=n.nextElementSibling;
+        if (n.matches('a[href="/self-study.html"],a[href="/management-self-study.html"],a[href="/pbs-self-study.html"]')) n.remove();
+        n=next;
+      }
+      const sh=document.createElement('a'); sh.href='/self-study.html'; sh.className='aml-study-subnav aml-study-subnav--home'; sh.textContent='進階自學室總覽';
+      const sm=document.createElement('a'); sm.href='/management-self-study.html'; sm.className='aml-study-subnav aml-study-subnav--management'; sm.textContent='管理學自學';
+      const sp=document.createElement('a'); sp.href='/pbs-self-study.html'; sp.className='aml-study-subnav aml-study-subnav--pbs'; sp.textContent='PBS 自學';
+      studyLabel.after(sh,sm,sp);
     });
+  }
+
+  function buildGlobalNav() {
+    ensureNavStyles();
+    buildDesktopNav();
+    buildMobileNav();
     document.dispatchEvent(new CustomEvent('aml:nav-updated'));
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildDualBayNav, { once: true });
-  } else {
-    buildDualBayNav();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', buildGlobalNav, {once:true});
+  else buildGlobalNav();
 })();
 
 (() => {
@@ -122,35 +145,62 @@
     toggle.textContent = "☰";
   };
 
+  const fitNavPanel = (details) => {
+    const panel = details.querySelector(".aml-nav-panel");
+    if (!panel || !details.open) return;
+    panel.style.left = "";
+    panel.style.right = "";
+    panel.style.transform = "";
+    requestAnimationFrame(() => {
+      const margin = 14;
+      let rect = panel.getBoundingClientRect();
+      if (rect.left < margin) {
+        panel.style.left = "0";
+        panel.style.right = "auto";
+      }
+      requestAnimationFrame(() => {
+        rect = panel.getBoundingClientRect();
+        if (rect.right > window.innerWidth - margin) {
+          panel.style.right = "0";
+          panel.style.left = "auto";
+        }
+        requestAnimationFrame(() => {
+          rect = panel.getBoundingClientRect();
+          if (rect.left < margin) {
+            const dx = margin - rect.left;
+            panel.style.transform = `translateX(${dx}px)`;
+          } else if (rect.right > window.innerWidth - margin) {
+            const dx = (window.innerWidth - margin) - rect.right;
+            panel.style.transform = `translateX(${dx}px)`;
+          }
+        });
+      });
+    });
+  };
+
   const bindExploreMenus = () => {
     getExploreMenus().forEach(details => {
       if (details.dataset.amlNavBound === "true") return;
       details.dataset.amlNavBound = "true";
+      let closeTimer = null;
+      const cancelClose = () => { if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; } };
+      const scheduleClose = () => {
+        cancelClose();
+        closeTimer = setTimeout(() => { details.open = false; closeTimer = null; }, 220);
+      };
 
       details.addEventListener("toggle", () => {
-        if (details.open) closeExplore(details);
+        if (details.open) { closeExplore(details); fitNavPanel(details); }
+        else cancelClose();
       });
+      details.querySelectorAll(".aml-nav-panel a").forEach(a => a.addEventListener("click", () => { details.open = false; }));
 
       if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-        let closeTimer = null;
-        const cancelClose = () => {
-          if (closeTimer) {
-            window.clearTimeout(closeTimer);
-            closeTimer = null;
-          }
-        };
-        const scheduleClose = () => {
-          cancelClose();
-          closeTimer = window.setTimeout(() => {
-            details.open = false;
-            closeTimer = null;
-          }, 260);
-        };
-        details.addEventListener("mouseenter", cancelClose);
-        details.addEventListener("mouseleave", scheduleClose);
-        details.querySelector(".aml-nav-panel")?.addEventListener("mouseenter", cancelClose);
-        details.querySelector(".aml-nav-panel")?.addEventListener("mouseleave", scheduleClose);
+        details.addEventListener("pointerenter", cancelClose);
+        details.addEventListener("pointerleave", scheduleClose);
+        details.querySelector(".aml-nav-panel")?.addEventListener("pointerenter", cancelClose);
       }
+      details.addEventListener("focusout", e => { if (!details.contains(e.relatedTarget)) scheduleClose(); });
     });
   };
 
@@ -159,6 +209,7 @@
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", bindExploreMenus, { once: true });
   }
+  window.addEventListener("resize", () => getExploreMenus().forEach(d => { if (d.open) fitNavPanel(d); }));
 
   if (toggle && menu) {
     toggle.addEventListener("click", () => {
