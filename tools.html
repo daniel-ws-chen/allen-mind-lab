@@ -137,6 +137,21 @@
 .labx-section-head--poster{align-items:start}.labx-section-head--poster h2{max-width:760px}.labx-poster-grid{gap:22px}.labx-poster{min-height:610px;padding:30px 30px 28px;isolation:isolate;background:linear-gradient(155deg,color-mix(in srgb,var(--glow) 12%,#0b1220) 0%,#09101c 52%,#060a12 100%)}.labx-poster:before{right:-95px;top:-110px;width:320px;height:320px;background:radial-gradient(circle,color-mix(in srgb,var(--glow) 30%,transparent),transparent 67%);opacity:.8}.labx-poster:after{height:3px;opacity:.72}.labx-poster__number{position:absolute;right:22px;bottom:-20px;z-index:-1;font-size:clamp(8rem,18vw,13rem);font-weight:950;line-height:.8;letter-spacing:-.08em;color:color-mix(in srgb,var(--glow) 8%,transparent);user-select:none}.labx-poster .labx-hall__glyph{font-size:2.8rem;opacity:.95}.labx-poster .labx-hall__code{color:color-mix(in srgb,var(--glow) 68%,#8ea0b8);font-size:.72rem}.labx-poster__question{font-size:clamp(2rem,4vw,3.15rem)!important;line-height:1.08!important;letter-spacing:-.045em!important;margin:42px 0 16px!important;max-width:92%;text-wrap:balance}.labx-poster__sub{font-size:1rem;line-height:1.75!important;max-width:90%!important;color:#c4cede!important}.labx-poster__fit{margin-top:24px;padding:15px 16px;border-left:2px solid var(--glow);background:color-mix(in srgb,var(--glow) 6%,rgba(255,255,255,.015));border-radius:0 12px 12px 0;display:grid;gap:5px}.labx-poster__fit b{color:var(--glow);font-size:.72rem;letter-spacing:.08em}.labx-poster__fit span{color:#aebbcf;font-size:.88rem;line-height:1.6}.labx-poster__chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.labx-poster__chips span{display:inline-flex;align-items:center;min-height:30px;padding:5px 10px;border:1px solid color-mix(in srgb,var(--glow) 28%,transparent);border-radius:999px;color:#9fb0c5;background:rgba(255,255,255,.025);font-size:.72rem;font-weight:800;letter-spacing:.025em}.labx-poster__reward{margin-top:auto;padding-top:25px;display:grid;gap:4px}.labx-poster__reward small{color:#6f829c;font-size:.65rem;font-weight:900;letter-spacing:.11em}.labx-poster__reward strong{color:#fff;font-size:1.03rem}.labx-poster .labx-hall__go{display:inline-flex;align-items:center;justify-content:space-between;gap:12px;width:100%;min-height:48px;margin-top:18px;padding:0 15px;border:1px solid color-mix(in srgb,var(--glow) 42%,transparent);border-radius:13px;background:color-mix(in srgb,var(--glow) 8%,transparent);font-size:.9rem}.labx-poster .labx-hall__go b{font-size:1.2rem;transition:transform .2s ease}.labx-poster:hover .labx-hall__go b{transform:translateX(4px)}
 @media(max-width:820px){.labx-poster{min-height:560px}.labx-poster__question{max-width:88%}}
 @media(max-width:540px){.labx-halls{padding-top:60px}.labx-section-head--poster h2{font-size:2rem}.labx-poster-grid{gap:16px}.labx-poster{min-height:0;padding:24px 21px 22px}.labx-poster__number{font-size:8.5rem;right:14px;bottom:-8px}.labx-poster .labx-hall__glyph{top:21px;right:20px;font-size:2.15rem}.labx-poster__question{font-size:2.15rem!important;margin-top:34px!important;max-width:100%;line-height:1.1!important}.labx-poster__question br{display:none}.labx-poster__sub{max-width:100%!important}.labx-poster__fit{margin-top:20px}.labx-poster__reward{margin-top:26px}.labx-poster .labx-hall__status{max-width:78%;line-height:1.4;letter-spacing:.08em}}
+/* ===== AML 3.4 · Interactive Lab Exploration Map ===== */
+.labx-section-head--map{align-items:start}.labx-section-head--map h2{max-width:760px;font-size:clamp(1.75rem,3vw,2.55rem)}
+.labx-map{position:relative;min-height:650px;overflow:hidden;border:1px solid rgba(122,165,215,.18);border-radius:30px;background:radial-gradient(circle at 50% 50%,rgba(34,96,155,.16),transparent 28%),linear-gradient(rgba(86,133,186,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(86,133,186,.055) 1px,transparent 1px),linear-gradient(145deg,#07101d 0%,#081321 52%,#050a12 100%);background-size:auto,52px 52px,52px 52px,auto;box-shadow:0 24px 70px rgba(0,0,0,.24)}
+.labx-map:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 12%,rgba(75,216,255,.08),transparent 26%),radial-gradient(circle at 88% 14%,rgba(104,244,189,.075),transparent 25%),radial-gradient(circle at 12% 88%,rgba(187,130,255,.08),transparent 24%),radial-gradient(circle at 88% 88%,rgba(255,211,108,.07),transparent 24%);pointer-events:none}
+.labx-map__paths{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.labx-map__paths path{fill:none;stroke:rgba(123,174,222,.34);stroke-width:2;stroke-dasharray:8 10;vector-effect:non-scaling-stroke}
+.labx-map__hub{position:absolute;left:50%;top:50%;width:154px;height:154px;transform:translate(-50%,-50%);display:grid;place-content:center;text-align:center;border:1px solid rgba(99,220,255,.42);border-radius:50%;background:radial-gradient(circle at 45% 35%,rgba(51,190,238,.2),rgba(6,15,28,.96) 65%);box-shadow:0 0 0 12px rgba(68,164,215,.035),0 18px 50px rgba(0,0,0,.35),0 0 42px rgba(75,216,255,.12);z-index:2}
+.labx-map__hub span{color:#5ee4ff;font-size:.65rem;font-weight:900;letter-spacing:.2em}.labx-map__hub strong{margin-top:5px;color:#fff;font-size:1.02rem;line-height:1.05;letter-spacing:.04em}.labx-map__hub small{margin-top:8px;color:#6e839c;font-size:.58rem;font-weight:900;letter-spacing:.16em}
+.labx-map-node{--node:#4bd8ff;position:absolute;width:31%;min-height:190px;padding:22px 22px 20px;border:1px solid color-mix(in srgb,var(--node) 34%,transparent);border-radius:22px;background:linear-gradient(150deg,color-mix(in srgb,var(--node) 9%,#0b1422),rgba(7,13,23,.96) 64%);color:#fff;box-shadow:0 18px 45px rgba(0,0,0,.2);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;z-index:3}
+.labx-map-node:hover,.labx-map-node:focus-visible{transform:translateY(-5px);border-color:color-mix(in srgb,var(--node) 65%,transparent);box-shadow:0 22px 55px color-mix(in srgb,var(--node) 10%,rgba(0,0,0,.3));outline:none}
+.labx-map-node--management{--node:#4bd8ff;left:5%;top:8%}.labx-map-node--pbs{--node:#68f4bd;right:5%;top:8%}.labx-map-node--self{--node:#bb82ff;left:5%;bottom:8%}.labx-map-node--ai{--node:#ffd36c;right:5%;bottom:8%}
+.labx-map-node__no{position:absolute;right:17px;top:14px;color:color-mix(in srgb,var(--node) 24%,transparent);font-size:2.5rem;font-weight:950;line-height:1}.labx-map-node__eyebrow{color:var(--node);font-size:.63rem;font-weight:900;letter-spacing:.14em}.labx-map-node h3{margin:10px 0 6px;font-size:1.35rem;line-height:1.2;color:#fff;letter-spacing:-.02em}.labx-map-node p{margin:0;color:#b7c5d7;font-size:.84rem;line-height:1.6;max-width:92%}.labx-map-node small{display:block;margin-top:13px;color:#8296b0;font-size:.74rem;line-height:1.5}.labx-map-node b{display:inline-flex;margin-top:15px;color:var(--node);font-size:.76rem;letter-spacing:.04em}
+.labx-map__legend{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;color:#687e98;font-size:.68rem;letter-spacing:.04em;z-index:2}.labx-map__legend span{width:7px;height:7px;border-radius:50%;background:#59dfff;box-shadow:0 0 12px rgba(89,223,255,.75)}
+@media(max-width:900px){.labx-map{min-height:720px}.labx-map-node{width:36%}.labx-map-node--management,.labx-map-node--self{left:3.5%}.labx-map-node--pbs,.labx-map-node--ai{right:3.5%}.labx-map__hub{width:128px;height:128px}}
+@media(max-width:720px){.labx-map{min-height:0;padding:18px;display:grid;grid-template-columns:1fr;gap:12px;background-size:auto,38px 38px,38px 38px,auto}.labx-map__paths,.labx-map__hub,.labx-map__legend{display:none}.labx-map-node{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;min-height:0;padding:19px 18px 18px;border-radius:18px}.labx-map-node__no{font-size:2rem}.labx-map-node h3{font-size:1.2rem}.labx-map-node p{font-size:.82rem}.labx-map-node small{font-size:.72rem}.labx-section-head--map h2{font-size:1.8rem}}
+/* ===== /AML 3.4 · Interactive Lab Exploration Map ===== */
 </style>
 <style>
 /* AML Interactive Lab Hall Identity 2026-09-25 */
@@ -174,70 +189,69 @@
     <h1>互動探索館</h1>
     <p class="labx-manifesto">不是急著告訴你答案，<br><strong>而是先讓你看見自己。</strong></p>
     <p class="labx-intro">從管理、PBS、自我覺察到 AI 共作，先透過體驗產生問題，再沿著閱讀、自學與進階挑戰往下探索。</p>
-    <a class="labx-primary" href="#lab-halls">開始探索分館 <span aria-hidden="true">↓</span></a>
+    <a class="labx-primary" href="#lab-halls">查看探索地圖 <span aria-hidden="true">↓</span></a>
     <div class="labx-micro">EXPLORE → EXPERIENCE → LEARN → PRACTICE</div>
   </div>
 </header>
 
 <section class="labx-halls" id="lab-halls" aria-labelledby="labx-halls-title">
   <div class="labx-inner">
-    <div class="labx-section-head labx-section-head--poster">
-      <div><div class="labx-kicker">EXPERIENCE PLAZA · 體驗廣場</div><h2 id="labx-halls-title">先別急著選。看看哪一張海報最像你現在遇到的問題。</h2></div>
-      <p>像走進一座遊樂場，先被一個設施吸引就好。從 1–3 分鐘的小情境開始，沒有標準答案，也不需要一次走完整條路。</p>
+    <div class="labx-section-head labx-section-head--map">
+      <div><div class="labx-kicker">EXPLORATION MAP · 探索園區地圖</div><h2 id="labx-halls-title">先看一圈，再決定今天想走進哪一座探索館。</h2></div>
+      <p>像進到遊樂場一樣，不需要先讀完所有介紹。看看哪一個分館最吸引你，點一下就能開始。</p>
     </div>
-    <div class="labx-hall-grid labx-poster-grid">
-      <a class="labx-hall labx-hall--blue labx-poster" href="/tools/management/" aria-label="進入管理學館：當公平與效率衝突時，你會怎麼選？">
-        <span class="labx-poster__number" aria-hidden="true">01</span>
-        <span class="labx-hall__status"><i></i> INTERACTIVE LAB EXPERIENCE</span>
-        <span class="labx-hall__code">MANAGEMENT · 管理學館</span>
-        <span class="labx-hall__glyph" aria-hidden="true">◇</span>
-        <h3 class="labx-poster__question">當公平與效率衝突時，<br>你會怎麼選？</h3>
-        <p class="labx-poster__sub">從真實情境裡，看見自己的管理判斷與價值排序。</p>
-        <div class="labx-poster__fit"><b>適合你如果</b><span>最近常在帶人、協調、分配資源或兩難決策中卡住。</span></div>
-        <div class="labx-poster__chips"><span>1–3 分鐘開始</span><span>無需背景知識</span></div>
-        <div class="labx-poster__reward"><small>YOU WILL TAKE AWAY</small><strong>我的管理判斷摘要</strong></div>
-        <span class="labx-hall__go">開始挑戰 <b aria-hidden="true">→</b></span>
+
+    <div class="labx-map" role="group" aria-label="Interactive Lab 四座探索館地圖">
+      <svg class="labx-map__paths" viewBox="0 0 1000 620" aria-hidden="true" preserveAspectRatio="none">
+        <path d="M500 310 C390 255 300 190 205 155" />
+        <path d="M500 310 C610 255 700 190 795 155" />
+        <path d="M500 310 C390 365 300 430 205 465" />
+        <path d="M500 310 C610 365 700 430 795 465" />
+      </svg>
+      <div class="labx-map__hub" aria-hidden="true">
+        <span>AML</span><strong>INTERACTIVE<br>LAB</strong><small>EXPLORE</small>
+      </div>
+
+      <a class="labx-map-node labx-map-node--management" href="/tools/management/" aria-label="進入管理風格探索館">
+        <span class="labx-map-node__no">01</span>
+        <span class="labx-map-node__eyebrow">MANAGEMENT</span>
+        <h3>管理風格探索館</h3>
+        <p>看見你的決策方式與價值排序</p>
+        <small>當公平與效率衝突時，你會怎麼選？</small>
+        <b>進館探索 →</b>
       </a>
-      <a class="labx-hall labx-hall--green labx-poster" href="/tools/pbs/" aria-label="進入 PBS 行為理解館：這個行為，背後其實在說什麼？">
-        <span class="labx-poster__number" aria-hidden="true">02</span>
-        <span class="labx-hall__status"><i></i> INTERACTIVE LAB EXPERIENCE</span>
-        <span class="labx-hall__code">PBS · 行為理解館</span>
-        <span class="labx-hall__glyph" aria-hidden="true">⌁</span>
-        <h3 class="labx-poster__question">這個行為，背後其實<br>在說什麼？</h3>
-        <p class="labx-poster__sub">從行為表面往後看，找出可能的功能、需求與支持線索。</p>
-        <div class="labx-poster__fit"><b>適合你如果</b><span>你常在想「他為什麼又這樣？」或不知道接下來該怎麼支持。</span></div>
-        <div class="labx-poster__chips"><span>1–3 分鐘開始</span><span>從線索找功能</span></div>
-        <div class="labx-poster__reward"><small>YOU WILL TAKE AWAY</small><strong>我的 PBS 支持判斷摘要</strong></div>
-        <span class="labx-hall__go">進入偵探社 <b aria-hidden="true">→</b></span>
+
+      <a class="labx-map-node labx-map-node--pbs" href="/tools/pbs/" aria-label="進入行為功能探索館">
+        <span class="labx-map-node__no">02</span>
+        <span class="labx-map-node__eyebrow">BEHAVIOR FUNCTION</span>
+        <h3>行為功能探索館</h3>
+        <p>從行為表面走向功能與支持線索</p>
+        <small>這個行為，背後其實在說什麼？</small>
+        <b>進館探索 →</b>
       </a>
-      <a class="labx-hall labx-hall--violet labx-poster" href="/tools/self-awareness/" aria-label="進入自我覺察館：最近的你，是真的累，還是只是撐太久？">
-        <span class="labx-poster__number" aria-hidden="true">03</span>
-        <span class="labx-hall__status"><i></i> INTERACTIVE LAB EXPERIENCE</span>
-        <span class="labx-hall__code">SELF AWARENESS · 自我覺察館</span>
-        <span class="labx-hall__glyph" aria-hidden="true">◎</span>
-        <h3 class="labx-poster__question">最近的你，是真的累，<br>還是只是撐太久？</h3>
-        <p class="labx-poster__sub">從感覺、能量與生活節奏，慢慢整理出自己的使用方式。</p>
-        <div class="labx-poster__fit"><b>適合你如果</b><span>最近常覺得累、煩、亂、容易分心，卻說不上來原因。</span></div>
-        <div class="labx-poster__chips"><span>1–3 分鐘開始</span><span>沒有對錯</span></div>
-        <div class="labx-poster__reward"><small>YOU WILL TAKE AWAY</small><strong>我的自我覺察摘要</strong></div>
-        <span class="labx-hall__go">開始探索自己 <b aria-hidden="true">→</b></span>
+
+      <a class="labx-map-node labx-map-node--self" href="/tools/self-awareness/" aria-label="進入自我覺察探索館">
+        <span class="labx-map-node__no">03</span>
+        <span class="labx-map-node__eyebrow">SELF AWARENESS</span>
+        <h3>自我覺察探索館</h3>
+        <p>整理感覺、能量與生活節奏</p>
+        <small>最近的你，是真的累，還是只是撐太久？</small>
+        <b>進館探索 →</b>
       </a>
-      <a class="labx-hall labx-hall--amber labx-poster" href="/tools/ai/" aria-label="進入 AI 共作館：這件事，到底該不該交給 AI？">
-        <span class="labx-poster__number" aria-hidden="true">04</span>
-        <span class="labx-hall__status"><i></i> INTERACTIVE LAB EXPERIENCE</span>
-        <span class="labx-hall__code">HUMAN × AI · AI 共作館</span>
-        <span class="labx-hall__glyph" aria-hidden="true">✦</span>
-        <h3 class="labx-poster__question">這件事，到底該不該<br>交給 AI？</h3>
-        <p class="labx-poster__sub">不是學更多工具，而是練習更好的分工、查證與責任判斷。</p>
-        <div class="labx-poster__fit"><b>適合你如果</b><span>你常使用 AI，卻開始思考哪些事情可以交出去、哪些判斷一定要自己留下。</span></div>
-        <div class="labx-poster__chips"><span>1–3 分鐘開始</span><span>分工 × 查證</span></div>
-        <div class="labx-poster__reward"><small>YOU WILL TAKE AWAY</small><strong>我的 AI 共作原則</strong></div>
-        <span class="labx-hall__go">先玩 1 分鐘 <b aria-hidden="true">→</b></span>
+
+      <a class="labx-map-node labx-map-node--ai" href="/tools/ai/" aria-label="進入 AI 共作探索館">
+        <span class="labx-map-node__no">04</span>
+        <span class="labx-map-node__eyebrow">HUMAN × AI</span>
+        <h3>AI 共作探索館</h3>
+        <p>練習分工、查證與責任判斷</p>
+        <small>這件事，到底該不該交給 AI？</small>
+        <b>進館探索 →</b>
       </a>
+
+      <div class="labx-map__legend" aria-hidden="true"><span></span> 點選任一分館開始探索</div>
     </div>
   </div>
 </section>
-
 
 <section class="labx-guide" aria-labelledby="labx-guide-title">
   <div class="labx-inner">
