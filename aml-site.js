@@ -83,6 +83,16 @@
     details.addEventListener("toggle", () => {
       if (details.open) closeExplore(details);
     });
+
+    // Desktop/fine-pointer behavior: match the other AML dropdowns.
+    // If a clicked <details> menu is left open, close it as soon as the
+    // pointer leaves the whole summary + panel region. Touch/mobile remains
+    // click-to-toggle because hover is not available there.
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      details.addEventListener("mouseleave", () => {
+        details.open = false;
+      });
+    }
   });
 
   if (toggle && menu) {
