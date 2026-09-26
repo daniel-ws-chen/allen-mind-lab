@@ -151,6 +151,18 @@
 .labx-map__legend{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;color:#687e98;font-size:.68rem;letter-spacing:.04em;z-index:2}.labx-map__legend span{width:7px;height:7px;border-radius:50%;background:#59dfff;box-shadow:0 0 12px rgba(89,223,255,.75)}
 @media(max-width:900px){.labx-map{min-height:720px}.labx-map-node{width:36%}.labx-map-node--management,.labx-map-node--self{left:3.5%}.labx-map-node--pbs,.labx-map-node--ai{right:3.5%}.labx-map__hub{width:128px;height:128px}}
 @media(max-width:720px){.labx-map{min-height:0;padding:18px;display:grid;grid-template-columns:1fr;gap:12px;background-size:auto,38px 38px,38px 38px,auto}.labx-map__paths,.labx-map__hub,.labx-map__legend{display:none}.labx-map-node{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;min-height:0;padding:19px 18px 18px;border-radius:18px}.labx-map-node__no{font-size:2rem}.labx-map-node h3{font-size:1.2rem}.labx-map-node p{font-size:.82rem}.labx-map-node small{font-size:.72rem}.labx-section-head--map h2{font-size:1.8rem}}
+
+/* AML 3.4 · Xier Control Core Navigator */
+.labx-map__hub{overflow:visible}
+.labx-xier-call{position:absolute;left:50%;top:calc(100% + 10px);transform:translateX(-50%);display:inline-flex;align-items:center;gap:7px;white-space:nowrap;padding:7px 10px;border:1px solid rgba(141,223,255,.28);border-radius:999px;background:rgba(5,14,25,.88);color:#9cecff;font:900 .58rem/1 system-ui,sans-serif;letter-spacing:.08em;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.22);backdrop-filter:blur(8px)}
+.labx-xier-call:hover,.labx-xier-call:focus-visible{border-color:rgba(141,223,255,.6);box-shadow:0 0 22px rgba(75,216,255,.14);outline:none}.labx-xier-avatar{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#dfffff,#64dcff 42%,#113c64 75%);color:#07111d;font-size:.68rem;font-weight:950;box-shadow:0 0 14px rgba(89,223,255,.35)}
+.labx-xier-panel{position:absolute;left:50%;top:calc(100% + 48px);width:min(420px,46vw);transform:translateX(-50%) translateY(-6px);padding:15px;border:1px solid rgba(122,198,236,.24);border-radius:18px;background:rgba(6,15,27,.97);box-shadow:0 22px 58px rgba(0,0,0,.42),0 0 34px rgba(75,216,255,.08);opacity:0;visibility:hidden;pointer-events:none;transition:.18s ease;z-index:8;text-align:left;backdrop-filter:blur(14px)}
+.labx-map.is-xier-open .labx-xier-panel{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.labx-xier-panel__head{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px}.labx-xier-panel__head .labx-xier-avatar{flex:0 0 28px;width:28px;height:28px}.labx-xier-panel__head strong{display:block;color:#eafaff;font-size:.83rem;letter-spacing:.04em}.labx-xier-panel__head span{display:block;margin-top:3px;color:#8aa3bd;font-size:.68rem;line-height:1.45}
+.labx-xier-options{display:grid;grid-template-columns:1fr 1fr;gap:7px}.labx-xier-options a{display:block;padding:9px 10px;border:1px solid rgba(130,164,201,.14);border-radius:11px;background:rgba(255,255,255,.025);color:#c7d4e3;font-size:.68rem;line-height:1.4;text-decoration:none}.labx-xier-options a:hover,.labx-xier-options a:focus-visible{border-color:var(--xier-color,#5ee4ff);color:#fff;background:rgba(255,255,255,.045);outline:none}.labx-xier-options a:nth-child(1){--xier-color:#4bd8ff}.labx-xier-options a:nth-child(2){--xier-color:#68f4bd}.labx-xier-options a:nth-child(3){--xier-color:#bb82ff}.labx-xier-options a:nth-child(4){--xier-color:#ffd36c}
+.labx-xier-mobile{display:none}
+@media(max-width:720px){.labx-xier-mobile{display:block;margin:0 0 4px;padding:15px 15px 14px;border:1px solid rgba(89,223,255,.22);border-radius:16px;background:linear-gradient(135deg,rgba(18,57,82,.58),rgba(7,15,26,.94));color:#c9d9e9}.labx-xier-mobile__head{display:flex;align-items:center;gap:9px}.labx-xier-mobile__head strong{color:#f2fbff;font-size:.88rem}.labx-xier-mobile p{margin:7px 0 0;color:#8da3b9;font-size:.74rem;line-height:1.55}.labx-xier-mobile a{display:inline-flex;margin-top:10px;color:#62e4ff;font-size:.73rem;font-weight:900;text-decoration:none}.labx-map__hub .labx-xier-call,.labx-map__hub + .labx-xier-panel{display:none}}
+/* /AML 3.4 · Xier Control Core Navigator */
 /* ===== /AML 3.4 · Interactive Lab Exploration Map ===== */
 </style>
 <style>
@@ -208,8 +220,23 @@
         <path d="M500 310 C390 365 300 430 205 465" />
         <path d="M500 310 C610 365 700 430 795 465" />
       </svg>
-      <div class="labx-map__hub" aria-hidden="true">
+      <div class="labx-map__hub">
         <span>AML</span><strong>INTERACTIVE<br>LAB</strong><small>EXPLORE</small>
+        <button class="labx-xier-call" type="button" aria-expanded="false" aria-controls="labx-xier-panel"><span class="labx-xier-avatar" aria-hidden="true">曦</span>曦兒｜導航員待命中</button>
+      </div>
+      <div class="labx-xier-panel" id="labx-xier-panel" aria-label="曦兒中控導航">
+        <div class="labx-xier-panel__head"><span class="labx-xier-avatar" aria-hidden="true">曦</span><div><strong>中控導航員・曦兒</strong><span>不知道先去哪一館？先選一個最接近你現在的狀態。</span></div></div>
+        <div class="labx-xier-options">
+          <a href="/tools/management/">我最近常卡在決策與兩難</a>
+          <a href="/tools/pbs/">我想理解某個行為背後的原因</a>
+          <a href="/tools/self-awareness/">我最近覺得累、亂或容易卡住</a>
+          <a href="/tools/ai/">我想知道這件事該不該交給 AI</a>
+        </div>
+      </div>
+      <div class="labx-xier-mobile" aria-label="曦兒導航入口">
+        <div class="labx-xier-mobile__head"><span class="labx-xier-avatar" aria-hidden="true">曦</span><strong>曦兒｜中控導航員</strong></div>
+        <p>不知道先去哪一館？先看看哪個問題最像你現在的狀態。</p>
+        <a href="#labx-guide-title">請曦兒幫我快速分流 →</a>
       </div>
 
       <a class="labx-map-node labx-map-node--management" href="/tools/management/" aria-label="進入管理風格探索館" data-map-hall="management">
@@ -420,6 +447,26 @@
     node.classList.toggle('is-complete', hallDone === milestones.length);
     label.textContent = hallDone === 0 ? '尚未開始' : hallDone === milestones.length ? '已完成目前里程碑' : `探索中 · ${hallDone}/${milestones.length}`;
   });
+})();
+</script>
+
+<script>
+/* AML Interactive Lab · Xier control-core navigator */
+(function(){
+  const map = document.querySelector('.labx-map');
+  const button = document.querySelector('.labx-xier-call');
+  const panel = document.getElementById('labx-xier-panel');
+  if(!map || !button || !panel) return;
+  const close = () => { map.classList.remove('is-xier-open'); button.setAttribute('aria-expanded','false'); };
+  button.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = !map.classList.contains('is-xier-open');
+    map.classList.toggle('is-xier-open', open);
+    button.setAttribute('aria-expanded', String(open));
+  });
+  panel.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') close(); });
 })();
 </script>
 
