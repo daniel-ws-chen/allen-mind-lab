@@ -124,14 +124,28 @@
       if (details.open) closeExplore(details);
     });
 
-    // Desktop/fine-pointer behavior: match the other AML dropdowns.
-    // If a clicked <details> menu is left open, close it as soon as the
-    // pointer leaves the whole summary + panel region. Touch/mobile remains
-    // click-to-toggle because hover is not available there.
+    // Desktop/fine-pointer behavior: close with a short grace period.
+    // The panel is positioned below the summary, so an immediate mouseleave
+    // can fire while the pointer crosses the small visual gap. A short delay
+    // prevents the menu from flashing closed before the user can reach it.
     if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      details.addEventListener("mouseleave", () => {
-        details.open = false;
-      });
+      let closeTimer = null;
+      const cancelClose = () => {
+        if (closeTimer) {
+          window.clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+      };
+      const scheduleClose = () => {
+        cancelClose();
+        closeTimer = window.setTimeout(() => {
+          details.open = false;
+          closeTimer = null;
+        }, 220);
+      };
+      details.addEventListener("mouseenter", cancelClose);
+      details.addEventListener("mouseleave", scheduleClose);
+      details.querySelector(".aml-nav-panel")?.addEventListener("mouseenter", cancelClose);
     }
   });
 
