@@ -202,6 +202,28 @@
 
 
 /* /AML 3.4 · Xier Control Core Navigator */
+
+/* AML 3.3 · Strong Core / Quiet Periphery */
+.labx-map{min-height:650px}
+.labx-map__hub{width:184px;height:184px;box-shadow:0 0 0 14px rgba(68,164,215,.04),0 20px 58px rgba(0,0,0,.38),0 0 58px rgba(75,216,255,.16)}
+.labx-map__hub span{font-size:.69rem}.labx-map__hub strong{font-size:1.12rem}.labx-map__hub small{font-size:.6rem}
+.labx-xier-core-avatar{right:-27px;bottom:-16px;width:76px;height:76px}
+.labx-xier-call{top:calc(100% + 10px)}
+.labx-xier-panel{width:min(350px,38vw);transform:translate(-50%,121px)}
+.labx-map.is-xier-open .labx-xier-panel{transform:translate(-50%,128px)}
+.labx-map-node{width:28%;min-height:156px;padding:18px 20px 17px;background:linear-gradient(150deg,color-mix(in srgb,var(--node) 6%,#0b1422),rgba(7,13,23,.965) 68%);box-shadow:0 14px 36px rgba(0,0,0,.17)}
+.labx-map-node--management{left:2.8%;top:7%}.labx-map-node--pbs{right:2.8%;top:7%}.labx-map-node--self{left:2.8%;bottom:7%}.labx-map-node--ai{right:2.8%;bottom:7%}
+.labx-map-node__state{left:15px;top:14px;padding:4px 7px;font-size:.54rem}
+.labx-map-node__no{right:15px;top:12px;font-size:2.2rem}
+.labx-map-node__eyebrow{margin-top:24px;font-size:.59rem}
+.labx-map-node h3{margin:8px 0 5px;font-size:1.18rem}
+.labx-map-node p{font-size:.76rem;line-height:1.45;color:#aab9cc}
+.labx-map-node b{margin-top:12px;font-size:.72rem}
+.labx-map-node small{display:none}
+@media (max-width:900px) and (min-width:721px){.labx-map-node{width:33%;min-height:154px}.labx-map-node--management,.labx-map-node--self{left:2.5%}.labx-map-node--pbs,.labx-map-node--ai{right:2.5%}.labx-map__hub{width:158px;height:158px}.labx-xier-core-avatar{width:66px;height:66px;right:-23px;bottom:-14px}}
+@media(max-width:720px){.labx-map-node{width:100%;min-height:0;padding:17px 18px 16px}.labx-map-node__eyebrow{margin-top:24px}.labx-map-node h3{font-size:1.12rem}.labx-map-node p{font-size:.78rem}.labx-map-node b{margin-top:10px}}
+/* /AML 3.3 · Strong Core / Quiet Periphery */
+
 /* ===== /AML 3.4 · Interactive Lab Exploration Map ===== */
 </style>
 <style>
@@ -284,8 +306,7 @@
         <span class="labx-map-node__no">01</span>
         <span class="labx-map-node__eyebrow">MANAGEMENT</span>
         <h3>管理風格探索館</h3>
-        <p>看見你的決策方式與價值排序</p>
-        <small>當公平與效率衝突時，你會怎麼選？</small>
+        <p>看見你的決策方式</p>
         <b>進館探索 →</b>
       </a>
 
@@ -294,8 +315,7 @@
         <span class="labx-map-node__no">02</span>
         <span class="labx-map-node__eyebrow">BEHAVIOR FUNCTION</span>
         <h3>行為功能探索館</h3>
-        <p>從行為表面走向功能與支持線索</p>
-        <small>這個行為，背後其實在說什麼？</small>
+        <p>從線索走向功能理解</p>
         <b>進館探索 →</b>
       </a>
 
@@ -304,8 +324,7 @@
         <span class="labx-map-node__no">03</span>
         <span class="labx-map-node__eyebrow">SELF AWARENESS</span>
         <h3>自我覺察探索館</h3>
-        <p>整理感覺、能量與生活節奏</p>
-        <small>最近的你，是真的累，還是只是撐太久？</small>
+        <p>整理感覺、能量與節奏</p>
         <b>進館探索 →</b>
       </a>
 
@@ -314,8 +333,7 @@
         <span class="labx-map-node__no">04</span>
         <span class="labx-map-node__eyebrow">HUMAN × AI</span>
         <h3>AI 共作探索館</h3>
-        <p>練習分工、查證與責任判斷</p>
-        <small>這件事，到底該不該交給 AI？</small>
+        <p>練習分工、查證與判斷</p>
         <b>進館探索 →</b>
       </a>
 
