@@ -540,16 +540,49 @@
   }
 })();
 
-/* AML 互動實驗室：全站中文導覽名稱 */
+/* AML 互動探索館：全站導覽顯示名稱 */
 (function () {
-  const rename = (selector, from, to) => {
-    document.querySelectorAll(selector).forEach((el) => {
-      if (el.textContent.trim() === from) el.textContent = to;
+  const TARGET = '互動探索館';
+  const OLD_NAMES = /Interactive Lab(?:\s*總館)?|互動實驗室(?:總館)?/g;
+
+  const normalizeText = (value) => value
+    .replace(OLD_NAMES, TARGET)
+    .replace(/前往\s+互動探索館/g, '前往互動探索館')
+    .replace(/回到?\s+互動探索館/g, (m) => m.replace(/\s+/g, ''));
+
+  const replaceTextNodes = (root) => {
+    if (!root) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      const next = normalizeText(node.nodeValue || '');
+      if (next !== node.nodeValue) node.nodeValue = next;
     });
   };
-  rename('a[href="/tools.html"]', 'Interactive Lab', '互動實驗室');
-  rename('.aml-mobile-label', 'Interactive Lab', '互動實驗室');
-  document.querySelectorAll('.aml-footer-group h4').forEach((el) => {
-    if (el.textContent.trim() === 'Interactive Lab') el.textContent = '互動實驗室';
+
+  // 所有指向 Interactive Lab 主入口的連結，都統一顯示為「互動探索館」。
+  document.querySelectorAll('a[href="/tools.html"]').forEach(replaceTextNodes);
+
+  // 手機選單與 Footer 標題也使用相同中文名稱。
+  document.querySelectorAll('.aml-mobile-label, .aml-footer-group h4').forEach((el) => {
+    if (/^(Interactive Lab|互動實驗室)$/.test(el.textContent.trim())) {
+      el.textContent = TARGET;
+    }
   });
+
+  // 導覽用 accessibility 文字與首頁地圖替代文字同步更新；不改文章正文與歷史敘述。
+  document.querySelectorAll('[aria-label]').forEach((el) => {
+    const value = el.getAttribute('aria-label') || '';
+    const next = normalizeText(value);
+    if (next !== value) el.setAttribute('aria-label', next);
+  });
+  document.querySelectorAll('img[alt]').forEach((img) => {
+    const value = img.getAttribute('alt') || '';
+    const next = normalizeText(value);
+    if (next !== value) img.setAttribute('alt', next);
+  });
+
+  // 少數互動頁使用 breadcrumb 顯示舊稱，僅更新導覽文字。
+  document.querySelectorAll('.crumb').forEach(replaceTextNodes);
 })();
