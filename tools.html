@@ -404,6 +404,30 @@
 @media(max-width:900px){.ai-tools-intro{grid-template-columns:1fr!important}.support-dispatch{max-width:none!important}}
 @media(max-width:640px){.support-dispatch{grid-template-columns:auto minmax(0,1fr)!important;padding:16px!important}.support-bot--hero{width:42px;height:42px}}
 /* /AML 3.3 · Intelligent Support Bay repair / visual consolidation */
+
+/* AML 3.3 · Dual-bay rhythm / support-module layout polish */
+#practice-tools{padding-top:46px;padding-bottom:30px}
+#practice-tools .aml-tools-all{position:relative}
+#practice-tools .ai-tools-intro{margin-top:0!important;margin-bottom:4px}
+#practice-tools .support-section-head{margin-top:28px!important}
+#practice-tools .support-section-head--ai + .tool-card,
+#practice-tools .support-section-head--ai + .tool-card + .tool-card{height:100%}
+#practice-tools .support-section-head--practice + .tool-card,
+#practice-tools .support-section-head--workflow + .tool-card{grid-column:1/-1}
+#practice-tools .support-section-head--practice + .tool-card>p,
+#practice-tools .support-section-head--practice + .tool-card>ul,
+#practice-tools .support-section-head--workflow + .tool-card>p,
+#practice-tools .support-section-head--workflow + .tool-card>ul{max-width:860px}
+#practice-tools .support-section-head--practice + .tool-card .actions,
+#practice-tools .support-section-head--workflow + .tool-card .actions{max-width:860px}
+#practice-tools .ai-tools-footnote{margin-top:10px}
+.labx-progress{padding-bottom:42px}
+@media(max-width:820px){
+  #practice-tools{padding-top:32px}
+  #practice-tools .support-section-head--practice + .tool-card,
+  #practice-tools .support-section-head--workflow + .tool-card{grid-column:auto}
+}
+/* /AML 3.3 · Dual-bay rhythm / support-module layout polish */
 </style>
 
 </head>
