@@ -187,6 +187,19 @@
 .labx-map.has-active .labx-map__paths path{opacity:.2}.labx-map.has-active[data-active-hall="management"] .labx-map__paths path:nth-child(1),.labx-map.has-active[data-active-hall="pbs"] .labx-map__paths path:nth-child(2),.labx-map.has-active[data-active-hall="self"] .labx-map__paths path:nth-child(3),.labx-map.has-active[data-active-hall="ai"] .labx-map__paths path:nth-child(4){opacity:1}
 .labx-progress__card:hover .labx-progress__meter i{box-shadow:0 0 16px color-mix(in srgb,var(--hud) 72%,transparent)}
 @media(prefers-reduced-motion:reduce){.labx-map__hub:before,.labx-map__hub:after,.labx-map-node.is-started:not(.is-complete) .labx-map-node__state:before{animation:none}.labx-map__paths path,.labx-map__hub,.labx-map-node{transition:none}}
+/* AML 3.3 · Xier Control Core 2.0 */
+.labx-map__hub{width:166px;height:166px}
+.labx-map__hub>span,.labx-map__hub>strong,.labx-map__hub>small{position:relative;z-index:2}
+.labx-xier-core-avatar{position:absolute;right:-20px;bottom:-13px;width:68px;height:68px;border-radius:50%;object-fit:cover;display:block;z-index:8;border:2px solid rgba(151,235,255,.78);background:#091a2c;box-shadow:0 0 0 5px rgba(72,207,255,.07),0 0 24px rgba(72,207,255,.38),0 12px 26px rgba(0,0,0,.36);transition:transform .2s ease,box-shadow .2s ease}
+.labx-map__hub:hover .labx-xier-core-avatar,.labx-map.has-active .labx-xier-core-avatar{transform:translateY(-2px) scale(1.035);box-shadow:0 0 0 6px rgba(72,207,255,.08),0 0 30px rgba(72,207,255,.5),0 14px 28px rgba(0,0,0,.4)}
+.labx-xier-call{top:calc(100% + 12px);padding:7px 11px;gap:7px;font-size:.57rem;min-height:34px}
+.labx-xier-call>.labx-xier-avatar{display:none}
+.labx-xier-panel{width:min(350px,40vw);transform:translate(-50%,108px)}
+.labx-map.is-xier-open .labx-xier-panel{transform:translate(-50%,116px)}
+.labx-map.is-xier-open .labx-xier-core-avatar{transform:translateY(-3px) scale(1.06);box-shadow:0 0 0 7px rgba(72,207,255,.1),0 0 38px rgba(72,207,255,.58),0 16px 32px rgba(0,0,0,.42)}
+@media(max-width:720px){.labx-map__hub{width:150px;height:150px}.labx-xier-core-avatar{display:none}}
+@media(prefers-reduced-motion:reduce){.labx-xier-core-avatar{transition:none}}
+
 
 /* /AML 3.4 · Xier Control Core Navigator */
 /* ===== /AML 3.4 · Interactive Lab Exploration Map ===== */
@@ -248,7 +261,8 @@
       </svg>
       <div class="labx-map__hub">
         <span>AML</span><strong>INTERACTIVE<br>LAB</strong><small>EXPLORE</small>
-        <button class="labx-xier-call" type="button" aria-expanded="false" aria-controls="labx-xier-panel"><img class="labx-xier-avatar" src="/images/xier-chibi-avatar.png" alt="" aria-hidden="true">曦兒｜導航員待命中 <span class="labx-xier-call__chev" aria-hidden="true">⌄</span></button>
+        <img class="labx-xier-core-avatar" src="/images/xier-chibi-avatar.png" alt="曦兒，中控導航員">
+        <button class="labx-xier-call" type="button" aria-expanded="false" aria-controls="labx-xier-panel">曦兒導航 <span class="labx-xier-call__chev" aria-hidden="true">⌄</span></button>
       </div>
       <div class="labx-xier-panel" id="labx-xier-panel" aria-label="曦兒中控導航">
         <div class="labx-xier-panel__head"><img class="labx-xier-avatar" src="/images/xier-chibi-avatar.png" alt="" aria-hidden="true"><div><strong>中控導航員・曦兒</strong><span>不知道先去哪一館？先選一個最接近你現在的狀態。</span></div></div>
