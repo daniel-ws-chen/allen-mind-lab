@@ -474,6 +474,23 @@
   #practice-tools .support-wide-card{display:flex;flex-direction:column}
 }
 /* /AML 3.3 · Intelligent Support Bay / wide module panel polish */
+
+/* AML 3.3 · Intelligent Support Bay final cleanup */
+#practice-tools .support-bay-legend{display:none!important}
+#practice-tools .support-section-head{margin-top:24px;margin-bottom:2px;padding-top:2px}
+#practice-tools .support-section-head>div{display:flex;align-items:baseline;gap:10px;min-width:0}
+#practice-tools .support-section-head span{font-size:.68rem;letter-spacing:.16em;opacity:.72}
+#practice-tools .support-section-head b{font-size:1rem;letter-spacing:.01em}
+#practice-tools .support-section-head small{font-size:.76rem;color:#7f8ca0;line-height:1.45}
+#practice-tools .tool-type-kicker{min-height:38px;margin-bottom:8px;padding:6px 11px}
+#practice-tools .tool-card>small{font-size:.7rem;letter-spacing:.12em;opacity:.78}
+#practice-tools .tool-card h3{margin-top:9px}
+#practice-tools .actions{align-items:center;gap:9px}
+#practice-tools .actions .btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 16px}
+#practice-tools .tool-related-reading{margin-top:14px!important;padding-top:12px;border-top:1px solid rgba(99,120,145,.12);font-size:.78rem!important;line-height:1.5!important}
+#practice-tools .support-wide-card .tool-related-reading{grid-column:1/-1}
+@media(max-width:820px){#practice-tools .support-section-head{align-items:flex-start;gap:5px}.support-section-head>div{flex-wrap:wrap}.support-section-head small{max-width:none}}
+/* /AML 3.3 · Intelligent Support Bay final cleanup */
 </style>
 
 </head>
@@ -630,13 +647,13 @@
 <main class="wrap" id="practice-tools">
 <section aria-labelledby="tool-practice" class="aml-tools-all"><div class="tool-grid">
 <div class="ai-tools-intro"><div><div class="eyebrow">INTELLIGENT SUPPORT BAY · 智能支援艙</div><h2>有明確任務時，進入智能支援艙。</h2><p>互動探索艙負責探索與覺察；智能支援艙負責把任務帶回工作現場。已有明確工作需求時，直接選擇合適的支援模組。</p></div><div class="ai-tools-intro__note support-dispatch"><div class="support-bot support-bot--hero" aria-hidden="true"><svg viewBox="0 0 64 64" role="img"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16M13 28H8v10h5M51 28h5v10h-5"/></svg></div><div class="support-dispatch__copy"><small>SYSTEM ONLINE · 支援系統已就緒</small><b>AI 特助待命中</b><span>曦兒負責導引；有明確任務時，由 AI 特助協作整理與產出。</span><span class="support-dispatch__status" aria-label="AI 特助待命中"><i></i>STANDBY</span></div></div></div>
-<div class="support-bay-legend" aria-label="智能支援艙模組分類"><div><b>AI 特助</b>協助整理、提問與產生初稿。</div><div><b>實務工具</b>可直接帶回工作現場使用。</div><div><b>工作流程</b>把多步驟任務整理成可執行流程。</div></div>
-<div class="support-section-head support-section-head--ai"><div><span>AI SUPPORT</span><b>AI 特助</b></div><small>需要協作時，由智能支援艙派遣機器人 AI 特助。</small></div>
+
+<div class="support-section-head support-section-head--ai"><div><span>AI SUPPORT</span><b>AI 特助</b></div><small>由 AI 特助協作整理、提問與產出。</small></div>
 <article class="tool-card tool-card--assistant" id="tool-practice"><div class="tool-type-kicker tool-role-chip"><span class="support-bot support-bot--mini" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16"/></svg></span>派遣｜AI 特助</div><small>PBS · PRACTICE SUPPORT</small><h3>AML PBS Companion</h3><p>把零散的情緒行為紀錄整理成可討論的 PBS 線索：ABC、功能假設、支持策略與團隊討論草稿。</p><ul><li>ABC 與功能假設整理</li><li>PBS 支持策略草案</li><li>案例研討與教學討論輔助</li></ul><div class="actions"><a class="btn" href="https://chatgpt.com/g/g-6a17ee42c9588191abb89a20d3625d8f" rel="noopener noreferrer" target="_blank">開啟 Companion ↗</a><a class="btn secondary" href="/pbs.html#ai-tool">了解使用情境</a></div><p class="tool-related-reading">相關閱讀｜<a href="/articles/pbs-being-seen.html">當「被看見」成為高挑戰行為</a></p></article>
 <article class="tool-card tool-card--assistant" id="tool-planning"><div class="tool-type-kicker tool-role-chip"><span class="support-bot support-bot--mini" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16"/></svg></span>派遣｜AI 特助</div><small>MANAGEMENT · LEARNING SUPPORT</small><h3>方案規劃管理助教系統</h3><p>從構想到完整方案，協助整理章節、檢查前後邏輯與跨章連貫性，適合個人撰寫與小組方案作業。</p><ul><li>個人撰寫與團隊彙整</li><li>跨章連貫性與一致性檢查</li><li>修訂後方案初稿整理</li></ul><div class="actions"><a class="btn" href="/tools/management-coach/">開啟助教系統 →</a><a class="btn secondary" href="/articles/management-coach-leader-workflow.html">閱讀設計說明</a></div></article>
-<div class="support-section-head support-section-head--practice"><div><span>PRACTICE TOOLS</span><b>實務工具</b></div><small>可直接帶回工作現場使用的評估與整理模組。</small></div>
+<div class="support-section-head support-section-head--practice"><div><span>PRACTICE TOOLS</span><b>實務工具</b></div><small>可直接帶回現場使用的評估與整理模組。</small></div>
 <article class="tool-card tool-card--workflow support-wide-card support-wide-card--practice"><div class="tool-type-kicker tool-type-kicker--practice">🧭 實務模組｜轉銜整理</div><small>PBS · TRANSITION SUPPORT</small><h3>情緒行為支持服務轉銜評估與建議表</h3><p>將服務對象、照顧者與環境資源整理成一份可承接的轉銜摘要，協助團隊在結案前確認後續支持條件。</p><ul><li>三大評估面向與 PBS 技巧檢核</li><li>資源銜接、風險與後續支持</li><li>Word 可編輯範本 · CC BY 4.0</li></ul><div class="actions"><a class="btn" href="/tools/pbs-transition-assessment.html">查看工具 →</a><a class="btn secondary" download href="/downloads/aml-pbs-transition-assessment-v1.0.docx">下載 Word</a></div><p class="tool-related-reading">相關閱讀｜<a href="/articles/ot-management-transition-support-life.html">讓改變走得更遠</a></p></article>
-<div class="support-section-head support-section-head--workflow"><div><span>WORKFLOWS</span><b>工作流程</b></div><small>把多步驟任務整理成可執行的工作流程。</small></div>
+<div class="support-section-head support-section-head--workflow"><div><span>WORKFLOWS</span><b>工作流程</b></div><small>把多步驟任務整理成可執行流程。</small></div>
 <article class="tool-card tool-card--workflow tool-card--featured support-wide-card support-wide-card--workflow"><div class="tool-status"><span class="status-dot"></span><b>授權使用</b><span>Workflow Pilot</span></div><div class="tool-type-kicker tool-type-kicker--workflow">🩺 流程模組｜工作助手</div><small>HEALTHCARE · WORKFLOW PILOT</small><h3>感控作業管理助手 <span class="pilot-badge">PILOT 1.0</span></h3><p>把個案通報、疑似群聚、每日追蹤與表單輸出整理成清楚工作區，協助授權人員減少重複整理。</p><ul><li>授權人員登入使用</li><li>個案建檔與追蹤分流</li><li>院內與衛生局表單分流輸出</li><li>全院感控儀表板彙整</li></ul><div class="actions"><a class="btn" href="/tools/infection-control-pilot/">進入感控作業助手 →</a></div><p class="tool-related-reading">Pilot 測試版｜測試階段請勿輸入真實可識別個資。</p></article>
 <div class="ai-tools-footnote">工具的角色是把工作做得更清楚，而不是替代專業判斷。需要查證的內容，仍請回到原始資料、專業指引與團隊討論。</div>
 </div></section>
