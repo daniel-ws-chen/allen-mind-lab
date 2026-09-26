@@ -50,7 +50,7 @@
         const selfStudy = document.createElement('a');
         selfStudy.href = '/self-study.html';
         selfStudy.className = 'aml-nav-direct';
-        selfStudy.textContent = '自學館';
+        selfStudy.textContent = '進階自學室';
         details.before(selfStudy);
       }
     });
@@ -66,10 +66,10 @@
       if (!menu.querySelector('a[href="/self-study.html"]')) {
         const selfLabel = document.createElement('span');
         selfLabel.className = 'aml-mobile-label';
-        selfLabel.textContent = '自學館';
+        selfLabel.textContent = '進階自學室';
         const selfLink = document.createElement('a');
         selfLink.href = '/self-study.html';
-        selfLink.textContent = '進入自學館';
+        selfLink.textContent = '進入進階自學室';
         label.before(selfLabel, selfLink);
       }
 
@@ -697,4 +697,50 @@
   } else {
     syncInteractiveLabFooter();
   }
+})();
+
+
+/* AML advanced self-study room: site-wide navigation/footer naming. */
+(function () {
+  function syncAdvancedSelfStudy() {
+    document.querySelectorAll('a[href="/self-study.html"]').forEach((link) => {
+      const t = link.textContent.trim();
+      if (t === '自學館' || t === '進入自學館' || t === '自學館總覽') {
+        link.textContent = t.startsWith('進入') ? '進入進階自學室' : '進階自學室';
+      }
+    });
+    document.querySelectorAll('.aml-mobile-label').forEach((label) => {
+      if (label.textContent.trim() === '自學館') label.textContent = '進階自學室';
+    });
+    document.querySelectorAll('.aml-footer-group h4').forEach((h) => {
+      if (h.textContent.trim() === '自學館') h.textContent = '進階自學室';
+    });
+
+    document.querySelectorAll('.aml-footer-links').forEach((footerLinks) => {
+      let group = Array.from(footerLinks.querySelectorAll('.aml-footer-group')).find((g) => {
+        const h = g.querySelector('h4');
+        return h && h.textContent.trim() === '進階自學室';
+      });
+      if (!group) {
+        group = document.createElement('div');
+        group.className = 'aml-footer-group';
+        const h = document.createElement('h4');
+        h.textContent = '進階自學室';
+        group.appendChild(h);
+        const labGroup = Array.from(footerLinks.querySelectorAll('.aml-footer-group')).find((g) => {
+          const h = g.querySelector('h4');
+          return h && h.textContent.trim() === '互動實驗室';
+        });
+        if (labGroup) footerLinks.insertBefore(group, labGroup);
+        else footerLinks.appendChild(group);
+      }
+      group.querySelectorAll('a').forEach((a) => a.remove());
+      const hub = document.createElement('a'); hub.href='/self-study.html'; hub.textContent='進階自學室';
+      const m = document.createElement('a'); m.href='/management-self-study.html'; m.textContent='管理學自學';
+      const p = document.createElement('a'); p.href='/pbs-self-study.html'; p.textContent='PBS 自學';
+      group.append(hub,m,p);
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncAdvancedSelfStudy, {once:true});
+  else syncAdvancedSelfStudy();
 })();
