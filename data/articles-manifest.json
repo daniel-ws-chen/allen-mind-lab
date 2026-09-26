@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-26T01:05:10.631Z",
+  "generatedAt": "2026-09-26T13:39:55.145Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 50,
+    "total": 51,
     "ot": 23,
     "mind": 14,
     "pbs": 13,
-    "education": 8,
+    "education": 9,
     "management": 24,
-    "ai": 13,
+    "ai": 14,
     "notes": 7
   },
   "featuredReading": [
@@ -78,6 +78,53 @@
     }
   },
   "articles": [
+    {
+      "slug": "next-generation-teacher-transformation-empowerment",
+      "title": "新世代教師的轉型與賦能",
+      "summary": "AI 世代的教師專業，不應只是增加更多能力與責任，而是重新配置：把老師最珍貴的時間留給學生、團體、關係與學習，並建立真正能接住教師的支持系統。",
+      "date": "2026-09-26",
+      "domains": [
+        "education",
+        "ai"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "Education × AI × Practice",
+      "cardMeta": "2026.09.26 · Education × AI × Practice",
+      "keywords": [
+        "教師",
+        "教師節",
+        "教育轉型",
+        "教師賦能",
+        "AI教育",
+        "人工智慧",
+        "團體動力",
+        "兒童青少年發展",
+        "學習科學",
+        "PBS",
+        "跨專業合作",
+        "親師溝通"
+      ],
+      "articlePath": "/articles/next-generation-teacher-transformation-empowerment.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/next-generation-teacher-transformation-empowerment",
+      "hero": "/images/articles/next-generation-teacher-transformation-empowerment-hero.webp",
+      "ogImage": "/images/articles/next-generation-teacher-transformation-empowerment-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "相關閱讀 ← 如果 AI 都會教，老師還可以怎麼教？",
+          "href": "/articles/ai-era-teaching-learning.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "ai-occupational-balance-new-equilibrium",
       "title": "AI協作下的職能新平衡",
