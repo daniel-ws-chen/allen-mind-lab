@@ -22,9 +22,20 @@
 .study-route-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.study-route-nav a{display:inline-flex;align-items:center;min-height:40px;padding:7px 12px;border:1px solid #dfe5e1;border-radius:999px;background:rgba(255,255,255,.82);color:#315a50;text-decoration:none;font-size:.82rem;font-weight:850}.study-route-nav a:hover{border-color:#8bb6a9;background:#f7fffc}.study-route-nav a:focus-visible{outline:3px solid rgba(39,95,84,.22);outline-offset:2px}
 .study-next-panel{margin-top:28px;padding:20px 22px;border:1px solid #d9e8e3;border-radius:20px;background:linear-gradient(135deg,#f8fffc,#fbfaf7)}.study-next-panel__kicker{font-size:.72rem;font-weight:900;letter-spacing:.12em;color:#287462}.study-next-panel h2{margin:5px 0 6px;color:var(--navy);font-size:1.28rem}.study-next-panel p{margin:0 0 12px;color:#657081}.study-next-panel__actions{display:flex;gap:10px;flex-wrap:wrap}.study-next-panel__actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:850;border:1px solid #8fb9ad;color:#275f54;background:#fff}.study-next-panel__actions a.primary{background:#275f54;color:#fff;border-color:#275f54}
 @media(max-width:640px){.study-route-nav a,.study-next-panel__actions a{width:100%;justify-content:center}}
+
+.aml-lab-shell-nav{max-width:1160px;margin:0 auto;padding:14px 7vw 0;display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap}
+.aml-lab-shell-nav__back{font-weight:900;color:#315a50;text-decoration:none}
+.aml-lab-shell-nav__links{display:flex;gap:10px;flex-wrap:wrap}
+.aml-lab-shell-nav__links a{display:inline-flex;align-items:center;min-height:40px;padding:7px 12px;border:1px solid #dfe5e1;border-radius:999px;background:#fff;color:#315a50;text-decoration:none;font-size:.82rem;font-weight:850}
+.aml-lab-shell-nav__links a:hover{border-color:#8bb6a9;background:#f7fffc}
+.aml-lab-mini-footer{max-width:1160px;margin:34px auto 0;padding:22px 7vw 34px;border-top:1px solid #e5e0d7;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:#6a7480;font-size:.86rem}
+.aml-lab-mini-footer__links{display:flex;gap:12px;flex-wrap:wrap}
+.aml-lab-mini-footer a{color:#315a50;text-decoration:none;font-weight:800}
+@media(max-width:640px){.aml-lab-shell-nav{padding:12px 6vw 0;align-items:stretch}.aml-lab-shell-nav__back,.aml-lab-shell-nav__links a{width:100%;justify-content:center}.aml-lab-shell-nav__links{width:100%}.aml-lab-mini-footer{padding:20px 6vw 28px;display:block}.aml-lab-mini-footer__links{margin-top:10px;display:grid}}
+
 </style>
 </head>
-<body>
+<body><nav class="aml-lab-shell-nav" aria-label="進階自學室導覽"><a class="aml-lab-shell-nav__back" href="/self-study.html">← 回進階自學室</a><div class="aml-lab-shell-nav__links"><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div></nav>
 <header class="study-hero"><div class="study-inner"><div class="study-route-nav"><a href="/self-study.html">← 回進階自學室</a><a href="/management-learning.html">管理實務學習路徑</a></div><div class="kicker">AML MICRO-LEARNING · MANAGEMENT</div><h1>管理學自學路徑</h1><p>為大學生課後複習設計。每堂先完成一篇核心閱讀，再進行一組適度難度的情境小測；完成 6 堂後解鎖 15 題 Management Challenge，通過後可產生 AML 線上自學完訓證明。</p><div class="study-flow"><span>① 核心閱讀</span><span>② 課後小測</span><span>③ Reflection Bonus</span><span>④ 15 題綜合測驗</span><span>⑤ 完訓證明</span></div><div class="course-note"><strong>課程使用：</strong>亞洲大學《職能治療管理學》修課學生，可依當學期授課規定將完訓證明列入課程成績；Reflection Bonus 另依教師規定採計。一般讀者亦可自由使用本自學路徑。</div></div></header>
 <main class="study-wrap" id="aml-main">
 <section class="progress-panel"><div><h2>你的學習進度</h2><p>核心進度為「6 篇文章＋6 組課後小測」共 12 項。文章需閱讀至頁面底部並按「完成閱讀，返回自學路徑」才會記錄完成；Reflection Bonus 獨立計算，不影響主測驗解鎖。</p><div class="progress-bar"><span data-progress-bar></span></div><div class="progress-tools"><button class="reset-progress-btn" type="button" data-reset-progress>清除學習紀錄</button><span class="reset-progress-note">共用電腦或手機時，請在換人使用前先清除學習紀錄。進度只存在這台裝置的瀏覽器。</span></div></div><div class="progress-ring"><strong data-progress-count>0 / 12</strong><span>核心完成項目</span><small data-bonus-count>Reflection Bonus 0 / 6</small></div></section>
@@ -39,5 +50,6 @@
 <section class="finish-panel"><div><h2>完成 12 / 12，解鎖 Management Challenge</h2><p>15 題：概念辨析、情境應用與跨章整合。答對 12 題（80%）即可取得完訓資格。</p></div><a class="btn" data-quiz-link aria-disabled="true" href="/management-self-study-quiz.html">尚未解鎖</a></section><section class="study-next-panel" aria-label="學習路徑導覽"><div class="study-next-panel__kicker">LEARNING ROUTE · 學習路徑</div><h2>這裡是管理學自學主線。</h2><p>完成核心進度後進入 Management Challenge；若只是暫停學習，也可以先回進階自學室，之後再從這台裝置接續。</p><div class="study-next-panel__actions"><a class="primary" href="/self-study.html">回進階自學室 →</a><a href="/pbs-self-study.html">切換到 PBS 自學</a></div></section>
 <div class="study-note">本路徑為 AML 線上自學與課程複習工具。完訓證明為學習完成紀錄，不屬於專業證照或正式學分證明；若納入正式課程，實際成績與加分採計依授課教師規定辦理。清除瀏覽器資料或更換裝置後，學習紀錄會重新開始。</div>
 </main>
+<footer class="aml-lab-mini-footer" aria-label="進階自學室快速導覽"><div>Allen Mind Lab · 進階自學室</div><div class="aml-lab-mini-footer__links"><a href="/self-study.html">進階自學室</a><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div></footer>
 <script src="/management-self-study.js"></script>
 </body></html>
