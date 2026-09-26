@@ -62,17 +62,28 @@
         }
       }
 
-      // Advanced Self-Study Room
+      // Advanced Self-Study Room — always inject globally, even on legacy pages
       if (!links.querySelector('.aml-nav-group[data-aml-study-nav]')) {
+        const studyNav = makeDetails('進階自學室', 'amlStudyNav', [
+          {href:'/self-study.html', className:'aml-study-subnav aml-study-subnav--home', label:'進階自學室總覽'},
+          {href:'/management-self-study.html', className:'aml-study-subnav aml-study-subnav--management', label:'管理學自學'},
+          {href:'/pbs-self-study.html', className:'aml-study-subnav aml-study-subnav--pbs', label:'PBS 自學'}
+        ]);
         const directStudy = Array.from(links.querySelectorAll('a[href="/self-study.html"], a.aml-nav-direct')).find((a) =>
           a.getAttribute('href') === '/self-study.html' || a.textContent.trim() === '進階自學室'
         );
         if (directStudy) {
-          directStudy.replaceWith(makeDetails('進階自學室', 'amlStudyNav', [
-            {href:'/self-study.html', className:'aml-study-subnav aml-study-subnav--home', label:'進階自學室總覽'},
-            {href:'/management-self-study.html', className:'aml-study-subnav aml-study-subnav--management', label:'管理學自學'},
-            {href:'/pbs-self-study.html', className:'aml-study-subnav aml-study-subnav--pbs', label:'PBS 自學'}
-          ]));
+          directStudy.replaceWith(studyNav);
+        } else {
+          // Keep global order: 閱讀路徑 → 進階自學室 → 互動實驗室 → 資源與聯繫
+          const labNav = links.querySelector('.aml-nav-group[data-aml-lab-nav]');
+          const resourcesAnchor = Array.from(links.children).find((el) => {
+            const t = (el.textContent || '').trim();
+            return t.includes('資源與聯繫');
+          });
+          if (labNav) links.insertBefore(studyNav, labNav);
+          else if (resourcesAnchor) links.insertBefore(studyNav, resourcesAnchor);
+          else links.appendChild(studyNav);
         }
       }
     });
