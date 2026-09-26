@@ -166,6 +166,28 @@
 .labx-xier-options{display:grid;grid-template-columns:1fr 1fr;gap:7px}.labx-xier-options a{position:relative;display:block;padding:9px 10px 9px 25px;border:1px solid rgba(130,164,201,.14);border-radius:11px;background:rgba(255,255,255,.025);color:#c7d4e3;font-size:.68rem;line-height:1.4;text-decoration:none}.labx-xier-options a::before{content:"";position:absolute;left:10px;top:50%;width:7px;height:7px;border-radius:50%;transform:translateY(-50%);background:var(--xier-color,#5ee4ff);box-shadow:0 0 10px var(--xier-color,#5ee4ff)}.labx-xier-options a:hover,.labx-xier-options a:focus-visible{border-color:var(--xier-color,#5ee4ff);color:#fff;background:rgba(255,255,255,.045);outline:none}.labx-xier-options a:nth-child(1){--xier-color:#4bd8ff}.labx-xier-options a:nth-child(2){--xier-color:#68f4bd}.labx-xier-options a:nth-child(3){--xier-color:#bb82ff}.labx-xier-options a:nth-child(4){--xier-color:#ffd36c}
 .labx-xier-mobile{display:none}
 @media(max-width:720px){.labx-xier-mobile{display:block;margin:0 0 4px;padding:15px 15px 14px;border:1px solid rgba(89,223,255,.22);border-radius:16px;background:linear-gradient(135deg,rgba(18,57,82,.58),rgba(7,15,26,.94));color:#c9d9e9}.labx-xier-mobile__head{display:flex;align-items:center;gap:9px}.labx-xier-mobile__head .labx-xier-avatar{width:34px;height:34px}.labx-xier-mobile__head strong{color:#f2fbff;font-size:.88rem}.labx-xier-mobile p{margin:7px 0 0;color:#8da3b9;font-size:.74rem;line-height:1.55}.labx-xier-mobile a{display:inline-flex;margin-top:10px;color:#62e4ff;font-size:.73rem;font-weight:900;text-decoration:none}.labx-map__hub .labx-xier-call,.labx-map__hub + .labx-xier-panel{display:none}}
+
+/* AML Interactive Lab · cockpit micro interactions */
+.labx-map{--active-node:#5ee4ff}
+.labx-map__paths path{transition:stroke .22s ease,opacity .22s ease,filter .22s ease,stroke-width .22s ease}
+.labx-map__hub{transition:box-shadow .22s ease,border-color .22s ease,transform .22s ease}
+.labx-map__hub:before{content:"";position:absolute;inset:-10px;border:1px solid rgba(94,228,255,.1);border-radius:50%;opacity:.65;pointer-events:none;animation:labxHubBreath 3.4s ease-in-out infinite}
+.labx-map__hub:after{content:"";position:absolute;inset:13px;border-radius:50%;border:1px dashed rgba(94,228,255,.08);pointer-events:none;animation:labxHubSpin 18s linear infinite}
+@keyframes labxHubBreath{0%,100%{transform:scale(.98);opacity:.35}50%{transform:scale(1.045);opacity:.9}}
+@keyframes labxHubSpin{to{transform:rotate(360deg)}}
+.labx-map.has-active .labx-map__hub{border-color:color-mix(in srgb,var(--active-node) 68%,transparent);box-shadow:0 0 0 12px color-mix(in srgb,var(--active-node) 5%,transparent),0 18px 50px rgba(0,0,0,.35),0 0 58px color-mix(in srgb,var(--active-node) 24%,transparent)}
+.labx-map-node{will-change:transform}
+.labx-map-node.is-active{transform:translateY(-6px) scale(1.012);border-color:color-mix(in srgb,var(--node) 78%,transparent);box-shadow:0 20px 60px color-mix(in srgb,var(--node) 16%,rgba(0,0,0,.36)),inset 0 0 34px color-mix(in srgb,var(--node) 5%,transparent)}
+.labx-map-node.is-active .labx-map-node__no{color:color-mix(in srgb,var(--node) 52%,transparent);text-shadow:0 0 22px color-mix(in srgb,var(--node) 30%,transparent)}
+.labx-map-node.is-active b{filter:drop-shadow(0 0 7px color-mix(in srgb,var(--node) 52%,transparent))}
+.labx-map-node.is-started:not(.is-complete) .labx-map-node__state:before{animation:labxStatusPulse 1.8s ease-in-out infinite}
+@keyframes labxStatusPulse{0%,100%{transform:scale(.85);opacity:.65}50%{transform:scale(1.35);opacity:1}}
+.labx-map[data-active-hall="management"]{--active-node:#4bd8ff}.labx-map[data-active-hall="pbs"]{--active-node:#68f4bd}.labx-map[data-active-hall="self"]{--active-node:#bb82ff}.labx-map[data-active-hall="ai"]{--active-node:#ffd36c}
+.labx-map[data-active-hall="management"] .labx-map__paths path:nth-child(1),.labx-map[data-active-hall="pbs"] .labx-map__paths path:nth-child(2),.labx-map[data-active-hall="self"] .labx-map__paths path:nth-child(3),.labx-map[data-active-hall="ai"] .labx-map__paths path:nth-child(4){stroke:var(--active-node);stroke-width:3;opacity:1;filter:drop-shadow(0 0 5px var(--active-node))}
+.labx-map.has-active .labx-map__paths path{opacity:.2}.labx-map.has-active[data-active-hall="management"] .labx-map__paths path:nth-child(1),.labx-map.has-active[data-active-hall="pbs"] .labx-map__paths path:nth-child(2),.labx-map.has-active[data-active-hall="self"] .labx-map__paths path:nth-child(3),.labx-map.has-active[data-active-hall="ai"] .labx-map__paths path:nth-child(4){opacity:1}
+.labx-progress__card:hover .labx-progress__meter i{box-shadow:0 0 16px color-mix(in srgb,var(--hud) 72%,transparent)}
+@media(prefers-reduced-motion:reduce){.labx-map__hub:before,.labx-map__hub:after,.labx-map-node.is-started:not(.is-complete) .labx-map-node__state:before{animation:none}.labx-map__paths path,.labx-map__hub,.labx-map-node{transition:none}}
+
 /* /AML 3.4 · Xier Control Core Navigator */
 /* ===== /AML 3.4 · Interactive Lab Exploration Map ===== */
 </style>
@@ -307,7 +329,7 @@
         </a>
         <a class="labx-progress__card" href="/tools/pbs/">
           <small>LAB 02 · PBS</small><strong>行為功能探索館</strong><div class="labx-progress__meter"><i data-hall-meter="pbs"></i></div>
-          <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="pbs-advanced"><i></i>功能假設進階</span><span class="labx-progress__item" data-progress-key="pbs-study"><i></i>PBS 自學總複習</span></div>
+          <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="pbs-intro"><i></i>行為線索初體驗</span><span class="labx-progress__item" data-progress-key="pbs-advanced"><i></i>功能假設進階</span></div>
         </a>
         <a class="labx-progress__card" href="/tools/self-awareness/">
           <small>LAB 03 · SELF</small><strong>自我覺察探索館</strong><div class="labx-progress__meter"><i data-hall-meter="self"></i></div>
@@ -402,12 +424,11 @@
     try { return localStorage.getItem(key) !== null; }
     catch(e){ return false; }
   };
-  const pbs = safeJSON('amlPbsSelfStudyV1');
   const state = {
     'mgmt-decision': has('aml.progress.management.decision'),
     'mgmt-fairness': has('aml.progress.management.fairness'),
+    'pbs-intro': has('aml.progress.pbs.intro'),
     'pbs-advanced': has('aml.progress.pbs.advanced'),
-    'pbs-study': !!(pbs && pbs.quiz && pbs.quiz.passed),
     'self-sensory': has('aml.self.sensory.v1'),
     'self-energy': has('aml.self.energy.v1'),
     'ai-initial': has('aml.ai.cocreate.v1'),
@@ -426,7 +447,7 @@
 
   const halls = {
     management: [state['mgmt-decision'], state['mgmt-fairness']],
-    pbs: [state['pbs-advanced'], state['pbs-study']],
+    pbs: [state['pbs-intro'], state['pbs-advanced']],
     self: [state['self-sensory'], state['self-energy']],
     ai: [state['ai-initial'], state['ai-advanced']]
   };
@@ -465,6 +486,36 @@
   panel.addEventListener('click', e => e.stopPropagation());
   document.addEventListener('click', () => setOpen(false));
   document.addEventListener('keydown', e => { if(e.key === 'Escape') setOpen(false); });
+})();
+</script>
+
+<script>
+/* AML Interactive Lab · cockpit hover/focus link feedback */
+(function(){
+  const map = document.querySelector('.labx-map');
+  if(!map) return;
+  const nodes = [...map.querySelectorAll('[data-map-hall]')];
+  const colors = {management:'#4bd8ff',pbs:'#68f4bd',self:'#bb82ff',ai:'#ffd36c'};
+  const activate = node => {
+    const hall = node && node.dataset.mapHall;
+    if(!hall) return;
+    nodes.forEach(n => n.classList.toggle('is-active', n === node));
+    map.classList.add('has-active');
+    map.dataset.activeHall = hall;
+    map.style.setProperty('--active-node', colors[hall] || '#5ee4ff');
+  };
+  const clear = () => {
+    nodes.forEach(n => n.classList.remove('is-active'));
+    map.classList.remove('has-active');
+    delete map.dataset.activeHall;
+    map.style.removeProperty('--active-node');
+  };
+  nodes.forEach(node => {
+    node.addEventListener('mouseenter', () => activate(node));
+    node.addEventListener('focus', () => activate(node));
+    node.addEventListener('mouseleave', clear);
+    node.addEventListener('blur', clear);
+  });
 })();
 </script>
 
