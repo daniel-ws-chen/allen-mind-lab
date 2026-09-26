@@ -1,6 +1,23 @@
 /* AML 3.3 Interactive Lab global dual-bay navigation */
 (function () {
+  function ensureDualBayNavStyles() {
+    if (document.getElementById('aml-lab-subnav-style')) return;
+    const style = document.createElement('style');
+    style.id = 'aml-lab-subnav-style';
+    style.textContent = `
+      .aml-nav-group[data-aml-lab-nav] .aml-nav-panel{min-width:240px}
+      .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav{position:relative;display:block;padding-left:2.15rem}
+      .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav::before{content:"";position:absolute;left:1rem;top:50%;width:.52rem;height:.52rem;border-radius:50%;transform:translateY(-50%);box-shadow:0 0 0 4px rgba(100,210,255,.08)}
+      .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav--explore::before{background:#68dcff;box-shadow:0 0 13px rgba(104,220,255,.48)}
+      .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav--support::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
+      .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav:hover,.aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav:focus-visible{background:linear-gradient(90deg,rgba(83,201,255,.10),rgba(111,103,255,.05));outline:none}
+      @media(max-width:720px){.aml-mobile-menu .aml-lab-subnav{position:relative;padding-left:1.55rem}.aml-mobile-menu .aml-lab-subnav::before{content:"";position:absolute;left:.55rem;top:50%;width:.42rem;height:.42rem;border-radius:50%;transform:translateY(-50%);background:#68dcff}.aml-mobile-menu .aml-lab-subnav--support::before{background:#8bf2c6}}
+    `;
+    document.head.appendChild(style);
+  }
+
   function buildDualBayNav() {
+    ensureDualBayNavStyles();
     document.querySelectorAll('.aml-desktop-links').forEach((links) => {
       const existing = links.querySelector('.aml-nav-group[data-aml-lab-nav]');
       if (existing) return;
@@ -19,9 +36,11 @@
       panel.className = 'aml-nav-panel';
       const explore = document.createElement('a');
       explore.href = '/tools.html#lab-halls';
+      explore.className = 'aml-lab-subnav aml-lab-subnav--explore';
       explore.textContent = '互動探索艙';
       const support = document.createElement('a');
       support.href = '/tools.html#practice-tools';
+      support.className = 'aml-lab-subnav aml-lab-subnav--support';
       support.textContent = '智能支援艙';
       panel.append(explore, support);
       details.append(summary, panel);
@@ -44,9 +63,11 @@
       }
       const explore = document.createElement('a');
       explore.href = '/tools.html#lab-halls';
+      explore.className = 'aml-lab-subnav aml-lab-subnav--explore';
       explore.textContent = '互動探索艙';
       const support = document.createElement('a');
       support.href = '/tools.html#practice-tools';
+      support.className = 'aml-lab-subnav aml-lab-subnav--support';
       support.textContent = '智能支援艙';
       label.after(explore, support);
     });
@@ -639,10 +660,12 @@
 
       const explore = document.createElement('a');
       explore.href = '/tools.html#lab-halls';
+      explore.className = 'aml-lab-subnav aml-lab-subnav--explore';
       explore.textContent = '互動探索艙';
 
       const support = document.createElement('a');
       support.href = '/tools.html#practice-tools';
+      support.className = 'aml-lab-subnav aml-lab-subnav--support';
       support.textContent = '智能支援艙';
 
       group.appendChild(explore);
