@@ -5,6 +5,8 @@
     const style = document.createElement('style');
     style.id = 'aml-lab-subnav-style';
     style.textContent = `
+      .aml-nav-group .aml-nav-panel a{position:relative;display:block;padding-left:2.15rem}
+      .aml-nav-group .aml-nav-panel a::before{content:"";position:absolute;left:1rem;top:50%;width:.46rem;height:.46rem;border-radius:50%;transform:translateY(-50%);background:#d7a84f;box-shadow:0 0 10px rgba(215,168,79,.30)}
       .aml-nav-group[data-aml-lab-nav] .aml-nav-panel{min-width:240px}
       .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav{position:relative;display:block;padding-left:2.15rem}
       .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav::before{content:"";position:absolute;left:1rem;top:50%;width:.52rem;height:.52rem;border-radius:50%;transform:translateY(-50%);box-shadow:0 0 0 4px rgba(100,210,255,.08)}
@@ -90,6 +92,7 @@
       support.textContent = '智能支援艙';
       label.after(explore, support);
     });
+    document.dispatchEvent(new CustomEvent('aml:nav-updated'));
   }
 
   if (document.readyState === 'loading') {
@@ -103,10 +106,10 @@
   /* ===== Accessible Explore & Mobile Navigation ===== */
   const toggle = document.querySelector(".aml-menu-toggle");
   const menu = document.querySelector(".aml-mobile-menu");
-  const exploreMenus = Array.from(document.querySelectorAll(".aml-nav-group"));
+  const getExploreMenus = () => Array.from(document.querySelectorAll(".aml-nav-group"));
 
   const closeExplore = (except = null) => {
-    exploreMenus.forEach(details => {
+    getExploreMenus().forEach(details => {
       if (details !== except) details.open = false;
     });
   };
@@ -119,35 +122,43 @@
     toggle.textContent = "☰";
   };
 
-  exploreMenus.forEach(details => {
-    details.addEventListener("toggle", () => {
-      if (details.open) closeExplore(details);
-    });
+  const bindExploreMenus = () => {
+    getExploreMenus().forEach(details => {
+      if (details.dataset.amlNavBound === "true") return;
+      details.dataset.amlNavBound = "true";
 
-    // Desktop/fine-pointer behavior: close with a short grace period.
-    // The panel is positioned below the summary, so an immediate mouseleave
-    // can fire while the pointer crosses the small visual gap. A short delay
-    // prevents the menu from flashing closed before the user can reach it.
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      let closeTimer = null;
-      const cancelClose = () => {
-        if (closeTimer) {
-          window.clearTimeout(closeTimer);
-          closeTimer = null;
-        }
-      };
-      const scheduleClose = () => {
-        cancelClose();
-        closeTimer = window.setTimeout(() => {
-          details.open = false;
-          closeTimer = null;
-        }, 220);
-      };
-      details.addEventListener("mouseenter", cancelClose);
-      details.addEventListener("mouseleave", scheduleClose);
-      details.querySelector(".aml-nav-panel")?.addEventListener("mouseenter", cancelClose);
-    }
-  });
+      details.addEventListener("toggle", () => {
+        if (details.open) closeExplore(details);
+      });
+
+      if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+        let closeTimer = null;
+        const cancelClose = () => {
+          if (closeTimer) {
+            window.clearTimeout(closeTimer);
+            closeTimer = null;
+          }
+        };
+        const scheduleClose = () => {
+          cancelClose();
+          closeTimer = window.setTimeout(() => {
+            details.open = false;
+            closeTimer = null;
+          }, 260);
+        };
+        details.addEventListener("mouseenter", cancelClose);
+        details.addEventListener("mouseleave", scheduleClose);
+        details.querySelector(".aml-nav-panel")?.addEventListener("mouseenter", cancelClose);
+        details.querySelector(".aml-nav-panel")?.addEventListener("mouseleave", scheduleClose);
+      }
+    });
+  };
+
+  bindExploreMenus();
+  document.addEventListener("aml:nav-updated", bindExploreMenus);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindExploreMenus, { once: true });
+  }
 
   if (toggle && menu) {
     toggle.addEventListener("click", () => {
@@ -168,7 +179,7 @@
 
   document.addEventListener("keydown", e => {
     if (e.key !== "Escape") return;
-    const activeExplore = exploreMenus.find(details => details.open);
+    const activeExplore = getExploreMenus().find(details => details.open);
     if (activeExplore) {
       activeExplore.open = false;
       activeExplore.querySelector("summary")?.focus();
