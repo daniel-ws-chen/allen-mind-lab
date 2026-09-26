@@ -40,7 +40,7 @@ body{background:linear-gradient(180deg,#f6faff 0%,#fff 52%,#f7fbff 100%)!importa
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://allenmindlab.com/tools/management-fairness-challenge/#webpage","url":"https://allenmindlab.com/tools/management-fairness-challenge/","name":"這樣公平嗎？｜AML 管理決策進階挑戰","description":"8 個打散的管理情境，最後才揭露其中 4 組隱性配對。看看哪些人物條件會悄悄改變你的判斷，以及這些差異是否有可說明的理由。","inLanguage":"zh-Hant","isPartOf":{"@id":"https://allenmindlab.com/#website"},"mainEntity":{"@id":"https://allenmindlab.com/tools/management-fairness-challenge/#learning-resource"}},{"@type":"WebSite","@id":"https://allenmindlab.com/#website","url":"https://allenmindlab.com/","name":"Allen Mind Lab","inLanguage":"zh-Hant"},{"@type":"LearningResource","@id":"https://allenmindlab.com/tools/management-fairness-challenge/#learning-resource","url":"https://allenmindlab.com/tools/management-fairness-challenge/","name":"這樣公平嗎？｜AML 管理決策進階挑戰","description":"8 個打散的管理情境，最後才揭露其中 4 組隱性配對。看看哪些人物條件會悄悄改變你的判斷，以及這些差異是否有可說明的理由。","inLanguage":"zh-Hant","learningResourceType":"Interactive learning activity","educationalUse":"practice","isAccessibleForFree":true}]}
 </script>
 </head>
-<body class="lab-result-management"><nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/management/">← 回管理學館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
+<body class="lab-result-management"><nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/management/">← 回管理學館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">Interactive Lab</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
 <main class="game" id="app">
   <div class="top"><div class="brand">AML INTERACTIVE LAB<small>MANAGEMENT · ADVANCED REFLECTION</small></div></div>
   <section id="intro" class="panel intro">
@@ -50,7 +50,7 @@ body{background:linear-gradient(180deg,#f6faff 0%,#fff 52%,#f7fbff 100%)!importa
     <div class="progressrow"><b id="progressText">QUESTION 1 / 8</b><div class="progress"><i id="bar" style="width:12.5%"></i></div></div>
     <div class="panel pair"><div class="scene" id="scene"><div class="scene-badge" id="persona"></div><h2 id="title"></h2><p id="desc"></p><div class="scene-symbol" id="symbol" aria-hidden="true"></div></div><div class="question"><h3>你會怎麼處理？</h3><div class="options" id="options"></div><div class="hint">請照當下直覺選擇，不需要刻意讓前後答案一致。</div></div></div>
   </section>
-  <section id="result" class="panel result hidden"><div class="eyebrow">完成進階挑戰</div><h2>原來，這幾題其實在問同一件事</h2><p class="result-lead">剛才的 8 題中，其實藏著 4 組可比較的情境。現在再回頭看：當年資、熟悉程度、績效或過去紀錄改變時，你的處理方式有沒有跟著改變？</p><div class="review" id="review"></div><div class="mirror"><strong>AI 反思鏡</strong><span id="mirror"></span></div><div class="questionbox"><strong>帶走一個問題：</strong><br>哪些差異是真正與任務、風險或責任相關的資訊？哪些可能只是人物帶給你的印象？</div><div class="actions"><a class="btn" href="/tools/management-summary/">查看我的管理判斷摘要 →</a><button class="btn secondary" id="again">再挑戰一次</button><a class="btn secondary" href="/articles/management-no-single-right-answer.html">閱讀｜當管理沒有唯一正解 →</a><a class="btn secondary" href="/tools/management/">回管理學館 →</a></div><div class="more">想挑戰更複雜的多幕管理案例？ <a href="/tools/management-advanced/">前往更多進階情境 →</a></div></section>
+  <section id="result" class="panel result hidden"><div class="eyebrow">完成進階挑戰</div><h2>原來，這幾題其實在問同一件事</h2><p class="result-lead">剛才的 8 題中，其實藏著 4 組可比較的情境。現在再回頭看：當年資、熟悉程度、績效或過去紀錄改變時，你的處理方式有沒有跟著改變？</p><div class="review" id="review"></div><div class="mirror"><strong>AI 反思鏡</strong><span id="mirror"></span></div><div class="questionbox"><strong>帶走一個問題：</strong><br>哪些差異是真正與任務、風險或責任相關的資訊？哪些可能只是人物帶給你的印象？</div><div class="actions"><a class="btn" href="/tools/management-summary/">查看我的管理判斷摘要 →</a><button class="btn secondary" id="again">再挑戰一次</button><a class="btn secondary" href="/articles/management-no-single-right-answer.html">閱讀｜當管理沒有唯一正解 →</a><a class="btn secondary" href="/management-self-study.html">完整自學 →</a><a class="btn secondary" href="/tools/management/">回管理學館 →</a></div><div class="more">想挑戰更複雜的多幕管理案例？ <a href="/tools/management-advanced/">前往更多進階情境 →</a></div></section>
 </main>
 <script>
 (()=>{
@@ -97,6 +97,6 @@ function reset(){qi=0;answers=[];qs('#result').classList.add('hidden');qs('#intr
 qs('#start').onclick=reset;qs('#again').onclick=reset;
 })();
 </script>
-<footer class="aml-lab-mini-footer" aria-label="互動實驗室快速導覽"><div>Allen Mind Lab · Interactive Lab</div><div class="aml-lab-mini-footer__links"><a href="/tools/management/">管理學館</a><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></footer>
+<footer class="aml-lab-mini-footer" aria-label="互動實驗室快速導覽"><div>Allen Mind Lab · Interactive Lab</div><div class="aml-lab-mini-footer__links"><a href="/tools/management/">管理學館</a><a href="/tools.html">Interactive Lab</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></footer>
 </body>
 </html>
