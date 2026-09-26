@@ -1,0 +1,3 @@
+DELETE these legacy files from the repository:
+articles/emptiness-meets-moho_updated.html
+tools/management-interactive/index.full.html
