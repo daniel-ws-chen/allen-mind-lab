@@ -42,6 +42,14 @@
     min-width:0;
   }
 }
+.self-continue{margin:0 0 26px;border:1px solid var(--s-line);border-radius:24px;padding:20px 22px;background:linear-gradient(135deg,#fff,#f7f1ff);box-shadow:0 16px 36px rgba(91,61,160,.07)}
+.self-continue__top{display:flex;justify-content:space-between;gap:18px;align-items:center}
+.self-continue__eyebrow{font-size:.72rem;font-weight:900;letter-spacing:.13em;color:#8a58c5}
+.self-continue h2{margin:4px 0 5px;color:var(--s-deep);font-size:1.35rem}.self-continue p{margin:0;color:var(--s-muted);font-size:.92rem}
+.self-continue__action{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 16px;border-radius:999px;background:linear-gradient(90deg,#7451c8,#9a70e6);color:#fff;text-decoration:none;font-weight:900;text-align:center}
+.self-continue__steps{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:15px}
+.self-continue__step{border:1px solid #e5daf6;border-radius:14px;padding:10px 12px;background:#fff;color:#7e718e;font-size:.82rem}.self-continue__step b{display:block;color:#6d4db1;margin-bottom:2px}.self-continue__step.is-done{background:#f2ebff;border-color:#cdb9ee}.self-continue__step.is-done b:before{content:"✓ ";color:#5d9a82}
+@media(max-width:760px){.self-continue__top{align-items:flex-start;flex-direction:column}.self-continue__action{width:100%}.self-continue__steps{grid-template-columns:1fr}}
 
 </style>
 
@@ -62,19 +70,43 @@
 </script>
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
-<nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools.html">← 回互動實驗室總館</a><div class="aml-lab-shell-nav__links"><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
-<header class="self-hero"><div class="self-inner"><div class="self-status"><i></i> LAB 03 ONLINE</div><div class="self-kicker">AML INTERACTIVE LAB · SELF AWARENESS</div><h1>自我覺察館</h1><p>從感覺處理與日常情境開始，不急著替自己分類，而是逐步看見：什麼讓我更有精神、什麼讓我耗能、哪些調整真的有幫助。</p><div class="self-mantra"><strong>先看見自己的運作方式，再找到適合自己的調節方法。</strong></div><div class="self-route"><span>01 情境探索</span><span>02 閱讀理解</span><span>03 進階覺察</span><span>04 延伸支持</span></div></div></header>
+<nav class="aml-lab-shell-nav" aria-label="Interactive Lab 頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools.html">← 回 Interactive Lab</a><div class="aml-lab-shell-nav__links"><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
+<header class="self-hero"><div class="self-inner"><div class="self-status"><i></i> LAB 03 ONLINE</div><div class="self-kicker">AML INTERACTIVE LAB · SELF AWARENESS</div><h1>自我覺察館</h1><p>從感覺處理與日常情境開始，不急著替自己分類，而是逐步看見：什麼讓我更有精神、什麼讓我耗能、哪些調整真的有幫助。</p><div class="self-mantra"><strong>先看見自己的運作方式，再找到適合自己的調節方法。</strong></div><div class="self-route"><span>01 感覺線索</span><span>02 理解脈絡</span><span>03 能量節奏</span><span>04 個人摘要</span></div></div></header>
 <main class="self-wrap" id="aml-main">
 <section class="self-intro"><div><div class="self-kicker" style="color:#8a58c5">SELF AWARENESS · DAILY LIFE</div><h2>不是問「我是什麼類型」，而是理解「我在什麼情境下怎麼運作」。</h2><p>自我覺察不是替自己貼標籤。更有用的是把感覺、壓力、活動需求與生活參與放在一起看，逐步建立一份自己真的用得上的生活說明書。</p></div><aside class="self-note"><strong>這裡不是診斷工具。</strong>先整理生活線索，再決定是否需要更多閱讀、環境調整，或和職能治療師及其他專業人員進一步討論。</aside></section>
+<section class="self-continue" aria-label="繼續上次的自我探索" id="selfContinue"><div class="self-continue__top"><div><div class="self-continue__eyebrow">CONTINUE YOUR EXPLORATION</div><h2 id="selfContinueTitle">從自己的日常開始就好。</h2><p id="selfContinueText">第一次來，可以先從「我的感覺使用說明書」整理生活線索；不需要一次完成全部。</p></div><a class="self-continue__action" id="selfContinueAction" href="/tools/sensory/">開始第一步 →</a></div><div class="self-continue__steps"><div class="self-continue__step" data-self-progress="sensory"><b>01 感覺線索</b><span>整理哪些刺激與情境影響自己</span></div><div class="self-continue__step" data-self-progress="energy"><b>02 能量節奏</b><span>看見耗能、恢復與求助時點</span></div><div class="self-continue__step" data-self-progress="summary"><b>03 個人摘要</b><span>把兩組線索放在一起理解</span></div></div></section>
 <section class="self-steps" aria-label="自我覺察館探索路徑">
 <article class="self-step"><div class="self-num">01</div><div><div class="self-meta">INITIAL EXPLORATION · 情境式自我覺察</div><h3>我的感覺使用說明書</h3><p>從日常活動出發，整理感覺反應、參與影響、有效調節與提早可注意的警訊，最後產生一份自己的生活摘要。</p><div class="self-tags"><span>約 8–10 分鐘</span><span>不分型</span><span>日常功能導向</span></div></div><div class="self-actions"><a class="self-btn" href="/tools/sensory/">開始探索 →</a></div></article>
 <article class="self-step"><div class="self-num">02</div><div><div class="self-meta">READ & UNDERSTAND · 從體驗走向理解</div><h3>感覺處理、壓力與自我覺察</h3><p>玩完之後，再回到文章理解：為什麼有些環境特別耗能？注意、感覺處理、壓力與助人者自己的狀態，又會怎麼影響每天的生活？</p><div class="self-readings"><a href="/articles/adult-adhd-sensory-processing.html">不是只有專不專心：從感覺處理看成人 ADHD<small>從 Dunn 的感覺處理觀點理解日常差異</small></a><a href="/articles/helper-self-awareness.html">心安方能助人，理明方能成事<small>助人工作者也需要評估自己的狀態</small></a><a href="/articles/caregiver-stress-coping-skills.html">壓力不是只能撐過去<small>看懂壓力，找到日常可用的因應方式</small></a></div></div><div class="self-actions"><a class="self-btn secondary" href="/articles.html">更多文章 →</a></div></article>
 <article class="self-step"><div class="self-num">03</div><div><div class="self-meta">ENERGY RHYTHM · 進階探索</div><h3>我的壓力與能量節奏</h3><p>6 個日常情境，看看自己平常怎麼察覺耗能、安排恢復、調整節奏，以及在什麼時候願意停下來尋求支持。</p><div class="self-tags"><span>約 5–8 分鐘</span><span>不做診斷</span><span>生活節奏導向</span></div></div><div class="self-actions"><a class="self-btn" href="/tools/energy-rhythm/">開始探索 →</a></div></article>
-<article class="self-step"><div class="self-num">04</div><div><div class="self-meta">SUPPORT · 把覺察帶回生活</div><h3>下一步不一定是「再做一個測驗」</h3><p>如果某些困擾持續影響工作、學習、社交、自我照顧或休息，可以把已整理的線索帶到環境調整、資源搜尋或專業討論裡。</p><div class="self-tags"><span>環境調整</span><span>精選資源</span><span>專業討論</span></div></div><div class="self-actions"><a class="self-btn secondary" href="/resources.html">看看精選資源 →</a><a class="self-btn secondary" href="/contact.html">聯繫 AML →</a></div></article>
-<article class="self-step"><div class="self-num">05</div><div><div class="self-meta">SYNTHESIS · 把線索整理成可帶走的摘要</div><h3>我的自我覺察摘要</h3><p>把「感覺使用說明書」與「壓力與能量節奏」放在一起看：我在哪些情境容易耗能？哪些調整有效？什麼訊號提醒我該停一下或尋求支持？</p><div class="self-tags"><span>整合既有結果</span><span>不再重新測驗</span><span>可列印／帶去討論</span></div></div><div class="self-actions"><a class="self-summary-cta" href="/tools/self-awareness-summary/">查看我的自我覺察摘要 →</a></div></article></section>
+<article class="self-step"><div class="self-num">04</div><div><div class="self-meta">SYNTHESIS · 把線索整理成可帶走的摘要</div><h3>我的自我覺察摘要</h3><p>把「感覺使用說明書」與「壓力與能量節奏」放在一起看：我在哪些情境容易耗能？哪些調整有效？什麼訊號提醒我該停一下或尋求支持？</p><div class="self-tags"><span>整合既有結果</span><span>不再重新測驗</span><span>可列印／帶去討論</span></div></div><div class="self-actions"><a class="self-summary-cta" href="/tools/self-awareness-summary/">整理我的摘要 →</a></div></article>
+<article class="self-step"><div class="self-num">05</div><div><div class="self-meta">SUPPORT · 把覺察帶回生活</div><h3>下一步不一定是「再做一個測驗」</h3><p>如果某些困擾持續影響工作、學習、社交、自我照顧或休息，可以把已整理的線索帶到環境調整、資源搜尋、閱讀或專業討論裡。</p><div class="self-tags"><span>環境調整</span><span>ADHD 自我理解</span><span>職能平衡</span><span>專業討論</span></div></div><div class="self-actions"><a class="self-btn secondary" href="/adhd-self-understanding-learning.html">ADHD 自我理解 →</a><a class="self-btn secondary" href="/articles/ai-occupational-balance-new-equilibrium.html">職能新平衡 →</a><a class="self-btn secondary" href="/resources.html">精選資源 →</a></div></article></section>
 <section class="self-principles" aria-label="自我覺察館三個原則"><div><b>先看情境</b><p>同一個人，在不同活動、環境與疲勞程度下，反應可能完全不同。</p></div><div><b>再看影響</b><p>重點不是特質本身，而是它怎麼影響參與、效率、情緒與生活品質。</p></div><div><b>最後才談調整</b><p>好的調節不是把自己修成標準答案，而是找到更適合自己的做法。</p></div></section>
 <div class="self-footer-note"><strong>使用提醒｜</strong>自我覺察館的互動內容用於生活經驗整理與學習，不等同正式評量、醫療診斷或個別化治療建議。</div>
 </main>
+<script>
+(()=>{
+  const read=k=>{try{return JSON.parse(localStorage.getItem(k)||'null')}catch(e){return null}};
+  const sensory=read('aml.self.sensory.v1'), energy=read('aml.self.energy.v1');
+  const title=document.getElementById('selfContinueTitle'), text=document.getElementById('selfContinueText'), action=document.getElementById('selfContinueAction');
+  const mark=k=>{const el=document.querySelector(`[data-self-progress="${k}"]`);if(el)el.classList.add('is-done')};
+  if(sensory) mark('sensory'); if(energy) mark('energy');
+  if(!sensory){
+    title.textContent='先整理自己的感覺線索。';
+    text.textContent='從工作、通勤、多人互動、休息與身體訊號開始，看見哪些情境讓你更順、哪些情境特別耗能。';
+    action.href='/tools/sensory/'; action.textContent='打開感覺使用說明書 →';
+  }else if(!energy){
+    title.textContent='你已經整理了感覺線索，下一步看看能量怎麼流動。';
+    text.textContent='接著觀察耗能、恢復、節奏調整與求助時點，把單一情境放回整天與整週的生活節奏。';
+    action.href='/tools/energy-rhythm/'; action.textContent='繼續看能量節奏 →';
+  }else{
+    mark('summary');
+    title.textContent='兩組生活線索都準備好了，現在把它們放在一起看。';
+    text.textContent='摘要不會再替你打分，而是整理容易耗能的情境、有效調整、警訊與下一步可以帶去生活或專業討論的問題。';
+    action.href='/tools/self-awareness-summary/'; action.textContent='整理我的自我覺察摘要 →';
+  }
+})();
+</script>
 <script src="/aml-site.js"></script>
 <footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>Interactive Lab</h4><a href="/tools.html">互動探索館</a><a href="/tools/self-awareness/">自我覺察館</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="/privacy.html">Privacy</a><a href="/sitemap.xml">Sitemap</a></div></div></footer>
 </body></html>
