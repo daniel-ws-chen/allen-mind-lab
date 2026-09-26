@@ -36,6 +36,7 @@
   const certDate=document.querySelector('[data-cert-date]');
   const certId=document.querySelector('[data-cert-id]');
   const printBtn=document.querySelector('[data-print]');
+  const completionExit=document.querySelector('[data-completion-exit]');
   let idx=0, correct=0, wrongTags=[];
 
   function empty(){return {articles:{},games:{},quiz:{passed:false,score:0,date:null,certificateId:null,name:null}}}
@@ -50,6 +51,7 @@
   }
   function gateInit(){
     const s=load();
+    if(completionExit) completionExit.style.display=s.quiz.passed?'block':'none';
     if(complete(s)){
       gateText.textContent='六堂文章與互動練習都已完成，可以開始總複習。';
       gateBack.style.display='none'; startBtn.style.display='inline-flex';
@@ -79,7 +81,7 @@
   }
   function start(){
     idx=0;correct=0;wrongTags=[];
-    gate.style.display='none'; result.style.display='none'; certPanel.style.display='none'; quiz.style.display='block';
+    gate.style.display='none'; result.style.display='none'; certPanel.style.display='none'; if(completionExit) completionExit.style.display='none'; quiz.style.display='block';
     renderQ();
   }
   function finish(){
@@ -101,8 +103,8 @@
     s.quiz.score=correct;
     if(passed){
       s.quiz.passed=true; s.quiz.date=s.quiz.date||today(); s.quiz.certificateId=s.quiz.certificateId||makeId();
-      save(s); certPanel.style.display='block';
-    }else save(s);
+      save(s); certPanel.style.display='block'; if(completionExit) completionExit.style.display='block';
+    } else if(completionExit){ completionExit.style.display='none'; }else save(s);
   }
   function generateCert(){
     const name=(nameInput.value||'').trim();
