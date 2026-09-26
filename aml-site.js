@@ -1,3 +1,64 @@
+/* AML 3.3 Interactive Lab global dual-bay navigation */
+(function () {
+  function buildDualBayNav() {
+    document.querySelectorAll('.aml-desktop-links').forEach((links) => {
+      const existing = links.querySelector('.aml-nav-group[data-aml-lab-nav]');
+      if (existing) return;
+      const direct = Array.from(links.querySelectorAll('a.aml-nav-direct, a[href="/tools.html"]')).find((a) => {
+        const t = a.textContent.trim();
+        return t === 'Interactive Lab' || t === '互動實驗室';
+      });
+      if (!direct) return;
+
+      const details = document.createElement('details');
+      details.className = 'aml-nav-group';
+      details.dataset.amlLabNav = 'true';
+      const summary = document.createElement('summary');
+      summary.textContent = '互動實驗室';
+      const panel = document.createElement('div');
+      panel.className = 'aml-nav-panel';
+      const explore = document.createElement('a');
+      explore.href = '/tools.html#lab-halls';
+      explore.textContent = '互動探索艙';
+      const support = document.createElement('a');
+      support.href = '/tools.html#practice-tools';
+      support.textContent = '智能支援艙';
+      panel.append(explore, support);
+      details.append(summary, panel);
+      direct.replaceWith(details);
+    });
+
+    document.querySelectorAll('.aml-mobile-menu').forEach((menu) => {
+      const labels = Array.from(menu.querySelectorAll('.aml-mobile-label'));
+      const label = labels.find((el) => {
+        const t = el.textContent.trim();
+        return t === 'Interactive Lab' || t === '互動實驗室';
+      });
+      if (!label) return;
+      label.textContent = '互動實驗室';
+      let node = label.nextElementSibling;
+      while (node && !node.classList.contains('aml-mobile-label')) {
+        const next = node.nextElementSibling;
+        if (node.matches('a[href="/tools.html"], a[href="/tools.html#lab-halls"], a[href="/tools.html#practice-tools"]')) node.remove();
+        node = next;
+      }
+      const explore = document.createElement('a');
+      explore.href = '/tools.html#lab-halls';
+      explore.textContent = '互動探索艙';
+      const support = document.createElement('a');
+      support.href = '/tools.html#practice-tools';
+      support.textContent = '智能支援艙';
+      label.after(explore, support);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', buildDualBayNav, { once: true });
+  } else {
+    buildDualBayNav();
+  }
+})();
+
 (() => {
   /* ===== Accessible Explore & Mobile Navigation ===== */
   const toggle = document.querySelector(".aml-menu-toggle");
