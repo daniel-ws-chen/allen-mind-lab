@@ -45,6 +45,14 @@
       panel.append(explore, support);
       details.append(summary, panel);
       direct.replaceWith(details);
+
+      if (!links.querySelector('a[href="/self-study.html"]')) {
+        const selfStudy = document.createElement('a');
+        selfStudy.href = '/self-study.html';
+        selfStudy.className = 'aml-nav-direct';
+        selfStudy.textContent = '自學館';
+        details.before(selfStudy);
+      }
     });
 
     document.querySelectorAll('.aml-mobile-menu').forEach((menu) => {
@@ -54,6 +62,17 @@
         return t === 'Interactive Lab' || t === '互動實驗室';
       });
       if (!label) return;
+
+      if (!menu.querySelector('a[href="/self-study.html"]')) {
+        const selfLabel = document.createElement('span');
+        selfLabel.className = 'aml-mobile-label';
+        selfLabel.textContent = '自學館';
+        const selfLink = document.createElement('a');
+        selfLink.href = '/self-study.html';
+        selfLink.textContent = '進入自學館';
+        label.before(selfLabel, selfLink);
+      }
+
       label.textContent = '互動實驗室';
       let node = label.nextElementSibling;
       while (node && !node.classList.contains('aml-mobile-label')) {
