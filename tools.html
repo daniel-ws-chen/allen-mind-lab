@@ -147,7 +147,7 @@
 .labx-map-node{--node:#4bd8ff;position:absolute;width:31%;min-height:190px;padding:22px 22px 20px;border:1px solid color-mix(in srgb,var(--node) 34%,transparent);border-radius:22px;background:linear-gradient(150deg,color-mix(in srgb,var(--node) 9%,#0b1422),rgba(7,13,23,.96) 64%);color:#fff;box-shadow:0 18px 45px rgba(0,0,0,.2);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;z-index:3}
 .labx-map-node:hover,.labx-map-node:focus-visible{transform:translateY(-5px);border-color:color-mix(in srgb,var(--node) 65%,transparent);box-shadow:0 22px 55px color-mix(in srgb,var(--node) 10%,rgba(0,0,0,.3));outline:none}
 .labx-map-node--management{--node:#4bd8ff;left:5%;top:8%}.labx-map-node--pbs{--node:#68f4bd;right:5%;top:8%}.labx-map-node--self{--node:#bb82ff;left:5%;bottom:8%}.labx-map-node--ai{--node:#ffd36c;right:5%;bottom:8%}
-.labx-map-node__no{position:absolute;right:17px;top:14px;color:color-mix(in srgb,var(--node) 24%,transparent);font-size:2.5rem;font-weight:950;line-height:1}.labx-map-node__eyebrow{color:var(--node);font-size:.63rem;font-weight:900;letter-spacing:.14em}.labx-map-node h3{margin:10px 0 6px;font-size:1.35rem;line-height:1.2;color:#fff;letter-spacing:-.02em}.labx-map-node p{margin:0;color:#b7c5d7;font-size:.84rem;line-height:1.6;max-width:92%}.labx-map-node small{display:block;margin-top:13px;color:#8296b0;font-size:.74rem;line-height:1.5}.labx-map-node b{display:inline-flex;margin-top:15px;color:var(--node);font-size:.76rem;letter-spacing:.04em}
+.labx-map-node__no{position:absolute;right:17px;top:14px;color:color-mix(in srgb,var(--node) 24%,transparent);font-size:2.5rem;font-weight:950;line-height:1}.labx-map-node__eyebrow{display:block;margin-top:27px;color:var(--node);font-size:.63rem;font-weight:900;letter-spacing:.14em}.labx-map-node h3{margin:10px 0 6px;font-size:1.35rem;line-height:1.2;color:#fff;letter-spacing:-.02em}.labx-map-node p{margin:0;color:#b7c5d7;font-size:.84rem;line-height:1.6;max-width:92%}.labx-map-node small{display:block;margin-top:13px;color:#8296b0;font-size:.74rem;line-height:1.5}.labx-map-node b{display:inline-flex;margin-top:15px;color:var(--node);font-size:.76rem;letter-spacing:.04em}.labx-map-node__state{position:absolute;left:18px;top:17px;display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border-radius:999px;border:1px solid rgba(148,174,207,.16);background:rgba(4,10,18,.5);color:#7890ab;font-size:.58rem;font-weight:900;letter-spacing:.06em;backdrop-filter:blur(6px)}.labx-map-node__state:before{content:"";width:5px;height:5px;border-radius:50%;background:#60758d}.labx-map-node.is-started .labx-map-node__state{color:var(--node);border-color:color-mix(in srgb,var(--node) 28%,transparent)}.labx-map-node.is-started .labx-map-node__state:before{background:var(--node);box-shadow:0 0 8px color-mix(in srgb,var(--node) 68%,transparent)}.labx-map-node.is-complete{border-color:color-mix(in srgb,var(--node) 58%,transparent);background:linear-gradient(150deg,color-mix(in srgb,var(--node) 13%,#0b1422),rgba(7,13,23,.96) 64%)}.labx-map-node.is-complete .labx-map-node__state{color:#e7fff6;background:color-mix(in srgb,var(--node) 10%,rgba(4,10,18,.62));border-color:color-mix(in srgb,var(--node) 42%,transparent)}.labx-map-node.is-complete .labx-map-node__state:before{background:var(--node);box-shadow:0 0 9px var(--node)}
 .labx-map__legend{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;color:#687e98;font-size:.68rem;letter-spacing:.04em;z-index:2}.labx-map__legend span{width:7px;height:7px;border-radius:50%;background:#59dfff;box-shadow:0 0 12px rgba(89,223,255,.75)}
 @media(max-width:900px){.labx-map{min-height:720px}.labx-map-node{width:36%}.labx-map-node--management,.labx-map-node--self{left:3.5%}.labx-map-node--pbs,.labx-map-node--ai{right:3.5%}.labx-map__hub{width:128px;height:128px}}
 @media(max-width:720px){.labx-map{min-height:0;padding:18px;display:grid;grid-template-columns:1fr;gap:12px;background-size:auto,38px 38px,38px 38px,auto}.labx-map__paths,.labx-map__hub,.labx-map__legend{display:none}.labx-map-node{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;min-height:0;padding:19px 18px 18px;border-radius:18px}.labx-map-node__no{font-size:2rem}.labx-map-node h3{font-size:1.2rem}.labx-map-node p{font-size:.82rem}.labx-map-node small{font-size:.72rem}.labx-section-head--map h2{font-size:1.8rem}}
@@ -157,7 +157,7 @@
 /* AML Interactive Lab Hall Identity 2026-09-25 */
 :root{--management-lab:#4bd8ff;--pbs-lab:#68f4bd;--self-lab:#bb82ff;--ai-lab:#ffd36c}
 .labx-hall--blue{--glow:var(--management-lab)}.labx-hall--green{--glow:var(--pbs-lab)}.labx-hall--violet{--glow:var(--self-lab)}.labx-hall--amber{--glow:var(--ai-lab)}
-.labx-guide-grid a:nth-child(1){border-top:2px solid var(--management-lab)}.labx-guide-grid a:nth-child(2){border-top:2px solid var(--self-lab)}.labx-guide-grid a:nth-child(3){border-top:2px solid var(--pbs-lab)}.labx-guide-grid a:nth-child(4){border-top:2px solid var(--ai-lab)}
+.labx-guide-grid a:nth-child(1){border-top:2px solid var(--management-lab)}.labx-guide-grid a:nth-child(2){border-top:2px solid var(--pbs-lab)}.labx-guide-grid a:nth-child(3){border-top:2px solid var(--self-lab)}.labx-guide-grid a:nth-child(4){border-top:2px solid var(--ai-lab)}
 </style>
 
 <!-- Social sharing metadata -->
@@ -212,7 +212,8 @@
         <span>AML</span><strong>INTERACTIVE<br>LAB</strong><small>EXPLORE</small>
       </div>
 
-      <a class="labx-map-node labx-map-node--management" href="/tools/management/" aria-label="進入管理風格探索館">
+      <a class="labx-map-node labx-map-node--management" href="/tools/management/" aria-label="進入管理風格探索館" data-map-hall="management">
+        <span class="labx-map-node__state" data-map-state="management">尚未開始</span>
         <span class="labx-map-node__no">01</span>
         <span class="labx-map-node__eyebrow">MANAGEMENT</span>
         <h3>管理風格探索館</h3>
@@ -221,7 +222,8 @@
         <b>進館探索 →</b>
       </a>
 
-      <a class="labx-map-node labx-map-node--pbs" href="/tools/pbs/" aria-label="進入行為功能探索館">
+      <a class="labx-map-node labx-map-node--pbs" href="/tools/pbs/" aria-label="進入行為功能探索館" data-map-hall="pbs">
+        <span class="labx-map-node__state" data-map-state="pbs">尚未開始</span>
         <span class="labx-map-node__no">02</span>
         <span class="labx-map-node__eyebrow">BEHAVIOR FUNCTION</span>
         <h3>行為功能探索館</h3>
@@ -230,7 +232,8 @@
         <b>進館探索 →</b>
       </a>
 
-      <a class="labx-map-node labx-map-node--self" href="/tools/self-awareness/" aria-label="進入自我覺察探索館">
+      <a class="labx-map-node labx-map-node--self" href="/tools/self-awareness/" aria-label="進入自我覺察探索館" data-map-hall="self">
+        <span class="labx-map-node__state" data-map-state="self">尚未開始</span>
         <span class="labx-map-node__no">03</span>
         <span class="labx-map-node__eyebrow">SELF AWARENESS</span>
         <h3>自我覺察探索館</h3>
@@ -239,7 +242,8 @@
         <b>進館探索 →</b>
       </a>
 
-      <a class="labx-map-node labx-map-node--ai" href="/tools/ai/" aria-label="進入 AI 共作探索館">
+      <a class="labx-map-node labx-map-node--ai" href="/tools/ai/" aria-label="進入 AI 共作探索館" data-map-hall="ai">
+        <span class="labx-map-node__state" data-map-state="ai">尚未開始</span>
         <span class="labx-map-node__no">04</span>
         <span class="labx-map-node__eyebrow">HUMAN × AI</span>
         <h3>AI 共作探索館</h3>
@@ -257,10 +261,10 @@
   <div class="labx-inner">
     <div class="labx-section-head labx-section-head--compact"><div><div class="labx-kicker">QUICK START · 快速入口</div><h2 id="labx-guide-title">還不知道去哪一館？</h2></div><p>不用先理解整個網站，從現在最想探索的問題開始就好。</p></div>
     <div class="labx-guide-grid">
-      <a href="/tools/management-decision-lab/"><span>PLAY</span><strong>想先玩玩看</strong><small>6 個管理情境，看見自己怎麼做決定。</small><b>開始體驗 →</b></a>
-      <a href="/tools/self-awareness/"><span>SELF</span><strong>想更了解自己</strong><small>先進自我覺察館，再從感覺處理與日常調節開始探索。</small><b>進入自我覺察館 →</b></a>
-      <a href="/tools/pbs/"><span>PRACTICE</span><strong>想從行為理解開始</strong><small>先看行為線索，再走向功能、支持策略與 PBS 自學。</small><b>進入 PBS 館 →</b></a>
-      <a href="/tools/ai/"><span>AI</span><strong>想試試怎麼和 AI 共作</strong><small>從分工、查證到責任邊界，練習更成熟的人機協作。</small><b>進入 AI 共作館 →</b></a>
+      <a href="/tools/management-decision-lab/"><span>PLAY</span><strong>想先玩玩看</strong><small>6 個管理情境，看見自己怎麼做決定。</small><b>進入管理風格探索館 →</b></a>
+      <a href="/tools/pbs/"><span>PRACTICE</span><strong>想從行為理解開始</strong><small>先看行為線索，再走向功能、支持策略與 PBS 自學。</small><b>進入行為功能探索館 →</b></a>
+      <a href="/tools/self-awareness/"><span>SELF</span><strong>想更了解自己</strong><small>從感覺處理、能量節奏與日常調節開始探索。</small><b>進入自我覺察探索館 →</b></a>
+      <a href="/tools/ai/"><span>AI</span><strong>想試試怎麼和 AI 共作</strong><small>從分工、查證到責任邊界，練習更成熟的人機協作。</small><b>進入 AI 共作探索館 →</b></a>
     </div>
   </div>
 </section>
@@ -279,19 +283,19 @@
       <div class="labx-progress__bar" aria-hidden="true"><i data-lab-progress-bar></i></div>
       <div class="labx-progress__grid">
         <a class="labx-progress__card" href="/tools/management/">
-          <small>LAB 01 · MANAGEMENT</small><strong>管理學館</strong>
+          <small>LAB 01 · MANAGEMENT</small><strong>管理風格探索館</strong>
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="mgmt-decision"><i></i>管理決策實驗室</span><span class="labx-progress__item" data-progress-key="mgmt-fairness"><i></i>公平進階挑戰</span></div>
         </a>
         <a class="labx-progress__card" href="/tools/pbs/">
-          <small>LAB 02 · PBS</small><strong>PBS 行為理解館</strong>
+          <small>LAB 02 · PBS</small><strong>行為功能探索館</strong>
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="pbs-advanced"><i></i>功能假設進階</span><span class="labx-progress__item" data-progress-key="pbs-study"><i></i>PBS 自學總複習</span></div>
         </a>
         <a class="labx-progress__card" href="/tools/self-awareness/">
-          <small>LAB 03 · SELF</small><strong>自我覺察館</strong>
+          <small>LAB 03 · SELF</small><strong>自我覺察探索館</strong>
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="self-sensory"><i></i>感覺使用說明書</span><span class="labx-progress__item" data-progress-key="self-energy"><i></i>壓力與能量節奏</span></div>
         </a>
         <a class="labx-progress__card" href="/tools/ai/">
-          <small>LAB 04 · HUMAN × AI</small><strong>AI 共作館</strong>
+          <small>LAB 04 · HUMAN × AI</small><strong>AI 共作探索館</strong>
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="ai-initial"><i></i>任務分工</span><span class="labx-progress__item" data-progress-key="ai-advanced"><i></i>查證與判斷</span></div>
         </a>
       </div>
@@ -400,6 +404,22 @@
   const bar = document.querySelector('[data-lab-progress-bar]');
   if(count) count.textContent = `${done} / 8`;
   if(bar) bar.style.width = `${done/8*100}%`;
+
+  const halls = {
+    management: [state['mgmt-decision'], state['mgmt-fairness']],
+    pbs: [state['pbs-advanced'], state['pbs-study']],
+    self: [state['self-sensory'], state['self-energy']],
+    ai: [state['ai-initial'], state['ai-advanced']]
+  };
+  Object.entries(halls).forEach(([hall, milestones]) => {
+    const node = document.querySelector(`[data-map-hall="${hall}"]`);
+    const label = document.querySelector(`[data-map-state="${hall}"]`);
+    if(!node || !label) return;
+    const hallDone = milestones.filter(Boolean).length;
+    node.classList.toggle('is-started', hallDone > 0 && hallDone < milestones.length);
+    node.classList.toggle('is-complete', hallDone === milestones.length);
+    label.textContent = hallDone === 0 ? '尚未開始' : hallDone === milestones.length ? '已完成目前里程碑' : `探索中 · ${hallDone}/${milestones.length}`;
+  });
 })();
 </script>
 
