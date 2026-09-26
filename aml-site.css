@@ -1053,3 +1053,16 @@ body .aml-domain-catalog__read{display:none}
  .aml-lab-mini-footer{width:calc(100% - 10vw);display:block}
  .aml-lab-mini-footer__links{margin-top:10px}
 }
+
+
+/* ===== AML 3.4 Performance 3 · mobile touch + overflow safety ===== */
+@media(max-width:620px){
+  .aml-lab-shell-nav__back{min-height:44px}
+  .aml-lab-shell-nav__links{gap:6px}
+  .aml-lab-shell-nav__links a{min-height:44px;padding:9px 12px;font-size:.78rem}
+  .aml-stage-links a{min-height:44px;display:flex;align-items:center}
+}
+@media(max-width:520px){
+  .aml-lab-mini-footer__links a{display:inline-flex;align-items:center;min-height:40px;padding:4px 0}
+}
+/* ===== /AML 3.4 Performance 3 ===== */
