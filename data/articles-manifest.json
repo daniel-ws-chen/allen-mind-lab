@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-25T13:43:04.968Z",
+  "generatedAt": "2026-09-26T01:05:10.631Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 49,
-    "ot": 22,
+    "total": 50,
+    "ot": 23,
     "mind": 14,
     "pbs": 13,
     "education": 8,
     "management": 24,
-    "ai": 12,
+    "ai": 13,
     "notes": 7
   },
   "featuredReading": [
@@ -78,6 +78,53 @@
     }
   },
   "articles": [
+    {
+      "slug": "ai-occupational-balance-new-equilibrium",
+      "title": "AI協作下的職能新平衡",
+      "summary": "當工作、休閒、社交、學習與睡前活動愈來愈常共用同一個螢幕，職能平衡也需要新的理解：不只看時間分配，更要看參與品質、狀態切換，以及 AI 省下來的時間最後去了哪裡。",
+      "date": "2026-09-26",
+      "domains": [
+        "ot",
+        "ai"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "OT & Human Occupation × AI × Practice",
+      "cardMeta": "2026.09.26 · OT & Human Occupation × AI × Practice",
+      "keywords": [
+        "職能治療",
+        "職能平衡",
+        "occupational balance",
+        "AI",
+        "人工智慧",
+        "手機",
+        "滑世代",
+        "數位生活",
+        "工作與休閒",
+        "睡眠",
+        "職能轉換",
+        "生活節奏"
+      ],
+      "articlePath": "/articles/ai-occupational-balance-new-equilibrium.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ai-occupational-balance-new-equilibrium",
+      "hero": "/images/articles/ai-occupational-balance-new-equilibrium-hero.webp",
+      "ogImage": "/images/articles/ai-occupational-balance-new-equilibrium-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 相關閱讀 ← 當 AI 開始參與我們的選擇",
+          "href": "/articles/ai-human-occupation-moho.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "enter-the-play",
       "title": "入戲",
