@@ -114,7 +114,10 @@
 .labx-progress__item{display:flex;align-items:flex-start;gap:7px;color:#7f99a6;font-size:.77rem}
 .labx-progress__item i{width:7px;height:7px;border-radius:50%;margin-top:.45em;flex:0 0 7px;background:#34505d;box-shadow:0 0 0 3px rgba(52,80,93,.1)}
 .labx-progress__item.done{color:#dffbf5}.labx-progress__item.done i{background:var(--hud);box-shadow:0 0 0 3px color-mix(in srgb,var(--hud) 14%,transparent),0 0 10px color-mix(in srgb,var(--hud) 35%,transparent)}
-.labx-progress__privacy{margin-top:14px;color:#617f8f;font-size:.72rem}
+.labx-progress__privacy{margin-top:14px;color:#617f8f;font-size:.72rem;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.labx-progress__reset{appearance:none;border:1px solid rgba(122,198,236,.22);border-radius:999px;background:rgba(255,255,255,.025);color:#8fa9b8;padding:7px 11px;font:800 .68rem/1 system-ui,sans-serif;letter-spacing:.03em;cursor:pointer;transition:.18s ease}
+.labx-progress__reset:hover,.labx-progress__reset:focus-visible{color:#e9fbff;border-color:rgba(112,231,247,.48);background:rgba(112,231,247,.06);outline:none}
+.labx-progress__reset:active{transform:translateY(1px)}
 @media(max-width:900px){.labx-progress__grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.labx-progress__head{grid-template-columns:1fr}.labx-progress__count{text-align:left}.labx-progress__grid{grid-template-columns:1fr}.labx-progress__panel{padding:18px}.labx-progress{padding-top:18px}}
 
@@ -391,7 +394,7 @@
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="ai-initial"><i></i>任務分工</span><span class="labx-progress__item" data-progress-key="ai-advanced"><i></i>查證與判斷</span></div>
         </a>
       </div>
-      <div class="labx-progress__privacy">進度只存在目前瀏覽器，不會上傳 AML。更換裝置、無痕模式或清除瀏覽器資料後，紀錄可能消失。</div>
+      <div class="labx-progress__privacy"><span>進度只存在目前瀏覽器，不會上傳 AML。共用電腦可於使用後重設本機進度。</span><button class="labx-progress__reset" type="button" data-reset-lab-progress>重設本機進度</button></div>
     </div>
   </div>
 </section>
@@ -512,6 +515,30 @@
     node.classList.toggle('is-started', hallDone > 0 && hallDone < milestones.length);
     node.classList.toggle('is-complete', hallDone === milestones.length);
     label.textContent = hallDone === 0 ? '尚未開始' : hallDone === milestones.length ? '已完成目前里程碑' : `探索中 · ${hallDone}/${milestones.length}`;
+  });
+})();
+</script>
+
+<script>
+/* AML Interactive Lab · reset local journey progress */
+(function(){
+  const button = document.querySelector('[data-reset-lab-progress]');
+  if(!button) return;
+  const keys = [
+    'aml.progress.management.decision',
+    'aml.progress.management.fairness',
+    'aml.progress.pbs.intro',
+    'aml.progress.pbs.advanced',
+    'aml.self.sensory.v1',
+    'aml.self.energy.v1',
+    'aml.ai.cocreate.v1',
+    'aml.ai.judgment.v1'
+  ];
+  button.addEventListener('click', function(){
+    const ok = window.confirm('是否清除這台裝置上的 Interactive Lab 探索紀錄？\n\n只會清除本機的 8 個探索進度，不會刪除網站內容或其他 AML 資料。');
+    if(!ok) return;
+    keys.forEach(key => { try { localStorage.removeItem(key); } catch(e){} });
+    window.location.reload();
   });
 })();
 </script>
