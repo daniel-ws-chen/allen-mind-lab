@@ -132,6 +132,30 @@
 @media(max-width:600px){.labx-bay-switch{align-items:stretch}.labx-bay-switch .labx-primary{width:100%;justify-content:center}}
 /* /AML 3.3 · Interactive Lab two-bay architecture */
 
+
+/* AML 3.3 · Mission Complete → Advanced Training */
+.labx-complete{position:relative;z-index:1;display:none;margin-top:18px;padding:18px;border:1px solid rgba(112,231,247,.24);border-radius:18px;background:linear-gradient(135deg,rgba(25,65,78,.42),rgba(25,24,56,.46));overflow:hidden}
+.labx-complete.is-visible{display:block;animation:labxCompleteIn .45s ease both}
+.labx-complete__top{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.labx-complete__eyebrow{font-size:.68rem;font-weight:950;letter-spacing:.16em;color:#70e7f7}
+.labx-complete h3{margin:5px 0 4px;color:#fff;font-size:clamp(1.08rem,2vw,1.35rem)}
+.labx-complete p{margin:0;color:#9eb4c4;font-size:.84rem;line-height:1.6}
+.labx-complete__badge{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid rgba(255,211,108,.28);border-radius:999px;background:rgba(255,211,108,.06);color:#ffe19a;font-size:.72rem;font-weight:900;white-space:nowrap}
+.labx-complete__next{margin-top:15px;padding-top:15px;border-top:1px solid rgba(152,196,221,.12)}
+.labx-complete__next-label{display:block;margin-bottom:9px;color:#819aaa;font-size:.68rem;font-weight:900;letter-spacing:.08em}
+.labx-complete__links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.labx-complete__link{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;padding:11px 13px;border:1px solid rgba(128,181,213,.18);border-radius:13px;background:rgba(5,15,25,.38);color:#eefaff;text-decoration:none;transition:.18s ease}
+.labx-complete__link:hover,.labx-complete__link:focus-visible{border-color:rgba(112,231,247,.44);background:rgba(112,231,247,.055);outline:none;transform:translateY(-1px)}
+.labx-complete__link span{min-width:0}
+.labx-complete__link strong{display:block;font-size:.82rem}
+.labx-complete__link small{display:block;margin-top:2px;color:#7f98aa;font-size:.68rem;line-height:1.35}
+.labx-complete__link b{flex:0 0 auto;color:#70e7f7;font-size:.9rem}
+.labx-progress__panel.is-mission-complete{border-color:#356779;box-shadow:0 18px 48px rgba(0,0,0,.2),inset 0 0 48px rgba(112,231,247,.045)}
+.labx-progress__panel.is-mission-complete [data-lab-progress-count]{color:#dffff8;text-shadow:0 0 20px rgba(101,240,202,.28)}
+@keyframes labxCompleteIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(max-width:640px){.labx-complete__links{grid-template-columns:1fr}.labx-complete{padding:15px}}
+@media(prefers-reduced-motion:reduce){.labx-complete.is-visible{animation:none}.labx-complete__link{transition:none}}
+/* /AML 3.3 · Mission Complete → Advanced Training */
 </style>
 <style>
 /* AML Interactive Lab — Future Lab 4.0 */
@@ -408,6 +432,27 @@
           <div class="labx-progress__items"><span class="labx-progress__item" data-progress-key="ai-initial"><i></i>任務分工</span><span class="labx-progress__item" data-progress-key="ai-advanced"><i></i>查證與判斷</span></div>
         </a>
       </div>
+      <div class="labx-complete" data-mission-complete aria-live="polite" aria-hidden="true">
+        <div class="labx-complete__top">
+          <div>
+            <div class="labx-complete__eyebrow">MISSION COMPLETE · 探索任務完成</div>
+            <h3>四座探索艙，8 個任務全數完成。</h3>
+            <p>探索完成不是結案。你可以選一個主題，繼續進入更完整的自學與訓練。</p>
+          </div>
+          <div class="labx-complete__badge" aria-label="AML Explorer 探索者成就">✦ AML Explorer｜探索者</div>
+        </div>
+        <div class="labx-complete__next">
+          <span class="labx-complete__next-label">NEXT MISSION · 進階訓練建議</span>
+          <div class="labx-complete__links">
+            <a class="labx-complete__link" href="/tools/management-self-study/">
+              <span><strong>管理學進階訓練</strong><small>從決策體驗走進完整管理學自學系統</small></span><b aria-hidden="true">→</b>
+            </a>
+            <a class="labx-complete__link" href="/pbs-self-study.html">
+              <span><strong>PBS 進階訓練</strong><small>從行為功能判斷走進完整 PBS 自學路徑</small></span><b aria-hidden="true">→</b>
+            </a>
+          </div>
+        </div>
+      </div>
       <div class="labx-progress__privacy"><span>進度只存在目前瀏覽器，不會上傳 AML。共用電腦可於使用後重設本機進度。</span><button class="labx-progress__reset" type="button" data-reset-lab-progress>重設本機進度</button></div>
     </div>
   </div>
@@ -512,6 +557,15 @@
   const bar = document.querySelector('[data-lab-progress-bar]');
   if(count) count.textContent = `${done} / 8`;
   if(bar) bar.style.width = `${done/8*100}%`;
+
+  const panel = document.querySelector('.labx-progress__panel');
+  const complete = document.querySelector('[data-mission-complete]');
+  const missionDone = done === 8;
+  if(panel) panel.classList.toggle('is-mission-complete', missionDone);
+  if(complete){
+    complete.classList.toggle('is-visible', missionDone);
+    complete.setAttribute('aria-hidden', String(!missionDone));
+  }
 
   const halls = {
     management: [state['mgmt-decision'], state['mgmt-fairness']],
