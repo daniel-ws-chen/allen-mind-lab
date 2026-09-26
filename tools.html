@@ -222,6 +222,24 @@
 .labx-map-node small{display:none}
 @media (max-width:900px) and (min-width:721px){.labx-map-node{width:33%;min-height:154px}.labx-map-node--management,.labx-map-node--self{left:2.5%}.labx-map-node--pbs,.labx-map-node--ai{right:2.5%}.labx-map__hub{width:158px;height:158px}.labx-xier-core-avatar{width:66px;height:66px;right:-23px;bottom:-14px}}
 @media(max-width:720px){.labx-map-node{width:100%;min-height:0;padding:17px 18px 16px}.labx-map-node__eyebrow{margin-top:24px}.labx-map-node h3{font-size:1.12rem}.labx-map-node p{font-size:.78rem}.labx-map-node b{margin-top:10px}}
+
+/* AML 3.3 · Full View Core / Avatar Trigger */
+.labx-map{min-height:580px}
+.labx-map__hub{width:176px;height:176px;box-shadow:0 0 0 13px rgba(68,164,215,.035),0 18px 52px rgba(0,0,0,.36),0 0 52px rgba(75,216,255,.14)}
+.labx-xier-core-avatar{right:-16px;bottom:-10px;width:88px;height:88px;cursor:pointer}
+.labx-xier-core-avatar:focus-visible{outline:none;box-shadow:0 0 0 8px rgba(72,207,255,.12),0 0 38px rgba(72,207,255,.62),0 16px 32px rgba(0,0,0,.42)}
+.labx-xier-call{display:none !important}
+.labx-xier-panel{width:min(328px,35vw);transform:translate(-50%,78px)}
+.labx-map.is-xier-open .labx-xier-panel{transform:translate(-50%,84px)}
+.labx-map-node{width:25.5%;min-height:128px;padding:16px 18px 15px}
+.labx-map-node--management{left:6.5%;top:9%}.labx-map-node--pbs{right:6.5%;top:9%}.labx-map-node--self{left:6.5%;bottom:9%}.labx-map-node--ai{right:6.5%;bottom:9%}
+.labx-map-node__eyebrow{margin-top:22px;font-size:.58rem}.labx-map-node h3{margin:7px 0 5px;font-size:1.08rem}.labx-map-node p{font-size:.72rem;line-height:1.38}.labx-map-node b{margin-top:10px;font-size:.7rem}
+.labx-map-node__state{left:14px;top:12px;font-size:.52rem}.labx-map-node__no{right:14px;top:11px;font-size:2rem}
+.labx-map__legend{bottom:14px}
+@media (max-width:1100px) and (min-width:721px){.labx-map{min-height:560px}.labx-map__hub{width:164px;height:164px}.labx-xier-core-avatar{width:78px;height:78px;right:-15px;bottom:-9px}.labx-map-node{width:27.5%;min-height:124px}.labx-map-node--management{left:4.5%}.labx-map-node--pbs{right:4.5%}.labx-map-node--self{left:4.5%}.labx-map-node--ai{right:4.5%}}
+@media(max-width:720px){.labx-xier-core-avatar{display:none}.labx-xier-call{display:none !important}}
+/* /AML 3.3 · Full View Core / Avatar Trigger */
+
 /* /AML 3.3 · Strong Core / Quiet Periphery */
 
 /* ===== /AML 3.4 · Interactive Lab Exploration Map ===== */
@@ -283,8 +301,8 @@
       </svg>
       <div class="labx-map__hub">
         <span>AML</span><strong>INTERACTIVE<br>LAB</strong><small>EXPLORE</small>
-        <img class="labx-xier-core-avatar" src="/images/xier-chibi-avatar.png" alt="曦兒，中控導航員">
-        <button class="labx-xier-call" type="button" aria-expanded="false" aria-controls="labx-xier-panel">曦兒導航 <span class="labx-xier-call__chev" aria-hidden="true">⌄</span></button>
+        <img class="labx-xier-core-avatar" src="/images/xier-chibi-avatar.png" alt="曦兒，中控導航員，點擊開啟導航" role="button" tabindex="0" aria-expanded="false" aria-controls="labx-xier-panel">
+        
       </div>
       <div class="labx-xier-panel" id="labx-xier-panel" aria-label="曦兒中控導航">
         <div class="labx-xier-panel__head"><img class="labx-xier-avatar" src="/images/xier-chibi-avatar.png" alt="" aria-hidden="true"><div><strong>中控導航員・曦兒</strong><span>不知道先去哪一館？先選一個最接近你現在的狀態。</span></div></div>
@@ -501,19 +519,25 @@
 /* AML Interactive Lab · Xier control-core navigator */
 (function(){
   const map = document.querySelector('.labx-map');
-  const button = document.querySelector('.labx-xier-call');
   const panel = document.getElementById('labx-xier-panel');
-  if(!map || !button || !panel) return;
+  const triggers = [...document.querySelectorAll('.labx-xier-core-avatar, .labx-xier-call')].filter(Boolean);
+  if(!map || !panel || !triggers.length) return;
   const setOpen = (open) => {
     map.classList.toggle('is-xier-open', open);
-    button.setAttribute('aria-expanded', String(open));
+    triggers.forEach(el => el.setAttribute('aria-expanded', String(open)));
     panel.setAttribute('aria-hidden', String(!open));
   };
+  const toggle = (e) => {
+    if(e){ e.preventDefault(); e.stopPropagation(); }
+    const current = triggers[0].getAttribute('aria-expanded') === 'true';
+    setOpen(!current);
+  };
   setOpen(false);
-  button.addEventListener('click', function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    setOpen(button.getAttribute('aria-expanded') !== 'true');
+  triggers.forEach(el => {
+    el.addEventListener('click', toggle);
+    el.addEventListener('keydown', ev => {
+      if(ev.key === 'Enter' || ev.key === ' '){ toggle(ev); }
+    });
   });
   panel.addEventListener('click', e => e.stopPropagation());
   document.addEventListener('click', () => setOpen(false));
