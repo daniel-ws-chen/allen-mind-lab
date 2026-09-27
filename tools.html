@@ -81,6 +81,40 @@
 @media(max-width:820px){.ai-tools-intro{grid-template-columns:1fr;padding:24px}.ai-tools-intro__note{max-width:none}.tool-subhead{align-items:flex-start;flex-direction:column;gap:5px}.tool-subhead:after{display:none}}
 
 
+/* AML Interactive Lab · cockpit progress HUD */
+.labx-progress{padding:28px 0 36px;background:linear-gradient(180deg,#050b13,#07141f);color:#eefaff;border-top:1px solid rgba(96,207,255,.12)}
+.labx-progress__panel{position:relative;overflow:hidden;border:1px solid #28485a;border-radius:var(--aml-radius-xl);padding:24px;background:linear-gradient(145deg,rgba(7,23,35,.98),rgba(8,18,30,.99));box-shadow:0 18px 48px rgba(0,0,0,.2),inset 0 0 40px rgba(56,182,255,.025)}
+.labx-progress__panel:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(89,151,201,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(89,151,201,.045) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
+.labx-progress__head,.labx-progress__bar,.labx-progress__grid,.labx-progress__privacy{position:relative;z-index:1}
+.labx-progress__head{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:end}
+.labx-progress__head h2{margin:4px 0 5px;font-size:clamp(1.25rem,2.4vw,1.7rem);color:#fff;letter-spacing:-.02em}
+.labx-progress__head p{margin:0;color:#8fa9b8;max-width:760px;font-size:.9rem}
+.labx-progress__count{min-width:110px;text-align:right}
+.labx-progress__count strong{display:block;font:900 2rem/1 Arial,sans-serif;color:#70e7f7;text-shadow:0 0 18px rgba(112,231,247,.25)}
+.labx-progress__count span{font-size:.68rem;color:#7693a2;letter-spacing:.08em;text-transform:uppercase}
+.labx-progress__bar{height:11px;margin:18px 0 20px;background:#102733;border:1px solid rgba(106,198,231,.12);border-radius:999px;overflow:hidden;box-shadow:inset 0 0 12px rgba(0,0,0,.38)}
+.labx-progress__bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#5fdcf0 0%,#65f0ca 45%,#9875ec 100%);border-radius:999px;transition:width .35s ease;box-shadow:0 0 18px rgba(95,220,240,.28)}
+.labx-progress__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.labx-progress__card{--hud:#5fdcf0;border:1px solid color-mix(in srgb,var(--hud) 30%,#244656);border-radius:17px;padding:15px;background:linear-gradient(180deg,rgba(12,31,44,.96),rgba(8,24,35,.98));text-decoration:none;color:#edfaff;min-width:0;transition:.18s ease}
+.labx-progress__card:nth-child(2){--hud:#68f4bd}.labx-progress__card:nth-child(3){--hud:#bb82ff}.labx-progress__card:nth-child(4){--hud:#ffd36c}
+.labx-progress__card:hover{border-color:color-mix(in srgb,var(--hud) 62%,transparent);transform:translateY(-2px);box-shadow:0 10px 26px color-mix(in srgb,var(--hud) 9%,transparent)}
+.labx-progress__card small{display:block;font-size:.66rem;letter-spacing:.14em;color:color-mix(in srgb,var(--hud) 76%,#8fa8b4);font-weight:900}
+.labx-progress__card strong{display:block;margin:5px 0 10px;font-size:.96rem}
+.labx-progress__meter{height:6px;margin:2px 0 12px;background:#132a36;border-radius:999px;overflow:hidden;border:1px solid rgba(255,255,255,.035)}
+.labx-progress__meter i{display:block;width:0;height:100%;background:var(--hud);border-radius:999px;box-shadow:0 0 10px color-mix(in srgb,var(--hud) 55%,transparent);transition:width .3s ease}
+.labx-progress__items{display:grid;gap:6px}
+.labx-progress__item{display:flex;align-items:flex-start;gap:7px;color:#7f99a6;font-size:.77rem}
+.labx-progress__item i{width:7px;height:7px;border-radius:50%;margin-top:.45em;flex:0 0 7px;background:#34505d;box-shadow:0 0 0 3px rgba(52,80,93,.1)}
+.labx-progress__item.done{color:#dffbf5}.labx-progress__item.done i{background:var(--hud);box-shadow:0 0 0 3px color-mix(in srgb,var(--hud) 14%,transparent),0 0 10px color-mix(in srgb,var(--hud) 35%,transparent)}
+.labx-progress__privacy{margin-top:14px;color:#617f8f;font-size:.72rem;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.labx-progress__reset{appearance:none;border:1px solid rgba(122,198,236,.22);border-radius:999px;background:rgba(255,255,255,.025);color:#8fa9b8;padding:7px 11px;font:800 .68rem/1 system-ui,sans-serif;letter-spacing:.03em;cursor:pointer;transition:.18s ease}
+.labx-progress__reset:hover,.labx-progress__reset:focus-visible{color:#e9fbff;border-color:rgba(112,231,247,.48);background:rgba(112,231,247,.06);outline:none}
+.labx-progress__reset:active{transform:translateY(1px)}
+@media(max-width:900px){.labx-progress__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.labx-progress__head{grid-template-columns:1fr}.labx-progress__count{text-align:left}.labx-progress__grid{grid-template-columns:1fr}.labx-progress__panel{padding:18px}.labx-progress{padding-top:18px}}
+
+
+
 /* AML 3.3 · Interactive Lab two-bay architecture */
 .labx-bay-switch{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .labx-primary--secondary{background:rgba(255,255,255,.055);color:#dce9f7;border:1px solid rgba(159,188,228,.24);box-shadow:none}
@@ -90,6 +124,30 @@
 @media(max-width:600px){.labx-bay-switch{align-items:stretch}.labx-bay-switch .labx-primary{width:100%;justify-content:center}}
 /* /AML 3.3 · Interactive Lab two-bay architecture */
 
+
+/* AML 3.3 · Mission Complete → Advanced Training */
+.labx-complete{position:relative;z-index:1;display:none;margin-top:18px;padding:18px;border:1px solid rgba(112,231,247,.24);border-radius:18px;background:linear-gradient(135deg,rgba(25,65,78,.42),rgba(25,24,56,.46));overflow:hidden}
+.labx-complete.is-visible{display:block;animation:labxCompleteIn .45s ease both}
+.labx-complete__top{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.labx-complete__eyebrow{font-size:.68rem;font-weight:950;letter-spacing:.16em;color:#70e7f7}
+.labx-complete h3{margin:5px 0 4px;color:#fff;font-size:clamp(1.08rem,2vw,1.35rem)}
+.labx-complete p{margin:0;color:#9eb4c4;font-size:.84rem;line-height:1.6}
+.labx-complete__badge{display:inline-flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid rgba(255,211,108,.28);border-radius:var(--aml-radius-pill);background:rgba(255,211,108,.06);color:#ffe19a;font-size:.72rem;font-weight:900;white-space:nowrap}
+.labx-complete__next{margin-top:15px;padding-top:15px;border-top:1px solid rgba(152,196,221,.12)}
+.labx-complete__next-label{display:block;margin-bottom:9px;color:#819aaa;font-size:.68rem;font-weight:900;letter-spacing:.08em}
+.labx-complete__links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.labx-complete__link{display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;padding:11px 13px;border:1px solid rgba(128,181,213,.18);border-radius:13px;background:rgba(5,15,25,.38);color:#eefaff;text-decoration:none;transition:.18s ease}
+.labx-complete__link:hover,.labx-complete__link:focus-visible{border-color:rgba(112,231,247,.44);background:rgba(112,231,247,.055);outline:none;transform:translateY(-1px)}
+.labx-complete__link span{min-width:0}
+.labx-complete__link strong{display:block;font-size:.82rem}
+.labx-complete__link small{display:block;margin-top:2px;color:#7f98aa;font-size:.68rem;line-height:1.35}
+.labx-complete__link b{flex:0 0 auto;color:#70e7f7;font-size:.9rem}
+.labx-progress__panel.is-mission-complete{border-color:#356779;box-shadow:0 18px 48px rgba(0,0,0,.2),inset 0 0 48px rgba(112,231,247,.045)}
+.labx-progress__panel.is-mission-complete [data-lab-progress-count]{color:#dffff8;text-shadow:0 0 20px rgba(101,240,202,.28)}
+@keyframes labxCompleteIn{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(max-width:640px){.labx-complete__links{grid-template-columns:1fr}.labx-complete{padding:15px}}
+@media(prefers-reduced-motion:reduce){.labx-complete.is-visible{animation:none}.labx-complete__link{transition:none}}
+/* /AML 3.3 · Mission Complete → Advanced Training */
 
 /* AML 3.3 · Intelligent Support Bay refinement */
 #practice-tools .tool-grid{gap:18px}
@@ -131,7 +189,7 @@
 #lab-halls,#practice-tools{scroll-margin-top:104px}
 @media(max-width:720px){#lab-halls,#practice-tools{scroll-margin-top:84px}}
 /* /AML 3.3 · Bay anchor navigation polish */
-
+ .labx-complete__links--single{grid-template-columns:1fr}
 </style>
 <style>
 /* AML Interactive Lab — Future Lab 4.0 */
@@ -157,106 +215,104 @@
 @media(max-width:540px){.labx-halls{padding-top:60px}.labx-section-head--poster h2{font-size:2rem}.labx-poster-grid{gap:16px}.labx-poster{min-height:0;padding:24px 21px 22px}.labx-poster__number{font-size:8.5rem;right:14px;bottom:-8px}.labx-poster .labx-hall__glyph{top:21px;right:20px;font-size:2.15rem}.labx-poster__question{font-size:2.15rem!important;margin-top:34px!important;max-width:100%;line-height:1.1!important}.labx-poster__question br{display:none}.labx-poster__sub{max-width:100%!important}.labx-poster__fit{margin-top:20px}.labx-poster__reward{margin-top:26px}.labx-poster .labx-hall__status{max-width:78%;line-height:1.4;letter-spacing:.08em}}
 /* ===== AML 3.4 · Interactive Lab Exploration Map ===== */
 .labx-section-head--map{align-items:start}.labx-section-head--map h2{max-width:760px;font-size:clamp(1.75rem,3vw,2.55rem)}
-.labx-map{position:relative;min-height:580px;overflow:hidden;border:1px solid rgba(122,165,215,.18);border-radius:30px;background:radial-gradient(circle at 50% 50%,rgba(34,96,155,.16),transparent 28%),linear-gradient(rgba(86,133,186,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(86,133,186,.055) 1px,transparent 1px),linear-gradient(145deg,#07101d 0%,#081321 52%,#050a12 100%);background-size:auto,52px 52px,52px 52px,auto;box-shadow:0 24px 70px rgba(0,0,0,.24)}
+.labx-map{position:relative;min-height:650px;overflow:hidden;border:1px solid rgba(122,165,215,.18);border-radius:30px;background:radial-gradient(circle at 50% 50%,rgba(34,96,155,.16),transparent 28%),linear-gradient(rgba(86,133,186,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(86,133,186,.055) 1px,transparent 1px),linear-gradient(145deg,#07101d 0%,#081321 52%,#050a12 100%);background-size:auto,52px 52px,52px 52px,auto;box-shadow:0 24px 70px rgba(0,0,0,.24)}
 .labx-map:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 12%,rgba(75,216,255,.08),transparent 26%),radial-gradient(circle at 88% 14%,rgba(104,244,189,.075),transparent 25%),radial-gradient(circle at 12% 88%,rgba(187,130,255,.08),transparent 24%),radial-gradient(circle at 88% 88%,rgba(255,211,108,.07),transparent 24%);pointer-events:none}
 .labx-map__paths{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.labx-map__paths path{fill:none;stroke:rgba(123,174,222,.34);stroke-width:2;stroke-dasharray:8 10;vector-effect:non-scaling-stroke}
-.labx-map__hub{position:absolute;left:50%;top:50%;width:176px;height:176px;transform:translate(-50%,-50%);z-index:2;overflow:visible}
-
-.labx-map-node{--node:#4bd8ff;position:absolute;width:31%;min-height:190px;padding:22px 22px 20px;z-index:3}
-
-
-.labx-map-node__no{position:absolute;right:17px;top:14px;font-size:2.5rem}.labx-map-node__state{position:absolute;left:18px;top:17px;padding:5px 8px;font-size:.58rem}
+.labx-map__hub{position:absolute;left:50%;top:50%;width:154px;height:154px;transform:translate(-50%,-50%);display:grid;place-content:center;text-align:center;border:1px solid rgba(99,220,255,.42);border-radius:50%;background:radial-gradient(circle at 45% 35%,rgba(51,190,238,.2),rgba(6,15,28,.96) 65%);box-shadow:0 0 0 12px rgba(68,164,215,.035),0 18px 50px rgba(0,0,0,.35),0 0 42px rgba(75,216,255,.12);z-index:2}
+.labx-map__hub span{color:#5ee4ff;font-size:.65rem;font-weight:900;letter-spacing:.2em}.labx-map__hub strong{margin-top:5px;color:#fff;font-size:1.02rem;line-height:1.05;letter-spacing:.04em}.labx-map__hub small{margin-top:8px;color:#6e839c;font-size:.58rem;font-weight:900;letter-spacing:.16em}
+.labx-map-node{--node:#4bd8ff;position:absolute;width:31%;min-height:190px;padding:22px 22px 20px;border:1px solid color-mix(in srgb,var(--node) 34%,transparent);border-radius:22px;background:linear-gradient(150deg,color-mix(in srgb,var(--node) 9%,#0b1422),rgba(7,13,23,.96) 64%);color:#fff;box-shadow:0 18px 45px rgba(0,0,0,.2);transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;z-index:3}
+.labx-map-node:hover,.labx-map-node:focus-visible{transform:translateY(-5px);border-color:color-mix(in srgb,var(--node) 65%,transparent);box-shadow:0 22px 55px color-mix(in srgb,var(--node) 10%,rgba(0,0,0,.3));outline:none}
+.labx-map-node--management{--node:#4bd8ff;left:5%;top:8%}.labx-map-node--pbs{--node:#68f4bd;right:5%;top:8%}.labx-map-node--self{--node:#bb82ff;left:5%;bottom:8%}.labx-map-node--ai{--node:#ffd36c;right:5%;bottom:8%}
+.labx-map-node__no{position:absolute;right:17px;top:14px;color:color-mix(in srgb,var(--node) 24%,transparent);font-size:2.5rem;font-weight:950;line-height:1}.labx-map-node__eyebrow{display:block;margin-top:27px;color:var(--node);font-size:.63rem;font-weight:900;letter-spacing:.14em}.labx-map-node h3{margin:10px 0 6px;font-size:1.35rem;line-height:1.2;color:#fff;letter-spacing:-.02em}.labx-map-node p{margin:0;color:#b7c5d7;font-size:.84rem;line-height:1.6;max-width:92%}.labx-map-node small{display:block;margin-top:13px;color:#8296b0;font-size:.74rem;line-height:1.5}.labx-map-node b{display:inline-flex;margin-top:15px;color:var(--node);font-size:.76rem;letter-spacing:.04em}.labx-map-node__state{position:absolute;left:18px;top:17px;display:inline-flex;align-items:center;gap:6px;padding:5px 8px;border-radius:999px;border:1px solid rgba(148,174,207,.16);background:rgba(4,10,18,.5);color:#7890ab;font-size:.58rem;font-weight:900;letter-spacing:.06em;backdrop-filter:blur(6px)}.labx-map-node__state:before{content:"";width:5px;height:5px;border-radius:50%;background:#60758d}.labx-map-node.is-started .labx-map-node__state{color:var(--node);border-color:color-mix(in srgb,var(--node) 28%,transparent)}.labx-map-node.is-started .labx-map-node__state:before{background:var(--node);box-shadow:0 0 8px color-mix(in srgb,var(--node) 68%,transparent)}.labx-map-node.is-complete{border-color:color-mix(in srgb,var(--node) 58%,transparent);background:linear-gradient(150deg,color-mix(in srgb,var(--node) 13%,#0b1422),rgba(7,13,23,.96) 64%)}.labx-map-node.is-complete .labx-map-node__state{color:#e7fff6;background:color-mix(in srgb,var(--node) 10%,rgba(4,10,18,.62));border-color:color-mix(in srgb,var(--node) 42%,transparent)}.labx-map-node.is-complete .labx-map-node__state:before{background:var(--node);box-shadow:0 0 9px var(--node)}
 .labx-map__legend{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;color:#687e98;font-size:.68rem;letter-spacing:.04em;z-index:2}.labx-map__legend span{width:7px;height:7px;border-radius:50%;background:#59dfff;box-shadow:0 0 12px rgba(89,223,255,.75)}
-
+@media(max-width:900px){.labx-map{min-height:720px}.labx-map-node{width:36%}.labx-map-node--management,.labx-map-node--self{left:3.5%}.labx-map-node--pbs,.labx-map-node--ai{right:3.5%}.labx-map__hub{width:128px;height:128px}}
 @media(max-width:720px){.labx-map{min-height:0;padding:18px;display:grid;grid-template-columns:1fr;gap:12px;background-size:auto,38px 38px,38px 38px,auto}.labx-map__paths,.labx-map__hub,.labx-map__legend{display:none}.labx-map-node{position:relative;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;width:100%;min-height:0;padding:19px 18px 18px;border-radius:18px}.labx-map-node__no{font-size:2rem}.labx-map-node h3{font-size:1.2rem}.labx-map-node p{font-size:.82rem}.labx-map-node small{font-size:.72rem}.labx-section-head--map h2{font-size:1.8rem}}
 
 /* AML 3.4 · Xier Control Core Navigator */
-.labx-xier-call{display:none!important}
-
-
-
-.labx-xier-panel{position:absolute;left:50%;top:50%;width:min(328px,35vw);transform:translate(-50%,78px);z-index:13}
-
-
-
+.labx-map__hub{overflow:visible}
+.labx-xier-call{position:absolute;left:50%;top:calc(100% + 6px);transform:translateX(-50%);display:inline-flex;align-items:center;gap:9px;white-space:nowrap;padding:6px 11px 6px 6px;border:1px solid rgba(141,223,255,.34);border-radius:999px;background:rgba(5,14,25,.92);color:#b8f2ff;font:900 .58rem/1 system-ui,sans-serif;letter-spacing:.07em;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.22),0 0 18px rgba(89,223,255,.08);backdrop-filter:blur(8px);z-index:14}
+.labx-xier-call:hover,.labx-xier-call:focus-visible{border-color:rgba(141,223,255,.68);box-shadow:0 0 24px rgba(75,216,255,.18);outline:none}.labx-xier-call__chev{font-size:.72rem;transition:transform .18s ease}.labx-map.is-xier-open .labx-xier-call__chev{transform:rotate(180deg)}.labx-xier-avatar{width:28px;height:28px;border-radius:50%;object-fit:cover;display:block;border:1px solid rgba(164,235,255,.72);box-shadow:0 0 14px rgba(89,223,255,.35);background:#0b2034}
+.labx-xier-panel{position:absolute;left:50%;top:50%;width:min(376px,42vw);transform:translate(-50%,96px);padding:15px;border:1px solid rgba(122,198,236,.28);border-radius:18px;background:rgba(6,15,27,.985);box-shadow:0 22px 58px rgba(0,0,0,.46),0 0 34px rgba(75,216,255,.1);opacity:0;visibility:hidden;pointer-events:none;transition:.18s ease;z-index:13;text-align:left;backdrop-filter:blur(14px)}
+.labx-map.is-xier-open .labx-xier-panel{opacity:1;visibility:visible;pointer-events:auto;transform:translate(-50%,104px)}
+.labx-xier-panel__head{display:flex;align-items:flex-start;gap:10px;margin-bottom:11px}.labx-xier-panel__head .labx-xier-avatar{flex:0 0 44px;width:44px;height:44px}.labx-xier-panel__head strong{display:block;color:#eafaff;font-size:.83rem;letter-spacing:.04em}.labx-xier-panel__head span{display:block;margin-top:3px;color:#8aa3bd;font-size:.68rem;line-height:1.45}
+.labx-xier-options{display:grid;grid-template-columns:1fr 1fr;gap:7px}.labx-xier-options a{position:relative;display:block;padding:9px 10px 9px 25px;border:1px solid rgba(130,164,201,.14);border-radius:11px;background:rgba(255,255,255,.025);color:#c7d4e3;font-size:.68rem;line-height:1.4;text-decoration:none}.labx-xier-options a::before{content:"";position:absolute;left:10px;top:50%;width:7px;height:7px;border-radius:50%;transform:translateY(-50%);background:var(--xier-color,#5ee4ff);box-shadow:0 0 10px var(--xier-color,#5ee4ff)}.labx-xier-options a:hover,.labx-xier-options a:focus-visible{border-color:var(--xier-color,#5ee4ff);color:#fff;background:rgba(255,255,255,.045);outline:none}.labx-xier-options a:nth-child(1){--xier-color:#4bd8ff}.labx-xier-options a:nth-child(2){--xier-color:#68f4bd}.labx-xier-options a:nth-child(3){--xier-color:#bb82ff}.labx-xier-options a:nth-child(4){--xier-color:#ffd36c}
 .labx-xier-mobile{display:none}
-
+@media(max-width:720px){.labx-xier-mobile{display:block;margin:0 0 4px;padding:15px 15px 14px;border:1px solid rgba(89,223,255,.22);border-radius:16px;background:linear-gradient(135deg,rgba(18,57,82,.58),rgba(7,15,26,.94));color:#c9d9e9}.labx-xier-mobile__head{display:flex;align-items:center;gap:9px}.labx-xier-mobile__head .labx-xier-avatar{width:34px;height:34px}.labx-xier-mobile__head strong{color:#f2fbff;font-size:.88rem}.labx-xier-mobile p{margin:7px 0 0;color:#8da3b9;font-size:.74rem;line-height:1.55}.labx-xier-mobile a{display:inline-flex;margin-top:10px;color:#62e4ff;font-size:.73rem;font-weight:900;text-decoration:none}.labx-map__hub .labx-xier-call,.labx-map__hub + .labx-xier-panel{display:none}}
 
 /* AML Interactive Lab · cockpit micro interactions */
 .labx-map{--active-node:#5ee4ff}
 .labx-map__paths path{transition:stroke .22s ease,opacity .22s ease,filter .22s ease,stroke-width .22s ease}
-
-
-
-
-
-
-
-
-
-
-
-
+.labx-map__hub{transition:box-shadow .22s ease,border-color .22s ease,transform .22s ease}
+.labx-map__hub:before{content:"";position:absolute;inset:-10px;border:1px solid rgba(94,228,255,.1);border-radius:50%;opacity:.65;pointer-events:none;animation:labxHubBreath 3.4s ease-in-out infinite}
+.labx-map__hub:after{content:"";position:absolute;inset:13px;border-radius:50%;border:1px dashed rgba(94,228,255,.08);pointer-events:none;animation:labxHubSpin 18s linear infinite}
+@keyframes labxHubBreath{0%,100%{transform:scale(.98);opacity:.35}50%{transform:scale(1.045);opacity:.9}}
+@keyframes labxHubSpin{to{transform:rotate(360deg)}}
+.labx-map.has-active .labx-map__hub{border-color:color-mix(in srgb,var(--active-node) 68%,transparent);box-shadow:0 0 0 12px color-mix(in srgb,var(--active-node) 5%,transparent),0 18px 50px rgba(0,0,0,.35),0 0 58px color-mix(in srgb,var(--active-node) 24%,transparent)}
+.labx-map-node{will-change:transform}
+.labx-map-node.is-active{transform:translateY(-6px) scale(1.012);border-color:color-mix(in srgb,var(--node) 78%,transparent);box-shadow:0 20px 60px color-mix(in srgb,var(--node) 16%,rgba(0,0,0,.36)),inset 0 0 34px color-mix(in srgb,var(--node) 5%,transparent)}
+.labx-map-node.is-active .labx-map-node__no{color:color-mix(in srgb,var(--node) 52%,transparent);text-shadow:0 0 22px color-mix(in srgb,var(--node) 30%,transparent)}
+.labx-map-node.is-active b{filter:drop-shadow(0 0 7px color-mix(in srgb,var(--node) 52%,transparent))}
+.labx-map-node.is-started:not(.is-complete) .labx-map-node__state:before{animation:labxStatusPulse 1.8s ease-in-out infinite}
+@keyframes labxStatusPulse{0%,100%{transform:scale(.85);opacity:.65}50%{transform:scale(1.35);opacity:1}}
 .labx-map[data-active-hall="management"]{--active-node:#4bd8ff}.labx-map[data-active-hall="pbs"]{--active-node:#68f4bd}.labx-map[data-active-hall="self"]{--active-node:#bb82ff}.labx-map[data-active-hall="ai"]{--active-node:#ffd36c}
 .labx-map[data-active-hall="management"] .labx-map__paths path:nth-child(1),.labx-map[data-active-hall="pbs"] .labx-map__paths path:nth-child(2),.labx-map[data-active-hall="self"] .labx-map__paths path:nth-child(3),.labx-map[data-active-hall="ai"] .labx-map__paths path:nth-child(4){stroke:var(--active-node);stroke-width:3;opacity:1;filter:drop-shadow(0 0 5px var(--active-node))}
 .labx-map.has-active .labx-map__paths path{opacity:.2}.labx-map.has-active[data-active-hall="management"] .labx-map__paths path:nth-child(1),.labx-map.has-active[data-active-hall="pbs"] .labx-map__paths path:nth-child(2),.labx-map.has-active[data-active-hall="self"] .labx-map__paths path:nth-child(3),.labx-map.has-active[data-active-hall="ai"] .labx-map__paths path:nth-child(4){opacity:1}
-
-@media(prefers-reduced-motion:reduce){.labx-map__paths path{transition:none}}
+.labx-progress__card:hover .labx-progress__meter i{box-shadow:0 0 16px color-mix(in srgb,var(--hud) 72%,transparent)}
+@media(prefers-reduced-motion:reduce){.labx-map__hub:before,.labx-map__hub:after,.labx-map-node.is-started:not(.is-complete) .labx-map-node__state:before{animation:none}.labx-map__paths path,.labx-map__hub,.labx-map-node{transition:none}}
 /* AML 3.3 · Xier Control Core 2.0 */
-
-
-.labx-xier-core-avatar{position:absolute;right:-16px;bottom:-10px;width:88px;height:88px;z-index:8;cursor:pointer}
-
-
-
-
-
-
-
-
+.labx-map__hub{width:166px;height:166px}
+.labx-map__hub>span,.labx-map__hub>strong,.labx-map__hub>small{position:relative;z-index:2}
+.labx-xier-core-avatar{position:absolute;right:-20px;bottom:-13px;width:68px;height:68px;border-radius:50%;object-fit:cover;display:block;z-index:8;border:2px solid rgba(151,235,255,.78);background:#091a2c;box-shadow:0 0 0 5px rgba(72,207,255,.07),0 0 24px rgba(72,207,255,.38),0 12px 26px rgba(0,0,0,.36);transition:transform .2s ease,box-shadow .2s ease}
+.labx-map__hub:hover .labx-xier-core-avatar,.labx-map.has-active .labx-xier-core-avatar{transform:translateY(-2px) scale(1.035);box-shadow:0 0 0 6px rgba(72,207,255,.08),0 0 30px rgba(72,207,255,.5),0 14px 28px rgba(0,0,0,.4)}
+.labx-xier-call{top:calc(100% + 12px);padding:7px 11px;gap:7px;font-size:.57rem;min-height:34px}
+.labx-xier-call>.labx-xier-avatar{display:none}
+.labx-xier-panel{width:min(350px,40vw);transform:translate(-50%,108px)}
+.labx-map.is-xier-open .labx-xier-panel{transform:translate(-50%,116px)}
+.labx-map.is-xier-open .labx-xier-core-avatar{transform:translateY(-3px) scale(1.06);box-shadow:0 0 0 7px rgba(72,207,255,.1),0 0 38px rgba(72,207,255,.58),0 16px 32px rgba(0,0,0,.42)}
+@media(max-width:720px){.labx-map__hub{width:150px;height:150px}.labx-xier-core-avatar{display:none}}
+@media(prefers-reduced-motion:reduce){.labx-xier-core-avatar{transition:none}}
 
 
 /* /AML 3.4 · Xier Control Core Navigator */
 
 /* AML 3.3 · Strong Core / Quiet Periphery */
-
-
-
-
-
-
-
-
-
+.labx-map{min-height:650px}
+.labx-map__hub{width:184px;height:184px;box-shadow:0 0 0 14px rgba(68,164,215,.04),0 20px 58px rgba(0,0,0,.38),0 0 58px rgba(75,216,255,.16)}
+.labx-map__hub span{font-size:.69rem}.labx-map__hub strong{font-size:1.12rem}.labx-map__hub small{font-size:.6rem}
+.labx-xier-core-avatar{right:-27px;bottom:-16px;width:76px;height:76px}
+.labx-xier-call{top:calc(100% + 10px)}
+.labx-xier-panel{width:min(350px,38vw);transform:translate(-50%,121px)}
+.labx-map.is-xier-open .labx-xier-panel{transform:translate(-50%,128px)}
+.labx-map-node{width:28%;min-height:156px;padding:18px 20px 17px;background:linear-gradient(150deg,color-mix(in srgb,var(--node) 6%,#0b1422),rgba(7,13,23,.965) 68%);box-shadow:0 14px 36px rgba(0,0,0,.17)}
+.labx-map-node--management{left:2.8%;top:7%}.labx-map-node--pbs{right:2.8%;top:7%}.labx-map-node--self{left:2.8%;bottom:7%}.labx-map-node--ai{right:2.8%;bottom:7%}
 .labx-map-node__state{left:15px;top:14px;padding:4px 7px;font-size:.54rem}
 .labx-map-node__no{right:15px;top:12px;font-size:2.2rem}
-
-
-
-
-
-
-
+.labx-map-node__eyebrow{margin-top:24px;font-size:.59rem}
+.labx-map-node h3{margin:8px 0 5px;font-size:1.18rem}
+.labx-map-node p{font-size:.76rem;line-height:1.45;color:#aab9cc}
+.labx-map-node b{margin-top:12px;font-size:.72rem}
+.labx-map-node small{display:none}
+@media (max-width:900px) and (min-width:721px){.labx-map-node{width:33%;min-height:154px}.labx-map-node--management,.labx-map-node--self{left:2.5%}.labx-map-node--pbs,.labx-map-node--ai{right:2.5%}.labx-map__hub{width:158px;height:158px}.labx-xier-core-avatar{width:66px;height:66px;right:-23px;bottom:-14px}}
+@media(max-width:720px){.labx-map-node{width:100%;min-height:0;padding:17px 18px 16px}.labx-map-node__eyebrow{margin-top:24px}.labx-map-node h3{font-size:1.12rem}.labx-map-node p{font-size:.78rem}.labx-map-node b{margin-top:10px}}
 
 /* AML 3.3 · Full View Core / Avatar Trigger */
-
-
-
-
-
-
+.labx-map{min-height:580px}
+.labx-map__hub{width:176px;height:176px;box-shadow:0 0 0 13px rgba(68,164,215,.035),0 18px 52px rgba(0,0,0,.36),0 0 52px rgba(75,216,255,.14)}
+.labx-xier-core-avatar{right:-16px;bottom:-10px;width:88px;height:88px;cursor:pointer}
+.labx-xier-core-avatar:focus-visible{outline:none;box-shadow:0 0 0 8px rgba(72,207,255,.12),0 0 38px rgba(72,207,255,.62),0 16px 32px rgba(0,0,0,.42)}
+.labx-xier-call{display:none !important}
+.labx-xier-panel{width:min(328px,35vw);transform:translate(-50%,78px)}
 .labx-map.is-xier-open .labx-xier-panel{transform:translate(-50%,84px)}
-/* AML 3.4 · Exploration Map canonical geometry (desktop/tablet) */
 .labx-map-node{width:25.5%;min-height:128px;padding:16px 18px 15px}
 .labx-map-node--management{left:6.5%;top:9%}.labx-map-node--pbs{right:6.5%;top:9%}.labx-map-node--self{left:6.5%;bottom:9%}.labx-map-node--ai{right:6.5%;bottom:9%}
-
+.labx-map-node__eyebrow{margin-top:22px;font-size:.58rem}.labx-map-node h3{margin:7px 0 5px;font-size:1.08rem}.labx-map-node p{font-size:.72rem;line-height:1.38}.labx-map-node b{margin-top:10px;font-size:.7rem}
 .labx-map-node__state{left:14px;top:12px;font-size:.52rem}.labx-map-node__no{right:14px;top:11px;font-size:2rem}
 .labx-map__legend{bottom:14px}
 @media (max-width:1100px) and (min-width:721px){.labx-map{min-height:560px}.labx-map__hub{width:164px;height:164px}.labx-xier-core-avatar{width:78px;height:78px;right:-15px;bottom:-9px}.labx-map-node{width:27.5%;min-height:124px}.labx-map-node--management{left:4.5%}.labx-map-node--pbs{right:4.5%}.labx-map-node--self{left:4.5%}.labx-map-node--ai{right:4.5%}}
 @media(max-width:720px){.labx-xier-core-avatar{display:none}.labx-xier-call{display:none !important}}
 
 /* AML 3.3 · Remove node CTA text */
-
+.labx-map-node b{display:none !important}
 /* /AML 3.3 · Remove node CTA text */
 
 /* /AML 3.3 · Full View Core / Avatar Trigger */
@@ -338,7 +394,7 @@
 
 
 
-
+.labx-progress{padding-bottom:42px}
 /* /AML 3.3 · Dual-bay rhythm / support-module layout polish */
 
 /* AML 3.3 · Intelligent Support Bay / wide module panel polish */
@@ -364,7 +420,12 @@
 /* AML 3.3 · Final QA micro-polish */
 @keyframes supportStandbyPulse{0%,100%{opacity:.72;box-shadow:0 0 7px rgba(105,232,194,.52)}50%{opacity:1;box-shadow:0 0 13px rgba(105,232,194,.92)}}
 .support-dispatch__status i{animation:supportStandbyPulse 2.2s ease-in-out infinite}
-
+@media(max-width:640px){
+  .labx-complete__top{align-items:flex-start}
+  .labx-complete__badge{white-space:normal;max-width:100%;line-height:1.35}
+  .labx-complete__link{min-height:44px}
+  .labx-progress__reset{min-height:44px;padding:10px 13px}
+}
 /* AML 3.4 Phase 1C · Intelligent Support Bay responsive consolidation */
 @media(max-width:900px){
   .ai-tools-intro{grid-template-columns:1fr!important}
@@ -500,13 +561,89 @@
 </style>
 
 
+<style id="aml-xier-mobile-direct-trigger">
+@media (max-width:720px){
+  .labx-xier-mobile{
+    display:flex !important;
+    justify-content:center;
+    margin:4px 0 14px !important;
+    padding:0 !important;
+    border:0 !important;
+    background:none !important;
+  }
+  .labx-xier-mobile-trigger{
+    appearance:none;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    min-height:56px;
+    padding:6px 14px 6px 6px;
+    border:1px solid rgba(89,223,255,.34);
+    border-radius:999px;
+    background:linear-gradient(135deg,rgba(13,37,58,.96),rgba(8,18,31,.98));
+    color:#eafaff;
+    box-shadow:0 10px 28px rgba(0,0,0,.26),0 0 22px rgba(75,216,255,.11);
+    cursor:pointer;
+    font:inherit;
+  }
+  .labx-xier-mobile-trigger .labx-xier-avatar{
+    width:46px !important;
+    height:46px !important;
+    flex:0 0 46px;
+  }
+  .labx-xier-mobile-trigger span{display:grid;text-align:left;line-height:1.15}
+  .labx-xier-mobile-trigger strong{font-size:.84rem;color:#f2fbff}
+  .labx-xier-mobile-trigger small{margin-top:4px;font-size:.67rem;color:#7fdff4;font-weight:800}
+  .labx-xier-mobile-trigger:focus-visible{outline:2px solid #63dfff;outline-offset:3px}
+  .labx-map.is-xier-open .labx-xier-mobile-trigger{border-color:rgba(117,232,255,.72);box-shadow:0 0 28px rgba(75,216,255,.2)}
 
+  .labx-map__hub + .labx-xier-panel,
+  .labx-xier-panel{
+    display:block !important;
+    position:relative !important;
+    left:auto !important;
+    top:auto !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:0 0 14px !important;
+    transform:none !important;
+    opacity:0 !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    max-height:0 !important;
+    overflow:hidden !important;
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+    border-width:0 !important;
+    transition:max-height .22s ease,opacity .18s ease,padding .18s ease,border-width .18s ease !important;
+  }
+  .labx-map.is-xier-open .labx-xier-panel{
+    opacity:1 !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+    max-height:520px !important;
+    padding:15px !important;
+    border-width:1px !important;
+  }
+  .labx-xier-options{grid-template-columns:1fr !important}
+}
+@media (prefers-reduced-motion:reduce){
+  .labx-xier-panel{transition:none !important}
+}
+</style>
 
 
 <style id="aml-mobile-a11y-touch-guard">
 @media (max-width:720px){
   #practice-tools .actions .btn{
     min-height:var(--aml-touch-min) !important;
+  }
+  .labx-xier-options a{
+    min-height:var(--aml-touch-min) !important;
+    display:flex !important;
+    align-items:center !important;
+    padding-top:10px !important;
+    padding-bottom:10px !important;
   }
 }
 </style>
@@ -552,12 +689,12 @@
       </svg>
       <div class="labx-map__hub">
         <span>AML</span><strong>INTERACTIVE<br>LAB</strong><small>EXPLORE</small>
-        <img class="labx-xier-core-avatar" src="/images/xier-chibi-avatar.png" alt="" aria-hidden="false" role="button" tabindex="0" aria-label="曦兒，中控導航員，開啟導航" aria-expanded="false" aria-controls="labx-xier-panel">
+        <img class="labx-xier-core-avatar" src="/images/xier-chibi-avatar.png" alt="曦兒，中控導航員，點擊開啟導航" role="button" tabindex="0" aria-expanded="false" aria-controls="labx-xier-panel">
         
       </div>
       <div class="labx-xier-mobile" aria-label="曦兒導航入口">
         <button class="labx-xier-mobile-trigger" type="button" aria-expanded="false" aria-controls="labx-xier-panel">
-          <img class="labx-xier-avatar" src="/images/xier-chibi-avatar.png" alt="" aria-hidden="true">
+          <img class="labx-xier-avatar" src="/images/xier-chibi-avatar.png" alt="曦兒，中控導航員">
           <span><strong>曦兒</strong><small>點我幫你快速分流</small></span>
         </button>
       </div>
@@ -618,9 +755,9 @@
           <h2 id="labx-progress-title">四座探索艙，目前戰況。</h2>
           <p>完成互動後，進度會留在這台裝置。選一座艙室繼續推進你的探索任務。</p>
         </div>
-        <div class="labx-progress__count" aria-live="polite"><strong data-lab-progress-count>0 / 8</strong><span>任務節點完成</span></div>
+        <div class="labx-progress__count"><strong data-lab-progress-count>0 / 8</strong><span>任務節點完成</span></div>
       </div>
-      <div class="labx-progress__bar" role="progressbar" aria-label="互動探索任務總進度" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" data-lab-progress-track><i data-lab-progress-bar aria-hidden="true"></i></div>
+      <div class="labx-progress__bar" aria-hidden="true"><i data-lab-progress-bar></i></div>
       <div class="labx-progress__grid">
         <a class="labx-progress__card" href="/tools/management/">
           <small>LAB 01 · MANAGEMENT</small><strong>管理風格探索館</strong><div class="labx-progress__meter"><i data-hall-meter="management"></i></div>
@@ -665,15 +802,34 @@
 </div>
 <main class="wrap" id="practice-tools">
 <section aria-labelledby="tool-practice" class="aml-tools-all"><div class="tool-grid">
-<div class="ai-tools-intro"><div><div class="eyebrow">INTELLIGENT SUPPORT BAY · 智能支援艙</div><h2>有明確任務時，進入智能支援艙。</h2><p>互動探索艙負責探索與覺察；智能支援艙負責把任務帶回工作現場。已有明確工作需求時，直接選擇合適的支援模組。</p></div><div class="ai-tools-intro__note support-dispatch"><div class="support-bot support-bot--hero" aria-hidden="true"><svg viewBox="0 0 64 64" role="img"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16M13 28H8v10h5M51 28h5v10h-5"/></svg></div><div class="support-dispatch__copy"><small>SYSTEM ONLINE · 支援系統已就緒</small><b>AI 特助待命中</b><span>曦兒負責導引；有明確任務時，由 AI 特助協作整理與產出。</span><span class="support-dispatch__status" aria-label="AI 特助待命中"><i></i>STANDBY</span></div></div></div>
+<div class="support-xier-guide" id="support-xier-guide" aria-labelledby="support-xier-title">
+  <div class="support-xier-guide__avatar" aria-hidden="true">
+    <div class="support-xier-guide__halo"></div>
+    <img src="/images/xier-chibi-avatar.png" alt="" />
+    <span>曦兒參謀長</span>
+  </div>
+  <div class="support-xier-guide__body">
+    <div class="eyebrow">XI-ER NAVIGATOR · 智能支援艙導覽</div>
+    <h2 id="support-xier-title">今天想完成什麼？讓曦兒幫你找工具。</h2>
+    <p>不用先研究工具名稱。先告訴曦兒你正在處理的任務，我會把你帶到最接近的 AML 智能特助或實務模組；目前還沒有合適工具，也可以直接向 AML 許願。</p>
+    <div class="support-xier-guide__choices" aria-label="選擇你現在想完成的任務">
+      <a href="#tool-practice" data-support-guide data-support-message="有 ABC 紀錄、想做行為功能分析或擬定 PBS 策略？我推薦 PBS 分析與策略擬定特助 2.0。">🧩 分析個案／PBS</a>
+      <a href="#tool-planning" data-support-guide data-support-message="正在規劃方案、整理章節或檢查前後邏輯？我帶你到方案規劃管理助教系統。">📋 規劃方案／管理</a>
+      <a href="#tool-transition" data-support-guide data-support-message="需要整理轉銜條件、支持資源或後續承接？可以先用情緒行為支持服務轉銜評估與建議表。">🧭 轉銜／現場評估</a>
+      <a href="#tool-infection" data-support-guide data-support-message="需要把通報、追蹤與表單輸出整理成工作流程？感控作業管理助手是目前的授權 Pilot。">🩺 工作流程／感控</a>
+      <a href="#tool-community" data-support-guide data-support-message="現在還沒有符合你的工具？把需求交給我，我帶你到 AML Wish，告訴我們你希望下一個工具能幫你完成什麼。">✨ 找不到？向 AML 許願</a>
+    </div>
+    <div class="support-xier-guide__reply" aria-live="polite"><span>曦兒：</span><strong>先選一個最接近你現在的任務，我來帶路。</strong></div>
+  </div>
+</div>
 
 <div class="support-section-head support-section-head--ai"><div><span>AI SUPPORT</span><b>AI 特助</b></div><small>由 AI 特助協作整理、提問與產出。</small></div>
 <article class="tool-card tool-card--assistant" id="tool-practice"><div class="tool-status"><span class="status-dot"></span><b>2.0 重磅上陣</b><span>ABC Word / Excel 解析已開放 · Beta</span></div><div class="tool-type-kicker tool-role-chip"><span class="support-bot support-bot--mini" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16"/></svg></span>派遣｜PBS 智能支援</div><small>PBS · ANALYSIS &amp; STRATEGY ASSISTANT</small><h3>PBS 分析與策略擬定特助 <span class="pilot-badge">2.0</span></h3><p>從 ABC 紀錄出發，把現場資料整理成可討論、可修正、可落地的 PBS 初稿：協助辨識行為功能線索、擬定前事／行為中／後事策略、七週期支持計畫與完整報告。</p><ul><li>直接填寫 ABC，或匯入去識別化 Word / Excel 紀錄</li><li>自動拆解多筆 ABC，逐筆人工確認與修正</li><li>行為功能假設 × 前事 × 行為中 × 後事策略</li><li>七週期策略表 × PBS 完整報告初稿 × AI 任務包</li></ul><div class="actions"><a class="btn" href="/pbs-companion-web.html">啟動特助 2.0 →</a><a class="btn secondary" href="/pbs.html#ai-tool">閱讀 PBS 資源</a></div><p class="tool-related-reading">🧪 Beta 公開測試｜系統協助整理與形成初稿，不取代專業判斷。上傳前請完成去識別化，勿輸入可直接識別個人的資料。</p></article>
 <article class="tool-card tool-card--assistant" id="tool-planning"><div class="tool-type-kicker tool-role-chip"><span class="support-bot support-bot--mini" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16"/></svg></span>派遣｜AI 特助</div><small>MANAGEMENT · LEARNING SUPPORT</small><h3>方案規劃管理助教系統</h3><p>從構想到完整方案，協助整理章節、檢查前後邏輯與跨章連貫性，適合個人撰寫與小組方案作業。</p><ul><li>個人撰寫與團隊彙整</li><li>跨章連貫性與一致性檢查</li><li>修訂後方案初稿整理</li></ul><div class="actions"><a class="btn" href="/tools/management-coach/">開啟助教系統 →</a><a class="btn secondary" href="/articles/management-coach-leader-workflow.html">閱讀設計說明</a></div></article>
 <div class="support-section-head support-section-head--practice"><div><span>PRACTICE TOOLS</span><b>實務工具</b></div><small>可直接帶回現場使用的評估與整理模組。</small></div>
-<article class="tool-card tool-card--workflow support-wide-card support-wide-card--practice"><div class="tool-type-kicker tool-type-kicker--practice">🧭 實務模組｜轉銜整理</div><small>PBS · TRANSITION SUPPORT</small><h3>情緒行為支持服務轉銜評估與建議表</h3><p>將服務對象、照顧者與環境資源整理成一份可承接的轉銜摘要，協助團隊在結案前確認後續支持條件。</p><ul><li>三大評估面向與 PBS 技巧檢核</li><li>資源銜接、風險與後續支持</li><li>Word 可編輯範本 · CC BY 4.0</li></ul><div class="actions"><a class="btn" href="/tools/pbs-transition-assessment.html">查看工具 →</a><a class="btn secondary" download href="/downloads/aml-pbs-transition-assessment-v1.0.docx">下載 Word</a></div><p class="tool-related-reading">相關閱讀｜<a href="/articles/ot-management-transition-support-life.html">讓改變走得更遠</a></p></article>
+<article class="tool-card tool-card--workflow support-wide-card support-wide-card--practice" id="tool-transition"><div class="tool-type-kicker tool-type-kicker--practice">🧭 實務模組｜轉銜整理</div><small>PBS · TRANSITION SUPPORT</small><h3>情緒行為支持服務轉銜評估與建議表</h3><p>將服務對象、照顧者與環境資源整理成一份可承接的轉銜摘要，協助團隊在結案前確認後續支持條件。</p><ul><li>三大評估面向與 PBS 技巧檢核</li><li>資源銜接、風險與後續支持</li><li>Word 可編輯範本 · CC BY 4.0</li></ul><div class="actions"><a class="btn" href="/tools/pbs-transition-assessment.html">查看工具 →</a><a class="btn secondary" download href="/downloads/aml-pbs-transition-assessment-v1.0.docx">下載 Word</a></div><p class="tool-related-reading">相關閱讀｜<a href="/articles/ot-management-transition-support-life.html">讓改變走得更遠</a></p></article>
 <div class="support-section-head support-section-head--workflow"><div><span>WORKFLOWS</span><b>工作流程</b></div><small>把多步驟任務整理成可執行流程。</small></div>
-<article class="tool-card tool-card--workflow tool-card--featured support-wide-card support-wide-card--workflow"><div class="tool-status"><span class="status-dot"></span><b>授權使用</b><span>Workflow Pilot</span></div><div class="tool-type-kicker tool-type-kicker--workflow">🩺 流程模組｜工作助手</div><small>HEALTHCARE · WORKFLOW PILOT</small><h3>感控作業管理助手 <span class="pilot-badge">PILOT 1.0</span></h3><p>把個案通報、疑似群聚、每日追蹤與表單輸出整理成清楚工作區，協助授權人員減少重複整理。</p><ul><li>授權人員登入使用</li><li>個案建檔與追蹤分流</li><li>院內與衛生局表單分流輸出</li><li>全院感控儀表板彙整</li></ul><div class="actions"><a class="btn" href="/tools/infection-control-pilot/">進入感控作業助手 →</a></div><p class="tool-related-reading">Pilot 測試版｜測試階段請勿輸入真實可識別個資。</p></article>
+<article class="tool-card tool-card--workflow tool-card--featured support-wide-card support-wide-card--workflow" id="tool-infection"><div class="tool-status"><span class="status-dot"></span><b>授權使用</b><span>Workflow Pilot</span></div><div class="tool-type-kicker tool-type-kicker--workflow">🩺 流程模組｜工作助手</div><small>HEALTHCARE · WORKFLOW PILOT</small><h3>感控作業管理助手 <span class="pilot-badge">PILOT 1.0</span></h3><p>把個案通報、疑似群聚、每日追蹤與表單輸出整理成清楚工作區，協助授權人員減少重複整理。</p><ul><li>授權人員登入使用</li><li>個案建檔與追蹤分流</li><li>院內與衛生局表單分流輸出</li><li>全院感控儀表板彙整</li></ul><div class="actions"><a class="btn" href="/tools/infection-control-pilot/">進入感控作業助手 →</a></div><p class="tool-related-reading">Pilot 測試版｜測試階段請勿輸入真實可識別個資。</p></article>
 <div class="ai-tools-footnote">工具的角色是把工作做得更清楚，而不是替代專業判斷。需要查證的內容，仍請回到原始資料、專業指引與團隊討論。</div>
 </div></section>
 <section aria-labelledby="aml-wish" class="wish-community" id="tool-community">
@@ -693,7 +849,28 @@
 <div class="wish-community__quote">有些 AML 的下一步，<br/>也許就從讀者的一個念頭開始。</div>
 </div>
 </section>
-</main><section aria-label="繼續探索" class="aml-route-map"><div class="aml-route-map__inner"><div class="aml-route-map__kicker">CONTINUE EXPLORING</div><h2>下一站，可以往這裡走</h2><p>不必回到首頁重新找路；沿著相關主題繼續探索。</p><div class="aml-route-map__grid"><a class="aml-route-card" href="/articles.html"><strong>Articles</strong><span>理解工具背後的知識與脈絡</span><b aria-hidden="true">→</b></a><a class="aml-route-card" href="/education.html"><strong>Education</strong><span>探索教學與能力建立</span><b aria-hidden="true">→</b></a><a class="aml-route-card" href="/management.html"><strong>Management</strong><span>探索管理與服務設計</span><b aria-hidden="true">→</b></a></div></div></section><footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>互動實驗室</h4><a href="/tools.html">互動實驗室</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer><script src="/aml-site.js"></script><script>
+</main><section aria-label="繼續探索" class="aml-route-map"><div class="aml-route-map__inner"><div class="aml-route-map__kicker">CONTINUE EXPLORING</div><h2>下一站，可以往這裡走</h2><p>不必回到首頁重新找路；沿著相關主題繼續探索。</p><div class="aml-route-map__grid"><a class="aml-route-card" href="/articles.html"><strong>Articles</strong><span>理解工具背後的知識與脈絡</span><b aria-hidden="true">→</b></a><a class="aml-route-card" href="/education.html"><strong>Education</strong><span>探索教學與能力建立</span><b aria-hidden="true">→</b></a><a class="aml-route-card" href="/management.html"><strong>Management</strong><span>探索管理與服務設計</span><b aria-hidden="true">→</b></a></div></div></section><footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>互動實驗室</h4><a href="/tools.html">互動實驗室</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer><script>
+(function(){
+  var guide=document.getElementById('support-xier-guide');
+  if(!guide)return;
+  var reply=guide.querySelector('.support-xier-guide__reply strong');
+  guide.querySelectorAll('[data-support-guide]').forEach(function(link){
+    link.addEventListener('click',function(e){
+      var target=document.querySelector(link.getAttribute('href'));
+      if(!target)return;
+      e.preventDefault();
+      guide.querySelectorAll('[data-support-guide]').forEach(function(item){item.classList.remove('is-selected');});
+      link.classList.add('is-selected');
+      if(reply) reply.textContent=link.getAttribute('data-support-message')||'我帶你到最接近的工具。';
+      document.querySelectorAll('.support-guide-focus').forEach(function(el){el.classList.remove('support-guide-focus');});
+      target.classList.add('support-guide-focus');
+      target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+      window.setTimeout(function(){target.classList.remove('support-guide-focus');},2600);
+    });
+  });
+})();
+</script>
+<script src="/aml-site.js"></script><script>
 /* AML 2.0 navigation: keep only one desktop dropdown open at a time. */
 (function () {
   const nav = document.querySelector('.aml-global-nav');
@@ -735,6 +912,10 @@
 <script>
 /* AML Interactive Lab · local journey progress */
 (function(){
+  const safeJSON = key => {
+    try { return JSON.parse(localStorage.getItem(key) || 'null'); }
+    catch(e){ return null; }
+  };
   const has = key => {
     try { return localStorage.getItem(key) !== null; }
     catch(e){ return false; }
@@ -757,10 +938,8 @@
   });
   const count = document.querySelector('[data-lab-progress-count]');
   const bar = document.querySelector('[data-lab-progress-bar]');
-  const track = document.querySelector('[data-lab-progress-track]');
   if(count) count.textContent = `${done} / 8`;
   if(bar) bar.style.width = `${done/8*100}%`;
-  if(track) track.setAttribute('aria-valuenow', String(done));
 
   const panel = document.querySelector('.labx-progress__panel');
   const complete = document.querySelector('[data-mission-complete]');
