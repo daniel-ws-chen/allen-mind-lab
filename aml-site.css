@@ -1188,3 +1188,113 @@ body .aml-domain-catalog__read{display:none}
 }
 /* ===== /AML 3.4 Intelligent Support Bay components ===== */
 
+
+/* ===== AML 3.4 Design System · Intelligent Support Bay micro-components =====
+   Phase 1F: non-layout visual primitives extracted from tools.html. */
+.tool-related-reading{
+  margin:16px 0 0;
+  color:#6b7280;
+  font-size:.9rem;
+}
+.tool-related-reading a{
+  color:#8a6a32;
+  font-weight:800;
+  text-decoration:none;
+}
+.tool-related-reading a:hover{text-decoration:underline}
+
+.tool-status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  margin:-2px 0 10px;
+  color:#6b7280;
+  font-size:.75rem;
+}
+.tool-status b{color:#274c43}
+.status-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#4d8878;
+  box-shadow:0 0 0 4px rgba(77,136,120,.12);
+}
+.pilot-badge{
+  padding:3px 8px;
+  border:1px solid #c7a76a;
+  border-radius:var(--aml-radius-pill);
+  color:#8a6a32;
+  font-size:.66rem;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+
+.tool-type-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin:0 0 10px;
+  padding:5px 10px;
+  border-radius:var(--aml-radius-pill);
+  background:#f2f5f7;
+  color:#53677c;
+  font-size:.7rem;
+  font-weight:900;
+}
+.tool-type-kicker--workflow{
+  background:#f3f6f3;
+  color:#50695b;
+}
+.tool-role-chip{
+  border:1px solid rgba(84,199,255,.24);
+  background:linear-gradient(90deg,rgba(54,198,255,.10),rgba(139,92,246,.10));
+  color:#315c86;
+}
+.tool-type-kicker--practice{
+  border:1px solid rgba(200,169,95,.18);
+  background:linear-gradient(90deg,rgba(255,211,108,.14),rgba(103,207,178,.10));
+  color:#6d664a;
+}
+
+.support-section-head{
+  grid-column:1/-1;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin:26px 2px 2px;
+  padding:0 0 10px;
+  border-bottom:1px solid #dfe6ec;
+}
+.support-section-head>div{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  min-width:0;
+}
+.support-section-head span{
+  color:#6b7890;
+  font-size:.72rem;
+  font-weight:950;
+  letter-spacing:.16em;
+}
+.support-section-head b{
+  color:#071a33;
+  font-size:1rem;
+}
+.support-section-head small{
+  color:#7f8b9c;
+  font-size:.76rem;
+  text-align:right;
+}
+.support-section-head--ai{
+  border-image:linear-gradient(90deg,#4bd8ff,#9b7cff,transparent) 1;
+}
+.support-section-head--practice{
+  border-image:linear-gradient(90deg,#ffd36c,#8fd4bd,transparent) 1;
+}
+.support-section-head--workflow{
+  border-image:linear-gradient(90deg,#5ee0c1,#4bd8ff,transparent) 1;
+}
+/* ===== /AML 3.4 Intelligent Support Bay micro-components ===== */
+
