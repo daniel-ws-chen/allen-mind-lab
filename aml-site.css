@@ -1428,3 +1428,25 @@ body .aml-domain-catalog__read{display:none}
 }
 /* ===== /AML 3.4 Intelligent Support Bay layout shell ===== */
 
+
+/* ===== AML 3.4 Phase 1I · Intelligent Support Bay accessibility QA ===== */
+#practice-tools .actions .btn:focus-visible{
+  outline:none;
+  box-shadow:var(--aml-focus-ring),0 8px 22px rgba(35,112,171,.18);
+}
+#practice-tools .actions .btn.secondary:focus-visible{
+  outline:none;
+  box-shadow:var(--aml-focus-ring),inset 0 0 0 1px rgba(255,255,255,.48);
+}
+@media (prefers-reduced-motion:reduce){
+  #practice-tools .tool-card,
+  #practice-tools .actions .btn{
+    transition:none;
+  }
+  #practice-tools .tool-card:hover,
+  #practice-tools .actions .btn:hover{
+    transform:none;
+  }
+}
+/* ===== /AML 3.4 Phase 1I ===== */
+
