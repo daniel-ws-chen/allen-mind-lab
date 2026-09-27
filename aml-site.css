@@ -2226,3 +2226,114 @@ body .aml-domain-catalog__read{display:none}
 }
 /* ===== /AML 3.4 Exploration control core ===== */
 
+
+/* ===== AML 3.4 Design System · Homepage Featured Reading =====
+   Phase 3A: consolidated from AML 2.0 carousel v1.0–v1.3.
+   Carousel JS and content remain page-local. */
+#featured-reading .container{max-width:1240px;margin-left:auto;margin-right:auto}
+#featured-reading .home-reading__viewport{max-width:1180px;margin:0 auto}
+#featured-reading .home-reading__card{flex:0 0 100%;max-width:1180px;margin:0 auto}
+#featured-reading .home-reading__image{
+  display:flex;align-items:center;justify-content:center;
+  aspect-ratio:auto;background:#f5f2ec;
+}
+#featured-reading .home-reading__image img{
+  width:100%;height:auto;max-height:min(58vh,560px);object-fit:contain;
+}
+#featured-reading .home-reading__body{padding:20px 26px 24px}
+@media (min-width:681px){
+  #featured-reading .home-reading__body{
+    display:grid;grid-template-columns:1fr auto;column-gap:22px;align-items:start;
+    padding:14px 22px 16px;
+  }
+  #featured-reading .home-reading__meta{grid-column:1;margin:0 0 5px;font-size:.70rem}
+  #featured-reading .home-reading__card h3{grid-column:1;margin:0 0 5px;font-size:1.18rem;line-height:1.32}
+  #featured-reading .home-reading__card p{
+    grid-column:1;display:-webkit-box;margin:0;overflow:hidden;
+    font-size:.86rem;line-height:1.55;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  }
+  #featured-reading .home-reading__link{
+    grid-column:2;grid-row:1 / span 3;align-self:center;margin:0;white-space:nowrap;
+  }
+}
+@media (min-width:901px){
+  #featured-reading .container{max-width:1120px}
+  #featured-reading .home-reading__viewport,
+  #featured-reading .home-reading__card{max-width:1040px}
+  #featured-reading .home-reading__image{padding:0 34px}
+  #featured-reading .home-reading__image img{width:auto;max-width:100%;max-height:min(54vh,520px)}
+  #featured-reading .home-reading__body{padding:12px 22px 14px}
+  #featured-reading .home-reading__header,
+  #featured-reading .home-reading__foot{max-width:1040px;margin-left:auto;margin-right:auto}
+}
+@media (max-width:680px){
+  #featured-reading .home-reading__card{flex-basis:100%}
+  #featured-reading .home-reading__image img{max-height:none}
+  #featured-reading .home-reading__body{padding:20px 20px 22px}
+}
+/* ===== /AML 3.4 Homepage Featured Reading ===== */
+
+
+/* ===== AML 3.4 Design System · Homepage Fleet Map shell =====
+   Phase 3B: visual/layout shell extracted from index.html.
+   Hotspot coordinates and Xier positioning remain page-local. */
+.aml-fleet-home{background:#f4f8f7;padding:0 0 72px;min-height:calc(100vh - 72px)}
+.aml-fleet-intro{max-width:980px;margin:0 auto;padding:26px 6vw 14px;text-align:center}
+.aml-fleet-intro .eyebrow{margin-bottom:6px;font-size:.72rem;letter-spacing:.18em}
+.aml-fleet-intro h1{margin:0;color:#17313a;font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(1.7rem,3vw,2.75rem);line-height:1.16}
+.aml-fleet-intro p{max-width:820px;margin:9px auto 0;color:#62716f;font-size:.92rem;line-height:1.65}
+.aml-map-wrap{position:relative;max-width:1360px;margin:0 auto;padding:0 3vw}
+.aml-map-frame{position:relative;overflow:hidden;border-radius:28px;background:#dfeeed;box-shadow:0 24px 70px rgba(20,54,58,.16);border:1px solid rgba(23,49,58,.1)}
+.aml-map-frame img{display:block;width:100%;height:auto}
+.aml-map-hotspot{position:absolute;height:13%;border-radius:18px;display:flex;align-items:center;justify-content:center;text-align:center;color:transparent;background:transparent;border:2px solid transparent;transition:.2s ease;outline-offset:4px;cursor:pointer}
+.aml-map-hotspot:hover,.aml-map-hotspot:focus-visible{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.85);box-shadow:0 10px 26px rgba(9,39,42,.18);transform:translateY(-3px)}
+
+
+
+
+.aml-route-cards{display:none}
+.aml-fleet-note{text-align:center;color:#6c7a77;font-size:.9rem;margin:18px auto 0;padding:0 6vw}
+.aml-study-dock{max-width:760px;margin:18px auto 0;padding:0 3vw}
+.aml-study-dock a{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 16px;border-radius:16px;border:1px solid rgba(111,91,196,.22);background:linear-gradient(90deg,rgba(246,244,255,.96),rgba(238,247,255,.96));box-shadow:0 10px 28px rgba(51,56,97,.07);text-decoration:none}
+.aml-study-dock small{display:block;color:#7569a7;font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.aml-study-dock strong{display:block;color:#24324a;font-size:1rem;margin-top:2px}
+.aml-study-dock span{display:block;color:#78839a;font-size:.82rem;margin-top:2px}
+.aml-study-dock b{flex:0 0 auto;color:#6f5bc4;font-size:1.2rem}
+@media(max-width:760px){.aml-study-dock{display:none}}
+@media(max-width:760px){
+ .aml-fleet-home{padding-bottom:52px}.aml-fleet-intro{padding:24px 5vw 14px}.aml-fleet-intro h1{font-size:clamp(1.65rem,8vw,2.25rem)}.aml-fleet-intro p{font-size:.9rem;line-height:1.6}
+ .aml-map-wrap{padding:0 4vw}.aml-map-frame{border-radius:20px}.aml-map-hotspot{display:none}
+ .aml-route-cards{display:grid;grid-template-columns:1fr;gap:10px;max-width:680px;margin:16px auto 0;padding:0 4vw}
+ .aml-route-cards a{display:flex;align-items:center;justify-content:space-between;gap:16px;background:white;border:1px solid #dce5e2;border-radius:16px;padding:16px 18px;box-shadow:0 8px 24px rgba(20,54,58,.06)}
+ .aml-route-cards strong{display:block;color:#17313a;font-size:1.02rem}.aml-route-cards span{display:block;color:#788480;font-size:.86rem;margin-top:2px}.aml-route-cards b{color:#b98b36;font-size:1.25rem}
+}
+/* ===== /AML 3.4 Homepage Fleet Map shell ===== */
+
+/* ===== AML 3.4 Design System · Homepage Xier navigator =====
+   Phase 3C: Xier visual layer extracted from index.html.
+   Map coordinates remain page-local. */
+.aml-xier-hotspot:hover::before,.aml-xier-hotspot:focus-visible::before{background:radial-gradient(circle,rgba(255,250,220,.48) 0%,rgba(255,226,128,.25) 42%,rgba(255,214,102,0) 74%);}
+.aml-xier-hotspot::before{animation:none;opacity:.62}
+.aml-xier-dialog[hidden]{display:none}
+.aml-xier-dialog{padding:0;align-items:flex-end;background:rgba(10,28,33,.28)}
+.aml-xier-panel{width:min(420px,calc(100vw - 28px));max-height:min(720px,calc(100vh - 44px));overflow:auto;
+  background:#fffdf8;border:1px solid rgba(184,143,65,.24);border-radius:24px;
+  box-shadow:0 26px 80px rgba(19,45,49,.26);padding:20px;}
+.aml-xier-head h2{margin:0;color:#17313a;font-size:1.25rem}
+.aml-xier-close{width:38px;height:38px;border-radius:50%;border:1px solid #e4ddd0;background:#fff;color:#53625f;font-size:1.25rem;cursor:pointer}
+.aml-xier-intro{margin:0 0 14px;color:#5f706d;font-size:.92rem;line-height:1.65}
+.aml-xier-chip{border:1px solid #dce8e4;background:#f8fbfa;color:#24443f;border-radius:14px;padding:10px 11px;text-align:left;font:inherit;font-size:.83rem;font-weight:800;cursor:pointer}
+.aml-xier-chip:hover,.aml-xier-chip:focus-visible{border-color:#caa55a;background:#fffaf0}
+.aml-xier-label{display:block;font-size:.8rem;font-weight:900;color:#536965;margin:4px 0 6px}
+.aml-xier-input{width:100%;min-height:86px;resize:vertical;border:1px solid #d8e3df;border-radius:14px;padding:11px 12px;font:inherit;color:#17313a;background:#fff;outline:none}
+.aml-xier-input:focus{border-color:#c79b43;box-shadow:0 0 0 3px rgba(199,155,67,.10)}
+.aml-xier-result-intro{margin:0;color:#536965;font-size:.88rem;line-height:1.55}
+.aml-xier-card{display:block;text-decoration:none;border:1px solid #dfe8e5;background:#fff;border-radius:15px;padding:12px 13px;transition:.18s ease}
+.aml-xier-card span{display:block;color:#687976;font-size:.82rem;line-height:1.48}
+.aml-xier-foot{margin:14px 2px 0;color:#8a9693;font-size:.72rem;line-height:1.5}
+.aml-xier-empty{border:1px dashed #d7dfdc;border-radius:14px;padding:12px;color:#657673;background:#fafcfb;font-size:.84rem}
+.aml-xier-hotspot::after{display:none}
+.aml-xier-chips{grid-template-columns:1fr}
+.aml-xier-hotspot:focus-visible,.aml-xier-trigger:focus-visible,.aml-xier-option:focus-visible{outline:none;box-shadow:var(--aml-focus-ring)}
+@media(prefers-reduced-motion:reduce){.aml-xier-hotspot,.aml-xier-trigger,.aml-xier-option{transition:none!important;animation:none!important}}
+/* ===== /AML 3.4 Homepage Xier navigator ===== */
