@@ -89,6 +89,87 @@ function workbookRows(workbook){
   return {rows:out, raw: data.map(o => Object.entries(o).map(([k,v])=>`${k}: ${v}`).join(" | ")).join("\n")};
 }
 
+function parseDocxTableHtml(html){
+  if(!html) return [];
+  const doc = new DOMParser().parseFromString(html, "text/html");
+
+  const norm = value => String(value || "")
+    .replace(/\s+/g, "")
+    .replace(/[（）()]/g, "")
+    .toLowerCase();
+
+  const expandRow = tr => {
+    const out = [];
+    Array.from(tr.cells || []).forEach(cell => {
+      const span = Math.max(1, Number(cell.getAttribute("colspan") || 1));
+      const text = (cell.textContent || "").replace(/\s+/g, " " ).trim();
+      for(let i=0;i<span;i++) out.push(text);
+    });
+    return out;
+  };
+
+  const findIndex = (headers, candidates) => {
+    const hs = headers.map(norm);
+    for(const candidate of candidates){
+      const c = norm(candidate);
+      const idx = hs.findIndex(h => h.includes(c));
+      if(idx >= 0) return idx;
+    }
+    return -1;
+  };
+
+  // Word 表單常以真正的 table 儲存 ABC，而不是「A：／B：／C：」純文字。
+  // 只取第一個可可靠辨識的 ABC 資料表，避免把文件後方的填寫示例也匯入。
+  for(const table of Array.from(doc.querySelectorAll("table"))){
+    const htmlRows = Array.from(table.rows || []);
+    if(htmlRows.length < 2) continue;
+
+    let headerRow = -1;
+    let headers = [];
+    for(let i=0;i<Math.min(4, htmlRows.length);i++){
+      const candidate = expandRow(htmlRows[i]);
+      const joined = norm(candidate.join("|"));
+      if(joined.includes("前事") && joined.includes("行為") && joined.includes("後果")){
+        headerRow = i; headers = candidate; break;
+      }
+    }
+    if(headerRow < 0) continue;
+
+    let ia = findIndex(headers, ["立即前事", "前事", "前因"]);
+    let ib = findIndex(headers, ["標的行為問題", "標的行為", "行為問題", "行為"]);
+    let ic = findIndex(headers, ["後果", "結果"]);
+    const idate = findIndex(headers, ["日期"]);
+    const itime = findIndex(headers, ["時間", "時段"]);
+    const iplace = findIndex(headers, ["地點", "場域", "情境"]);
+    const iact = findIndex(headers, ["課程或活動", "課程活動", "活動"]);
+    const ibg = findIndex(headers, ["背景因素", "遠因"]);
+
+    // 常見 PBS 觀察表固定為：日期、時間、地點、活動、背景因素、A、B、C……
+    if((ia < 0 || ib < 0 || ic < 0) && headers.length >= 8){
+      ia = ia < 0 ? 5 : ia;
+      ib = ib < 0 ? 6 : ib;
+      ic = ic < 0 ? 7 : ic;
+    }
+    if(ia < 0 || ib < 0 || ic < 0) continue;
+
+    const parsed = [];
+    for(let r=headerRow+1;r<htmlRows.length;r++){
+      const cells = expandRow(htmlRows[r]);
+      const get = idx => idx >= 0 && idx < cells.length ? String(cells[idx] || "").trim() : "";
+      const a = get(ia), b = get(ib), c = get(ic);
+      if(!a && !b && !c) continue;
+
+      const date = get(idate), time = get(itime), place = get(iplace), activity = get(iact), bg = get(ibg);
+      const when = [date, time].filter(Boolean).join(" " );
+      const contextParts = [when, place, activity].filter(Boolean);
+      if(bg && norm(bg) !== "無") contextParts.push(`背景因素：${bg}`);
+      parsed.push({context:contextParts.join("｜"), a, b, c});
+    }
+    if(parsed.length) return parsed;
+  }
+  return [];
+}
+
 function parseLabeledText(raw){
   const clean = raw.replace(/\r/g,"");
   const blocks = clean.split(/\n(?=(?:紀錄|事件|ABC)\s*\d+|日期[:：])/i);
@@ -123,9 +204,13 @@ $("#parseFileBtn").addEventListener("click", async () => {
       const result=workbookRows(wb); parsedRows=result.rows; raw=result.raw;
     }else if(file.name.toLowerCase().endsWith(".docx")){
       if(!window.mammoth) throw new Error("Word 解析元件尚未載入。");
-      const result=await mammoth.extractRawText({arrayBuffer:buf});
-      raw=result.value||""; parsedRows=parseLabeledText(raw);
-    }else throw new Error("v0.1 僅支援 .docx 與 .xlsx。");
+      // 優先保留 Word 表格結構解析；若不是表格型 ABC，再退回 A：/B：/C：文字辨識。
+      const htmlResult=await mammoth.convertToHtml({arrayBuffer:buf});
+      parsedRows=parseDocxTableHtml(htmlResult.value||"");
+      const textResult=await mammoth.extractRawText({arrayBuffer:buf});
+      raw=textResult.value||"";
+      if(!parsedRows.length) parsedRows=parseLabeledText(raw);
+    }else throw new Error("目前支援 .docx 與 .xlsx。");
     $("#rawImportedText").value=raw;
     if(parsedRows.length){
       rows.innerHTML="";
