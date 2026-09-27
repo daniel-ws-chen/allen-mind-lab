@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-26T13:39:55.145Z",
+  "generatedAt": "2026-09-27T11:57:05.089Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 51,
+    "total": 52,
     "ot": 23,
     "mind": 14,
     "pbs": 13,
     "education": 9,
-    "management": 24,
-    "ai": 14,
+    "management": 25,
+    "ai": 15,
     "notes": 7
   },
   "featuredReading": [
@@ -78,6 +78,52 @@
     }
   },
   "articles": [
+    {
+      "slug": "ai-manager-manage-people-and-ai",
+      "title": "當主管不只管人，還要開始管 AI",
+      "summary": "當 AI 從工具逐漸成為數位員工，管理者面對的不再只有人，還包括 AI 與人機協作。從逆分工、KPI 到管理五大功能，AI 正重新改變工作的基本單位，也讓方向、判斷、關係與責任變得更加重要。",
+      "date": "2026-09-27",
+      "domains": [
+        "management",
+        "ai"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "Management & Leadership × AI × Practice",
+      "cardMeta": "2026.09.27 · Management & Leadership × AI × Practice",
+      "keywords": [
+        "AI",
+        "人工智慧",
+        "管理學",
+        "數位員工",
+        "AI Agent",
+        "逆分工",
+        "KPI",
+        "人機協作",
+        "管理五大功能",
+        "領導",
+        "管理判斷"
+      ],
+      "articlePath": "/articles/ai-manager-manage-people-and-ai.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ai-manager-manage-people-and-ai",
+      "hero": "/images/articles/ai-manager-manage-people-and-ai-hero.webp",
+      "ogImage": "/images/articles/ai-manager-manage-people-and-ai-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "相關閱讀 ← 當管理沒有唯一正解：風格可以改變，核心不能漂移",
+          "href": "/articles/management-no-single-right-answer.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "next-generation-teacher-transformation-empowerment",
       "title": "新世代教師的轉型與賦能",
