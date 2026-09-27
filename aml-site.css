@@ -1333,3 +1333,98 @@ body .aml-domain-catalog__read{display:none}
 }
 /* ===== /AML 3.4 Intelligent Support Bay type & spacing ===== */
 
+
+/* ===== AML 3.4 Design System · Intelligent Support Bay layout shell =====
+   Phase 1H: low-risk support-bay layout rules extracted from tools.html.
+   Exploration map / Xier / mission HUD remain page-local. */
+#practice-tools{
+  padding-top:46px;
+  padding-bottom:30px;
+}
+#practice-tools .aml-tools-all{
+  position:relative;
+}
+#practice-tools .ai-tools-intro{
+  margin-top:0!important;
+  margin-bottom:4px;
+}
+#practice-tools .support-section-head{
+  margin-top:28px!important;
+  margin-bottom:2px;
+  padding-top:2px;
+}
+#practice-tools .support-section-head--ai + .tool-card,
+#practice-tools .support-section-head--ai + .tool-card + .tool-card{
+  height:100%;
+}
+#practice-tools .support-section-head--practice + .tool-card,
+#practice-tools .support-section-head--workflow + .tool-card{
+  grid-column:1/-1;
+}
+#practice-tools .support-section-head--practice + .tool-card>p,
+#practice-tools .support-section-head--practice + .tool-card>ul,
+#practice-tools .support-section-head--workflow + .tool-card>p,
+#practice-tools .support-section-head--workflow + .tool-card>ul,
+#practice-tools .support-section-head--practice + .tool-card .actions,
+#practice-tools .support-section-head--workflow + .tool-card .actions{
+  max-width:860px;
+}
+#practice-tools .ai-tools-footnote{
+  margin-top:10px;
+}
+#practice-tools .support-wide-card .tool-related-reading{
+  grid-column:1/-1;
+}
+
+@media(min-width:821px){
+  #practice-tools .support-wide-card{
+    display:grid;
+    grid-template-columns:minmax(0,1.35fr) minmax(280px,.72fr);
+    column-gap:42px;
+    row-gap:6px;
+    align-items:start;
+    padding:26px 30px 24px;
+  }
+  #practice-tools .support-wide-card>.tool-status{
+    grid-column:1/-1;
+    margin-bottom:4px;
+  }
+  #practice-tools .support-wide-card>.tool-type-kicker,
+  #practice-tools .support-wide-card>small,
+  #practice-tools .support-wide-card>h3,
+  #practice-tools .support-wide-card>p{
+    grid-column:1;
+  }
+  #practice-tools .support-wide-card>ul{
+    grid-column:2;
+    grid-row:2 / span 4;
+    align-self:start;
+    margin:4px 0 10px 1.15em;
+  }
+  #practice-tools .support-wide-card>.actions{
+    grid-column:2;
+    align-self:end;
+    margin-top:2px;
+  }
+  #practice-tools .support-wide-card>.tool-related-reading{
+    grid-column:1/-1;
+    margin:10px 0 0;
+    padding-top:12px;
+    border-top:1px solid rgba(130,150,170,.18);
+  }
+  #practice-tools .support-wide-card h3{
+    font-size:1.38rem;
+  }
+  #practice-tools .support-wide-card>p{
+    max-width:720px;
+    margin-bottom:4px;
+  }
+  #practice-tools .support-wide-card--practice{
+    background:linear-gradient(115deg,rgba(255,253,247,.99),rgba(247,253,251,.99));
+  }
+  #practice-tools .support-wide-card--workflow{
+    background:linear-gradient(115deg,rgba(249,255,253,.99),rgba(247,251,255,.99));
+  }
+}
+/* ===== /AML 3.4 Intelligent Support Bay layout shell ===== */
+
