@@ -15,7 +15,7 @@
   <header class="pbsw-hero">
     <div class="pbsw-wrap">
       <a class="pbsw-back" href="tools.html#practice-tools">← 返回智能支援艙</a>
-      <p class="pbsw-kicker">AML PBS COMPANION WEB · v0.1 PROTOTYPE</p>
+      <p class="pbsw-kicker">AML PBS COMPANION WEB · v0.2 LIVE TEST</p>
       <h1>從 ABC 紀錄，到可討論的 PBS 支持計畫。</h1>
       <p class="pbsw-lead">AI／工具負責整理與形成草稿；功能仍是<strong>假設</strong>，需由現場觀察、持續紀錄與團隊專業判斷共同驗證。</p>
       <div class="pbsw-hero-chips" aria-label="主要功能">
@@ -31,7 +31,6 @@
         <h2 id="privacy-title">先去識別化，再開始。</h2>
         <p>請使用代號，勿輸入姓名、身分證字號、地址、電話、病歷號、機構內部識別碼或其他可直接辨識個人的資訊。本工具不主動將表單內容寫入 localStorage；Word / Excel 解析在瀏覽器本機進行。</p>
       </div>
-      <label class="pbsw-check"><input id="deidConfirm" type="checkbox"> 我已理解去識別化原則</label>
     </section>
 
     <nav class="pbsw-steps" aria-label="PBS Companion 工作流程">
@@ -99,14 +98,24 @@
         </header>
 
         <div class="pbsw-upload">
-          <div>
+          <div class="pbsw-upload-intro">
             <strong>匯入 ABC 紀錄（選用）</strong>
-            <p>v0.1 支援 <code>.docx</code> 與 <code>.xlsx</code>。檔案僅由瀏覽器讀取；解析後請人工確認。</p>
+            <p>v0.2 支援 <code>.docx</code> 與 <code>.xlsx</code>。檔案僅由瀏覽器本機讀取；解析後請人工確認。</p>
           </div>
-          <input id="abcFile" type="file" accept=".docx,.xlsx" disabled>
-          <button id="parseFileBtn" type="button" class="pbsw-btn secondary" disabled>解析檔案</button>
+          <div class="pbsw-upload-flow">
+            <label class="pbsw-upload-check">
+              <input id="deidConfirm" type="checkbox">
+              <span><b>① 去識別化確認</b><small>我確認檔案已移除可直接識別個人的資訊</small></span>
+            </label>
+            <div id="uploadGate" class="pbsw-upload-gate locked" aria-live="polite">🔒 請先確認已完成去識別化</div>
+            <label class="pbsw-file-picker">
+              <span>② 選擇 Word / Excel</span>
+              <input id="abcFile" type="file" accept=".docx,.xlsx" disabled>
+            </label>
+            <button id="parseFileBtn" type="button" class="pbsw-btn secondary" disabled>③ 解析檔案</button>
+          </div>
         </div>
-        <p id="fileStatus" class="pbsw-status" role="status" aria-live="polite">請先勾選上方「已理解去識別化原則」。</p>
+        <p id="fileStatus" class="pbsw-status" role="status" aria-live="polite">尚未啟用檔案匯入。</p>
 
         <div class="pbsw-table-wrap">
           <table class="pbsw-table">

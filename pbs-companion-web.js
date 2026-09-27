@@ -38,13 +38,32 @@ $("#addAbcRow").addEventListener("click", () => addRow());
 const confirm = $("#deidConfirm");
 const fileInput = $("#abcFile");
 const parseBtn = $("#parseFileBtn");
-confirm.addEventListener("change", () => {
-  fileInput.disabled = !confirm.checked;
-  parseBtn.disabled = !confirm.checked;
-  $("#fileStatus").textContent = confirm.checked
-    ? "可選擇已去識別化的 .docx 或 .xlsx。檔案在瀏覽器本機解析。"
-    : "請先勾選上方「已理解去識別化原則」。";
-});
+const uploadGate = $("#uploadGate");
+const fileStatus = $("#fileStatus");
+
+function updateUploadState(){
+  const ready = confirm.checked;
+  const hasFile = !!fileInput.files?.length;
+  fileInput.disabled = !ready;
+  parseBtn.disabled = !(ready && hasFile);
+  uploadGate.classList.toggle("locked", !ready);
+  uploadGate.classList.toggle("ready", ready);
+
+  if(!ready){
+    uploadGate.textContent = "🔒 請先確認已完成去識別化";
+    fileStatus.textContent = "尚未啟用檔案匯入。";
+  }else if(!hasFile){
+    uploadGate.textContent = "✓ 可以選擇 Word / Excel";
+    fileStatus.textContent = "已完成去識別化確認，請選擇 .docx 或 .xlsx。";
+  }else{
+    uploadGate.textContent = "✓ 檔案已選擇，可進行解析";
+    fileStatus.textContent = `已選擇：${fileInput.files[0].name}。按「③ 解析檔案」開始。`;
+  }
+}
+
+confirm.addEventListener("change", updateUploadState);
+fileInput.addEventListener("change", updateUploadState);
+updateUploadState();
 
 function findKey(obj, candidates){
   const keys = Object.keys(obj || {});
