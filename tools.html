@@ -173,7 +173,6 @@
 .support-bay-legend{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:2px 0 8px}
 .support-bay-legend div{padding:12px 14px;border:1px solid #e1e6e9;border-radius:14px;background:#fff;color:#66717d;font-size:.77rem;line-height:1.45}
 .support-bay-legend b{display:block;color:#071a33;font-size:.82rem;margin-bottom:2px}
-@media(max-width:820px){.support-bay-legend{grid-template-columns:1fr}.support-bay-legend div{padding:11px 13px}}
 /* /AML 3.3 · Intelligent Support Bay refinement */
 /* AML 3.3 · AI Specialist robot identity */
 .ai-tools-intro__note{display:flex;align-items:center;gap:13px}
@@ -186,7 +185,6 @@
 .tool-role-chip{display:flex!important;align-items:center;gap:4px}
 .support-section-head--ai span{color:#279ecb}
 .support-section-head--ai b{color:#0d2b50}
-@media(max-width:640px){.ai-tools-intro__note{align-items:flex-start}.support-bot--hero{width:42px;height:42px}}
 /* /AML 3.3 · AI Specialist robot identity */
 
 
@@ -365,7 +363,6 @@
 #practice-tools .actions .btn:hover{transform:translateY(-2px);border-color:rgba(126,232,255,.72);box-shadow:0 10px 28px rgba(56,148,215,.25),0 0 18px rgba(115,96,255,.12);}
 #practice-tools .actions .btn.secondary{background:rgba(255,255,255,.68);color:#21445f;border-color:rgba(66,155,204,.28);box-shadow:inset 0 0 0 1px rgba(255,255,255,.48);backdrop-filter:blur(7px);}
 #practice-tools .actions .btn.secondary:hover{background:linear-gradient(135deg,rgba(73,210,255,.09),rgba(139,92,246,.08));color:#163c59;border-color:rgba(88,183,230,.48);}
-@media(max-width:720px){.support-section-head{align-items:flex-start;flex-direction:column;gap:4px}.support-section-head small{text-align:left}.support-section-head>div{flex-wrap:wrap}.support-bay-legend{grid-template-columns:1fr}}
 /* /AML 3.3 · Intelligent Support Bay 2.0 */
 </style>
 
@@ -402,8 +399,6 @@
 #practice-tools .actions .btn.secondary{background:rgba(255,255,255,.72);color:#21445f;border-color:rgba(66,155,204,.30);box-shadow:inset 0 0 0 1px rgba(255,255,255,.48);backdrop-filter:blur(7px)}
 #practice-tools .actions .btn.secondary:hover{background:linear-gradient(135deg,rgba(73,210,255,.10),rgba(139,92,246,.09));color:#163c59;border-color:rgba(88,183,230,.48)}
 .support-section-head{margin-top:24px!important}
-@media(max-width:900px){.ai-tools-intro{grid-template-columns:1fr!important}.support-dispatch{max-width:none!important}}
-@media(max-width:640px){.support-dispatch{grid-template-columns:auto minmax(0,1fr)!important;padding:16px!important}.support-bot--hero{width:42px;height:42px}}
 /* /AML 3.3 · Intelligent Support Bay repair / visual consolidation */
 
 /* AML 3.3 · Dual-bay rhythm / support-module layout polish */
@@ -423,11 +418,6 @@
 #practice-tools .support-section-head--workflow + .tool-card .actions{max-width:860px}
 #practice-tools .ai-tools-footnote{margin-top:10px}
 .labx-progress{padding-bottom:42px}
-@media(max-width:820px){
-  #practice-tools{padding-top:32px}
-  #practice-tools .support-section-head--practice + .tool-card,
-  #practice-tools .support-section-head--workflow + .tool-card{grid-column:auto}
-}
 /* /AML 3.3 · Dual-bay rhythm / support-module layout polish */
 
 /* AML 3.3 · Intelligent Support Bay / wide module panel polish */
@@ -471,9 +461,6 @@
     background:linear-gradient(115deg,rgba(249,255,253,.99),rgba(247,251,255,.99));
   }
 }
-@media(max-width:820px){
-  #practice-tools .support-wide-card{display:flex;flex-direction:column}
-}
 /* /AML 3.3 · Intelligent Support Bay / wide module panel polish */
 
 /* AML 3.3 · Intelligent Support Bay final cleanup */
@@ -490,7 +477,6 @@
 #practice-tools .actions .btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 16px}
 #practice-tools .tool-related-reading{margin-top:14px!important;padding-top:12px;border-top:1px solid rgba(99,120,145,.12);font-size:.78rem!important;line-height:1.5!important}
 #practice-tools .support-wide-card .tool-related-reading{grid-column:1/-1}
-@media(max-width:820px){#practice-tools .support-section-head{align-items:flex-start;gap:5px}.support-section-head>div{flex-wrap:wrap}.support-section-head small{max-width:none}}
 /* /AML 3.3 · Intelligent Support Bay final cleanup */
 
 /* AML 3.3 · Final QA micro-polish */
@@ -502,10 +488,35 @@
   .labx-complete__link{min-height:44px}
   .labx-progress__reset{min-height:44px;padding:10px 13px}
 }
+/* AML 3.4 Phase 1C · Intelligent Support Bay responsive consolidation */
+@media(max-width:900px){
+  .ai-tools-intro{grid-template-columns:1fr!important}
+  .support-dispatch{max-width:none!important}
+}
+@media(max-width:820px){
+  #practice-tools{padding-top:32px}
+  #practice-tools .support-section-head--practice + .tool-card,
+  #practice-tools .support-section-head--workflow + .tool-card{grid-column:auto}
+  #practice-tools .support-wide-card{display:flex;flex-direction:column}
+  #practice-tools .support-section-head{align-items:flex-start;gap:5px}
+  #practice-tools .support-section-head>div{flex-wrap:wrap}
+  #practice-tools .support-section-head small{max-width:none}
+}
+@media(max-width:720px){
+  #practice-tools .support-section-head{flex-direction:column}
+  #practice-tools .support-section-head small{text-align:left}
+}
+@media(max-width:640px){
+  .ai-tools-intro__note{align-items:flex-start}
+  .support-dispatch{grid-template-columns:auto minmax(0,1fr)!important;padding:16px!important}
+  .support-bot--hero{width:42px;height:42px}
+}
 @media(max-width:430px){
   .support-dispatch{grid-template-columns:1fr!important;gap:11px!important}
   .support-bot--hero{width:40px;height:40px}
 }
+/* /AML 3.4 Phase 1C · Intelligent Support Bay responsive consolidation */
+
 @media(prefers-reduced-motion:reduce){
   .support-dispatch__status i{animation:none}
 }
