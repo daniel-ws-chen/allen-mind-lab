@@ -1,11 +1,79 @@
 
 /* Allen Mind Lab — Global Navigation & Footer v2 */
+
+/* AML 3.4 Design System Foundation
+   Phase 1A only establishes shared tokens.
+   Existing component rules remain unchanged in this phase. */
 :root{
+  /* Core brand colors — existing values preserved */
   --aml-navy:#0d1b2a;
   --aml-navy2:#14263b;
   --aml-gold:#c7a76a;
   --aml-paper:#fffdf9;
   --aml-line:#e7e1d6;
+
+  /* Semantic surfaces */
+  --aml-surface:#ffffff;
+  --aml-surface-soft:#f8faf9;
+  --aml-surface-warm:#fffdf9;
+  --aml-ink:#17202b;
+  --aml-ink-soft:#5f6875;
+  --aml-on-dark:#f7f9fb;
+  --aml-muted:#6b7280;
+
+  /* Functional accent family */
+  --aml-accent-explore:#68dcff;
+  --aml-accent-support:#8bf2c6;
+  --aml-accent-study:#d7a84f;
+
+  /* Borders */
+  --aml-border-soft:rgba(13,27,42,.10);
+  --aml-border-medium:rgba(13,27,42,.16);
+  --aml-border-dark:rgba(255,255,255,.12);
+
+  /* Radius scale */
+  --aml-radius-sm:10px;
+  --aml-radius-md:14px;
+  --aml-radius-lg:18px;
+  --aml-radius-xl:24px;
+  --aml-radius-pill:999px;
+
+  /* Shadow scale */
+  --aml-shadow-sm:0 4px 14px rgba(13,27,42,.08);
+  --aml-shadow-md:0 10px 28px rgba(13,27,42,.12);
+  --aml-shadow-lg:0 18px 46px rgba(13,27,42,.16);
+
+  /* Spacing scale */
+  --aml-space-1:4px;
+  --aml-space-2:8px;
+  --aml-space-3:12px;
+  --aml-space-4:16px;
+  --aml-space-5:20px;
+  --aml-space-6:24px;
+  --aml-space-8:32px;
+  --aml-space-10:40px;
+  --aml-space-12:48px;
+  --aml-space-16:64px;
+
+  /* Interaction */
+  --aml-touch-min:44px;
+  --aml-focus-ring:0 0 0 3px rgba(199,167,106,.28);
+  --aml-transition-fast:.18s ease;
+  --aml-transition-base:.22s ease;
+
+  /* Layout */
+  --aml-content-max:1160px;
+  --aml-page-pad:6vw;
+  --aml-page-pad-mobile:6vw;
+
+  /* Canonical responsive tiers for future migrations.
+     CSS custom properties cannot be used directly in @media queries,
+     so these serve as documented design-system values only. */
+  --aml-bp-phone:480px;
+  --aml-bp-mobile:720px;
+  --aml-bp-tablet:900px;
+  --aml-bp-desktop:1120px;
+  --aml-bp-wide:1280px;
 }
 
 .aml-skip-link{
