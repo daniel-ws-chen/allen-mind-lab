@@ -1522,3 +1522,83 @@ body .aml-domain-catalog__read{display:none}
 @media(max-width:640px){.support-xier-guide{grid-template-columns:1fr;padding:22px 18px;gap:10px}.support-xier-guide__avatar{min-height:0;flex-direction:row;justify-content:flex-start}.support-xier-guide__avatar img{width:66px;height:66px}.support-xier-guide__halo{width:82px;height:82px;left:-8px}.support-xier-guide__choices{grid-template-columns:1fr}.support-xier-guide__choices a:last-child{grid-column:auto}.support-xier-guide__body h2{font-size:1.52rem}.support-xier-guide__body>p{font-size:.88rem}}
 @media(prefers-reduced-motion:reduce){.support-xier-guide__halo,.support-guide-focus{animation:none}.support-xier-guide__choices a{transition:none}}
 /* /AML 3.4 · Intelligent Support Bay — Xier Navigator */
+
+
+/* ===== AML 3.4 Responsive Isolation Guard v1 =====
+   Purpose: keep mobile/tablet responsive patches from leaking into desktop layouts.
+   2026-09-28
+*/
+
+/* Notes from the Lab module: preserve artwork ratio on desktop and mobile. */
+body .newsletter-art{
+  min-width:0;
+}
+body .newsletter-icon{
+  display:block;
+  height:auto !important;
+  max-height:none !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+}
+@media (min-width:901px){
+  body .newsletter-wrap{
+    grid-template-columns:minmax(180px,240px) minmax(0,1fr) !important;
+    align-items:center !important;
+  }
+  body .newsletter-art{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    align-self:start !important;
+  }
+  body .newsletter-icon{
+    width:100% !important;
+    max-width:220px !important;
+  }
+}
+@media (max-width:900px){
+  body .newsletter-wrap{
+    grid-template-columns:1fr !important;
+  }
+  body .newsletter-icon{
+    width:100% !important;
+    max-width:170px !important;
+  }
+}
+
+/* Homepage fleet map: desktop geometry and click targets remain tied to the map image. */
+@media (min-width:761px){
+  body .aml-map-frame img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    max-height:none !important;
+    aspect-ratio:auto !important;
+    object-fit:contain !important;
+  }
+  body .aml-map-hotspot{
+    display:flex !important;
+  }
+  body .aml-route-cards{
+    display:none !important;
+  }
+  body .aml-xier-hotspot{
+    display:block !important;
+  }
+}
+
+/* Mobile-only fallback remains mobile-only. */
+@media (max-width:760px){
+  body .aml-map-frame img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+  }
+  body .aml-map-hotspot{
+    display:none !important;
+  }
+  body .aml-route-cards{
+    display:grid !important;
+  }
+}
+/* ===== /AML 3.4 Responsive Isolation Guard v1 ===== */
