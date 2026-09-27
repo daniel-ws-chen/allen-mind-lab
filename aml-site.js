@@ -18,6 +18,8 @@
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--pbs::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--pbs::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
       .aml-nav-group .aml-nav-panel a:hover,.aml-nav-group .aml-nav-panel a:focus-visible{background:linear-gradient(90deg,rgba(215,168,79,.08),rgba(111,103,255,.04));outline:none}
       @media(max-width:720px){
+        .aml-menu-toggle{min-width:44px;min-height:44px}
+        .aml-mobile-menu a{min-height:44px;display:flex;align-items:center}
         .aml-mobile-menu .aml-lab-subnav,.aml-mobile-menu .aml-study-subnav{position:relative;padding-left:1.55rem}
         .aml-mobile-menu .aml-lab-subnav::before,.aml-mobile-menu .aml-study-subnav::before{content:"";position:absolute;left:.55rem;top:50%;width:.42rem;height:.42rem;border-radius:50%;transform:translateY(-50%);background:#d7a84f}
         .aml-mobile-menu .aml-lab-subnav--explore::before{background:#68dcff}.aml-mobile-menu .aml-lab-subnav--support::before{background:#8bf2c6}
