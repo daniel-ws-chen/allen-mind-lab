@@ -1298,3 +1298,38 @@ body .aml-domain-catalog__read{display:none}
 }
 /* ===== /AML 3.4 Intelligent Support Bay micro-components ===== */
 
+
+/* ===== AML 3.4 Design System · Intelligent Support Bay type & spacing =====
+   Phase 1G: final effective typography/action values consolidated from
+   multiple page-local override layers. */
+#practice-tools .tool-card h3{
+  margin:9px 0 7px;
+  font-size:1.32rem;
+}
+#practice-tools .tool-card p{
+  margin-bottom:12px;
+  font-size:.9rem;
+  line-height:1.62;
+}
+#practice-tools .tool-card ul{
+  margin-bottom:16px;
+  font-size:.82rem;
+  line-height:1.65;
+}
+#practice-tools .tool-card li+li{
+  margin-top:2px;
+}
+#practice-tools .actions{
+  align-items:center;
+  gap:9px;
+}
+#practice-tools .actions .btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:9px 16px;
+  font-size:.82rem;
+}
+/* ===== /AML 3.4 Intelligent Support Bay type & spacing ===== */
+
