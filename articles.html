@@ -60,17 +60,28 @@
 
     .newsletter-wrap{
       display:grid;
-      grid-template-columns:240px 1fr;
+      grid-template-columns:minmax(180px,240px) minmax(0,1fr);
       gap:46px;
       align-items:center;
     }
 
+    .newsletter-art{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-width:0;
+      align-self:start;
+    }
+
     .newsletter-icon{
-      width:220px;
-      max-width:100%;
+      display:block;
+      width:100%;
+      max-width:220px;
+      height:auto !important;
+      aspect-ratio:auto !important;
+      object-fit:contain !important;
       border-radius:28px;
       box-shadow:0 16px 36px rgba(0,0,0,.18);
-      display:block;
     }
 
     .newsletter .section-title{color:white}
@@ -106,7 +117,8 @@
         grid-template-columns:1fr;
       }
       .newsletter-icon{
-        width:170px;
+        width:100%;
+        max-width:170px;
       }
     }
 
@@ -331,7 +343,7 @@
 <section class="aml-choice-strip"><div class="aml-choice-strip__inner"><div><div class="eyebrow">Two Different Ways · 兩種入口</div><h2>館藏是分類；路徑是策展。</h2><p>知道領域，就進主題館；想沿著一個問題循序深入，就走閱讀路徑。兩者不再把同一批文章全部鋪開。</p></div><div class="aml-choice-strip__actions"><a class="btn" href="/reading-paths.html">查看閱讀路徑 →</a><a class="btn secondary" href="/library.html">搜尋完整館藏 →</a></div></div></section>
 <section class="newsletter reveal" id="newsletter">
 <div class="newsletter-wrap">
-<div>
+<div class="newsletter-art">
 <img alt="Notes from the Lab Newsletter" class="newsletter-icon" loading="lazy" src="images/newsletter/notes-from-the-lab.png" decoding="async" width="1731" height="909"/>
 </div>
 <div>
