@@ -12,10 +12,10 @@
       .aml-nav-group[data-aml-lab-nav] .aml-nav-panel{min-width:240px}
       .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav--explore::before{background:#68dcff;box-shadow:0 0 13px rgba(104,220,255,.48)}
       .aml-nav-group[data-aml-lab-nav] .aml-nav-panel .aml-lab-subnav--support::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
-      .aml-nav-group[data-aml-study-nav] .aml-nav-panel{min-width:230px}
-      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--home::before{background:#d7a84f;box-shadow:0 0 13px rgba(215,168,79,.38)}
-      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--management::before{background:#7da9ff;box-shadow:0 0 13px rgba(125,169,255,.42)}
-      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--pbs::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
+      .aml-nav-group[data-aml-study-nav] .aml-nav-panel,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel{min-width:230px}
+      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--home::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--home::before{background:#d7a84f;box-shadow:0 0 13px rgba(215,168,79,.38)}
+      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--management::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--management::before{background:#7da9ff;box-shadow:0 0 13px rgba(125,169,255,.42)}
+      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--pbs::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--pbs::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
       .aml-nav-group .aml-nav-panel a:hover,.aml-nav-group .aml-nav-panel a:focus-visible{background:linear-gradient(90deg,rgba(215,168,79,.08),rgba(111,103,255,.04));outline:none}
       @media(max-width:720px){
         .aml-mobile-menu .aml-lab-subnav,.aml-mobile-menu .aml-study-subnav{position:relative;padding-left:1.55rem}
@@ -62,8 +62,15 @@
         }
       }
 
-      // Advanced Self-Study Room — always inject globally, even on legacy pages
-      if (!links.querySelector('.aml-nav-group[data-aml-study-nav]')) {
+      // Advanced Self-Study Room — normalize legacy marker first, then inject only if absent.
+      const existingStudyNav = links.querySelector(
+        '.aml-nav-group[data-aml-study-nav], .aml-nav-group[data-aml-selfstudy-nav]'
+      );
+      if (existingStudyNav && existingStudyNav.hasAttribute('data-aml-selfstudy-nav')) {
+        existingStudyNav.setAttribute('data-aml-study-nav', 'true');
+        existingStudyNav.removeAttribute('data-aml-selfstudy-nav');
+      }
+      if (!existingStudyNav) {
         const studyNav = makeDetails('進階自學室', 'amlStudyNav', [
           {href:'/self-study.html', className:'aml-study-subnav aml-study-subnav--home', label:'進階自學室總覽'},
           {href:'/management-self-study.html', className:'aml-study-subnav aml-study-subnav--management', label:'管理學自學'},
