@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html lang="zh-Hant"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>全院儀表板／表單輸出｜AML 感控作業管理助手 Pilot 1.0.6</title><meta name="description" content="AML 感控作業管理助手 Pilot：彙整全院感染管制資料、儀表板與表單輸出的測試頁面。"/><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><link href="./assets/infection-control.css" rel="stylesheet"/></head><body data-page="dashboard">
-<header><div class="brand"><div><b>AML 感控作業管理助手</b> <span class="pill">Pilot 1.0.6</span></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end"><div class="muted">一次建檔・持續追蹤・多表輸出</div><a aria-label="返回 Allen Mind Lab 主網站" class="home-link" href="/">← 返回 AML 主網站</a></div></div></header>
+<html lang="zh-Hant"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>全院儀表板／表單輸出｜AML 感控防治文件填報助教系統 Pilot 1.0.6</title><meta name="description" content="AML 感控防治文件填報助教系統 Pilot：彙整全院感染管制資料、儀表板與表單輸出的測試頁面。"/><script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script><link href="./assets/infection-control.css" rel="stylesheet"/></head><body data-page="dashboard">
+<header><div class="brand"><div><b>AML 感控防治文件填報助教系統</b> <span class="pill">Pilot 1.0.6</span></div><div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end"><div class="muted">一次建檔・持續追蹤・多表輸出</div><a aria-label="返回 Allen Mind Lab 主網站" class="home-link" href="/">← 返回 AML 主網站</a></div></div></header>
 <main>
 <section class="card login" id="login">
 <div class="auth-shell">
 <div class="auth-card">
-<div class="auth-brand">AML 感控作業管理助手 <span class="pill">Pilot 1.0.6</span></div>
+<div class="auth-brand">AML 感控防治文件填報助教系統 <span class="pill">Pilot 1.0.6</span></div>
 <h1>授權人員登入</h1>
 <p class="muted">本工具限院內授權人員使用。Pilot 階段採共用帳號密碼，登入一次後可於四個工作區間切換。</p>
 <div class="auth-fields">
@@ -103,5 +103,5 @@
 <div class="doc"><span>3｜衛生局附件1｜上呼吸道及不明原因發燒群聚事件造冊表</span><span><span class="status wait" id="stHB1">未啟用</span> <button class="secondary mini" onclick="previewHealth('roster')">資料預覽</button> <button class="primary mini" onclick="downloadHealthRoster()">下載衛生局原格式 Excel</button></span></div>
 <div class="doc"><span>4｜衛生局附件2｜群聚事件疫調報告</span><span><span class="status wait" id="stHB2">未啟用</span> <button class="secondary mini" onclick="previewHealth('epi')">統計／Epi-curve 預覽</button> <button class="primary mini" onclick="downloadHealthEpiDOCX()">下載衛生局原格式 Word</button></span></div>
 <div class="doc" style="margin-top:12px;border-top:2px solid #d9e4e2;padding-top:16px"><span>✨ 群聚／衛生局表單一次輸出<div class="muted mini" style="margin-top:4px">完成 2｜全院資料後，才可一次下載全院群聚與衛生局文件</div></span><span><button class="primary mini" onclick="downloadHealthBundle()">下載群聚／衛生局表單（ZIP）</button></span></div></div></div>
-</section><section class="hidden print-sheet" id="printArea"></section><div class="footer">Allen Mind Lab｜感控作業管理助手 Pilot 1.0.6</div></main>
+</section><section class="hidden print-sheet" id="printArea"></section><div class="footer">Allen Mind Lab｜感控防治文件填報助教系統 Pilot 1.0.6</div></main>
 <script src="./assets/infection-control-app.js"></script></body></html>
