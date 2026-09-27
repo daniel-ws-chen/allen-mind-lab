@@ -370,7 +370,7 @@ function buildReport(a){
   const funNames=a.functions.map(f=>`${f.role}：${f.name}`).join("；");
   const dataCaveat=d.abc.length<2 ? "目前 ABC 筆數有限，尚不足以判定穩定功能模式；以下均以初步假設呈現。" : "已依目前提供的多筆紀錄整理共同線索，但仍需持續觀察與反證。";
   const html=`
-    <p class="draft"><b>草稿提醒：</b>本報告由 AML PBS Companion Web 協助整理，功能為假設，須人工確認與團隊核定。</p>
+    <p class="draft"><b>草稿提醒：</b>本報告由 AML PBS 分析與策略擬定助教系統 2.0 協助整理，功能為假設，須人工確認與團隊核定。</p>
     <h2>一、個案與分析背景</h2>
     <p>個案代號：${esc(d.caseCode)}。資料來源：${esc(d.dataSource)}。本次以「${esc(d.target)}」為主要標的行為進行 PBS 初步整理。</p>
     <h2>二、標的行為操作型定義</h2>
@@ -398,7 +398,7 @@ function buildReport(a){
     <ul><li>標的行為頻率、持續時間與強度</li><li>替代行為／主動溝通使用次數</li><li>需要提示的程度</li><li>成功等待或完成轉換的時間</li><li>恢復平穩所需時間</li><li>各項策略執行一致性與可行性</li></ul>
     <h2>十四、團隊後續討論事項</h2>
     <ul><li>功能假設是否有足夠 ABC 支持？是否存在反證？</li><li>策略是否現場可執行、符合個案理解與能力？</li><li>替代行為是否比原行為更容易、且能獲得合理回應？</li><li>是否需要醫療、心理、職能治療、語言治療、社工、特教或其他專業共同評估？</li><li>下一階段需要增加哪些觀察資料？</li></ul>`;
-  const plain = `AML PBS Companion Web｜行為功能分析暨正向行為支持報告（初稿）
+  const plain = `AML PBS 分析與策略擬定助教系統 2.0｜行為功能分析暨正向行為支持報告（初稿）
 
 個案代號：${d.caseCode}
 標的行為：${d.target}

@@ -451,14 +451,14 @@
   const amlPracticeToolBridge = {
     "/articles/pbs-being-seen": {
       label: "PBS · PRACTICE TOOL",
-      title: "把功能假設帶回現場：AML PBS Companion",
-      desc: "如果你正在整理情緒行為案例，可用 Companion 協助彙整 ABC 資訊、形成初步功能假設與 PBS 策略草案，再由團隊依實際情境查證與修正。",
+      title: "把功能假設帶回現場：PBS 分析與策略擬定助教系統 2.0",
+      desc: "如果你正在整理情緒行為案例，可用 PBS 分析與策略擬定助教系統 2.0 協助彙整 ABC 資訊、形成初步功能假設與 PBS 策略草案，再由團隊依實際情境查證與修正。",
       href: "/tools.html",
       cta: "查看 PBS 實務工具 →"
     },
     "/articles/pbs-plan-contextual-fit": {
       label: "PBS · PRACTICE TOOL",
-      title: "從計畫文字走向情境判斷：AML PBS Companion",
+      title: "從計畫文字走向情境判斷：PBS 分析與策略擬定助教系統 2.0",
       desc: "把文章中的功能、情境與支持條件帶回案例討論，協助團隊先整理資訊，再檢查策略是否真的適配當下環境。",
       href: "/tools.html",
       cta: "查看 PBS 實務工具 →"
@@ -479,31 +479,31 @@
     },
     "/articles/management-coach-leader-workflow": {
       label: "MANAGEMENT · LEARNING TOOL",
-      title: "直接使用方案規劃管理助教系統",
+      title: "直接使用方案規劃管理助教系統 2.0",
       desc: "把十章方案內容交回一個共同架構，協助組長整理、檢查跨章連貫性與形成修訂版；AI 協助彙整，人仍負責查證與管理判斷。",
       href: "/tools/management-coach/",
-      cta: "開啟管理助教系統 →"
+      cta: "開啟方案規劃管理助教系統 2.0 →"
     },
     "/articles/ot-management-organizational-planning": {
       label: "MANAGEMENT · LEARNING TOOL",
       title: "把願景、使命與服務方向繼續往下做",
-      desc: "如果你正在規劃一項服務，可用方案規劃管理助教系統把需求、價值主張、策略、人力、流程與成果逐步整理成完整方案。",
+      desc: "如果你正在規劃一項服務，可用方案規劃管理助教系統 2.0 把需求、價值主張、策略、人力、流程與成果逐步整理成完整方案。",
       href: "/tools/management-coach/",
-      cta: "開啟管理助教系統 →"
+      cta: "開啟方案規劃管理助教系統 2.0 →"
     },
     "/articles/ot-management-strategy-swot": {
       label: "MANAGEMENT · LEARNING TOOL",
       title: "把策略分析接回完整方案",
-      desc: "SWOT 不是終點。可用方案規劃管理助教系統把策略選擇繼續連到人力、流程、品質、財務、合作與成果呈現。",
+      desc: "SWOT 不是終點。可用方案規劃管理助教系統 2.0 把策略選擇繼續連到人力、流程、品質、財務、合作與成果呈現。",
       href: "/tools/management-coach/",
-      cta: "開啟管理助教系統 →"
+      cta: "開啟方案規劃管理助教系統 2.0 →"
     },
     "/articles/ot-management-service-development-choice": {
       label: "MANAGEMENT · LEARNING TOOL",
       title: "把服務選擇轉成可檢驗的方案",
-      desc: "當你已經釐清「真正缺的是什麼」，可以進一步用方案規劃管理助教系統整理服務設計、資源條件、流程與成果假設。",
+      desc: "當你已經釐清「真正缺的是什麼」，可以進一步用方案規劃管理助教系統 2.0 整理服務設計、資源條件、流程與成果假設。",
       href: "/tools/management-coach/",
-      cta: "開啟管理助教系統 →"
+      cta: "開啟方案規劃管理助教系統 2.0 →"
     },
 
     /* Reader Journey 1.1：優先橋接真正有自然下一步的文章 */
