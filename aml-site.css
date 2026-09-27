@@ -1450,3 +1450,408 @@ body .aml-domain-catalog__read{display:none}
 }
 /* ===== /AML 3.4 Phase 1I ===== */
 
+
+/* ===== AML 3.4 Design System · Interactive Lab journey HUD =====
+   Phase 2 consolidated: HUD, 8 milestones, Mission Complete and accessibility.
+   Exploration-map positioning remains page-local. */
+.labx-progress{
+  padding:28px 0 42px;
+  border-top:1px solid rgba(96,207,255,.12);
+  background:linear-gradient(180deg,#050b13,#07141f);
+  color:#eefaff;
+}
+.labx-progress__panel{
+  position:relative;
+  overflow:hidden;
+  padding:24px;
+  border:1px solid #28485a;
+  border-radius:var(--aml-radius-xl);
+  background:linear-gradient(145deg,rgba(7,23,35,.98),rgba(8,18,30,.99));
+  box-shadow:0 18px 48px rgba(0,0,0,.2),inset 0 0 40px rgba(56,182,255,.025);
+}
+.labx-progress__panel:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(89,151,201,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(89,151,201,.045) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.labx-progress__head,
+.labx-progress__bar,
+.labx-progress__grid,
+.labx-progress__privacy{
+  position:relative;
+  z-index:1;
+}
+.labx-progress__head{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:22px;
+  align-items:end;
+}
+.labx-progress__head h2{
+  margin:4px 0 5px;
+  color:#fff;
+  font-size:clamp(1.25rem,2.4vw,1.7rem);
+  letter-spacing:-.02em;
+}
+.labx-progress__head p{
+  max-width:760px;
+  margin:0;
+  color:#8fa9b8;
+  font-size:.9rem;
+}
+.labx-progress__count{
+  min-width:110px;
+  text-align:right;
+}
+.labx-progress__count strong{
+  display:block;
+  color:#70e7f7;
+  font:900 2rem/1 Arial,sans-serif;
+  text-shadow:0 0 18px rgba(112,231,247,.25);
+}
+.labx-progress__count span{
+  color:#7693a2;
+  font-size:.68rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.labx-progress__bar{
+  height:11px;
+  margin:18px 0 20px;
+  overflow:hidden;
+  border:1px solid rgba(106,198,231,.12);
+  border-radius:var(--aml-radius-pill);
+  background:#102733;
+  box-shadow:inset 0 0 12px rgba(0,0,0,.38);
+}
+.labx-progress__bar i{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:var(--aml-radius-pill);
+  background:linear-gradient(90deg,#5fdcf0 0%,#65f0ca 45%,#9875ec 100%);
+  box-shadow:0 0 18px rgba(95,220,240,.28);
+  transition:width .35s ease;
+}
+.labx-progress__grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:11px;
+}
+.labx-progress__card{
+  --hud:#5fdcf0;
+  min-width:0;
+  padding:15px;
+  border:1px solid color-mix(in srgb,var(--hud) 30%,#244656);
+  border-radius:17px;
+  background:linear-gradient(180deg,rgba(12,31,44,.96),rgba(8,24,35,.98));
+  color:#edfaff;
+  text-decoration:none;
+  transition:transform var(--aml-transition-fast),border-color var(--aml-transition-fast),box-shadow var(--aml-transition-fast);
+}
+.labx-progress__card:nth-child(2){--hud:#68f4bd}
+.labx-progress__card:nth-child(3){--hud:#bb82ff}
+.labx-progress__card:nth-child(4){--hud:#ffd36c}
+.labx-progress__card:hover{
+  border-color:color-mix(in srgb,var(--hud) 62%,transparent);
+  transform:translateY(-2px);
+  box-shadow:0 10px 26px color-mix(in srgb,var(--hud) 9%,transparent);
+}
+.labx-progress__card:focus-visible{
+  outline:none;
+  border-color:color-mix(in srgb,var(--hud) 72%,transparent);
+  box-shadow:var(--aml-focus-ring),0 10px 26px color-mix(in srgb,var(--hud) 12%,transparent);
+}
+.labx-progress__card small{
+  display:block;
+  color:color-mix(in srgb,var(--hud) 76%,#8fa8b4);
+  font-size:.66rem;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+.labx-progress__card strong{
+  display:block;
+  margin:5px 0 10px;
+  font-size:.96rem;
+}
+.labx-progress__meter{
+  height:6px;
+  margin:2px 0 12px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.035);
+  border-radius:var(--aml-radius-pill);
+  background:#132a36;
+}
+.labx-progress__meter i{
+  display:block;
+  width:0;
+  height:100%;
+  border-radius:var(--aml-radius-pill);
+  background:var(--hud);
+  box-shadow:0 0 10px color-mix(in srgb,var(--hud) 55%,transparent);
+  transition:width .3s ease;
+}
+.labx-progress__card:hover .labx-progress__meter i{
+  box-shadow:0 0 16px color-mix(in srgb,var(--hud) 72%,transparent);
+}
+.labx-progress__items{
+  display:grid;
+  gap:6px;
+}
+.labx-progress__item{
+  display:flex;
+  align-items:flex-start;
+  gap:7px;
+  color:#7f99a6;
+  font-size:.77rem;
+}
+.labx-progress__item i{
+  flex:0 0 7px;
+  width:7px;
+  height:7px;
+  margin-top:.45em;
+  border-radius:50%;
+  background:#34505d;
+  box-shadow:0 0 0 3px rgba(52,80,93,.1);
+}
+.labx-progress__item.done{
+  color:#dffbf5;
+}
+.labx-progress__item.done i{
+  background:var(--hud);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb,var(--hud) 14%,transparent),
+    0 0 10px color-mix(in srgb,var(--hud) 35%,transparent);
+}
+.labx-progress__privacy{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-top:14px;
+  color:#617f8f;
+  font-size:.72rem;
+}
+.labx-progress__reset{
+  appearance:none;
+  padding:7px 11px;
+  border:1px solid rgba(122,198,236,.22);
+  border-radius:var(--aml-radius-pill);
+  background:rgba(255,255,255,.025);
+  color:#8fa9b8;
+  font:800 .68rem/1 system-ui,sans-serif;
+  letter-spacing:.03em;
+  cursor:pointer;
+  transition:color var(--aml-transition-fast),border-color var(--aml-transition-fast),background var(--aml-transition-fast),transform var(--aml-transition-fast);
+}
+.labx-progress__reset:hover,
+.labx-progress__reset:focus-visible{
+  outline:none;
+  border-color:rgba(112,231,247,.48);
+  background:rgba(112,231,247,.06);
+  color:#e9fbff;
+}
+.labx-progress__reset:focus-visible{
+  box-shadow:var(--aml-focus-ring);
+}
+.labx-progress__reset:active{
+  transform:translateY(1px);
+}
+
+/* Mission Complete */
+.labx-complete{
+  position:relative;
+  z-index:1;
+  display:none;
+  margin-top:18px;
+  padding:18px;
+  overflow:hidden;
+  border:1px solid rgba(112,231,247,.24);
+  border-radius:var(--aml-radius-lg);
+  background:linear-gradient(135deg,rgba(25,65,78,.42),rgba(25,24,56,.46));
+}
+.labx-complete.is-visible{
+  display:block;
+  animation:labxCompleteIn .45s ease both;
+}
+.labx-complete__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+.labx-complete__eyebrow{
+  color:#70e7f7;
+  font-size:.68rem;
+  font-weight:950;
+  letter-spacing:.16em;
+}
+.labx-complete h3{
+  margin:5px 0 4px;
+  color:#fff;
+  font-size:clamp(1.08rem,2vw,1.35rem);
+}
+.labx-complete p{
+  margin:0;
+  color:#9eb4c4;
+  font-size:.84rem;
+  line-height:1.6;
+}
+.labx-complete__badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 11px;
+  border:1px solid rgba(255,211,108,.28);
+  border-radius:var(--aml-radius-pill);
+  background:rgba(255,211,108,.06);
+  color:#ffe19a;
+  font-size:.72rem;
+  font-weight:900;
+  white-space:nowrap;
+}
+.labx-complete__next{
+  margin-top:15px;
+  padding-top:15px;
+  border-top:1px solid rgba(152,196,221,.12);
+}
+.labx-complete__next-label{
+  display:block;
+  margin-bottom:9px;
+  color:#819aaa;
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.labx-complete__links{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+}
+.labx-complete__links--single{
+  grid-template-columns:1fr;
+}
+.labx-complete__link{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  min-width:0;
+  padding:11px 13px;
+  border:1px solid rgba(128,181,213,.18);
+  border-radius:var(--aml-radius-md);
+  background:rgba(5,15,25,.38);
+  color:#eefaff;
+  text-decoration:none;
+  transition:transform var(--aml-transition-fast),border-color var(--aml-transition-fast),background var(--aml-transition-fast);
+}
+.labx-complete__link:hover,
+.labx-complete__link:focus-visible{
+  outline:none;
+  border-color:rgba(112,231,247,.44);
+  background:rgba(112,231,247,.055);
+  transform:translateY(-1px);
+}
+.labx-complete__link:focus-visible{
+  box-shadow:var(--aml-focus-ring);
+}
+.labx-complete__link span{min-width:0}
+.labx-complete__link strong{
+  display:block;
+  font-size:.82rem;
+}
+.labx-complete__link small{
+  display:block;
+  margin-top:2px;
+  color:#7f98aa;
+  font-size:.68rem;
+  line-height:1.35;
+}
+.labx-complete__link b{
+  flex:0 0 auto;
+  color:#70e7f7;
+  font-size:.9rem;
+}
+.labx-progress__panel.is-mission-complete{
+  border-color:#356779;
+  box-shadow:0 18px 48px rgba(0,0,0,.2),inset 0 0 48px rgba(112,231,247,.045);
+}
+.labx-progress__panel.is-mission-complete [data-lab-progress-count]{
+  color:#dffff8;
+  text-shadow:0 0 20px rgba(101,240,202,.28);
+}
+@keyframes labxCompleteIn{
+  from{opacity:0;transform:translateY(7px)}
+  to{opacity:1;transform:none}
+}
+
+@media(max-width:900px){
+  .labx-progress__grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+@media(max-width:640px){
+  .labx-complete{
+    padding:15px;
+  }
+  .labx-complete__top{
+    align-items:flex-start;
+  }
+  .labx-complete__badge{
+    max-width:100%;
+    white-space:normal;
+    line-height:1.35;
+  }
+  .labx-complete__links{
+    grid-template-columns:1fr;
+  }
+  .labx-complete__link,
+  .labx-progress__reset{
+    min-height:var(--aml-touch-min);
+  }
+  .labx-progress__reset{
+    padding:10px 13px;
+  }
+}
+@media(max-width:600px){
+  .labx-progress{
+    padding-top:18px;
+  }
+  .labx-progress__panel{
+    padding:18px;
+  }
+  .labx-progress__head{
+    grid-template-columns:1fr;
+  }
+  .labx-progress__count{
+    text-align:left;
+  }
+  .labx-progress__grid{
+    grid-template-columns:1fr;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .labx-progress__card,
+  .labx-progress__bar i,
+  .labx-progress__meter i,
+  .labx-progress__reset,
+  .labx-complete__link{
+    transition:none;
+  }
+  .labx-progress__card:hover,
+  .labx-progress__reset:active,
+  .labx-complete__link:hover,
+  .labx-complete.is-visible{
+    transform:none;
+    animation:none;
+  }
+}
+/* ===== /AML 3.4 Interactive Lab journey HUD ===== */
+
