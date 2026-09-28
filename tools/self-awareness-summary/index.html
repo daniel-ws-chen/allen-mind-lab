@@ -33,7 +33,7 @@
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://allenmindlab.com/tools/self-awareness-summary/#webpage","url":"https://allenmindlab.com/tools/self-awareness-summary/","name":"我的自我覺察摘要｜AML Interactive Lab","description":"整合我的感覺使用說明書與壓力／能量節奏，形成一張可帶回生活與專業討論的自我覺察摘要。","inLanguage":"zh-Hant","isPartOf":{"@id":"https://allenmindlab.com/#website"},"mainEntity":{"@id":"https://allenmindlab.com/tools/self-awareness-summary/#learning-resource"}},{"@type":"WebSite","@id":"https://allenmindlab.com/#website","url":"https://allenmindlab.com/","name":"Allen Mind Lab","inLanguage":"zh-Hant"},{"@type":"LearningResource","@id":"https://allenmindlab.com/tools/self-awareness-summary/#learning-resource","url":"https://allenmindlab.com/tools/self-awareness-summary/","name":"我的自我覺察摘要｜AML Interactive Lab","description":"整合我的感覺使用說明書與壓力／能量節奏，形成一張可帶回生活與專業討論的自我覺察摘要。","inLanguage":"zh-Hant","learningResourceType":"Reflection tool","educationalUse":"reflection","isAccessibleForFree":true}]}
 </script>
 </head><body>
-<nav class="aml-lab-shell-nav" aria-label="Interactive Lab 頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/self-awareness/">← 回自我覺察館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">Interactive Lab</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
+<nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/self-awareness/">← 回自我覺察館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">互動實驗室</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
 <main class="wrap"><section class="hero"><div class="eyebrow">SELF-AWARENESS SYNTHESIS</div><h1>我的自我覺察摘要</h1><p>這不是新的測驗，而是把你已完成的「感覺使用說明書」與「壓力／能量節奏」放在一起，整理成比較容易帶回生活的線索。</p></section>
 <section class="status"><div><b>感覺使用說明書</b><div id="sensoryStatus"></div></div><div><b>壓力與能量節奏</b><div id="energyStatus"></div></div></section>
 <section class="grid">
@@ -59,6 +59,6 @@ const tips=[];if(s)tips.push({t:'先看情境',x:'與其問「我是不是太敏
 while(tips.length<3)tips.push({t:'先觀察，再調整',x:'先記下什麼時候比較順、什麼時候特別耗能，再決定下一步。'});
 $('principles').innerHTML=tips.slice(0,3).map(x=>`<div class="principle"><b>${x.t}</b><span>${x.x}</span></div>`).join('');
 })();
-</script><script src="/aml-site.js"></script>
-<footer class="aml-lab-mini-footer"><div><strong>AML Interactive Lab · 自我覺察館</strong><span>先看見自己的運作方式，再找到適合自己的調節方法。</span></div><nav><a href="/tools/self-awareness/">回自我覺察館</a><a href="/tools.html">Interactive Lab</a><a href="/index.html#aml-map">AML 首頁地圖</a></nav></footer>
+</script><script defer src="/aml-site.js"></script>
+<footer class="aml-lab-mini-footer"><div><strong>AML Interactive Lab · 自我覺察館</strong><span>先看見自己的運作方式，再找到適合自己的調節方法。</span></div><nav><a href="/tools/self-awareness/">回自我覺察館</a><a href="/tools.html">互動實驗室</a><a href="/index.html#aml-map">AML 首頁地圖</a></nav></footer>
 </body></html>
