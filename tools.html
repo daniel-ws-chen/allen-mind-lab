@@ -1064,6 +1064,32 @@
 .wish-community:hover .wish-community__quote{color:#7a5a22}
 @media (prefers-reduced-motion:reduce){.wish-community,.wish-community::before,.wish-community::after,.wish-btn,.wish-link,.wish-community__copy,.wish-community__quote{transition:none!important}.wish-community:hover{transform:none!important}}
 </style>
+
+<style id="aml-xier-card-hover-v29">
+#practice-tools .support-assistant-card{
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+#practice-tools .support-assistant-card.is-xier-preview{
+  transform:translateY(-3px);
+  border-color:#d9be83!important;
+  box-shadow:0 22px 48px rgba(1,6,23,.28),0 0 0 1px rgba(214,173,98,.16)!important;
+}
+#practice-tools .support-xier-guide__reply{
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+#practice-tools .support-xier-guide__reply.is-speaking{
+  background:rgba(190,150,78,.14)!important;
+  border-left-color:#c59238!important;
+  transform:translateX(2px);
+}
+@media (prefers-reduced-motion:reduce){
+  #practice-tools .support-assistant-card,
+  #practice-tools .support-xier-guide__reply{transition:none!important}
+  #practice-tools .support-assistant-card.is-xier-preview,
+  #practice-tools .support-xier-guide__reply.is-speaking{transform:none!important}
+}
+</style>
+
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
 <details class="aml-nav-group"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
@@ -1242,10 +1268,10 @@
 
 <div class="support-section-head support-section-head--ai"><div><span>SMART ASSISTANTS</span><b>四套智能助理</b></div><small>從資料輸入、人工確認到分析、回饋與文件輸出；每套工具各自處理一種真實工作任務。</small></div>
 <div class="support-now"><div><span>NOW ON DECK · 曦兒推薦</span><b>PBS 行為分析與對策研擬智能助理 2.0</b><small>已支援 Word／Excel ABC 解析；適合手上已有行為紀錄、希望快速整理功能假設與支持策略的使用者。</small></div><a href="#tool-practice">看看這套系統 →</a></div>
-<article class="tool-card tool-card--assistant support-assistant-card" id="tool-practice"><div class="tool-status"><span class="status-dot"></span><b>2.0 Beta</b><span>ABC Word / Excel 解析</span></div><div class="tool-type-kicker tool-role-chip"><span class="support-bot support-bot--mini" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16"/></svg></span>派遣｜PBS 智能助理</div><small>PBS · ANALYSIS &amp; STRATEGY</small><h3>PBS 行為分析與對策研擬智能助理 <span class="pilot-badge">2.0</span></h3><p>從 ABC 紀錄出發，協助整理行為功能線索、支持策略、七週期計畫與 PBS 報告初稿。</p><div class="support-io"><div><span>INPUT｜輸入</span><b>ABC 表單、去識別化 Word／Excel</b></div><div><span>OUTPUT｜產出</span><b>功能假設、策略表、PBS 報告初稿</b></div></div><ul><li>直接填寫 ABC 或匯入 Word／Excel 紀錄</li><li>多筆 ABC 自動拆解 × 人工確認</li><li>前事 × 行為中 × 後事策略整理</li><li>七週期策略表 × 完整報告初稿</li></ul><div class="actions"><a class="btn" href="/pbs-companion-web.html">開啟智能助理 2.0 →</a><a class="btn secondary" href="/pbs.html#ai-tool">閱讀 PBS 資源</a></div><p class="tool-related-reading">🧪 Beta 公開測試｜協助整理與形成初稿，不取代專業判斷；上傳前請完成去識別化。</p></article>
-<article class="tool-card tool-card--assistant support-assistant-card" id="tool-planning"><div class="tool-status"><span class="status-dot"></span><b>2.0 Beta</b><span>十章 Word 解析</span></div><div class="tool-type-kicker tool-role-chip"><span class="support-bot support-bot--mini" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16"/></svg></span>派遣｜管理智能助理</div><small>MANAGEMENT · FORMATIVE FEEDBACK</small><h3>方案規劃與管理智能助理 <span class="pilot-badge">2.0</span></h3><p>上傳含指定十章名稱的 .docx，即可擷取內容並提供逐章形成性回饋、跨章檢核與修訂方向。</p><div class="support-io"><div><span>INPUT｜輸入</span><b>含指定十章名稱的 .docx 方案文件</b></div><div><span>OUTPUT｜產出</span><b>逐章回饋、跨章檢核、修訂清單</b></div></div><ul><li>Word 版型不限，只需保留指定十章名稱</li><li>十章內容擷取 × 人工確認</li><li>跨章一致性檢核 × 自我檢核問題</li><li>優先修訂 Top 3 × 下一輪修訂清單</li></ul><div class="actions"><a class="btn" href="/tools/management-coach/">開啟智能助理 2.0 →</a><a class="btn secondary" href="/articles/management-coach-leader-workflow.html">閱讀設計說明</a></div><p class="tool-related-reading">形成性回饋工具｜引導思考與修訂，不代寫可直接繳交的方案內容。</p></article>
-<article class="tool-card tool-card--assistant support-assistant-card" id="tool-infection"><div class="tool-status"><span class="status-dot"></span><b>授權使用</b><span>Workflow Pilot</span></div><div class="tool-type-kicker tool-role-chip">🩺 派遣｜感控智能助理</div><small>HEALTHCARE · WORKFLOW PILOT</small><h3>感控防治文件填報智能助理 <span class="pilot-badge">PILOT 1.0</span></h3><p>把個案通報、疑似群聚、每日追蹤與文件輸出整理成同一個工作區，減少重複填報與人工整理。</p><div class="support-io"><div><span>INPUT｜輸入</span><b>事件資料、每日追蹤、通報欄位</b></div><div><span>OUTPUT｜產出</span><b>感控文件、追蹤表單、工作彙整</b></div></div><ul><li>授權人員登入使用</li><li>個案建檔 × 每日追蹤分流</li><li>院內與衛生局表單輸出</li><li>全院感控工作彙整</li></ul><div class="actions"><a class="btn" href="/tools/infection-control-pilot/">開啟智能助理 →</a></div><p class="tool-related-reading">Pilot 測試版｜測試階段請勿輸入真實可識別個資。</p></article>
-<article class="tool-card tool-card--assistant support-assistant-card" id="tool-transition"><div class="tool-status"><span class="status-dot"></span><b>2.0 Beta</b><span>線上表單 × 報告輸出</span></div><div class="tool-type-kicker tool-role-chip">🧭 派遣｜轉銜智能助理</div><small>TRANSITION · CROSS-SYSTEM SUPPORT</small><h3>跨系統轉銜規劃智能助理 <span class="pilot-badge">2.0</span></h3><p>用結構化線上表單整理服務對象、接續支持者與環境資源，快速形成可帶進會議討論的轉銜報告。</p><div class="support-io"><div><span>INPUT｜輸入</span><b>線上表單、支持程度、資源條件</b></div><div><span>OUTPUT｜產出</span><b>轉銜報告、缺口、責任分工、行動清單</b></div></div><ul><li>以下拉式選單為主的線上評估</li><li>服務對象 × 接續者 × 環境資源整理</li><li>列印／另存 PDF／下載 Word 可開啟版</li><li>原始空白 Word 評估表保留下載</li></ul><div class="actions"><a class="btn" href="/tools/pbs-transition-assessment.html">開啟智能助理 2.0 →</a><a class="btn secondary" download href="/downloads/aml-pbs-transition-assessment-v1.0.docx">下載空白 Word</a></div><p class="tool-related-reading">轉銜工作輔助｜協助整理承接條件與行動項目，不取代正式評估與團隊決策。</p></article>
+<article class="tool-card tool-card--assistant support-assistant-card" id="tool-practice" data-xier-card-message="這套適合手上已有 ABC 紀錄或個案資料的任務。你可以直接填寫，或匯入去識別化 Word／Excel；我會帶你整理行為功能線索、策略與 PBS 報告初稿。"><div class="tool-status"><span class="status-dot"></span><b>2.0 Beta</b><span>ABC Word / Excel 解析</span></div><div class="tool-type-kicker tool-role-chip"><span class="support-bot support-bot--mini" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16"/></svg></span>派遣｜PBS 智能助理</div><small>PBS · ANALYSIS &amp; STRATEGY</small><h3>PBS 行為分析與對策研擬智能助理 <span class="pilot-badge">2.0</span></h3><p>從 ABC 紀錄出發，協助整理行為功能線索、支持策略、七週期計畫與 PBS 報告初稿。</p><div class="support-io"><div><span>INPUT｜輸入</span><b>ABC 表單、去識別化 Word／Excel</b></div><div><span>OUTPUT｜產出</span><b>功能假設、策略表、PBS 報告初稿</b></div></div><ul><li>直接填寫 ABC 或匯入 Word／Excel 紀錄</li><li>多筆 ABC 自動拆解 × 人工確認</li><li>前事 × 行為中 × 後事策略整理</li><li>七週期策略表 × 完整報告初稿</li></ul><div class="actions"><a class="btn" href="/pbs-companion-web.html">開啟智能助理 2.0 →</a><a class="btn secondary" href="/pbs.html#ai-tool">閱讀 PBS 資源</a></div><p class="tool-related-reading">🧪 Beta 公開測試｜協助整理與形成初稿，不取代專業判斷；上傳前請完成去識別化。</p></article>
+<article class="tool-card tool-card--assistant support-assistant-card" id="tool-planning" data-xier-card-message="這套適合方案文件檢核。只要 Word 內保留指定十個章節名稱，就能擷取內容並提供逐章回饋、跨章檢核與優先修訂方向；不會替你代寫。"><div class="tool-status"><span class="status-dot"></span><b>2.0 Beta</b><span>十章 Word 解析</span></div><div class="tool-type-kicker tool-role-chip"><span class="support-bot support-bot--mini" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M32 8v8"/><circle cx="32" cy="6" r="3"/><rect x="13" y="17" width="38" height="31" rx="11"/><circle cx="25" cy="31" r="3"/><circle cx="39" cy="31" r="3"/><path d="M24 40h16"/></svg></span>派遣｜管理智能助理</div><small>MANAGEMENT · FORMATIVE FEEDBACK</small><h3>方案規劃與管理智能助理 <span class="pilot-badge">2.0</span></h3><p>上傳含指定十章名稱的 .docx，即可擷取內容並提供逐章形成性回饋、跨章檢核與修訂方向。</p><div class="support-io"><div><span>INPUT｜輸入</span><b>含指定十章名稱的 .docx 方案文件</b></div><div><span>OUTPUT｜產出</span><b>逐章回饋、跨章檢核、修訂清單</b></div></div><ul><li>Word 版型不限，只需保留指定十章名稱</li><li>十章內容擷取 × 人工確認</li><li>跨章一致性檢核 × 自我檢核問題</li><li>優先修訂 Top 3 × 下一輪修訂清單</li></ul><div class="actions"><a class="btn" href="/tools/management-coach/">開啟智能助理 2.0 →</a><a class="btn secondary" href="/articles/management-coach-leader-workflow.html">閱讀設計說明</a></div><p class="tool-related-reading">形成性回饋工具｜引導思考與修訂，不代寫可直接繳交的方案內容。</p></article>
+<article class="tool-card tool-card--assistant support-assistant-card" id="tool-infection" data-xier-card-message="這套適合感控事件與文件工作。把事件資料、每日追蹤與通報欄位集中整理，可減少重複填寫；目前屬授權 Pilot 使用。"><div class="tool-status"><span class="status-dot"></span><b>授權使用</b><span>Workflow Pilot</span></div><div class="tool-type-kicker tool-role-chip">🩺 派遣｜感控智能助理</div><small>HEALTHCARE · WORKFLOW PILOT</small><h3>感控防治文件填報智能助理 <span class="pilot-badge">PILOT 1.0</span></h3><p>把個案通報、疑似群聚、每日追蹤與文件輸出整理成同一個工作區，減少重複填報與人工整理。</p><div class="support-io"><div><span>INPUT｜輸入</span><b>事件資料、每日追蹤、通報欄位</b></div><div><span>OUTPUT｜產出</span><b>感控文件、追蹤表單、工作彙整</b></div></div><ul><li>授權人員登入使用</li><li>個案建檔 × 每日追蹤分流</li><li>院內與衛生局表單輸出</li><li>全院感控工作彙整</li></ul><div class="actions"><a class="btn" href="/tools/infection-control-pilot/">開啟智能助理 →</a></div><p class="tool-related-reading">Pilot 測試版｜測試階段請勿輸入真實可識別個資。</p></article>
+<article class="tool-card tool-card--assistant support-assistant-card" id="tool-transition" data-xier-card-message="這套適合服務轉銜工作。用下拉式表單整理服務對象、接續支持者與環境資源，完成後可產生轉銜報告、責任分工與行動清單。"><div class="tool-status"><span class="status-dot"></span><b>2.0 Beta</b><span>線上表單 × 報告輸出</span></div><div class="tool-type-kicker tool-role-chip">🧭 派遣｜轉銜智能助理</div><small>TRANSITION · CROSS-SYSTEM SUPPORT</small><h3>跨系統轉銜規劃智能助理 <span class="pilot-badge">2.0</span></h3><p>用結構化線上表單整理服務對象、接續支持者與環境資源，快速形成可帶進會議討論的轉銜報告。</p><div class="support-io"><div><span>INPUT｜輸入</span><b>線上表單、支持程度、資源條件</b></div><div><span>OUTPUT｜產出</span><b>轉銜報告、缺口、責任分工、行動清單</b></div></div><ul><li>以下拉式選單為主的線上評估</li><li>服務對象 × 接續者 × 環境資源整理</li><li>列印／另存 PDF／下載 Word 可開啟版</li><li>原始空白 Word 評估表保留下載</li></ul><div class="actions"><a class="btn" href="/tools/pbs-transition-assessment.html">開啟智能助理 2.0 →</a><a class="btn secondary" download href="/downloads/aml-pbs-transition-assessment-v1.0.docx">下載空白 Word</a></div><p class="tool-related-reading">轉銜工作輔助｜協助整理承接條件與行動項目，不取代正式評估與團隊決策。</p></article>
 
 <div class="ai-tools-footnote">工具的角色是把工作做得更清楚，而不是替代專業判斷。需要查證的內容，仍請回到原始資料、專業指引與團隊討論。</div>
 </div></section>
@@ -1283,6 +1309,30 @@
       target.classList.add('support-guide-focus');
       target.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
       window.setTimeout(function(){target.classList.remove('support-guide-focus');},2600);
+    });
+  });
+
+  var defaultReply=reply?reply.textContent:'';
+  var replyBox=guide.querySelector('.support-xier-guide__reply');
+  document.querySelectorAll('#practice-tools [data-xier-card-message]').forEach(function(card){
+    var showPreview=function(){
+      document.querySelectorAll('#practice-tools .is-xier-preview').forEach(function(el){el.classList.remove('is-xier-preview');});
+      card.classList.add('is-xier-preview');
+      if(reply){
+        reply.textContent=card.getAttribute('data-xier-card-message')||defaultReply;
+      }
+      if(replyBox) replyBox.classList.add('is-speaking');
+    };
+    var hidePreview=function(){
+      card.classList.remove('is-xier-preview');
+      if(reply) reply.textContent=defaultReply;
+      if(replyBox) replyBox.classList.remove('is-speaking');
+    };
+    card.addEventListener('mouseenter',showPreview);
+    card.addEventListener('mouseleave',hidePreview);
+    card.addEventListener('focusin',showPreview);
+    card.addEventListener('focusout',function(e){
+      if(!card.contains(e.relatedTarget)) hidePreview();
     });
   });
 })();
