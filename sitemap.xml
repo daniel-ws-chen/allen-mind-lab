@@ -334,7 +334,7 @@
     <lastmod>2026-09-18</lastmod>
   </url>
   <url>
-    <loc>https://allenmindlab.com/notes.html</loc>
+    <loc>https://allenmindlab.com/notes</loc>
     <lastmod>2026-09-18</lastmod>
   </url>
   <url>
@@ -370,11 +370,11 @@
     <lastmod>2026-09-21</lastmod>
   </url>
   <url>
-    <loc>https://allenmindlab.com/pbs-self-study</loc>
+    <loc>https://allenmindlab.com/pbs-self-study.html</loc>
     <lastmod>2026-09-22</lastmod>
   </url>
   <url>
-    <loc>https://allenmindlab.com/pbs-self-study-quiz</loc>
+    <loc>https://allenmindlab.com/pbs-self-study-quiz.html</loc>
     <lastmod>2026-09-22</lastmod>
   </url>
   <url>
@@ -436,4 +436,5 @@
     <loc>https://allenmindlab.com/articles/pbs-supportive-care-environment</loc>
     <lastmod>2026-09-28</lastmod>
   </url>
+  <url><loc>https://allenmindlab.com/tools/pbs-transition-assessment.html</loc></url>
 </urlset>
