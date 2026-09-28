@@ -1,25 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>這樣公平嗎？｜AML 管理決策進階挑戰</title>
-<meta name="description" content="8 個打散的管理情境，最後才揭露其中 4 組隱性配對。看看哪些人物條件會悄悄改變你的判斷，以及這些差異是否有可說明的理由。">
-<link rel="canonical" href="https://allenmindlab.com/tools/management-fairness-challenge/">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/aml-site.css">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Allen Mind Lab">
-<meta property="og:title" content="這樣公平嗎？｜AML 管理決策進階挑戰">
-<meta property="og:description" content="8 個看似不同的管理情境，最後才揭露其中的隱性配對：你的判斷在哪些地方改變了？">
-<meta property="og:url" content="https://allenmindlab.com/tools/management-fairness-challenge/">
-<meta property="og:image" content="https://allenmindlab.com/tools/management-fairness-challenge/assets/fairness-challenge-cover.png">
+<meta content="8 個打散的管理情境，最後才揭露其中 4 組隱性配對。看看哪些人物條件會悄悄改變你的判斷，以及這些差異是否有可說明的理由。" name="description"/>
+<link href="https://allenmindlab.com/tools/management-fairness-challenge/" rel="canonical"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/aml-site.css" rel="stylesheet"/>
+<meta content="website" property="og:type"/>
+<meta content="Allen Mind Lab" property="og:site_name"/>
+<meta content="這樣公平嗎？｜AML 管理決策進階挑戰" property="og:title"/>
+<meta content="8 個看似不同的管理情境，最後才揭露其中的隱性配對：你的判斷在哪些地方改變了？" property="og:description"/>
+<meta content="https://allenmindlab.com/tools/management-fairness-challenge/" property="og:url"/>
+<meta content="https://allenmindlab.com/tools/management-fairness-challenge/assets/fairness-challenge-cover.png" property="og:image"/>
 <style>
 :root{--ink:#10223d;--muted:#657184;--line:#dde3e8;--paper:#fffdfa;--blue:#173b68;--gold:#c9a35a;--soft:#f3f5f7;--green:#39715f;--rose:#a85867}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;background:#f6f7f8;color:var(--ink);line-height:1.7}.game{max-width:1040px;margin:auto;padding:34px 22px 70px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:22px}.brand{font-weight:900;letter-spacing:.12em}.brand small{display:block;color:var(--muted);font-size:.7rem;letter-spacing:.16em}.back{color:var(--muted);font-weight:800;text-decoration:none}.panel{background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 18px 55px rgba(25,45,70,.07)}.intro-grid{display:grid;grid-template-columns:1.5fr 1fr;min-height:520px}.intro-copy{padding:40px 44px}.eyebrow{color:#8a692d;font-weight:900;letter-spacing:.15em;font-size:.78rem}.intro h1{font-size:clamp(2.3rem,4.5vw,4rem);line-height:1.06;margin:12px 0 18px;font-family:Georgia,"Noto Serif TC",serif}.intro p{font-size:1rem;color:#566274}.promise{display:grid;gap:8px;margin:20px 0}.promise span{display:flex;gap:10px;align-items:center;color:#31425a}.start{appearance:none;border:0;border-radius:999px;padding:15px 24px;background:var(--blue);color:#fff;font-size:1rem;font-weight:900;cursor:pointer}.intro-art{background:#1d3248 url('assets/fairness-challenge-cover.png') center/cover no-repeat;min-height:520px;position:relative}.intro-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,31,49,.16),rgba(16,31,49,.02))}.intro-note{margin-top:14px;padding:12px 14px;border-left:4px solid var(--gold);background:#fbf8ef;color:#665b48;font-size:.9rem}.hidden{display:none!important}.progressrow{display:flex;align-items:center;gap:14px;margin-bottom:16px}.progressrow b{font-size:.83rem;white-space:nowrap}.progress{height:8px;flex:1;background:#e8ebee;border-radius:999px;overflow:hidden}.progress i{display:block;height:100%;background:linear-gradient(90deg,#315e97,#c9a35a);transition:width .25s ease}.pair{display:grid;grid-template-columns:.9fr 1.1fr}.scene{min-height:500px;padding:38px;position:relative;overflow:hidden;background-color:#17324d;background-size:cover;background-position:center;color:#fff;isolation:isolate}.scene:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,24,41,.28) 0%,rgba(8,24,41,.58) 55%,rgba(8,24,41,.9) 100%)}.scene:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,24,41,.18),transparent 60%)}.scene-badge{display:inline-flex;padding:7px 11px;border:1px solid rgba(255,255,255,.45);border-radius:999px;background:rgba(9,27,46,.62);backdrop-filter:blur(6px);font-size:.78rem;font-weight:900}.scene h2{font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.13;margin:20px 0;text-shadow:0 2px 12px rgba(0,0,0,.32)}.scene p{max-width:500px;color:#f7fafc;font-size:1.03rem;text-shadow:0 2px 10px rgba(0,0,0,.35)}.scene-symbol{position:absolute;right:28px;bottom:22px;font-size:4.8rem;opacity:.62;filter:drop-shadow(0 3px 10px rgba(0,0,0,.35))}.question{padding:38px}.question h3{font-size:1.18rem;margin:2px 0 16px}.options{display:grid;gap:12px}.option{border:1px solid var(--line);background:#fff;border-radius:18px;padding:15px 17px;text-align:left;font:inherit;color:var(--ink);cursor:pointer;display:flex;gap:13px;align-items:flex-start;transition:.15s}.option:hover,.option:focus{border-color:#9bb1c7;transform:translateY(-1px);box-shadow:0 8px 20px rgba(25,45,70,.06)}.letter{width:31px;height:31px;flex:0 0 31px;border-radius:50%;display:grid;place-items:center;background:#edf2f7;color:#274b73;font-weight:900}.hint{margin-top:18px;color:var(--muted);font-size:.88rem}.result{padding:42px}.result h2{font-family:Georgia,"Noto Serif TC",serif;font-size:clamp(2rem,4vw,3.3rem);margin:8px 0}.result-lead{color:var(--muted)}.review{display:grid;gap:12px;margin:28px 0}.review-card{border:1px solid var(--line);border-radius:18px;padding:17px 19px;background:#fff}.review-head{display:flex;justify-content:space-between;gap:16px;align-items:center}.review-head strong{color:var(--blue)}.pill{border-radius:999px;padding:5px 10px;font-size:.76rem;font-weight:900;background:#eef3f6;color:#405b70}.pill.changed{background:#f7eadc;color:#8a5c2e}.review-card p{margin:8px 0 0;color:var(--muted);font-size:.9rem}.mirror{padding:21px 23px;border-radius:20px;background:#f4efe4;border:1px solid #e3d5b7}.mirror strong{display:block;margin-bottom:6px}.questionbox{margin-top:18px;border-left:4px solid var(--gold);padding:13px 18px;background:#fbfaf7}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:999px;padding:12px 19px;font-weight:900;border:1px solid var(--blue);background:var(--blue);color:#fff}.btn.secondary{background:#fff;color:var(--blue)}.more{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}.more a{color:#315d78;font-weight:900;text-decoration:none}
 @media(max-width:800px){.game{padding:20px 14px 50px}.intro-grid,.pair{grid-template-columns:1fr}.intro-copy{padding:28px 22px}.intro-art{min-height:340px;order:-1;background-position:center 36%}.scene{min-height:330px;padding:28px 24px}.scene-symbol{font-size:5rem}.question,.result{padding:28px 22px}.top{align-items:flex-start}.brand{font-size:.88rem}.review-head{align-items:flex-start;flex-direction:column;gap:6px}}
 </style>
-
 <style>
 /* AML Interactive Lab Hall Identity 2026-09-25 */
 :root{--hall-primary:#2166d1;--hall-bright:#36c2ff;--hall-deep:#123b72;--hall-soft:#eef7ff;--hall-soft2:#f7fbff;--hall-line:#cfe0f3;--hall-muted:#58708b}
@@ -28,29 +28,28 @@ body{background:linear-gradient(180deg,#f6faff 0%,#fff 52%,#f7fbff 100%)!importa
 :root{--ink:#12253d;--muted:#5d7188;--line:#d4e3f2;--paper:#f8fbff;--blue:#2166d1;--gold:#36aeea;--soft:#eef7ff;--green:#2b7f77;--rose:#9a5f91}
 .panel{border-color:#d4e3f2;box-shadow:0 18px 55px rgba(33,102,209,.08)}.eyebrow{color:#168ac1}.start,.btn{background:linear-gradient(135deg,#2166d1,#168ac1);border-color:#2166d1}.progress i{background:linear-gradient(90deg,#2166d1,#36c2ff)}.intro-note{border-left-color:#36c2ff;background:#edf8ff;color:#466176}.scene-badge{border-color:rgba(93,216,255,.55)}.option:hover,.option:focus{border-color:#74b9ea}.reflection,.insight,.result-note{background:#edf7ff!important;border-color:#c9e4f5!important}.questionbox{border-left-color:#36c2ff!important;background:#f4fbff!important}
 </style>
-<link rel="stylesheet" href="/aml-lab-results.css">
-
+<link href="/aml-lab-results.css" rel="stylesheet"/>
 <!-- Social sharing metadata -->
-<meta property="og:image:alt" content="這樣公平嗎？｜AML 管理決策進階挑戰">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="這樣公平嗎？｜AML 管理決策進階挑戰">
-<meta name="twitter:description" content="8 個看似不同的管理情境，最後才揭露其中的隱性配對：你的判斷在哪些地方改變了？">
-<meta name="twitter:image" content="https://allenmindlab.com/tools/management-fairness-challenge/assets/fairness-challenge-cover.png">
+<meta content="這樣公平嗎？｜AML 管理決策進階挑戰" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="這樣公平嗎？｜AML 管理決策進階挑戰" name="twitter:title"/>
+<meta content="8 個看似不同的管理情境，最後才揭露其中的隱性配對：你的判斷在哪些地方改變了？" name="twitter:description"/>
+<meta content="https://allenmindlab.com/tools/management-fairness-challenge/assets/fairness-challenge-cover.png" name="twitter:image"/>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://allenmindlab.com/tools/management-fairness-challenge/#webpage","url":"https://allenmindlab.com/tools/management-fairness-challenge/","name":"這樣公平嗎？｜AML 管理決策進階挑戰","description":"8 個打散的管理情境，最後才揭露其中 4 組隱性配對。看看哪些人物條件會悄悄改變你的判斷，以及這些差異是否有可說明的理由。","inLanguage":"zh-Hant","isPartOf":{"@id":"https://allenmindlab.com/#website"},"mainEntity":{"@id":"https://allenmindlab.com/tools/management-fairness-challenge/#learning-resource"}},{"@type":"WebSite","@id":"https://allenmindlab.com/#website","url":"https://allenmindlab.com/","name":"Allen Mind Lab","inLanguage":"zh-Hant"},{"@type":"LearningResource","@id":"https://allenmindlab.com/tools/management-fairness-challenge/#learning-resource","url":"https://allenmindlab.com/tools/management-fairness-challenge/","name":"這樣公平嗎？｜AML 管理決策進階挑戰","description":"8 個打散的管理情境，最後才揭露其中 4 組隱性配對。看看哪些人物條件會悄悄改變你的判斷，以及這些差異是否有可說明的理由。","inLanguage":"zh-Hant","learningResourceType":"Interactive learning activity","educationalUse":"practice","isAccessibleForFree":true}]}
 </script>
 </head>
-<body class="lab-result-management"><nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/management/">← 回管理學館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">互動實驗室</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
+<body class="lab-result-management"><nav aria-label="互動實驗室頁面導覽" class="aml-lab-shell-nav"><a class="aml-lab-shell-nav__back" href="/tools/management/">← 回管理學館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">互動實驗室</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
 <main class="game" id="app">
-  <div class="top"><div class="brand">AML INTERACTIVE LAB<small>MANAGEMENT · ADVANCED REFLECTION</small></div></div>
-  <section id="intro" class="panel intro">
-    <div class="intro-grid"><div class="intro-copy"><div class="eyebrow">進階挑戰 · 8 個打散情境</div><h1>這樣公平嗎？</h1><p>這一關有 8 個彼此獨立的工作情境。先照直覺做決定，不必猜題目的設計；全部完成後，系統才會揭露其中其實藏著 4 組可比較的管理判斷。</p><div class="promise"><span>✦ 題目打散，不連續出現相似情境</span><span>✦ 完成後才揭露隱性配對</span><span>✦ 判斷改變不是錯，重點是理由能不能被說明</span></div><button class="start" id="start">開始進階挑戰 →</button><div class="intro-note">建議先完成「如果你是主管，你會怎麼做？」並閱讀〈當管理沒有唯一正解〉，會更有感。</div></div><div class="intro-art" role="img" aria-label="管理判斷與公平反思情境示意"></div></div>
-  </section>
-  <section id="play" class="hidden">
-    <div class="progressrow"><b id="progressText">QUESTION 1 / 8</b><div class="progress"><i id="bar" style="width:12.5%"></i></div></div>
-    <div class="panel pair"><div class="scene" id="scene"><div class="scene-badge" id="persona"></div><h2 id="title"></h2><p id="desc"></p><div class="scene-symbol" id="symbol" aria-hidden="true"></div></div><div class="question"><h3>你會怎麼處理？</h3><div class="options" id="options"></div><div class="hint">請照當下直覺選擇，不需要刻意讓前後答案一致。</div></div></div>
-  </section>
-  <section id="result" class="panel result hidden"><div class="eyebrow">完成進階挑戰</div><h2>原來，這幾題其實在問同一件事</h2><p class="result-lead">剛才的 8 題中，其實藏著 4 組可比較的情境。現在再回頭看：當年資、熟悉程度、績效或過去紀錄改變時，你的處理方式有沒有跟著改變？</p><div class="review" id="review"></div><div class="mirror"><strong>AI 反思鏡</strong><span id="mirror"></span></div><div class="questionbox"><strong>帶走一個問題：</strong><br>哪些差異是真正與任務、風險或責任相關的資訊？哪些可能只是人物帶給你的印象？</div><div class="actions"><a class="btn" href="/tools/management-summary/">查看我的管理判斷摘要 →</a><button class="btn secondary" id="again">再挑戰一次</button><a class="btn secondary" href="/articles/management-no-single-right-answer.html">閱讀｜當管理沒有唯一正解 →</a><a class="btn secondary" href="/management-self-study.html">完整自學 →</a><a class="btn secondary" href="/tools/management/">回管理學館 →</a></div><div class="more">想挑戰更複雜的多幕管理案例？ <a href="/tools/management-advanced/">前往更多進階情境 →</a></div></section>
+<div class="top"><div class="brand">AML INTERACTIVE LAB<small>MANAGEMENT · ADVANCED REFLECTION</small></div></div>
+<section class="panel intro" id="intro">
+<div class="intro-grid"><div class="intro-copy"><div class="eyebrow">進階挑戰 · 8 個打散情境</div><h1>這樣公平嗎？</h1><p>這一關有 8 個彼此獨立的工作情境。先照直覺做決定，不必猜題目的設計；全部完成後，系統才會揭露其中其實藏著 4 組可比較的管理判斷。</p><div class="promise"><span>✦ 題目打散，不連續出現相似情境</span><span>✦ 完成後才揭露隱性配對</span><span>✦ 判斷改變不是錯，重點是理由能不能被說明</span></div><button class="start" id="start" type="button">開始進階挑戰 →</button><div class="intro-note">建議先完成「如果你是主管，你會怎麼做？」並閱讀〈當管理沒有唯一正解〉，會更有感。</div></div><div aria-label="管理判斷與公平反思情境示意" class="intro-art" role="img"></div></div>
+</section>
+<section class="hidden" id="play">
+<div class="progressrow"><b id="progressText">QUESTION 1 / 8</b><div class="progress"><i id="bar" style="width:12.5%"></i></div></div>
+<div class="panel pair"><div class="scene" id="scene"><div class="scene-badge" id="persona"></div><h2 id="title"></h2><p id="desc"></p><div aria-hidden="true" class="scene-symbol" id="symbol"></div></div><div class="question"><h3>你會怎麼處理？</h3><div class="options" id="options"></div><div class="hint">請照當下直覺選擇，不需要刻意讓前後答案一致。</div></div></div>
+</section>
+<section class="panel result hidden" id="result"><div class="eyebrow">完成進階挑戰</div><h2>原來，這幾題其實在問同一件事</h2><p class="result-lead">剛才的 8 題中，其實藏著 4 組可比較的情境。現在再回頭看：當年資、熟悉程度、績效或過去紀錄改變時，你的處理方式有沒有跟著改變？</p><div class="review" id="review"></div><div class="mirror"><strong>AI 反思鏡</strong><span id="mirror"></span></div><div class="questionbox"><strong>帶走一個問題：</strong><br/>哪些差異是真正與任務、風險或責任相關的資訊？哪些可能只是人物帶給你的印象？</div><div class="actions"><a class="btn" href="/tools/management-summary/">查看我的管理判斷摘要 →</a><button class="btn secondary" id="again" type="button">再挑戰一次</button><a class="btn secondary" href="/articles/management-no-single-right-answer.html">閱讀｜當管理沒有唯一正解 →</a><a class="btn secondary" href="/management-self-study.html">完整自學 →</a><a class="btn secondary" href="/tools/management/">回管理學館 →</a></div><div class="more">想挑戰更複雜的多幕管理案例？ <a href="/tools/management-advanced/">前往更多進階情境 →</a></div></section>
 </main>
 <script>
 (()=>{
@@ -97,6 +96,6 @@ function reset(){qi=0;answers=[];qs('#result').classList.add('hidden');qs('#intr
 qs('#start').onclick=reset;qs('#again').onclick=reset;
 })();
 </script>
-<footer class="aml-lab-mini-footer" aria-label="互動實驗室快速導覽"><div>Allen Mind Lab · 互動實驗室</div><div class="aml-lab-mini-footer__links"><a href="/tools/management/">管理學館</a><a href="/tools.html">互動實驗室</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></footer>
+<footer aria-label="互動實驗室快速導覽" class="aml-lab-mini-footer"><div>Allen Mind Lab · 互動實驗室</div><div class="aml-lab-mini-footer__links"><a href="/tools/management/">管理學館</a><a href="/tools.html">互動實驗室</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></footer>
 </body>
 </html>
