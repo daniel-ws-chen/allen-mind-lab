@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-27T11:57:05.089Z",
+  "generatedAt": "2026-09-28T04:51:23.145Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 52,
+    "total": 53,
     "ot": 23,
     "mind": 14,
-    "pbs": 13,
+    "pbs": 14,
     "education": 9,
-    "management": 25,
+    "management": 26,
     "ai": 15,
     "notes": 7
   },
@@ -79,6 +79,48 @@
   },
   "articles": [
     {
+      "slug": "pbs-supportive-care-environment",
+      "title": "塑造有利於 PBS 推動的照顧環境",
+      "summary": "危機處理容易被看見，預防成功卻常像什麼事都沒發生。從管理與 SWOT 角度，思考如何讓 PBS 在照顧現場做得到、有人接得住。",
+      "date": "2026-09-28",
+      "domains": [
+        "pbs",
+        "management"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [
+        "management"
+      ],
+      "tag": "PBS × Management",
+      "cardMeta": "2026.09.28 · PBS × Management & Leadership",
+      "keywords": [
+        "PBS",
+        "正向行為支持",
+        "照顧機構",
+        "SWOT",
+        "管理",
+        "小家試辦",
+        "預防"
+      ],
+      "articlePath": "/articles/pbs-supportive-care-environment.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/pbs-supportive-care-environment",
+      "hero": "/images/articles/pbs-supportive-care-environment-hero.webp",
+      "ogImage": "/images/articles/pbs-supportive-care-environment-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 當主管不只管人，還要開始管 AI",
+          "href": "/articles/ai-manager-manage-people-and-ai.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "ai-manager-manage-people-and-ai",
       "title": "當主管不只管人，還要開始管 AI",
       "summary": "當 AI 從工具逐漸成為數位員工，管理者面對的不再只有人，還包括 AI 與人機協作。從逆分工、KPI 到管理五大功能，AI 正重新改變工作的基本單位，也讓方向、判斷、關係與責任變得更加重要。",
@@ -119,6 +161,11 @@
           "kind": "previous",
           "label": "相關閱讀 ← 當管理沒有唯一正解：風格可以改變，核心不能漂移",
           "href": "/articles/management-no-single-right-answer.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 塑造有利於 PBS 推動的照顧環境 →",
+          "href": "/articles/pbs-supportive-care-environment.html"
         }
       ],
       "readingPaths": [],
