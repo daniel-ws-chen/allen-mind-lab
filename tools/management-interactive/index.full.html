@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>管理學初體驗｜Allen Mind Lab</title>
-<meta name="description" content="管理學初體驗：6 個漫畫情境小遊戲，自由選一局，看情境、做選擇、立即看解析。不計入管理學自學館進度。">
-<link rel="canonical" href="https://allenmindlab.com/tools/management-interactive/">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/aml-site.css">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Allen Mind Lab"><meta property="og:title" content="管理學初體驗"><meta property="og:description" content="6 個漫畫情境小遊戲：先玩一局，再慢慢懂管理。"><meta property="og:url" content="https://allenmindlab.com/tools/management-interactive/">
+<meta content="管理學初體驗：6 個漫畫情境小遊戲，自由選一局，看情境、做選擇、立即看解析。不計入管理學自學館進度。" name="description"/>
+<link href="https://allenmindlab.com/tools/management-interactive/" rel="canonical"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/aml-site.css" rel="stylesheet"/>
+<meta content="website" property="og:type"/><meta content="Allen Mind Lab" property="og:site_name"/><meta content="管理學初體驗" property="og:title"/><meta content="6 個漫畫情境小遊戲：先玩一局，再慢慢懂管理。" property="og:description"/><meta content="https://allenmindlab.com/tools/management-interactive/" property="og:url"/>
 <style>
 :root{--navy:#071a33;--blue:#173c68;--gold:#c7a76a;--ink:#172334;--muted:#637082;--line:#dfe5ea;--paper:#fbfaf7;--orange:#b56f22}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;line-height:1.75}.hero{padding:76px 7vw 56px;background:linear-gradient(135deg,#eaf1f8,#fff4df);border-bottom:1px solid #e2e6e8}.inner,.wrap{max-width:1120px;margin:auto}.back{color:#315b73;text-decoration:none;font-weight:900}.kicker{margin-top:22px;color:#8a6a32;font-size:.78rem;font-weight:900;letter-spacing:.14em}.hero h1{font-family:Georgia,"Times New Roman",serif;color:var(--navy);font-size:clamp(2.2rem,5vw,4rem);line-height:1.08;margin:8px 0 14px}.hero p{max-width:800px;color:#526070;font-size:1.03rem;margin:0}.chips{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.chips span{padding:7px 11px;border-radius:999px;background:#fff9;border:1px solid #dbe3e8;color:#486170;font-size:.82rem;font-weight:900}.wrap{padding:48px 7vw 78px}.intro{display:grid;grid-template-columns:1.35fr .65fr;gap:22px;align-items:start;margin-bottom:28px}.intro h2{margin:0;color:var(--navy);font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.25}.intro p{margin:8px 0 0;color:var(--muted)}.intro-note{background:#fff;border:1px solid #e3ded3;border-radius:18px;padding:17px 19px;color:#596574;font-size:.92rem}.intro-note strong{display:block;color:#233a53;margin-bottom:4px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}.game-card{background:#fff;border:1px solid #e7dfd2;border-radius:24px;overflow:hidden;box-shadow:0 10px 30px rgba(7,26,51,.055);display:flex;flex-direction:column;min-height:100%;transition:.2s ease}.game-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(7,26,51,.09)}.comic{aspect-ratio:4/5;overflow:hidden;background:#f5efe4;border-bottom:1px solid rgba(0,0,0,.05)}.comic img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .28s ease}.game-card:hover .comic img{transform:scale(1.018)}.card-body{padding:19px 20px 22px;display:flex;flex-direction:column;flex:1}.eyebrow{font-size:.72rem;letter-spacing:.13em;font-weight:900;color:#9b6b19}.game-card h3{font-size:1.24rem;color:var(--navy);margin:8px 0 6px;line-height:1.35}.game-card p{color:#657081;font-size:.93rem;margin:0 0 14px;line-height:1.65}.tags{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 16px}.tags span{padding:5px 9px;border-radius:999px;background:#f0f4f7;color:#456071;font-size:.75rem;font-weight:800}.play-btn{margin-top:auto;width:100%;border:0;border-radius:999px;padding:12px 16px;background:#173c68;color:#fff;font-weight:900;cursor:pointer;font-size:.96rem}.play-btn:hover{background:#102e52}.route{margin-top:30px;background:#0e2d4c;color:#fff;border-radius:22px;padding:22px 24px}.route strong{display:block;font-size:1.08rem}.route p{margin:5px 0 14px;color:#d9e5ef}.route a{display:inline-flex;text-decoration:none;background:#f1d597;color:#102c4c;border-radius:999px;padding:9px 14px;font-weight:900}
@@ -16,12 +17,12 @@
 </style>
 </head>
 <body>
-<header class="hero"><div class="inner"><a class="back" href="/tools.html">← 回互動實驗室</a><div class="kicker">MANAGEMENT · PLAY & DECIDE</div><h1>管理學初體驗</h1><p>不用先背理論。先從六個漫畫情境裡挑一局，看看線索、做三次選擇，再從結果回頭理解管理概念。</p><div class="chips"><span>🎮 6 個小遊戲</span><span>🗯️ 漫畫情境</span><span>⚡ 即時回饋</span><span>🆓 不計自學進度</span></div></div></header>
+<header class="hero"><div class="inner"><a class="back" href="/tools.html">← 回互動實驗室</a><div class="kicker">MANAGEMENT · PLAY &amp; DECIDE</div><h1>管理學初體驗</h1><p>不用先背理論。先從六個漫畫情境裡挑一局，看看線索、做三次選擇，再從結果回頭理解管理概念。</p><div class="chips"><span>🎮 6 個小遊戲</span><span>🗯️ 漫畫情境</span><span>⚡ 即時回饋</span><span>🆓 不計自學進度</span></div></div></header>
 <main class="wrap"><section class="intro"><div><div class="kicker">FIRST PLAY</div><h2>今天想挑哪一局？</h2><p>每一局大約 3–5 分鐘。重點不是「記住名詞」，而是先練習：如果事情真的發生在我面前，我會怎麼判斷？</p></div><aside class="intro-note"><strong>玩法很簡單</strong>自由選一張漫畫卡 → 看三格線索 → 做 3 個管理選擇 → 立即看解析。玩完可以直接換下一局。</aside></section>
 <section class="grid" id="game-grid">
-<article class="game-card" style="--c1:#dceafa;--c2:#fff1d9"><div class="comic"><img loading="lazy" src="/images/tools/management-interactive/system.svg" alt="個案掉在系統縫隙裡 管理學初體驗漫畫海報"></div><div class="card-body"><div class="eyebrow">SYSTEMS</div><h3>個案掉在系統縫隙裡</h3><p>醫院、長照、社政都說自己的部分完成了，但家屬仍不知道下一步找誰。</p><div class="tags"><span>轉銜</span><span>跨系統</span><span>服務連續性</span></div><button class="play-btn" data-game="system">玩這一局 →</button></div></article>
+<article class="game-card" style="--c1:#dceafa;--c2:#fff1d9"><div class="comic"><img alt="個案掉在系統縫隙裡 管理學初體驗漫畫海報" loading="lazy" src="/images/tools/management-interactive/system.svg"/></div><div class="card-body"><div class="eyebrow">SYSTEMS</div><h3>個案掉在系統縫隙裡</h3><p>醫院、長照、社政都說自己的部分完成了，但家屬仍不知道下一步找誰。</p><div class="tags"><span>轉銜</span><span>跨系統</span><span>服務連續性</span></div><button class="play-btn" data-game="system" type="button">玩這一局 →</button></div></article>
 </section>
 <section class="route"><strong>想完整學一套管理學？</strong><p>管理學自學館是另一條路：6 篇閱讀 → 6 組課後小測 → 15 題綜合測驗 → 完訓證明。</p><a href="/management-self-study.html">前往管理學自學館 →</a></section></main>
-<dialog class="dialog" id="management-game-dialog"><header class="dialog-head"><small>MANAGEMENT · MINI GAME</small><h3 data-title>管理學初體驗</h3><p data-intro></p><button class="close" type="button" aria-label="關閉" data-close>×</button></header><div class="dialog-main"><div data-body></div></div></dialog>
+<dialog class="dialog" id="management-game-dialog"><header class="dialog-head"><small>MANAGEMENT · MINI GAME</small><h3 data-title="">管理學初體驗</h3><p data-intro=""></p><button aria-label="關閉" class="close" data-close="" type="button">×</button></header><div class="dialog-main"><div data-body=""></div></div></dialog>
 <script src="/aml-site.js"></script><script src="/tools/management-interactive/management-interactive.js"></script>
 </body></html>
