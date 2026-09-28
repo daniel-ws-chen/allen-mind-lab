@@ -1,0 +1,46 @@
+AML 3.3 Phase 14 — OG image role split
+
+Converted metadata-only PNGs: 38
+Original total: 71.26 MB
+Optimized OG JPEG total: 9.91 MB
+Reduction: 86.1%
+
+Files:
+/images/articles/pbs-being-seen.png -> /images/articles/pbs-being-seen-og.jpg | 1672x941 | 3.00 MB -> 0.22 MB
+/images/articles/autism-support-intervention-map-hero.png -> /images/articles/autism-support-intervention-map-hero-og.jpg | 1055x1491 | 2.27 MB -> 0.30 MB
+/images/articles/ot-management-transition-support-life-hero.png -> /images/articles/ot-management-transition-support-life-hero-og.jpg | 1122x1402 | 2.25 MB -> 0.33 MB
+/images/articles/next-generation-teacher-transformation-empowerment-hero.png -> /images/articles/next-generation-teacher-transformation-empowerment-hero-og.jpg | 1536x1024 | 2.18 MB -> 0.29 MB
+/images/articles/if-life-had-a-homepage-hero.png -> /images/articles/if-life-had-a-homepage-hero-og.jpg | 1536x1024 | 2.15 MB -> 0.29 MB
+/images/articles/ot-management-service-development-choice-hero.png -> /images/articles/ot-management-service-development-choice-hero-og.jpg | 1122x1402 | 2.15 MB -> 0.33 MB
+/images/articles/ot-management-kpi-data-pdca-hero.png -> /images/articles/ot-management-kpi-data-pdca-hero-og.jpg | 1491x1055 | 2.10 MB -> 0.33 MB
+/images/articles/emptiness-meets-moho-hero.png -> /images/articles/emptiness-meets-moho-hero-og.jpg | 1491x1055 | 2.06 MB -> 0.25 MB
+/images/articles/ot-management-organizational-planning-hero.png -> /images/articles/ot-management-organizational-planning-hero-og.jpg | 1491x1055 | 2.01 MB -> 0.29 MB
+/images/articles/helper-support-system.png -> /images/articles/helper-support-system-og.jpg | 1672x941 | 2.00 MB -> 0.19 MB
+/images/articles/ot-management-strategy-swot-hero.png -> /images/articles/ot-management-strategy-swot-hero-og.jpg | 1491x1055 | 2.00 MB -> 0.31 MB
+/images/articles/ai-occupational-balance-new-equilibrium-hero.png -> /images/articles/ai-occupational-balance-new-equilibrium-hero-og.jpg | 1024x1536 | 1.99 MB -> 0.31 MB
+/images/articles/enter-the-play-hero.png -> /images/articles/enter-the-play-hero-og.jpg | 1491x1055 | 1.92 MB -> 0.21 MB
+/images/articles/ot-management-care-transition-continuity-hero.png -> /images/articles/ot-management-care-transition-continuity-hero-og.jpg | 1672x941 | 1.92 MB -> 0.33 MB
+/images/articles/pbs-supportive-care-environment-hero.png -> /images/articles/pbs-supportive-care-environment-hero-og.jpg | 1672x941 | 1.89 MB -> 0.24 MB
+/images/articles/ot-management-why-management-matters-hero.png -> /images/articles/ot-management-why-management-matters-hero-og.jpg | 1672x941 | 1.85 MB -> 0.22 MB
+/images/articles/adhd-adolescent-development-support-hero.png -> /images/articles/adhd-adolescent-development-support-hero-og.jpg | 1536x1024 | 1.83 MB -> 0.28 MB
+/images/articles/pbs-emotional-cycle-intervention-timing-hero.png -> /images/articles/pbs-emotional-cycle-intervention-timing-hero-og.jpg | 1536x1024 | 1.83 MB -> 0.29 MB
+/images/articles/adult-adhd-sensory-processing-hero.png -> /images/articles/adult-adhd-sensory-processing-hero-og.jpg | 1536x1024 | 1.82 MB -> 0.23 MB
+/images/articles/cultivation-first-thought-hero.png -> /images/articles/cultivation-first-thought-hero-og.jpg | 1536x1024 | 1.82 MB -> 0.27 MB
+/images/articles/pbs-system-team-support.png -> /images/articles/pbs-system-team-support-og.jpg | 1491x1055 | 1.81 MB -> 0.23 MB
+/images/articles/ot-management-public-policy-professional-practice-hero.png -> /images/articles/ot-management-public-policy-professional-practice-hero-og.jpg | 1672x941 | 1.81 MB -> 0.33 MB
+/images/articles/ot-management-case-to-collective-action-hero.png -> /images/articles/ot-management-case-to-collective-action-hero-og.jpg | 1536x1024 | 1.78 MB -> 0.33 MB
+/images/articles/pbs-emotion-escalation-deescalation.png -> /images/articles/pbs-emotion-escalation-deescalation-og.jpg | 1491x1055 | 1.76 MB -> 0.20 MB
+/images/articles/pbs-self-study-entry-hero.png -> /images/articles/pbs-self-study-entry-hero-og.jpg | 1672x941 | 1.76 MB -> 0.30 MB
+/images/articles/pbs-crisis-safety-repair.png -> /images/articles/pbs-crisis-safety-repair-og.jpg | 1491x1055 | 1.76 MB -> 0.21 MB
+/images/articles/ai-practice-refined-learning-hero.png -> /images/articles/ai-practice-refined-learning-hero-og.jpg | 1491x1055 | 1.75 MB -> 0.23 MB
+/images/articles/ai-manager-manage-people-and-ai-hero.png -> /images/articles/ai-manager-manage-people-and-ai-hero-og.jpg | 1254x1254 | 1.74 MB -> 0.24 MB
+/images/articles/ot-management-professional-advocacy-system-improvement-hero.png -> /images/articles/ot-management-professional-advocacy-system-improvement-hero-og.jpg | 1536x1024 | 1.72 MB -> 0.28 MB
+/images/articles/caregiver-stress-coping-skills-hero.png -> /images/articles/caregiver-stress-coping-skills-hero-og.jpg | 1536x1024 | 1.72 MB -> 0.27 MB
+/images/articles/ot-management-cross-system-service-integration-hero.png -> /images/articles/ot-management-cross-system-service-integration-hero-og.jpg | 1672x941 | 1.71 MB -> 0.30 MB
+/images/articles/ot-management-health-service-last-mile-hero.png -> /images/articles/ot-management-health-service-last-mile-hero-og.jpg | 1672x941 | 1.71 MB -> 0.30 MB
+/images/articles/management-no-single-right-answer-hero.png -> /images/articles/management-no-single-right-answer-hero-og.jpg | 1254x1254 | 1.70 MB -> 0.19 MB
+/images/articles/digital-communication-boundaries.png -> /images/articles/digital-communication-boundaries-og.jpg | 1672x941 | 1.67 MB -> 0.18 MB
+/images/articles/ot-management-interprofessional-cross-system-collaboration-hero.png -> /images/articles/ot-management-interprofessional-cross-system-collaboration-hero-og.jpg | 1672x941 | 1.62 MB -> 0.29 MB
+/images/articles/ot-management-needs-based-service-design-hero.png -> /images/articles/ot-management-needs-based-service-design-hero-og.jpg | 1672x941 | 1.59 MB -> 0.25 MB
+/images/articles/schedule-empty-space-hero.png -> /images/articles/schedule-empty-space-hero-og.jpg | 1536x1024 | 1.46 MB -> 0.16 MB
+/images/articles/ai-human-occupation-moho-social.png -> /images/articles/ai-human-occupation-moho-social-og.jpg | 1672x941 | 1.14 MB -> 0.11 MB
