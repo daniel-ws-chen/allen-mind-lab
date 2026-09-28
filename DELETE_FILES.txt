@@ -1,3 +1,56 @@
-DELETE these legacy files from the repository:
-articles/emptiness-meets-moho_updated.html
-tools/management-interactive/index.full.html
+SAFE REPOSITORY CLEANUP CANDIDATES
+==================================
+These files are not needed by current runtime pages and are excluded from build-dist.mjs.
+They may remain in the repository for rollback, or be deleted manually after backup.
+
+Legacy/superseded HTML
+- articles/emptiness-meets-moho_updated.html
+- tools/management-interactive/index.full.html
+
+Exact duplicate article assets (canonical copies are under /images/articles/)
+- articles/ai-cultivation-inner-life-hero.png
+- articles/ai-cultivation-inner-life-hero.webp
+- articles/ai-cultivation-inner-life-social.png
+
+Phase 5 source PNGs (runtime pages now use WebP; retain only if desired as source originals)
+- images/aml-campus-map.png
+- images/aml-core-framework.png
+- images/newsletter/notes-from-the-lab.png
+- images/xier-support-avatar.png
+- images/resources/happiness-qigong-home.png
+- images/resources/daan-clinic-home.png
+- images/resources/happiness-village-home.png
+- images/resources/dr-kao-home.png
+- images/resources/taipei-emotional-behavior-support-center.png
+- tools/assets/case001-comic.png
+- images/tools/pbs-interactive/abc-detective.png
+- images/tools/pbs-interactive/emotion-thermometer.png
+- images/tools/pbs-interactive/family-response.png
+- images/tools/pbs-interactive/function-guess.png
+- images/tools/pbs-interactive/replacement-helper.png
+- images/tools/pbs-interactive/strategy-light.png
+
+Phase 7 publication source PNGs (runtime pages now use matching WebP files)
+- images/books/adolescent-adult-sensory-profile-chinese-manual.png
+- images/books/autism-checklist.png
+- images/books/building-bridges-sensory-integration.png
+- images/books/children-adolescent-mental-health-ot.png
+- images/books/clinical-documentation-ot-third-edition.png
+- images/books/handbook-of-preschool-mental-health.png
+- images/books/introduction-to-early-childhood-education.png
+- images/books/occupational-therapy-in-mental-health.png
+- images/books/sensory-integration-for-preschool-teachers.png
+- images/books/taipei-disability-living-survey-easy-read.png
+- sera-phina/assets/books/autism-checklist.png
+- sera-phina/assets/books/building-bridges-sensory-integration.png
+- sera-phina/assets/books/children-adolescent-mental-health-ot.png
+- sera-phina/assets/books/clinical-documentation-ot-third-edition.png
+- sera-phina/assets/books/contemporary-ot-introduction-ethics.png
+- sera-phina/assets/books/evidence-based-occupational-therapy.png
+- sera-phina/assets/books/handbook-of-preschool-mental-health.png
+- sera-phina/assets/books/introduction-to-early-childhood-education.png
+- sera-phina/assets/books/mental-occupational-therapy-exam-guide-4.png
+- sera-phina/assets/books/occupational-therapy-in-mental-health.png
+- sera-phina/assets/books/sensory-integration-for-preschool-teachers.png
+
+IMPORTANT: This file is guidance only. Do not delete any other asset solely because an automated scan reports zero references; CSS/JS/runtime-relative paths can be indirect.

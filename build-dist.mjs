@@ -86,6 +86,30 @@ const sourceOnlyAssets = [
   "articles/ai-cultivation-inner-life-hero.webp",
   "articles/ai-cultivation-inner-life-social.png",
 
+
+  // Phase 7 publication source PNGs. Runtime pages now load matching WebP files.
+  "images/books/adolescent-adult-sensory-profile-chinese-manual.png",
+  "images/books/autism-checklist.png",
+  "images/books/building-bridges-sensory-integration.png",
+  "images/books/children-adolescent-mental-health-ot.png",
+  "images/books/clinical-documentation-ot-third-edition.png",
+  "images/books/handbook-of-preschool-mental-health.png",
+  "images/books/introduction-to-early-childhood-education.png",
+  "images/books/occupational-therapy-in-mental-health.png",
+  "images/books/sensory-integration-for-preschool-teachers.png",
+  "images/books/taipei-disability-living-survey-easy-read.png",
+  "sera-phina/assets/books/autism-checklist.png",
+  "sera-phina/assets/books/building-bridges-sensory-integration.png",
+  "sera-phina/assets/books/children-adolescent-mental-health-ot.png",
+  "sera-phina/assets/books/clinical-documentation-ot-third-edition.png",
+  "sera-phina/assets/books/contemporary-ot-introduction-ethics.png",
+  "sera-phina/assets/books/evidence-based-occupational-therapy.png",
+  "sera-phina/assets/books/handbook-of-preschool-mental-health.png",
+  "sera-phina/assets/books/introduction-to-early-childhood-education.png",
+  "sera-phina/assets/books/mental-occupational-therapy-exam-guide-4.png",
+  "sera-phina/assets/books/occupational-therapy-in-mental-health.png",
+  "sera-phina/assets/books/sensory-integration-for-preschool-teachers.png",
+
   // Non-public templates / superseded pages.
   "articles/article-template.html",
   "articles/emptiness-meets-moho_updated.html",
