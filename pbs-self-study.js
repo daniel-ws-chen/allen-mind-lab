@@ -34,8 +34,15 @@
     if(quiz){
       const unlocked=n===12;
       quiz.setAttribute('aria-disabled', unlocked?'false':'true');
+      quiz.tabIndex=unlocked?0:-1;
       quiz.textContent=unlocked?'開始總複習 →':'尚未解鎖';
     }
+  }
+  const quizLink=document.querySelector('[data-quiz-link]');
+  if(quizLink){
+    quizLink.addEventListener('click',e=>{
+      if(quizLink.getAttribute('aria-disabled')==='true') e.preventDefault();
+    });
   }
   const resetBtn=document.querySelector('[data-reset-progress]');
   if(resetBtn){

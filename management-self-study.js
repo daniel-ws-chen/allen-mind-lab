@@ -45,6 +45,7 @@
     const quiz=document.querySelector('[data-quiz-link]');
     const unlocked=n===12;
     quiz.setAttribute('aria-disabled',unlocked?'false':'true');
+    quiz.tabIndex=unlocked?0:-1;
     quiz.textContent=unlocked?'開始 Management Challenge →':'尚未解鎖';
   }
   document.querySelectorAll('[data-reflection]').forEach(ta=>ta.addEventListener('input',()=>updateReflectionUI(ta.dataset.reflection,ta.value)));
@@ -58,6 +59,12 @@
     save(s);
     render();
   }));
+  const quizLink=document.querySelector('[data-quiz-link]');
+  if(quizLink){
+    quizLink.addEventListener('click',e=>{
+      if(quizLink.getAttribute('aria-disabled')==='true') e.preventDefault();
+    });
+  }
   const reset=document.querySelector('[data-reset-progress]');
   if(reset)reset.addEventListener('click',()=>{
     if(!confirm('確定要清除這台裝置上的管理學自學紀錄嗎？\n\n文章閱讀、課後小測、Reflection Bonus、主測驗與完訓證明都會歸零，且無法復原。'))return;

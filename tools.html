@@ -1353,62 +1353,73 @@
     try { return localStorage.getItem(key) !== null; }
     catch(e){ return false; }
   };
-  const state = {
-    'mgmt-decision': has('aml.progress.management.decision'),
-    'mgmt-fairness': has('aml.progress.management.fairness'),
-    'pbs-intro': has('aml.progress.pbs.intro'),
-    'pbs-advanced': has('aml.progress.pbs.advanced') || has('aml.pbs.advanced.v1'),
-    'self-sensory': has('aml.self.sensory.v1'),
-    'self-energy': has('aml.self.energy.v1'),
-    'ai-initial': has('aml.ai.cocreate.v1'),
-    'ai-advanced': has('aml.ai.judgment.v1')
-  };
-  let done = 0;
-  document.querySelectorAll('[data-progress-key]').forEach(el=>{
-    const ok = !!state[el.dataset.progressKey];
-    el.classList.toggle('done',ok);
-    if(ok) done++;
-  });
-  const count = document.querySelector('[data-lab-progress-count]');
-  const bar = document.querySelector('[data-lab-progress-bar]');
-  if(count) count.textContent = `${done} / 8`;
-  if(bar) bar.style.width = `${done/8*100}%`;
-  const progressTrack = document.querySelector('[data-lab-progress-track]');
-  if(progressTrack) progressTrack.setAttribute('aria-valuenow', String(done));
 
-  const panel = document.querySelector('.labx-progress__panel');
-  const complete = document.querySelector('[data-mission-complete]');
-  const missionDone = done === 8;
-  if(panel) panel.classList.toggle('is-mission-complete', missionDone);
-  if(complete){
-    complete.classList.toggle('is-visible', missionDone);
-    complete.setAttribute('aria-hidden', String(!missionDone));
+  function renderLabProgress(){
+    const state = {
+      'mgmt-decision': has('aml.progress.management.decision'),
+      'mgmt-fairness': has('aml.progress.management.fairness'),
+      'pbs-intro': has('aml.progress.pbs.intro'),
+      'pbs-advanced': has('aml.progress.pbs.advanced') || has('aml.pbs.advanced.v1'),
+      'self-sensory': has('aml.self.sensory.v1'),
+      'self-energy': has('aml.self.energy.v1'),
+      'ai-initial': has('aml.ai.cocreate.v1'),
+      'ai-advanced': has('aml.ai.judgment.v1')
+    };
+    let done = 0;
+    document.querySelectorAll('[data-progress-key]').forEach(el=>{
+      const ok = !!state[el.dataset.progressKey];
+      el.classList.toggle('done',ok);
+      if(ok) done++;
+    });
+    const count = document.querySelector('[data-lab-progress-count]');
+    const bar = document.querySelector('[data-lab-progress-bar]');
+    if(count) count.textContent = `${done} / 8`;
+    if(bar) bar.style.width = `${done/8*100}%`;
+    const progressTrack = document.querySelector('[data-lab-progress-track]');
+    if(progressTrack) progressTrack.setAttribute('aria-valuenow', String(done));
+
+    const panel = document.querySelector('.labx-progress__panel');
+    const complete = document.querySelector('[data-mission-complete]');
+    const missionDone = done === 8;
+    if(panel) panel.classList.toggle('is-mission-complete', missionDone);
+    if(complete){
+      complete.classList.toggle('is-visible', missionDone);
+      complete.setAttribute('aria-hidden', String(!missionDone));
+    }
+
+    const halls = {
+      management: [state['mgmt-decision'], state['mgmt-fairness']],
+      pbs: [state['pbs-intro'], state['pbs-advanced']],
+      self: [state['self-sensory'], state['self-energy']],
+      ai: [state['ai-initial'], state['ai-advanced']]
+    };
+    Object.entries(halls).forEach(([hall, milestones]) => {
+      const node = document.querySelector(`[data-map-hall="${hall}"]`);
+      const label = document.querySelector(`[data-map-state="${hall}"]`);
+      if(!node || !label) return;
+      const hallDone = milestones.filter(Boolean).length;
+      const meter = document.querySelector(`[data-hall-meter="${hall}"]`);
+      if(meter) meter.style.width = `${hallDone / milestones.length * 100}%`;
+      const card = document.querySelector(`.labx-progress__card[href="${node.getAttribute('href')}"]`);
+      if(card){
+        let status = card.querySelector('.labx-progress__status');
+        if(!status){
+          status = document.createElement('span');
+          status.className = 'labx-progress__status';
+          const strong = card.querySelector('strong');
+          if(strong) strong.insertAdjacentElement('afterend', status);
+        }
+        if(status) status.textContent = hallDone === 0 ? '尚未開始 · 0 / 2' : hallDone === milestones.length ? '目前里程碑完成 · 2 / 2' : `探索中 · ${hallDone} / 2`;
+      }
+      node.classList.toggle('is-started', hallDone > 0 && hallDone < milestones.length);
+      node.classList.toggle('is-complete', hallDone === milestones.length);
+      label.textContent = hallDone === 0 ? '尚未開始' : hallDone === milestones.length ? '已完成目前里程碑' : `探索中 · ${hallDone}/${milestones.length}`;
+    });
   }
 
-  const halls = {
-    management: [state['mgmt-decision'], state['mgmt-fairness']],
-    pbs: [state['pbs-intro'], state['pbs-advanced']],
-    self: [state['self-sensory'], state['self-energy']],
-    ai: [state['ai-initial'], state['ai-advanced']]
-  };
-  Object.entries(halls).forEach(([hall, milestones]) => {
-    const node = document.querySelector(`[data-map-hall="${hall}"]`);
-    const label = document.querySelector(`[data-map-state="${hall}"]`);
-    if(!node || !label) return;
-    const hallDone = milestones.filter(Boolean).length;
-    const meter = document.querySelector(`[data-hall-meter="${hall}"]`);
-    if(meter) meter.style.width = `${hallDone / milestones.length * 100}%`;
-    const card = document.querySelector(`.labx-progress__card[href="${node.getAttribute('href')}"]`);
-    if(card){
-      const status = document.createElement('span');
-      status.className = 'labx-progress__status';
-      status.textContent = hallDone === 0 ? '尚未開始 · 0 / 2' : hallDone === milestones.length ? '目前里程碑完成 · 2 / 2' : `探索中 · ${hallDone} / 2`;
-      card.querySelector('strong').insertAdjacentElement('afterend', status);
-    }
-    node.classList.toggle('is-started', hallDone > 0 && hallDone < milestones.length);
-    node.classList.toggle('is-complete', hallDone === milestones.length);
-    label.textContent = hallDone === 0 ? '尚未開始' : hallDone === milestones.length ? '已完成目前里程碑' : `探索中 · ${hallDone}/${milestones.length}`;
-  });
+  window.addEventListener('pageshow', renderLabProgress);
+  window.addEventListener('storage', renderLabProgress);
+  renderLabProgress();
 })();
 </script>
 

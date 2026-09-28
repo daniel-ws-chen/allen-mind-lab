@@ -650,6 +650,9 @@
 (() => {
   const params = new URLSearchParams(window.location.search);
   if (params.get('course') !== 'pbs') return;
+  // PBS core-course articles already ship their own completion block.
+  // Keep this global fallback only for articles without that dedicated UI.
+  if (document.querySelector('[data-pbs-reading-complete]')) return;
 
   const lesson = params.get('lesson');
   const lessons = {
