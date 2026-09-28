@@ -1,207 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>PBS 行為分析與對策研擬智能助理 2.0｜AML</title>
-  <meta name="description" content="以網頁填表或去識別化 ABC 紀錄，協助整理行為功能假設、PBS 策略與七週期支持計畫，產生報告初稿。">
-  <link rel="stylesheet" href="aml-site.css">
-  <link rel="stylesheet" href="pbs-companion-web.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-  <script defer src="pbs-companion-web.js"></script>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>PBS 行為分析與對策研擬智能助理 2.0｜AML</title>
+<meta content="以網頁填表或去識別化 ABC 紀錄，協助整理行為功能假設、PBS 策略與七週期支持計畫，產生報告初稿。" name="description"/>
+<link href="aml-site.css" rel="stylesheet"/>
+<link href="pbs-companion-web.css" rel="stylesheet"/>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mammoth@1.8.0/mammoth.browser.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<script defer="" src="pbs-companion-web.js"></script>
 </head>
 <body>
-  <header class="pbsw-hero">
-    <div class="pbsw-wrap">
-      <a class="pbsw-back" href="tools.html#practice-tools">← 返回智能支援艙</a>
-      <p class="pbsw-kicker">AML PBS ASSISTANT SYSTEM · 2.0 BETA</p>
-      <h1>從 ABC 紀錄，到可討論的 PBS 支持計畫。</h1>
-      <p class="pbsw-lead">AI／工具負責整理與形成草稿；功能仍是<strong>假設</strong>，需由現場觀察、持續紀錄與團隊專業判斷共同驗證。</p>
-      <div class="pbsw-hero-chips" aria-label="主要功能">
-        <span>行為功能分析</span><span>前事 × 行為中 × 後事策略</span><span>七週期策略表</span><span>完整報告初稿</span>
-      </div>
-    </div>
-  </header>
-
-  <main class="pbsw-wrap pbsw-main">
-    <section class="pbsw-alert" aria-labelledby="privacy-title">
-      <div>
-        <p class="pbsw-eyebrow">PRIVACY FIRST</p>
-        <h2 id="privacy-title">先去識別化，再開始。</h2>
-        <p>請使用代號，勿輸入姓名、身分證字號、地址、電話、病歷號、機構內部識別碼或其他可直接辨識個人的資訊。本工具不主動將表單內容寫入 localStorage；Word / Excel 解析在瀏覽器本機進行。</p>
-      </div>
-    </section>
-
-    <nav class="pbsw-steps" aria-label="PBS 智能助理工作流程">
-      <a href="#step1"><b>01</b><span>個案與標的行為</span></a>
-      <a href="#step2"><b>02</b><span>ABC 與功能線索</span></a>
-      <a href="#step3"><b>03</b><span>策略與七週期</span></a>
-      <a href="#step4"><b>04</b><span>報告初稿</span></a>
-    </nav>
-
-    <form id="pbsForm" novalidate>
-      <section class="pbsw-panel" id="step1">
-        <header class="pbsw-panel-head">
-          <div><span>01</span><h2>個案與標的行為</h2></div>
-          <p>一次先鎖定 1–2 個可觀察、可紀錄的行為。</p>
-        </header>
-
-        <div class="pbsw-grid two">
-          <label>個案代號
-            <input id="caseCode" type="text" placeholder="例如：A君">
-          </label>
-          <label>資料來源
+<header class="pbsw-hero">
+<div class="pbsw-wrap">
+<a class="pbsw-back" href="tools.html#practice-tools">← 返回智能支援艙</a>
+<p class="pbsw-kicker">AML PBS ASSISTANT SYSTEM · 2.0 BETA</p>
+<h1>從 ABC 紀錄，到可討論的 PBS 支持計畫。</h1>
+<p class="pbsw-lead">AI／工具負責整理與形成草稿；功能仍是<strong>假設</strong>，需由現場觀察、持續紀錄與團隊專業判斷共同驗證。</p>
+<div aria-label="主要功能" class="pbsw-hero-chips">
+<span>行為功能分析</span><span>前事 × 行為中 × 後事策略</span><span>七週期策略表</span><span>完整報告初稿</span>
+</div>
+</div>
+</header>
+<main class="pbsw-wrap pbsw-main">
+<section aria-labelledby="privacy-title" class="pbsw-alert">
+<div>
+<p class="pbsw-eyebrow">PRIVACY FIRST</p>
+<h2 id="privacy-title">先去識別化，再開始。</h2>
+<p>請使用代號，勿輸入姓名、身分證字號、地址、電話、病歷號、機構內部識別碼或其他可直接辨識個人的資訊。本工具不主動將表單內容寫入 localStorage；Word / Excel 解析在瀏覽器本機進行。</p>
+</div>
+</section>
+<nav aria-label="PBS 智能助理工作流程" class="pbsw-steps">
+<a href="#step1"><b>01</b><span>個案與標的行為</span></a>
+<a href="#step2"><b>02</b><span>ABC 與功能線索</span></a>
+<a href="#step3"><b>03</b><span>策略與七週期</span></a>
+<a href="#step4"><b>04</b><span>報告初稿</span></a>
+</nav>
+<form id="pbsForm" novalidate="">
+<section class="pbsw-panel" id="step1">
+<header class="pbsw-panel-head">
+<div><span>01</span><h2>個案與標的行為</h2></div>
+<p>一次先鎖定 1–2 個可觀察、可紀錄的行為。</p>
+</header>
+<div class="pbsw-grid two">
+<label>個案代號
+            <input id="caseCode" placeholder="例如：A君" type="text"/>
+</label>
+<label>資料來源
             <select id="dataSource">
-              <option value="網頁填表">網頁填表</option>
-              <option value="ABC紀錄">ABC 紀錄</option>
-              <option value="會議紀錄">會議紀錄摘要</option>
-              <option value="混合資料">混合資料</option>
-            </select>
-          </label>
-        </div>
-
-        <label>標的行為
-          <input id="targetBehavior" type="text" required placeholder="例如：以手揮打他人、尖叫、丟擲物品">
-        </label>
-        <label>操作型定義
-          <textarea id="operationalDef" rows="3" placeholder="描述可以被看到、聽到或紀錄的行為，不使用「情緒失控、故意、不配合」等推測性語句。"></textarea>
-        </label>
-
-        <div class="pbsw-grid three">
-          <label>頻率
-            <input id="frequency" type="text" placeholder="例如：每週 2–3 次">
-          </label>
-          <label>持續時間
-            <input id="duration" type="text" placeholder="例如：5–10 分鐘">
-          </label>
-          <label>強度
+<option value="網頁填表">網頁填表</option>
+<option value="ABC紀錄">ABC 紀錄</option>
+<option value="會議紀錄">會議紀錄摘要</option>
+<option value="混合資料">混合資料</option>
+</select>
+</label>
+</div>
+<label>標的行為
+          <input id="targetBehavior" placeholder="例如：以手揮打他人、尖叫、丟擲物品" required="" type="text"/>
+</label>
+<label>操作型定義
+          <textarea id="operationalDef" placeholder="描述可以被看到、聽到或紀錄的行為，不使用「情緒失控、故意、不配合」等推測性語句。" rows="3"></textarea>
+</label>
+<div class="pbsw-grid three">
+<label>頻率
+            <input id="frequency" placeholder="例如：每週 2–3 次" type="text"/>
+</label>
+<label>持續時間
+            <input id="duration" placeholder="例如：5–10 分鐘" type="text"/>
+</label>
+<label>強度
             <select id="intensity"><option value="">未填</option><option>低</option><option>中</option><option>高</option></select>
-          </label>
-        </div>
-
-        <label>常見情境／人物／時段
-          <textarea id="context" rows="3" placeholder="例如：下午活動轉換、被要求停止手機、特定照顧者在場時…"></textarea>
-        </label>
-        <label>背景因素與可能影響狀態
-          <textarea id="settingEvents" rows="3" placeholder="例如：睡眠、疼痛、便秘、飢餓、噪音、疲勞、藥物調整、重大生活變動…"></textarea>
-        </label>
-        <label>已知偏好、溝通方式與可用替代能力
-          <textarea id="preferences" rows="3" placeholder="喜歡的活動／物品、可理解的提示方式、會使用的求助／拒絕／休息方式…"></textarea>
-        </label>
-      </section>
-
-      <section class="pbsw-panel" id="step2">
-        <header class="pbsw-panel-head">
-          <div><span>02</span><h2>ABC 與功能線索</h2></div>
-          <p>可直接填寫；也可匯入已去識別化的 Word / Excel。</p>
-        </header>
-
-        <div class="pbsw-upload">
-          <div class="pbsw-upload-intro">
-            <strong>匯入 ABC 紀錄（選用）</strong>
-            <p>2.0 Beta 支援 <code>.docx</code> 與 <code>.xlsx</code>。檔案僅由瀏覽器本機讀取；解析後請人工確認。</p>
-          </div>
-          <div class="pbsw-upload-flow">
-            <label class="pbsw-upload-check">
-              <input id="deidConfirm" type="checkbox">
-              <span><b>① 去識別化確認</b><small>我確認檔案已移除可直接識別個人的資訊</small></span>
-            </label>
-            <div id="uploadGate" class="pbsw-upload-gate locked" aria-live="polite">🔒 請先確認已完成去識別化</div>
-            <label class="pbsw-file-picker">
-              <span>② 選擇 Word / Excel</span>
-              <input id="abcFile" type="file" accept=".docx,.xlsx" disabled>
-            </label>
-            <button id="parseFileBtn" type="button" class="pbsw-btn secondary" disabled>③ 解析檔案</button>
-          </div>
-        </div>
-        <p id="fileStatus" class="pbsw-status" role="status" aria-live="polite">尚未啟用檔案匯入。</p>
-
-        <div class="pbsw-table-wrap">
-          <table class="pbsw-table">
-            <thead><tr><th>日期／情境</th><th>A｜前事</th><th>B｜行為</th><th>C｜後果</th><th></th></tr></thead>
-            <tbody id="abcRows"></tbody>
-          </table>
-        </div>
-        <button id="addAbcRow" class="pbsw-btn secondary" type="button">＋ 新增一筆 ABC</button>
-
-        <details class="pbsw-details">
-          <summary>Word 解析不完整時，可檢視／貼上原始文字</summary>
-          <textarea id="rawImportedText" rows="8" placeholder="解析後的原始文字會出現在這裡；您也可手動貼入去識別化的 ABC 紀錄。"></textarea>
-          <button id="parseRawBtn" class="pbsw-btn secondary" type="button">從文字嘗試辨識 ABC</button>
-        </details>
-
-        <fieldset class="pbsw-fieldset">
-          <legend>行為後常見結果／功能線索（可複選）</legend>
-          <div class="pbsw-choice-grid">
-            <label><input type="checkbox" name="functionClue" value="attention"> 得到他人關注、靠近、安撫或互動</label>
-            <label><input type="checkbox" name="functionClue" value="escape"> 要求暫停、活動中止、離開情境或延後任務</label>
-            <label><input type="checkbox" name="functionClue" value="tangible"> 得到物品、活動、食物、手機或特定安排</label>
-            <label><input type="checkbox" name="functionClue" value="sensory"> 即使無人在場也可能發生，或行為本身可能帶來感官結果</label>
-            <label><input type="checkbox" name="functionClue" value="medical"> 疼痛、不適、睡眠、排泄、藥物或其他生理因素可能相關</label>
-            <label><input type="checkbox" name="functionClue" value="unclear"> 資料互相矛盾／目前看不出穩定模式</label>
-          </div>
-        </fieldset>
-
-        <label>已知有效／較無效的支持方式
-          <textarea id="supportHistory" rows="4" placeholder="例如：預告有效；多人同時說話會升高；提供休息卡後較能等待…"></textarea>
-        </label>
-        <label>安全風險與既有處理規範
-          <textarea id="riskNotes" rows="3" placeholder="若涉及自傷、他傷、走失、嚴重破壞或醫療風險，請填入既有安全處理／通報原則。"></textarea>
-        </label>
-      </section>
-
-      <section class="pbsw-panel" id="step3">
-        <header class="pbsw-panel-head">
-          <div><span>03</span><h2>行為功能、支持策略與七週期</h2></div>
-          <p>先產生可討論的草稿，再由團隊人工修正。</p>
-        </header>
-
-        <button id="analyzeBtn" class="pbsw-btn primary" type="button">產生分析與策略草稿</button>
-        <div id="analysisEmpty" class="pbsw-empty">尚未產生分析。請先完成前面的必要資料。</div>
-
-        <div id="analysisResult" hidden>
-          <section class="pbsw-result-block">
-            <div class="pbsw-result-title"><span>FUNCTION</span><h3>行為功能假設</h3></div>
-            <div id="functionAnalysis"></div>
-          </section>
-
-          <div class="pbsw-strategy-grid">
-            <section><span>BEFORE</span><h3>前事策略</h3><ul id="antecedentStrategies"></ul></section>
-            <section><span>DURING</span><h3>行為中策略</h3><ul id="duringStrategies"></ul></section>
-            <section><span>AFTER</span><h3>後事策略</h3><ul id="consequenceStrategies"></ul></section>
-          </div>
-
-          <section class="pbsw-result-block">
-            <div class="pbsw-result-title"><span>7-CYCLE</span><h3>情緒行為七週期策略表</h3></div>
-            <div class="pbsw-table-wrap"><table class="pbsw-table cycle"><thead><tr><th>週期</th><th>核心任務</th><th>可觀察線索</th><th>支持策略草稿</th><th>避免事項</th></tr></thead><tbody id="cycleTable"></tbody></table></div>
-          </section>
-        </div>
-      </section>
-
-      <section class="pbsw-panel" id="step4">
-        <header class="pbsw-panel-head">
-          <div><span>04</span><h2>完整 PBS 報告初稿</h2></div>
-          <p>產生後仍需人工確認、修正與團隊核定。</p>
-        </header>
-
-        <div class="pbsw-actions">
-          <button id="reportBtn" class="pbsw-btn primary" type="button">產生完整報告初稿</button>
-          <button id="copyReportBtn" class="pbsw-btn secondary" type="button" disabled>複製報告</button>
-          <button id="copyAiBtn" class="pbsw-btn secondary" type="button" disabled>複製 AI 任務包</button>
-          <button id="printBtn" class="pbsw-btn secondary" type="button" disabled>列印／存成 PDF</button>
-        </div>
-
-        <article id="reportOutput" class="pbsw-report" aria-live="polite">
-          <p class="pbsw-empty">尚未產生報告。</p>
-        </article>
-      </section>
-    </form>
-
-    <section class="pbsw-disclaimer">
-      <strong>專業與安全提醒</strong>
-      <p>本工具產出的是「初稿」與「功能假設」，不是診斷、正式功能分析結論或危機處理指令。資料不足時應標示待確認；若涉及立即安全或醫療風險，請依所在機構程序與專業評估優先處理。</p>
-    </section>
-  </main>
+</label>
+</div>
+<label>常見情境／人物／時段
+          <textarea id="context" placeholder="例如：下午活動轉換、被要求停止手機、特定照顧者在場時…" rows="3"></textarea>
+</label>
+<label>背景因素與可能影響狀態
+          <textarea id="settingEvents" placeholder="例如：睡眠、疼痛、便秘、飢餓、噪音、疲勞、藥物調整、重大生活變動…" rows="3"></textarea>
+</label>
+<label>已知偏好、溝通方式與可用替代能力
+          <textarea id="preferences" placeholder="喜歡的活動／物品、可理解的提示方式、會使用的求助／拒絕／休息方式…" rows="3"></textarea>
+</label>
+</section>
+<section class="pbsw-panel" id="step2">
+<header class="pbsw-panel-head">
+<div><span>02</span><h2>ABC 與功能線索</h2></div>
+<p>可直接填寫；也可匯入已去識別化的 Word / Excel。</p>
+</header>
+<div class="pbsw-upload">
+<div class="pbsw-upload-intro">
+<strong>匯入 ABC 紀錄（選用）</strong>
+<p>2.0 Beta 支援 <code>.docx</code> 與 <code>.xlsx</code>。檔案僅由瀏覽器本機讀取；解析後請人工確認。</p>
+</div>
+<div class="pbsw-upload-flow">
+<label class="pbsw-upload-check">
+<input id="deidConfirm" type="checkbox"/>
+<span><b>① 去識別化確認</b><small>我確認檔案已移除可直接識別個人的資訊</small></span>
+</label>
+<div aria-live="polite" class="pbsw-upload-gate locked" id="uploadGate">🔒 請先確認已完成去識別化</div>
+<label class="pbsw-file-picker">
+<span>② 選擇 Word / Excel</span>
+<input accept=".docx,.xlsx" disabled="" id="abcFile" type="file"/>
+</label>
+<button class="pbsw-btn secondary" disabled="" id="parseFileBtn" type="button">③ 解析檔案</button>
+</div>
+</div>
+<p aria-live="polite" class="pbsw-status" id="fileStatus" role="status">尚未啟用檔案匯入。</p>
+<div class="pbsw-table-wrap">
+<table class="pbsw-table">
+<thead><tr><th>日期／情境</th><th>A｜前事</th><th>B｜行為</th><th>C｜後果</th><th></th></tr></thead>
+<tbody id="abcRows"></tbody>
+</table>
+</div>
+<button class="pbsw-btn secondary" id="addAbcRow" type="button">＋ 新增一筆 ABC</button>
+<details class="pbsw-details">
+<summary>Word 解析不完整時，可檢視／貼上原始文字</summary>
+<textarea aria-label="ABC 紀錄原始文字" id="rawImportedText" placeholder="解析後的原始文字會出現在這裡；您也可手動貼入去識別化的 ABC 紀錄。" rows="8"></textarea>
+<button class="pbsw-btn secondary" id="parseRawBtn" type="button">從文字嘗試辨識 ABC</button>
+</details>
+<fieldset class="pbsw-fieldset">
+<legend>行為後常見結果／功能線索（可複選）</legend>
+<div class="pbsw-choice-grid">
+<label><input name="functionClue" type="checkbox" value="attention"/> 得到他人關注、靠近、安撫或互動</label>
+<label><input name="functionClue" type="checkbox" value="escape"/> 要求暫停、活動中止、離開情境或延後任務</label>
+<label><input name="functionClue" type="checkbox" value="tangible"/> 得到物品、活動、食物、手機或特定安排</label>
+<label><input name="functionClue" type="checkbox" value="sensory"/> 即使無人在場也可能發生，或行為本身可能帶來感官結果</label>
+<label><input name="functionClue" type="checkbox" value="medical"/> 疼痛、不適、睡眠、排泄、藥物或其他生理因素可能相關</label>
+<label><input name="functionClue" type="checkbox" value="unclear"/> 資料互相矛盾／目前看不出穩定模式</label>
+</div>
+</fieldset>
+<label>已知有效／較無效的支持方式
+          <textarea id="supportHistory" placeholder="例如：預告有效；多人同時說話會升高；提供休息卡後較能等待…" rows="4"></textarea>
+</label>
+<label>安全風險與既有處理規範
+          <textarea id="riskNotes" placeholder="若涉及自傷、他傷、走失、嚴重破壞或醫療風險，請填入既有安全處理／通報原則。" rows="3"></textarea>
+</label>
+</section>
+<section class="pbsw-panel" id="step3">
+<header class="pbsw-panel-head">
+<div><span>03</span><h2>行為功能、支持策略與七週期</h2></div>
+<p>先產生可討論的草稿，再由團隊人工修正。</p>
+</header>
+<button class="pbsw-btn primary" id="analyzeBtn" type="button">產生分析與策略草稿</button>
+<div class="pbsw-empty" id="analysisEmpty">尚未產生分析。請先完成前面的必要資料。</div>
+<div hidden="" id="analysisResult">
+<section class="pbsw-result-block">
+<div class="pbsw-result-title"><span>FUNCTION</span><h3>行為功能假設</h3></div>
+<div id="functionAnalysis"></div>
+</section>
+<div class="pbsw-strategy-grid">
+<section><span>BEFORE</span><h3>前事策略</h3><ul id="antecedentStrategies"></ul></section>
+<section><span>DURING</span><h3>行為中策略</h3><ul id="duringStrategies"></ul></section>
+<section><span>AFTER</span><h3>後事策略</h3><ul id="consequenceStrategies"></ul></section>
+</div>
+<section class="pbsw-result-block">
+<div class="pbsw-result-title"><span>7-CYCLE</span><h3>情緒行為七週期策略表</h3></div>
+<div class="pbsw-table-wrap"><table class="pbsw-table cycle"><thead><tr><th>週期</th><th>核心任務</th><th>可觀察線索</th><th>支持策略草稿</th><th>避免事項</th></tr></thead><tbody id="cycleTable"></tbody></table></div>
+</section>
+</div>
+</section>
+<section class="pbsw-panel" id="step4">
+<header class="pbsw-panel-head">
+<div><span>04</span><h2>完整 PBS 報告初稿</h2></div>
+<p>產生後仍需人工確認、修正與團隊核定。</p>
+</header>
+<div class="pbsw-actions">
+<button class="pbsw-btn primary" id="reportBtn" type="button">產生完整報告初稿</button>
+<button class="pbsw-btn secondary" disabled="" id="copyReportBtn" type="button">複製報告</button>
+<button class="pbsw-btn secondary" disabled="" id="copyAiBtn" type="button">複製 AI 任務包</button>
+<button class="pbsw-btn secondary" disabled="" id="printBtn" type="button">列印／存成 PDF</button>
+</div>
+<article aria-live="polite" class="pbsw-report" id="reportOutput">
+<p class="pbsw-empty">尚未產生報告。</p>
+</article>
+</section>
+</form>
+<section class="pbsw-disclaimer">
+<strong>專業與安全提醒</strong>
+<p>本工具產出的是「初稿」與「功能假設」，不是診斷、正式功能分析結論或危機處理指令。資料不足時應標示待確認；若涉及立即安全或醫療風險，請依所在機構程序與專業評估優先處理。</p>
+</section>
+</main>
 </body>
 </html>
