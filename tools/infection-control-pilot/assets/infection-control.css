@@ -243,3 +243,6 @@ body[data-page="dashboard"] #daily{
   margin-top:16px;padding:12px 13px;border-radius:12px;
   background:#fff8e7;border:1px solid #ead39a;font-size:12px;line-height:1.65;
 }
+
+/* Phase 19: preserve Pilot gate title appearance while keeping one semantic h1 per page. */
+.auth-card .auth-title{margin:0 0 8px;font-size:26px}
