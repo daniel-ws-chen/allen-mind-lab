@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>跨系統轉銜規劃智能助理 2.1｜Allen Mind Lab</title>
+<meta name="description" content="AML 跨系統轉銜規劃智能助理 2.1：以服務對象、照顧者與環境資源三面向整理轉銜條件，本機產出轉銜摘要、風險缺口、責任分工與行動清單。"/>
+<link rel="canonical" href="https://allenmindlab.com/tools/pbs-transition-assessment.html"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="stylesheet" href="/aml-site.css"/>
+<style>
+:root{--navy:#071a33;--navy2:#0d294a;--gold:#c7a76a;--cream:#f6f1e7;--ink:#142031;--muted:#657081;--line:#e7e0d4;--green:#2f7663;--amber:#a57520;--red:#9a4d4d}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fbfaf7;line-height:1.75}a{color:inherit}
+.hero{padding:76px 7vw 58px;background:linear-gradient(135deg,#071a33,#0d294a 65%,#17395b);color:white}.inner{max-width:1120px;margin:auto}.kicker{font-size:.76rem;letter-spacing:.16em;color:#d8bd84;font-weight:900}.hero h1{font:700 clamp(2.2rem,5vw,4.2rem)/1.12 Georgia,"Noto Serif TC",serif;margin:10px 0 14px}.hero p{max-width:820px;color:#dbe4ed;margin:0}.hero-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.hero-tags span{border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 11px;font-size:.8rem;color:#eef4f8}
+.wrap{max-width:1120px;margin:auto;padding:46px 7vw 72px}.notice{background:#fff9ec;border:1px solid #eadbbd;border-radius:18px;padding:16px 18px;color:#63583f;margin-bottom:22px}.progress{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0 28px}.progress span{background:white;border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center;font-size:.82rem;font-weight:800;color:#657081}.progress span.active{border-color:#c7a76a;color:#75571f;background:#fffaf0}
+.panel{background:white;border:1px solid var(--line);border-radius:24px;padding:26px;margin:0 0 20px;box-shadow:0 10px 28px rgba(7,26,51,.04)}.panel h2{color:var(--navy);font:700 1.5rem/1.35 Georgia,"Noto Serif TC",serif;margin:0 0 8px}.panel>p{color:var(--muted);margin:0 0 18px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:800;color:#26384b;font-size:.92rem}.field input,.field select,.field textarea{width:100%;font:inherit;border:1px solid #d9dfe4;border-radius:12px;padding:11px 12px;background:#fff;color:#1b2734}.field textarea{min-height:100px;resize:vertical}.field small{color:#7d8791}.checkgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.check{display:flex;gap:8px;align-items:flex-start;border:1px solid #e7e0d4;border-radius:12px;padding:10px;background:#fffdf8}.check input{margin-top:5px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.btn{appearance:none;border:1px solid #c7a76a;background:#071a33;color:#fff;border-radius:999px;padding:10px 17px;font:800 .92rem/1.2 inherit;cursor:pointer;text-decoration:none}.btn.secondary{background:#fff;color:#071a33}.btn:disabled{opacity:.45;cursor:not-allowed}.result{display:none}.result.show{display:block}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.result-card{border:1px solid #e5ded0;border-radius:18px;padding:18px;background:#fffdf8}.result-card h3{margin:0 0 9px;color:#071a33}.result-card ul{margin:0;padding-left:1.2em}.status{display:inline-flex;border-radius:999px;padding:4px 9px;font-size:.76rem;font-weight:900}.status.green{background:#e5f3ee;color:#256553}.status.amber{background:#fff1d2;color:#8b6217}.status.red{background:#f8e3e3;color:#8c4141}.summary{white-space:pre-wrap;background:#f7f8fa;border:1px solid #dde2e6;border-radius:16px;padding:18px;color:#253444}.privacy{font-size:.86rem;color:#68737e}.template-box{display:flex;justify-content:space-between;gap:18px;align-items:center;border-top:1px solid #e6e0d4;margin-top:24px;padding-top:20px}.template-box p{margin:0;color:#657081}
+@media(max-width:760px){.hero{padding:62px 6vw 48px}.wrap{padding:34px 5vw 58px}.grid2,.result-grid,.checkgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.progress{grid-template-columns:1fr 1fr}.template-box{align-items:flex-start;flex-direction:column}.panel{padding:20px}}
+
+.eval-table-wrap{overflow-x:auto;border:1px solid #e6dfd3;border-radius:16px;margin:14px 0 20px}.eval-table{width:100%;border-collapse:collapse;min-width:700px;background:#fff}.eval-table th,.eval-table td{padding:10px 11px;border-bottom:1px solid #ece7de;text-align:left;vertical-align:top}.eval-table th{background:#f7f3eb;color:#4a5565;font-size:.82rem;white-space:nowrap}.eval-table tr:last-child td{border-bottom:0}.eval-table select,.eval-table input{width:100%;font:inherit;border:1px solid #d8dfe5;border-radius:10px;padding:8px 9px;background:#fff}.report-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.report-title{font:700 1.45rem/1.3 Georgia,"Noto Serif TC",serif;color:#071a33;margin:0 0 8px}.report-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 18px;margin:10px 0 18px;font-size:.9rem}.summary h3{margin:20px 0 7px;color:#0d294a}.summary table{width:100%;border-collapse:collapse;margin:8px 0 14px;background:#fff}.summary th,.summary td{border:1px solid #dfe3e6;padding:7px 8px;text-align:left;vertical-align:top;font-size:.86rem}.summary th{background:#f2efe9}.top-template{display:flex;gap:10px;flex-wrap:wrap;margin:-4px 0 22px}@media print{.aml-global-nav,.hero,.notice,.progress,form,.template-box,.result-grid,.result>h2,.result>p,.report-actions,.privacy,.top-template{display:none!important}.wrap{max-width:none;padding:0}.panel.result{display:block!important;border:0;box-shadow:none;padding:0;margin:0}.summary{border:0!important;background:#fff!important;padding:0!important;color:#000!important}.summary h3,.report-title{color:#000!important}.summary th{background:#eee!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style>
+</head>
+<body>
+<a class="aml-skip-link" href="#main">跳到主要內容</a>
+<nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links"><a class="aml-nav-direct" href="/articles.html">主題館藏</a><a class="aml-nav-direct" href="/reading-paths.html">閱讀路徑</a><a class="aml-nav-direct" href="/tools.html">Interactive Lab</a><a class="aml-nav-direct" href="/resources.html">資源與聯繫</a></div></nav>
+<header class="hero"><div class="inner"><div class="kicker">AML SMART ASSISTANT · TRANSITION</div><h1>跨系統轉銜規劃智能助理 2.1</h1><p>把原本的《情緒行為支持服務轉銜評估與建議表》做成線上工作區。以下拉式選擇為主，整理服務對象、照顧者與環境資源，於瀏覽器本機產生可下載、可列印／另存 PDF 的轉銜評估報告。</p><div class="hero-tags"><span>本機運作</span><span>線上填寫</span><span>下拉式評估</span><span>列印／PDF</span><span>空白 Word 保留</span></div></div></header>
+<main class="wrap" id="main">
+<div class="notice"><strong>使用提醒｜</strong>請以代號或去識別化資料填寫。本工具為轉銜討論與工作整理輔助，不取代正式評估、法定程序、醫療判斷或跨專業團隊決策。</div><div class="top-template"><a class="btn secondary" download href="/downloads/aml-pbs-transition-assessment-v1.0.docx">下載原始空白 Word 評估表 ↓</a><a class="btn secondary" href="#transitionForm">開始線上填寫 ↓</a></div>
+<div class="progress" aria-label="工作流程"><span class="active">01 轉銜情境</span><span>02 三面向整理</span><span>03 風險與資源</span><span>04 摘要與行動</span></div>
+<form id="transitionForm">
+<section class="panel"><h2>01｜轉銜情境</h2><p>先確認這次轉銜要從哪裡走到哪裡，以及最重要的目標。</p><div class="grid2">
+<div class="field"><label for="caseCode">服務對象代號</label><input id="caseCode" placeholder="例如：A01（請勿填真實姓名）"/></div>
+<div class="field"><label for="transitionDate">預計轉銜日期</label><input id="transitionDate" type="date"/></div>
+<div class="field"><label for="fromSite">目前服務／生活場域</label><input id="fromSite" placeholder="例如：住宿機構、醫療單位、學校"/></div>
+<div class="field"><label for="toSite">預計接續場域</label><input id="toSite" placeholder="例如：返家、日照、其他機構、社區"/></div>
+<div class="field full"><label for="goal">這次轉銜最希望維持或達成什麼？</label><textarea id="goal" placeholder="例如：維持目前已建立的情緒調節方式，並讓家屬能使用一致的前事與後果策略。"></textarea></div>
+</div></section>
+<section class="panel"><h2>02｜服務對象</h2><p>整理已建立的能力、有效支持方式與仍需協助之處。</p><h3>支持程度快速評估</h3><div class="eval-table-wrap"><table class="eval-table"><thead><tr><th>評估項目</th><th>目前支持程度</th><th>具體方法／表現</th></tr></thead><tbody id="abilityRows"></tbody></table></div><div class="grid2">
+<div class="field full"><label for="strengths">已建立的能力／優勢</label><textarea id="strengths" placeholder="替代行為、溝通方式、情緒調節、生活能力、偏好與優勢"></textarea></div>
+<div class="field full"><label for="effective">已確認有效的支持策略</label><textarea id="effective" placeholder="哪些前事安排、提示、環境調整、替代行為或後果策略有效？"></textarea></div>
+<div class="field"><label for="remaining">仍需協助的需求</label><textarea id="remaining"></textarea></div>
+<div class="field"><label for="preferences">偏好／重要生活資訊</label><textarea id="preferences"></textarea></div>
+</div></section>
+<section class="panel"><h2>03｜照顧者／接續支持者</h2><p>確認接續者是否理解、會做、做得到。</p><h3>PBS 概念與技巧學習檢核</h3><div class="eval-table-wrap"><table class="eval-table"><thead><tr><th>PBS 概念／技巧</th><th>目前程度</th><th>備註</th></tr></thead><tbody id="skillRows"></tbody></table></div><div class="grid2">
+<div class="field"><label for="caregiverSkill">支持策略熟悉度</label><select id="caregiverSkill"><option value="">請選擇</option><option>已能獨立執行</option><option>基本理解，仍需示範／回饋</option><option>僅初步接觸</option><option>尚未完成訓練</option></select></div>
+<div class="field"><label for="burden">承接負荷</label><select id="burden"><option value="">請選擇</option><option>目前可承接</option><option>可承接但需額外支持</option><option>承接有明顯困難</option><option>尚待確認</option></select></div>
+<div class="field full"><label for="caregiverNeed">接續者還需要哪些協助？</label><textarea id="caregiverNeed" placeholder="示範、書面策略、危機處理、喘息、諮詢窗口、實際演練等"></textarea></div>
+</div></section>
+<section class="panel"><h2>04｜環境、資源與跨系統合作</h2><p>確認資源是否真的到位，以及誰負責下一步。</p><h3>資源銜接快速檢核</h3><div class="eval-table-wrap"><table class="eval-table"><thead><tr><th>資源項目</th><th>目前狀態</th><th>提供單位／備註</th></tr></thead><tbody id="resourceRows"></tbody></table></div><div class="grid2">
+<div class="field full"><label for="resources">已到位的資源／合作對象</label><textarea id="resources" placeholder="醫療、社政、教育、長照、日照、居服、外展、心理／行為支持、喘息等"></textarea></div>
+<div class="field"><label for="lead">主要承接／聯繫窗口</label><input id="lead" placeholder="職稱或角色即可"/></div>
+<div class="field"><label for="followup">建議首次追蹤時間</label><select id="followup"><option value="">請選擇</option><option>轉銜後 1 週內</option><option>轉銜後 2 週內</option><option>轉銜後 1 個月內</option><option>依個案狀況另訂</option></select></div>
+<div class="field full"><label>目前可能的資源缺口</label><div class="checkgrid" id="gapChecks">
+<label class="check"><input type="checkbox" value="接續人員尚未熟悉支持策略"/>接續人員尚未熟悉支持策略</label>
+<label class="check"><input type="checkbox" value="支持資源尚未正式到位"/>支持資源尚未正式到位</label>
+<label class="check"><input type="checkbox" value="轉銜後可能有服務空窗"/>轉銜後可能有服務空窗</label>
+<label class="check"><input type="checkbox" value="危機時缺乏明確求助／支援管道"/>危機時缺乏明確求助／支援管道</label>
+<label class="check"><input type="checkbox" value="不同系統的支持方式可能不一致"/>不同系統的支持方式可能不一致</label>
+<label class="check"><input type="checkbox" value="家庭／主要照顧者承接負荷偏高"/>家庭／主要照顧者承接負荷偏高</label>
+</div></div>
+<div class="field full"><label for="otherGap">其他缺口／限制</label><textarea id="otherGap"></textarea></div>
+</div></section>
+<section class="panel"><h2>05｜安全與風險</h2><p>只記錄與轉銜支持直接相關的風險與必要處置，不取代正式風險評估。</p><div class="grid2">
+<div class="field"><label for="riskLevel">目前轉銜風險</label><select id="riskLevel"><option value="">請選擇</option><option>低｜主要條件已到位</option><option>中｜有缺口，但可透過明確措施補強</option><option>高｜關鍵支持尚未到位，需先處理再轉銜</option></select></div>
+<div class="field"><label for="emergency">危機／緊急支援窗口</label><input id="emergency" placeholder="角色、單位或既定聯繫方式（勿填敏感個資）"/></div>
+<div class="field full"><label for="riskNote">主要風險與保護因子</label><textarea id="riskNote" placeholder="哪些情境可能增加風險？哪些安排可以降低風險？"></textarea></div>
+</div>
+<div class="actions"><button class="btn" type="submit">產生轉銜整理結果 →</button><button class="btn secondary" type="reset">清除本頁資料</button></div></section>
+</form>
+<section class="panel result" id="result" aria-live="polite"><h2>06｜轉銜整理結果</h2><p>以下內容由你填寫的資料依固定規則整理，請由團隊人工確認後再使用。</p><div class="result-grid">
+<div class="result-card"><h3>轉銜準備度</h3><div id="readiness"></div></div>
+<div class="result-card"><h3>優先處理事項</h3><ul id="priorities"></ul></div>
+<div class="result-card"><h3>責任與追蹤</h3><ul id="owners"></ul></div>
+<div class="result-card"><h3>資源／風險缺口</h3><ul id="gaps"></ul></div>
+</div><h3>完整轉銜評估報告</h3><div class="summary" id="summary"></div><div class="report-actions"><button type="button" class="btn" id="printReport">列印／另存 PDF</button><button type="button" class="btn secondary" id="downloadDoc">下載 Word 可開啟版 (.doc)</button><button type="button" class="btn secondary" id="downloadTxt">下載文字報告 (.txt)</button><button type="button" class="btn secondary" id="copySummary">複製報告文字</button></div><p class="privacy">下載或列印內容仍可能含你自行輸入的資訊，儲存與傳送前請再次確認去識別化與機構資料保護規範。</p></section>
+<div class="template-box"><div><strong>仍想使用原本的紙本／Word 工作表？</strong><p>原《情緒行為支持服務轉銜評估與建議表》保留提供下載，適合會議附件或離線填寫。</p></div><a class="btn secondary" download href="/downloads/aml-pbs-transition-assessment-v1.0.docx">下載 Word 範本 ↓</a></div>
+</main>
+<script>
+(()=>{
+"use strict";
+const abilityItems=["辨識自身情緒或不適","表達需求、拒絕或求助","使用情緒調節方法","使用替代行為","接受等待、轉換或生活安排","情緒恢復後重新參與活動","其他生活或參與能力"];
+const skillItems=["情緒行為七週期","辨識情緒行為前兆","理解行為功能與需求","前事策略使用","替代行為教學與增強","行為中策略使用","情緒恢復期支持","行為後果／行為代價之適當使用","同理心對話","ABC 或相關行為觀察紀錄","危機求助與安全應對"];
+const resourceItems=["喘息服務","臨時及短期照顧（臨短托）","日間照顧／日間服務單位","全日型住宿服務機構","居家照顧或居家支持","巡迴輔導／外展諮詢","醫療、精神醫療或復健服務","輔具及環境改善","交通接送","經濟補助或福利資源","家庭支持／照顧者支持","學校／教育支持","其他資源"];
+const supportOpts=["","獨立","提示","協助","尚在學習","不適用"];
+const skillOpts=["","尚未學習","已理解","需協助運用","可獨立運用","不適用"];
+const resourceOpts=["","已提供／使用中","已申請待到位","仍需評估","目前不需要／不適用"];
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const v=id=>(document.getElementById(id)?.value||'').trim();
+function makeRows(id,items,opts,prefix,placeholder){const tb=document.getElementById(id);tb.innerHTML=items.map(x=>`<tr data-label="${esc(x)}"><td>${esc(x)}</td><td><select class="${prefix}-level">${opts.map((o,i)=>`<option value="${esc(o)}">${i?esc(o):"請選擇"}</option>`).join("")}</select></td><td><input class="${prefix}-note" placeholder="${esc(placeholder)}"/></td></tr>`).join("")}
+makeRows("abilityRows",abilityItems,supportOpts,"ability","簡短記錄具體方法／表現");
+makeRows("skillRows",skillItems,skillOpts,"skill","必要時補充訓練或運用情形");
+makeRows("resourceRows",resourceItems,resourceOpts,"resource","提供單位、申請進度或說明");
+function rowData(id){return [...document.querySelectorAll(`#${id} tr`)].map(tr=>({label:tr.dataset.label,level:tr.querySelector("select")?.value||"",note:tr.querySelector("input")?.value.trim()||""}))}
+function addList(el,items){el.innerHTML='';(items.length?items:['目前未標記明確事項，仍請由團隊人工確認。']).forEach(x=>{const li=document.createElement('li');li.textContent=x;el.appendChild(li)})}
+function table(headers,rows){return `<table><thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c||'—')}</td>`).join('')}</tr>`).join('')}</tbody></table>`}
+const f=document.getElementById('transitionForm'),res=document.getElementById('result');
+function build(){
+ const abilities=rowData('abilityRows'),skills=rowData('skillRows'),resources=rowData('resourceRows');
+ const resourceGaps=resources.filter(r=>['已申請待到位','仍需評估'].includes(r.level));
+ const skillGaps=skills.filter(r=>['尚未學習','需協助運用'].includes(r.level));
+ const abilityGaps=abilities.filter(r=>['協助','尚在學習'].includes(r.level));
+ const legacyGaps=[...document.querySelectorAll('#gapChecks input:checked')].map(x=>x.value);if(v('otherGap'))legacyGaps.push(v('otherGap'));
+ let score=0,total=8;['goal','strengths','effective','caregiverSkill','resources','lead','riskLevel','followup'].forEach(id=>{if(v(id))score++});
+ const allGapCount=resourceGaps.length+skillGaps.length+abilityGaps.length+legacyGaps.length;
+ let level='red',label='目前資訊／承接條件仍不足，建議先補齊關鍵條件';
+ if(score>=7&&allGapCount<=3&&!v('riskLevel').startsWith('高')){level='green';label='主要條件較完整，可進入具體交接與追蹤'} else if(score>=5){level='amber';label='已有部分條件，但仍有項目需補強'}
+ document.getElementById('readiness').innerHTML=`<span class="status ${level}">${esc(label)}</span><p>目前已填寫 ${score}/${total} 個關鍵欄位；辨識 ${allGapCount} 項需進一步支持、訓練或資源補強的訊號。</p>`;
+ const priorities=[];
+ if(!v('effective'))priorities.push('補齊已確認有效的支持策略，讓接續者知道哪些做法需要延續。');
+ if(abilityGaps.length)priorities.push(`服務對象有 ${abilityGaps.length} 項能力仍需協助／學習，建議在轉銜前明確交接支持方式。`);
+ if(skillGaps.length)priorities.push(`接續者有 ${skillGaps.length} 項 PBS 技巧尚未學會或需協助運用，建議安排示範與共同執行。`);
+ if(resourceGaps.length)priorities.push(`有 ${resourceGaps.length} 項資源仍待到位／評估，建議確認時程、負責窗口與替代方案。`);
+ if(legacyGaps.length)priorities.push('針對已標記的其他支持缺口指定完成期限與負責窗口。');
+ if(v('riskLevel').startsWith('高'))priorities.push('目前屬高風險轉銜：關鍵支持未到位前，先完成風險控制與支援安排。');
+ if(!v('followup'))priorities.push('設定第一次追蹤時間，避免轉銜後出現服務空窗。');
+ addList(document.getElementById('priorities'),priorities);
+ const owners=[v('lead')?`主要承接／聯繫窗口：${v('lead')}`:'尚未指定主要承接／聯繫窗口。',v('followup')?`首次追蹤：${v('followup')}`:'首次追蹤時間尚未設定。'];if(v('emergency'))owners.push(`危機／緊急支援：${v('emergency')}`);addList(document.getElementById('owners'),owners);
+ const gapLines=[];abilityGaps.forEach(r=>gapLines.push(`服務對象：${r.label}（${r.level}）`));skillGaps.forEach(r=>gapLines.push(`接續者：${r.label}（${r.level}）`));resourceGaps.forEach(r=>gapLines.push(`資源：${r.label}（${r.level}）`));legacyGaps.forEach(x=>gapLines.push(x));addList(document.getElementById('gaps'),gapLines);
+ const actionRows=[
+ ['服務對象能力維持與策略調整',abilityGaps.length?`優先持續支持：${abilityGaps.slice(0,4).map(r=>r.label).join('、')}；並交接已確認有效策略。`:'維持已建立能力與有效支持方式。','主要支持人員／接續團隊','轉銜前完成交接'],
+ ['照顧者訓練與共同執行',skillGaps.length?`優先補強：${skillGaps.slice(0,4).map(r=>r.label).join('、')}。`:'持續確認支持策略能在實際情境中穩定執行。','治療師／行為支持人員／接續者','轉銜前＋轉銜後追蹤'],
+ ['環境調整與資源銜接',resourceGaps.length?`追蹤待到位／待評估資源：${resourceGaps.slice(0,5).map(r=>r.label).join('、')}。`:'維持目前已到位的資源支持。','社工／個管／接續單位','轉銜前'],
+ ['後續專業諮詢與追蹤',v('followup')?`依「${v('followup')}」進行首次追蹤，必要時啟動專業諮詢。`:'請設定首次追蹤時間與後續諮詢窗口。',v('lead')||'待指定',v('followup')||'待設定']
+ ];
+ const meta=`<div class="report-title">情緒行為支持服務｜跨系統轉銜評估與建議報告</div><div class="report-meta"><div><b>服務對象代號：</b>${esc(v('caseCode')||'—')}</div><div><b>預計轉銜日期：</b>${esc(v('transitionDate')||'—')}</div><div><b>目前場域：</b>${esc(v('fromSite')||'—')}</div><div><b>預計接續場域：</b>${esc(v('toSite')||'—')}</div><div><b>主要窗口：</b>${esc(v('lead')||'—')}</div><div><b>首次追蹤：</b>${esc(v('followup')||'—')}</div></div>`;
+ const body=[
+ '<h3>一、轉銜目標</h3>',`<p>${esc(v('goal')||'尚待補充')}</p>`,
+ '<h3>二、服務對象能力與支持需求</h3>',table(['評估項目','支持程度','具體方法／表現'],abilities.map(r=>[r.label,r.level,r.note])),`<p><b>已建立的能力／優勢：</b>${esc(v('strengths')||'尚待補充')}</p><p><b>已確認有效的支持策略：</b>${esc(v('effective')||'尚待補充')}</p><p><b>仍需協助：</b>${esc(v('remaining')||'尚待補充')}</p><p><b>偏好／重要生活資訊：</b>${esc(v('preferences')||'尚待補充')}</p>`,
+ '<h3>三、照顧者／接續支持者</h3>',table(['PBS 概念／技巧','目前程度','備註'],skills.map(r=>[r.label,r.level,r.note])),`<p><b>整體策略熟悉度：</b>${esc(v('caregiverSkill')||'尚待確認')}； <b>承接負荷：</b>${esc(v('burden')||'尚待確認')}</p><p><b>仍需協助：</b>${esc(v('caregiverNeed')||'尚待補充')}</p>`,
+ '<h3>四、環境與資源</h3>',table(['資源項目','目前狀態','提供單位／備註'],resources.map(r=>[r.label,r.level,r.note])),`<p><b>已到位的資源／合作對象：</b>${esc(v('resources')||'尚待補充')}</p><p><b>其他資源／支持缺口：</b>${esc(legacyGaps.join('；')||'目前未額外標記')}</p>`,
+ '<h3>五、安全與風險</h3>',`<p><b>轉銜風險：</b>${esc(v('riskLevel')||'尚待確認')}</p><p><b>危機／緊急支援：</b>${esc(v('emergency')||'尚待確認')}</p><p><b>主要風險與保護因子：</b>${esc(v('riskNote')||'尚待補充')}</p>`,
+ '<h3>六、綜合評估與優先工作</h3>',`<p><b>準備度：</b>${esc(label)}</p>`,priorities.length?`<ol>${priorities.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>`:'<p>目前未產生特定優先事項，仍請由團隊人工確認。</p>',
+ '<h3>七、建議行動計畫</h3>',table(['建議項目','具體內容','建議負責單位／人員','建議完成時程'],actionRows),
+ '<p style="margin-top:22px;font-size:.82rem;color:#68737e">※ 本報告由 AML 智能助理依使用者輸入與固定規則整理，供專業工作與轉銜會議討論參考，不取代正式評估、法定程序或跨專業決策。</p>'
+ ].join('');
+ document.getElementById('summary').innerHTML=meta+body;res.classList.add('show');res.scrollIntoView({behavior:'smooth',block:'start'});
+}
+f.addEventListener('submit',e=>{e.preventDefault();build()});f.addEventListener('reset',()=>setTimeout(()=>res.classList.remove('show'),0));
+function plain(){return document.getElementById('summary').innerText.replace(/\n{3,}/g,'\n\n').trim()}
+document.getElementById('printReport').addEventListener('click',()=>window.print());
+document.getElementById('downloadTxt').addEventListener('click',()=>{const blob=new Blob([plain()],{type:'text/plain;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='AML_跨系統轉銜評估與建議報告.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});
+document.getElementById('downloadDoc').addEventListener('click',()=>{const content=`<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:Microsoft JhengHei,Arial,sans-serif;line-height:1.6;color:#222}h1,h2,h3{color:#17324f}table{border-collapse:collapse;width:100%;margin:10px 0}th,td{border:1px solid #bbb;padding:7px;text-align:left;vertical-align:top}th{background:#eee}</style></head><body>${document.getElementById('summary').innerHTML}</body></html>`;const blob=new Blob(['\ufeff',content],{type:'application/msword'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='AML_跨系統轉銜評估與建議報告.doc';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)});
+document.getElementById('copySummary').addEventListener('click',async e=>{try{await navigator.clipboard.writeText(plain());e.target.textContent='已複製 ✓';setTimeout(()=>e.target.textContent='複製報告文字',1500)}catch{e.target.textContent='瀏覽器未允許複製'}});
+})();
+</script>
+</body></html>
