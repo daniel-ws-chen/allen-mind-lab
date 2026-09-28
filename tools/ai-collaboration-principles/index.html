@@ -33,7 +33,7 @@
 {"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://allenmindlab.com/tools/ai-collaboration-principles/#webpage","url":"https://allenmindlab.com/tools/ai-collaboration-principles/","name":"我的 AI 共作原則｜AML Interactive Lab","description":"整合 AI 分工與判斷挑戰結果，形成一張可帶回工作、學習與創作的人機共作原則卡。","inLanguage":"zh-Hant","isPartOf":{"@id":"https://allenmindlab.com/#website"},"mainEntity":{"@id":"https://allenmindlab.com/tools/ai-collaboration-principles/#learning-resource"}},{"@type":"WebSite","@id":"https://allenmindlab.com/#website","url":"https://allenmindlab.com/","name":"Allen Mind Lab","inLanguage":"zh-Hant"},{"@type":"LearningResource","@id":"https://allenmindlab.com/tools/ai-collaboration-principles/#learning-resource","url":"https://allenmindlab.com/tools/ai-collaboration-principles/","name":"我的 AI 共作原則｜AML Interactive Lab","description":"整合 AI 分工與判斷挑戰結果，形成一張可帶回工作、學習與創作的人機共作原則卡。","inLanguage":"zh-Hant","learningResourceType":"Reflection tool","educationalUse":"reflection","isAccessibleForFree":true}]}
 </script>
 </head><body>
-<nav class="aml-lab-shell-nav" aria-label="Interactive Lab 頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/ai/">← 回 AI 共作館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">Interactive Lab 總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
+<nav class="aml-lab-shell-nav" aria-label="互動實驗室頁面導覽"><a class="aml-lab-shell-nav__back" href="/tools/ai/">← 回 AI 共作館</a><div class="aml-lab-shell-nav__links"><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></div></nav>
 <main class="wrap"><section class="hero"><div class="eyebrow">AI CO-CREATION SYNTHESIS</div><h1>我的 AI 共作原則</h1><p>這不是另一個 AI 測驗，而是把「我怎麼和 AI 分工」以及「我怎麼判斷 AI 的答案」收束成一張可以帶回工作、學習與創作的原則卡。</p></section>
 <section class="status"><div><b>初階｜AI 分工傾向</b><div id="initStatus"></div></div><div><b>進階｜AI 判斷防線</b><div id="advStatus"></div></div></section>
 <section class="principles" id="rules"></section>
@@ -50,6 +50,6 @@ if(j){const p=j.percent||{},arr=[['證據查證',p.e||0],['推論邊界',p.i||0]
 if(!rules.length)rules.push(['先完成體驗','完成初階或進階任一關後，這裡會自動整理你的個人原則，不需要再答一次題目。']);
 $('rules').innerHTML=rules.map((r,i)=>`<article class="rule"><div class="num">${String(i+1).padStart(2,'0')}</div><div><h2>${r[0]}</h2><p>${r[1]}</p></div></article>`).join('');
 })();
-</script><script src="/aml-site.js"></script>
-<footer class="aml-lab-mini-footer"><div><strong>AML Interactive Lab · AI 共作館</strong><span>AI 可以協助思考，但責任不能外包。</span></div><nav><a href="/tools/ai/">回 AI 共作館</a><a href="/tools.html">Interactive Lab 總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></nav></footer>
+</script><script defer src="/aml-site.js"></script>
+<footer class="aml-lab-mini-footer"><div><strong>AML Interactive Lab · AI 共作館</strong><span>AI 可以協助思考，但責任不能外包。</span></div><nav><a href="/tools/ai/">回 AI 共作館</a><a href="/tools.html">互動實驗室總館</a><a href="/index.html#aml-map">AML 首頁地圖</a></nav></footer>
 </body></html>
