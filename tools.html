@@ -1033,6 +1033,37 @@
 @media(max-width:620px){#practice-tools .support-xier-guide__avatar{min-height:0}#practice-tools .support-xier-guide__avatar img{width:76px!important;height:76px!important}#practice-tools .support-xier-guide__halo{width:92px!important;height:92px!important;left:-8px!important;top:-8px!important}}
 </style>
 
+
+<style id="aml-wish-sparkle-v27">
+/* AML Wish sparkle */
+.wish-community__mark{position:relative;isolation:isolate;animation:amlWishFloat 3.4s ease-in-out infinite, amlWishGlow 2.6s ease-in-out infinite;transform-origin:center center}
+.wish-community__mark::before,.wish-community__mark::after{content:"✦";position:absolute;color:rgba(199,167,106,.72);pointer-events:none;text-shadow:0 0 12px rgba(199,167,106,.32)}
+.wish-community__mark::before{font-size:.72rem;right:-8px;top:6px;animation:amlWishTwinkle 1.9s ease-in-out infinite}
+.wish-community__mark::after{font-size:.58rem;left:-6px;bottom:8px;animation:amlWishTwinkle 2.4s ease-in-out infinite .55s}
+.wish-btn{position:relative;overflow:hidden}
+.wish-btn::after{content:"✨";margin-left:8px;display:inline-block;animation:amlWishTwinkle 2.2s ease-in-out infinite}
+@keyframes amlWishFloat{0%,100%{transform:rotate(-4deg) translateY(0)}50%{transform:rotate(-2deg) translateY(-3px)}}
+@keyframes amlWishGlow{0%,100%{box-shadow:0 8px 20px rgba(80,63,31,.08),0 0 0 rgba(231,196,118,0)}50%{box-shadow:0 10px 24px rgba(80,63,31,.12),0 0 18px rgba(231,196,118,.22)}}
+@keyframes amlWishTwinkle{0%,100%{opacity:.45;transform:scale(.88)}50%{opacity:1;transform:scale(1.18)}}
+@media (prefers-reduced-motion:reduce){.wish-community__mark,.wish-community__mark::before,.wish-community__mark::after,.wish-btn::after{animation:none!important}}
+</style>
+
+<style id="aml-wish-hover-v28">
+/* AML Wish micro-interaction card */
+.wish-community{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+.wish-community::before,.wish-community::after{transition:transform .28s ease,opacity .28s ease}
+.wish-community:hover{transform:translateY(-3px);border-color:#d8bf88;box-shadow:0 18px 38px rgba(80,63,31,.11);background:linear-gradient(135deg,#fffaf2 0%,#fffdf8 58%,#f8f1e3 100%)}
+.wish-community:hover::before{transform:scale(1.05) translate(-4px,4px);opacity:.95}
+.wish-community:hover::after{transform:scale(1.08) translate(3px,-2px);opacity:.95}
+.wish-community:hover .wish-community__mark{animation-duration:2.6s,1.8s}
+.wish-community:hover .wish-btn{transform:translateY(-1px);box-shadow:0 10px 22px rgba(80,63,31,.12);background:#fbf1dd}
+.wish-community:hover .wish-link{text-decoration:underline;text-underline-offset:3px}
+.wish-btn{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+.wish-link{transition:color .18s ease,text-underline-offset .18s ease}
+.wish-community__copy,.wish-community__quote{transition:opacity .2s ease}
+.wish-community:hover .wish-community__quote{color:#7a5a22}
+@media (prefers-reduced-motion:reduce){.wish-community,.wish-community::before,.wish-community::after,.wish-btn,.wish-link,.wish-community__copy,.wish-community__quote{transition:none!important}.wish-community:hover{transform:none!important}}
+</style>
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
 <details class="aml-nav-group"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
