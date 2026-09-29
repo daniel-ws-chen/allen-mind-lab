@@ -320,9 +320,12 @@
 }
 .aml-topic-halls__head{margin-bottom:34px}
 .aml-topic-halls__head .title{max-width:660px}
-.aml-topic-halls__grid--seven{grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
-.aml-topic-halls__grid--seven .aml-topic-hall{grid-column:span 3;min-height:245px}
-.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(n+5){grid-column:span 4}
+.aml-topic-halls__grid--seven{grid-template-columns:repeat(8,minmax(0,1fr));gap:18px}
+.aml-topic-halls__grid--seven .aml-topic-hall{grid-column:span 2;min-height:245px}
+/* Keep all seven topic cards the same width; center the second row (3 cards). */
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(5){grid-column:2 / span 2}
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(6){grid-column:4 / span 2}
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(7){grid-column:6 / span 2}
 .aml-topic-hall{
   --topic-accent:#315d8b;--topic-soft:#eef4f8;
   position:relative;overflow:hidden;padding:26px 25px 24px;border-radius:22px;
@@ -360,7 +363,10 @@
 .aml-choice-strip__inner{border-radius:26px;padding:34px 36px;background:linear-gradient(135deg,#fff 0%,#fbf7ef 100%);border:1px solid #e8decd;box-shadow:0 12px 30px rgba(15,23,42,.045)}
 @media(max-width:1080px){
   .aml-topic-halls__grid--seven{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .aml-topic-halls__grid--seven .aml-topic-hall,.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(n+5){grid-column:auto}
+  .aml-topic-halls__grid--seven .aml-topic-hall,
+  .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(5),
+  .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(6),
+  .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(7){grid-column:auto}
 }
 @media(max-width:620px){
   .aml-topic-halls__grid--seven{grid-template-columns:1fr;gap:14px}
