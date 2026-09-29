@@ -90,6 +90,19 @@ if (!existsSync(manifestPath)) {
       if (dupes.length) addError(`Series '${seriesId}' contains duplicate item(s): ${[...new Set(dupes)].join(', ')}`);
     }
 
+    // Search index should contain every published article and point only to valid local pages.
+    const searchIndexPath = join(root,'search-index.js');
+    if (existsSync(searchIndexPath)) {
+      const si = text(searchIndexPath);
+      const missing = articles.filter(a => !si.includes(a.articlePath));
+      if (missing.length) addError(`Search index missing ${missing.length} published article(s): ${missing.map(x=>x.slug).join(', ')}`);
+      else addOk('All manifest articles are present in search-index.js.');
+      const urls = [...si.matchAll(/\"url\":\"([^\"]+)\"/g)].map(m=>m[1]);
+      const brokenSearch = urls.filter(href => { const p=localPathFromHref(href); return p && !existsSync(p); });
+      if (brokenSearch.length) addError(`Search index contains broken local URL(s): ${[...new Set(brokenSearch)].join(', ')}`);
+      else addOk('No broken local URLs detected in search-index.js.');
+    } else addWarn('search-index.js missing; site-wide search cannot be validated.');
+
     const sitemapPath = join(root,'sitemap.xml');
     if (existsSync(sitemapPath)) {
       const sm = text(sitemapPath);

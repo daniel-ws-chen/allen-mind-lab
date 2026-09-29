@@ -266,6 +266,15 @@ function prepare(c){
   // sitemap/rss
   if(c.sitemap) write(join(changes,'sitemap.xml'),updateSitemap(read(join(root,'sitemap.xml')),c));
   if(c.rss) write(join(changes,'rss.xml'),updateRss(read(join(root,'rss.xml')),c));
+  // Search index: always regenerate from the staged manifest so every published article is searchable.
+  {
+    const searchScript=join(root,'generate-search-index.mjs');
+    if(existsSync(searchScript)){
+      const r=spawnSync(process.execPath,[searchScript,'--site-root',root,'--manifest',join(changes,'data','articles-manifest.json'),'--output',join(changes,'search-index.js')],{cwd:root,encoding:'utf8'});
+      process.stdout.write(r.stdout||''); process.stderr.write(r.stderr||'');
+      if(r.status!==0) die('Search index generation failed. Nothing was applied.');
+    } else warn('generate-search-index.mjs not found; search-index.js was not regenerated.');
+  }
   // Reciprocal previous
   if(c.reciprocalPrevious && c.navigation.previous){
     const prev=m.articles.find(a=>a.slug===c.navigation.previous.slug); if(!prev) die(`Previous slug not found: ${c.navigation.previous.slug}`);
@@ -282,7 +291,8 @@ function prepare(c){
     `Reading paths: ${c.readingPaths.length?c.readingPaths.map(r=>`${READING_PATHS[r.id].label} / Stage ${r.stage}`).join(', '):'none'}`,
     `Homepage featured: ${c.homepageFeatured?'YES':'no'}`,
     `RSS: ${c.rss?'YES':'no'}`,
-    `Sitemap: ${c.sitemap?'YES':'no'}`
+    `Sitemap: ${c.sitemap?'YES':'no'}`,
+    `Search index: AUTO`
   ];
   write(join(stage,'PUBLISH_PLAN.txt'),`AML 2.0 publish plan\nslug: ${c.slug}\nprepared: ${nowIso()}\n\n${plan.join('\n')}\n`);
   write(join(stage,'CHANGELOG.txt'),`AML 2.0 semi-auto publish\nslug: ${c.slug}\nprepared: ${nowIso()}\n\nFiles:\n${listFiles(changes).join('\n')}\n`);
