@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-29T15:34:45.264Z",
+  "generatedAt": "2026-09-29T16:21:23.813Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 54,
+    "total": 55,
     "ot": 23,
     "mind": 14,
     "pbs": 14,
-    "education": 10,
-    "management": 27,
-    "ai": 16,
+    "education": 11,
+    "management": 28,
+    "ai": 17,
     "notes": 7
   },
   "featuredReading": [
@@ -79,6 +79,51 @@
   },
   "articles": [
     {
+      "slug": "ot-management-ai-self-study-platform",
+      "title": "運用生成式 AI 打造職能治療管理學線上自學平台",
+      "summary": "把閱讀、小測驗與基礎知識確認留在線上，學生依自己的節奏先完成課前學習，再帶著知識與提問走進教室，把珍貴的100分鐘留給討論、合作、判斷與應用。",
+      "date": "2026-09-29",
+      "domains": [
+        "education",
+        "management",
+        "ai"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [
+        "management",
+        "ai"
+      ],
+      "tag": "Education × Management × AI",
+      "cardMeta": "2026.09.29 · Education × Management & Leadership × AI × Practice",
+      "keywords": [
+        "生成式AI",
+        "職能治療管理學",
+        "線上自學",
+        "自主學習",
+        "翻轉學習",
+        "主動學習",
+        "自我調節學習",
+        "教學創新"
+      ],
+      "articlePath": "/articles/ot-management-ai-self-study-platform.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-ai-self-study-platform",
+      "hero": "/images/articles/ot-management-ai-self-study-platform-hero.webp",
+      "ogImage": "/images/articles/ot-management-ai-self-study-platform-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 100位同學的100分鐘大挑戰：公民咖啡館十桌會診 × AI協作下的職能治療管理學課程實作",
+          "href": "/articles/ot-management-world-cafe-ai-collaboration.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "ot-management-world-cafe-ai-collaboration",
       "title": "100位同學的100分鐘大挑戰：公民咖啡館十桌會診 × AI協作下的職能治療管理學課程實作",
       "summary": "面對100位學生與100分鐘的大型課堂，我嘗試結合公民咖啡館、十桌十主題的同儕專家會診，以及方案規劃管理智能助理2.0，讓AI負責課前與課後的整理，把珍貴的實體課堂留給對話、質疑、協作與判斷。",
@@ -119,6 +164,11 @@
           "kind": "previous",
           "label": "上一篇 ← 塑造有利於 PBS 推動的照顧環境",
           "href": "/articles/pbs-supportive-care-environment.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 運用生成式 AI 打造職能治療管理學線上自學平台 →",
+          "href": "/articles/ot-management-ai-self-study-platform.html"
         }
       ],
       "readingPaths": [],
