@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Allen Chen 陳威勝 | About Allen Mind Lab</title>
-<meta content="Allen Chen 陳威勝的專業背景與 Allen Mind Lab 核心理念，從職能治療、PBS、管理、教育到 AI 實踐，探索理解人、支持改變與建立系統。" name="description"/>
+<meta content="認識 Allen Mind Lab：從職能治療、PBS、管理、教育與 AI 實踐出發，串連文章閱讀、互動探索、進階自學與智能支援，讓知識回到真實生活與專業現場。" name="description"/>
 <style>
 :root{
   --navy:#0d1b2a;
@@ -558,6 +558,74 @@ section{padding:92px 8vw}
   .aml-footer-links{grid-template-columns:1fr}
 }
 
+
+/* ===== AML Today · Four Roles ===== */
+.aml-today{
+  background:linear-gradient(180deg,#f8f5ee 0%,#fffdf9 100%);
+}
+.aml-today-head{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  gap:42px;
+  align-items:end;
+}
+.aml-today-note{
+  padding:22px 24px;
+  border-radius:18px;
+  background:#0f2438;
+  color:#dbe5ed;
+  border:1px solid rgba(199,167,106,.25);
+}
+.aml-today-note strong{color:var(--gold2)}
+.aml-role-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:38px;
+}
+.aml-role-card{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-height:285px;
+  padding:26px;
+  border-radius:22px;
+  border:1px solid var(--line);
+  background:white;
+  box-shadow:0 12px 30px rgba(15,23,42,.045);
+  transition:.22s ease;
+}
+.aml-role-card:before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto;
+  height:5px;
+  background:var(--role-accent,#c7a76a);
+}
+.aml-role-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(15,23,42,.08)}
+.aml-role-card:nth-child(1){--role-accent:#b88a3b;background:linear-gradient(180deg,#fffaf0,#fff)}
+.aml-role-card:nth-child(2){--role-accent:#2f7d77;background:linear-gradient(180deg,#f0fbf9,#fff)}
+.aml-role-card:nth-child(3){--role-accent:#4b6fa8;background:linear-gradient(180deg,#f2f6fc,#fff)}
+.aml-role-card:nth-child(4){--role-accent:#76588f;background:linear-gradient(180deg,#f8f2fb,#fff)}
+.aml-role-index{
+  color:var(--role-accent);
+  font-weight:900;
+  font-size:.78rem;
+  letter-spacing:.13em;
+}
+.aml-role-card h3{margin:12px 0 8px;color:var(--navy);font-size:1.28rem}
+.aml-role-card p{margin:0;color:var(--muted);font-size:.95rem}
+.aml-role-link{
+  margin-top:auto;
+  padding-top:20px;
+  color:var(--navy);
+  font-weight:800;
+}
+.aml-role-link span{color:var(--role-accent)}
+@media(max-width:1100px){.aml-role-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.aml-today-head,.aml-role-grid{grid-template-columns:1fr}.aml-role-card{min-height:0}}
+
 /* ===== About vNext ===== */
 .why-aml{
   background:#fffdf9;
@@ -750,13 +818,13 @@ section{padding:92px 8vw}
 <meta content="website" property="og:type"/>
 <meta content="Allen Mind Lab" property="og:site_name"/>
 <meta content="Allen Chen 陳威勝 | About Allen Mind Lab" property="og:title"/>
-<meta content="Allen Chen 陳威勝的專業背景與 Allen Mind Lab 核心理念，從職能治療、PBS、管理、教育到 AI 實踐，探索理解人、支持改變與建立系統。" property="og:description"/>
+<meta content="認識 Allen Mind Lab：從職能治療、PBS、管理、教育與 AI 實踐出發，串連文章閱讀、互動探索、進階自學與智能支援，讓知識回到真實生活與專業現場。" property="og:description"/>
 <meta content="https://allenmindlab.com/about" property="og:url"/>
 <meta content="https://allenmindlab.com/images/aml-core-framework.png" property="og:image"/>
 <meta content="Allen Mind Lab 一核三層六域核心架構" property="og:image:alt"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <meta content="Allen Chen 陳威勝 | About Allen Mind Lab" name="twitter:title"/>
-<meta content="Allen Chen 陳威勝的專業背景與 Allen Mind Lab 核心理念，從職能治療、PBS、管理、教育到 AI 實踐。" name="twitter:description"/>
+<meta content="認識 Allen Mind Lab：串連閱讀、互動、自學與 AI 支援，讓知識回到真實生活與專業現場。" name="twitter:description"/>
 <meta content="https://allenmindlab.com/images/aml-core-framework.png" name="twitter:image"/>
 <meta content="Allen Mind Lab 一核三層六域核心架構" name="twitter:image:alt"/>
 <link href="aml-site.css" rel="stylesheet"/>
@@ -838,9 +906,9 @@ border-radius:999px;background:#f5f0e6;color:#71562d;font-size:.82rem;font-weigh
 <div class="eyebrow">About Allen Mind Lab</div>
 <h1>從理解人，<br/>到支持改變，<br/>再到建立系統。</h1>
 <p>
-      Allen Mind Lab 不是六個彼此分離的主題，而是一個從人出發、持續生長的知識與實踐空間。
-      我們從生活、參與與內在狀態理解人，透過專業實踐支持改變，
-      再以教育、管理與 AI，讓好的方法能被學習、被承接，也被延伸。
+      Allen Mind Lab 是一個從人出發、持續生長的知識與實踐空間。
+      從文章閱讀、主題探索，到互動體驗、進階自學與 AI 支援，
+      AML 希望把專業知識整理成更容易理解、練習與帶回現場使用的形式。
     </p>
 </div>
 <div class="hero-quote">
@@ -932,6 +1000,48 @@ border-radius:999px;background:#f5f0e6;color:#71562d;font-size:.82rem;font-weigh
 <p>透過文章、教學、工具與交流，把想法從腦中帶到現場，持續接受回饋並重新優化。</p>
 </article>
 </div>
+</section>
+<section class="aml-today" id="aml-today">
+  <div class="aml-today-head">
+    <div>
+      <div class="eyebrow">AML Today</div>
+      <h2 class="section-title">現在的 AML，不只是一個文章網站。</h2>
+      <p class="section-lead">
+        隨著內容與工具逐步成熟，AML 目前以四種方式陪讀者探索：先讀懂問題、再透過互動練習，
+        需要更完整學習時進入自學系統，遇到複雜任務時則使用 AI 智能工具協作。
+      </p>
+    </div>
+    <div class="aml-today-note">
+      <strong>一個網站，四種使用方式。</strong><br/>
+      不必一次走完所有內容；從你現在最需要的一種方式開始即可。
+    </div>
+  </div>
+  <div class="aml-role-grid">
+    <a class="aml-role-card" href="/reading-paths.html">
+      <div class="aml-role-index">01 · READ</div>
+      <h3>閱讀｜找一條適合的路</h3>
+      <p>從主題館藏與閱讀路徑開始，把零散資訊整理成可以理解與延伸的脈絡。</p>
+      <div class="aml-role-link">前往閱讀路徑 <span>→</span></div>
+    </a>
+    <a class="aml-role-card" href="/tools.html#lab-halls">
+      <div class="aml-role-index">02 · EXPLORE</div>
+      <h3>互動｜把理解變成練習</h3>
+      <p>透過情境題、互動探索與小任務，把抽象概念放回真實判斷與選擇之中。</p>
+      <div class="aml-role-link">進入互動探索艙 <span>→</span></div>
+    </a>
+    <a class="aml-role-card" href="/self-study.html">
+      <div class="aml-role-index">03 · LEARN</div>
+      <h3>自學｜走一段完整學習歷程</h3>
+      <p>管理學與 PBS 提供較完整的進階自學流程，讓閱讀、練習、總複習與學習成果彼此連結。</p>
+      <div class="aml-role-link">前往進階自學室 <span>→</span></div>
+    </a>
+    <a class="aml-role-card" href="/tools.html#practice-tools">
+      <div class="aml-role-index">04 · COLLABORATE</div>
+      <h3>AI 支援｜讓工具協助整理複雜任務</h3>
+      <p>以智能助理協助分析、規劃與整理初稿；AI 負責協作，人仍保留專業判斷與最後決定。</p>
+      <div class="aml-role-link">前往智能支援艙 <span>→</span></div>
+    </a>
+  </div>
 </section>
 <section class="aml-perspective-note" id="how-aml-sees-people">
 <div class="aml-perspective-note__inner">
@@ -1140,12 +1250,12 @@ border-radius:999px;background:#f5f0e6;color:#71562d;font-size:.82rem;font-weigh
 <article class="aml-evolution-stage aml-evolution-stage--current">
   <div class="aml-evolution-version">3.3</div>
   <div>
-    <h3>中秋升級｜曦兒參謀長正式上線 <span>2026.09</span></h3>
-    <p>完成四館互動路徑、結果收束與學習摘要後，曦兒也從幕後協作參謀正式走到前台，成為 AML 首頁地圖中的隱藏式導航角色。讀者可以從自己正在面對的困擾或需求出發，由曦兒協助導向 AML 既有文章、互動工具與學習入口；若目前沒有足夠貼近的內容，則改引導至聯絡資訊或外部資源，不勉強替使用者分類。</p>
+    <h3>中秋升級｜從內容網站走向學習平台 <span>2026.09</span></h3>
+    <p>在既有文章與主題館藏之上，逐步串起閱讀路徑、互動實驗室、進階自學室、My AML 學習總覽與智能支援艙。曦兒參謀長則從幕後協作角色走到首頁導航，協助讀者從自己的需求出發，找到適合的文章、工具與學習入口。</p>
   </div>
 </article>
     </div>
-    <p class="aml-evolution-quote">文章拓展知識的廣度，互動增加理解的深度；到了 3.3，曦兒參謀長正式上線，開始在 AML 裡陪讀者找方向。</p>
+    <p class="aml-evolution-quote">文章建立知識的廣度，互動增加理解的深度；到了 3.3，閱讀、互動、自學與 AI 支援逐步串成一套可以持續探索的 AML 學習體驗。</p>
   </div>
 </section>
 <section class="chief-section" id="chief-of-staff">
@@ -1182,8 +1292,9 @@ border-radius:999px;background:#f5f0e6;color:#71562d;font-size:.82rem;font-weigh
 <h2>Building A Meaningful Life.</h2>
 <p>ALLEN MIND LAB</p>
 <div class="about-actions">
-<a class="btn" href="articles.html">Explore Articles →</a>
-<a class="btn-secondary" href="contact.html">Contact AML →</a>
+<a class="btn" href="reading-paths.html">從閱讀路徑開始 →</a>
+<a class="btn-secondary" href="resources.html">探索精選資源 →</a>
+<a class="btn-secondary" href="contact.html">聯繫 AML →</a>
 <a class="btn-secondary" href="index.html">← 回到首頁</a>
 </div>
 </section>
