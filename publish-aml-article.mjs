@@ -317,7 +317,12 @@ function validateStage(c){
   const preview=join(stage,'preview-site'); copyRepoForPreview(preview); overlay(changes,preview);
   const r=spawnSync(process.execPath,['validate-aml.mjs'],{cwd:preview,encoding:'utf8'}); process.stdout.write(r.stdout||''); process.stderr.write(r.stderr||'');
   if(r.status!==0) die('Validation failed. Live site remains unchanged.',r.status||1);
-  ok('Preview validation passed. Live site remains unchanged.');
+  const searchAudit=join(preview,'audit-search-index.mjs');
+  if(existsSync(searchAudit)){
+    const a=spawnSync(process.execPath,[searchAudit,'--site-root',preview],{cwd:preview,encoding:'utf8'}); process.stdout.write(a.stdout||''); process.stderr.write(a.stderr||'');
+    if(a.status!==0) die('Search regression audit failed. Live site remains unchanged.',a.status||1);
+  } else warn('audit-search-index.mjs not found; search regression audit was skipped.');
+  ok('Preview validation and search regression audit passed. Live site remains unchanged.');
 }
 function apply(c,yes){ if(!yes) die('Apply requires explicit --yes. Nothing was changed.'); const changes=join(stagePath(c),'changes'); if(!existsSync(changes)) die('No staged changes. Run prepare first.'); overlay(changes,root); ok(`Applied ${listFiles(changes).length} staged file(s) to repository.`); }
 function packageStage(c){
