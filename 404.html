@@ -1,12 +1,82 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404｜Allen Mind Lab</title><meta name="description" content="Allen Mind Lab 找不到此頁。返回首頁或使用 AML 站內搜尋繼續探索。"><style>
-:root{--navy:#071a33;--navy2:#0d294a;--gold:#c7a76a;--cream:#f6f1e7;--ink:#142031;--muted:#657081;--white:#fff}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fbfaf7;line-height:1.75}
-a{color:inherit}.nav{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px 5vw;background:rgba(7,26,51,.96);color:#fff;backdrop-filter:blur(8px)}
-.brand{text-decoration:none;font-weight:800;letter-spacing:.14em}.links{display:flex;gap:18px;flex-wrap:wrap}.links a{text-decoration:none;font-size:.92rem;opacity:.88}.links a:hover{color:var(--gold)}
-.hero{padding:100px 7vw 80px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}.kicker{color:var(--gold);font-weight:700;letter-spacing:.18em;text-transform:uppercase}.hero h1{font-size:clamp(2.5rem,6vw,5.5rem);line-height:1.04;margin:.2em 0}.hero p{max-width:800px;font-size:1.15rem;color:#dfe7f1}
-.wrap{max-width:1120px;margin:auto;padding:72px 6vw}.lead{font-size:1.35rem;max-width:850px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:38px}.card{background:#fff;border:1px solid #e6e0d4;border-radius:18px;padding:28px;box-shadow:0 12px 35px rgba(9,24,45,.06)}.card h3{margin-top:0;color:var(--navy)}.quote{font-size:1.45rem;border-left:4px solid var(--gold);padding:10px 0 10px 24px;margin:42px 0;color:var(--navy)}
-.tag{display:inline-block;padding:5px 10px;border:1px solid #d9c79f;border-radius:999px;color:#7a6030;margin-right:6px;font-size:.82rem}.footer{background:#06172d;color:#e7edf5;padding:50px 7vw;display:grid;grid-template-columns:2fr 1fr;gap:30px}.footer strong{color:var(--gold);font-size:1.35rem}.footlinks{display:grid;gap:8px}.footlinks a{text-decoration:none}.copyright{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;color:#a9b4c2;font-size:.88rem}
-.btn{display:inline-block;text-decoration:none;background:var(--gold);color:#081a30;padding:11px 18px;border-radius:999px;font-weight:700;margin-top:12px}
-@media(max-width:820px){.nav{align-items:flex-start;flex-direction:column;gap:12px}.links{gap:10px}.grid{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.hero{padding-top:70px}}
-</style><link rel="icon" href="favicon.svg" type="image/svg+xml">
-</head><body><header class="hero"><div class="kicker">404</div><h1>這一頁還在探索中。</h1><p>您要找的內容可能已移動，或尚未公開。</p><a class="btn" href="/">回到 Allen Mind Lab</a> <a class="btn" href="/search.html" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)">搜尋 AML</a></header></body></html>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404｜Allen Mind Lab</title>
+<meta name="description" content="Allen Mind Lab 找不到此頁。可回到首頁、使用站內搜尋，或從閱讀路徑與完整文章館藏繼續探索。">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{--navy:#071a33;--navy2:#0d294a;--gold:#c7a76a;--cream:#f6f1e7;--ink:#142031;--muted:#657081;--white:#fff;--line:#e5ded0}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fbfaf7;line-height:1.75}
+a{color:inherit}
+.hero{min-height:62vh;display:flex;align-items:center;padding:84px 7vw 74px;background:
+radial-gradient(circle at 78% 24%,rgba(199,167,106,.18),transparent 24%),
+radial-gradient(circle at 15% 72%,rgba(76,139,166,.16),transparent 28%),
+linear-gradient(135deg,#06172d 0%,#0a2442 56%,#102e50 100%);color:#fff;overflow:hidden;position:relative}
+.hero::after{content:"404";position:absolute;right:5vw;bottom:-.22em;font-size:clamp(9rem,23vw,22rem);font-weight:900;line-height:1;color:rgba(255,255,255,.035);letter-spacing:-.08em;pointer-events:none}
+.hero-inner{width:min(1180px,100%);margin:auto;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:64px;align-items:center;position:relative;z-index:1}
+.kicker{color:var(--gold);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.86rem}
+.hero h1{font-size:clamp(2.8rem,5.8vw,5.7rem);line-height:1.03;margin:.16em 0 .22em;letter-spacing:-.045em}
+.hero p{max-width:760px;font-size:1.12rem;color:#dfe7f1;margin:0 0 26px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;padding:12px 18px;border-radius:999px;font-weight:800;transition:.2s ease;border:1px solid transparent}.btn-primary{background:var(--gold);color:#081a30}.btn-secondary{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.28)}.btn:hover{transform:translateY(-1px)}
+.orbit{min-height:300px;position:relative;display:grid;place-items:center}.star{width:154px;height:154px;border-radius:50%;display:grid;place-items:center;font-size:3rem;background:radial-gradient(circle at 34% 28%,#fff9df 0 6%,#efd99b 18%,#c6a566 54%,#76582f 100%);box-shadow:0 0 0 16px rgba(255,255,255,.035),0 0 70px rgba(199,167,106,.22)}
+.orbit::before,.orbit::after{content:"";position:absolute;border:1px solid rgba(255,255,255,.14);border-radius:50%;inset:46px 6px;transform:rotate(-14deg)}.orbit::after{inset:18px -18px;transform:rotate(18deg);border-color:rgba(199,167,106,.16)}
+.wrap{max-width:1180px;margin:auto;padding:62px 6vw 76px}.eyebrow{font-size:.83rem;letter-spacing:.16em;text-transform:uppercase;color:#8b7443;font-weight:800}.section-title{font-size:clamp(1.9rem,3.5vw,3rem);line-height:1.15;margin:.25em 0 .35em}.lead{max-width:820px;color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:34px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 12px 34px rgba(9,24,45,.055);text-decoration:none;transition:.2s ease;min-height:210px;display:flex;flex-direction:column}.card:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(9,24,45,.09)}.card .icon{font-size:1.65rem}.card h2{font-size:1.2rem;margin:.55em 0 .35em;color:var(--navy)}.card p{margin:0;color:var(--muted);font-size:.96rem}.card .go{margin-top:auto;padding-top:18px;color:#8a6a2d;font-weight:800}.hint{margin-top:28px;background:#f5f0e7;border:1px solid #e6dcc7;border-radius:16px;padding:18px 20px;color:#655c50}.hint strong{color:var(--navy)}
+.footer{background:#06172d;color:#dfe8f3;padding:38px 7vw}.footer-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}.footer a{text-decoration:none}.footer .brand{font-weight:800;letter-spacing:.08em;color:#fff}.footer small{color:#9eabba}
+@media(max-width:900px){.hero{min-height:auto;padding:68px 6vw 58px}.hero-inner{grid-template-columns:1fr;gap:28px}.orbit{min-height:190px}.star{width:112px;height:112px;font-size:2.2rem}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.hero h1{font-size:clamp(2.4rem,13vw,4rem)}.actions{flex-direction:column}.btn{width:100%}.orbit{display:none}.grid{grid-template-columns:1fr}.wrap{padding:46px 5vw 58px}.card{min-height:auto}.footer-inner{align-items:flex-start;flex-direction:column}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.card{transition:none}.btn:hover,.card:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="kicker">Lost in AML · 404</div>
+      <h1>好像走到<br>還沒有開放的艙門。</h1>
+      <p>這個網址可能已移動、改名，或還沒正式公開。不必原路折返，從搜尋、閱讀路徑或館藏繼續探索就好。</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="/">回到 AML 首頁</a>
+        <a class="btn btn-secondary" href="/search.html">🔎 搜尋 AML</a>
+      </div>
+    </div>
+    <div class="orbit" aria-hidden="true"><div class="star">✦</div></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="eyebrow">Continue Exploring</div>
+  <h2 class="section-title">迷路也沒關係，換一條路繼續。</h2>
+  <p class="lead">如果你記得自己原本想找的是文章、主題或學習內容，可以直接從下面三個入口重新接上。</p>
+
+  <div class="grid">
+    <a class="card" href="/search.html">
+      <div class="icon">🔎</div>
+      <h2>搜尋整個 AML</h2>
+      <p>直接輸入 PBS、ADHD、AI、管理、職能治療或其他關鍵字。</p>
+      <div class="go">開始搜尋 →</div>
+    </a>
+    <a class="card" href="/reading-paths.html">
+      <div class="icon">🧭</div>
+      <h2>從閱讀路徑開始</h2>
+      <p>還不確定要找哪一篇？先依目前問題與學習方向選一條路。</p>
+      <div class="go">查看閱讀路徑 →</div>
+    </a>
+    <a class="card" href="/library.html">
+      <div class="icon">📚</div>
+      <h2>回到完整文章館藏</h2>
+      <p>直接瀏覽 AML 的完整文章清單，再依主題慢慢找回原本的內容。</p>
+      <div class="go">瀏覽館藏 →</div>
+    </a>
+  </div>
+
+  <div class="hint"><strong>從舊連結進來？</strong> 如果這個網址是從書籤、社群貼文或舊文章點進來，可以先用站內搜尋輸入原本的文章名稱或關鍵字，通常比較快找到新版位置。</div>
+</main>
+
+<footer class="footer"><div class="footer-inner"><a class="brand" href="/">ALLEN MIND LAB</a><small>迷路只是換一條路，不是停止探索。</small></div></footer>
+</body>
+</html>
