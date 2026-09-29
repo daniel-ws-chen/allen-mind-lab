@@ -91,7 +91,7 @@
 .labx-progress__head p{margin:0;color:#8fa9b8;max-width:760px;font-size:.9rem}
 .labx-progress__count{min-width:110px;text-align:right}
 .labx-progress__count strong{display:block;font:900 2rem/1 Arial,sans-serif;color:#70e7f7;text-shadow:0 0 18px rgba(112,231,247,.25)}
-.labx-progress__count span{font-size:.68rem;color:#7693a2;letter-spacing:.08em;text-transform:uppercase}
+.labx-progress__count span{font-size:.68rem;color:#7693a2;letter-spacing:.08em;text-transform:uppercase}.labx-progress__count .labx-myaml-cta{display:inline-flex;align-items:center;justify-content:center;margin-top:12px;min-height:38px;padding:8px 13px;border:1px solid rgba(112,231,247,.46);border-radius:999px;background:linear-gradient(135deg,rgba(112,231,247,.12),rgba(152,117,236,.12));color:#e8fbff;text-decoration:none;font:900 .78rem/1 system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap;box-shadow:0 8px 20px rgba(0,0,0,.14);transition:.18s ease}.labx-progress__count .labx-myaml-cta:hover,.labx-progress__count .labx-myaml-cta:focus-visible{border-color:#70e7f7;background:linear-gradient(135deg,rgba(112,231,247,.2),rgba(152,117,236,.18));transform:translateY(-1px);outline:none}.labx-progress__count .labx-myaml-cta:active{transform:translateY(0)}
 .labx-progress__bar{height:11px;margin:18px 0 20px;background:#102733;border:1px solid rgba(106,198,231,.12);border-radius:999px;overflow:hidden;box-shadow:inset 0 0 12px rgba(0,0,0,.38)}
 .labx-progress__bar i{display:block;width:0;height:100%;background:linear-gradient(90deg,#5fdcf0 0%,#65f0ca 45%,#9875ec 100%);border-radius:999px;transition:width .35s ease;box-shadow:0 0 18px rgba(95,220,240,.28)}
 .labx-progress__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
@@ -193,6 +193,8 @@
 @media(max-width:720px){#lab-halls,#practice-tools{scroll-margin-top:84px}}
 /* /AML 3.3 · Bay anchor navigation polish */
  .labx-complete__links--single{grid-template-columns:1fr}
+
+@media(max-width:820px){.labx-progress__count .labx-myaml-cta{margin-top:10px}}
 </style>
 <style>
 /* AML Interactive Lab — Future Lab 4.0 */
@@ -1200,9 +1202,9 @@
         <div>
           <div class="labx-kicker">MISSION STATUS · 探索進度</div>
           <h2 id="labx-progress-title">四座探索艙，目前戰況。</h2>
-          <p>完成互動後，進度會留在這台裝置。選一座艙室繼續推進你的探索任務。 <a href="/my-aml.html" style="font-weight:900;color:inherit;text-underline-offset:3px">查看我的 AML →</a></p>
+          <p>完成互動後，進度會留在這台裝置。選一座艙室繼續推進你的探索任務。</p>
         </div>
-        <div class="labx-progress__count"><strong data-lab-progress-count>0 / 8</strong><span>任務節點完成</span></div>
+        <div class="labx-progress__count"><strong data-lab-progress-count>0 / 8</strong><span>任務節點完成</span><a class="labx-myaml-cta" href="/my-aml.html">👤 我的 AML｜學習總覽</a></div>
       </div>
       <div class="labx-progress__bar" role="progressbar" aria-label="探索任務完成進度" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0" data-lab-progress-track><i data-lab-progress-bar></i></div>
       <div class="labx-progress__grid">
