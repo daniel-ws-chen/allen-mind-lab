@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-28T04:51:23.145Z",
+  "generatedAt": "2026-09-29T15:34:45.264Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 53,
+    "total": 54,
     "ot": 23,
     "mind": 14,
     "pbs": 14,
-    "education": 9,
-    "management": 26,
-    "ai": 15,
+    "education": 10,
+    "management": 27,
+    "ai": 16,
     "notes": 7
   },
   "featuredReading": [
@@ -79,6 +79,52 @@
   },
   "articles": [
     {
+      "slug": "ot-management-world-cafe-ai-collaboration",
+      "title": "100位同學的100分鐘大挑戰：公民咖啡館十桌會診 × AI協作下的職能治療管理學課程實作",
+      "summary": "面對100位學生與100分鐘的大型課堂，我嘗試結合公民咖啡館、十桌十主題的同儕專家會診，以及方案規劃管理智能助理2.0，讓AI負責課前與課後的整理，把珍貴的實體課堂留給對話、質疑、協作與判斷。",
+      "date": "2026-09-29",
+      "domains": [
+        "education",
+        "management",
+        "ai"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [
+        "management",
+        "ai"
+      ],
+      "tag": "Education × Management × AI",
+      "cardMeta": "2026.09.29 · Education × Management & Leadership × AI × Practice",
+      "keywords": [
+        "職能治療管理學",
+        "公民咖啡館",
+        "World Café",
+        "AI協作",
+        "同儕學習",
+        "同儕回饋",
+        "大班教學",
+        "教學創新",
+        "方案規劃管理智能助理"
+      ],
+      "articlePath": "/articles/ot-management-world-cafe-ai-collaboration.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-world-cafe-ai-collaboration",
+      "hero": "/images/articles/ot-management-world-cafe-ai-collaboration-hero.webp",
+      "ogImage": "/images/articles/ot-management-world-cafe-ai-collaboration-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 塑造有利於 PBS 推動的照顧環境",
+          "href": "/articles/pbs-supportive-care-environment.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "pbs-supportive-care-environment",
       "title": "塑造有利於 PBS 推動的照顧環境",
       "summary": "危機處理容易被看見，預防成功卻常像什麼事都沒發生。從管理與 SWOT 角度，思考如何讓 PBS 在照顧現場做得到、有人接得住。",
@@ -115,6 +161,11 @@
           "kind": "previous",
           "label": "上一篇 ← 當主管不只管人，還要開始管 AI",
           "href": "/articles/ai-manager-manage-people-and-ai.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 100位同學的100分鐘大挑戰：公民咖啡館十桌會診 × AI協作下的職能治療管理學課程實作 →",
+          "href": "/articles/ot-management-world-cafe-ai-collaboration.html"
         }
       ],
       "readingPaths": [],
