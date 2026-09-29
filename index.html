@@ -1139,6 +1139,7 @@
  .aml-map-wrap{padding:0 4vw}.aml-map-frame{border-radius:20px}.aml-map-hotspot{display:none}
  .aml-route-cards{display:grid;grid-template-columns:1fr;gap:10px;max-width:680px;margin:16px auto 0;padding:0 4vw}
  .aml-route-cards a{display:flex;align-items:center;justify-content:space-between;gap:16px;background:white;border:1px solid #dce5e2;border-radius:16px;padding:16px 18px;box-shadow:0 8px 24px rgba(20,54,58,.06)}
+ .aml-route-cards a.aml-route-card--guided{border-color:#d7c08a;background:linear-gradient(135deg,#fffdf7,#fbf5e8);box-shadow:0 10px 28px rgba(169,126,49,.10)}
  .aml-route-cards strong{display:block;color:#17313a;font-size:1.02rem}.aml-route-cards span{display:block;color:#788480;font-size:.86rem;margin-top:2px}.aml-route-cards b{color:#b98b36;font-size:1.25rem}
 }
 /* ===== /AML Fleet Map Home ===== */
@@ -1230,15 +1231,15 @@
 <main class="aml-fleet-home" id="aml-main">
 <section class="aml-map-wrap" id="aml-map" aria-label="Allen Mind Lab 全館導覽地圖">
   <div class="aml-map-frame">
-    <img src="/images/aml-campus-map.webp" alt="曦兒帶領訪客探索 Allen Mind Lab 園區，包含文章閱讀、主題學習、互動實驗室與 AML 辦公室四個入口" fetchpriority="high" decoding="async" loading="eager" width="1672" height="940"/>
+    <img src="/images/aml-campus-map.webp" alt="曦兒帶領訪客探索 Allen Mind Lab 園區，包含完整文章館藏、閱讀路徑、互動實驗室與 AML 辦公室四個入口" fetchpriority="high" decoding="async" loading="eager" width="1672" height="940"/>
     <a class="aml-map-hotspot aml-map-hotspot--read" href="/library.html" aria-label="我想從閱讀文章開始，前往完整文章館藏"><span class="aml-sr-only">閱讀文章</span></a>
-    <a class="aml-map-hotspot aml-map-hotspot--learn" href="/reading-paths.html" aria-label="我想從特定主題開始，前往主題學習與閱讀路徑"><span class="aml-sr-only">主題學習</span></a>
+    <a class="aml-map-hotspot aml-map-hotspot--learn" href="/reading-paths.html" aria-label="我有一個問題或主題想找方向，前往閱讀路徑"><span class="aml-sr-only">閱讀路徑</span></a>
     <a class="aml-map-hotspot aml-map-hotspot--play" href="/tools.html" aria-label="前往互動實驗室，探索體驗與智能支援"><span class="aml-sr-only">互動實驗室</span></a>
     <a class="aml-map-hotspot aml-map-hotspot--about" href="/about.html" aria-label="我想進一步了解 AML，前往 About"><span class="aml-sr-only">了解 AML</span></a><button class="aml-xier-hotspot" id="amlXierOpen" type="button" aria-label="需要一點方向嗎？開啟曦兒 AML 導航" aria-haspopup="dialog"><span class="aml-sr-only">開啟曦兒 AML 導航</span></button>
   </div>
   <div class="aml-route-cards" aria-label="手機版 AML 分館入口">
     <a href="/library.html"><div><strong>📖 我想從閱讀文章開始</strong><span>前往完整文章館藏</span></div><b>→</b></a>
-    <a href="/reading-paths.html"><div><strong>🧭 我想從特定主題開始</strong><span>前往主題學習與閱讀路徑</span></div><b>→</b></a>
+    <a class="aml-route-card--guided" href="/reading-paths.html"><div><strong>🧭 我想找一條適合的閱讀路徑</strong><span>從現在的問題或主題開始</span></div><b>→</b></a>
     <a href="/tools.html"><div><strong>🧪 我想進入互動實驗室</strong><span>探索體驗 × 智能支援</span></div><b>→</b></a>
     <a href="/about.html"><div><strong>🏢 我想進一步了解 AML</strong><span>前往 AML 辦公室</span></div><b>→</b></a>
   </div>
@@ -1261,7 +1262,7 @@
     <textarea class="aml-xier-input" id="amlXierInput" maxlength="320" placeholder="例如：最近工作後腦袋一直停不下來，很難真正休息……"></textarea>
     <button class="aml-xier-submit" id="amlXierSubmit" type="button">幫我找方向 →</button>
     <div class="aml-xier-results" id="amlXierResults" aria-live="polite"></div>
-    <p class="aml-xier-foot" id="amlXierFoot">V1 為規則式導航，只協助連結 AML 既有文章、工具與學習入口；若無法判斷或沒有適合內容，會先引導至閱讀路徑、主題館藏或外部資源。不進行診斷或專業判定。請避免輸入可辨識個人的敏感資料；若有立即安全或醫療風險，請優先尋求當地緊急或專業協助。</p>
+    <p class="aml-xier-foot" id="amlXierFoot">V1 為規則式導航，只協助連結 AML 既有文章、工具與學習入口；若無法判斷或沒有適合內容，會優先引導至閱讀路徑，再提供主題館藏或外部資源。不進行診斷或專業判定。請避免輸入可辨識個人的敏感資料；若有立即安全或醫療風險，請優先尋求當地緊急或專業協助。</p>
   </section>
 </div>
 
