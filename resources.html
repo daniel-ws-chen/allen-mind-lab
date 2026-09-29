@@ -359,6 +359,89 @@
   .resource-share-btn:hover{transform:translateY(-1px);}
   .resource-share-note{margin-top:12px;font-size:.86rem;color:#7a838d;line-height:1.65;}
 
+
+
+  /* Phase 41 — Resource Network refresh */
+  .resource-index{
+    max-width:1080px;
+    margin:-24px auto 34px;
+    position:relative;
+    z-index:2;
+    padding:0 6vw;
+    box-sizing:content-box;
+  }
+  .resource-index__panel{
+    display:grid;
+    grid-template-columns:1.1fr 2fr;
+    gap:22px;
+    align-items:center;
+    padding:22px 24px;
+    border:1px solid rgba(30,54,83,.10);
+    border-radius:22px;
+    background:rgba(255,255,255,.94);
+    box-shadow:0 18px 44px rgba(23,42,54,.10);
+  }
+  .resource-index__title strong{display:block;color:#20345e;font-size:1.05rem;margin-bottom:5px;}
+  .resource-index__title span{display:block;color:#6a7584;font-size:.88rem;line-height:1.55;}
+  .resource-index__links{display:flex;flex-wrap:wrap;gap:9px;justify-content:flex-end;}
+  .resource-index__links a{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:9px 12px;border-radius:999px;text-decoration:none;
+    border:1px solid #dbe5e8;background:#f9fbfb;color:#46556a;
+    font-size:.84rem;font-weight:800;
+  }
+  .resource-index__links a:hover{background:#eef6f4;color:#245f5b;transform:translateY(-1px);}
+
+  .resource-section{max-width:1080px;margin:0 auto 46px;scroll-margin-top:96px;}
+  .resource-section__head{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin:0 0 18px;}
+  .resource-section__eyebrow{font-size:.75rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#6f7d8e;margin-bottom:7px;}
+  .resource-section h2.resource-section__title{margin:0;color:#20345e;font-size:clamp(1.55rem,2.5vw,2.15rem);}
+  .resource-section__intro{max-width:600px;margin:0;color:#6a7584;line-height:1.75;font-size:.94rem;}
+  .resource-section__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;}
+  .resource-section--partner .resource-section__grid{grid-template-columns:1fr;}
+  .resource-section--partner .resource-item{min-height:0;display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.35fr);column-gap:28px;align-items:start;}
+  .resource-section--partner .resource-preview{grid-row:1 / span 6;grid-column:1;margin:0;min-height:250px;height:100%;}
+  .resource-section--partner .resource-item__meta,
+  .resource-section--partner h2,
+  .resource-section--partner .resource-item > p,
+  .resource-section--partner .resource-item .for-who,
+  .resource-section--partner .resource-item .why,
+  .resource-section--partner .resource-item .go{grid-column:2;}
+
+  .resource-section--wellbeing{padding:30px;border-radius:28px;background:linear-gradient(135deg,#f0f8f5 0%,#f8fbf9 100%);border:1px solid #deece7;}
+  .resource-section--education{padding:30px;border-radius:28px;background:linear-gradient(135deg,#f4f6ff 0%,#fbfbff 100%);border:1px solid #e3e7f7;}
+  .resource-section--support{padding:30px;border-radius:28px;background:linear-gradient(135deg,#fff8ec 0%,#fffdf8 100%);border:1px solid #f0e3c9;}
+
+  .for-who{margin:2px 0 15px;padding:12px 14px;border-radius:14px;background:#f3f7f8;border:1px solid #e1eaec;color:#536273;line-height:1.65;font-size:.88rem;}
+  .for-who strong{color:#29475b;margin-right:6px;}
+  .resource-section--wellbeing .for-who{background:#eef8f4;border-color:#dbece5;}
+  .resource-section--education .for-who{background:#f1f3fb;border-color:#e0e4f2;}
+  .resource-section--support .for-who{background:#fff7e8;border-color:#f1e1bf;}
+
+  .resource-item{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+  .resource-item:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(23,42,54,.10);}
+  .resource-item .why{font-size:.93rem;}
+  .resource-item .why p{font-size:.92rem;line-height:1.72;}
+  .resource-item .go{display:inline-flex;align-items:center;align-self:flex-start;}
+
+  @media(max-width:900px){
+    .resource-index{padding:0 5vw;}
+    .resource-index__panel{grid-template-columns:1fr;}
+    .resource-index__links{justify-content:flex-start;}
+    .resource-section--partner .resource-item{display:flex;}
+    .resource-section--partner .resource-preview{min-height:210px;height:210px;margin:-6px 0 20px;}
+  }
+  @media(max-width:760px){
+    .resource-index{margin:-18px auto 26px;}
+    .resource-index__panel{padding:18px;border-radius:18px;}
+    .resource-index__links{display:grid;grid-template-columns:1fr 1fr;width:100%;}
+    .resource-index__links a{justify-content:center;text-align:center;}
+    .resource-section{margin-bottom:34px;}
+    .resource-section__head{display:block;}
+    .resource-section__intro{margin-top:9px;}
+    .resource-section__grid{grid-template-columns:1fr;}
+    .resource-section--wellbeing,.resource-section--education,.resource-section--support{padding:20px 14px;border-radius:22px;}
+  }
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AML Resource Network｜精選資源","url":"https://allenmindlab.com/resources.html","description":"Allen Mind Lab 精選站外資源。","isPartOf":{"@type":"WebSite","name":"Allen Mind Lab","url":"https://allenmindlab.com/"}}</script>
 </head>
@@ -375,81 +458,70 @@
 <section class="resource-hero">
 <div class="resource-wrap">
 <div class="kicker">AML Resource Network</div>
-<h1>精選資源，<br/>不求多，只留下值得長期連結的網站。</h1>
-<p>這裡不是網址大全，而是 Allen Mind Lab 依專業可信度、內容品質、公共價值與議題關聯性，少量收錄的站外資源。希望每一個連結，都值得讀者繼續往下探索。</p>
+<h1>值得信任的延伸資源，<br/>依你的需求開始探索。</h1>
+<p>這裡不是網址大全，而是 Allen Mind Lab 依專業可信度、內容品質、公共價值與議題關聯性，持續整理的資源導航。先找到與你現在需求最接近的一區，再決定下一步。</p>
 <div class="resource-principles"><span>專業可信</span><span>內容持續</span><span>公共價值</span><span>議題相關</span><span>適合延伸探索</span></div>
 </div>
-</section>
+</section><section aria-label="資源分類快速入口" class="resource-index"><div class="resource-index__panel"><div class="resource-index__title"><strong>依需求找資源</strong><span>不必從頭瀏覽，直接前往最接近你目前需求的資源區。</span></div><div class="resource-index__links"><a href="#partners">協力夥伴</a><a href="#wellbeing">身心與健康</a><a href="#education">教育與情緒</a><a href="#support">服務與家庭支持</a></div></div></section>
 <section class="resources">
-<div class="resource-grid">
-<article class="resource-item resource-item--partner">
+
+<section class="resource-section resource-section--partner" id="partners"><div class="resource-section__head"><div><div class="resource-section__eyebrow">PARTNER NETWORK</div><h2 class="resource-section__title">協力夥伴</h2></div><p class="resource-section__intro">彼此獨立、相互協力的專業網站，讓不同專業視角在 AML 之外繼續延伸。</p></div><div class="resource-section__grid"><article class="resource-item resource-item--partner">
 <div class="resource-item__meta">AML 協力夥伴 · 心理健康職能治療 · 身心整合</div>
-<div class="resource-preview"><img loading="lazy" src="images/resources/seraphina-home.webp" alt="Sera.Phina 心理健康與意識神經科學研究室網站首頁預覽" decoding="async" width="1600" height="713"></div>
+<div class="resource-preview"><img alt="Sera.Phina 心理健康與意識神經科學研究室網站首頁預覽" decoding="async" height="713" loading="lazy" src="images/resources/seraphina-home.webp" width="1600"/></div>
 <h2>Sera.Phina｜Eliza</h2>
-<p>以心理健康職能治療為專業核心，連結教學研究、自我覺察、情緒調節與身心整合，整理 Eliza 的專業實踐與持續探索。</p>
+<p>以心理健康職能治療為專業核心，連結教學研究、自我覺察、情緒調節與身心整合，整理 Eliza 的專業實踐與持續探索。</p><div class="for-who"><strong>適合誰</strong>適合關注心理健康職能治療、自我覺察、情緒調節與身心整合的讀者。</div>
 <div class="why"><strong>AML × Sera.Phina｜協力夥伴</strong><p>Sera.Phina 與 AML 是彼此獨立、相互協力的專業網站。兩者各自保有不同的主題與氣質，並在職能治療、心理健康、教育與生活實踐之間彼此交流、互相連結。</p></div>
 <a class="go" href="/sera-phina/">前往 Sera.Phina →</a>
-</article>
-<article class="resource-item">
+</article></div></section><section class="resource-section resource-section--wellbeing" id="wellbeing"><div class="resource-section__head"><div><div class="resource-section__eyebrow">WELLBEING &amp; PRACTICE</div><h2 class="resource-section__title">身心與健康實踐</h2></div><p class="resource-section__intro">從專業醫療資訊到日常身心實踐，提供健康促進與自我照顧的延伸入口。</p></div><div class="resource-section__grid"><article class="resource-item">
 <div class="resource-item__meta">中西整合醫學 · 氣的醫學</div>
-<div class="resource-preview"><img loading="lazy" src="images/resources/dr-kao-home.webp" alt="高堯楷醫師網站首頁預覽" decoding="async" width="1792" height="851"></div>
+<div class="resource-preview"><img alt="高堯楷醫師網站首頁預覽" decoding="async" height="851" loading="lazy" src="images/resources/dr-kao-home.webp" width="1792"/></div>
 <h2>高堯楷醫師</h2>
-<p>高堯楷醫師的個人專業網站，內容涵蓋中西整合醫學、身體調理指引、氣功養生、研究知識、出版著作與醫學研究新知。</p>
+<p>高堯楷醫師的個人專業網站，內容涵蓋中西整合醫學、身體調理指引、氣功養生、研究知識、出版著作與醫學研究新知。</p><div class="for-who"><strong>適合誰</strong>適合想延伸理解中西整合醫學、健康促進、氣功養生與身心實踐的讀者。</div>
 <div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對身心整合、生活實踐與專業知識轉譯的關注高度相連，也提供持續更新的第一手專業內容。</p></div>
 <a class="go" href="https://www.drkao.org/" rel="noopener noreferrer" target="_blank">前往高堯楷醫師網站 ↗</a>
-</article>
-<article class="resource-item">
+</article><article class="resource-item">
 <div class="resource-item__meta">中醫 · 個人化調理</div>
-<div class="resource-preview"><img loading="lazy" src="images/resources/daan-clinic-home.webp" alt="台北大安中醫診所網站首頁預覽" decoding="async" width="1867" height="847"></div>
+<div class="resource-preview"><img alt="台北大安中醫診所網站首頁預覽" decoding="async" height="847" loading="lazy" src="images/resources/daan-clinic-home.webp" width="1867"/></div>
 <h2>台北大安中醫診所</h2>
-<p>以中醫辨證結合現代醫學檢查與既有醫療資料，網站整理內科調理、疼痛與筋骨、睡眠與自律神經等診療與健康資訊。</p>
+<p>以中醫辨證結合現代醫學檢查與既有醫療資料，網站整理內科調理、疼痛與筋骨、睡眠與自律神經等診療與健康資訊。</p><div class="for-who"><strong>適合誰</strong>適合需要中醫健康資訊、睡眠／自律神經與日常調理延伸資料的讀者。</div>
 <div class="why"><strong>AML 為什麼收錄</strong><p>網站資訊結構清楚，能補充 AML 在健康促進、身心調理與生活實踐面向的延伸閱讀，也與高堯楷醫師的臨床工作場域相互連結。</p></div>
 <a class="go" href="https://daanclinic.com/" rel="noopener noreferrer" target="_blank">前往台北大安中醫診所 ↗</a>
-</article>
-<article class="resource-item">
+</article><article class="resource-item">
 <div class="resource-item__meta">身心實踐 · 氣功推廣</div>
-<div class="resource-preview"><img loading="lazy" src="images/resources/happiness-qigong-home.webp" alt="中華民國幸福氣功協會大安氣功推廣網站首頁預覽" decoding="async" width="1917" height="846"></div>
+<div class="resource-preview"><img alt="中華民國幸福氣功協會大安氣功推廣網站首頁預覽" decoding="async" height="846" loading="lazy" src="images/resources/happiness-qigong-home.webp" width="1917"/></div>
 <h2>中華民國幸福氣功協會｜大安氣功推廣</h2>
-<p>提供幸福氣功相關理念與大安地區推廣資訊，內容包含教室、團練、新生班與練習相關資料，作為認識氣功實踐與團體學習的延伸入口。</p>
+<p>提供幸福氣功相關理念與大安地區推廣資訊，內容包含教室、團練、新生班與練習相關資料，作為認識氣功實踐與團體學習的延伸入口。</p><div class="for-who"><strong>適合誰</strong>適合想實際接觸氣功、團體練習與日常身心調節活動的讀者。</div>
 <div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對身心整合、日常實踐與自我覺察的探索相互呼應，提供對相關實踐有興趣的讀者進一步探索。</p></div>
 <a class="go" href="https://sites.google.com/view/daan-class" rel="noopener noreferrer" target="_blank">前往大安氣功推廣網頁 ↗</a>
-</article>
-<article class="resource-item">
-<div class="resource-item__meta">官方服務 · 情緒行為支持 · 轉介申請</div>
-<div class="resource-preview"><img loading="lazy" src="images/resources/taipei-emotional-behavior-support-center.webp" alt="臺北市政府社會局臺北市情緒行為支持中心官方頁面預覽" decoding="async" width="1915" height="560"></div>
-<h2>臺北市情緒行為支持中心｜服務與申請資訊</h2>
-<p>臺北市政府社會局官方資訊，提供情緒行為支持中心的服務內容、轉介資格、申請表件、受理方式與聯絡窗口。</p>
-<div class="why"><strong>AML 為什麼收錄</strong><p>當情緒行為支持需求超出一般家庭或服務現場可自行處理的範圍時，清楚找到正式服務與轉介窗口很重要。此官方頁面提供臺北市情緒行為支持中心的受理與申請資訊，作為需要進一步專業支持時的實務入口。</p></div>
-<a class="go" href="https://dosw.gov.taipei/cp.aspx?n=506C3AC6C1309560" rel="noopener noreferrer" target="_blank">查看官方服務與申請資訊 ↗</a>
-</article>
-<article class="resource-item">
+</article></div></section><section class="resource-section resource-section--education" id="education"><div class="resource-section__head"><div><div class="resource-section__eyebrow">EDUCATION &amp; EMOTION</div><h2 class="resource-section__title">教育與情緒學習</h2></div><p class="resource-section__intro">聚焦教師、親師生與助人工作者可持續探索的教育、SEL 與系統合作資源。</p></div><div class="resource-section__grid"><article class="resource-item">
 <div class="resource-item__meta">SEL · 情緒教育 · 親師生學習</div>
-<div class="resource-preview"><img loading="lazy" src="images/resources/happiness-village-home.webp" alt="社團法人臺灣芯福里情緒教育推廣協會網站首頁預覽" decoding="async" width="1200" height="462"></div>
+<div class="resource-preview"><img alt="社團法人臺灣芯福里情緒教育推廣協會網站首頁預覽" decoding="async" height="462" loading="lazy" src="images/resources/happiness-village-home.webp" width="1200"/></div>
 <h2>社團法人臺灣芯福里情緒教育推廣協會</h2>
-<p>以社會情緒學習（SEL）與情緒教育為核心，推動親師生情緒教育、培訓與相關學習資源，提供理解情緒、互動與共好實踐的延伸入口。</p>
+<p>以社會情緒學習（SEL）與情緒教育為核心，推動親師生情緒教育、培訓與相關學習資源，提供理解情緒、互動與共好實踐的延伸入口。</p><div class="for-who"><strong>適合誰</strong>適合家長、教師與助人工作者探索 SEL、情緒教育與親師生學習資源。</div>
 <div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對教育、助人實務、心理健康與日常參與的關注相互呼應，也提供親師生進一步探索社會情緒學習與情緒教育的公共資源。</p></div>
 <a class="go" href="https://www.happinessvillage.org/" rel="noopener noreferrer" target="_blank">前往臺灣芯福里情緒教育推廣協會 ↗</a>
-</article>
-<article class="resource-item">
+</article><article class="resource-item">
 <div class="resource-item__meta">教育 · 教師培力 · 教育公平</div>
-<div class="resource-preview"><img loading="lazy" src="images/resources/tft-home.webp" alt="Teach For Taiwan 為台灣而教網站首頁預覽" decoding="async" width="1600" height="715"></div>
+<div class="resource-preview"><img alt="Teach For Taiwan 為台灣而教網站首頁預覽" decoding="async" height="715" loading="lazy" src="images/resources/tft-home.webp" width="1600"/></div>
 <h2>Teach For Taiwan｜為台灣而教</h2>
-<p>長期投入教育人才培育、教育現場協力與教育議題倡議，從第一線場域出發，持續探索教育不平等與系統改變的可能。</p>
+<p>長期投入教育人才培育、教育現場協力與教育議題倡議，從第一線場域出發，持續探索教育不平等與系統改變的可能。</p><div class="for-who"><strong>適合誰</strong>適合關注教師培力、教育現場、教育公平與系統合作的讀者。</div>
 <div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對教育、教師專業、學習支持與系統合作的關注相互呼應。2026 有感節「如果這世界，老師消失了」也成為 AML 第 51 篇〈新世代教師的轉型與賦能〉的重要思考緣起。</p></div>
 <a class="go" href="https://www.teach4taiwan.org/invite/" rel="noopener noreferrer" target="_blank">前往 Teach For Taiwan ↗</a>
-</article>
-<article class="resource-item">
+</article></div></section><section class="resource-section resource-section--support" id="support"><div class="resource-section__head"><div><div class="resource-section__eyebrow">SERVICE &amp; FAMILY SUPPORT</div><h2 class="resource-section__title">正式服務與家庭支持</h2></div><p class="resource-section__intro">當需求不只是閱讀，而需要正式服務窗口或家庭取向支持時，從這裡開始。</p></div><div class="resource-section__grid"><article class="resource-item">
+<div class="resource-item__meta">官方服務 · 情緒行為支持 · 轉介申請</div>
+<div class="resource-preview"><img alt="臺北市政府社會局臺北市情緒行為支持中心官方頁面預覽" decoding="async" height="560" loading="lazy" src="images/resources/taipei-emotional-behavior-support-center.webp" width="1915"/></div>
+<h2>臺北市情緒行為支持中心｜服務與申請資訊</h2>
+<p>臺北市政府社會局官方資訊，提供情緒行為支持中心的服務內容、轉介資格、申請表件、受理方式與聯絡窗口。</p><div class="for-who"><strong>適合誰</strong>適合正在尋找臺北市正式情緒行為支持、轉介資格與申請窗口的家庭或服務單位。</div>
+<div class="why"><strong>AML 為什麼收錄</strong><p>當情緒行為支持需求超出一般家庭或服務現場可自行處理的範圍時，清楚找到正式服務與轉介窗口很重要。此官方頁面提供臺北市情緒行為支持中心的受理與申請資訊，作為需要進一步專業支持時的實務入口。</p></div>
+<a class="go" href="https://dosw.gov.taipei/cp.aspx?n=506C3AC6C1309560" rel="noopener noreferrer" target="_blank">查看官方服務與申請資訊 ↗</a>
+</article><article class="resource-item">
 <div class="resource-item__meta">ADHD · 家長支持 · 親職資源</div>
-<div class="resource-preview" aria-hidden="true"><iframe loading="lazy" tabindex="-1" src="https://jin40225-boop.github.io/ADHD-Website/" title="ADHD 家長支持平台首頁預覽"></iframe></div>
+<div aria-hidden="true" class="resource-preview"><iframe loading="lazy" src="https://jin40225-boop.github.io/ADHD-Website/" tabindex="-1" title="ADHD 家長支持平台首頁預覽"></iframe></div>
 <h2>ADHD 家長支持平台｜大A彥宇</h2>
-<p>以 ADHD 家長與照顧者為主要對象，整理 ADHD 相關知識、親職支持與實務經驗，提供家庭在理解孩子、陪伴與日常應對上的延伸資源。</p>
+<p>以 ADHD 家長與照顧者為主要對象，整理 ADHD 相關知識、親職支持與實務經驗，提供家庭在理解孩子、陪伴與日常應對上的延伸資源。</p><div class="for-who"><strong>適合誰</strong>適合 ADHD 兒少家長與照顧者，尋找親職支持、日常陪伴與實務經驗。</div>
 <div class="why"><strong>AML 為什麼收錄</strong><p>ADHD 的支持不只發生在治療場域，也與家庭理解、日常參與、同儕互動及成長歷程密切相關。此平台提供家長取向的延伸入口，與 AML 對兒童青少年支持、職能參與及家庭合作的關注相互呼應。</p></div>
 <a class="go" href="https://jin40225-boop.github.io/ADHD-Website/" rel="noopener noreferrer" target="_blank">前往 ADHD 家長支持平台 ↗</a>
-</article>
-
-</div>
-
-<section aria-labelledby="resource-share-title" class="resource-share">
+</article></div></section><section aria-labelledby="resource-share-title" class="resource-share">
 <div class="kicker">Share a Good Resource</div>
 <h2 id="resource-share-title">好資源，也歡迎一起分享。</h2>
 <p>Allen Mind Lab 不追求大量收錄，而是持續整理與本站關注議題高度相關、內容品質穩定、具有公共價值的網站與專業資源。如果你知道值得長期追蹤的研究、工具、網站、公益平台或學習素材，也歡迎推薦給 AML。</p>
@@ -473,11 +545,10 @@
 </div>
 </div>
 </section>
-
 <div class="resource-note"><strong>外部資源說明：</strong>本頁僅提供精選站外資源導覽。各網站之內容、服務與更新由其經營者自行負責；AML 的收錄代表其內容與本站關注議題具有延伸價值，不等同對所有內容、個別醫療建議或服務成效之背書。</div>
 </section>
 </main>
 <footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>進階自學室</h4><a href="/self-study.html">進階自學室</a><a href="/management-self-study.html">管理學自學</a><a href="/pbs-self-study.html">PBS 自學</a></div><div class="aml-footer-group"><h4>互動實驗室</h4><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
-<script defer src="aml-site.js"></script>
+<script defer="" src="aml-site.js"></script>
 </body>
 </html>
