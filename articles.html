@@ -322,10 +322,15 @@
 .aml-topic-halls__head .title{max-width:660px}
 .aml-topic-halls__grid--seven{grid-template-columns:repeat(8,minmax(0,1fr));gap:18px}
 .aml-topic-halls__grid--seven .aml-topic-hall{grid-column:span 2;min-height:245px}
-/* Keep all seven topic cards the same width; center the second row (3 cards). */
-.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(5){grid-column:2 / span 2}
-.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(6){grid-column:4 / span 2}
-.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(7){grid-column:6 / span 2}
+/* Desktop: four equal cards on row 1; three equal cards centered on row 2.
+   Explicit row placement prevents CSS Grid auto-placement from leaving card 4 alone. */
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(1){grid-column:1 / span 2;grid-row:1}
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(2){grid-column:3 / span 2;grid-row:1}
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(3){grid-column:5 / span 2;grid-row:1}
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(4){grid-column:7 / span 2;grid-row:1}
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(5){grid-column:2 / span 2;grid-row:2}
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(6){grid-column:4 / span 2;grid-row:2}
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(7){grid-column:6 / span 2;grid-row:2}
 .aml-topic-hall{
   --topic-accent:#315d8b;--topic-soft:#eef4f8;
   position:relative;overflow:hidden;padding:26px 25px 24px;border-radius:22px;
@@ -364,9 +369,13 @@
 @media(max-width:1080px){
   .aml-topic-halls__grid--seven{grid-template-columns:repeat(2,minmax(0,1fr))}
   .aml-topic-halls__grid--seven .aml-topic-hall,
+  .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(1),
+  .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(2),
+  .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(3),
+  .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(4),
   .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(5),
   .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(6),
-  .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(7){grid-column:auto}
+  .aml-topic-halls__grid--seven .aml-topic-hall:nth-child(7){grid-column:auto;grid-row:auto}
 }
 @media(max-width:620px){
   .aml-topic-halls__grid--seven{grid-template-columns:1fr;gap:14px}
