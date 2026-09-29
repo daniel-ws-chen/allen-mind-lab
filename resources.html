@@ -443,20 +443,22 @@
     .resource-section--wellbeing,.resource-section--education,.resource-section--support{padding:20px 14px;border-radius:22px;}
   }
 
-  /* Phase 49 — partner preview: photo-first crop */
+  /* Phase 50 — partner editorial preview: portrait-forward composition */
   .resource-section--partner .resource-item{
-    grid-template-columns:minmax(340px,1.02fr) minmax(0,1.28fr);
+    grid-template-columns:minmax(360px,1.06fr) minmax(0,1.24fr);
   }
   .resource-preview--photo-first{
-    min-height:300px;
-    background:#f6f2f8;
+    min-height:320px;
+    background:linear-gradient(135deg,#f9f5fb,#efe7f3);
     border-color:rgba(111,79,134,.18);
+    box-shadow:0 18px 38px rgba(70,53,83,.10);
   }
   .resource-preview--photo-first img{
     object-fit:cover;
-    object-position:92% center;
-    transform:scale(1.035);
-    transform-origin:92% center;
+    object-position:96% 48%;
+    transform:scale(1.28);
+    transform-origin:96% 48%;
+    filter:saturate(.98) contrast(1.02);
   }
   .resource-preview--photo-first::before{
     content:"";
@@ -464,22 +466,60 @@
     inset:0;
     z-index:1;
     pointer-events:none;
-    background:linear-gradient(90deg,rgba(74,45,91,.04) 0%,rgba(74,45,91,0) 42%,rgba(255,255,255,0) 100%);
+    background:
+      linear-gradient(90deg,rgba(52,34,66,.30) 0%,rgba(69,43,84,.10) 34%,rgba(255,255,255,0) 62%),
+      linear-gradient(180deg,rgba(255,255,255,0) 58%,rgba(48,31,59,.22) 100%);
   }
   .resource-preview--photo-first::after{
-    content:"照片優先預覽";
+    content:"Sera.Phina · 精選預覽";
+    z-index:3;
+    left:16px;
+    right:auto;
+    bottom:14px;
+    color:#fff;
+    border-color:rgba(255,255,255,.26);
+    background:rgba(62,40,75,.62);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+  }
+  .partner-preview-copy{
+    position:absolute;
+    left:18px;
+    top:18px;
     z-index:2;
-    color:#6f4f86;
-    border-color:rgba(111,79,134,.16);
+    max-width:48%;
+    color:#fff;
+    text-shadow:0 2px 12px rgba(35,21,42,.38);
+    pointer-events:none;
+  }
+  .partner-preview-copy strong{
+    display:block;
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:1.45rem;
+    font-weight:600;
+    line-height:1.15;
+    letter-spacing:.015em;
+  }
+  .partner-preview-copy span{
+    display:block;
+    margin-top:7px;
+    font-size:.78rem;
+    line-height:1.5;
+    letter-spacing:.04em;
+    opacity:.92;
   }
   @media(max-width:900px){
     .resource-section--partner .resource-item{display:flex;}
-    .resource-preview--photo-first{min-height:230px;height:230px;}
-    .resource-preview--photo-first img{object-position:88% center;transform:scale(1.02);transform-origin:88% center;}
+    .resource-preview--photo-first{min-height:250px;height:250px;}
+    .resource-preview--photo-first img{object-position:94% 50%;transform:scale(1.18);transform-origin:94% 50%;}
+    .partner-preview-copy{max-width:54%;}
   }
   @media(max-width:560px){
-    .resource-preview--photo-first{height:220px;min-height:220px;}
-    .resource-preview--photo-first img{object-position:90% center;}
+    .resource-preview--photo-first{height:230px;min-height:230px;}
+    .resource-preview--photo-first img{object-position:93% center;transform:scale(1.12);transform-origin:93% center;}
+    .partner-preview-copy{left:14px;top:14px;max-width:58%;}
+    .partner-preview-copy strong{font-size:1.18rem;}
+    .partner-preview-copy span{font-size:.72rem;}
   }
 
 </style>
@@ -507,7 +547,7 @@
 
 <section class="resource-section resource-section--partner" id="partners"><div class="resource-section__head"><div><div class="resource-section__eyebrow">PARTNER NETWORK</div><h2 class="resource-section__title">協力夥伴</h2></div><p class="resource-section__intro">彼此獨立、相互協力的專業網站，讓不同專業視角在 AML 之外繼續延伸。</p></div><div class="resource-section__grid"><article class="resource-item resource-item--partner">
 <div class="resource-item__meta">AML 協力夥伴 · 心理健康職能治療 · 身心整合</div>
-<div class="resource-preview resource-preview--photo-first"><img alt="Sera.Phina 心理健康與意識神經科學研究室網站精選預覽" decoding="async" height="713" loading="lazy" src="images/resources/seraphina-home.webp" width="1600"/></div>
+<div class="resource-preview resource-preview--photo-first"><img alt="Sera.Phina 心理健康與意識神經科學研究室網站精選預覽" decoding="async" height="713" loading="lazy" src="images/resources/seraphina-home.webp" width="1600"/><div aria-hidden="true" class="partner-preview-copy"><strong>Sera.Phina</strong><span>Mental Health · Occupational Therapy · Consciousness</span></div></div>
 <h2>Sera.Phina｜Eliza</h2>
 <p>以心理健康職能治療為專業核心，連結教學研究、自我覺察、情緒調節與身心整合，整理 Eliza 的專業實踐與持續探索。</p><div class="for-who"><strong>適合誰</strong>適合關注心理健康職能治療、自我覺察、情緒調節與身心整合的讀者。</div>
 <div class="why"><strong>AML × Sera.Phina｜協力夥伴</strong><p>Sera.Phina 與 AML 是彼此獨立、相互協力的專業網站。兩者各自保有不同的主題與氣質，並在職能治療、心理健康、教育與生活實踐之間彼此交流、互相連結。</p></div>
