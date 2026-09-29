@@ -415,6 +415,13 @@
   #articles{padding-top:44px}
 }
 
+
+/* Phase 47 · Distinguish article search from site search */
+.aml-site-search-bridge{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:16px 0 0;padding:14px 16px;border:1px solid #dce6ef;border-radius:16px;background:linear-gradient(135deg,#f8fbfe,#fff);color:#536271;font-size:.9rem}
+.aml-site-search-bridge strong{color:#17314d}
+.aml-site-search-bridge a{flex:none;display:inline-flex;align-items:center;gap:.35rem;padding:8px 12px;border-radius:999px;background:#edf4fa;color:#244d77;font-weight:800}
+.aml-site-search-bridge a:hover{background:#17314d;color:#fff}
+@media(max-width:680px){.aml-site-search-bridge{align-items:flex-start;flex-direction:column}.aml-site-search-bridge a{width:100%;justify-content:center;border-radius:12px}}
 </style>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <!-- AML SEO / Social Preview -->
@@ -476,7 +483,7 @@
 <div class="eyebrow">Search & Filter · 搜尋與篩選</div>
 <h2 class="title">找一篇你現在真正需要的文章。</h2>
 <p class="lead">同一篇文章可能跨越多個領域。你可以用主題按鈕縮小範圍，也可以直接輸入關鍵字；學生與實務工作者都不必從第一篇一路往下找。</p>
-<div class="aml-article-search"><label for="aml-article-query">搜尋文章</label><div class="aml-article-search-row"><input aria-controls="aml-article-grid" autocomplete="off" id="aml-article-query" placeholder="搜尋標題、摘要或關鍵字…" type="search"/><button id="aml-article-submit" type="button">搜尋</button><button hidden="" id="aml-article-clear" type="button">清除</button></div></div><div class="filters">
+<div class="aml-article-search"><label for="aml-article-query">搜尋文章</label><div class="aml-article-search-row"><input aria-controls="aml-article-grid" autocomplete="off" id="aml-article-query" placeholder="搜尋標題、摘要或關鍵字…" type="search"/><button id="aml-article-submit" type="button">搜尋</button><button hidden="" id="aml-article-clear" type="button">清除</button></div></div><div class="aml-site-search-bridge"><span><strong>這裡搜尋的是文章館藏。</strong> 如果要找自學、互動工具、閱讀路徑或精選資源，可以改用全站搜尋。</span><a href="/search.html">🔎 搜尋整個 AML →</a></div><div class="filters">
 <button aria-pressed="true" class="filter-btn active" data-filter="all" type="button">全部 <span class="filter-count">(53)</span></button>
 <button aria-pressed="false" class="filter-btn" data-filter="ot" type="button">OT &amp; Human Occupation <span class="filter-count">(23)</span></button>
 <button aria-pressed="false" class="filter-btn" data-filter="pbs" type="button">PBS <span class="filter-count">(14)</span></button>
