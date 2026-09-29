@@ -297,6 +297,78 @@
 .aml-topic-hall__meta>span:last-child{white-space:nowrap;flex:0 0 auto;min-width:max-content}.aml-topic-hall__meta>span:first-child{min-width:0}
 
 .aml-notes-bridge{padding:0 24px 34px}.aml-notes-bridge__inner{max-width:1120px;margin:0 auto}.aml-notes-bridge__card{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:28px 30px;border:1px solid rgba(120,120,120,.18);border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(248,246,240,.5));text-decoration:none;color:inherit;box-shadow:0 14px 36px rgba(0,0,0,.045)}.aml-notes-bridge__kicker{display:block;margin-bottom:8px;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.68}.aml-notes-bridge h2{margin:0 0 8px;font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.25}.aml-notes-bridge p{margin:0;max-width:760px;line-height:1.8;opacity:.78}.aml-notes-bridge__go{white-space:nowrap;font-weight:700}.aml-notes-bridge__count{display:inline-block;margin-left:8px;font-weight:600;opacity:.72}@media(max-width:720px){.aml-notes-bridge{padding:0 18px 28px}.aml-notes-bridge__card{grid-template-columns:1fr;padding:24px}.aml-notes-bridge__go{white-space:normal}}
+
+
+/* Phase 43 · Topic Collections visual refresh */
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 22%,rgba(117,191,175,.16),transparent 24%),
+    radial-gradient(circle at 84% 24%,rgba(199,167,106,.22),transparent 30%),
+    linear-gradient(135deg,#0b1c2d 0%,#153655 58%,#1d4666 100%);
+}
+.hero::after{
+  content:"";position:absolute;right:-7vw;bottom:-12vw;width:34vw;height:34vw;min-width:360px;min-height:360px;
+  border:1px solid rgba(255,255,255,.09);border-radius:50%;box-shadow:0 0 0 52px rgba(255,255,255,.025),0 0 0 104px rgba(255,255,255,.018);pointer-events:none;
+}
+.hero>*{position:relative;z-index:1}
+.hero p{max-width:760px}
+.aml-topic-halls{
+  background:
+    linear-gradient(180deg,#fff 0%,#fcfaf6 62%,#f7f2e9 100%);
+}
+.aml-topic-halls__head{margin-bottom:34px}
+.aml-topic-halls__head .title{max-width:660px}
+.aml-topic-halls__grid--seven{grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.aml-topic-halls__grid--seven .aml-topic-hall{grid-column:span 3;min-height:245px}
+.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(n+5){grid-column:span 4}
+.aml-topic-hall{
+  --topic-accent:#315d8b;--topic-soft:#eef4f8;
+  position:relative;overflow:hidden;padding:26px 25px 24px;border-radius:22px;
+  border:1px solid color-mix(in srgb,var(--topic-accent) 22%,#e7e1d6);
+  background:linear-gradient(145deg,#fff 18%,var(--topic-soft) 130%);
+  box-shadow:0 8px 22px rgba(15,23,42,.035);
+}
+.aml-topic-hall::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--topic-accent);opacity:.9;
+}
+.aml-topic-hall::after{
+  content:"";position:absolute;right:-34px;top:-42px;width:118px;height:118px;border-radius:50%;background:var(--topic-accent);opacity:.055;pointer-events:none;
+}
+.aml-topic-hall:hover{
+  transform:translateY(-5px);border-color:color-mix(in srgb,var(--topic-accent) 50%,#fff);
+  background:linear-gradient(145deg,#fff 5%,var(--topic-soft) 105%);box-shadow:0 18px 40px rgba(15,23,42,.09);
+}
+.aml-topic-hall__meta{color:var(--topic-accent);position:relative;z-index:1}
+.aml-topic-hall__meta>span:last-child{
+  padding:4px 9px;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid color-mix(in srgb,var(--topic-accent) 18%,transparent);
+}
+.aml-topic-hall h3{font-family:Georgia,"Noto Serif TC",serif;font-size:1.28rem;margin-top:18px;position:relative;z-index:1}
+.aml-topic-hall p{position:relative;z-index:1}
+.aml-topic-hall__go{color:var(--topic-accent);position:relative;z-index:1}
+.aml-topic-hall__go::after{content:"";display:block;width:34px;height:2px;margin-top:10px;background:var(--topic-accent);opacity:.45;transition:.2s ease}
+.aml-topic-hall:hover .aml-topic-hall__go::after{width:58px;opacity:.8}
+.aml-topic-hall:nth-child(1){--topic-accent:#267b76;--topic-soft:#e8f5f2}
+.aml-topic-hall:nth-child(2){--topic-accent:#80649a;--topic-soft:#f2edf7}
+.aml-topic-hall:nth-child(3){--topic-accent:#b66a3c;--topic-soft:#fbefe7}
+.aml-topic-hall:nth-child(4){--topic-accent:#4674a8;--topic-soft:#edf3fa}
+.aml-topic-hall:nth-child(5){--topic-accent:#9a7835;--topic-soft:#f8f2e4}
+.aml-topic-hall:nth-child(6){--topic-accent:#4257a8;--topic-soft:#edf0fb}
+.aml-topic-hall:nth-child(7){--topic-accent:#9b5f70;--topic-soft:#f8edf1}
+.aml-choice-strip{background:#f4efe6}
+.aml-choice-strip__inner{border-radius:26px;padding:34px 36px;background:linear-gradient(135deg,#fff 0%,#fbf7ef 100%);border:1px solid #e8decd;box-shadow:0 12px 30px rgba(15,23,42,.045)}
+@media(max-width:1080px){
+  .aml-topic-halls__grid--seven{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .aml-topic-halls__grid--seven .aml-topic-hall,.aml-topic-halls__grid--seven .aml-topic-hall:nth-child(n+5){grid-column:auto}
+}
+@media(max-width:620px){
+  .aml-topic-halls__grid--seven{grid-template-columns:1fr;gap:14px}
+  .aml-topic-hall{min-height:0;padding:22px 20px 20px}
+  .aml-topic-hall h3{font-size:1.2rem;margin-top:14px}
+  .aml-choice-strip__inner{padding:26px 22px;border-radius:22px}
+  .hero::after{right:-210px;bottom:-180px}
+}
 </style>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <!-- AML SEO / Social Preview -->
@@ -331,7 +403,7 @@
 <p>這裡不是所有文章的長清單，而是 AML 的內容地圖。依領域進館；若想循序學習，改走閱讀路徑。</p>
 </header>
 <section class="aml-topic-halls" id="topic-halls"><div class="aml-topic-halls__wrap">
-<div class="aml-topic-halls__head"><div><div class="eyebrow">Collections · 七個入口</div><h2 class="title">先選一個館，不必先看完所有文章。</h2></div><p>主題館藏回答的是「我想讀哪一類內容？」同一篇文章可能跨越多個主題，因此各館篇數會有重疊；需要全站搜尋時，再進完整文章館藏。</p></div>
+<div class="aml-topic-halls__head"><div><div class="eyebrow">Collections · 七個入口</div><h2 class="title">七個主題館，從你現在在意的領域開始。</h2></div><p>不用先理解整個 AML。選一個現在最接近你問題或興趣的主題館開始；同一篇文章可能跨越多個領域，因此各館篇數會有重疊。需要全站搜尋時，再進完整文章館藏。</p></div>
 <div class="aml-topic-halls__grid aml-topic-halls__grid--seven">
 <a class="aml-topic-hall" href="/ot.html"><div class="aml-topic-hall__meta"><span>OT &amp; Human Occupation</span><span data-aml-count="ot" data-aml-count-template="{count} 篇">23 篇</span></div><h3>職能治療與人類職能</h3><p>生活、角色、環境、參與與人類職能。</p><span class="aml-topic-hall__go">進入主題館 →</span></a>
 <a class="aml-topic-hall" href="/mind.html"><div class="aml-topic-hall__meta"><span>Mind &amp; Well-being</span><span data-aml-count="mind" data-aml-count-template="{count} 篇">14 篇</span></div><h3>身心與福祉</h3><p>覺察、安定、壓力、支持與日常實踐。</p><span class="aml-topic-hall__go">進入主題館 →</span></a>
