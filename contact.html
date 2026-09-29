@@ -575,6 +575,19 @@
   .resource-network-grid{grid-template-columns:1fr;}
 }
 
+
+/* ===== Phase 55: AML public-facing journey ===== */
+.aml-public-journey{background:#f7f8fa;border-bottom:1px solid #e4e8ee;}
+.aml-public-journey__inner{max-width:1180px;margin:0 auto;padding:12px 5vw;display:flex;align-items:center;justify-content:space-between;gap:18px;}
+.aml-public-journey__label{font-size:.72rem;font-weight:900;letter-spacing:.12em;color:#728096;white-space:nowrap;}
+.aml-public-journey__steps{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+.aml-public-journey__steps a{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid #d9e0e8;border-radius:999px;background:#fff;color:#516073;text-decoration:none;font-size:.86rem;font-weight:800;transition:.18s ease;}
+.aml-public-journey__steps a:hover{transform:translateY(-1px);border-color:#c4a867;color:#7b5a1c;box-shadow:0 7px 18px rgba(21,35,52,.06);}
+.aml-public-journey__steps a[aria-current="page"]{background:#12233b;border-color:#12233b;color:#fff;box-shadow:0 7px 18px rgba(18,35,59,.14);}
+.aml-public-journey__num{font-size:.7rem;opacity:.72;letter-spacing:.05em;}
+@media(max-width:760px){.aml-public-journey__inner{align-items:flex-start;flex-direction:column;padding:11px 5vw}.aml-public-journey__steps{width:100%;display:grid;grid-template-columns:1fr}.aml-public-journey__steps a{justify-content:flex-start}.aml-public-journey__label{font-size:.68rem}}
+/* ===== /Phase 55 ===== */
+
 </style>
 <link href="favicon.svg" rel="icon" type="image/svg+xml"/>
 <!-- AML SEO / Social Preview -->
@@ -602,6 +615,7 @@
 <a class="aml-nav-direct" href="/self-study.html">進階自學室</a><details class="aml-nav-group" data-aml-lab-nav="true"><summary>互動實驗室</summary><div class="aml-nav-panel"><a class="aml-lab-subnav aml-lab-subnav--explore" href="/tools.html#lab-halls">互動探索艙</a><a class="aml-lab-subnav aml-lab-subnav--support" href="/tools.html#practice-tools">智能支援艙</a></div></details>
 <details class="aml-nav-group"><summary>資源與聯繫</summary><div class="aml-nav-panel"><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></details>
 </div><button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button><div class="aml-mobile-menu" id="aml-mobile-menu"><span class="aml-mobile-label">關於 AML</span><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a><span class="aml-mobile-label">主題館藏</span><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a><span class="aml-mobile-label">閱讀路徑</span><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a><span class="aml-mobile-label">進階自學室</span><a href="/self-study.html">進入進階自學室</a><span class="aml-mobile-label">互動實驗室</span><a class="aml-lab-subnav aml-lab-subnav--explore" href="/tools.html#lab-halls">互動探索艙</a><a class="aml-lab-subnav aml-lab-subnav--support" href="/tools.html#practice-tools">智能支援艙</a><span class="aml-mobile-label">資源與聯繫</span><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></nav>
+<section class="aml-public-journey" aria-label="認識與聯繫 AML"><div class="aml-public-journey__inner"><div class="aml-public-journey__label">EXPLORE AML · 對外入口</div><div class="aml-public-journey__steps"><a href="/about.html"><span class="aml-public-journey__num">01</span>認識 AML</a><a href="/resources.html"><span class="aml-public-journey__num">02</span>找專業資源</a><a href="/contact.html" aria-current="page"><span class="aml-public-journey__num">03</span>聯繫與合作</a></div></div></section>
 <header class="hero" id="aml-main">
 <div>
 <div class="eyebrow">Contact Allen</div>
