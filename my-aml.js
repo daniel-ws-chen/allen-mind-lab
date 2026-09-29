@@ -4,8 +4,18 @@
     management:{key:'amlManagementSelfStudyV1',ids:['detective','direction','strategy','leadership','quality','systems'],home:'/management-self-study.html',quiz:'/management-self-study-quiz.html'},
     pbs:{key:'amlPbsSelfStudyV1',ids:['abc','function','strategy','replacement','emotion','family'],home:'/pbs-self-study.html',quiz:'/pbs-self-study-quiz.html'}
   };
+  const personalKey='amlMyAmlV1';
+  const routes={
+    management:{title:'管理實務學習路徑',meta:'MANAGEMENT',href:'/management-learning.html'},
+    pbs:{title:'PBS 實務學習路徑',meta:'PBS',href:'/pbs-learning.html'},
+    helper:{title:'助人者永續實踐',meta:'HELPER',href:'/helper-learning.html'},
+    adhd:{title:'ADHD × 自我理解',meta:'SELF-UNDERSTANDING',href:'/adhd-self-understanding-learning.html'},
+    ot:{title:'OT Beyond the Clinic',meta:'OCCUPATIONAL THERAPY',href:'/ot-beyond-clinic-learning.html'}
+  };
   const readJSON = key => { try { const raw=localStorage.getItem(key); return raw ? JSON.parse(raw) : null; } catch(e){ return null; } };
   const has = key => { try { return localStorage.getItem(key) !== null; } catch(e){ return false; } };
+  function readPersonal(){ const s=readJSON(personalKey)||{}; return {saved:Array.isArray(s.saved)?s.saved.filter(id=>routes[id]):[],recent:Array.isArray(s.recent)?s.recent.filter(id=>routes[id]):[]}; }
+  function writePersonal(s){ try { localStorage.setItem(personalKey,JSON.stringify({saved:s.saved.slice(0,12),recent:s.recent.slice(0,5)})); } catch(e){} }
   function coreCount(t,s){ let n=0; const a=(s&&s.articles)||{},g=(s&&s.games)||{}; t.ids.forEach(id=>{if(a[id])n++;if(g[id])n++;}); return n; }
   function renderTrack(name){
     const t=tracks[name], s=readJSON(t.key)||{}, n=coreCount(t,s), passed=!!(s.quiz&&s.quiz.passed), pct=Math.round(n/12*100);
@@ -48,7 +58,26 @@
     }
     title.textContent=target.title; text.textContent=target.text; link.href=target.href; link.textContent=target.label;
   }
-  function render(){const mgmt=renderTrack('management');const pbs=renderTrack('pbs');const lab=renderLab();renderContinue(mgmt,pbs,lab);}
+  function itemMarkup(id,kind){
+    const r=routes[id]; if(!r) return '';
+    const action=kind==='saved'?`<button type="button" data-remove-saved="${id}">移除</button>`:'';
+    return `<div class="myaml-personal__item"><a href="${r.href}" data-recent-route="${id}">${r.title}<small>${r.meta}</small></a>${action}</div>`;
+  }
+  function renderPersonal(){
+    const s=readPersonal();
+    document.querySelectorAll('[data-save-route]').forEach(btn=>{ const id=btn.dataset.saveRoute, saved=s.saved.includes(id); btn.setAttribute('aria-pressed',saved?'true':'false'); btn.textContent=saved?'★ 已加入稍後學習':'☆ 稍後學習'; });
+    const recent=document.querySelector('[data-recent-list]'), saved=document.querySelector('[data-saved-list]');
+    if(recent) recent.innerHTML=s.recent.length?s.recent.slice(0,3).map(id=>itemMarkup(id,'recent')).join(''):'<p class="myaml-personal__empty">從上方開啟學習路徑後，最近使用的入口會顯示在這裡。</p>';
+    if(saved) saved.innerHTML=s.saved.length?s.saved.map(id=>itemMarkup(id,'saved')).join(''):'<p class="myaml-personal__empty">按下「☆ 稍後學習」，可以把想回來看的路徑留在這裡。</p>';
+  }
+  function markRecent(id){ if(!routes[id]) return; const s=readPersonal(); s.recent=[id,...s.recent.filter(x=>x!==id)].slice(0,5); writePersonal(s); }
+  function toggleSaved(id){ if(!routes[id]) return; const s=readPersonal(); s.saved=s.saved.includes(id)?s.saved.filter(x=>x!==id):[id,...s.saved]; writePersonal(s); renderPersonal(); }
+  document.addEventListener('click',e=>{
+    const save=e.target.closest('[data-save-route]'); if(save){ e.preventDefault(); toggleSaved(save.dataset.saveRoute); return; }
+    const remove=e.target.closest('[data-remove-saved]'); if(remove){ e.preventDefault(); const s=readPersonal(); s.saved=s.saved.filter(x=>x!==remove.dataset.removeSaved); writePersonal(s); renderPersonal(); return; }
+    const recent=e.target.closest('[data-recent-route]'); if(recent) markRecent(recent.dataset.recentRoute);
+  });
+  function render(){const mgmt=renderTrack('management');const pbs=renderTrack('pbs');const lab=renderLab();renderContinue(mgmt,pbs,lab);renderPersonal();}
   window.addEventListener('pageshow',render);
   window.addEventListener('storage',render);
   render();
