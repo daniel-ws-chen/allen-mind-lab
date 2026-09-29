@@ -442,6 +442,46 @@
     .resource-section__grid{grid-template-columns:1fr;}
     .resource-section--wellbeing,.resource-section--education,.resource-section--support{padding:20px 14px;border-radius:22px;}
   }
+
+  /* Phase 49 — partner preview: photo-first crop */
+  .resource-section--partner .resource-item{
+    grid-template-columns:minmax(340px,1.02fr) minmax(0,1.28fr);
+  }
+  .resource-preview--photo-first{
+    min-height:300px;
+    background:#f6f2f8;
+    border-color:rgba(111,79,134,.18);
+  }
+  .resource-preview--photo-first img{
+    object-fit:cover;
+    object-position:92% center;
+    transform:scale(1.035);
+    transform-origin:92% center;
+  }
+  .resource-preview--photo-first::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    background:linear-gradient(90deg,rgba(74,45,91,.04) 0%,rgba(74,45,91,0) 42%,rgba(255,255,255,0) 100%);
+  }
+  .resource-preview--photo-first::after{
+    content:"照片優先預覽";
+    z-index:2;
+    color:#6f4f86;
+    border-color:rgba(111,79,134,.16);
+  }
+  @media(max-width:900px){
+    .resource-section--partner .resource-item{display:flex;}
+    .resource-preview--photo-first{min-height:230px;height:230px;}
+    .resource-preview--photo-first img{object-position:88% center;transform:scale(1.02);transform-origin:88% center;}
+  }
+  @media(max-width:560px){
+    .resource-preview--photo-first{height:220px;min-height:220px;}
+    .resource-preview--photo-first img{object-position:90% center;}
+  }
+
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AML Resource Network｜精選資源","url":"https://allenmindlab.com/resources.html","description":"Allen Mind Lab 精選站外資源。","isPartOf":{"@type":"WebSite","name":"Allen Mind Lab","url":"https://allenmindlab.com/"}}</script>
 </head>
@@ -467,7 +507,7 @@
 
 <section class="resource-section resource-section--partner" id="partners"><div class="resource-section__head"><div><div class="resource-section__eyebrow">PARTNER NETWORK</div><h2 class="resource-section__title">協力夥伴</h2></div><p class="resource-section__intro">彼此獨立、相互協力的專業網站，讓不同專業視角在 AML 之外繼續延伸。</p></div><div class="resource-section__grid"><article class="resource-item resource-item--partner">
 <div class="resource-item__meta">AML 協力夥伴 · 心理健康職能治療 · 身心整合</div>
-<div class="resource-preview"><img alt="Sera.Phina 心理健康與意識神經科學研究室網站首頁預覽" decoding="async" height="713" loading="lazy" src="images/resources/seraphina-home.webp" width="1600"/></div>
+<div class="resource-preview resource-preview--photo-first"><img alt="Sera.Phina 心理健康與意識神經科學研究室網站精選預覽" decoding="async" height="713" loading="lazy" src="images/resources/seraphina-home.webp" width="1600"/></div>
 <h2>Sera.Phina｜Eliza</h2>
 <p>以心理健康職能治療為專業核心，連結教學研究、自我覺察、情緒調節與身心整合，整理 Eliza 的專業實踐與持續探索。</p><div class="for-who"><strong>適合誰</strong>適合關注心理健康職能治療、自我覺察、情緒調節與身心整合的讀者。</div>
 <div class="why"><strong>AML × Sera.Phina｜協力夥伴</strong><p>Sera.Phina 與 AML 是彼此獨立、相互協力的專業網站。兩者各自保有不同的主題與氣質，並在職能治療、心理健康、教育與生活實踐之間彼此交流、互相連結。</p></div>
