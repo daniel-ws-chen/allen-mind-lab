@@ -161,7 +161,7 @@ function footerNav(c,m){
 function generateArticle(c,m){
   const ref=latestArticle(m); const refPath=join(root,ref.articlePath.replace(/^\//,'')); const html=read(refPath);
   const headMatch=html.match(/<head>[\s\S]*?<\/head>/i); if(!headMatch) die('Reference article head not found.');
-  const navMatch=html.match(/<body>([\s\S]*?<\/nav>)/i); if(!navMatch) die('Reference article global nav not found.');
+  const navMatch=html.match(/<body[^>]*>([\s\S]*?<\/nav>)/i); if(!navMatch) die('Reference article global nav not found.');
   const footerIdx=html.indexOf('<footer class="aml-global-footer">'); if(footerIdx<0) die('Reference article global footer not found.');
   const tail=html.slice(footerIdx).replace(/<section aria-label="文章閱讀導覽"[\s\S]*?(?=<footer class="aml-global-footer">)/i,'');
   let body=read(resolveInput(c,'bodyFile')).trim(); body=addIdsAndToc(body);
