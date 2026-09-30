@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-29T16:21:23.813Z",
+  "generatedAt": "2026-09-30T03:36:21.968Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 55,
-    "ot": 23,
+    "total": 56,
+    "ot": 24,
     "mind": 14,
     "pbs": 14,
     "education": 11,
-    "management": 28,
+    "management": 29,
     "ai": 17,
     "notes": 7
   },
@@ -79,6 +79,49 @@
   },
   "articles": [
     {
+      "slug": "from-serving-one-person-to-policy-development",
+      "title": "從服務一個人出發，走向政策發展上路",
+      "summary": "兒虐只是練習的入口。本文從情境、角色與風險階段切換視角，示範如何從服務一個人的困難出發，確認一群人的共同需求，再把需求轉化為方案、制度與政策思考。",
+      "date": "2026-09-30",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "Management & Leadership × OT & Human Occupation",
+      "cardMeta": "2026.09.30 · Management & Leadership × OT & Human Occupation",
+      "keywords": [
+        "需求分析",
+        "方案規劃",
+        "SWOT",
+        "政策發展",
+        "職能治療",
+        "兒虐預防",
+        "管理學",
+        "服務設計"
+      ],
+      "articlePath": "/articles/from-serving-one-person-to-policy-development.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/from-serving-one-person-to-policy-development",
+      "hero": "/images/articles/from-serving-one-person-to-policy-development-hero.webp",
+      "ogImage": "/images/articles/from-serving-one-person-to-policy-development-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 運用生成式 AI 打造職能治療管理學線上自學平台",
+          "href": "/articles/ot-management-ai-self-study-platform.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "ot-management-ai-self-study-platform",
       "title": "運用生成式 AI 打造職能治療管理學線上自學平台",
       "summary": "把閱讀、小測驗與基礎知識確認留在線上，學生依自己的節奏先完成課前學習，再帶著知識與提問走進教室，把珍貴的100分鐘留給討論、合作、判斷與應用。",
@@ -118,6 +161,11 @@
           "kind": "previous",
           "label": "上一篇 ← 100位同學的100分鐘大挑戰：公民咖啡館十桌會診 × AI協作下的職能治療管理學課程實作",
           "href": "/articles/ot-management-world-cafe-ai-collaboration.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 從服務一個人出發，走向政策發展上路 →",
+          "href": "/articles/from-serving-one-person-to-policy-development.html"
         }
       ],
       "readingPaths": [],
