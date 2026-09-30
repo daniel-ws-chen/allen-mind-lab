@@ -69,7 +69,20 @@
 .aml-learn-article .aml-source-notes{background:#f7f2e8;border-radius:14px;padding:20px 24px;font-size:.92rem;color:#475569;margin:32px 0}
 .aml-learn-article .aml-references li{margin-bottom:12px;overflow-wrap:anywhere}
 .aml-learn-article h3{line-height:1.5}
-@media(max-width:640px){.aml-learn-article .aml-article-table{font-size:.88rem}.aml-learn-article .aml-article-table th,.aml-learn-article .aml-article-table td{padding:11px 12px}}
+@media(max-width:640px){
+/* Mobile only: turn the wide 5P table into readable stacked cards. Desktop table is unchanged. */
+.aml-learn-article .aml-table-scroll{overflow:visible;border:0;border-radius:0;margin:22px 0}
+.aml-learn-article .aml-article-table{min-width:0;width:100%;font-size:.92rem;border-collapse:separate;border-spacing:0}
+.aml-learn-article .aml-article-table thead{display:none}
+.aml-learn-article .aml-article-table tbody,.aml-learn-article .aml-article-table tr,.aml-learn-article .aml-article-table td{display:block;width:100%;box-sizing:border-box}
+.aml-learn-article .aml-article-table tr{margin:0 0 14px;border:1px solid #e8dfcf;border-radius:14px;overflow:hidden;background:#fff}
+.aml-learn-article .aml-article-table td{padding:11px 14px;border:0;border-bottom:1px solid #eee7da;white-space:normal}
+.aml-learn-article .aml-article-table td:last-child{border-bottom:0}
+.aml-learn-article .aml-article-table td:first-child{padding:12px 14px;background:#f7f2e8;font-size:1rem;font-weight:800;color:#061a36}
+.aml-learn-article .aml-article-table td:nth-child(2)::before,.aml-learn-article .aml-article-table td:nth-child(3)::before{display:block;margin-bottom:3px;font-size:.76rem;line-height:1.4;font-weight:700;color:#806338;letter-spacing:.02em}
+.aml-learn-article .aml-article-table td:nth-child(2)::before{content:"規劃的核心問題"}
+.aml-learn-article .aml-article-table td:nth-child(3)::before{content:"失智日間復能團體示例"}
+}
 </style><meta content="https://allenmindlab.com/images/articles/ot-management-organizational-planning-hero-og.jpg" property="og:image"/><meta content="組織為什麼存在？從願景、使命到可執行的服務方向，以通往社區的道路與專業支持象徵組織規劃" property="og:image:alt"/><meta content="https://allenmindlab.com/images/articles/ot-management-why-management-matters-hero-og.jpg" name="twitter:image"/></head><body id="top"><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
 <details class="aml-nav-group"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
 <details class="aml-nav-group"><summary>主題館藏</summary><div class="aml-nav-panel aml-nav-panel--collection"><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a></div></details>
