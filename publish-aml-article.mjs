@@ -44,7 +44,7 @@ function validateConfig(c){
   if(!DOMAIN_PAGES[c.primaryDomain]) die(`primaryDomain must be one of: ${Object.keys(DOMAIN_PAGES).join(', ')}`);
   c.crossDomains ??=[]; c.domains=[c.primaryDomain,...c.crossDomains.filter(x=>x!==c.primaryDomain)];
   for(const d of c.domains) if(!DOMAIN_PAGES[d]) die(`Unknown domain '${d}'.`);
-  c.keywords ??=[]; c.relatedReading ??=[]; c.series ??=[]; c.navigation ??={};
+  c.keywords ??=[]; c.relatedReading ??=[]; c.autoRelatedReading ??=true; c.series ??=[]; c.navigation ??={};
   c.tag ??= c.domains.map(d=>DOMAIN_LABELS[d]).join(' × ');
   // Topic-hall cards use one stable public convention: date + domain taxonomy only.
   // Do not place series/teaching labels such as 延伸閱讀、課後學習、Research Update in cardMeta.
@@ -135,14 +135,46 @@ function addIdsAndToc(body){
   const idx=body.search(/<h2\b/i); return idx>=0 ? body.slice(0,idx)+toc+body.slice(idx) : toc+body;
 }
 
+function idsOf(items=[]){ return new Set((items||[]).map(x=>typeof x==='string'?x:x?.id).filter(Boolean)); }
+function normKeyword(x=''){ return String(x).trim().toLowerCase().replace(/\s+/g,' '); }
+function autoRelated(c,m,limit=3){
+  const sourceSeries=idsOf(c.series), sourcePaths=idsOf(c.readingPaths);
+  const sourceDomains=new Set(c.domains||[c.primaryDomain,...(c.crossDomains||[])]);
+  const sourceKeywords=new Set((c.keywords||[]).map(normKeyword).filter(x=>x.length>=2));
+  return (m.articles||[]).filter(a=>a.slug!==c.slug).map(a=>{
+    let score=0; const reasons=[];
+    const targetSeries=idsOf(a.series), targetPaths=idsOf(a.readingPaths);
+    const targetDomains=new Set(a.domains||[a.primaryDomain,...(a.crossDomains||[])]);
+    const targetKeywords=new Set((a.keywords||[]).map(normKeyword).filter(x=>x.length>=2));
+    const seriesHits=[...sourceSeries].filter(x=>targetSeries.has(x)).length;
+    const pathHits=[...sourcePaths].filter(x=>targetPaths.has(x)).length;
+    const domainHits=[...sourceDomains].filter(x=>targetDomains.has(x)).length;
+    const keywordHits=[...sourceKeywords].filter(x=>targetKeywords.has(x)).length;
+    if(seriesHits){ score+=seriesHits*24; reasons.push('同系列'); }
+    if(pathHits){ score+=pathHits*18; reasons.push('同學習路徑'); }
+    if(a.primaryDomain===c.primaryDomain){ score+=12; reasons.push('同主題館'); }
+    if(domainHits){ score+=domainHits*4; if(!reasons.includes('同主題館')) reasons.push('主題相近'); }
+    if(keywordHits){ score+=Math.min(keywordHits,6); reasons.push('關鍵字相關'); }
+    if(a.isNote) score-=2;
+    return {slug:a.slug,title:a.title,summary:a.summary||'',primaryDomain:a.primaryDomain,date:a.date||'',score,reasons};
+  }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score || (b.date||'').localeCompare(a.date||'') || a.title.localeCompare(b.title,'zh-Hant')).slice(0,limit);
+}
+function resolveRelated(c,m){
+  if(Array.isArray(c.relatedReading) && c.relatedReading.length) return c.relatedReading;
+  if(c.autoRelatedReading===false) return [];
+  return autoRelated(c,m,3);
+}
 function relatedHtml(c,m){
-  if(!c.relatedReading.length) return '';
+  const related=resolveRelated(c,m);
+  if(!related.length) return '';
   const bySlug=new Map(m.articles.map(a=>[a.slug,a]));
-  const lis=c.relatedReading.map(x=>{
-    const o=typeof x==='string'?{slug:x}:x; const a=bySlug.get(o.slug); if(!a) die(`relatedReading references unknown slug: ${o.slug}`);
-    return `<li><a href="/articles/${a.slug}.html">${esc(o.label||a.title)}</a></li>`;
+  const cards=related.map(x=>{
+    const o=typeof x==='string'?{slug:x}:x; const a=bySlug.get(o.slug)||o; if(!a?.slug) die(`relatedReading references unknown slug: ${o.slug}`);
+    const label=o.label||a.title; const summary=o.summary||a.summary||'';
+    const domain=o.primaryDomain||a.primaryDomain||''; const domainLabel=DOMAIN_LABELS[domain]||'AML';
+    return `<a class="aml-related-reading__card" href="/articles/${a.slug}.html"><small>${esc(domainLabel)}</small><strong>${esc(label)}</strong>${summary?`<span>${esc(summary)}</span>`:''}<b>延伸閱讀 →</b></a>`;
   }).join('');
-  return `<h2 id="section-related">延伸閱讀</h2><ul>${lis}</ul>`;
+  return `<section class="aml-related-reading" aria-labelledby="section-related"><div class="aml-related-reading__head"><h2 id="section-related">延伸閱讀</h2><p>依文章主題、系列與關鍵字推薦</p></div><div class="aml-related-reading__grid">${cards}</div></section>`;
 }
 function shareHtml(){ return `<section aria-label="分享文章" class="aml-share"><div class="aml-share-copy"><strong>分享這篇文章</strong><p>把這篇 AML 文章分享給可能也會需要的人。</p></div><div class="aml-share-actions"><button class="aml-share-btn" data-aml-share type="button">分享文章 ↗</button><button class="aml-share-btn secondary" data-aml-copy-link type="button">複製連結</button></div><div aria-live="polite" class="aml-share-status" data-aml-share-status></div></section>`; }
 function navTarget(o,m){
@@ -334,7 +366,7 @@ function packageStage(c){
 }
 function init(slug){
   if(!slugOk(slug)) die('init slug must be lowercase kebab-case.'); const dir=join(root,'.aml-publish',slug); ensureDir(dir);
-  const cfg={slug,title:'',subtitle:'',seoDescription:'',summary:'',date:new Date().toISOString().slice(0,10),eyebrow:'',primaryDomain:'pbs',crossDomains:[],tag:'',cardMeta:'',keywords:[],heroAlt:'',bodyFile:'body.html',heroWebp:'hero.webp',ogImage:'hero.png',relatedReading:[],navigation:{routeLabel:'',seriesLinkLabel:'',previous:null,next:null,hub:null},reciprocalPrevious:false,series:[],featured:false,featuredRank:null,isNote:false,readingPaths:[],practiceBridge:null,homepageFeatured:false,rss:true,sitemap:true,articleRole:'Article',collectionRole:''};
+  const cfg={slug,title:'',subtitle:'',seoDescription:'',summary:'',date:new Date().toISOString().slice(0,10),eyebrow:'',primaryDomain:'pbs',crossDomains:[],tag:'',cardMeta:'',keywords:[],heroAlt:'',bodyFile:'body.html',heroWebp:'hero.webp',ogImage:'hero.png',relatedReading:[],autoRelatedReading:true,navigation:{routeLabel:'',seriesLinkLabel:'',previous:null,next:null,hub:null},reciprocalPrevious:false,series:[],featured:false,featuredRank:null,isNote:false,readingPaths:[],practiceBridge:null,homepageFeatured:false,rss:true,sitemap:true,articleRole:'Article',collectionRole:''};
   const p=join(dir,'article.json'); if(!existsSync(p)) write(p,jsonPretty(cfg)); if(!existsSync(join(dir,'body.html'))) write(join(dir,'body.html'),'<!-- AML_TOC -->\n<p>文章開場。</p>\n<h2>第一節</h2>\n<p>正文。</p>\n');
   ok(`Draft workspace created: ${relative(root,dir)}`);
 }

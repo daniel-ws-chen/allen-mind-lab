@@ -202,3 +202,24 @@ node validate-aml.mjs
 ```
 
 這就是 AML 的「半自動造艦工廠」。
+
+## Related Reading Engine（2026-10-01）
+
+新文章預設啟用 `autoRelatedReading: true`。若 `relatedReading` 為空，上稿腳本會自動推薦 3 篇延伸閱讀，排序權重依序為：同系列、同學習路徑、同主題館、跨主題重疊、關鍵字重疊；日期只作為同分時的次要排序，不再以發文順序作為推薦主邏輯。
+
+如需人工指定，可在文章設定中填入：
+
+```json
+"relatedReading": [
+  "article-slug-a",
+  {"slug":"article-slug-b","label":"自訂顯示標題"}
+]
+```
+
+人工指定內容優先於自動推薦。若單篇文章不希望顯示延伸閱讀，可設定：
+
+```json
+"autoRelatedReading": false
+```
+
+舊文章不需要逐篇重新上稿：`aml-site.js` 會讀取 `/data/articles-manifest.json`，在尚未存在人工「延伸閱讀／相關文章」區塊時，自動補上 3 篇推薦。此功能屬漸進增強，載入失敗不影響文章正文、上一篇／下一篇與其他網站功能。

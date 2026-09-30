@@ -1602,3 +1602,84 @@ body .newsletter-icon{
   }
 }
 /* ===== /AML 3.4 Responsive Isolation Guard v1 ===== */
+
+/* ===== AML Related Reading Engine v1 · 2026-10-01 ===== */
+.aml-related-reading{
+  margin:48px 0 34px;
+  padding:28px 0 4px;
+  border-top:1px solid #e8dfcf;
+}
+.aml-related-reading__head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:18px;
+}
+.aml-related-reading__head h2{
+  margin:0;
+}
+.aml-related-reading__head p{
+  margin:0;
+  color:#667085;
+  font-size:.9rem;
+}
+.aml-related-reading__grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.aml-related-reading__card{
+  display:flex;
+  min-width:0;
+  min-height:190px;
+  flex-direction:column;
+  gap:9px;
+  padding:20px;
+  border:1px solid #e8dfcf;
+  border-radius:16px;
+  background:#fff;
+  color:#061a36;
+  text-decoration:none;
+  box-shadow:0 8px 24px rgba(6,26,54,.045);
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.aml-related-reading__card:hover{
+  transform:translateY(-2px);
+  border-color:#c9ad7c;
+  box-shadow:0 12px 30px rgba(6,26,54,.08);
+}
+.aml-related-reading__card small{
+  color:#8b6a32;
+  font-size:.76rem;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.aml-related-reading__card strong{
+  display:block;
+  font-size:1.04rem;
+  line-height:1.5;
+}
+.aml-related-reading__card span{
+  display:-webkit-box;
+  overflow:hidden;
+  color:#667085;
+  font-size:.9rem;
+  line-height:1.65;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:3;
+}
+.aml-related-reading__card b{
+  margin-top:auto;
+  color:#8b6a32;
+  font-size:.88rem;
+}
+@media(max-width:760px){
+  .aml-related-reading{margin-top:38px;padding-top:24px}
+  .aml-related-reading__head{display:block}
+  .aml-related-reading__head p{margin-top:6px}
+  .aml-related-reading__grid{grid-template-columns:1fr}
+  .aml-related-reading__card{min-height:0;padding:18px}
+}
+/* ===== /AML Related Reading Engine v1 ===== */

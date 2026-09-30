@@ -843,3 +843,127 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncAdvancedSelfStudy, {once:true});
   else syncAdvancedSelfStudy();
 })();
+
+/* ===== AML Related Reading Engine v1 · 2026-10-01 =====
+   Auto-injects three relevant articles into legacy article pages.
+   Ranking: same series > same learning path > same primary domain > shared domains > keyword overlap.
+   Existing manual related-reading sections are preserved.
+*/
+(function () {
+  const pathMatch = location.pathname.match(/^\/articles\/([^/]+?)(?:\.html)?\/?$/i);
+  if (!pathMatch) return;
+
+  function idsOf(items) {
+    return new Set((items || []).map((x) => typeof x === 'string' ? x : x && x.id).filter(Boolean));
+  }
+  function normKeyword(x) {
+    return String(x || '').trim().toLowerCase().replace(/\s+/g, ' ');
+  }
+  function domainLabel(id) {
+    return ({
+      ot: 'OT & Human Occupation',
+      mind: 'Mind & Well-being',
+      pbs: 'PBS',
+      education: 'Education',
+      management: 'Management & Leadership',
+      ai: 'AI × Practice'
+    })[id] || 'AML';
+  }
+  function hasExistingRelated(main) {
+    if (main.querySelector('#section-related, .aml-related-reading, [data-aml-auto-related]')) return true;
+    return Array.from(main.querySelectorAll('h2,h3')).some((h) => /^(延伸閱讀|相關文章)/.test(h.textContent.trim()));
+  }
+  function scoreRelated(source, target) {
+    let score = 0;
+    const sourceSeries = idsOf(source.series);
+    const targetSeries = idsOf(target.series);
+    const sourcePaths = idsOf(source.readingPaths);
+    const targetPaths = idsOf(target.readingPaths);
+    const sourceDomains = new Set(source.domains || [source.primaryDomain].filter(Boolean));
+    const targetDomains = new Set(target.domains || [target.primaryDomain].filter(Boolean));
+    const sourceKeywords = new Set((source.keywords || []).map(normKeyword).filter((x) => x.length >= 2));
+    const targetKeywords = new Set((target.keywords || []).map(normKeyword).filter((x) => x.length >= 2));
+
+    const seriesHits = [...sourceSeries].filter((x) => targetSeries.has(x)).length;
+    const pathHits = [...sourcePaths].filter((x) => targetPaths.has(x)).length;
+    const domainHits = [...sourceDomains].filter((x) => targetDomains.has(x)).length;
+    const keywordHits = [...sourceKeywords].filter((x) => targetKeywords.has(x)).length;
+
+    score += seriesHits * 24;
+    score += pathHits * 18;
+    if (source.primaryDomain && target.primaryDomain === source.primaryDomain) score += 12;
+    score += domainHits * 4;
+    score += Math.min(keywordHits, 6);
+    if (target.isNote) score -= 2;
+    return score;
+  }
+  function render(main, source, candidates) {
+    if (hasExistingRelated(main) || !candidates.length) return;
+    const section = document.createElement('section');
+    section.className = 'aml-related-reading';
+    section.dataset.amlAutoRelated = 'true';
+    section.setAttribute('aria-labelledby', 'section-related');
+
+    const head = document.createElement('div');
+    head.className = 'aml-related-reading__head';
+    const h2 = document.createElement('h2');
+    h2.id = 'section-related';
+    h2.textContent = '延伸閱讀';
+    const p = document.createElement('p');
+    p.textContent = '依文章主題、系列與關鍵字推薦';
+    head.append(h2, p);
+
+    const grid = document.createElement('div');
+    grid.className = 'aml-related-reading__grid';
+    candidates.forEach((a) => {
+      const card = document.createElement('a');
+      card.className = 'aml-related-reading__card';
+      card.href = `/articles/${a.slug}.html`;
+
+      const small = document.createElement('small');
+      small.textContent = domainLabel(a.primaryDomain);
+      const strong = document.createElement('strong');
+      strong.textContent = a.title;
+      const summary = document.createElement('span');
+      summary.textContent = a.summary || '';
+      const cta = document.createElement('b');
+      cta.textContent = '延伸閱讀 →';
+      card.append(small, strong);
+      if (a.summary) card.append(summary);
+      card.append(cta);
+      grid.appendChild(card);
+    });
+    section.append(head, grid);
+
+    const share = main.querySelector('.aml-share');
+    if (share) main.insertBefore(section, share);
+    else main.appendChild(section);
+  }
+
+  async function init() {
+    const main = document.querySelector('main');
+    if (!main || hasExistingRelated(main)) return;
+    const slug = pathMatch[1];
+    try {
+      const res = await fetch('/data/articles-manifest.json', { cache: 'no-cache' });
+      if (!res.ok) return;
+      const manifest = await res.json();
+      const articles = Array.isArray(manifest.articles) ? manifest.articles : [];
+      const source = articles.find((a) => a.slug === slug);
+      if (!source) return;
+      const candidates = articles
+        .filter((a) => a && a.slug && a.slug !== slug)
+        .map((a) => ({ ...a, __score: scoreRelated(source, a) }))
+        .filter((a) => a.__score > 0)
+        .sort((a, b) => b.__score - a.__score || String(b.date || '').localeCompare(String(a.date || '')) || String(a.title || '').localeCompare(String(b.title || ''), 'zh-Hant'))
+        .slice(0, 3);
+      render(main, source, candidates);
+    } catch (e) {
+      // Related reading is progressive enhancement; article reading must never depend on it.
+    }
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true });
+  else init();
+})();
+/* ===== /AML Related Reading Engine v1 ===== */
