@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-09-30T03:36:21.968Z",
+  "generatedAt": "2026-10-01T00:41:19.554Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 56,
-    "ot": 24,
+    "total": 57,
+    "ot": 25,
     "mind": 14,
     "pbs": 14,
-    "education": 11,
-    "management": 29,
-    "ai": 17,
+    "education": 12,
+    "management": 30,
+    "ai": 18,
     "notes": 7
   },
   "featuredReading": [
@@ -79,6 +79,64 @@
   },
   "articles": [
     {
+      "slug": "ot-management-ai-collaborative-learning",
+      "title": "AI 不是答案機：從線上自學、AI 協作到公民咖啡館的職能治療管理學實踐",
+      "summary": "從線上自學、AI 協作到公民咖啡館，重新思考 AI 如何支持個人準備，同時把珍貴的課堂時間留給高密度的人際互動、專業判斷與回饋。",
+      "date": "2026-10-01",
+      "domains": [
+        "education",
+        "management",
+        "ai",
+        "ot"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [
+        "management",
+        "ai",
+        "ot"
+      ],
+      "tag": "Education × Management & Leadership × AI × Practice × OT & Human Occupation",
+      "cardMeta": "2026.10.01 · Education × Management & Leadership × AI × Practice × OT & Human Occupation",
+      "keywords": [
+        "generative AI",
+        "AI education",
+        "occupational therapy education",
+        "management education",
+        "collaborative learning",
+        "World Cafe",
+        "feedback literacy",
+        "AI learning partner",
+        "self-directed learning",
+        "職能治療管理學",
+        "公民咖啡館",
+        "AI 協作學習"
+      ],
+      "articlePath": "/articles/ot-management-ai-collaborative-learning.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/ot-management-ai-collaborative-learning",
+      "hero": "/images/articles/ot-management-ai-collaborative-learning-hero.webp",
+      "ogImage": "/images/articles/ot-management-ai-collaborative-learning-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 從服務一個人出發，走向政策發展上路",
+          "href": "/articles/from-serving-one-person-to-policy-development.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false,
+      "practiceBridge": {
+        "label": "AML 教學工具",
+        "title": "方案規劃與管理智能助理",
+        "desc": "把抽象的方案規劃作業拆成逐步思考與 AI 協作流程，協助學生整理需求、目標、執行方式、資源與成效評估。",
+        "href": "/tools/management-coach/",
+        "cta": "前往工具 →"
+      }
+    },
+    {
       "slug": "from-serving-one-person-to-policy-development",
       "title": "從服務一個人出發，走向政策發展上路",
       "summary": "兒虐只是練習的入口。本文從情境、角色與風險階段切換視角，示範如何從服務一個人的困難出發，確認一群人的共同需求，再把需求轉化為方案、制度與政策思考。",
@@ -116,6 +174,11 @@
           "kind": "previous",
           "label": "上一篇 ← 運用生成式 AI 打造職能治療管理學線上自學平台",
           "href": "/articles/ot-management-ai-self-study-platform.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 AI 不是答案機：從線上自學、AI 協作到公民咖啡館的職能治療管理學實踐 →",
+          "href": "/articles/ot-management-ai-collaborative-learning.html"
         }
       ],
       "readingPaths": [],
