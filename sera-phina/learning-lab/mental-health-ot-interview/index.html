@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>精神職能治療會談實驗室｜Sera.Phina</title>
-<meta name="description" content="AI Standardized Patient × Interview Practice × OSCE Assessment：精神職能治療會談實務助教暨評測員前端原型。"/>
+<meta name="description" content="AI Standardized Patient × Interview Practice × OSCE Assessment：精神職能治療會談實務助教暨評測員，支援 AI 標準病人模擬與結構化會談回饋。"/>
 <link rel="stylesheet" href="../../seraphina.css"/>
 <style>
 :root{--lab-purple:#6f4f86;--lab-soft:#f4edf8;--lab-green:#5f7d70;--lab-gold:#9b7b43}
@@ -23,22 +23,148 @@ body{background:#fbf9fc}.interview-shell{max-width:1120px;margin:0 auto;padding:
 
 <section class="panel hidden" id="briefing"><div class="eyebrow">Step 2 · Briefing</div><h2>會談前說明</h2><div class="brief"><div class="brief-card"><strong>你的角色</strong><p>你是一位精神科職能治療實習學生，今天將與一位近期轉介至職能治療的個案進行第一次會談。</p><ul><li>請以自然、尊重且個案中心的方式進行。</li><li>嘗試理解個案目前的生活、角色、日常活動與真正重視的事情。</li><li>不要假設你已經知道個案的診斷或答案。</li></ul></div><div class="brief-card"><strong>今日個案</strong><p id="briefCase">林○○，22 歲，大學生。近三個月生活與學習參與明顯下降。</p><p><b>本次任務：</b><span id="briefTask">初次評估會談</span></p><p><b>建議時間：</b>15 分鐘</p></div></div><div class="actions"><button class="btn secondary" id="backSetup">← 返回設定</button><button class="btn primary" id="startInterview">準備好了，開始會談</button></div></section>
 
-<section class="panel hidden" id="room"><div class="interview-top"><div><div class="status"><i></i> 會談進行中</div><h2 style="margin:6px 0 0">Standardized Patient｜<span id="patientName">林同學</span></h2></div><div class="timer" id="timer">15:00</div></div><div class="chat" id="chat" aria-live="polite"><div class="msg system">這是前端 Prototype。正式版接上安全後端後，標準病人將依 Case Blueprint 回應。</div><div class="msg patient" id="opening">嗯……老師說今天要來這邊聊聊。其實我也不知道要講什麼。</div></div><div class="composer"><textarea id="studentInput" placeholder="想對個案說什麼？"></textarea><button class="btn primary" id="sendMsg">送出</button></div><div class="interview-actions"><div><button class="btn secondary" id="hintBtn">💡 需要提示</button> <span class="hint-log" id="hintLog">尚未使用提示</span></div><button class="btn danger" id="endInterview">結束本次會談</button></div></section>
+<section class="panel hidden" id="room"><div class="interview-top"><div><div class="status"><i></i> 會談進行中</div><h2 style="margin:6px 0 0">Standardized Patient｜<span id="patientName">林同學</span></h2></div><div class="timer" id="timer">15:00</div></div><div class="chat" id="chat" aria-live="polite"><div class="msg system" id="serviceState">正在檢查 AI 標準病人服務…</div><div class="msg patient" id="opening">嗯……老師說今天要來這邊聊聊。其實我也不知道要講什麼。</div></div><div class="composer"><textarea id="studentInput" placeholder="想對個案說什麼？"></textarea><button class="btn primary" id="sendMsg">送出</button></div><div class="interview-actions"><div><button class="btn secondary" id="hintBtn">💡 需要提示</button> <span class="hint-log" id="hintLog">尚未使用提示</span></div><button class="btn danger" id="endInterview">結束本次會談</button></div></section>
 
-<section class="panel hidden" id="report"><div class="eyebrow">Step 4 · Learning Report</div><h2>本次會談學習報告</h2><p>以下為 Prototype 示範報告。正式版會依完整逐字稿與固定 rubric 產生，不會使用假精確的百分制分數。</p><div class="report-grid"><div><div class="score-card"><h3>資訊探索地圖</h3><div class="score-row"><strong>職能角色</strong><span>●●●○</span></div><div class="score-row"><strong>日常作息</strong><span>●●●●</span></div><div class="score-row"><strong>興趣與價值</strong><span>●●○○</span></div><div class="score-row"><strong>環境支持</strong><span>●●○○</span></div><div class="score-row"><strong>職能困難</strong><span>●●●●</span></div><div class="score-row"><strong>治療期待</strong><span>●○○○</span></div></div></div><div><div class="score-card"><h3>八大能力</h3><div class="score-row"><strong>治療關係建立</strong><span class="level">良好</span></div><div class="score-row"><strong>一般會談技巧</strong><span class="level">良好</span></div><div class="score-row"><strong>OT 專業會談</strong><span class="level">尚可</span></div><div class="score-row"><strong>臨床推理</strong><span class="level">尚可</span></div><div class="score-row"><strong>個案中心</strong><span class="level">良好</span></div><div class="score-row"><strong>目標設定</strong><span class="level">尚可</span></div><div class="score-row"><strong>Shared Decision-Making</strong><span class="level">尚可</span></div><div class="score-row"><strong>專業整合能力</strong><span class="level">尚可</span></div></div></div></div><h3 style="margin-top:26px">🔎 找回關鍵時刻</h3><div class="moment"><b>個案：</b>「以前其實滿喜歡跟朋友出去的，現在就……算了。」<br><b>示範分析：</b>這是一個值得追問的有意義活動線索。若立即換題，可能錯過理解活動減少如何影響個案生活意義的機會。<br><b>可以嘗試：</b>「你好像有點停住了。以前和朋友出去，對你來說是什麼樣的事情？」</div><h3>下一次最值得優先練習的三件事</h3><ol><li>不要只停在症狀，繼續探索症狀如何影響角色、活動與生活參與。</li><li>得到重要資訊後先反映或摘要，再進入下一個問題。</li><li>提出介入策略前，先確認什麼改變對個案本人最重要。</li></ol><div class="actions"><button class="btn secondary" id="restart">再練一次</button></div></section>
+<section class="panel hidden" id="report"><div class="eyebrow">Step 4 · Learning Report</div><h2>本次會談學習報告</h2><p id="reportIntro">正在依逐字稿產生結構化學習回饋。</p><div id="reportLoading" class="brief-card">評測員正在整理會談歷程、八大能力與關鍵時刻…</div><div id="reportContent" class="hidden"><div class="report-grid"><div><div class="score-card"><h3>資訊探索地圖</h3><div id="explorationMap"></div></div></div><div><div class="score-card"><h3>八大能力</h3><div id="abilityScores"></div></div></div></div><h3 style="margin-top:26px">會談摘要</h3><div class="brief-card" id="summaryBlock"></div><h3 style="margin-top:26px">🔎 找回關鍵時刻</h3><div id="momentList"></div><h3>下一次最值得優先練習的三件事</h3><div id="priorityList"></div><div class="privacy" id="facultyNote"></div></div><div id="reportError" class="privacy hidden"></div><div class="actions"><button class="btn secondary" id="restart">再練一次</button></div></section>
 </main>
 <footer class="site-footer"><div><strong>Sera.Phina</strong><span>Eliza</span></div><p>Mental Health · Occupational Therapy · Consciousness · Neuroscience</p><small>In collaboration with Allen Mind Lab · © 2026 Sera.Phina</small></footer>
 <script>
-(()=>{let mode='practice',hints=0,seconds=900,timerId=null;const $=id=>document.getElementById(id);const cases={001:{brief:'林○○，22 歲，大學生。近三個月生活與學習參與明顯下降。',name:'林同學',open:'嗯……老師說今天要來這邊聊聊。其實我也不知道要講什麼。'},002:{brief:'陳○○，27 歲，近期返家進行社區生活。日常活動與外出參與偏少。',name:'陳先生',open:'我媽叫我來的。我覺得現在這樣也還好。'},003:{brief:'王○○，31 歲，近期返回工作。希望重新建立穩定生活節奏。',name:'王小姐',open:'最近是比較穩定啦，只是我現在什麼事情都會想很多。'},004:{brief:'周○○，20 歲，大學生。近期課程出席與社交活動明顯下降。',name:'周同學',open:'我就是比較容易緊張而已，應該沒有很嚴重吧。'}};
-document.querySelectorAll('.mode-card').forEach(c=>c.addEventListener('click',()=>{document.querySelectorAll('.mode-card').forEach(x=>x.classList.remove('selected'));c.classList.add('selected');mode=c.dataset.mode;$('hintBtn').style.display=mode==='assessment'?'none':'inline-block';if(mode==='assessment')$('case').value='random'}));
-$('toBrief').onclick=()=>{let id=$('case').value;if(id==='random')id=['001','002','003','004'][Math.floor(Math.random()*4)];sessionStorage.setItem('seraCase',id);const c=cases[id];$('briefCase').textContent=c.brief;$('briefTask').textContent=$('task').value;$('setup').classList.add('hidden');$('briefing').classList.remove('hidden');window.scrollTo({top:$('briefing').offsetTop-90,behavior:'smooth'})};
-$('backSetup').onclick=()=>{$('briefing').classList.add('hidden');$('setup').classList.remove('hidden')};
-$('startInterview').onclick=()=>{const c=cases[sessionStorage.getItem('seraCase')||'001'];$('patientName').textContent=c.name;$('opening').textContent=c.open;$('briefing').classList.add('hidden');$('room').classList.remove('hidden');seconds=900;timerId=setInterval(()=>{seconds--;const m=String(Math.floor(seconds/60)).padStart(2,'0'),s=String(seconds%60).padStart(2,'0');$('timer').textContent=`${m}:${s}`;if(seconds<=0){clearInterval(timerId);$('timer').textContent='00:00'}},1000)};
-function addMsg(cls,text){const d=document.createElement('div');d.className='msg '+cls;d.textContent=text;$('chat').appendChild(d);$('chat').scrollTop=$('chat').scrollHeight}
-$('sendMsg').onclick=()=>{const v=$('studentInput').value.trim();if(!v)return;addMsg('student',v);$('studentInput').value='';setTimeout(()=>addMsg('patient','（Prototype 回應）嗯……這個我以前比較少想過。你可以再問我一點。'),180)};
-$('studentInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('sendMsg').click()}});
-$('hintBtn').onclick=()=>{hints++;const hs=['想想看，目前還有哪些生活領域沒有被探索？','可以進一步了解個案近期一天的生活型態或重要角色。','例如可以嘗試問：「你最近一天通常都是怎麼過的？」'];addMsg('system','提示 '+Math.min(hints,3)+'：'+hs[Math.min(hints,3)-1]);$('hintLog').textContent=`已使用 ${hints} 次提示`};
-$('endInterview').onclick=()=>{if(timerId)clearInterval(timerId);$('room').classList.add('hidden');$('report').classList.remove('hidden');window.scrollTo({top:$('report').offsetTop-90,behavior:'smooth'})};
-$('restart').onclick=()=>{location.reload()};})();
+(()=>{
+  let mode='practice', hints=0, seconds=900, timerId=null, activeCase=null, apiReady=false;
+  const transcript=[];
+  const $=id=>document.getElementById(id);
+  const escapeHtml=(v='')=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const cases={
+    '001':{brief:'林○○，22 歲，大學生。近三個月生活與學習參與明顯下降。',name:'林同學',open:'嗯……老師說今天要來這邊聊聊。其實我也不知道要講什麼。'},
+    '002':{brief:'陳○○，27 歲，近期返家進行社區生活。日常活動與外出參與偏少。',name:'陳先生',open:'我媽叫我來的。我覺得現在這樣也還好。'},
+    '003':{brief:'王○○，31 歲，近期返回工作。希望重新建立穩定生活節奏。',name:'王小姐',open:'最近是比較穩定啦，只是我現在什麼事情都會想很多。'},
+    '004':{brief:'周○○，20 歲，大學生。近期課程出席與社交活動明顯下降。',name:'周同學',open:'我就是比較容易緊張而已，應該沒有很嚴重吧。'}
+  };
+
+  async function api(path, payload){
+    const res=await fetch('/api/sera-phina/interview/'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const data=await res.json().catch(()=>({success:false,message:'服務回應格式錯誤'}));
+    if(!res.ok||!data.success) throw new Error(data.message||'服務暫時無法使用');
+    return data;
+  }
+
+  async function checkService(){
+    try{
+      const res=await fetch('/api/sera-phina/interview/health',{cache:'no-store'});
+      const data=await res.json();
+      apiReady=Boolean(data.success&&data.api_configured);
+      $('serviceState').textContent=apiReady
+        ? 'AI 標準病人已連線。完整 Case Blueprint 僅存在伺服器端。'
+        : '目前為示範模式：尚未設定伺服器端 AI 金鑰，將使用本機 Prototype 回應。';
+    }catch(e){
+      apiReady=false;
+      $('serviceState').textContent='目前為示範模式：AI 服務尚未連線。';
+    }
+  }
+
+  document.querySelectorAll('.mode-card').forEach(c=>c.addEventListener('click',()=>{
+    document.querySelectorAll('.mode-card').forEach(x=>x.classList.remove('selected'));
+    c.classList.add('selected'); mode=c.dataset.mode;
+    $('hintBtn').style.display=mode==='assessment'?'none':'inline-block';
+    if(mode==='assessment')$('case').value='random';
+  }));
+
+  $('toBrief').onclick=async()=>{
+    const requestedCase=$('case').value;
+    try{
+      let c;
+      if(apiReady){
+        c=await api('start',{case_id:requestedCase,level:Number($('level').value),task:$('task').value,mode});
+        activeCase=c.case_id;
+      }else{
+        activeCase=requestedCase==='random'?['001','002','003','004'][Math.floor(Math.random()*4)]:requestedCase;
+        c={...cases[activeCase],case_id:activeCase};
+      }
+      sessionStorage.setItem('seraCase',activeCase);
+      $('briefCase').textContent=c.brief;
+      $('briefTask').textContent=$('task').value;
+      $('setup').classList.add('hidden'); $('briefing').classList.remove('hidden');
+      window.scrollTo({top:$('briefing').offsetTop-90,behavior:'smooth'});
+    }catch(e){alert('無法建立案例：'+e.message)}
+  };
+
+  $('backSetup').onclick=()=>{$('briefing').classList.add('hidden');$('setup').classList.remove('hidden')};
+
+  $('startInterview').onclick=()=>{
+    const c=cases[activeCase||sessionStorage.getItem('seraCase')||'001'];
+    const briefName=(activeCase&&cases[activeCase]?.name)||c.name;
+    const opening=(activeCase&&cases[activeCase]?.open)||c.open;
+    $('patientName').textContent=briefName; $('opening').textContent=opening;
+    transcript.length=0; transcript.push({role:'patient',text:opening});
+    $('briefing').classList.add('hidden'); $('room').classList.remove('hidden');
+    seconds=900; clearInterval(timerId);
+    timerId=setInterval(()=>{seconds--;const m=String(Math.floor(seconds/60)).padStart(2,'0'),ss=String(seconds%60).padStart(2,'0');$('timer').textContent=`${m}:${ss}`;if(seconds<=0){clearInterval(timerId);$('timer').textContent='00:00'}},1000);
+  };
+
+  function addMsg(cls,text){const d=document.createElement('div');d.className='msg '+cls;d.textContent=text;$('chat').appendChild(d);$('chat').scrollTop=$('chat').scrollHeight}
+
+  $('sendMsg').onclick=async()=>{
+    const v=$('studentInput').value.trim(); if(!v)return;
+    addMsg('student',v); $('studentInput').value=''; $('sendMsg').disabled=true;
+    const prior=[...transcript]; transcript.push({role:'student',text:v});
+    try{
+      let reply;
+      if(apiReady){
+        const data=await api('message',{case_id:activeCase,mode,level:Number($('level').value),task:$('task').value,transcript:prior,student_message:v});
+        reply=data.patient_reply;
+      }else{
+        reply='（示範模式）嗯……這個我以前比較少想過。你可以再問我一點。';
+      }
+      addMsg('patient',reply); transcript.push({role:'patient',text:reply});
+    }catch(e){
+      addMsg('system','AI 標準病人暫時無法回應：'+e.message);
+      transcript.pop();
+    }finally{$('sendMsg').disabled=false;$('studentInput').focus()}
+  };
+  $('studentInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('sendMsg').click()}});
+
+  $('hintBtn').onclick=async()=>{
+    hints++;
+    try{
+      let hint;
+      if(apiReady){
+        const data=await api('hint',{case_id:activeCase,mode,level:Number($('level').value),task:$('task').value,transcript,hint_level:Math.min(hints,3)});
+        hint=data.hint;
+      }else{
+        const hs=['想想看，目前還有哪些生活領域沒有被探索？','可以進一步了解個案近期一天的生活型態或重要角色。','例如可以嘗試問：「你最近一天通常都是怎麼過的？」'];hint=hs[Math.min(hints,3)-1];
+      }
+      addMsg('system','提示 '+Math.min(hints,3)+'：'+hint); $('hintLog').textContent=`已使用 ${hints} 次提示`;
+    }catch(e){hints--;addMsg('system','提示服務暫時無法使用：'+e.message)}
+  };
+
+  function dots(level){return '●'.repeat(Math.max(0,Math.min(4,Number(level)||0)))+'○'.repeat(4-Math.max(0,Math.min(4,Number(level)||0)))}
+  function renderReport(r){
+    $('explorationMap').innerHTML=(r.exploration||[]).map(x=>`<div class="score-row"><strong>${escapeHtml(x.domain)}</strong><span title="${escapeHtml(x.reason)}">${dots(x.level)}</span></div>`).join('');
+    $('abilityScores').innerHTML=(r.abilities||[]).map(x=>`<div class="score-row"><strong>${escapeHtml(x.name)}</strong><span class="level" title="${escapeHtml(x.reason)}">${escapeHtml(x.rating)}</span></div>`).join('');
+    const completed=(r.summary?.completed||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('');
+    const missing=(r.summary?.missing||[]).map(x=>`<li>${escapeHtml(x)}</li>`).join('');
+    $('summaryBlock').innerHTML=`<strong>已完成</strong><ul>${completed||'<li>尚未辨識</li>'}</ul><strong>尚可探索</strong><ul>${missing||'<li>無</li>'}</ul><p><strong>目前形成的方向：</strong>${escapeHtml(r.summary?.direction||'')}</p>`;
+    $('momentList').innerHTML=(r.moments||[]).map(x=>`<div class="moment"><b>個案：</b>${escapeHtml(x.patient)}<br><b>你：</b>${escapeHtml(x.student)}<br><b>分析：</b>${escapeHtml(x.analysis)}<br><b>可以嘗試：</b>${escapeHtml(x.try)}</div>`).join('')||'<div class="moment">本次逐字稿尚未辨識到適合回看的關鍵回合。</div>';
+    $('priorityList').innerHTML=(r.priorities||[]).map((x,i)=>`<div class="brief-card" style="margin:10px 0"><strong>${i+1}. ${escapeHtml(x.issue)}</strong><p>${escapeHtml(x.why)}</p><p><b>怎麼練：</b>${escapeHtml(x.how)}</p><p><b>示例：</b>${escapeHtml(x.example)}</p></div>`).join('');
+    $('facultyNote').textContent=r.faculty_note||'AI 評量用於形成性教學回饋；若作為正式成績，仍應由授課教師覆核。';
+    $('reportLoading').classList.add('hidden'); $('reportContent').classList.remove('hidden');
+  }
+
+  function demoReport(){return {summary:{completed:['建立初步治療關係','探索部分生活型態'],missing:['個案真正優先的改變','環境支持與有意義活動'],direction:'目前已開始理解生活受影響的部分，但還需要把資訊連到個案真正重視的職能目標。'},exploration:[{domain:'職能角色',level:2,reason:'示範'},{domain:'日常作息',level:3,reason:'示範'},{domain:'興趣與價值',level:1,reason:'示範'},{domain:'環境支持',level:1,reason:'示範'},{domain:'職能困難',level:3,reason:'示範'},{domain:'治療期待',level:1,reason:'示範'}],abilities:['治療關係建立','一般會談技巧','OT 專業會談','臨床推理','個案中心','目標設定','Shared Decision-Making','專業整合能力'].map((name,i)=>({name,rating:i<2?'良好':'尚可',reason:'示範模式'})),moments:[{patient:'以前其實滿喜歡跟朋友出去的，現在就……算了。',student:'那你的睡眠情況呢？',analysis:'這是一個有意義活動線索，若立刻換題可能錯過生活意義。',try:'你好像有點停住了。以前和朋友出去，對你來說是什麼樣的事情？'}],priorities:[{issue:'從症狀追到生活影響',why:'OT 會談需要理解功能與參與。',how:'追問角色、活動與日常節奏。',example:'這件事最近對你上課或和朋友相處有什麼影響？'},{issue:'重要資訊後先反映',why:'有助建立關係與確認理解。',how:'先反映再進下一題。',example:'聽起來你其實很想回到原本比較有精神的生活。'},{issue:'先確認個案優先需求',why:'避免治療師單方面決定目標。',how:'在提出策略前詢問想先改變什麼。',example:'如果只能先改變一件事，你最希望從哪裡開始？'}],faculty_note:'目前為示範模式；正式 AI 評量用於形成性教學回饋，正式成績仍應由授課教師覆核。'}}
+
+  $('endInterview').onclick=async()=>{
+    if(timerId)clearInterval(timerId); $('room').classList.add('hidden'); $('report').classList.remove('hidden'); window.scrollTo({top:$('report').offsetTop-90,behavior:'smooth'});
+    $('reportLoading').classList.remove('hidden'); $('reportContent').classList.add('hidden'); $('reportError').classList.add('hidden');
+    try{
+      const r=apiReady?(await api('end',{case_id:activeCase,mode,level:Number($('level').value),task:$('task').value,transcript,hints_used:hints})).report:demoReport();
+      renderReport(r);
+    }catch(e){
+      $('reportLoading').classList.add('hidden'); $('reportError').classList.remove('hidden'); $('reportError').textContent='目前無法產生完整評量：'+e.message+'。你仍可重新練習，或稍後由教師檢視逐字稿。';
+    }
+  };
+
+  $('restart').onclick=()=>location.reload();
+  checkService();
+})();
 </script>
 </body></html>
