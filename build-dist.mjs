@@ -10,6 +10,7 @@ const skipExact = new Set([
   ".github",
   ".wrangler",
   "node_modules",
+  "worker",
   "dist",
   ".assetsignore",
   "wrangler.json",
