@@ -15,6 +15,68 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 @media(max-width:780px){.submission-files{grid-template-columns:1fr}.email-box{align-items:flex-start;flex-direction:column}.email-actions{width:100%}.email-actions .btn{width:100%}}
 @media(max-width:980px){.guide-grid{grid-template-columns:repeat(2,1fr)}.guide-grid .guide-step:last-child{grid-column:1/-1}.guide-rules{grid-template-columns:1fr}}@media(max-width:640px){.guide-grid{grid-template-columns:1fr}.guide-grid .guide-step:last-child{grid-column:auto}}
 @media(max-width:900px){.stagebar{grid-template-columns:repeat(2,1fr)}.mode-grid,.form-grid,.launch-summary,.handoff{grid-template-columns:1fr}.site-header{align-items:flex-start;gap:18px}.nav{gap:14px}}@media(max-width:700px){.site-header{position:static;display:block}.nav{margin-top:16px}.lab-shell{padding:34px 18px 70px}.hero,.panel{padding:21px}.stagebar{grid-template-columns:1fr}.actions{display:grid;grid-template-columns:1fr}.btn{width:100%}.prompt-box{min-height:560px}}
+
+/* Interview Lab v2 — reduced cognitive load + responsive flow */
+.hero{padding:24px 26px}
+.hero h1{font-size:clamp(32px,4.2vw,48px)}
+.hero .lead{max-width:760px;font-size:15px;line-height:1.7}
+.hero-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px}
+.hero-flow span{display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid rgba(111,79,134,.12);border-radius:999px;background:rgba(255,255,255,.78);font-size:11px;font-weight:800;color:#65586b}
+.hero-flow b{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#6f4f86;color:#fff;font-size:10px}
+.hero-flow i{font-style:normal;color:#9b8ea1}
+.guide-top{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}
+.guide-core{padding:15px 16px;border-radius:16px;background:#f3f7f5;border:1px solid #d7e5dc;color:#53685e;font-size:12px;font-weight:800;line-height:1.7}
+.quick-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}
+.quick-flow>div{display:grid;grid-template-columns:32px 1fr;gap:2px 10px;padding:15px 16px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.quick-flow b{grid-row:1/3;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#efe7f3;color:#6f4f86;font-size:12px}
+.quick-flow strong{font-size:13px;color:#514658}
+.quick-flow span{font-size:11px;color:#7a6f80;line-height:1.5}
+.guide-details{margin-top:14px;border:1px solid var(--line);border-radius:16px;background:#fcfbfd}
+.guide-details summary{cursor:pointer;padding:14px 16px;font-size:12px;font-weight:900;color:#65586b;list-style:none}
+.guide-details summary::-webkit-details-marker{display:none}
+.guide-details summary::after{content:"＋";float:right;color:#806d8a}
+.guide-details[open] summary::after{content:"－"}
+.guide-details[open] summary{border-bottom:1px solid var(--line)}
+.guide-details .dual-tab-guide,.guide-details .guide-grid{margin:16px}
+.stagebar{position:sticky;top:78px;z-index:9;padding:8px;border-radius:17px;background:rgba(251,249,252,.92);backdrop-filter:blur(10px);box-shadow:0 8px 22px rgba(85,65,98,.06)}
+.submission-file{display:flex;flex-direction:column;gap:4px}
+.submission-file span{font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:#85758d}
+.submission-file strong{font-size:12px}
+.submission-file.send{border-color:#d5e3db;background:#fbfdfc}
+.submission-file.send span{color:#5f7d70}
+.submission-file.keep{border-color:#dfd3e5;background:#fbf8fc}
+.submission-file.keep span{color:#6f4f86}
+@media(max-width:920px){
+  .guide-top{grid-template-columns:1fr}
+  .quick-flow{grid-template-columns:1fr}
+  .stagebar{top:8px;grid-template-columns:repeat(5,minmax(124px,1fr));overflow-x:auto;scrollbar-width:none}
+  .stagebar::-webkit-scrollbar{display:none}
+  .stage{white-space:nowrap}
+}
+@media(max-width:700px){
+  .site-header{position:static}
+  .lab-shell{padding:26px 16px 64px}
+  .crumbs{margin-bottom:16px}
+  .hero{padding:20px;border-radius:20px}
+  .hero h1{font-size:30px}
+  .hero .en{font-size:15px}
+  .hero .lead{font-size:14px}
+  .hero-flow{gap:6px}
+  .hero-flow span{font-size:10px;padding:7px 9px}
+  .student-guide{padding:18px;border-radius:20px}
+  .student-guide h2{font-size:22px;line-height:1.4}
+  .guide-core{font-size:11px}
+  .quick-flow>div{padding:13px 14px}
+  .stagebar{margin:16px -4px;padding:6px}
+  .panel{margin-top:16px;padding:20px;border-radius:20px}
+  .panel h2{font-size:24px}
+  .mode-card{min-height:0;padding:18px}
+  .prompt-box{min-height:320px}
+  .btn{width:100%;min-height:46px}
+  .actions{display:grid;grid-template-columns:1fr}
+  .submission-card{padding:16px}
+}
+
 </style>
 </head>
 <body>
@@ -22,27 +84,43 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 <main class="lab-shell">
 <div class="crumbs"><a href="../index.html">Learning Lab</a><span>›</span><span>精神職能治療會談實驗室</span></div>
 <section class="hero">
-<div class="eyebrow">Mental Health OT · AI Learning Launcher</div>
+<div class="eyebrow">Mental Health OT · AI Standardized Patient · OSCE</div>
 <h1>精神職能治療會談實驗室</h1>
 <div class="en">Mental Health OT Interview Lab</div>
-<p class="lead">這裡不是另一個 AI 聊天室。請先在 Sera.Phina 設定你的學習任務，再把系統產生的完整啟動指令帶到<strong>你自己的 ChatGPT 或慣用生成式 AI</strong>，開始標準病人會談與 OSCE 學習。</p>
-<div class="principles"><span>不需網站 API</span><span>使用自己的 AI 帳號</span><span>不儲存學生對話</span><span>Practice × Assessment</span></div>
+<p class="lead">在 Sera.Phina 設定任務，把啟動指令帶到你的 ChatGPT 完成標準病人會談；會談後再回到原對話完成評測與成果下載。</p>
+<div class="hero-flow"><span><b>1</b>本頁設定</span><i>→</i><span><b>2</b>ChatGPT 會談</span><i>→</i><span><b>3</b>原對話評測</span></div>
 </section>
 <section class="student-guide" aria-labelledby="student-guide-title">
-<div class="eyebrow">Student Guide · 開始前請先完整看過</div>
-<h2 id="student-guide-title">先理解整個流程，再開始你的會談</h2>
-<p>這個網站負責「設定任務、產生指令、收尾評測與成果繳交」；真正的標準病人會談會在你自己的 ChatGPT 中進行。請從一開始就保留兩個分頁，整場不要關閉。</p>
-<div class="dual-tab-guide"><strong>建議使用「雙分頁工作流」</strong><div class="tab-flow"><div class="tab-card"><b>分頁 A｜Sera.Phina</b><p>保留任務設定頁。會談完成後，你要回到這裡複製「結束評測指令」，最後也在這裡確認成果下載與寄送方式。</p></div><div class="tab-arrow">⇄</div><div class="tab-card"><b>分頁 B｜ChatGPT</b><p>由網站開啟一個新分頁，建立新的 ChatGPT 對話。完整會談與最後評測都必須留在這一個對話中完成。</p></div></div></div>
-<div class="guide-grid">
-<div class="guide-step"><b>1</b><strong>選擇模式</strong><p>Practice 可要求提示；Assessment 模擬 OSCE，會談結束前不提供提示。</p></div>
-<div class="guide-step"><b>2</b><strong>設定任務</strong><p>選擇會談任務、互動層級、精神健康情境、角色與建議時間。</p></div>
-<div class="guide-step"><b>3</b><strong>複製並開啟 ChatGPT</strong><p>複製完整啟動指令，從網站開啟新的 ChatGPT 分頁，貼上後開始訪談。Sera.Phina 分頁不要關掉。</p></div>
-<div class="guide-step"><b>4</b><strong>會談完成後回網站</strong><p>在 ChatGPT 完成會談收尾後，切回 Sera.Phina 分頁，複製「結束評測指令」。</p></div>
-<div class="guide-step"><b>5</b><strong>回到原本對話評測</strong><p>切回剛才同一個 ChatGPT 對話貼上結束指令，直接產生四份可下載成果：逐字稿、評分、評析與完訓證明。</p></div>
-<div class="guide-step"><b>6</b><strong>成果繳交</strong><p>下載四份成果；將前三份寄給老師，第 4 份完訓證明自行保存作為學習紀錄。</p></div>
+<div class="guide-top">
+  <div>
+    <div class="eyebrow">Student Guide</div>
+    <h2 id="student-guide-title">先記住一件事：會談與評測都在同一個 ChatGPT 對話完成</h2>
+    <p>網站負責設定與收尾；真正的會談在你的 ChatGPT 中進行。會談結束後，再回網站複製評測指令。</p>
+  </div>
+  <div class="guide-core">Sera.Phina 設定 → ChatGPT 會談 → 回 Sera.Phina 複製評測指令 → 回原對話評測</div>
 </div>
-<div class="guide-rules"><div class="guide-rule do"><strong>✓ 最重要的原則</strong>評測一定要回到「原本那一個 ChatGPT 對話」，因為只有那個對話保留完整逐字稿。網站負責設定與收尾；真正的會談與評測，都在你自己的 ChatGPT 對話中完成。</div></div>
-<div class="preflight"><label><input type="checkbox" id="flowConfirm"><span><strong>我已了解完整流程：</strong>我會保留 Sera.Phina 分頁，並在另一個 ChatGPT 分頁完成整場會談與最後評測。<small>勾選後才開始設定本次訪談。</small></span></label></div>
+
+<div class="quick-flow">
+  <div><b>1</b><strong>先在本頁設定</strong><span>選模式、任務與案例條件</span></div>
+  <div><b>2</b><strong>到 ChatGPT 完成會談</strong><span>保留這個 Sera.Phina 分頁</span></div>
+  <div><b>3</b><strong>回原對話完成評測</strong><span>下載四份成果，前三份寄老師</span></div>
+</div>
+
+<details class="guide-details">
+  <summary>第一次使用？展開完整 6 步驟說明</summary>
+  <div class="dual-tab-guide"><strong>建議使用「雙分頁工作流」</strong><div class="tab-flow"><div class="tab-card"><b>分頁 A｜Sera.Phina</b><p>保留任務設定頁。會談完成後回到這裡複製「結束評測指令」，最後確認成果下載與寄送方式。</p></div><div class="tab-arrow">⇄</div><div class="tab-card"><b>分頁 B｜ChatGPT</b><p>建立新的 ChatGPT 對話。完整會談與最後評測都留在這一個對話中完成。</p></div></div></div>
+  <div class="guide-grid">
+    <div class="guide-step"><b>1</b><strong>選擇模式</strong><p>Practice 可要求提示；Assessment 模擬 OSCE。</p></div>
+    <div class="guide-step"><b>2</b><strong>設定任務</strong><p>設定任務、互動層級、情境、角色與時間。</p></div>
+    <div class="guide-step"><b>3</b><strong>複製啟動指令</strong><p>開新的 ChatGPT 對話，貼上完整指令開始會談。</p></div>
+    <div class="guide-step"><b>4</b><strong>會談完成後回網站</strong><p>切回 Sera.Phina，複製結束評測指令。</p></div>
+    <div class="guide-step"><b>5</b><strong>回原對話評測</strong><p>貼回原本會談對話，產生四份成果。</p></div>
+    <div class="guide-step"><b>6</b><strong>下載與繳交</strong><p>01–03 寄老師；04 完訓證明自行保存。</p></div>
+  </div>
+</details>
+
+<div class="guide-rules"><div class="guide-rule do"><strong>✓ 最重要的原則</strong>評測一定回到<strong>原本完成會談的 ChatGPT 對話</strong>，因為只有那個對話保留完整逐字稿。</div></div>
+<div class="preflight"><label><input type="checkbox" id="flowConfirm"><span><strong>我已了解流程</strong><small>我會保留 Sera.Phina 分頁，並在同一個 ChatGPT 對話中完成會談與最後評測。</small></span></label></div>
 </section>
 <div class="stagebar" aria-label="使用流程"><div class="stage active" data-stage="1"><b>1</b>選擇模式</div><div class="stage" data-stage="2"><b>2</b>設定任務</div><div class="stage" data-stage="3"><b>3</b>複製指令</div><div class="stage" data-stage="4"><b>4</b>完成會談</div><div class="stage" data-stage="5"><b>5</b>下載與繳交</div></div>
 <section class="panel" id="step1">
@@ -84,7 +162,7 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 <div class="eyebrow">Step 5 · Download & Submit</div><h2>下載四份成果，前三份寄給老師</h2>
 <p>完成評測後，ChatGPT 應直接提供四份可下載成果。你不需要再把逐字稿、評分或評析文字貼回 Sera.Phina。</p>
 <div class="submission-card"><div class="step-signal">先下載，再寄出</div><h3>① 下載四份成果</h3><p>請先把 ChatGPT 產生的四個檔案全部下載保存。若你的 AI 介面無法直接建立檔案，才改用「另存 Word／PDF」方式處理。</p>
-<div class="submission-files"><div class="submission-file">01｜會談逐字稿</div><div class="submission-file">02｜會談評分</div><div class="submission-file">03｜會談評析</div><div class="submission-file">04｜完訓證明（學生自行保存）</div></div>
+<div class="submission-files"><div class="submission-file send"><span>寄老師</span><strong>01｜會談逐字稿</strong></div><div class="submission-file send"><span>寄老師</span><strong>02｜會談評分</strong></div><div class="submission-file send"><span>寄老師</span><strong>03｜會談評析</strong></div><div class="submission-file keep"><span>自己保存</span><strong>04｜完訓證明</strong></div></div>
 <div class="note"><strong>完訓證明不綁寄件流程：</strong>第 4 份完訓證明在 AI 完成評測時直接產生，請自行下載保存，作為本次學習紀錄與鼓勵。</div></div>
 <div class="submission-card"><div class="step-signal">寄出 01–03</div><h3>② 將前三份成果寄給老師</h3><p>請將 <strong>01 會談逐字稿、02 會談評分、03 會談評析</strong> 三份檔案作為附件寄出。第 4 份完訓證明不必寄送。</p>
 <div class="email-box"><div><small>老師收件信箱</small><br><code id="teacherEmail">jessie.chen.coco@gmail.com</code></div><div class="email-actions"><button class="btn secondary" id="copyEmail">複製老師信箱</button><a class="btn primary" id="mailLink" href="mailto:jessie.chen.coco@gmail.com?subject=%E7%B2%BE%E7%A5%9E%E8%81%B7%E8%83%BD%E6%B2%BB%E7%99%82%E6%9C%83%E8%AB%87%E6%BC%94%E7%B7%B4%E6%88%90%E6%9E%9C%E7%B9%B3%E4%BA%A4">開啟寄信程式</a></div></div><div class="copy-state" id="submissionState"></div>
