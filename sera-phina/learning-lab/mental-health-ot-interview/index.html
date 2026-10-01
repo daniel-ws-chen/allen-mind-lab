@@ -77,6 +77,12 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
   .submission-card{padding:16px}
 }
 
+
+/* Interview Lab v3 — guided handoff */
+.handoff-stage>p{max-width:760px}.handoff-primary{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:14px;align-items:center;margin-top:14px;padding:18px;border:1px solid #dfd5e5;border-radius:18px;background:linear-gradient(145deg,#fff,#faf7fc);transition:.2s}.handoff-primary.assessment-action{border-color:#d5e3db;background:linear-gradient(145deg,#fff,#f5faf7)}.handoff-number{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#6f4f86;color:#fff;font-weight:900}.assessment-action .handoff-number{background:#5f7d70}.handoff-main strong{display:block;color:#473d4d;font-size:15px;margin-bottom:3px}.handoff-main span{display:block;color:#7b7080;font-size:12px;line-height:1.55}.handoff-primary.locked{opacity:.58;background:#faf9fb}.handoff-primary.unlocked{opacity:1;border-color:rgba(111,79,134,.3);box-shadow:0 8px 22px rgba(85,65,98,.06)}.btn.is-locked{pointer-events:none;background:#bbb0bf!important;color:#fff!important}.handoff-status{padding-left:56px;margin-top:7px;min-height:18px}.keep-tab{display:flex;gap:12px;align-items:flex-start;margin-top:16px;padding:14px 16px;border-radius:15px;background:#f3f7f5;border:1px solid #d7e5dc;color:#566b60}.keep-tab strong{flex:0 0 auto}.keep-tab span{font-size:12px;line-height:1.65}.secondary-details{margin-top:14px;border:1px solid var(--line);border-radius:15px;background:#fcfbfd}.secondary-details summary{cursor:pointer;padding:13px 15px;font-size:12px;font-weight:900;color:#675a6d;list-style:none}.secondary-details summary::-webkit-details-marker{display:none}.secondary-details summary::after{content:'＋';float:right}.secondary-details[open] summary::after{content:'－'}.secondary-details[open] summary{border-bottom:1px solid var(--line)}.secondary-details .launch-summary,.secondary-details .command-box,.secondary-details .steps,.secondary-details .actions{margin:14px}.compact-actions{justify-content:flex-start}.manual-switch{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:8px 13px;border-radius:999px;background:#eee7f2;color:#6f4f86;font-size:11px;font-weight:900;white-space:nowrap}.four-output-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}.four-output-strip span{display:flex;align-items:center;gap:7px;padding:11px 12px;border:1px solid #dbe7e0;border-radius:13px;background:#fbfdfc;color:#52685c;font-size:11px;font-weight:800}.four-output-strip b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#5f7d70;color:#fff;font-size:9px}.four-output-strip span.keep{border-color:#dfd3e5;background:#fbf8fc;color:#66586d}.four-output-strip span.keep b{background:#6f4f86}.core-quote{margin-top:16px;padding:15px 17px;border-left:4px solid #8e70a2;border-radius:0 14px 14px 0;background:#f7f2f9;color:#62566a;font-size:12px;line-height:1.75}.core-quote strong{display:block;color:#55445e;margin-bottom:4px}.final-gate{align-items:center}.final-gate .btn[disabled]{opacity:.48;cursor:not-allowed}.handoff-primary.pulse{animation:handoffPulse .6s ease}@keyframes handoffPulse{0%{box-shadow:0 0 0 0 rgba(111,79,134,.22)}100%{box-shadow:0 0 0 10px rgba(111,79,134,0)}}
+@media(max-width:760px){.handoff-primary{grid-template-columns:36px 1fr;padding:15px}.handoff-primary>.btn,.handoff-primary>.manual-switch{grid-column:1/-1;width:100%}.handoff-number{width:34px;height:34px}.handoff-status{padding-left:0}.keep-tab{display:block}.keep-tab strong{display:block;margin-bottom:4px}.four-output-strip{grid-template-columns:1fr 1fr}.secondary-details .launch-summary{grid-template-columns:1fr}.final-gate{display:grid;grid-template-columns:1fr}.manual-switch{white-space:normal}.prompt-box{min-height:260px}}
+@media(max-width:420px){.four-output-strip{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -144,19 +150,67 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 <div class="privacy"><strong>開始前請確認：</strong>① 這是模擬教學，不是真實病人照護；② 不輸入任何真實病人可識別資訊；③ Assessment 建議使用隨機案例；④ 設定完成後請使用網站產生的完整指令，不自行改寫核心規則。</div>
 <div class="actions"><button class="btn ghost" id="back1">上一步</button><button class="btn primary" id="generate">產生 AI 啟動指令</button></div>
 </section>
-<section class="panel hidden" id="step3">
-<div class="eyebrow">Step 3 · Prompt Package</div><h2>你的 AI 會談任務已準備完成</h2><p>請先複製完整啟動指令，再前往自己的 ChatGPT。Assessment 模式中的個案藍圖會由 AI 自行建立並保密，不會出現在這份指令中的「答案欄」。</p>
-<div class="launch-summary"><div class="summary-card" id="summary"></div><div class="prompt-wrap"><textarea class="prompt-box" id="prompt" readonly></textarea><div class="copy-state" id="promptStateInline"></div></div></div>
-<div class="actions"><button class="btn ghost" id="back2">修改設定</button><button class="btn secondary" id="copyPrompt">① 複製完整啟動指令</button><a class="btn primary" id="openChatGPT" href="https://chatgpt.com/" target="_blank" rel="noopener">② 開啟新的 ChatGPT 分頁</a></div><div class="status-note" id="promptState"></div>
-<div class="step-callout"><strong>現在請照這個順序做</strong><ul><li>先在本頁按「複製完整啟動指令」。</li><li>再開啟你的 ChatGPT 新分頁，建立新對話並貼上完整指令。</li><li>開始會談後，這個 Sera.Phina 分頁請先保留，不要關閉。</li></ul></div><div class="switch-back"><strong>會談完成後怎麼辦？</strong>會談結束後，請直接切回目前這個 Sera.Phina 分頁，往下一步複製「結束評測指令」，再切回剛才原本的 ChatGPT 對話貼上。</div><div class="progress-reminder"><strong>核心提醒：</strong>啟動指令使用新的 ChatGPT 對話；而評測一定回到<strong>原本完成會談的那個對話</strong>，因為只有那裡保留完整逐字稿。</div><div class="inline-guide"><strong>如果 AI 沒有直接進入病人角色：</strong>請確認你是否完整貼上整份指令。若仍出現摘要、解釋或規則內容，才重新建立一個新的 ChatGPT 對話，並以該新對話作為後續唯一會談分頁。</div>
-</section>
-<section class="panel hidden" id="step4">
-<div class="eyebrow">Step 4 · During & After Interview</div><h2>完成會談後，回網站複製收尾指令</h2>
-<div class="handoff">
-<article class="handoff-card"><h3>會談進行中</h3><p>AI 回覆第一句標準病人台詞後，你就以職能治療師／學生治療師角色自然進行會談。</p><ul class="steps"><li>先建立關係，不要一開始就連續盤問症狀。</li><li>依個案回答追問生活、角色、作息、興趣、價值與有意義職能。</li><li>依個案回應逐步追問與澄清，讓資訊自然形成臨床意義。</li><li>Practice 模式真的卡住時，才輸入「提示」；Assessment 模式則維持獨立完成會談。</li><li>準備結束時，先自行摘要、確認個案觀點，再談目標／下一步並完成收尾。</li></ul><div class="inline-guide"><strong>記得：</strong>好的會談不是把所有問題問完，而是根據個案回應調整下一句，讓資訊逐步形成臨床意義。</div></article>
-<article class="handoff-card"><h3>結束會談、評測並產生四份成果</h3><p>完成會談後，把下列指令貼在<strong>同一個 AI 對話</strong>裡。AI 會依本次完整逐字稿停止標準病人角色，切換成精神職能治療臨床督導與評測員，完成評分與評析，並建立完訓證明。</p><ul class="mini-checklist"><li>先由你自己完成會談摘要與收尾。</li><li>回到原本完成會談的那個 ChatGPT 對話，貼上評測指令。</li><li>等待 AI 依完整逐字稿完成四份成果檔案。</li></ul><div class="command-box" id="endCommand"></div><button class="btn secondary" id="copyEnd">複製結束評測與檔案產生指令</button><div class="status-note" id="endState"></div></article>
+<section class="panel hidden handoff-stage" id="step3">
+<div class="eyebrow">Step 3 · Start Interview</div>
+<h2>準備好了。現在只做兩件事。</h2>
+<p>先複製啟動指令，再開啟 ChatGPT。開始會談後，請保留這個 Sera.Phina 分頁。</p>
+
+<div class="handoff-primary">
+  <div class="handoff-number">1</div>
+  <div class="handoff-main"><strong>複製完整啟動指令</strong><span>包含你剛才設定的模式、任務與案例條件。</span></div>
+  <button class="btn secondary" id="copyPrompt">複製啟動指令</button>
 </div>
-<div class="end-focus"><div class="focus-card return"><strong>現在最重要的一步</strong>先在這裡複製評測指令，再使用瀏覽器分頁切換，回到<strong>剛才原本的 ChatGPT 對話</strong>貼上。網站不會替你跳回原對話。</div><div class="focus-card download"><strong>完成評測後會得到什麼？</strong>ChatGPT 會直接整理四份成果：01 會談逐字稿、02 會談評分、03 會談評析、04 完訓證明。</div></div><div class="switch-back"><strong>正確切換方式：</strong>完成會談後，先在這裡按「複製結束評測與檔案產生指令」，接著使用瀏覽器分頁切換功能回到<strong>剛才原本的 ChatGPT 對話</strong>並貼上。網站無法替你跳回原本對話，因此這裡不再提供「開啟 ChatGPT」連結。</div><div class="actions"><button class="btn ghost" id="back3">回到啟動指令</button><button class="btn primary" id="toSubmit">我已在原本 ChatGPT 對話完成評測</button></div>
+<div class="status-note handoff-status" id="promptState"></div>
+
+<div class="handoff-primary locked" id="chatLaunchCard">
+  <div class="handoff-number">2</div>
+  <div class="handoff-main"><strong>開啟新的 ChatGPT 對話</strong><span>貼上剛才複製的完整指令，AI 回覆第一句後就開始會談。</span></div>
+  <a class="btn primary is-locked" id="openChatGPT" href="https://chatgpt.com/" target="_blank" rel="noopener" aria-disabled="true">開啟 ChatGPT</a>
+</div>
+
+<div class="keep-tab"><strong>會談開始後</strong><span>保留這個 Sera.Phina 分頁。會談完成時再切回來，下一步會提供評測指令。</span></div>
+
+<details class="secondary-details">
+  <summary>查看本次設定與完整啟動指令</summary>
+  <div class="launch-summary"><div class="summary-card" id="summary"></div><div class="prompt-wrap"><textarea class="prompt-box" id="prompt" readonly></textarea></div></div>
+  <div class="actions compact-actions"><button class="btn ghost" id="back2">修改設定</button></div>
+</details>
+</section>
+<section class="panel hidden handoff-stage" id="step4">
+<div class="eyebrow">Step 4 · Finish & Assess</div>
+<h2>會談完成了？接下來只做兩件事。</h2>
+<p>先複製評測指令，再回到<strong>剛才完成會談的原本 ChatGPT 對話</strong>貼上。</p>
+
+<div class="handoff-primary assessment-action">
+  <div class="handoff-number">1</div>
+  <div class="handoff-main"><strong>複製結束評測指令</strong><span>AI 會依這次完整逐字稿產生四份成果。</span></div>
+  <button class="btn secondary" id="copyEnd">複製評測指令</button>
+</div>
+<div class="status-note handoff-status" id="endState"></div>
+
+<div class="handoff-primary locked" id="returnChatCard">
+  <div class="handoff-number">2</div>
+  <div class="handoff-main"><strong>切回原本的 ChatGPT 對話</strong><span>貼上評測指令，等待 01–04 四份成果完成。</span></div>
+  <span class="manual-switch">使用瀏覽器分頁切換</span>
+</div>
+
+<div class="four-output-strip" aria-label="四份成果">
+  <span><b>01</b>會談逐字稿</span><span><b>02</b>會談評分</span><span><b>03</b>會談評析</span><span class="keep"><b>04</b>完訓證明</span>
+</div>
+
+<div class="core-quote"><strong>會談提醒</strong>好的會談不是把所有問題問完，而是根據個案回應調整下一句，讓資訊逐步形成臨床意義。</div>
+
+<details class="secondary-details interview-tips">
+  <summary>需要回顧會談技巧？展開提示</summary>
+  <ul class="steps"><li>先建立關係，再逐步探索生活與職能。</li><li>依個案回答追問角色、作息、興趣、價值與有意義職能。</li><li>Practice 模式卡住時可使用「提示」；Assessment 模式維持獨立完成。</li><li>結束前先摘要、確認個案觀點，再談目標或下一步。</li></ul>
+</details>
+
+<details class="secondary-details">
+  <summary>查看完整評測指令</summary>
+  <div class="command-box" id="endCommand"></div>
+</details>
+
+<div class="actions final-gate"><button class="btn ghost" id="back3">回到啟動步驟</button><button class="btn primary" id="toSubmit" disabled>四份成果完成，前往下載與繳交</button></div>
 </section>
 <section class="panel hidden" id="step5">
 <div class="eyebrow">Step 5 · Download & Submit</div><h2>下載四份成果，前三份寄給老師</h2>
@@ -224,12 +278,12 @@ function promptText(){
  return prompt;
 }
 function summaryHtml(){const rows=[['模式',mode==='practice'?'學習演練 Practice':'能力檢核 Assessment'],['任務',$('task').value],['互動',$('level').selectedOptions[0].text],['情境',$('theme').value],['角色／場域',$('role').value],['時間',$('duration').value]];return rows.map(([a,b])=>`<div class="summary-row"><span>${a}</span><strong>${b}</strong></div>`).join('');}
-$('generate').onclick=()=>{$('prompt').value=promptText();$('summary').innerHTML=summaryHtml();$('promptState').textContent='';$('endState').textContent='';show(3);};
+$('generate').onclick=()=>{$('prompt').value=promptText();$('summary').innerHTML=summaryHtml();$('promptState').textContent='';$('endState').textContent='';const launch=$('chatLaunchCard'),link=$('openChatGPT');launch.classList.add('locked');launch.classList.remove('unlocked');link.classList.add('is-locked');link.setAttribute('aria-disabled','true');$('returnChatCard').classList.add('locked');$('returnChatCard').classList.remove('unlocked');$('toSubmit').disabled=true;show(3);};
 async function copy(text,el,msg){try{await navigator.clipboard.writeText(text);el.textContent=msg;setTimeout(()=>el.textContent='',2400);}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();el.textContent=msg;setTimeout(()=>el.textContent='',2400);}}
-$('copyPrompt').onclick=()=>copy($('prompt').value,$('promptState'),'✓ 已複製完整啟動指令，可以前往 ChatGPT 貼上。');
-$('copyEnd').onclick=()=>copy(endText,$('endState'),'✓ 已複製結束評測與四份檔案產生指令。');
+$('copyPrompt').onclick=async()=>{await copy($('prompt').value,$('promptState'),'✓ 已複製。下一步：開啟 ChatGPT 並貼上。');const card=$('chatLaunchCard'),link=$('openChatGPT');card.classList.remove('locked');card.classList.add('unlocked','pulse');link.classList.remove('is-locked');link.removeAttribute('aria-disabled');setTimeout(()=>card.classList.remove('pulse'),700);};
+$('openChatGPT').addEventListener('click',e=>{if(e.currentTarget.classList.contains('is-locked')){e.preventDefault();return;}setTimeout(()=>show(4),350);});
+$('copyEnd').onclick=async()=>{await copy(endText,$('endState'),'✓ 已複製。現在切回原本的 ChatGPT 對話貼上。');const card=$('returnChatCard');card.classList.remove('locked');card.classList.add('unlocked','pulse');$('toSubmit').disabled=false;setTimeout(()=>card.classList.remove('pulse'),700);};
 $('copyEmail').onclick=()=>copy('jessie.chen.coco@gmail.com',$('submissionState'),'✓ 已複製老師信箱。');
-$('openChatGPT').addEventListener('click',()=>setTimeout(()=>show(4),350));
 })();
 </script>
 </body>
