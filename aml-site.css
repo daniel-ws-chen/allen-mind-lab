@@ -875,7 +875,7 @@
 .aml-desktop-links{gap:clamp(18px,2.2vw,34px);font-size:.94rem;font-weight:700}
 .aml-desktop-links a{letter-spacing:.02em}
 @media (max-width:900px){.aml-desktop-links{display:none!important}.aml-menu-toggle{display:flex!important}}
-@media (min-width:901px){.aml-menu-toggle{display:none!important}.aml-mobile-menu{display:none!important}}
+@media (min-width:1041px){.aml-menu-toggle{display:none!important}.aml-mobile-menu{display:none!important}}
 
 
 /* AML 2.0 Phase 2 — structured navigation */
