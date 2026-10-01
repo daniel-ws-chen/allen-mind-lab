@@ -1,6 +1,16 @@
+import { handleInterviewLab } from "./interview-lab.js";
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // --------------------------------------------------
+    // Sera.Phina Mental Health OT Interview Lab API
+    // --------------------------------------------------
+    if (url.pathname.startsWith("/api/sera-phina/interview/")) {
+      const response = await handleInterviewLab(request, env, url);
+      if (response) return response;
+    }
 
     // --------------------------------------------------
     // Pilot 0.5 API health check
