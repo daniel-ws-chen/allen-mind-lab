@@ -1,659 +1,113 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>AML Resource Network｜精選資源 | Allen Mind Lab</title>
-<meta content="Allen Mind Lab 精選站外資源：只收錄值得長期連結、內容可信並具有公共價值的網站。" name="description"/>
-<link href="https://allenmindlab.com/resources.html" rel="canonical"/>
-<meta content="website" property="og:type"/>
-<meta content="Allen Mind Lab" property="og:site_name"/>
-<meta content="AML Resource Network｜精選資源" property="og:title"/>
-<meta content="不求多，只留下值得長期連結的高品質網站。" property="og:description"/>
-<meta content="https://allenmindlab.com/resources.html" property="og:url"/>
-<meta content="https://allenmindlab.com/images/allen-banner.png" property="og:image"/>
-<meta content="Allen Mind Lab" property="og:image:alt"/>
-<meta content="summary_large_image" name="twitter:card"/>
-<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
-<link href="aml-site.css" rel="stylesheet"/>
-<style>
-  :root{
-    --ink:#172033;
-    --muted:#5d6b7d;
-    --line:#dce7ea;
-    --soft:#f4f8f7;
-    --navy:#243b6b;
-    --teal:#2f7f7a;
-    --teal-soft:#e9f5f2;
-    --blue-soft:#eef4ff;
-    --gold:#b9832f;
-    --gold-soft:#fff7e7;
-  }
-
-  body{
-    background:#fff;
-    color:var(--ink);
-  }
-
-  .resource-hero{
-    padding:68px 6vw 46px;
-    background:
-      radial-gradient(circle at 12% 18%, rgba(69,91,193,.16) 0, transparent 30%),
-      radial-gradient(circle at 88% 22%, rgba(47,127,122,.18) 0, transparent 32%),
-      linear-gradient(135deg,#f7f9ff 0%,#edf7f4 52%,#fffaf0 100%);
-    border-bottom:1px solid #e4eceb;
-  }
-
-  .resource-wrap{
-    max-width:1080px;
-    margin:0 auto;
-  }
-
-  .kicker{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:7px 11px;
-    border-radius:999px;
-    background:rgba(255,255,255,.78);
-    border:1px solid rgba(69,91,193,.16);
-    box-shadow:0 6px 18px rgba(30,42,70,.06);
-    font-size:.76rem;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    font-weight:800;
-    color:var(--navy);
-    margin-bottom:18px;
-  }
-
-  .kicker::before{
-    content:"✦";
-    color:var(--teal);
-    font-size:.9rem;
-  }
-
-  .resource-hero h1{
-    font-size:clamp(2.15rem,4vw,3.65rem);
-    line-height:1.08;
-    margin:0 0 18px;
-    letter-spacing:-.035em;
-    color:#1d2b4f;
-  }
-
-  .resource-hero p{
-    max-width:790px;
-    font-size:1.02rem;
-    line-height:1.9;
-    color:#536276;
-    margin:0;
-  }
-
-  .resource-principles{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:26px;
-  }
-
-  .resource-principles span{
-    padding:8px 13px;
-    border-radius:999px;
-    background:rgba(255,255,255,.82);
-    border:1px solid rgba(47,127,122,.18);
-    font-size:.88rem;
-    color:#385a60;
-    box-shadow:0 4px 14px rgba(30,60,70,.04);
-  }
-
-  .resources{
-    padding:56px 6vw 88px;
-    background:
-      linear-gradient(180deg,#fbfdfc 0%,#f3f8f6 100%);
-  }
-
-  .resource-grid{
-    max-width:1080px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:24px;
-  }
-
-  .resource-item{
-    position:relative;
-    overflow:hidden;
-    background:#fff;
-    border:1px solid #dce7e6;
-    border-radius:24px;
-    padding:32px;
-    box-shadow:0 16px 38px rgba(23,42,54,.07);
-    display:flex;
-    flex-direction:column;
-    min-height:320px;
-  }
-
-  .resource-item::before{
-    content:"";
-    position:absolute;
-    inset:0 0 auto 0;
-    height:6px;
-    background:linear-gradient(90deg,var(--navy),var(--teal));
-  }
-
-  .resource-item:nth-child(2)::before{
-    background:linear-gradient(90deg,var(--teal),var(--gold));
-  }
-
-  .resource-item__meta{
-    display:inline-flex;
-    align-self:flex-start;
-    padding:6px 10px;
-    border-radius:999px;
-    background:var(--blue-soft);
-    color:#50628d;
-    font-size:.74rem;
-    letter-spacing:.08em;
-    text-transform:none;
-    font-weight:800;
-    margin:6px 0 16px;
-  }
-
-  .resource-item:nth-child(2) .resource-item__meta{
-    background:var(--teal-soft);
-    color:#3d716d;
-  }
-
-
-  .resource-preview{
-    position:relative;
-    height:168px;
-    margin:-6px 0 20px;
-    overflow:hidden;
-    border:1px solid #e2e8ea;
-    border-radius:16px;
-    background:#f7f9fa;
-  }
-  .resource-preview iframe{
-    width:200%;
-    height:336px;
-    border:0;
-    transform:scale(.5);
-    transform-origin:top left;
-    pointer-events:none;
-  }
-  .resource-preview img{
-    display:block;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:top center;
-  }
-  .resource-preview::after{
-    content:"網站首頁預覽";
-    position:absolute;
-    right:10px;
-    bottom:9px;
-    padding:5px 9px;
-    border-radius:999px;
-    background:rgba(255,255,255,.92);
-    border:1px solid rgba(23,42,54,.10);
-    color:#66717d;
-    font-size:.72rem;
-    font-weight:700;
-  }
-
-  .resource-preview--seraphina{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    background:
-      radial-gradient(circle at 22% 18%, rgba(185,152,200,.30), transparent 34%),
-      radial-gradient(circle at 80% 76%, rgba(111,79,134,.16), transparent 38%),
-      linear-gradient(135deg,#fcf9fd 0%,#f3ecf7 52%,#ebe2f0 100%);
-    border-color:rgba(111,79,134,.16);
-  }
-  .resource-preview--seraphina::after{
-    content:"AML 協力夥伴";
-    color:#6f4f86;
-    border-color:rgba(111,79,134,.14);
-    background:rgba(255,255,255,.90);
-  }
-  .seraphina-mark{
-    padding:20px;
-    color:#6b5d72;
-  }
-  .seraphina-mark strong{
-    display:block;
-    font-family:Georgia, 'Times New Roman', serif;
-    font-size:2rem;
-    font-weight:500;
-    letter-spacing:.035em;
-    color:#5b426d;
-  }
-  .seraphina-mark span{
-    display:block;
-    margin-top:8px;
-    font-size:.75rem;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    color:#8c7898;
-  }
-  .resource-item:last-child{
-    border-color:rgba(111,79,134,.16);
-    box-shadow:0 14px 34px rgba(85,65,98,.08);
-  }
-  .resource-item:last-child .resource-item__meta{color:#74588a;}
-  .resource-item:last-child h2{color:#5b426d;}
-  .resource-item:last-child .why{background:#faf6fc;}
-  .resource-item:last-child .go{color:#6f4f86;}
-
-  .resource-item h2{
-    font-size:1.65rem;
-    margin:0 0 12px;
-    color:#20345e;
-  }
-
-  .resource-item p{
-    line-height:1.85;
-    color:#566477;
-    margin:0 0 16px;
-  }
-
-  .resource-item .why{
-    margin-top:4px;
-    padding:16px 17px 2px;
-    border-top:none;
-    border-radius:16px;
-    background:#f8fafc;
-  }
-
-  .resource-item:nth-child(2) .why{
-    background:#f3faf8;
-  }
-
-  .resource-item .why strong{
-    display:block;
-    margin-bottom:6px;
-    color:#263b61;
-  }
-
-  .resource-item .go{
-    margin-top:auto;
-    padding-top:22px;
-    font-weight:800;
-    color:var(--teal);
-    text-decoration:none;
-  }
-
-  .resource-item .go:hover{
-    color:var(--navy);
-  }
-
-  .resource-note{
-    max-width:1080px;
-    margin:28px auto 0;
-    padding:22px 24px;
-    border-radius:18px;
-    background:var(--gold-soft);
-    border:1px solid #f0dfba;
-    color:#6f6048;
-    line-height:1.8;
-    font-size:.94rem;
-  }
-
-  .resource-note strong{
-    color:#76551d;
-  }
-
-  @media(max-width:760px){
-    .resource-hero{padding:76px 5vw 44px}
-    .resources{padding:42px 5vw 66px}
-    .resource-grid{grid-template-columns:1fr}
-    .resource-item{min-height:auto;padding:26px}
-    .resource-share{padding:26px 22px;}
-    .resource-share-grid{grid-template-columns:1fr;}
-  }
-
-  .resource-share{
-    margin:42px 0 0;
-    padding:34px 36px;
-    border:1px solid rgba(14,29,46,.12);
-    border-radius:22px;
-    background:rgba(255,255,255,.58);
-  }
-  .resource-share .kicker{margin-bottom:10px;}
-  .resource-share h2{
-    margin:0 0 12px;
-    font-size:clamp(1.7rem,3vw,2.35rem);
-    line-height:1.25;
-    color:#102033;
-  }
-  .resource-share > p{
-    max-width:850px;
-    margin:0 0 22px;
-    line-height:1.9;
-    color:#5d6875;
-  }
-  .resource-share-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-  }
-  .resource-share-card{
-    padding:22px 24px;
-    border:1px solid rgba(14,29,46,.10);
-    border-radius:16px;
-    background:#fff;
-  }
-  .resource-share-card h3{margin:0 0 9px;font-size:1.05rem;color:#102033;}
-  .resource-share-card p{margin:0;color:#65707c;line-height:1.75;}
-  .resource-share-principles{display:grid;gap:6px;margin-top:14px;font-size:.92rem;color:#66717d;}
-  .resource-share-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
-  .resource-share-btn{
-    display:inline-flex;align-items:center;justify-content:center;
-    padding:11px 16px;border-radius:999px;text-decoration:none;font-weight:800;
-    border:1px solid rgba(14,29,46,.16);color:#102033;background:#f8f5ee;
-  }
-  .resource-share-btn:hover{transform:translateY(-1px);}
-  .resource-share-note{margin-top:12px;font-size:.86rem;color:#7a838d;line-height:1.65;}
-
-
-
-  /* Phase 41 — Resource Network refresh */
-  .resource-index{
-    max-width:1080px;
-    margin:-24px auto 34px;
-    position:relative;
-    z-index:2;
-    padding:0 6vw;
-    box-sizing:content-box;
-  }
-  .resource-index__panel{
-    display:grid;
-    grid-template-columns:1.1fr 2fr;
-    gap:22px;
-    align-items:center;
-    padding:22px 24px;
-    border:1px solid rgba(30,54,83,.10);
-    border-radius:22px;
-    background:rgba(255,255,255,.94);
-    box-shadow:0 18px 44px rgba(23,42,54,.10);
-  }
-  .resource-index__title strong{display:block;color:#20345e;font-size:1.05rem;margin-bottom:5px;}
-  .resource-index__title span{display:block;color:#6a7584;font-size:.88rem;line-height:1.55;}
-  .resource-index__links{display:flex;flex-wrap:wrap;gap:9px;justify-content:flex-end;}
-  .resource-index__links a{
-    display:inline-flex;align-items:center;gap:6px;
-    padding:9px 12px;border-radius:999px;text-decoration:none;
-    border:1px solid #dbe5e8;background:#f9fbfb;color:#46556a;
-    font-size:.84rem;font-weight:800;
-  }
-  .resource-index__links a:hover{background:#eef6f4;color:#245f5b;transform:translateY(-1px);}
-
-  .resource-section{max-width:1080px;margin:0 auto 46px;scroll-margin-top:96px;}
-  .resource-section__head{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin:0 0 18px;}
-  .resource-section__eyebrow{font-size:.75rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;color:#6f7d8e;margin-bottom:7px;}
-  .resource-section h2.resource-section__title{margin:0;color:#20345e;font-size:clamp(1.55rem,2.5vw,2.15rem);}
-  .resource-section__intro{max-width:600px;margin:0;color:#6a7584;line-height:1.75;font-size:.94rem;}
-  .resource-section__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;}
-  .resource-section--partner .resource-section__grid{grid-template-columns:1fr;}
-  .resource-section--partner .resource-item{min-height:0;display:grid;grid-template-columns:minmax(280px,.9fr) minmax(0,1.35fr);column-gap:28px;align-items:start;}
-  .resource-section--partner .resource-preview{grid-row:1 / span 6;grid-column:1;margin:0;min-height:250px;height:100%;}
-  .resource-section--partner .resource-item__meta,
-  .resource-section--partner h2,
-  .resource-section--partner .resource-item > p,
-  .resource-section--partner .resource-item .for-who,
-  .resource-section--partner .resource-item .why,
-  .resource-section--partner .resource-item .go{grid-column:2;}
-
-  .resource-section--wellbeing{padding:30px;border-radius:28px;background:linear-gradient(135deg,#f0f8f5 0%,#f8fbf9 100%);border:1px solid #deece7;}
-  .resource-section--education{padding:30px;border-radius:28px;background:linear-gradient(135deg,#f4f6ff 0%,#fbfbff 100%);border:1px solid #e3e7f7;}
-  .resource-section--support{padding:30px;border-radius:28px;background:linear-gradient(135deg,#fff8ec 0%,#fffdf8 100%);border:1px solid #f0e3c9;}
-
-  .for-who{margin:2px 0 15px;padding:12px 14px;border-radius:14px;background:#f3f7f8;border:1px solid #e1eaec;color:#536273;line-height:1.65;font-size:.88rem;}
-  .for-who strong{color:#29475b;margin-right:6px;}
-  .resource-section--wellbeing .for-who{background:#eef8f4;border-color:#dbece5;}
-  .resource-section--education .for-who{background:#f1f3fb;border-color:#e0e4f2;}
-  .resource-section--support .for-who{background:#fff7e8;border-color:#f1e1bf;}
-
-  .resource-item{transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
-  .resource-item:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(23,42,54,.10);}
-  .resource-item .why{font-size:.93rem;}
-  .resource-item .why p{font-size:.92rem;line-height:1.72;}
-  .resource-item .go{display:inline-flex;align-items:center;align-self:flex-start;}
-
-  @media(max-width:900px){
-    .resource-index{padding:0 5vw;}
-    .resource-index__panel{grid-template-columns:1fr;}
-    .resource-index__links{justify-content:flex-start;}
-    .resource-section--partner .resource-item{display:flex;}
-    .resource-section--partner .resource-preview{min-height:210px;height:210px;margin:-6px 0 20px;}
-  }
-  @media(max-width:760px){
-    .resource-index{margin:-18px auto 26px;}
-    .resource-index__panel{padding:18px;border-radius:18px;}
-    .resource-index__links{display:grid;grid-template-columns:1fr 1fr;width:100%;}
-    .resource-index__links a{justify-content:center;text-align:center;}
-    .resource-section{margin-bottom:34px;}
-    .resource-section__head{display:block;}
-    .resource-section__intro{margin-top:9px;}
-    .resource-section__grid{grid-template-columns:1fr;}
-    .resource-section--wellbeing,.resource-section--education,.resource-section--support{padding:20px 14px;border-radius:22px;}
-  }
-
-  /* Phase 50 — partner editorial preview: portrait-forward composition */
-  .resource-section--partner .resource-item{
-    grid-template-columns:minmax(360px,1.06fr) minmax(0,1.24fr);
-  }
-  .resource-preview--photo-first{
-    min-height:320px;
-    background:linear-gradient(135deg,#f9f5fb,#efe7f3);
-    border-color:rgba(111,79,134,.18);
-    box-shadow:0 18px 38px rgba(70,53,83,.10);
-  }
-  .resource-preview--photo-first img{
-    object-fit:cover;
-    object-position:96% 48%;
-    transform:scale(1.28);
-    transform-origin:96% 48%;
-    filter:saturate(.98) contrast(1.02);
-  }
-  .resource-preview--photo-first::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    z-index:1;
-    pointer-events:none;
-    background:
-      linear-gradient(90deg,rgba(52,34,66,.30) 0%,rgba(69,43,84,.10) 34%,rgba(255,255,255,0) 62%),
-      linear-gradient(180deg,rgba(255,255,255,0) 58%,rgba(48,31,59,.22) 100%);
-  }
-  .resource-preview--photo-first::after{
-    content:"Sera.Phina · 精選預覽";
-    z-index:3;
-    left:16px;
-    right:auto;
-    bottom:14px;
-    color:#fff;
-    border-color:rgba(255,255,255,.26);
-    background:rgba(62,40,75,.62);
-    backdrop-filter:blur(8px);
-    -webkit-backdrop-filter:blur(8px);
-  }
-  .partner-preview-copy{
-    position:absolute;
-    left:18px;
-    top:18px;
-    z-index:2;
-    max-width:48%;
-    color:#fff;
-    text-shadow:0 2px 12px rgba(35,21,42,.38);
-    pointer-events:none;
-  }
-  .partner-preview-copy strong{
-    display:block;
-    font-family:Georgia,'Times New Roman',serif;
-    font-size:1.45rem;
-    font-weight:600;
-    line-height:1.15;
-    letter-spacing:.015em;
-  }
-  .partner-preview-copy span{
-    display:block;
-    margin-top:7px;
-    font-size:.78rem;
-    line-height:1.5;
-    letter-spacing:.04em;
-    opacity:.92;
-  }
-  @media(max-width:900px){
-    .resource-section--partner .resource-item{display:flex;}
-    .resource-preview--photo-first{min-height:250px;height:250px;}
-    .resource-preview--photo-first img{object-position:94% 50%;transform:scale(1.18);transform-origin:94% 50%;}
-    .partner-preview-copy{max-width:54%;}
-  }
-  @media(max-width:560px){
-    .resource-preview--photo-first{height:230px;min-height:230px;}
-    .resource-preview--photo-first img{object-position:93% center;transform:scale(1.12);transform-origin:93% center;}
-    .partner-preview-copy{left:14px;top:14px;max-width:58%;}
-    .partner-preview-copy strong{font-size:1.18rem;}
-    .partner-preview-copy span{font-size:.72rem;}
-  }
-
-
-/* ===== Phase 55: AML public-facing journey ===== */
-.aml-public-journey{background:#f7f8fa;border-bottom:1px solid #e4e8ee;}
-.aml-public-journey__inner{max-width:1180px;margin:0 auto;padding:12px 5vw;display:flex;align-items:center;justify-content:space-between;gap:18px;}
-.aml-public-journey__label{font-size:.72rem;font-weight:900;letter-spacing:.12em;color:#728096;white-space:nowrap;}
-.aml-public-journey__steps{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
-.aml-public-journey__steps a{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid #d9e0e8;border-radius:999px;background:#fff;color:#516073;text-decoration:none;font-size:.86rem;font-weight:800;transition:.18s ease;}
-.aml-public-journey__steps a:hover{transform:translateY(-1px);border-color:#c4a867;color:#7b5a1c;box-shadow:0 7px 18px rgba(21,35,52,.06);}
-.aml-public-journey__steps a[aria-current="page"]{background:#12233b;border-color:#12233b;color:#fff;box-shadow:0 7px 18px rgba(18,35,59,.14);}
-.aml-public-journey__num{font-size:.7rem;opacity:.72;letter-spacing:.05em;}
-@media(max-width:760px){.aml-public-journey__inner{align-items:flex-start;flex-direction:column;padding:11px 5vw}.aml-public-journey__steps{width:100%;display:grid;grid-template-columns:1fr}.aml-public-journey__steps a{justify-content:flex-start}.aml-public-journey__label{font-size:.68rem}}
-/* ===== /Phase 55 ===== */
-
-</style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"AML Resource Network｜精選資源","url":"https://allenmindlab.com/resources.html","description":"Allen Mind Lab 精選站外資源。","isPartOf":{"@type":"WebSite","name":"Allen Mind Lab","url":"https://allenmindlab.com/"}}</script>
-
-<style id="aml-phase56-footer-ia">
-/* Phase 56: keep the global footer concise and one-row on wide desktop. */
-@media (min-width:1100px){
-  .aml-footer-top{grid-template-columns:minmax(260px,.85fr) minmax(0,1.45fr);gap:48px;}
-  .aml-footer-links{grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 30px;}
-}
-@media (min-width:760px) and (max-width:1099px){
-  .aml-footer-links{grid-template-columns:repeat(2,minmax(0,1fr));}
-}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#faf7fb" />
+  <title>Resources｜Sera.Phina 心理健康與意識神經科學研究室</title>
+  <meta name="description" content="Sera.Phina 資源與協力夥伴：連結值得持續使用的研究、教育、心理健康與專業資源。" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://allenmindlab.com/sera-phina/resources.html" />
+  <link rel="stylesheet" href="./seraphina.css?v=20260926-5" />
+  <style>
+    .resource-hero{padding:72px clamp(24px,7vw,108px) 52px;background:radial-gradient(circle at 86% 18%,rgba(185,152,200,.18),transparent 24%),linear-gradient(180deg,#fcfafe 0%,#f5eef8 100%);border-bottom:1px solid var(--line)}
+    .resource-wrap{max-width:1120px;margin:0 auto}.resource-hero h1{font-size:clamp(44px,6vw,76px);line-height:1.04;margin:12px 0 14px;font-family:Georgia,"Times New Roman",serif;font-weight:500;letter-spacing:-.03em}.resource-hero p{max-width:760px;margin:0;color:#665a6d;font-size:17px;line-height:1.9}.resource-principles{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.resource-principles span{padding:8px 13px;border:1px solid rgba(111,79,134,.16);border-radius:999px;background:rgba(255,255,255,.7);font-size:12px;color:#66536f}.resource-main{padding:58px clamp(24px,7vw,108px) 92px;background:#fdfafd}.resource-section{max-width:1120px;margin:0 auto 54px}.resource-section:last-child{margin-bottom:0}.resource-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:22px}.resource-heading h2{margin:0;font-size:clamp(28px,3vw,40px);letter-spacing:-.03em}.resource-heading p{max-width:540px;margin:0;color:var(--muted)}.resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.resource-card{display:flex;flex-direction:column;min-height:280px;padding:28px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 12px 34px rgba(85,65,98,.06);transition:transform .22s ease,box-shadow .22s ease}.resource-card:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(85,65,98,.10)}.resource-card.partner{background:linear-gradient(145deg,#fbf8fd 0%,#eee5f4 100%);border-color:rgba(111,79,134,.22)}.resource-label{display:inline-flex;align-self:flex-start;padding:6px 10px;border-radius:999px;background:#f1e8f5;color:var(--sage-deep);font-size:11px;font-weight:800;letter-spacing:.08em}.resource-card h3{margin:22px 0 8px;font-size:25px;letter-spacing:-.025em}.resource-card .en{margin:0 0 14px;color:#77687e;font-family:Georgia,"Times New Roman",serif;font-style:italic}.resource-card p{margin:0;color:#655a6b;line-height:1.85}.resource-link{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:24px;color:var(--sage-deep);font-weight:800;font-size:13px}.resource-placeholder{border-style:dashed;background:#faf7fb}.resource-placeholder .resource-link{color:#94849c}.back-home{display:inline-flex;align-items:center;gap:8px;margin-top:28px;color:var(--sage-deep);font-weight:800;font-size:13px}@media(max-width:760px){.resource-hero{padding:52px 22px 38px}.resource-main{padding:42px 22px 70px}.resource-heading{display:block}.resource-heading p{margin-top:10px}.resource-grid{grid-template-columns:1fr}.resource-card{min-height:250px}}
+  </style>
 </head>
 <body>
-<a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
-<nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
-<details class="aml-nav-group"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
-<details class="aml-nav-group"><summary>主題館藏</summary><div class="aml-nav-panel aml-nav-panel--collection"><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a></div></details>
-<details class="aml-nav-group"><summary>閱讀路徑</summary><div class="aml-nav-panel aml-nav-panel--paths"><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div></details>
-<a class="aml-nav-direct" href="/self-study.html">進階自學室</a><details class="aml-nav-group" data-aml-lab-nav="true"><summary>互動實驗室</summary><div class="aml-nav-panel"><a class="aml-lab-subnav aml-lab-subnav--explore" href="/tools.html#lab-halls">互動探索艙</a><a class="aml-lab-subnav aml-lab-subnav--support" href="/tools.html#practice-tools">智能支援艙</a></div></details>
-<details class="aml-nav-group"><summary>資源與聯繫</summary><div class="aml-nav-panel"><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></details>
-</div><button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button><div class="aml-mobile-menu" id="aml-mobile-menu"><span class="aml-mobile-label">關於 AML</span><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a><span class="aml-mobile-label">主題館藏</span><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a><span class="aml-mobile-label">閱讀路徑</span><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a><span class="aml-mobile-label">進階自學室</span><a href="/self-study.html">進入進階自學室</a><span class="aml-mobile-label">互動實驗室</span><a class="aml-lab-subnav aml-lab-subnav--explore" href="/tools.html#lab-halls">互動探索艙</a><a class="aml-lab-subnav aml-lab-subnav--support" href="/tools.html#practice-tools">智能支援艙</a><span class="aml-mobile-label">資源與聯繫</span><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></nav>
-<section class="aml-public-journey" aria-label="認識與聯繫 AML"><div class="aml-public-journey__inner"><div class="aml-public-journey__label">EXPLORE AML · 對外入口</div><div class="aml-public-journey__steps"><a href="/about.html"><span class="aml-public-journey__num">01</span>認識 AML</a><a href="/resources.html" aria-current="page"><span class="aml-public-journey__num">02</span>找專業資源</a><a href="/contact.html"><span class="aml-public-journey__num">03</span>聯繫與合作</a></div></div></section>
-<main id="aml-main">
-<section class="resource-hero">
-<div class="resource-wrap">
-<div class="kicker">AML Resource Network</div>
-<h1>值得信任的延伸資源，<br/>依你的需求開始探索。</h1>
-<p>這裡不是網址大全，而是 Allen Mind Lab 依專業可信度、內容品質、公共價值與議題關聯性，持續整理的資源導航。先找到與你現在需求最接近的一區，再決定下一步。</p>
-<div class="resource-principles"><span>專業可信</span><span>內容持續</span><span>公共價值</span><span>議題相關</span><span>適合延伸探索</span></div>
-</div>
-</section><section aria-label="資源分類快速入口" class="resource-index"><div class="resource-index__panel"><div class="resource-index__title"><strong>依需求找資源</strong><span>不必從頭瀏覽，直接前往最接近你目前需求的資源區。</span></div><div class="resource-index__links"><a href="#partners">協力夥伴</a><a href="#wellbeing">身心與健康</a><a href="#education">教育與情緒</a><a href="#support">服務與家庭支持</a></div></div></section>
-<section class="resources">
+  <a class="skip-link" href="#main">跳至主要內容</a>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Sera.Phina 首頁">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span><strong>Sera.Phina</strong><small>Mental Health · Neuroscience of Consciousness</small></span>
+    </a>
+    <nav class="nav" aria-label="主要導覽">
+      <a href="./overview.html">Overview</a>
+      <a href="./research.html">Research</a>
+      <a href="./publications.html">Publications</a>
+      <a href="./knowledge-to-practice.html">Knowledge to Practice</a>
+      <a href="./learning-lab/index.html">Learning Lab</a>
+      <a href="./eliza.html">Eliza</a>
+      <a href="./resources.html" aria-current="page">Resources</a>
+    </nav>
+  </header>
 
-<section class="resource-section resource-section--partner" id="partners"><div class="resource-section__head"><div><div class="resource-section__eyebrow">PARTNER NETWORK</div><h2 class="resource-section__title">協力夥伴</h2></div><p class="resource-section__intro">彼此獨立、相互協力的專業網站，讓不同專業視角在 AML 之外繼續延伸。</p></div><div class="resource-section__grid"><article class="resource-item resource-item--partner">
-<div class="resource-item__meta">AML 協力夥伴 · 心理健康職能治療 · 身心整合</div>
-<div class="resource-preview resource-preview--photo-first"><img alt="Sera.Phina 心理健康與意識神經科學研究室網站精選預覽" decoding="async" height="713" loading="lazy" src="images/resources/seraphina-home.webp" width="1600"/><div aria-hidden="true" class="partner-preview-copy"><strong>Sera.Phina</strong><span>Mental Health · Occupational Therapy · Consciousness</span></div></div>
-<h2>Sera.Phina｜Eliza</h2>
-<p>以心理健康職能治療為專業核心，連結教學研究、自我覺察、情緒調節與身心整合，整理 Eliza 的專業實踐與持續探索。</p><div class="for-who"><strong>適合誰</strong>適合關注心理健康職能治療、自我覺察、情緒調節與身心整合的讀者。</div>
-<div class="why"><strong>AML × Sera.Phina｜協力夥伴</strong><p>Sera.Phina 與 AML 是彼此獨立、相互協力的專業網站。兩者各自保有不同的主題與氣質，並在職能治療、心理健康、教育與生活實踐之間彼此交流、互相連結。</p></div>
-<a class="go" href="/sera-phina/">前往 Sera.Phina →</a>
-</article></div></section><section class="resource-section resource-section--wellbeing" id="wellbeing"><div class="resource-section__head"><div><div class="resource-section__eyebrow">WELLBEING &amp; PRACTICE</div><h2 class="resource-section__title">身心與健康實踐</h2></div><p class="resource-section__intro">從專業醫療資訊到日常身心實踐，提供健康促進與自我照顧的延伸入口。</p></div><div class="resource-section__grid"><article class="resource-item">
-<div class="resource-item__meta">中西整合醫學 · 氣的醫學</div>
-<div class="resource-preview"><img alt="高堯楷醫師網站首頁預覽" decoding="async" height="851" loading="lazy" src="images/resources/dr-kao-home.webp" width="1792"/></div>
-<h2>高堯楷醫師</h2>
-<p>高堯楷醫師的個人專業網站，內容涵蓋中西整合醫學、身體調理指引、氣功養生、研究知識、出版著作與醫學研究新知。</p><div class="for-who"><strong>適合誰</strong>適合想延伸理解中西整合醫學、健康促進、氣功養生與身心實踐的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對身心整合、生活實踐與專業知識轉譯的關注高度相連，也提供持續更新的第一手專業內容。</p></div>
-<a class="go" href="https://www.drkao.org/" rel="noopener noreferrer" target="_blank">前往高堯楷醫師網站 ↗</a>
-</article><article class="resource-item">
-<div class="resource-item__meta">中醫 · 個人化調理</div>
-<div class="resource-preview"><img alt="台北大安中醫診所網站首頁預覽" decoding="async" height="847" loading="lazy" src="images/resources/daan-clinic-home.webp" width="1867"/></div>
-<h2>台北大安中醫診所</h2>
-<p>以中醫辨證結合現代醫學檢查與既有醫療資料，網站整理內科調理、疼痛與筋骨、睡眠與自律神經等診療與健康資訊。</p><div class="for-who"><strong>適合誰</strong>適合需要中醫健康資訊、睡眠／自律神經與日常調理延伸資料的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>網站資訊結構清楚，能補充 AML 在健康促進、身心調理與生活實踐面向的延伸閱讀，也與高堯楷醫師的臨床工作場域相互連結。</p></div>
-<a class="go" href="https://daanclinic.com/" rel="noopener noreferrer" target="_blank">前往台北大安中醫診所 ↗</a>
-</article><article class="resource-item">
-<div class="resource-item__meta">身心實踐 · 氣功推廣</div>
-<div class="resource-preview"><img alt="中華民國幸福氣功協會大安氣功推廣網站首頁預覽" decoding="async" height="846" loading="lazy" src="images/resources/happiness-qigong-home.webp" width="1917"/></div>
-<h2>中華民國幸福氣功協會｜大安氣功推廣</h2>
-<p>提供幸福氣功相關理念與大安地區推廣資訊，內容包含教室、團練、新生班與練習相關資料，作為認識氣功實踐與團體學習的延伸入口。</p><div class="for-who"><strong>適合誰</strong>適合想實際接觸氣功、團體練習與日常身心調節活動的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對身心整合、日常實踐與自我覺察的探索相互呼應，提供對相關實踐有興趣的讀者進一步探索。</p></div>
-<a class="go" href="https://sites.google.com/view/daan-class" rel="noopener noreferrer" target="_blank">前往大安氣功推廣網頁 ↗</a>
-</article></div></section><section class="resource-section resource-section--education" id="education"><div class="resource-section__head"><div><div class="resource-section__eyebrow">EDUCATION &amp; EMOTION</div><h2 class="resource-section__title">教育與情緒學習</h2></div><p class="resource-section__intro">聚焦教師、親師生與助人工作者可持續探索的教育、SEL 與系統合作資源。</p></div><div class="resource-section__grid"><article class="resource-item">
-<div class="resource-item__meta">SEL · 情緒教育 · 親師生學習</div>
-<div class="resource-preview"><img alt="社團法人臺灣芯福里情緒教育推廣協會網站首頁預覽" decoding="async" height="462" loading="lazy" src="images/resources/happiness-village-home.webp" width="1200"/></div>
-<h2>社團法人臺灣芯福里情緒教育推廣協會</h2>
-<p>以社會情緒學習（SEL）與情緒教育為核心，推動親師生情緒教育、培訓與相關學習資源，提供理解情緒、互動與共好實踐的延伸入口。</p><div class="for-who"><strong>適合誰</strong>適合家長、教師與助人工作者探索 SEL、情緒教育與親師生學習資源。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對教育、助人實務、心理健康與日常參與的關注相互呼應，也提供親師生進一步探索社會情緒學習與情緒教育的公共資源。</p></div>
-<a class="go" href="https://www.happinessvillage.org/" rel="noopener noreferrer" target="_blank">前往臺灣芯福里情緒教育推廣協會 ↗</a>
-</article><article class="resource-item">
-<div class="resource-item__meta">教育 · 教師培力 · 教育公平</div>
-<div class="resource-preview"><img alt="Teach For Taiwan 為台灣而教網站首頁預覽" decoding="async" height="715" loading="lazy" src="images/resources/tft-home.webp" width="1600"/></div>
-<h2>Teach For Taiwan｜為台灣而教</h2>
-<p>長期投入教育人才培育、教育現場協力與教育議題倡議，從第一線場域出發，持續探索教育不平等與系統改變的可能。</p><div class="for-who"><strong>適合誰</strong>適合關注教師培力、教育現場、教育公平與系統合作的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對教育、教師專業、學習支持與系統合作的關注相互呼應。2026 有感節「如果這世界，老師消失了」也成為 AML 第 51 篇〈新世代教師的轉型與賦能〉的重要思考緣起。</p></div>
-<a class="go" href="https://www.teach4taiwan.org/invite/" rel="noopener noreferrer" target="_blank">前往 Teach For Taiwan ↗</a>
-</article></div></section><section class="resource-section resource-section--support" id="support"><div class="resource-section__head"><div><div class="resource-section__eyebrow">SERVICE &amp; FAMILY SUPPORT</div><h2 class="resource-section__title">正式服務與家庭支持</h2></div><p class="resource-section__intro">當需求不只是閱讀，而需要正式服務窗口或家庭取向支持時，從這裡開始。</p></div><div class="resource-section__grid"><article class="resource-item">
-<div class="resource-item__meta">官方服務 · 情緒行為支持 · 轉介申請</div>
-<div class="resource-preview"><img alt="臺北市政府社會局臺北市情緒行為支持中心官方頁面預覽" decoding="async" height="560" loading="lazy" src="images/resources/taipei-emotional-behavior-support-center.webp" width="1915"/></div>
-<h2>臺北市情緒行為支持中心｜服務與申請資訊</h2>
-<p>臺北市政府社會局官方資訊，提供情緒行為支持中心的服務內容、轉介資格、申請表件、受理方式與聯絡窗口。</p><div class="for-who"><strong>適合誰</strong>適合正在尋找臺北市正式情緒行為支持、轉介資格與申請窗口的家庭或服務單位。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>當情緒行為支持需求超出一般家庭或服務現場可自行處理的範圍時，清楚找到正式服務與轉介窗口很重要。此官方頁面提供臺北市情緒行為支持中心的受理與申請資訊，作為需要進一步專業支持時的實務入口。</p></div>
-<a class="go" href="https://dosw.gov.taipei/cp.aspx?n=506C3AC6C1309560" rel="noopener noreferrer" target="_blank">查看官方服務與申請資訊 ↗</a>
-</article><article class="resource-item">
-<div class="resource-item__meta">ADHD · 家長支持 · 親職資源</div>
-<div aria-hidden="true" class="resource-preview"><iframe loading="lazy" src="https://jin40225-boop.github.io/ADHD-Website/" tabindex="-1" title="ADHD 家長支持平台首頁預覽"></iframe></div>
-<h2>ADHD 家長支持平台｜大A彥宇</h2>
-<p>以 ADHD 家長與照顧者為主要對象，整理 ADHD 相關知識、親職支持與實務經驗，提供家庭在理解孩子、陪伴與日常應對上的延伸資源。</p><div class="for-who"><strong>適合誰</strong>適合 ADHD 兒少家長與照顧者，尋找親職支持、日常陪伴與實務經驗。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>ADHD 的支持不只發生在治療場域，也與家庭理解、日常參與、同儕互動及成長歷程密切相關。此平台提供家長取向的延伸入口，與 AML 對兒童青少年支持、職能參與及家庭合作的關注相互呼應。</p></div>
-<a class="go" href="https://jin40225-boop.github.io/ADHD-Website/" rel="noopener noreferrer" target="_blank">前往 ADHD 家長支持平台 ↗</a>
-</article></div></section><section aria-labelledby="resource-share-title" class="resource-share">
-<div class="kicker">Share a Good Resource</div>
-<h2 id="resource-share-title">好資源，也歡迎一起分享。</h2>
-<p>Allen Mind Lab 不追求大量收錄，而是持續整理與本站關注議題高度相關、內容品質穩定、具有公共價值的網站與專業資源。如果你知道值得長期追蹤的研究、工具、網站、公益平台或學習素材，也歡迎推薦給 AML。</p>
-<div class="resource-share-grid">
-<div class="resource-share-card">
-<h3>AML 如何收錄資源？</h3>
-<p>每一項外部資源都會由 AML 人工檢視，重點不在數量，而在是否值得讀者繼續探索與長期追蹤。</p>
-<div class="resource-share-principles">
-<div><strong>收錄原則：</strong>專業可信、內容穩定、具有公共價值。</div>
-<div><strong>策展方向：</strong>與 AML 關注的專業、實踐與生活議題具有延伸價值。</div>
-</div>
-</div>
-<div class="resource-share-card">
-<h3>推薦優質資源</h3>
-<p>分享網址時，可以簡單告訴我們這項資源的特色，以及你認為它值得被更多讀者看見的原因。</p>
-<div class="resource-share-actions">
-<a class="resource-share-btn" href="mailto:daniel.ws.chen@gmail.com?subject=%E6%8E%A8%E8%96%A6%E5%84%AA%E8%B3%AA%E8%B3%87%E6%BA%90%E7%B5%A6%20Allen%20Mind%20Lab">推薦優質資源 →</a>
-<a class="resource-share-btn" href="/contact.html">其他交流與合作 →</a>
-</div>
-<div class="resource-share-note">這裡不是交換連結，而是策展式收錄；推薦不代表一定收錄。</div>
-</div>
-</div>
-</section>
-<div class="resource-note"><strong>外部資源說明：</strong>本頁僅提供精選站外資源導覽。各網站之內容、服務與更新由其經營者自行負責；AML 的收錄代表其內容與本站關注議題具有延伸價值，不等同對所有內容、個別醫療建議或服務成效之背書。</div>
-</section>
-</main>
-<footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a></div><div class="aml-footer-group"><h4>探索內容</h4><a href="/articles.html">主題館藏</a><a href="/library.html">完整文章館藏</a><a href="/reading-paths.html">閱讀路徑</a><a href="/search.html">搜尋 AML</a></div><div class="aml-footer-group"><h4>學習與互動</h4><a href="/self-study.html">進階自學室</a><a href="/tools.html">互動實驗室</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
-<script defer="" src="aml-site.js"></script>
+  <main id="main">
+    <section class="resource-hero">
+      <div class="resource-wrap">
+        <div class="section-kicker">RESOURCE NETWORK</div>
+        <h1>資源與協力夥伴</h1>
+        <p>Sera.Phina 不追求大量收錄，而是留下真正值得持續連結、能支持研究、學習與心理健康實踐的資源。</p>
+        <div class="resource-principles"><span>可信來源</span><span>專業實用</span><span>長期連結</span><span>彼此協力</span></div>
+      </div>
+    </section>
+
+    <section class="resource-main">
+      <section class="resource-section">
+        <div class="resource-heading"><div><div class="section-kicker">COLLABORATOR</div><h2>協力夥伴</h2></div><p>彼此獨立、相互協力，在教育、專業實踐與知識轉化之間建立連結。</p></div>
+        <div class="resource-grid">
+          <a class="resource-card partner" href="https://allenmindlab.com/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-label">協力夥伴</span>
+            <h3>Allen Mind Lab</h3>
+            <p class="en">Management · PBS · AI · Education · Reflection</p>
+            <p>聚焦管理、正向行為支持、AI 共作、教育與生活反思的知識實驗室，與 Sera.Phina 在專業教育、知識轉化實踐與跨域內容上彼此協力。</p>
+            <span class="resource-link"><span>前往 Allen Mind Lab</span><b>↗</b></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="resource-section">
+        <div class="resource-heading"><div><div class="section-kicker">ACADEMIC LINKS</div><h2>學術與專業連結</h2></div><p>正式學術資訊與專業背景，以原始機構頁面為準。</p></div>
+        <div class="resource-grid">
+          <a class="resource-card" href="https://ot.asia.edu.tw/zh_tw/faculty/full_time/%E9%99%B3%E8%8A%9D%E8%90%8D-Chih-Ping-Chen-40403093" target="_blank" rel="noopener noreferrer">
+            <span class="resource-label">Academic Profile</span>
+            <h3>亞洲大學職能治療學系</h3>
+            <p class="en">Asia University · Department of Occupational Therapy</p>
+            <p>Eliza 的正式教師資料、研究專長、教學與學術成果。</p>
+            <span class="resource-link"><span>查看正式學術資料</span><b>↗</b></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="resource-section">
+        <div class="resource-heading"><div><div class="section-kicker">WELL-BEING &amp; PRACTICE</div><h2>身心與生活實踐</h2></div><p>連結與心理健康、身心整合、日常覺察與實踐相關的外部資源。</p></div>
+        <div class="resource-grid">
+          <a class="resource-card" href="https://www.drkao.org/" target="_blank" rel="noopener noreferrer">
+            <span class="resource-label">中西整合醫學 · 氣的醫學</span>
+            <h3>高堯楷醫師</h3>
+            <p class="en">Integrative Medicine · Qigong · Health Knowledge</p>
+            <p>高堯楷醫師的個人專業網站，內容涵蓋中西整合醫學、身體調理指引、氣功養生、研究知識、出版著作與醫學研究新知。</p>
+            <span class="resource-link"><span>前往高堯楷醫師網站</span><b>↗</b></span>
+          </a>
+          <a class="resource-card" href="https://sites.google.com/view/daan-class" target="_blank" rel="noopener noreferrer">
+            <span class="resource-label">身心實踐 · 氣功推廣</span>
+            <h3>中華民國幸福氣功協會｜大安氣功推廣</h3>
+            <p class="en">Qigong · Practice · Well-being</p>
+            <p>提供幸福氣功相關理念與大安地區推廣資訊，包含教室、團練、新生班與練習資料，作為認識氣功實踐與團體學習的延伸入口。</p>
+            <span class="resource-link"><span>前往大安氣功推廣網頁</span><b>↗</b></span>
+          </a>
+        </div>
+      </section>
+
+      <section class="resource-section">
+        <div class="resource-heading"><div><div class="section-kicker">COMING NEXT</div><h2>接下來會加入</h2></div><p>資源頁會隨研究與內容發展逐步擴充，不為了數量而堆疊。</p></div>
+        <div class="resource-grid">
+          <div class="resource-card resource-placeholder"><span class="resource-label">Research Resources</span><h3>研究與意識神經科學</h3><p>期刊、研究機構、研究方法與可信賴的意識／情緒神經科學資源。</p><span class="resource-link">逐步整理中</span></div>
+          <div class="resource-card resource-placeholder"><span class="resource-label">Mental Health Resources</span><h3>心理健康與生活實踐</h3><p>心理健康、職能治療、身心調節與公共教育相關的高品質資源。</p><span class="resource-link">逐步整理中</span></div>
+        </div>
+      </section>
+
+      <section class="resource-section page-next">
+        <span>回到入口</span>
+        <a href="./"><strong>Sera.Phina Home</strong><small>回到研究室首頁 →</small></a>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>Sera.Phina</strong><span>Eliza</span></div>
+    <p>Mental Health · Occupational Therapy · Consciousness · Neuroscience</p>
+    <small>In collaboration with Allen Mind Lab · © 2026 Sera.Phina</small>
+  </footer>
 </body>
 </html>
