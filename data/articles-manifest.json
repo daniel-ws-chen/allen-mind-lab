@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-01T00:41:19.554Z",
+  "generatedAt": "2026-10-02T02:17:49.396Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 57,
+    "total": 58,
     "ot": 25,
     "mind": 14,
     "pbs": 14,
-    "education": 12,
+    "education": 13,
     "management": 30,
-    "ai": 18,
+    "ai": 19,
     "notes": 7
   },
   "featuredReading": [
@@ -79,6 +79,53 @@
   },
   "articles": [
     {
+      "slug": "why-books-still-matter-ai-era",
+      "title": "當知識唾手可得，我們為什麼還需要一本書？",
+      "summary": "當知識愈來愈容易取得，書的價值也正在改變。從紙本、數位到 AI，重新思考哪些內容值得被整理、保存、出版與反覆閱讀。",
+      "date": "2026-10-02",
+      "domains": [
+        "ai",
+        "education"
+      ],
+      "primaryDomain": "ai",
+      "crossDomains": [
+        "education"
+      ],
+      "tag": "AI × Practice × Education",
+      "cardMeta": "2026.10.02 · AI × Practice × Education",
+      "keywords": [
+        "生成式 AI",
+        "出版",
+        "出版業",
+        "教科書",
+        "閱讀",
+        "知識系統",
+        "知識管理",
+        "教育",
+        "AI 時代",
+        "紙本閱讀",
+        "數位出版",
+        "知識服務"
+      ],
+      "articlePath": "/articles/why-books-still-matter-ai-era.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/why-books-still-matter-ai-era",
+      "hero": "/images/articles/why-books-still-matter-ai-era-hero.webp",
+      "ogImage": "/images/articles/why-books-still-matter-ai-era-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 上一篇 ← AI 不是答案機：從線上自學、AI 協作到公民咖啡館",
+          "href": "/articles/ot-management-ai-collaborative-learning.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "ot-management-ai-collaborative-learning",
       "title": "AI 不是答案機：從線上自學、AI 協作到公民咖啡館的職能治療管理學實踐",
       "summary": "從線上自學、AI 協作到公民咖啡館，重新思考 AI 如何支持個人準備，同時把珍貴的課堂時間留給高密度的人際互動、專業判斷與回饋。",
@@ -124,6 +171,11 @@
           "kind": "previous",
           "label": "上一篇 ← 從服務一個人出發，走向政策發展上路",
           "href": "/articles/from-serving-one-person-to-policy-development.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 當知識唾手可得，我們為什麼還需要一本書？ →",
+          "href": "/articles/why-books-still-matter-ai-era.html"
         }
       ],
       "readingPaths": [],
