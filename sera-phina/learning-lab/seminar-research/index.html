@@ -28,7 +28,7 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 
 <section class="panel hidden" id="step3"><div class="eyebrow">Step 3 · Research Conversation</div><h2>先留在 GPT，把研究想法談深。</h2><p>建議持續到你已能說明：「我想研究什麼、為什麼、研究誰／什麼資料、可能怎麼研究，以及目前還不知道什麼。」</p><div class="discussion-list"><label><input type="checkbox" class="discussionCheck"/><span>我有提出自己的研究想法，而不是只等待 AI 給答案。</span></label><label><input type="checkbox" class="discussionCheck"/><span>我有回應 AI 的追問，並說明自己的理由。</span></label><label><input type="checkbox" class="discussionCheck"/><span>我有比較、修改或拒絕至少一項 AI 建議。</span></label><label><input type="checkbox" class="discussionCheck"/><span>我知道至少一項需要查證或與指導教師討論的問題。</span></label></div><div class="integrity"><strong>重要：</strong>若 AI 提供文獻、DOI、量表或研究結論，你仍需要回到正式資料庫或原始來源查證。</div><div class="copy-state" id="discussionState"></div><div class="actions"><button class="btn ghost" id="back2">← 回到啟動指令</button><button class="btn primary" id="toStep4">研究討論完成，進入評測 →</button></div></section>
 
-<section class="panel hidden" id="step4"><div class="eyebrow">Step 4 · Assessment & Analysis</div><h2>回到同一串 GPT，產生四份成果。</h2><p>AI 只能依據本次實際對話評量，不能把自己給過的答案當成你的能力。前三份寄給老師；第四份 PDF 完訓證明由你自行保存。</p><div class="output-strip"><span><b>01</b>專題研究討論摘要</span><span><b>02</b>研究學習表現評量</span><span><b>03</b>整體表現分析報告</span><span class="pdf"><b>04</b>PDF 完訓證明</span></div><div class="command-box" id="endCommand"></div><div class="handoff"><div class="handoff-number">1</div><div><strong>複製結束評測指令</strong><span>貼回剛才的同一串 ChatGPT 對話。</span></div><button class="btn secondary" id="copyEnd">複製評測指令</button></div><div class="copy-state" id="endState"></div><div class="quality-box"><strong>PDF 完訓證明品質規則：</strong>AI 必須使用可完整顯示繁體中文的字型、產出後重新讀取 PDF 檢查，若有 □、�、缺字、重疊、截斷或錯字，必須修正並重新產生；不提供 Word 版完訓證明。</div><div class="quality-box"><strong>教師端評量規準：</strong>教師可使用獨立的 <a href="./teacher-report.html">整體表現分析與評量規準頁</a> 閱讀八項能力、研究思考階段與報告解讀原則；此頁不會上傳或保存學生對話內容。</div><label class="checkline"><input type="checkbox" id="reportsReady"/><span>我的 GPT 已完成 01–03 三份學習成果與 04 PDF 完訓證明，我也已核對內容沒有把 AI 建議誤寫成我的研究決策。</span></label><div class="actions"><button class="btn ghost" id="back3">← 回到研究討論</button><button class="btn primary" id="toStep5" disabled>四份成果完成，前往繳交 →</button></div></section>
+<section class="panel hidden" id="step4"><div class="eyebrow">Step 4 · Assessment & Analysis</div><h2>回到同一串 GPT，產生四份成果。</h2><p>AI 只能依據本次實際對話評量，不能把自己給過的答案當成你的能力。前三份寄給老師；第四份 PDF 完訓證明由你自行保存。</p><div class="output-strip"><span><b>01</b>專題研究討論摘要</span><span><b>02</b>研究學習表現評量</span><span><b>03</b>整體表現分析報告</span><span class="pdf"><b>04</b>PDF 完訓證明</span></div><div class="command-box" id="endCommand"></div><div class="handoff"><div class="handoff-number">1</div><div><strong>複製結束評測指令</strong><span>貼回剛才的同一串 ChatGPT 對話。</span></div><button class="btn secondary" id="copyEnd">複製評測指令</button></div><div class="copy-state" id="endState"></div><div class="quality-box"><strong>PDF 完訓證明統一品牌規格：</strong>採 Sera.Phina Learning Lab A4 直式正式版型，固定包含品牌頁首、學生資料、活動完成資訊、能力摘要、學習亮點、下一步方向、完成日期與免責註記。AI 必須使用可完整顯示繁體中文的字型，產出後重新讀取 PDF 檢查；若有 □、�、缺字、重疊、截斷或錯字，必須修正並重新產生。不提供 Word 版完訓證明。</div><div class="quality-box"><strong>教師端評量規準：</strong>教師可使用獨立的 <a href="./teacher-report.html">整體表現分析與評量規準頁</a> 閱讀八項能力、研究思考階段與報告解讀原則；此頁不會上傳或保存學生對話內容。</div><label class="checkline"><input type="checkbox" id="reportsReady"/><span>我的 GPT 已完成 01–03 三份學習成果與 04 PDF 完訓證明，我也已核對內容沒有把 AI 建議誤寫成我的研究決策。</span></label><div class="actions"><button class="btn ghost" id="back3">← 回到研究討論</button><button class="btn primary" id="toStep5" disabled>四份成果完成，前往繳交 →</button></div></section>
 
 <section class="panel hidden" id="step5"><div class="eyebrow">Step 5 · Download & Submit</div><h2>下載四份成果，前三份寄給老師。</h2><p>網站不會讀取你的 ChatGPT 對話或 Email，也不驗證是否寄件成功。完成學習後，繳交仍是學生自己的作業責任。</p><div class="submission-card"><h3>① 下載四份成果</h3><div class="submission-files"><div class="submission-file"><span>寄老師</span><strong>01｜專題研究討論摘要</strong></div><div class="submission-file"><span>寄老師</span><strong>02｜研究學習表現評量</strong></div><div class="submission-file"><span>寄老師</span><strong>03｜整體表現分析報告</strong></div><div class="submission-file pdf"><span>自己保存 · PDF</span><strong>04｜完訓證明.pdf</strong></div></div><div class="note"><strong>完訓證明固定為 PDF：</strong>不提供 Word 版，以降低內容被後續修改的可能。請確認 PDF 繁體中文顯示正常後保存。</div></div><div class="submission-card"><h3>② 將 01–03 寄給老師</h3><div class="email-box"><div><small>老師收件信箱</small><br><code id="teacherEmail">jessie.chen.coco@gmail.com</code></div><div class="email-actions"><button class="btn secondary" id="copyEmail">複製老師信箱</button><a class="btn primary" id="mailLink" href="#">開啟寄信程式</a></div></div><div class="copy-state" id="submissionState"></div><ul class="send-checklist"><li>建議主旨：<strong>Seminar 專題研究 AI 共學成果繳交｜姓名／學號</strong></li><li>必要附件：01 專題研究討論摘要、02 研究學習表現評量、03 整體表現分析報告。</li><li>04 PDF 完訓證明自行保存，不必寄給老師。</li><li>寄出前請再次確認文件中沒有真實病人或研究參與者的可識別個資。</li></ul></div><div class="submission-card"><h3>③ 下一步</h3><p>依「03 整體表現分析報告」中的三項下一階段任務繼續準備，並把仍待確認的研究問題帶去和指導教師討論。</p></div><div class="actions"><button class="btn ghost" id="back4">← 回到評測指令</button></div></section>
 </main>
@@ -53,7 +53,43 @@ function endText(){return `結束專題討論並開始評測。\n\n請立即停�
 7.批判思考與研究判斷：能否比較、質疑、修正、拒絕建議並說明理由。
 8.自主學習與 AI 協作能力：能否先提出自己的想法、回應追問、查證資料、修正 AI 建議並保有最終決策主體性。
 
-每項都要指出本次實際對話依據、已展現能力及可改善處。沒有足夠證據時不得給「優秀」，若對話不足以判斷，請明確標註「證據不足」，而不是自行推測。最後提供八項能力整體摘要、三項優勢與三項待發展能力。\n\n【檔案三｜03_整體表現分析與下一步學習建議】\n內容至少包含：一、目前研究思考階段（問題探索期／研究主題形成期／研究問題聚焦期／研究設計形成期／研究計畫建構期）；二、2–4 個關鍵研究思考轉折點，說明當時問題、學生如何思考、如何影響方向、再次思考可如何更完整；三、AI 協作表現，包括是否等待答案、是否回應問題、是否提出觀點、是否判斷／修改 AI 建議、是否保有研究決策主體性；四、研究構想成熟度：已相對清楚、仍模糊、需查證、應與指導教師討論；五、下一階段三項具體可執行任務；六、150–300 字形成性回饋。\n\n【檔案四｜04_Seminar_Research_Lab_完訓證明.pdf】\n請建立一份簡潔、正式、具有鼓勵性的 PDF 完訓證明，供學生自行保存，不得建立 Word／DOCX 版。證明至少包含：\n1. 標題：專題研究 AI 共學實驗室完訓證明。\n2. 學生姓名與學號（只使用本次對話中學生自行提供的資料；不知道時留白，不可猜測）。\n3. 完成日期。\n4. 目前研究主題／暫定題目。\n5. 研究思考階段。\n6. 八項研究學習能力的精簡摘要。\n7. 本次學習亮點 2–3 點。\n8. 下一步成長方向 2–3 點。\n9. 一段簡短鼓勵性結語。\n10. 明確標示「Sera.Phina Learning Lab｜Seminar Research Lab」。\n11. 註明「本證明僅表示完成本次學習活動，不代表專業資格、學位、證照或正式課程成績認定。」\n\n【完訓證明統一版型｜必須遵守】\n- A4 直式、單頁優先；若內容無法合理放入單頁，可使用兩頁，但不可縮小到難以閱讀。\n- 頁首固定呈現「Sera.Phina Learning Lab」與「Seminar Research Lab」。\n- 主標題置中，學生姓名與學號置於清楚的基本資料區。\n- 中段依序呈現：研究主題／研究階段、能力摘要、學習亮點、下一步方向。\n- 頁尾固定放置完成日期與免責註記。\n- 採簡潔、留白充足、正式的學術教育風格；避免花俏圖案、浮水印或容易影響中文字辨識的裝飾。\n- 不得顯示可編輯欄位、表單控制項或「草稿」字樣。\n\n【PDF 品質檢查｜必須執行】\n- 使用你目前環境中可完整顯示繁體中文的字型產生 PDF；不可使用缺少中文字形的字型。\n- 產出前逐字校對繁體中文內容、學生資料、研究題目、標題、標點與英文名稱。\n- PDF 產生後重新開啟／讀取成品檢查，確認沒有 □、�、亂碼、缺字、文字重疊、截斷或明顯錯字。\n- 若檢查發現問題，修正後重新產生；只提供通過檢查的最終 PDF。\n- 檔名建議：04_Seminar_Research_Lab_完訓證明.pdf。\n\n完成後請再次確認：四份成果彼此分開。01–03 供學生寄給老師；04 PDF 完訓證明由學生自行下載保存，不需寄送。`;}
+每項都要指出本次實際對話依據、已展現能力及可改善處。沒有足夠證據時不得給「優秀」，若對話不足以判斷，請明確標註「證據不足」，而不是自行推測。最後提供八項能力整體摘要、三項優勢與三項待發展能力。\n\n【檔案三｜03_整體表現分析與下一步學習建議】\n內容至少包含：一、目前研究思考階段（問題探索期／研究主題形成期／研究問題聚焦期／研究設計形成期／研究計畫建構期）；二、2–4 個關鍵研究思考轉折點，說明當時問題、學生如何思考、如何影響方向、再次思考可如何更完整；三、AI 協作表現，包括是否等待答案、是否回應問題、是否提出觀點、是否判斷／修改 AI 建議、是否保有研究決策主體性；四、研究構想成熟度：已相對清楚、仍模糊、需查證、應與指導教師討論；五、下一階段三項具體可執行任務；六、150–300 字形成性回饋。\n\n【檔案四｜04_Seminar_Research_Lab_完訓證明.pdf】
+請建立一份符合「Sera.Phina Learning Lab 統一完訓證明規格」的正式 PDF，供學生自行保存；不得建立 Word／DOCX 版。
+
+【統一品牌欄位｜順序固定】
+A. 品牌頁首：Sera.Phina Learning Lab
+B. Lab 名稱：Seminar Research Lab｜專題研究 AI 共學實驗室
+C. 證明標題：完訓證明｜Certificate of Completion
+D. 學生資料：姓名、學號；只使用本次對話中學生自行提供的資料，不知道時留白，不可猜測。
+E. 完成活動：完成研究問題探索、研究方向聚焦、AI 協作討論與形成性評量。
+F. 目前研究主題／暫定題目。
+G. 目前研究思考階段。
+H. 能力摘要：將八項研究學習能力濃縮為 3–5 句，不製作密集分數表。
+I. 本次學習亮點：2–3 點，必須有本次對話行為依據。
+J. 下一步成長方向：2–3 點，使用可執行敘述。
+K. 完成日期。
+L. 固定免責註記：「本證明僅表示完成本次 Sera.Phina Learning Lab 學習活動，不代表專業資格、學位、證照或正式課程成績認定。」
+
+【統一視覺版型｜兩個 Lab 共用】
+- A4 直式，單頁優先；若內容無法合理放入單頁，可使用兩頁，但不可縮小到難以閱讀。
+- 頁首左側或上方固定顯示「Sera.Phina Learning Lab」，其下顯示 Lab 名稱。
+- 主標題「完訓證明｜Certificate of Completion」置中且為全頁最明顯文字。
+- 學生姓名為主要識別資訊；姓名與學號置於獨立基本資料區。
+- 中段固定依序呈現：完成活動／研究主題與階段 → 能力摘要 → 學習亮點 → 下一步方向。
+- 頁尾固定呈現完成日期與免責註記。
+- 採簡潔、留白充足、正式、可信賴的教育風格；不得使用花俏插圖、大面積浮水印、仿官方印章或任何可能誤認為專業證照的元素。
+- 不得顯示可編輯欄位、表單控制項、「草稿」字樣或未完成占位符。
+- 與精神職能治療會談實驗室的證明使用相同品牌層級、欄位順序與免責邏輯，只替換 Lab 名稱與學習內容。
+
+【PDF 文字與字型品質檢查｜必須執行】
+- 使用目前環境中可完整顯示繁體中文的字型產生 PDF；不可使用缺少中文字形的字型。
+- 產出前逐字校對繁體中文內容、學生姓名與學號、研究題目、標題、標點與英文名稱。
+- PDF 產生後重新開啟／讀取成品，逐頁確認沒有 □、�、亂碼、缺字、文字重疊、截斷、空白欄位異常或明顯錯字。
+- 若學生姓名或研究題目含罕見字，必須特別確認字形是否正確顯示。
+- 若檢查發現任何問題，修正後重新產生；只提供通過檢查的最終 PDF。
+- 檔名：04_Seminar_Research_Lab_完訓證明.pdf。
+
+完成後請再次確認：四份成果彼此分開。01–03 供學生寄給老師；04 PDF 完訓證明由學生自行下載保存，不需寄送。`;}
 $('flowConfirm').addEventListener('change',()=>{$('toStep2').disabled=!$('flowConfirm').checked});$('toStep2').onclick=()=>{$('startCommand').textContent=startText();show(2)};$('back1').onclick=()=>show(1);$('toStep3').onclick=()=>show(3);$('back2').onclick=()=>show(2);$('toStep4').onclick=()=>{const n=[...document.querySelectorAll('.discussionCheck')].filter(x=>x.checked).length;if(n<3){$('discussionState').textContent='建議至少完成 3 項自我檢核，再進入評測。';return}$('discussionState').textContent='';$('endCommand').textContent=endText();show(4)};$('back3').onclick=()=>show(3);$('reportsReady').addEventListener('change',()=>{$('toStep5').disabled=!$('reportsReady').checked});$('toStep5').onclick=()=>{const name=$('studentName').value.trim()||'學生';const sid=$('studentId').value.trim();const subject=`Seminar 專題研究 AI 共學成果繳交｜${name}${sid?'／'+sid:''}`;$('mailLink').href=`mailto:jessie.chen.coco@gmail.com?subject=${encodeURIComponent(subject)}`;show(5)};$('back4').onclick=()=>show(4);$('copyStart').onclick=()=>copy(startText(),$('startState'),'✓ 已複製。請開啟 ChatGPT 並貼上。');$('copyEnd').onclick=()=>copy(endText(),$('endState'),'✓ 已複製。請切回原本同一串 ChatGPT 對話貼上。');$('copyEmail').onclick=()=>copy('jessie.chen.coco@gmail.com',$('submissionState'),'✓ 已複製老師信箱。');})();
 </script>
 </body>
