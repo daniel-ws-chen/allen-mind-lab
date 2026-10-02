@@ -1,0 +1,23 @@
+
+.sp-learning-loop{max-width:1120px;margin:24px auto 0;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#fff,#f7f2fa);color:#65596c}
+.sp-learning-loop .sp-loop-kicker{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:var(--sage-deep)}
+.sp-learning-loop h3{margin:5px 0 7px;font-size:18px;color:#4c4052}
+.sp-learning-loop p{margin:0;color:#766a7c;font-size:12px;line-height:1.7}
+.sp-loop-steps{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.sp-loop-steps span{padding:7px 10px;border-radius:999px;background:#f0e8f3;color:#67546f;font-size:11px;font-weight:800}
+.sp-loop-steps b{color:#ae9eb5;font-weight:500}
+.sp-loop-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+.sp-loop-actions a,.sp-loop-actions button{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;padding:9px 13px;background:var(--sage-deep);color:white!important;font:800 11px/1.2 inherit;text-decoration:none!important;cursor:pointer}
+.sp-loop-actions .secondary{background:#eee7f2;color:#6f4f86!important}
+.sp-recent{max-width:1120px;margin:0 auto 24px;padding:20px;border:1px solid var(--line);border-radius:20px;background:#fff}
+.sp-recent.hidden{display:none}
+.sp-recent-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
+.sp-recent .label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:#897790}
+.sp-recent h2{margin:5px 0 4px;font-size:20px}
+.sp-recent p{margin:0;color:#746979;font-size:12px;line-height:1.65}
+.sp-recent .meta{margin-top:10px;color:#8a7f8e;font-size:11px}
+.sp-recent .resume{display:inline-flex;margin-top:12px;padding:9px 13px;border-radius:999px;background:var(--sage-deep);color:#fff;font-size:11px;font-weight:900;text-decoration:none}
+.sp-history-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:1120px;margin:0 auto 24px}
+.sp-history-item{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fbfafc}
+.sp-history-item strong{display:block;font-size:12px;color:#564b5b}.sp-history-item small{display:block;margin-top:3px;color:#8b7f90;line-height:1.5}
+@media(max-width:760px){.sp-history-list{grid-template-columns:1fr}.sp-recent-top{display:block}}

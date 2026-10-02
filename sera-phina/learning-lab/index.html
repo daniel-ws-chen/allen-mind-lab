@@ -6,6 +6,7 @@
   <title>Learning Lab｜Sera.Phina</title>
   <meta name="description" content="Sera.Phina 教學實驗室：把心理健康、職能治療與研究轉化為可操作、可演練、可反思的學習體驗。" />
   <link rel="stylesheet" href="../seraphina.css" />
+  <link rel="stylesheet" href="./learning-lab-common.css" />
   <style>
     .lab-hero{padding:74px clamp(24px,7vw,108px) 62px;background:radial-gradient(circle at 88% 12%,rgba(185,152,200,.22),transparent 24%),linear-gradient(180deg,#fcfafe 0%,#f4edf8 100%)}
     .lab-wrap{max-width:1120px;margin:0 auto}.lab-kicker{font-size:11px;letter-spacing:.2em;font-weight:800;color:var(--sage-deep);text-transform:uppercase}.lab-hero h1{margin:12px 0 14px;font:500 clamp(48px,6vw,78px)/1.05 Georgia,"Times New Roman",serif;letter-spacing:-.035em}.lab-hero p{max-width:760px;margin:0;color:#665a6d;font-size:18px;line-height:1.9}.lab-main{padding:58px clamp(24px,7vw,108px) 92px}.lab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:1120px;margin:0 auto}.lab-card{display:flex;flex-direction:column;min-height:340px;padding:30px;border:1px solid var(--line);border-radius:26px;background:#fff;box-shadow:0 16px 42px rgba(85,65,98,.07)}.lab-card.primary{background:linear-gradient(145deg,#fff 0%,#f2e9f7 100%);border-color:rgba(111,79,134,.24)}.lab-tags{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.lab-tags span{padding:6px 10px;border-radius:999px;background:#f2eaf6;color:var(--sage-deep);font-size:11px;font-weight:800}.lab-card h2{margin:12px 0 8px;font-size:28px;letter-spacing:-.025em}.lab-card p{margin:0;color:#675b6e;line-height:1.85}.lab-actions{margin-top:auto;padding-top:24px}.lab-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:999px;background:var(--sage-deep);color:#fff;font-weight:800;font-size:13px}.lab-btn.ghost{background:#eee7f2;color:#8f8098;pointer-events:none}.lab-note{max-width:1120px;margin:28px auto 0;padding:18px 20px;border-radius:18px;background:#f7f2fa;border:1px solid var(--line);color:#706477}.site-header .nav{flex-wrap:wrap;justify-content:flex-end}@media(max-width:920px){.site-header{align-items:flex-start;gap:18px}.nav{gap:14px}.lab-grid{grid-template-columns:1fr}}@media(max-width:700px){.site-header{position:static;display:block}.nav{margin-top:16px}.lab-hero{padding:50px 22px 42px}.lab-main{padding:40px 22px 70px}}
@@ -27,8 +28,12 @@
     </nav>
 </header>
 <main id="main">
-<section class="lab-hero"><div class="lab-wrap"><div class="lab-kicker">Teaching & Learning Lab</div><h1>教學實驗室</h1><p>把心理健康、職能治療與研究轉化為可以操作、演練與反思的學習體驗。這裡不只是閱讀知識，而是練習如何在真實專業情境中使用它。</p></div></section>
-<section class="lab-main"><div class="lab-grid">
+<section class="lab-hero"><div class="lab-wrap"><div class="lab-kicker">Teaching & Learning Lab</div><h1>教學實驗室</h1><p>把心理健康、職能治療與研究轉化為可以操作、演練與反思的學習體驗。先形成自己的思考，再使用 AI、教師回饋與學習工具深化推理。</p></div></section>
+<section class="lab-main">
+<div class="sp-recent hidden" id="spRecentLearning"><div class="sp-recent-top"><div><div class="label">Continue Learning</div><h2 id="spRecentTitle">最近的 Learning Lab</h2><p id="spRecentDesc"></p><div class="meta" id="spRecentMeta"></div><a class="resume" id="spRecentLink" href="#">繼續學習 →</a></div></div></div>
+<div class="sp-history-list" id="spHistoryList"></div>
+<section class="sp-learning-loop" aria-label="Sera.Phina 共通學習循環"><div class="sp-loop-kicker">Sera.Phina Learning Loop</div><h3>先自己想，再讓工具幫你看見思考。</h3><p>Think → Organize → Ask AI if needed → Discuss → Revise。AI 不是第一個答案來源；老師、督導與臨床教師也不是只負責公布答案，而是協助你檢視推理如何形成與改變。</p><div class="sp-loop-steps"><span>Think</span><b>→</b><span>Organize</span><b>→</b><span>Ask AI if needed</span><b>→</b><span>Discuss</span><b>→</b><span>Revise</span></div></section>
+<div class="lab-grid">
   <article class="lab-card primary"><div class="lab-kicker">Mental Health OT · AI-SP · OSCE</div><h2>精神職能治療會談實驗室</h2><p>與 AI 標準病人進行精神職能治療會談演練，從建立關係、職能探索、目標設定到共享決策，並於演練後取得結構化能力回饋。</p><div class="lab-tags"><span>AI Standardized Patient</span><span>Interview Practice</span><span>OSCE Assessment</span><span>Clinical Reasoning</span></div><div class="lab-actions"><a class="lab-btn" href="./mental-health-ot-interview/index.html">進入實驗室 →</a></div></article>
   <article class="lab-card" id="seminar"><div class="lab-kicker">Seminar · Research Learning</div><h2>專題研究 AI 共學實驗室</h2><p>引導學生使用自己的 GPT，從研究想法逐步形成研究問題、方法與可執行的小型專題，最後產出學習表現評量與整體分析報告。</p><div class="lab-tags"><span>Research Thinking</span><span>AI Collaboration</span><span>Formative Assessment</span><span>Teacher Report</span></div><div class="lab-actions"><a class="lab-btn" href="./seminar-research/index.html">進入實驗室 →</a></div></article>
 
@@ -36,4 +41,5 @@
 </div><div class="lab-note"><strong>教學用途：</strong>本區提供模擬學習與形成性回饋，不取代正式臨床診斷、心理衡鑑、醫療決策或學校正式成績評定。</div></section>
 </main>
 <footer class="site-footer"><div><strong>Sera.Phina</strong><span>Eliza</span></div><p>Mental Health · Occupational Therapy · Consciousness · Neuroscience</p><small>In collaboration with Allen Mind Lab · © 2026 Sera.Phina</small></footer>
+<script src="./learning-trace.js"></script>
 </body></html>
