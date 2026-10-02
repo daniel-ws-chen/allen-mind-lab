@@ -87,8 +87,9 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 /* Completion self-check v4 */
 .completion-check{margin-top:14px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:#fbfafc}.completion-check label{display:flex;gap:9px;align-items:flex-start;font-size:12px;line-height:1.6}.completion-check input{margin-top:3px}.completion-status{margin-top:8px;color:#6f6474;font-size:11px}.complete-badge{display:none;margin-top:12px;padding:13px 15px;border-radius:14px;background:#f3f7f5;border:1px solid #d7e5dc;color:#536b5e;font-size:12px;font-weight:800}.complete-badge.show{display:block}
 </style>
+<link rel="stylesheet" href="../learning-lab-common.css"/>
 </head>
-<body>
+<body data-lab-id="interview" data-lab-title="精神職能治療會談實驗室" data-lab-path="./mental-health-ot-interview/index.html">
 <header class="site-header"><a class="brand" href="../../index.html" aria-label="Sera.Phina 首頁"><span class="brand-mark" aria-hidden="true">S</span><span><strong>Sera.Phina</strong><small>Mental Health · Neuroscience of Consciousness</small></span></a><nav class="nav" aria-label="主要導覽">
       <a href="../../research.html">學術研究</a>
       <a href="../../education-teaching.html">教育教學</a>
@@ -237,6 +238,14 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 <div class="actions"><button class="btn ghost" id="back4">回到評測指令</button></div>
 </section>
 </main>
+
+<section class="sp-learning-loop" aria-label="Sera.Phina 共通學習循環">
+  <div class="sp-loop-kicker">Sera.Phina Learning Loop</div>
+  <h3>把答案帶走之前，先留下你怎麼想。</h3>
+  <p>每個 Learning Lab 都遵循同一個方向：先自己思考與整理；需要時再使用自己的 AI；最後把重要疑問帶回老師、督導或臨床教師討論，並修正原本推理。</p>
+  <div class="sp-loop-steps"><span>Think</span><b>→</b><span>Organize</span><b>→</b><span>Ask AI if needed</span><b>→</b><span>Discuss</span><b>→</b><span>Revise</span></div>
+  <div class="sp-loop-actions"><a href="../index.html">回 Learning Lab</a><button class="secondary" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">回到本頁開始處</button></div>
+</section>
 <footer class="site-footer"><div><strong>Sera.Phina</strong><span>Eliza</span></div><p>Mental Health · Occupational Therapy · Consciousness · Neuroscience</p><small>In collaboration with Allen Mind Lab · © 2026 Sera.Phina</small></footer>
 <script>
 (()=>{
@@ -313,14 +322,15 @@ function promptText(){
  return prompt;
 }
 function summaryHtml(){const rows=[['模式',mode==='practice'?'學習演練 Practice':'能力檢核 Assessment'],['任務',$('task').value],['互動',$('level').selectedOptions[0].text],['情境',$('theme').value],['角色／場域',$('role').value],['時間',$('duration').value]];return rows.map(([a,b])=>`<div class="summary-row"><span>${a}</span><strong>${b}</strong></div>`).join('');}
-$('generate').onclick=()=>{$('prompt').value=promptText();$('summary').innerHTML=summaryHtml();$('promptState').textContent='';$('endState').textContent='';const launch=$('chatLaunchCard'),link=$('openChatGPT');launch.classList.add('locked');launch.classList.remove('unlocked');link.classList.add('is-locked');link.setAttribute('aria-disabled','true');$('returnChatCard').classList.add('locked');$('returnChatCard').classList.remove('unlocked');$('toSubmit').disabled=true;show(3);};
+$('generate').onclick=()=>{if(window.SeraLearningTrace)window.SeraLearningTrace.updateProgress(35);$('prompt').value=promptText();$('summary').innerHTML=summaryHtml();$('promptState').textContent='';$('endState').textContent='';const launch=$('chatLaunchCard'),link=$('openChatGPT');launch.classList.add('locked');launch.classList.remove('unlocked');link.classList.add('is-locked');link.setAttribute('aria-disabled','true');$('returnChatCard').classList.add('locked');$('returnChatCard').classList.remove('unlocked');$('toSubmit').disabled=true;show(3);};
 async function copy(text,el,msg){try{await navigator.clipboard.writeText(text);el.textContent=msg;setTimeout(()=>el.textContent='',2400);}catch(e){const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();el.textContent=msg;setTimeout(()=>el.textContent='',2400);}}
 $('copyPrompt').onclick=async()=>{await copy($('prompt').value,$('promptState'),'✓ 已複製。下一步：開啟 ChatGPT 並貼上。');const card=$('chatLaunchCard'),link=$('openChatGPT');card.classList.remove('locked');card.classList.add('unlocked','pulse');link.classList.remove('is-locked');link.removeAttribute('aria-disabled');setTimeout(()=>card.classList.remove('pulse'),700);};
 $('openChatGPT').addEventListener('click',e=>{if(e.currentTarget.classList.contains('is-locked')){e.preventDefault();return;}setTimeout(()=>show(4),350);});
-$('copyEnd').onclick=async()=>{await copy(endText,$('endState'),'✓ 已複製。現在切回原本的 ChatGPT 對話貼上。');const card=$('returnChatCard');card.classList.remove('locked');card.classList.add('unlocked','pulse');$('toSubmit').disabled=false;setTimeout(()=>card.classList.remove('pulse'),700);};
+$('copyEnd').onclick=async()=>{if(window.SeraLearningTrace)window.SeraLearningTrace.updateProgress(70);await copy(endText,$('endState'),'✓ 已複製。現在切回原本的 ChatGPT 對話貼上。');const card=$('returnChatCard');card.classList.remove('locked');card.classList.add('unlocked','pulse');$('toSubmit').disabled=false;setTimeout(()=>card.classList.remove('pulse'),700);};
 $('copyEmail').onclick=()=>copy('jessie.chen.coco@gmail.com',$('submissionState'),'✓ 已複製老師信箱。');
 $('finalSelfCheck').addEventListener('change',()=>{const on=$('finalSelfCheck').checked;$('completeBadge').classList.toggle('show',on);$('completionStatus').textContent=on?'已完成自我檢核。':'完成自我檢核後，本次 Learning Lab 流程即告完成。';});
 })();
 </script>
+<script src="../learning-trace.js"></script>
 </body>
 </html>
