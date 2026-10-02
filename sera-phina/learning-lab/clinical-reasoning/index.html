@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>精神健康診斷與 OT 臨床推理實驗室｜Sera.Phina</title>
+<meta name="description" content="Sera.Phina 精神健康診斷與職能治療臨床推理實驗室：先自己推理，必要時使用自己的 AI，再把關鍵疑問帶回老師討論與修正。"/>
+<link rel="stylesheet" href="../../seraphina.css"/>
+<style>
+:root{--lab-purple:#6f4f86;--lab-soft:#f4edf8;--lab-green:#5f7d70;--lab-gold:#9b7b43;--lab-ink:#302936}
+body{background:#fbf9fc}
+.lab-shell{max-width:1120px;margin:0 auto;padding:50px 24px 90px}
+.crumbs{display:flex;gap:10px;flex-wrap:wrap;color:#7d7085;font-size:12px;margin-bottom:24px}
+.crumbs a{color:var(--sage-deep);font-weight:800}
+.hero{padding:32px;border:1px solid var(--line);border-radius:28px;background:radial-gradient(circle at 88% 10%,rgba(185,152,200,.24),transparent 26%),linear-gradient(145deg,#fff,#f1e8f5);box-shadow:var(--shadow)}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:900;color:var(--sage-deep)}
+.hero h1{margin:8px 0 7px;font-size:clamp(34px,4.6vw,54px);line-height:1.08;letter-spacing:-.04em}
+.hero .en{font:italic 18px/1.5 Georgia,serif;color:#7b6d82}
+.hero .lead{max-width:850px;color:#625769;font-size:16px;line-height:1.85;margin:10px 0 0}
+.hero-flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:18px;color:#665a6d;font-size:12px;font-weight:800}
+.hero-flow span{padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.76);border:1px solid rgba(111,79,134,.13)}
+.hero-flow b{display:inline-grid;place-items:center;width:20px;height:20px;margin-right:5px;border-radius:50%;background:var(--sage-deep);color:#fff;font-size:10px}
+.hero-flow i{font-style:normal;color:#9c8ca5}
+.principle{margin-top:18px;padding:14px 17px;border-radius:16px;background:#f5eef8;border:1px solid rgba(111,79,134,.16);color:#604f68;font-weight:800}
+.panel{margin-top:22px;padding:28px;border:1px solid var(--line);border-radius:24px;background:#fff}
+.panel h2{margin:0 0 8px;font-size:28px}
+.panel>p{margin:0 0 20px;color:#756a7a;line-height:1.75}
+.stagebar{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:22px 0}
+.stage{display:flex;align-items:center;gap:9px;padding:10px 12px;border:1px solid var(--line);border-radius:14px;background:#fff;color:#8a7f8e;font-size:12px;font-weight:800}
+.stage b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#f1ebf4;color:#786680;font-size:11px}
+.stage.active{border-color:rgba(111,79,134,.34);background:#f5eef8;color:#5c4669}
+.three-path{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.path-card{padding:18px;border:1px solid var(--line);border-radius:18px;background:#fcfbfd}
+.path-card b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#eee7f2;color:var(--sage-deep);font-size:12px}
+.path-card h3{margin:10px 0 6px;font-size:18px}
+.path-card p{margin:0;color:#766b7c;font-size:13px;line-height:1.7}
+.form-section{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
+.form-section:first-of-type{margin-top:0;padding-top:0;border-top:0}
+.form-section h3{margin:0 0 4px;font-size:20px}
+.form-section .hint{margin:0 0 14px;color:#887c8e;font-size:12px;line-height:1.65}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.field.full{grid-column:1/-1}
+.field label{display:block;font-size:12px;font-weight:900;color:#62566a;margin-bottom:7px}
+.field textarea{width:100%;min-height:112px;padding:13px 14px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);font:inherit;line-height:1.65;resize:vertical}
+.field textarea:focus{outline:none;border-color:rgba(111,79,134,.52);box-shadow:0 0 0 3px rgba(111,79,134,.07)}
+.check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.check{display:flex;gap:9px;align-items:flex-start;padding:10px 11px;border:1px solid var(--line);border-radius:12px;background:#fbfafc;color:#665a6d;font-size:12px;font-weight:700}
+.check input{margin-top:3px}
+.progress-wrap{margin:18px 0 4px}
+.progress{height:8px;background:#eee9f0;border-radius:999px;overflow:hidden}
+.progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#7f9c8d,#6f4f86);transition:.2s}
+.progress-label{margin-top:6px;color:#8c808f;font-size:11px;text-align:right}
+.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;margin-top:18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:999px;padding:12px 18px;font-weight:900;cursor:pointer;text-decoration:none!important}
+.btn.primary{background:var(--sage-deep);color:#fff!important}
+.btn.secondary{background:#eee7f2;color:#6f4f86!important}
+.btn.gold{background:#92713b;color:#fff!important}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:#65586b!important}
+.output-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.output-card{display:block;width:100%;padding:18px;border:1px solid var(--line);border-radius:18px;background:#fcfbfd;text-align:left;cursor:pointer}
+.output-card strong{display:block;color:#514658;font-size:15px}
+.output-card span{display:block;margin-top:5px;color:#847789;font-size:12px;line-height:1.55}
+.output-card:hover{background:#f6f0f8;border-color:rgba(111,79,134,.25)}
+.preview{margin-top:16px;padding:18px;border:1px solid var(--line);border-radius:18px;background:#fcfbfd;white-space:pre-wrap;max-height:520px;overflow:auto;color:#4b4050;font:12.5px/1.72 ui-monospace,SFMono-Regular,Consolas,monospace}
+.privacy{margin-top:18px;padding:15px 18px;border-radius:16px;background:#fff9ee;border:1px solid #ead9b7;color:#735f3e;font-size:12px;line-height:1.7}
+.reference-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.ref{padding:16px;border:1px solid var(--line);border-radius:16px;background:#faf8fb}
+.ref h3{margin:0 0 5px;font-size:15px}
+.ref p{margin:0;color:#776b7d;font-size:12px;line-height:1.7}
+.status{min-height:22px;margin-top:10px;color:#5f766a;font-size:12px;font-weight:800}
+.teacher-note{margin-top:15px;padding:14px 16px;border-left:4px solid #9b7b43;background:#fffaf0;border-radius:0 14px 14px 0;color:#705c38;font-size:12px;line-height:1.7}
+@media(max-width:860px){.stagebar{grid-template-columns:1fr}.three-path,.form-grid,.output-grid,.reference-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+@media(max-width:600px){.lab-shell{padding:34px 18px 70px}.panel,.hero{padding:22px}.check-grid{grid-template-columns:1fr}.site-header{position:static}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳至主要內容</a>
+<header class="site-header">
+  <a class="brand" href="../../index.html" aria-label="Sera.Phina 首頁"><span class="brand-mark" aria-hidden="true">S</span><span><strong>Sera.Phina</strong><small>Mental Health · Neuroscience of Consciousness</small></span></a>
+  <nav class="nav" aria-label="主要導覽">
+    <a href="../../research.html">學術研究</a>
+    <a href="../../education-teaching.html">教育教學</a>
+    <a href="../../clinical-training.html">臨床培訓</a>
+    <a href="../../integrated-health.html">健康整合</a>
+    <a href="../../social-service.html">社會服務</a>
+    <a href="../../guidance-advocacy.html">輔導倡議</a>
+    <a href="../../life-consciousness.html">生活與意識</a>
+    <a href="../../eliza.html">Eliza</a>
+  </nav>
+</header>
+
+<main id="main" class="lab-shell">
+<div class="crumbs"><a href="../index.html">Learning Lab</a><span>›</span><span>精神健康診斷與 OT 臨床推理實驗室</span></div>
+
+<section class="hero">
+  <div class="eyebrow">Mental Health · Occupational Therapy · Clinical Reasoning</div>
+  <h1>精神健康診斷與 OT 臨床推理實驗室</h1>
+  <div class="en">Mental Health Diagnosis & OT Clinical Reasoning Lab</div>
+  <p class="lead">這裡不替你下結論。先把自己的觀察、假設、反證、缺失資訊與職能問題整理清楚；需要時，再把整理後的內容帶到你自己的 AI，最後將仍有疑問的地方帶回老師或臨床教師討論。</p>
+  <div class="hero-flow"><span><b>1</b>自己推理</span><i>→</i><span><b>2</b>整理問題</span><i>→</i><span><b>3</b>必要時問自己的 AI</span><i>→</i><span><b>4</b>老師討論</span><i>→</i><span><b>5</b>修正推理</span></div>
+  <div class="principle">Sera.Phina 的原則：Think first. Ask AI second. Discuss. Revise.</div>
+</section>
+
+<div class="stagebar" aria-label="學習流程">
+  <div class="stage active"><b>1</b>觀察與事實</div>
+  <div class="stage"><b>2</b>假設與鑑別</div>
+  <div class="stage"><b>3</b>Occupation</div>
+  <div class="stage"><b>4</b>Assessment / FOR</div>
+  <div class="stage"><b>5</b>反思與討論</div>
+</div>
+
+<section class="panel">
+  <div class="eyebrow">Learning Path</div>
+  <h2>這個工具怎麼用？</h2>
+  <p>網站本身不接 AI，也不會替你產生診斷答案。它只協助你把臨床推理變得可見、可整理、可帶走。</p>
+  <div class="three-path">
+    <article class="path-card"><b>1</b><h3>Self Reasoning</h3><p>先完成自己的 Clinical Reasoning Map，把描述、推論與假設分開。</p></article>
+    <article class="path-card"><b>2</b><h3>AI Reflection</h3><p>若需要，複製網站產生的提示到你自己的 AI，請 AI 協助找漏洞與缺失資訊。</p></article>
+    <article class="path-card"><b>3</b><h3>Teacher Feedback</h3><p>仍有不確定或需要專業判斷時，整理成老師討論版，再回來修正原本推理。</p></article>
+  </div>
+  <div class="privacy"><strong>隱私提醒：</strong>請勿輸入真實姓名、病歷號、電話、地址、學號等可識別個案身分的資料。本頁資料只存在你的瀏覽器；除非你自行複製到外部 AI，否則不會送出網站。</div>
+</section>
+
+<section class="panel">
+  <div class="eyebrow">Clinical Reasoning Map</div>
+  <h2>開始整理你的推理</h2>
+  <p>不用一次全部填完。重要的是留下「我目前知道什麼、我怎麼解讀、我還缺什麼」。</p>
+
+  <div class="progress-wrap"><div class="progress"><span id="progressBar"></span></div><div class="progress-label" id="progressLabel">0% 完成</div></div>
+
+  <form id="reasoningForm" autocomplete="off">
+    <div class="form-section">
+      <h3>A. 個案與主要問題</h3><p class="hint">先描述，再解讀。避免把「每天待在房間」直接寫成「沒有動機」。</p>
+      <div class="form-grid">
+        <div class="field full"><label for="presenting">Presenting problems</label><textarea id="presenting" name="presenting" placeholder="目前主要困擾、轉介原因、重要背景"></textarea></div>
+        <div class="field"><label for="symptoms">Symptoms / signs</label><textarea id="symptoms" name="symptoms" placeholder="可觀察、可描述的症狀或現象"></textarea></div>
+        <div class="field"><label for="facts">Known facts</label><textarea id="facts" name="facts" placeholder="目前真正已知的事實"></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>B. 診斷與鑑別假設</h3><p class="hint">目標是建立可檢驗的假設，不是搶先猜出唯一答案。</p>
+      <div class="form-grid">
+        <div class="field"><label for="hypotheses">Diagnostic hypotheses</label><textarea id="hypotheses" name="hypotheses" placeholder="可列 1–3 個目前考慮的可能性"></textarea></div>
+        <div class="field"><label for="differential">Differential diagnoses / alternatives</label><textarea id="differential" name="differential" placeholder="還有哪些可能解釋？"></textarea></div>
+        <div class="field"><label for="supporting">Evidence supporting</label><textarea id="supporting" name="supporting" placeholder="哪些資料支持目前假設？"></textarea></div>
+        <div class="field"><label for="against">Evidence against / inconsistent</label><textarea id="against" name="against" placeholder="反證、不一致或無法解釋的資料"></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>C. Missing Information</h3><p class="hint">好的臨床推理常常不是「我知道答案」，而是「我知道下一步要找什麼資料」。</p>
+      <div class="check-grid">
+        <label class="check"><input type="checkbox" name="missing_duration"> 症狀開始時間與持續多久</label>
+        <label class="check"><input type="checkbox" name="missing_pattern"> 持續存在或 episodic</label>
+        <label class="check"><input type="checkbox" name="missing_function"> 功能損害程度</label>
+        <label class="check"><input type="checkbox" name="missing_mood"> 情緒症狀</label>
+        <label class="check"><input type="checkbox" name="missing_substance"> 物質使用</label>
+        <label class="check"><input type="checkbox" name="missing_medical"> 身體疾病或藥物因素</label>
+        <label class="check"><input type="checkbox" name="missing_context"> 情境與環境差異</label>
+        <label class="check"><input type="checkbox" name="missing_priority"> 個案自己的目標與優先順序</label>
+      </div>
+      <div class="field full" style="margin-top:12px"><label for="missing_other">Other missing information</label><textarea id="missing_other" name="missing_other" placeholder="還需要補問什麼？"></textarea></div>
+    </div>
+
+    <div class="form-section">
+      <h3>D. Diagnosis → Occupation</h3><p class="hint">診斷不是 OT 的終點。思考症狀如何影響這一個人的生活、角色與參與。</p>
+      <div class="check-grid">
+        <label class="check"><input type="checkbox" name="occ_adl"> ADL</label>
+        <label class="check"><input type="checkbox" name="occ_iadl"> IADL</label>
+        <label class="check"><input type="checkbox" name="occ_sleep"> 休息與睡眠</label>
+        <label class="check"><input type="checkbox" name="occ_education"> 教育</label>
+        <label class="check"><input type="checkbox" name="occ_work"> 工作</label>
+        <label class="check"><input type="checkbox" name="occ_leisure"> 休閒</label>
+        <label class="check"><input type="checkbox" name="occ_social"> 社會參與</label>
+        <label class="check"><input type="checkbox" name="occ_health"> 健康管理</label>
+      </div>
+      <div class="form-grid" style="margin-top:12px">
+        <div class="field"><label for="occupational">Occupational problems</label><textarea id="occupational" name="occupational" placeholder="實際活動與參與受到什麼影響？"></textarea></div>
+        <div class="field"><label for="strengths">Strengths / resources</label><textarea id="strengths" name="strengths" placeholder="能力、支持、興趣、角色、資源"></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>E. MOHO 視角</h3><p class="hint">不是每一格都一定要有問題；也可以記錄優勢與保護因子。</p>
+      <div class="form-grid">
+        <div class="field"><label for="volition">Volition</label><textarea id="volition" name="volition" placeholder="價值、興趣、自我效能、想不想做／覺得自己能不能做"></textarea></div>
+        <div class="field"><label for="habituation">Habituation</label><textarea id="habituation" name="habituation" placeholder="角色、習慣、routine、近期生活型態變化"></textarea></div>
+        <div class="field"><label for="performance">Performance capacity</label><textarea id="performance" name="performance" placeholder="認知、情緒、動作、溝通、人際、活動執行能力"></textarea></div>
+        <div class="field"><label for="environment">Environment</label><textarea id="environment" name="environment" placeholder="家庭、學校、工作、居住、交通、經濟、社會支持與結構性限制"></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>F. Assessment / FOR / Intervention</h3><p class="hint">Assessment follows the clinical question；不要只依診斷名稱自動配對工具或理論。</p>
+      <div class="form-grid">
+        <div class="field full"><label for="clinical_question">Clinical question</label><textarea id="clinical_question" name="clinical_question" placeholder="你現在最想回答的臨床問題是什麼？"></textarea></div>
+        <div class="field"><label for="assessments">Possible assessments</label><textarea id="assessments" name="assessments" placeholder="例如 OQ、Interest Checklist、OT Priority Checklist…以及選擇理由"></textarea></div>
+        <div class="field"><label for="for_model">Possible FOR / Model</label><textarea id="for_model" name="for_model" placeholder="MOHO、Behavioral/Cognitive、Role Acquisition、Psychodynamic、Yalom、Occupational Justice…"></textarea></div>
+        <div class="field"><label for="interventions">Intervention hypotheses</label><textarea id="interventions" name="interventions" placeholder="目前可能的介入方向與理由"></textarea></div>
+        <div class="field"><label for="outcomes">Outcome indicators</label><textarea id="outcomes" name="outcomes" placeholder="如何知道介入有沒有幫助？"></textarea></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3>G. Client priorities & Reflection</h3><p class="hint">最後仍要回到個案本人，以及你真正不確定、值得討論的地方。</p>
+      <div class="form-grid">
+        <div class="field"><label for="client_priority">Client priorities</label><textarea id="client_priority" name="client_priority" placeholder="個案最想先處理什麼？尚未確認也可以寫『尚待確認』"></textarea></div>
+        <div class="field"><label for="uncertainty">My biggest uncertainty</label><textarea id="uncertainty" name="uncertainty" placeholder="目前我最不確定的是…"></textarea></div>
+        <div class="field full"><label for="teacher_questions">Questions for teacher</label><textarea id="teacher_questions" name="teacher_questions" placeholder="列出最想和老師／臨床教師討論的 1–3 個問題"></textarea></div>
+      </div>
+    </div>
+  </form>
+
+  <div class="actions"><button class="btn ghost" type="button" id="clearAll">清空</button><button class="btn secondary" type="button" id="saveLocal">儲存到此裝置</button></div>
+  <div class="status" id="saveStatus" aria-live="polite"></div>
+</section>
+
+<section class="panel">
+  <div class="eyebrow">Export & Reflection</div>
+  <h2>整理、帶走，再回來修正</h2>
+  <p>完成到哪裡就輸出到哪裡。AI 與老師都只是下一層反思來源；最後要回到你自己的推理圖修改。</p>
+  <div class="output-grid">
+    <button class="output-card" id="copyMap" type="button"><strong>複製 Clinical Reasoning Map</strong><span>把目前內容整理成可貼到報告或筆記的摘要。</span></button>
+    <button class="output-card" id="copyAI" type="button"><strong>複製到我的 AI</strong><span>產生一段要求 AI 檢查推理漏洞，而不是直接給答案的提示。</span></button>
+    <button class="output-card" id="copyTeacher" type="button"><strong>整理成老師討論版</strong><span>聚焦假設、反證、缺失資訊與最想請教的問題。</span></button>
+    <button class="output-card" id="downloadTxt" type="button"><strong>下載文字紀錄</strong><span>把本次 Clinical Reasoning Map 與老師討論版存到自己的裝置。</span></button>
+  </div>
+  <div class="preview" id="outputPreview">按上方任一功能後，整理結果會顯示在這裡。</div>
+  <div class="teacher-note"><strong>老師回饋之後：</strong>不要只保存老師或 AI 的答案。回到上面的 Clinical Reasoning Map，修改原本的假設、Missing Information、Assessment 或介入推理，留下思考如何改變的痕跡。</div>
+</section>
+
+<section class="panel">
+  <div class="eyebrow">Reference Framework</div>
+  <h2>這個工具採用的學習架構</h2>
+  <p>這裡提供的是「思考框架」，不是用來自動判定答案。</p>
+  <div class="reference-grid">
+    <article class="ref"><h3>診斷辨識</h3><p>DSM-5-TR 作為主要診斷架構；DSM-IV 可用於版本演變。若需要 DSM-IV-TR 特有內容，應另查原始資料，不直接以 DSM-IV 代替。</p></article>
+    <article class="ref"><h3>鑑別診斷六問</h3><p>What? · When? · Pattern? · Context? · Function? · Alternative?</p></article>
+    <article class="ref"><h3>MOHO</h3><p>Volition · Habituation · Performance Capacity · Environment。</p></article>
+    <article class="ref"><h3>OT Assessment</h3><p>依臨床問題選擇，例如 Occupational Questionnaire、Interest Checklist、OT Priority Checklist，而不是依疾病名稱自動配對。</p></article>
+    <article class="ref"><h3>FOR / Models</h3><p>可依問題考慮 Behavioral/Cognitive、Role Acquisition、Psychodynamic、Yalom therapeutic factors、Occupational Justice 等。</p></article>
+    <article class="ref"><h3>職能治療核心</h3><p>Diagnosis ≠ Occupational problem。除了 impairment，也要看角色、routine、參與、環境與結構性限制。</p></article>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer"><div><strong>Sera.Phina</strong><span>Eliza</span></div><p>Mental Health · Occupational Therapy · Consciousness · Neuroscience</p><small>In collaboration with Allen Mind Lab · © 2026 Sera.Phina</small></footer>
+
+<script>
+(function(){
+const form=document.getElementById('reasoningForm');
+const preview=document.getElementById('outputPreview');
+const progressBar=document.getElementById('progressBar');
+const progressLabel=document.getElementById('progressLabel');
+const status=document.getElementById('saveStatus');
+const KEY='seraphinaClinicalReasoningV1';
+
+const missingLabels={
+missing_duration:'症狀開始時間與持續多久',missing_pattern:'持續存在或 episodic',missing_function:'功能損害程度',
+missing_mood:'情緒症狀',missing_substance:'物質使用',missing_medical:'身體疾病或藥物因素',
+missing_context:'情境與環境差異',missing_priority:'個案自己的目標與優先順序'};
+const occupationLabels={occ_adl:'ADL',occ_iadl:'IADL',occ_sleep:'休息與睡眠',occ_education:'教育',occ_work:'工作',occ_leisure:'休閒',occ_social:'社會參與',occ_health:'健康管理'};
+
+function values(){
+ const v={};
+ [...form.elements].forEach(el=>{if(!el.name)return;v[el.name]=el.type==='checkbox'?el.checked:el.value.trim();});
+ return v;
+}
+function updateProgress(){
+ const fields=[...form.querySelectorAll('textarea')];
+ const filled=fields.filter(x=>x.value.trim()).length;
+ const pct=Math.round((filled/fields.length)*100);
+ progressBar.style.width=pct+'%';progressLabel.textContent=pct+'% 完成';
+}
+function mapText(){
+ const v=values();
+ const missing=Object.entries(missingLabels).filter(([k])=>v[k]).map(([,x])=>'• '+x);
+ if(v.missing_other)missing.push('• '+v.missing_other);
+ const occ=Object.entries(occupationLabels).filter(([k])=>v[k]).map(([,x])=>'• '+x);
+ const rows=[
+ ['Presenting problems',v.presenting],['Symptoms / signs',v.symptoms],['Known facts',v.facts],
+ ['Diagnostic hypotheses',v.hypotheses],['Evidence supporting',v.supporting],['Evidence against / inconsistent',v.against],
+ ['Differential diagnoses / alternatives',v.differential],['Missing information',missing.join('\\n')],
+ ['Occupational areas considered',occ.join('\\n')],['Occupational problems',v.occupational],['Strengths / resources',v.strengths],
+ ['Volition',v.volition],['Habituation',v.habituation],['Performance capacity',v.performance],['Environment',v.environment],
+ ['Clinical question',v.clinical_question],['Possible assessments',v.assessments],['Possible FOR / model',v.for_model],
+ ['Intervention hypotheses',v.interventions],['Outcome indicators',v.outcomes],['Client priorities',v.client_priority],
+ ['My biggest uncertainty',v.uncertainty],['Questions for teacher',v.teacher_questions]];
+ return 'Sera.Phina Clinical Reasoning Map\\n\\n'+rows.map(([h,b])=>h+'\\n'+(b||'—')).join('\\n\\n');
+}
+function aiText(){
+ return `我正在進行精神健康職能治療臨床推理練習。以下是我自己先完成的 Clinical Reasoning Map。
+
+${mapText()}
+
+請不要直接替真實個案下正式診斷，也不要把診斷名稱直接等同於功能問題。
+
+請協助我：
+1. 區分目前內容中的「已知事實」、「我的解讀」與「尚未驗證的假設」，若有混在一起請指出。
+2. 找出目前最重要的 Missing Information。
+3. 依目前資料整理可考慮的鑑別方向，分別指出支持與反對資訊；資料不足時請明確說明。
+4. 從職能治療角度，指出還可以探索哪些 occupation、角色、routine、performance capacity 或 environment。
+5. 若提到評估工具、FOR 或介入方向，請說明它要回答的臨床問題與選擇理由，不要只依診斷名稱配對。
+6. 請指出我目前推理中 2–3 個值得重新思考的地方。
+7. 最後提出 3 個適合帶回去和老師或臨床教師討論的問題。
+
+你的回覆只作為學習與反思用途；我會再和課程教材、原始資料與老師／臨床教師核對。`;
+}
+function teacherText(){
+ const v=values();const missing=Object.entries(missingLabels).filter(([k])=>v[k]).map(([,x])=>'• '+x);
+ if(v.missing_other)missing.push('• '+v.missing_other);
+ return `Sera.Phina Clinical Reasoning Discussion Note
+
+1. 我目前的個案理解
+${v.presenting||'—'}
+
+2. 我目前的診斷／臨床假設
+${v.hypotheses||'—'}
+
+3. 支持這個假設的資料
+${v.supporting||'—'}
+
+4. 讓我猶豫的地方／反證
+${v.against||v.uncertainty||'—'}
+
+5. 我還缺哪些資料
+${missing.length?missing.join('\\n'):'—'}
+
+6. 我目前看到的職能問題
+${v.occupational||'—'}
+
+7. 個案優勢與資源
+${v.strengths||'—'}
+
+8. 我目前考慮的臨床問題、評估與理論
+Clinical question：
+${v.clinical_question||'—'}
+
+Possible assessments：
+${v.assessments||'—'}
+
+FOR / Model：
+${v.for_model||'—'}
+
+9. 我目前可能的介入與 Outcome 想法
+Intervention：
+${v.interventions||'—'}
+
+Outcome：
+${v.outcomes||'—'}
+
+10. Client priorities
+${v.client_priority||'尚待確認'}
+
+11. 我最想和老師／臨床教師討論的問題
+${v.teacher_questions||'—'}
+
+12. 老師回饋
+____________________________________
+
+13. 討論後，我會怎麼修改原本的推理？
+____________________________________`;
+}
+async function copy(text,msg){
+ preview.textContent=text;
+ try{await navigator.clipboard.writeText(text);status.textContent=msg;}
+ catch(e){status.textContent='已整理在下方，請手動複製。';}
+}
+document.getElementById('copyMap').addEventListener('click',()=>copy(mapText(),'已複製 Clinical Reasoning Map。'));
+document.getElementById('copyAI').addEventListener('click',()=>copy(aiText(),'已複製「帶到我的 AI」提示。'));
+document.getElementById('copyTeacher').addEventListener('click',()=>copy(teacherText(),'已複製老師討論版。'));
+document.getElementById('downloadTxt').addEventListener('click',()=>{
+ const text=mapText()+'\\n\\n------------------------------\\n\\n'+teacherText();
+ const blob=new Blob([text],{type:'text/plain;charset=utf-8'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='SeraPhina_Clinical_Reasoning.txt';document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),500);status.textContent='已下載文字紀錄。';
+});
+document.getElementById('saveLocal').addEventListener('click',()=>{
+ localStorage.setItem(KEY,JSON.stringify(values()));status.textContent='已儲存到此瀏覽器／裝置。';
+});
+document.getElementById('clearAll').addEventListener('click',()=>{
+ if(!confirm('確定要清空目前內容嗎？'))return;
+ form.reset();localStorage.removeItem(KEY);preview.textContent='按上方任一功能後，整理結果會顯示在這裡。';status.textContent='已清空。';updateProgress();
+});
+function load(){
+ try{
+  const data=JSON.parse(localStorage.getItem(KEY)||'null');if(!data)return;
+  Object.entries(data).forEach(([k,v])=>{const el=form.elements[k];if(!el)return;if(el.type==='checkbox')el.checked=!!v;else el.value=v||'';});
+  status.textContent='已載入此裝置先前儲存的內容。';
+ }catch(e){}
+}
+form.addEventListener('input',updateProgress);form.addEventListener('change',updateProgress);
+load();updateProgress();
+})();
+</script>
+</body>
+</html>
