@@ -39,6 +39,9 @@ body{background:#fbf9fc}
 @media(max-width:900px){.loop,.lab-grid,.use-grid{grid-template-columns:1fr}.feedback-grid,.guardrails{grid-template-columns:1fr}}
 @media(max-width:620px){.edu-shell{padding:34px 18px 72px}.hero,.panel{padding:22px}.site-header{position:static}}
 @media print{.site-header,.site-footer,.crumbs,.actions,.copybtn{display:none!important}.edu-shell{padding:0}.hero,.panel{box-shadow:none;break-inside:avoid}}
+
+.training-downloads{display:grid;grid-template-columns:1.05fr 1.95fr;gap:18px;align-items:start}.download-feature{padding:22px;border-radius:20px;background:linear-gradient(145deg,#fff8ec,#f6eef8);border:1px solid rgba(111,79,134,.2)}.download-feature h3{margin:0 0 7px;font-size:22px}.download-feature p{margin:0 0 14px;color:#716575;font-size:12.5px;line-height:1.75}.download-feature .big-download{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:12px 16px;background:var(--sage-deep);color:#fff;text-decoration:none!important;font-weight:900;font-size:12px}.download-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.download-item{padding:15px;border:1px solid var(--line);border-radius:16px;background:#fcfbfd}.download-item strong{display:block;margin-bottom:6px;font-size:14px;color:#463a4d}.download-item span{display:block;margin-bottom:10px;color:#786d7d;font-size:11.5px;line-height:1.55}.download-links{display:flex;gap:8px;flex-wrap:wrap}.download-links a{border-radius:999px;padding:7px 10px;background:#eee7f2;color:#6f4f86;text-decoration:none!important;font-weight:900;font-size:10.5px}.download-links a.pdf{background:#edf4ef;color:#4f715f}.download-note{margin-top:14px;padding:12px 14px;border-left:4px solid #957341;background:#fffaf0;border-radius:0 12px 12px 0;color:#705c38;font-size:12px;line-height:1.7}@media(max-width:900px){.training-downloads,.download-list{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -62,6 +65,29 @@ body{background:#fbf9fc}
   <p class="lead">Sera.Phina Learning Lab 的目的不是替學生提供更快的答案，而是讓學生的觀察、推論、選擇與修正歷程變得可見，讓回饋可以真正落在「怎麼想」。</p>
   <div class="principle"><strong>教學核心：</strong>學生先形成自己的思考，再使用工具、AI 或教師回饋深化推理；回饋後，最重要的動作是回到原本的 reasoning trace 修改，而不是只留下老師或 AI 的答案。</div>
   <div class="actions"><a class="btn primary" href="../index.html">查看三個 Learning Lab</a><a class="btn" href="#feedback">查看回饋提示</a><button class="btn" type="button" onclick="window.print()">列印本頁</button></div>
+</section>
+
+
+<section class="panel" id="training-package">
+  <div class="eyebrow">Training Package</div>
+  <h2>Sera.Phina 教師／督導教育訓練包</h2>
+  <p>這套材料可用於 90–120 分鐘的教師／督導工作坊。重點不是介紹網站功能，而是練習如何看見學生的推理歷程，並以形成性回饋促進修正。</p>
+  <div class="training-downloads">
+    <div class="download-feature">
+      <h3>一鍵下載完整訓練包</h3>
+      <p>內含講者手冊、學員手冊、案例實作、Feedback Prompts、投影片，以及 PDF 版本。</p>
+      <a class="big-download" href="./downloads/SeraPhina_TeacherTraining_Package_v1.0.zip" download>下載完整 ZIP</a>
+      <div class="download-note"><strong>建議使用：</strong>先下載完整包；若只要投影片或學員手冊，可從右側單獨下載。</div>
+    </div>
+    <div class="download-list">
+      <article class="download-item"><strong>講者手冊</strong><span>120 分鐘工作坊流程、帶領提醒與常見狀況處理。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_FacilitatorGuide_v1.0.docx" download>DOCX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_FacilitatorGuide_v1.0.pdf" download>PDF</a></div></article>
+      <article class="download-item"><strong>學員手冊</strong><span>給老師、督導與臨床教師列印使用的參與講義。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_ParticipantHandout_v1.0.docx" download>DOCX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_ParticipantHandout_v1.0.pdf" download>PDF</a></div></article>
+      <article class="download-item"><strong>案例實作包</strong><span>Lab 03 案例、學生任務與 Clinical Reasoning Map 空白版。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_CasePractice_v1.0.docx" download>DOCX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_CasePractice_v1.0.pdf" download>PDF</a></div></article>
+      <article class="download-item"><strong>Feedback Prompts</strong><span>教師可直接複製使用的回饋題庫與句型轉換。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_FeedbackPrompts_v1.0.docx" download>DOCX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_FeedbackPrompts_v1.0.pdf" download>PDF</a></div></article>
+      <article class="download-item"><strong>工作坊投影片</strong><span>14 張簡報，可直接用於教師／督導教育訓練。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_Slides_v1.0.pptx" download>PPTX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_Slides_v1.0.pdf" download>PDF</a></div></article>
+      <article class="download-item"><strong>檔案說明</strong><span>教育訓練包內容與使用提醒。</span><div class="download-links"><a href="./downloads/README_教育訓練包說明.txt" download>TXT</a></div></article>
+    </div>
+  </div>
 </section>
 
 <section class="panel">
