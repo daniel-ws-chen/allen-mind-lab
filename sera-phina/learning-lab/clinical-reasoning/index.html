@@ -72,8 +72,9 @@ body{background:#fbf9fc}
 @media(max-width:860px){.stagebar{grid-template-columns:1fr}.three-path,.form-grid,.output-grid,.reference-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
 @media(max-width:600px){.lab-shell{padding:34px 18px 70px}.panel,.hero{padding:22px}.check-grid{grid-template-columns:1fr}.site-header{position:static}}
 </style>
+<link rel="stylesheet" href="../learning-lab-common.css"/>
 </head>
-<body>
+<body data-lab-id="clinical-reasoning" data-lab-title="精神健康診斷與 OT 臨床推理實驗室" data-lab-path="./clinical-reasoning/index.html">
 <a class="skip-link" href="#main">跳至主要內容</a>
 <header class="site-header">
   <a class="brand" href="../../index.html" aria-label="Sera.Phina 首頁"><span class="brand-mark" aria-hidden="true">S</span><span><strong>Sera.Phina</strong><small>Mental Health · Neuroscience of Consciousness</small></span></a>
@@ -246,6 +247,14 @@ body{background:#fbf9fc}
 
 </main>
 
+
+<section class="sp-learning-loop" aria-label="Sera.Phina 共通學習循環">
+  <div class="sp-loop-kicker">Sera.Phina Learning Loop</div>
+  <h3>把答案帶走之前，先留下你怎麼想。</h3>
+  <p>每個 Learning Lab 都遵循同一個方向：先自己思考與整理；需要時再使用自己的 AI；最後把重要疑問帶回老師、督導或臨床教師討論，並修正原本推理。</p>
+  <div class="sp-loop-steps"><span>Think</span><b>→</b><span>Organize</span><b>→</b><span>Ask AI if needed</span><b>→</b><span>Discuss</span><b>→</b><span>Revise</span></div>
+  <div class="sp-loop-actions"><a href="../index.html">回 Learning Lab</a><button class="secondary" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">回到本頁開始處</button></div>
+</section>
 <footer class="site-footer"><div><strong>Sera.Phina</strong><span>Eliza</span></div><p>Mental Health · Occupational Therapy · Consciousness · Neuroscience</p><small>In collaboration with Allen Mind Lab · © 2026 Sera.Phina</small></footer>
 
 <script>
@@ -391,9 +400,10 @@ function load(){
   status.textContent='已載入此裝置先前儲存的內容。';
  }catch(e){}
 }
-form.addEventListener('input',updateProgress);form.addEventListener('change',updateProgress);
+form.addEventListener('input',()=>{updateProgress();if(window.SeraLearningTrace){const fields=[...form.querySelectorAll('textarea')];const filled=fields.filter(x=>x.value.trim()).length;window.SeraLearningTrace.updateProgress(Math.round((filled/fields.length)*100));}});form.addEventListener('change',()=>{updateProgress();if(window.SeraLearningTrace){const fields=[...form.querySelectorAll('textarea')];const filled=fields.filter(x=>x.value.trim()).length;window.SeraLearningTrace.updateProgress(Math.round((filled/fields.length)*100));}});
 load();updateProgress();
 })();
 </script>
+<script src="../learning-trace.js"></script>
 </body>
 </html>
