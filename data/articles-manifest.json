@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-02T02:17:49.396Z",
+  "generatedAt": "2026-10-02T08:07:34.509Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 58,
-    "ot": 25,
+    "total": 59,
+    "ot": 26,
     "mind": 14,
     "pbs": 14,
     "education": 13,
-    "management": 30,
-    "ai": 19,
+    "management": 31,
+    "ai": 20,
     "notes": 7
   },
   "featuredReading": [
@@ -79,6 +79,58 @@
   },
   "articles": [
     {
+      "slug": "care-work-redesign-labor-shortage",
+      "title": "大缺工時代，照顧工作需要重新設計",
+      "summary": "大缺工時代，真正的問題不只是多少人，而是人的時間怎麼被使用。從照護比、彈性調度、非核心工作、自動化到專業工時回收，重新設計照顧工作。",
+      "date": "2026-10-02",
+      "domains": [
+        "management",
+        "ot",
+        "ai"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot",
+        "ai"
+      ],
+      "tag": "Management & Leadership × OT & Human Occupation × AI × Practice",
+      "cardMeta": "2026.10.02 · Management & Leadership × OT & Human Occupation × AI × Practice",
+      "keywords": [
+        "大缺工",
+        "照顧人力",
+        "照護比",
+        "彈性調度",
+        "專業工時",
+        "工作再設計",
+        "智慧環境",
+        "自動化",
+        "長照",
+        "照顧工作",
+        "人力配置",
+        "職能治療",
+        "AI",
+        "management",
+        "ot"
+      ],
+      "articlePath": "/articles/care-work-redesign-labor-shortage.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/care-work-redesign-labor-shortage",
+      "hero": "/images/articles/care-work-redesign-labor-shortage-hero.webp",
+      "ogImage": "/images/articles/care-work-redesign-labor-shortage-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 當知識唾手可得，我們為什麼還需要一本書？",
+          "href": "/articles/why-books-still-matter-ai-era.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "why-books-still-matter-ai-era",
       "title": "當知識唾手可得，我們為什麼還需要一本書？",
       "summary": "當知識愈來愈容易取得，書的價值也正在改變。從紙本、數位到 AI，重新思考哪些內容值得被整理、保存、出版與反覆閱讀。",
@@ -120,6 +172,11 @@
           "kind": "previous",
           "label": "上一篇 ← 上一篇 ← AI 不是答案機：從線上自學、AI 協作到公民咖啡館",
           "href": "/articles/ot-management-ai-collaborative-learning.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 大缺工時代，照顧工作需要重新設計 →",
+          "href": "/articles/care-work-redesign-labor-shortage.html"
         }
       ],
       "readingPaths": [],
