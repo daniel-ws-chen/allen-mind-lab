@@ -83,6 +83,9 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 @media(max-width:760px){.handoff-primary{grid-template-columns:36px 1fr;padding:15px}.handoff-primary>.btn,.handoff-primary>.manual-switch{grid-column:1/-1;width:100%}.handoff-number{width:34px;height:34px}.handoff-status{padding-left:0}.keep-tab{display:block}.keep-tab strong{display:block;margin-bottom:4px}.four-output-strip{grid-template-columns:1fr 1fr}.secondary-details .launch-summary{grid-template-columns:1fr}.final-gate{display:grid;grid-template-columns:1fr}.manual-switch{white-space:normal}.prompt-box{min-height:260px}}
 @media(max-width:420px){.four-output-strip{grid-template-columns:1fr}}
 
+
+/* Completion self-check v4 */
+.completion-check{margin-top:14px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:#fbfafc}.completion-check label{display:flex;gap:9px;align-items:flex-start;font-size:12px;line-height:1.6}.completion-check input{margin-top:3px}.completion-status{margin-top:8px;color:#6f6474;font-size:11px}.complete-badge{display:none;margin-top:12px;padding:13px 15px;border-radius:14px;background:#f3f7f5;border:1px solid #d7e5dc;color:#536b5e;font-size:12px;font-weight:800}.complete-badge.show{display:block}
 </style>
 </head>
 <body>
@@ -230,7 +233,7 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 <div class="submission-card"><div class="step-signal">寄出 01–03</div><h3>② 將前三份成果寄給老師</h3><p>請將 <strong>01 會談逐字稿、02 會談評分、03 會談評析</strong> 三份檔案作為附件寄出。第 4 份完訓證明不必寄送。</p>
 <div class="email-box"><div><small>老師收件信箱</small><br><code id="teacherEmail">jessie.chen.coco@gmail.com</code></div><div class="email-actions"><button class="btn secondary" id="copyEmail">複製老師信箱</button><a class="btn primary" id="mailLink" href="mailto:jessie.chen.coco@gmail.com?subject=%E7%B2%BE%E7%A5%9E%E8%81%B7%E8%83%BD%E6%B2%BB%E7%99%82%E6%9C%83%E8%AB%87%E6%BC%94%E7%B7%B4%E6%88%90%E6%9E%9C%E7%B9%B3%E4%BA%A4">開啟寄信程式</a></div></div><div class="copy-state" id="submissionState"></div>
 <ul class="send-checklist"><li>建議主旨：<strong>精神職能治療會談演練成果繳交｜姓名／學號</strong></li><li>必要附件：01 會談逐字稿、02 會談評分、03 會談評析，共三份。</li><li>04 PDF 完訓證明由學生自行保存，不必寄給老師。</li><li>寄出前再次確認內容沒有真實病人姓名、病歷號、電話、地址或其他可識別個資。</li></ul></div>
-<div class="submission-card"><h3>③ 完成本次演練</h3><p>三份成果寄出後，本次練習即完成。請保留第 4 份 PDF 完訓證明，並依評析中的「下一次最值得優先練習的三件事」規劃下一次演練。</p><div class="inline-guide"><strong>提醒：</strong>網站不會讀取或驗證你的 Gmail／郵件帳號，也不會保存你的 ChatGPT 逐字稿。</div></div>
+<div class="submission-card"><h3>③ 完成本次演練</h3><p>三份成果寄出後，本次練習即完成。請保留第 4 份 PDF 完訓證明，並依評析中的「下一次最值得優先練習的三件事」規劃下一次演練。</p><div class="inline-guide"><strong>提醒：</strong>網站不會讀取或驗證你的 Gmail／郵件帳號，也不會保存你的 ChatGPT 逐字稿。</div><div class="completion-check"><label><input type="checkbox" id="finalSelfCheck"/><span>我已確認 01–03 檔案內容完整，04 PDF 可正常開啟且繁體中文沒有亂碼或缺字；我也知道網站不會替我驗證寄件成功。</span></label><div class="completion-status" id="completionStatus">完成自我檢核後，本次 Learning Lab 流程即告完成。</div></div><div class="complete-badge" id="completeBadge">✓ 已完成本次精神職能治療會談實驗室學習流程。請保留 04 PDF 完訓證明，並依教師要求繳交 01–03。</div></div>
 <div class="actions"><button class="btn ghost" id="back4">回到評測指令</button></div>
 </section>
 </main>
@@ -316,6 +319,7 @@ $('copyPrompt').onclick=async()=>{await copy($('prompt').value,$('promptState'),
 $('openChatGPT').addEventListener('click',e=>{if(e.currentTarget.classList.contains('is-locked')){e.preventDefault();return;}setTimeout(()=>show(4),350);});
 $('copyEnd').onclick=async()=>{await copy(endText,$('endState'),'✓ 已複製。現在切回原本的 ChatGPT 對話貼上。');const card=$('returnChatCard');card.classList.remove('locked');card.classList.add('unlocked','pulse');$('toSubmit').disabled=false;setTimeout(()=>card.classList.remove('pulse'),700);};
 $('copyEmail').onclick=()=>copy('jessie.chen.coco@gmail.com',$('submissionState'),'✓ 已複製老師信箱。');
+$('finalSelfCheck').addEventListener('change',()=>{const on=$('finalSelfCheck').checked;$('completeBadge').classList.toggle('show',on);$('completionStatus').textContent=on?'已完成自我檢核。':'完成自我檢核後，本次 Learning Lab 流程即告完成。';});
 })();
 </script>
 </body>
