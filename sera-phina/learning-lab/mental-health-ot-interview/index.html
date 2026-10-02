@@ -226,7 +226,7 @@ body{background:#fbf9fc}.lab-shell{max-width:1120px;margin:0 auto;padding:50px 2
 <p>完成評測後，ChatGPT 應直接提供四份可下載成果。你不需要再把逐字稿、評分或評析文字貼回 Sera.Phina。</p>
 <div class="submission-card"><div class="step-signal">先下載，再寄出</div><h3>① 下載四份成果</h3><p>請先把 ChatGPT 產生的四個檔案全部下載保存。01–03 可依介面提供的文件格式下載；04 完訓證明必須是 PDF，不使用 Word 版。</p>
 <div class="submission-files"><div class="submission-file send"><span>寄老師</span><strong>01｜會談逐字稿</strong></div><div class="submission-file send"><span>寄老師</span><strong>02｜會談評分</strong></div><div class="submission-file send"><span>寄老師</span><strong>03｜會談評析</strong></div><div class="submission-file keep"><span>自己保存 · PDF</span><strong>04｜完訓證明.pdf</strong></div></div>
-<div class="note"><strong>完訓證明不綁寄件流程：</strong>第 4 份完訓證明在 AI 完成評測時直接產生為 PDF，請自行下載保存。PDF 產出前必須完成繁體中文文字與字型檢查，避免亂碼、缺字與錯字。</div></div>
+<div class="note"><strong>完訓證明不綁寄件流程：</strong>第 4 份完訓證明在 AI 完成評測時直接產生為 PDF，採 Sera.Phina Learning Lab 統一品牌版型，請自行下載保存。PDF 產出前必須完成繁體中文文字與字型檢查，避免亂碼、缺字與錯字。</div></div>
 <div class="submission-card"><div class="step-signal">寄出 01–03</div><h3>② 將前三份成果寄給老師</h3><p>請將 <strong>01 會談逐字稿、02 會談評分、03 會談評析</strong> 三份檔案作為附件寄出。第 4 份完訓證明不必寄送。</p>
 <div class="email-box"><div><small>老師收件信箱</small><br><code id="teacherEmail">jessie.chen.coco@gmail.com</code></div><div class="email-actions"><button class="btn secondary" id="copyEmail">複製老師信箱</button><a class="btn primary" id="mailLink" href="mailto:jessie.chen.coco@gmail.com?subject=%E7%B2%BE%E7%A5%9E%E8%81%B7%E8%83%BD%E6%B2%BB%E7%99%82%E6%9C%83%E8%AB%87%E6%BC%94%E7%B7%B4%E6%88%90%E6%9E%9C%E7%B9%B3%E4%BA%A4">開啟寄信程式</a></div></div><div class="copy-state" id="submissionState"></div>
 <ul class="send-checklist"><li>建議主旨：<strong>精神職能治療會談演練成果繳交｜姓名／學號</strong></li><li>必要附件：01 會談逐字稿、02 會談評分、03 會談評析，共三份。</li><li>04 PDF 完訓證明由學生自行保存，不必寄給老師。</li><li>寄出前再次確認內容沒有真實病人姓名、病歷號、電話、地址或其他可識別個資。</li></ul></div>
@@ -267,33 +267,39 @@ const endText=`結束會談並開始評測。請立即停止標準病人角色�
 5. 最後用一小段文字說明本次會談最主要的學習重點。
 
 【檔案四｜04_完訓證明.pdf】
-請建立一份簡潔、正式且具有鼓勵性的 PDF 完訓證明，供學生自行保存。不得建立 Word／DOCX 版。證明至少包含：
-1. 標題：精神職能治療會談實務演練完訓證明。
-2. 學生姓名／學號（僅使用本次對話中學生自行提供的資料；不知道時留白，不可猜測）。
-3. 本次模式、會談任務、互動層級、案例類型與完成日期。
-4. 整體評量等級。
-5. 八大能力的精簡評量摘要。
-6. 本次表現亮點 2–3 點。
-7. 下一步成長方向 2–3 點。
-8. 一段鼓勵性結語。
-9. 明確標示「Sera.Phina Learning Lab｜Mental Health OT Interview Lab」。
-10. 註明「本證明僅表示完成本次學習演練，不代表專業資格、證照或正式成績認定。」
+請建立一份符合「Sera.Phina Learning Lab 統一完訓證明規格」的正式 PDF，供學生自行保存；不得建立 Word／DOCX 版。
 
-【完訓證明統一版型｜必須遵守】
-- A4 直式、單頁優先；若內容無法合理放入單頁，可使用兩頁，但不可縮小到難以閱讀。
-- 頁首固定呈現「Sera.Phina Learning Lab」與「Mental Health OT Interview Lab」。
-- 主標題置中，學生姓名與學號置於清楚的基本資料區。
-- 中段依序呈現：本次模式／任務、整體評量、八大能力摘要、表現亮點、下一步成長方向。
-- 頁尾固定放置完成日期與免責註記。
-- 採簡潔、留白充足、正式的臨床教育風格；避免花俏圖案、浮水印或容易影響中文字辨識的裝飾。
-- 不得顯示可編輯欄位、表單控制項或「草稿」字樣。
+【統一品牌欄位｜順序固定】
+A. 品牌頁首：Sera.Phina Learning Lab
+B. Lab 名稱：Mental Health OT Interview Lab｜精神職能治療會談實驗室
+C. 證明標題：完訓證明｜Certificate of Completion
+D. 學生資料：姓名、學號；只使用本次對話中學生自行提供的資料，不知道時留白，不可猜測。
+E. 完成活動：完成精神職能治療會談模擬、對話歷程回顧、能力評量與形成性分析。
+F. 本次模擬情境／會談主題。
+G. 能力摘要：將本次會談主要能力表現濃縮為 3–5 句，不製作密集分數表。
+H. 本次學習亮點：2–3 點，必須有本次對話行為依據。
+I. 下一步成長方向：2–3 點，使用可執行敘述。
+J. 完成日期。
+K. 固定免責註記：「本證明僅表示完成本次 Sera.Phina Learning Lab 學習活動，不代表專業資格、學位、證照或正式課程成績認定。」
 
-【PDF 品質檢查｜必須執行】
-- 使用你目前環境中可完整顯示繁體中文的字型產生 PDF；不可使用缺少中文字形的字型。
-- 產出前逐字校對繁體中文內容、人名欄位、標題、標點與英文名稱。
-- PDF 產生後請重新開啟／讀取成品檢查，確認沒有 □、�、亂碼、缺字、文字重疊、截斷或明顯錯字。
-- 若檢查發現問題，請修正後重新產生；只提供通過檢查的最終 PDF。
-- 檔名建議：04_精神職能治療會談實務演練完訓證明.pdf。
+【統一視覺版型｜兩個 Lab 共用】
+- A4 直式，單頁優先；若內容無法合理放入單頁，可使用兩頁，但不可縮小到難以閱讀。
+- 頁首左側或上方固定顯示「Sera.Phina Learning Lab」，其下顯示 Lab 名稱。
+- 主標題「完訓證明｜Certificate of Completion」置中且為全頁最明顯文字。
+- 學生姓名為主要識別資訊；姓名與學號置於獨立基本資料區。
+- 中段固定依序呈現：完成活動／模擬情境 → 能力摘要 → 學習亮點 → 下一步方向。
+- 頁尾固定呈現完成日期與免責註記。
+- 採簡潔、留白充足、正式、可信賴的教育風格；不得使用花俏插圖、大面積浮水印、仿官方印章或任何可能誤認為專業證照的元素。
+- 不得顯示可編輯欄位、表單控制項、「草稿」字樣或未完成占位符。
+- 與 Seminar Research Lab 的證明使用相同品牌層級、欄位順序與免責邏輯，只替換 Lab 名稱與學習內容。
+
+【PDF 文字與字型品質檢查｜必須執行】
+- 使用目前環境中可完整顯示繁體中文的字型產生 PDF；不可使用缺少中文字形的字型。
+- 產出前逐字校對繁體中文內容、學生姓名與學號、情境名稱、標題、標點與英文名稱。
+- PDF 產生後重新開啟／讀取成品，逐頁確認沒有 □、�、亂碼、缺字、文字重疊、截斷、空白欄位異常或明顯錯字。
+- 若學生姓名含罕見字，必須特別確認字形是否正確顯示。
+- 若檢查發現任何問題，修正後重新產生；只提供通過檢查的最終 PDF。
+- 檔名：04_精神職能治療會談實務演練完訓證明.pdf。
 
 完成後請再次確認：四份成果彼此分開。前三份（01–03）供學生寄給老師；第 4 份 PDF 完訓證明供學生自行下載保存，不需寄送。`;
 $('endCommand').textContent=endText;
