@@ -294,3 +294,12 @@
 - 新增代表樣本 URL 組與 Freego run record template。
 - 之後每次掃描都能追蹤 URL、規則、嚴重度、修正 commit、branch preview 與重測結果。
 - 流程固定為：代表樣本 → 共通修正 → 104 URL 全站掃描 → 重測。
+
+
+## 第二十七輪：焦點順序與 DOM 唯一性 regression guard
+- 代表樣本額外抽查 duplicate id、positive tabindex、autofocus、accesskey、meta refresh 與非原生 click target，未發現明顯問題。
+- accessibility preflight 新增：
+  - duplicate id → error
+  - positive tabindex → error
+  - autofocus / accesskey / meta refresh → warning
+- 目的在防止之後新頁面破壞自然 Tab 順序或 DOM 可及性關聯。
