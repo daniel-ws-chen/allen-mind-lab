@@ -257,3 +257,10 @@
 - 代表頁涵蓋首頁、館藏、閱讀路徑、自學、互動實驗室、文章、Management Coach、PBS Companion、兩套測驗。
 - 明確保留 zoom/reflow、圖片／漸層對比、完整 Tab 順序、screen reader 與 Freego 正式掃描為 pending，避免過度宣稱。
 - 目前可描述為「Freego 前工程預檢已建立且持續通過；已進入人工驗收階段」。
+
+
+## 第二十二輪：Zoom / Reflow 測試標準化
+- 新增 `docs/ACCESSIBILITY_REFLOW_TEST_PLAN.md`，固定 200%、400% 與 320 CSS px 三組人工測試。
+- 依靜態 CSS 複雜度與互動密度建立 P0/P1/P2 代表頁優先序。
+- `tools.html` 因固定尺寸、互動元件與 responsive 規則最多列為 P0；這是「測試優先級」，不是已判定缺失。
+- 已整理 nowrap 高風險觀察點，僅在實際造成頁面級水平 overflow 時再修，避免為了掃描數字破壞正常 UI。
