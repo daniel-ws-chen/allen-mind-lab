@@ -152,3 +152,13 @@
 - 感控 Pilot 與 Sera.Phina national-exam 兩個受限候選區都不在 sitemap。
 - 新增 docs/ACCESSIBILITY_PUBLIC_URLS.md，將 sitemap 現況固定為 Freego 前的 INCLUDE 基線。
 - 注意：不在 sitemap 不等於私有；仍須依實際可達性與 server/edge auth 判定。
+
+
+## 第九輪：Freego 前共通規則補強
+- aml-site.css：補強曦兒支援選項的 focus-visible ring，避免只有 hover／背景變色而缺乏清楚鍵盤焦點。
+- audit-accessibility.mjs 新增靜態預檢：
+  - target="_blank" 是否有 rel="noopener"
+  - input/select/textarea 是否具可程式判定的標籤
+  - table 是否至少具有 th
+  - role="button" 非原生按鈕是否具 tabindex="0"
+- 這些新增規則先以 warning 為主，避免因靜態解析限制造成誤判；正式結論仍需 Freego 與人工測試。
