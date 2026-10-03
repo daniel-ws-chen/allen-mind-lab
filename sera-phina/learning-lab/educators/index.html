@@ -43,6 +43,26 @@ body{background:#fbf9fc}
 .training-downloads{display:grid;grid-template-columns:1.05fr 1.95fr;gap:18px;align-items:start}.download-feature{padding:22px;border-radius:20px;background:linear-gradient(145deg,#fff8ec,#f6eef8);border:1px solid rgba(111,79,134,.2)}.download-feature h3{margin:0 0 7px;font-size:22px}.download-feature p{margin:0 0 14px;color:#716575;font-size:12.5px;line-height:1.75}.download-feature .big-download{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:12px 16px;background:var(--sage-deep);color:#fff;text-decoration:none!important;font-weight:900;font-size:12px}.download-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.download-item{padding:15px;border:1px solid var(--line);border-radius:16px;background:#fcfbfd}.download-item strong{display:block;margin-bottom:6px;font-size:14px;color:#463a4d}.download-item span{display:block;margin-bottom:10px;color:#786d7d;font-size:11.5px;line-height:1.55}.download-links{display:flex;gap:8px;flex-wrap:wrap}.download-links a{border-radius:999px;padding:7px 10px;background:#eee7f2;color:#6f4f86;text-decoration:none!important;font-weight:900;font-size:10.5px}.download-links a.pdf{background:#edf4ef;color:#4f715f}.download-note{margin-top:14px;padding:12px 14px;border-left:4px solid #957341;background:#fffaf0;border-radius:0 12px 12px 0;color:#705c38;font-size:12px;line-height:1.7}@media(max-width:900px){.training-downloads,.download-list{grid-template-columns:1fr}}
 
 </style>
+
+<style id="educator-workbench-style">
+.educator-workbench{background:linear-gradient(180deg,#fff,#faf7fc)}
+.workbench-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
+.workbench-card{--wb:#6f4f86;--wb-soft:#f3edf7;display:grid;grid-template-columns:42px 1fr;gap:13px;min-height:190px;padding:18px;border:1px solid color-mix(in srgb,var(--wb) 24%,#ddd);border-top:3px solid var(--wb);border-radius:18px;background:linear-gradient(180deg,#fff,var(--wb-soft));box-shadow:0 8px 22px rgba(63,48,75,.045);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.workbench-card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(63,48,75,.09);border-color:var(--wb)}
+.workbench-card.teaching{--wb:#4f78b8;--wb-soft:#eef4ff}
+.workbench-card.clinical{--wb:#3f8b6e;--wb-soft:#ebf7f1}
+.workbench-card.osce{--wb:#4d8e91;--wb-soft:#ebf7f7}
+.workbench-card.assessment{--wb:#9a765d;--wb-soft:#f8f1eb}
+.workbench-card.research{--wb:#7650a8;--wb-soft:#f2eafd}
+.workbench-card.ethics{--wb:#c56f4f;--wb-soft:#fff0e8}
+.workbench-icon{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--wb);color:#fff;font-size:17px;font-weight:900}
+.workbench-card small{display:block;color:var(--wb);font-size:9px;font-weight:900;letter-spacing:.12em}
+.workbench-card h3{margin:5px 0 7px;font-size:18px;line-height:1.35}
+.workbench-card p{margin:0;color:#746979;font-size:12px;line-height:1.7}
+.workbench-card a{display:inline-flex;margin-top:13px;color:var(--wb);font-size:11.5px;font-weight:900}
+@media(max-width:920px){.workbench-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.workbench-grid{grid-template-columns:1fr}.workbench-card{min-height:0}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">跳至主要內容</a>
