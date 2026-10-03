@@ -318,3 +318,12 @@
 - 根因：共用 `.aml-route-card b` 原本設計給單一箭頭，使用 absolute positioning；Mind / OT 部分卡片卻把整段 CTA 文案放進 `<b>`，因此文字被定位到卡片右側並與正文重疊。
 - 新增 `.aml-route-card__action` 正常文流樣式，將 Mind / OT 的長 CTA 改成該 class；單純箭頭仍維持既有 absolute placement。
 - 這是語意與版面兼容修正，不改變卡片連結行為。
+
+
+## 第三十輪：Accessibility preflight 清零
+- run #118 完整成功。
+- source validation：0 error / 0 warning。
+- dist accessibility audit：0 error / 0 warning。
+- artifact 與 private-file guard 皆完成。
+- 先前 63 個 warning 已透過 main landmark、skip link、ARIA/reference、表單標籤、H1 與 redirect 等修正逐步清零。
+- 這代表目前靜態 preflight 規則下已無已知錯誤或警告；仍不等同正式 WCAG / Freego 通過，人工 keyboard / zoom / screen reader 與正式掃描仍需完成。
