@@ -206,3 +206,11 @@
   - #aab6c5 / #081626 ≈ 8.85:1
   - footer #7f8b90 / #101719 ≈ 5.18:1
 - 以上核心文字配色均高於一般文字 4.5:1 門檻；但漸層、半透明覆蓋、圖片背景上的文字仍需人工／瀏覽器實測，不能據此宣稱全站對比已通過。
+
+
+## 第十五輪：隱藏互動區的鍵盤焦點隔離
+- 發現 Engineering Bay 收合時只使用 max-height/opacity + aria-hidden；其中的 hotspot 與 route 連結仍可能留在鍵盤 Tab 序列。
+- lumi-bay-reveal 現在初始即加 inert；開啟時解除 inert，收合時恢復 inert。
+- aria-expanded / aria-hidden / is-open / inert 由同一個 setOpen() 統一同步，降低狀態不同步風險。
+- 在 Engineering Bay 內容中按 Escape 會關閉維護艙，並把焦點送回「開啟維護艙」按鈕。
+- 這一修正直接處理「視覺上隱藏，但鍵盤仍能進入」的人工 QA 風險。
