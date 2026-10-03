@@ -226,3 +226,11 @@
 - 新增 hidden-focus 規則後，Accessibility preflight CI 已再次完整成功。
 - 另外抽查主要公開互動頁（tools.html、PBS Companion、兩套自學測驗、Management Coach、管理決策／公平挑戰、PBS 互動、自我覺察、能量節奏、感覺工具等），未再找到「aria-hidden=true + 可聚焦控制項 + 無 inert」的案例。
 - 這代表目前已知的「視覺隱藏但仍可 Tab 進入」風險已明顯收斂；仍需保留瀏覽器實際 Tab 測試作為人工確認。
+
+
+## 第十八輪：Hover / Focus 對等與焦點對比
+- 共用 lab shell navigation 原本 hover 會提升 opacity，但 keyboard focus 沒有同等視覺回饋；已補 focus-visible opacity 與 3px currentColor outline。
+- lab mini footer 連結補上 focus-visible underline/border 與 outline。
+- 部分共用閱讀卡片焦點環由半透明金色改為實色 #8a6a32，降低焦點指示器在白底上對比不足的風險。
+- Engineering Bay 的 toggle 與 route focus ring 改為實色（#137d68 / #e6bb61），避免低透明度 outline 在不同背景下失去辨識度。
+- tool-card 本身的 hover 陰影屬非必要裝飾；互動按鈕已有獨立 focus-visible，因此不強迫把卡片 hover 動畫複製成鍵盤效果。
