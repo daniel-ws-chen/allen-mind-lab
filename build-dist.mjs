@@ -19,6 +19,7 @@ const skipExact = new Set([
   "build-dist.mjs",
   "validate-aml.mjs",
   "audit-accessibility.mjs",
+  "accessibility-scope.json",
   "docs",
   "publish-aml-article.mjs",
   "audit-aml-assets.mjs",
