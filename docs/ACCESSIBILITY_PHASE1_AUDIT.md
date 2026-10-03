@@ -234,3 +234,11 @@
 - 部分共用閱讀卡片焦點環由半透明金色改為實色 #8a6a32，降低焦點指示器在白底上對比不足的風險。
 - Engineering Bay 的 toggle 與 route focus ring 改為實色（#137d68 / #e6bb61），避免低透明度 outline 在不同背景下失去辨識度。
 - tool-card 本身的 hover 陰影屬非必要裝飾；互動按鈕已有獨立 focus-visible，因此不強迫把卡片 hover 動畫複製成鍵盤效果。
+
+
+## 第十九輪：首頁曦兒與搜尋入口鍵盤 QA
+- 首頁站內搜尋入口原本只有 hover 視覺效果；已加入 focus-visible 對等樣式與 3px 實色焦點環。
+- 曦兒 dialog 內的 chips、關閉、送出按鈕補上明確 focus-visible outline。
+- 曦兒 textarea 原本只有低透明度 box-shadow；現在保留邊框回饋並增加實色 focus-visible outline。
+- 導航結果的 scrollIntoView 現在尊重 prefers-reduced-motion；使用者設定減少動態時改為 auto。
+- 曦兒 dialog 原本已有焦點陷阱、Escape 關閉與焦點返回，這輪保留既有行為。
