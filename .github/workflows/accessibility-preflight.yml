@@ -36,7 +36,15 @@ jobs:
       - name: Run accessibility preflight against public dist
         env:
           AUDIT_ROOT: dist
+          AUDIT_REPORT: accessibility-preflight-report.json
         run: node audit-accessibility.mjs
+
+      - name: Upload accessibility preflight report
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-preflight-report
+          path: accessibility-preflight-report.json
+          retention-days: 14
 
       - name: Verify private audit artifacts are not public
         shell: bash
