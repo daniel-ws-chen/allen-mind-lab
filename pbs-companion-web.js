@@ -331,7 +331,21 @@ function gather(){
 
 function analyze(){
   const d=gather();
-  if(!d.target){ alert("請先填寫標的行為。"); return null; }
+  const targetField=$("#targetBehavior");
+  const status=$("#analysisStatus");
+  if(status){ status.hidden=true; status.textContent=""; }
+  if(!d.target){
+    if(targetField){
+      targetField.setAttribute("aria-invalid","true");
+      targetField.focus();
+    }
+    if(status){
+      status.textContent="請先填寫標的行為，再產生分析與策略草稿。";
+      status.hidden=false;
+    }
+    return null;
+  }
+  if(targetField) targetField.removeAttribute("aria-invalid");
   const fs=d.functions.length ? d.functions : ["unclear"];
   const cards=fs.map((f,i)=>({
     key:f,name:functionMeta[f].name,
@@ -345,6 +359,8 @@ function analyze(){
 
 function renderAnalysis(a){
   $("#analysisEmpty").hidden=true; $("#analysisResult").hidden=false;
+  const status=$("#analysisStatus");
+  if(status){ status.textContent="分析與策略草稿已產生。"; status.hidden=false; }
   $("#functionAnalysis").innerHTML=a.functions.map(f=>`
     <div class="pbsw-function-card"><strong>${esc(f.role)}｜${esc(f.name)}</strong>
     <p>${esc(f.reason)}</p><p><b>提醒：</b>需以多筆 ABC、反證與後續觀察持續驗證。</p></div>`).join("");
@@ -486,6 +502,8 @@ $("#reportBtn").addEventListener("click",()=>{
   $("#copyReportBtn").disabled=false;
   $("#copyAiBtn").disabled=false;
   $("#printBtn").disabled=false;
+  const reportStatus=$("#reportStatus");
+  if(reportStatus) reportStatus.textContent="完整 PBS 報告初稿已產生，可閱讀、複製或列印。";
 });
 
 async function copyText(value,button,label){
