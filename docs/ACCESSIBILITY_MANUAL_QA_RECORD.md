@@ -152,3 +152,13 @@ Branch：`accessibility/phase1-a-preflight`
   - PBS Companion：target behavior error、ABC 表、七週期表
 - 問題嚴重度固定為 Blocker / Major / Minor，避免人工驗收時每次重新判斷優先級。
 - P0 只有在鍵盤 + 200% + 400% + 320px 都完成、且無未處理 Blocker 時，才能從 ◐ 改成 ✅。
+
+
+## M. P1 實際操作腳本
+
+- 已新增 `docs/ACCESSIBILITY_P1_TEST_SCRIPT.md`。
+- P1 已拆成 Library、Articles、Reading Paths、管理學 Quiz、PBS Quiz 與三類典型文章。
+- Library / Articles / Reading Paths：keyboard + 200% + 320px。
+- Quiz：keyboard + 200% + 400% + 320px。
+- 典型文章至少抽 3 種模板，確認 related reading、share status、圖片與表格 reflow。
+- P1 同樣採 Blocker / Major / Minor 分級；未實測前維持 ◐。
