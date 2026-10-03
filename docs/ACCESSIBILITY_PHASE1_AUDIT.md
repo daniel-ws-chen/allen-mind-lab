@@ -132,3 +132,10 @@
 - 目前沒有 repo / Worker 證據能證明國考工具已被真正 OTP 保護。
 - 外部匿名抓取環境本輪無法連線正式站，因此不把「抓不到」誤判成 Access 已生效。
 - 在看到 Cloudflare Access policy 或完成未登入三 URL 實測前，national-exam 不列入 RESTRICTED。
+
+
+## 第七輪：認證範圍自動化與公開部署清理
+- 新增 accessibility-scope.json，將「受限候選區」以機器可讀方式記錄。
+- audit-accessibility.mjs 會標示 restricted candidate，但在真正 server/edge auth 證據完成前仍照公開頁面檢查，不會偷渡排除。
+- 發現 docs/ 與 audit-accessibility.mjs 原本會被 build-dist.mjs 複製到公開 dist。
+- 已將 docs/ 與 audit-accessibility.mjs 加入 build 排除清單，避免內部認證稽核文件與工程腳本公開發布。
