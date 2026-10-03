@@ -242,3 +242,10 @@
 - 曦兒 textarea 原本只有低透明度 box-shadow；現在保留邊框回饋並增加實色 focus-visible outline。
 - 導航結果的 scrollIntoView 現在尊重 prefers-reduced-motion；使用者設定減少動態時改為 auto。
 - 曦兒 dialog 原本已有焦點陷阱、Escape 關閉與焦點返回，這輪保留既有行為。
+
+
+## 第二十輪：Freego 前人工 QA 固定化
+- 新增 `docs/ACCESSIBILITY_FREEGO_MANUAL_CHECKLIST.md`。
+- 把 CI 無法可靠判定的項目固定成可重複執行的人工驗收：鍵盤、焦點、縮放/reflow、圖片與漸層對比、表單錯誤、表格、dialog、reduced motion、螢幕閱讀器與驗證邊界。
+- 清單明確區分「已自動檢查」與「仍需人工確認」，避免把 preflight success 誤寫成正式無障礙等級通過。
+- 建議流程固定為：代表頁人工 QA → 不同模板抽查 → Freego 全站掃描 → 逐項修正與重測。
