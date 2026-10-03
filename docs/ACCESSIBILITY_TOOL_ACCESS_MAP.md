@@ -107,3 +107,16 @@ repo 內可確認：
 1. 感控 Pilot 真正身份驗證邊界。
 2. 驗證 Sera.Phina 國考 OTP 是否真正在伺服器／邊緣層阻擋內容。
 3. 產出最終 INCLUDE / LOGIN ENTRY / RESTRICTED / EXCLUDE URL 清單。
+
+
+## 7. Sera.Phina 國考 OTP 深入查核結果
+已新增 docs/SERAPHINA_NATIONAL_EXAM_ACCESS_AUDIT.md。
+
+目前 repo / Worker 可確認：
+- national-exam 頁面宣告 OTP 與學校信箱限制。
+- 但 AML Worker 沒有 national-exam auth middleware。
+- exam.js 沒有 OTP 驗證邏輯。
+- data/questions.js 直接包含題目、答案與解析。
+- repo 內無 Access policy / _headers / _redirects 等可證明目錄被保護的設定。
+
+因此在實際驗證 Cloudflare 外部 Access policy 前，該目錄維持 VERIFY EXTERNALLY，不直接視為 RESTRICTED。
