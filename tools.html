@@ -1227,6 +1227,104 @@
 }
 </style>
 
+
+<style id="sera-wormhole-polish">
+.sera-plugin-card{
+  isolation:isolate;
+}
+.sera-plugin-card::after{
+  content:"";
+  position:absolute;
+  right:-54px;
+  top:50%;
+  width:210px;
+  height:210px;
+  border-radius:50%;
+  transform:translateY(-50%);
+  background:
+    radial-gradient(circle at center,rgba(255,255,255,.98) 0 7%,rgba(185,152,200,.34) 8% 18%,rgba(111,79,134,.22) 19% 30%,rgba(111,79,134,.09) 31% 44%,transparent 45%),
+    conic-gradient(from 0deg,rgba(111,79,134,.06),rgba(185,152,200,.30),rgba(111,79,134,.04),rgba(185,152,200,.20),rgba(111,79,134,.06));
+  filter:blur(.2px);
+  opacity:.78;
+  z-index:-1;
+  animation:seraWormholeSpin 18s linear infinite;
+}
+.sera-plugin-card__mark{
+  position:relative;
+  overflow:visible;
+}
+.sera-plugin-card__mark::before,
+.sera-plugin-card__mark::after{
+  content:"";
+  position:absolute;
+  inset:-9px;
+  border-radius:50%;
+  border:1px solid rgba(111,79,134,.22);
+  pointer-events:none;
+}
+.sera-plugin-card__mark::after{
+  inset:-17px;
+  border-style:dashed;
+  border-color:rgba(185,152,200,.26);
+  animation:seraOrbitSpin 14s linear infinite reverse;
+}
+.sera-plugin-card__cta{
+  position:relative;
+  overflow:hidden;
+}
+.sera-plugin-card__cta::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-45%;
+  width:34%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);
+  transform:skewX(-18deg);
+  transition:left .45s ease;
+}
+.sera-plugin-card:hover{
+  transform:translateY(-3px) scale(1.003);
+  box-shadow:0 22px 48px rgba(76,52,91,.16);
+}
+.sera-plugin-card:hover::after{
+  opacity:1;
+  animation-duration:8s;
+}
+.sera-plugin-card:hover .sera-plugin-card__mark{
+  transform:scale(.96);
+  box-shadow:0 0 0 7px rgba(111,79,134,.05),0 12px 28px rgba(111,79,134,.14);
+}
+.sera-plugin-card:hover .sera-plugin-card__cta::before{
+  left:115%;
+}
+.sera-plugin-card__mark,
+.sera-plugin-card{
+  transition:transform .28s ease,box-shadow .28s ease;
+}
+@keyframes seraWormholeSpin{
+  to{transform:translateY(-50%) rotate(360deg)}
+}
+@keyframes seraOrbitSpin{
+  to{transform:rotate(360deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  .sera-plugin-card::after,
+  .sera-plugin-card__mark::after{animation:none}
+  .sera-plugin-card,
+  .sera-plugin-card__mark,
+  .sera-plugin-card__cta::before{transition:none}
+}
+@media(max-width:650px){
+  .sera-plugin-card::after{
+    width:150px;
+    height:150px;
+    right:-72px;
+    top:26%;
+  }
+}
+</style>
+
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
 <details class="aml-nav-group"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
@@ -1417,17 +1515,17 @@
 
 <article class="sera-plugin-card" aria-labelledby="sera-plugin-title">
   <div class="sera-plugin-card__meta">
-    <span class="sera-plugin-card__badge">SPECIALIZED LEARNING PLATFORM</span>
-    <span class="sera-plugin-card__hint">外掛入口 · Powered by Sera.Phina</span>
+    <span class="sera-plugin-card__badge">EXTERNAL MODULE · 跨域通道</span>
+    <span class="sera-plugin-card__hint">偵測到另一個學習宇宙 · Powered by Sera.Phina</span>
   </div>
   <div class="sera-plugin-card__grid">
     <div class="sera-plugin-card__mark" aria-hidden="true">S</div>
     <div class="sera-plugin-card__copy">
       <small>SERA.PHINA · LEARNING LAB</small>
-      <h3 id="sera-plugin-title">需要更深入的專業學習？開啟 Sera.Phina Learning Lab</h3>
-      <p>從心理健康、職能治療、臨床推理、研究學習到教師／督導應用，進入完整的專業 Learning Labs。</p>
+      <h3 id="sera-plugin-title">跨域通道已開啟｜進入 Sera.Phina Learning Lab</h3>
+      <p>這裡不是另一套單一工具，而是一個完整的專業學習空間。從心理健康、職能治療、臨床推理、研究學習到教師／督導應用，穿過通道後進入 Sera.Phina 的 Learning Labs。</p>
       <div class="sera-plugin-card__tags"><span>心理健康</span><span>職能治療</span><span>臨床推理</span><span>研究學習</span><span>教師／督導</span></div>
-      <a class="sera-plugin-card__cta" href="/sera-phina/learning-lab/">開啟專業學習外掛 →</a>
+      <a class="sera-plugin-card__cta" href="/sera-phina/learning-lab/">穿越至 Sera.Phina →</a>
     </div>
   </div>
 </article>
