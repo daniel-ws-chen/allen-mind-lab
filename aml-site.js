@@ -16,7 +16,8 @@
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--home::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--home::before{background:#d7a84f;box-shadow:0 0 13px rgba(215,168,79,.38)}
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--management::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--management::before{background:#7da9ff;box-shadow:0 0 13px rgba(125,169,255,.42)}
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--pbs::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--pbs::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
-      .aml-nav-group .aml-nav-panel a:hover,.aml-nav-group .aml-nav-panel a:focus-visible{background:linear-gradient(90deg,rgba(215,168,79,.08),rgba(111,103,255,.04));outline:none}
+      .aml-nav-group .aml-nav-panel a:hover,.aml-nav-group .aml-nav-panel a:focus-visible{background:linear-gradient(90deg,rgba(215,168,79,.08),rgba(111,103,255,.04))}
+      .aml-nav-group .aml-nav-panel a:focus-visible{outline:3px solid var(--aml-gold);outline-offset:2px}
       @media(max-width:720px){
         .aml-menu-toggle{min-width:44px;min-height:44px}
         .aml-mobile-menu a{min-height:44px;display:flex;align-items:center}
@@ -185,6 +186,7 @@
     if (!toggle || !menu) return;
     menu.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "開啟網站選單");
     toggle.textContent = "☰";
   };
 
@@ -262,6 +264,7 @@
         closeExplore();
         menu.classList.add("is-open");
         toggle.setAttribute("aria-expanded", "true");
+        toggle.setAttribute("aria-label", "關閉網站選單");
         toggle.textContent = "×";
       }
     });
