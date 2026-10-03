@@ -57,3 +57,25 @@
 
 ## 建議
 在正式無障礙送件前，將這個目錄列為「VERIFY EXTERNALLY」而非直接排除。只要完成一次未登入測試即可定案。
+
+
+## 補充：公開導覽路徑
+- /sera-phina/learning-lab/index.html 目前直接連到 ./national-exam/index.html。
+- national-exam/index.html 再直接連到 ./practice.html。
+- 因此「找不到網址」不能作為排除理由；這套國考工具目前有明確公開導覽入口。
+
+## 外部匿名驗證狀態
+本輪嘗試以未帶登入狀態的外部抓取方式驗證正式站，但目前可用的外部抓取環境無法連線 allenmindlab.com，因此**不能把抓取失敗解讀為 OTP 已成功阻擋**。
+
+目前證據強度：
+1. Repository：可確認靜態頁與題庫 JS 存在。
+2. Worker：可確認沒有 national-exam 路徑驗證邏輯。
+3. 公開導覽：可確認 Sera.Phina Learning Lab 有 national-exam 入口。
+4. Cloudflare Dashboard 外部 Access policy：尚未驗證。
+
+## 最終定案條件
+只有以下任一證據成立，才將 national-exam 標為 RESTRICTED：
+- Cloudflare Zero Trust / Access Dashboard 顯示對 /sera-phina/learning-lab/national-exam/* 有有效 policy；或
+- 使用未登入瀏覽器測試時，index.html、practice.html 與 data/questions.js 均被身份驗證層攔截。
+
+否則正式無障礙範圍盤點時仍按 PUBLIC / PUBLICLY DEPLOYED 處理。
