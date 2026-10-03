@@ -888,29 +888,29 @@ main{overflow:hidden}
   background:var(--cat);
 }
 .sp-tool-category#teaching{
-  --cat:#6b7fa7;
-  --cat-soft:#eef3fb;
-  --cat-border:rgba(107,127,167,.24);
+  --cat:#4f78b8;
+  --cat-soft:#eaf2ff;
+  --cat-border:rgba(79,120,184,.34);
 }
 .sp-tool-category#research{
-  --cat:#725f91;
-  --cat-soft:#f2eef8;
-  --cat-border:rgba(114,95,145,.24);
+  --cat:#7650a8;
+  --cat-soft:#f2eafd;
+  --cat-border:rgba(118,80,168,.34);
 }
 .sp-tool-category#clinical{
-  --cat:#5f8a78;
-  --cat-soft:#edf6f2;
-  --cat-border:rgba(95,138,120,.24);
+  --cat:#3f8b6e;
+  --cat-soft:#e8f7f0;
+  --cat-border:rgba(63,139,110,.34);
 }
 .sp-tool-category#creative{
-  --cat:#b27569;
-  --cat-soft:#fbf0ed;
-  --cat-border:rgba(178,117,105,.24);
+  --cat:#c56f4f;
+  --cat-soft:#fff0e8;
+  --cat-border:rgba(197,111,79,.34);
 }
 .sp-tool-category#self{
-  --cat:#9a765d;
-  --cat-soft:#f8f1eb;
-  --cat-border:rgba(154,118,93,.24);
+  --cat:#a67a32;
+  --cat-soft:#fbf3df;
+  --cat-border:rgba(166,122,50,.34);
 }
 .sp-category-head{
   align-items:flex-start;
@@ -1154,3 +1154,36 @@ main{overflow:hidden}
     font-size:13px;
   }
 }
+
+
+/* V4.8 — Stronger category differentiation */
+.sp-tool-category{
+  box-shadow:0 10px 28px color-mix(in srgb,var(--cat) 7%,transparent);
+}
+.sp-tool-category .sp-category-head{
+  border-bottom:1px solid var(--cat-border);
+  padding-bottom:18px;
+}
+.sp-tool-category .sp-category-head h2{
+  color:color-mix(in srgb,var(--cat) 76%,#2f2834);
+}
+.sp-tool-category .sp-category-head p{
+  color:color-mix(in srgb,var(--cat) 42%,#756b79);
+}
+.sp-category-grid .lab-card{
+  border-top:3px solid var(--cat);
+}
+.sp-category-grid .lab-card:hover{
+  background:linear-gradient(180deg,#fff 0%,var(--cat-soft) 100%);
+}
+.sp-category-grid .lab-btn{
+  box-shadow:0 7px 18px color-mix(in srgb,var(--cat) 20%,transparent);
+}
+.sp-category-grid .lab-kicker{
+  border:1px solid color-mix(in srgb,var(--cat) 22%,transparent);
+}
+.sp-hub-jumps a[href="#teaching"]{border-color:rgba(79,120,184,.28);color:#4f78b8;background:#f6f9ff}
+.sp-hub-jumps a[href="#research"]{border-color:rgba(118,80,168,.28);color:#7650a8;background:#faf7ff}
+.sp-hub-jumps a[href="#clinical"]{border-color:rgba(63,139,110,.28);color:#3f8b6e;background:#f5fbf8}
+.sp-hub-jumps a[href="#creative"]{border-color:rgba(197,111,79,.28);color:#c56f4f;background:#fff8f4}
+.sp-hub-jumps a[href="#self"]{border-color:rgba(166,122,50,.28);color:#a67a32;background:#fffaf0}
