@@ -1606,7 +1606,7 @@
       </div>
       <button class="lumi-bay__toggle" type="button" aria-expanded="false" aria-controls="lumi-bay-reveal">開啟維護艙 ✦</button>
     </div>
-    <div class="lumi-bay__reveal" id="lumi-bay-reveal" aria-hidden="true">
+    <div class="lumi-bay__reveal" id="lumi-bay-reveal" aria-hidden="true" inert>
       <figure class="lumi-bay__fullart lumi-bay__interactive-map">
         <div class="lumi-bay__artboard">
           <img alt="Lumi｜AML 艦隊維護技師 Engineering Bay 互動系統航圖" src="/images/lumi-engineering-bay-interactive-v2.webp" loading="lazy" decoding="async" width="1672" height="941" onerror="this.closest('.lumi-bay__artboard').classList.add('is-fallback');this.onerror=null;this.src='/images/lumi-engineering-bay-poster.webp';">
@@ -1884,12 +1884,25 @@
   const button=bay.querySelector('.lumi-bay__toggle');
   const reveal=document.getElementById('lumi-bay-reveal');
   if(!button||!reveal)return;
+
+  const setOpen=(open)=>{
+    button.setAttribute('aria-expanded',String(open));
+    reveal.setAttribute('aria-hidden',String(!open));
+    reveal.inert=!open;
+    bay.classList.toggle('is-open',open);
+    button.textContent=open?'關閉維護艙':'開啟維護艙 ✦';
+  };
+
+  setOpen(false);
+
   button.addEventListener('click',function(){
-    const open=button.getAttribute('aria-expanded')==='true';
-    button.setAttribute('aria-expanded',String(!open));
-    reveal.setAttribute('aria-hidden',String(open));
-    bay.classList.toggle('is-open',!open);
-    button.textContent=open?'開啟維護艙 ✦':'關閉維護艙';
+    setOpen(button.getAttribute('aria-expanded')!=='true');
+  });
+
+  reveal.addEventListener('keydown',function(event){
+    if(event.key!=='Escape')return;
+    setOpen(false);
+    button.focus();
   });
 })();
 </script>
