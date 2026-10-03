@@ -233,6 +233,20 @@
 
 </style><link href="aml-site.css" rel="stylesheet"/>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<style id="publication-category-layout">
+.pub-category-nav{display:flex;flex-wrap:wrap;gap:9px;margin:26px 0 42px}
+.pub-category-nav a{display:inline-flex;align-items:center;padding:8px 12px;border:1px solid #e2d8c7;border-radius:999px;background:#fff;color:#6f5b38;font-size:.78rem;font-weight:800}
+.pub-category-nav a:hover{background:#f7f1e6}
+.pub-category{padding:0;margin:0 0 70px}
+.pub-category-head{display:flex;align-items:center;gap:14px;margin:0 0 18px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.pub-category-head>span{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:var(--navy);color:#fff;font-family:Georgia,"Times New Roman",serif;font-weight:800}
+.pub-category-head small{display:block;color:#a17d3e;font-size:.68rem;font-weight:900;letter-spacing:.14em}
+.pub-category-head h3{margin:2px 0 0;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-size:1.65rem}
+.pub-category .pub-list{margin-top:0}
+.pub-ref{min-width:180px;padding:12px 14px;border:1px solid #e2d8c7;border-radius:14px;background:#fbf8f2;color:#76684f;font-size:.8rem;line-height:1.65;font-weight:700}
+@media(max-width:820px){.pub-category{margin-bottom:52px}.pub-category-head h3{font-size:1.35rem}.pub-ref{min-width:0}}
+</style>
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
 
@@ -258,136 +272,193 @@
 <section class="featured reveal">
   <div class="featured-box">
     <div>
-      <div class="eyebrow">Writing & Translation</div>
-      <h2 class="section-title">讓專業知識被更多人使用。</h2>
+      <div class="eyebrow">Publications · Practice · Assessment</div>
+      <h2 class="section-title">把專業知識整理成可被使用的形式。</h2>
       <p class="section-lead">
-        出版對我而言，不只是留下文字；
-        更是把臨床、教育與專業知識重新整理，
-        讓學生、專業工作者、教師與家庭都能找到可使用的參考。
+        AML 的出版成果不只包含著作與譯作，也包括政府與專業實務出版品，以及專業測驗與評估工具的中文版修訂。
       </p>
     </div>
     <div class="featured-note">
-      以下出版品依出版年代由新至舊排列，
-      並以「著作」與「譯作」清楚區分。
+      依「著作／政府與專業實務出版品／譯作／專業測驗與評估工具」四類整理。
     </div>
   </div>
 </section>
 
 <section id="publications">
-  <div class="eyebrow">Books · Translations · Professional Knowledge</div>
-  <h2 class="section-title">出版品</h2>
+  <div class="eyebrow">Selected Publications & Professional Works</div>
+  <h2 class="section-title">出版與專業成果</h2>
   <p class="section-lead">
-    點擊「查看出版品」可前往目前整理的外部書店頁面。
-    部分較早出版品可能因庫存狀況而暫時無法購買。
+    以下依成果類型分組；外部連結以目前可查得的出版社、書店或測驗資訊頁為主。
   </p>
 
-  <div class="pub-list">
+  <nav class="pub-category-nav" aria-label="出版品分類">
+    <a href="#pub-authored">01 著作</a>
+    <a href="#pub-practice">02 政府與專業實務出版品</a>
+    <a href="#pub-translations">03 譯作</a>
+    <a href="#pub-assessment">04 專業測驗與評估工具</a>
+  </nav>
 
-    <article class="pub-card reveal">
-      <div class="cover-wrap">
-        <img class="cover" src="/images/books/clinical-documentation-ot-third-edition.webp" alt="職能治療實務：臨床病歷撰寫（第三版）書封" loading="lazy">
-      </div>
-      <div>
-        <span class="badge">譯作 · Translation</span>
-        <h2>職能治療實務：臨床病歷撰寫（第三版）</h2>
-        <div class="meta">Karen M. Sames 著｜李杭茜、陳芝萍、陳威勝 譯｜心理出版社｜2019/09/12</div>
-        <p class="desc">聚焦職能治療臨床紀錄、專業溝通、倫理法律、紀錄格式與行政實務，適合職能治療學生與臨床工作者使用。</p>
-      </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010834687?sloc=main">查看出版品 →</a>
-    </article>
+  <section class="pub-category" id="pub-authored">
+    <div class="pub-category-head">
+      <span>01</span>
+      <div><small>AUTHORSHIP</small><h3>著作</h3></div>
+    </div>
+    <div class="pub-list">
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/occupational-therapy-in-mental-health.webp" alt="精神健康職能治療：理論與實務書封" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">著作 · Author</span>
+          <h2>精神健康職能治療：理論與實務</h2>
+          <div class="meta">黃曼聰、陳威勝、陳芝萍 著｜五南圖書出版｜2009/02/01（第二版）</div>
+          <p class="desc">涵蓋精神健康職能治療的專業基礎、臨床推理、評估介入、治療媒介、精神疾病與組織經營管理等實務內容。</p>
+        </div>
+        <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.sanmin.com.tw/product/index/000758420">查看出版品 →</a>
+      </article>
+    </div>
+  </section>
 
-    <article class="pub-card reveal">
-      <div class="cover-wrap">
-        <img class="cover" src="/images/books/autism-checklist.webp" alt="自閉症檢核手冊：家長與教師實用指南書封" loading="lazy">
-      </div>
-      <div>
-        <span class="badge">譯作 · Translation</span>
-        <h2>自閉症檢核手冊：家長與教師實用指南</h2>
-        <div class="meta">Paula Kluth、John Shouse 著｜陳威勝、陳芝萍 譯｜心理出版社｜2012/01/01</div>
-        <p class="desc">以容易查閱的檢核形式，整理自閉症光譜兒童與青少年在家庭、學校及支持情境中可採取的實務策略。</p>
-      </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010532137?sloc=main">查看出版品 →</a>
-    </article>
+  <section class="pub-category" id="pub-practice">
+    <div class="pub-category-head">
+      <span>02</span>
+      <div><small>GOVERNMENT & PROFESSIONAL PRACTICE</small><h3>政府與專業實務出版品</h3></div>
+    </div>
+    <div class="pub-list">
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/taipei-disability-living-survey-easy-read.webp" alt="臺北市身心障礙者生活狀況調查易讀版封面" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">實務出版 · Practice Publication</span>
+          <h2>臺北市身心障礙者生活狀況調查易讀版</h2>
+          <div class="meta">企劃：陳威勝、王方伶、湯朝明、楊凱翔｜主編：王方伶｜臺北市政府社會局、臺北市立陽明教養院｜2019/01</div>
+          <p class="desc">以易讀理念將身心障礙者生活狀況調查內容轉化為更容易理解與使用的資訊形式。</p>
+        </div>
+        <div class="pub-ref">ISBN 978-986-05-8445-5<br>GPN 1010800091</div>
+      </article>
+    </div>
+  </section>
 
-    <article class="pub-card reveal">
-      <div class="cover-wrap">
-        <img class="cover" src="/images/books/sensory-integration-for-preschool-teachers.webp" alt="兒童感覺統合：學齡前教師指南書封" loading="lazy">
-      </div>
-      <div>
-        <span class="badge">譯作 · Translation</span>
-        <h2>兒童感覺統合：學齡前教師指南</h2>
-        <div class="meta">Christy Isbell、Rebecca Isbell 著｜陳威勝、陳芝萍 譯｜心理出版社｜2010/07/01</div>
-        <p class="desc">提供學齡前教師辨識感覺處理需求與安排教室活動的實務建議，讓感覺統合理論更容易進入日常教育現場。</p>
-      </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010476650?sloc=main">查看出版品 →</a>
-    </article>
+  <section class="pub-category" id="pub-translations">
+    <div class="pub-category-head">
+      <span>03</span>
+      <div><small>TRANSLATIONS</small><h3>譯作</h3></div>
+    </div>
+    <div class="pub-list">
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/clinical-documentation-ot-third-edition.webp" alt="職能治療實務：臨床病歷撰寫（第三版）書封" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">譯作 · Translation</span>
+          <h2>職能治療實務：臨床病歷撰寫（第三版）</h2>
+          <div class="meta">Karen M. Sames 著｜李杭茜、陳芝萍、陳威勝 譯｜心理出版社｜2019/09/12</div>
+          <p class="desc">聚焦職能治療臨床紀錄、專業溝通、倫理法律、紀錄格式與行政實務。</p>
+        </div>
+        <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010834687?sloc=main">查看出版品 →</a>
+      </article>
 
-    <article class="pub-card reveal">
-      <div class="cover-wrap">
-        <img class="cover" src="/images/books/building-bridges-sensory-integration.webp" alt="打造感覺統合的橋樑：自閉症及其他廣泛性發展障礙兒童的治療書封" loading="lazy">
-      </div>
-      <div>
-        <span class="badge">譯作 · Translation</span>
-        <h2>打造感覺統合的橋樑：自閉症及其他廣泛性發展障礙兒童的治療</h2>
-        <div class="meta">E. Yack、P. Aquilla、S. Sutton 著｜陳威勝、陳芝萍 譯｜心理出版社｜2010/05/10</div>
-        <p class="desc">將感覺統合理論轉化為可理解、可執行的活動與環境策略，支持自閉症及其他發展障礙兒童的學習與生活參與。</p>
-      </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010470949?sloc=main">查看出版品 →</a>
-    </article>
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/autism-checklist.webp" alt="自閉症檢核手冊：家長與教師實用指南書封" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">譯作 · Translation</span>
+          <h2>自閉症檢核手冊：家長與教師實用指南</h2>
+          <div class="meta">Paula Kluth、John Shouse 著｜陳威勝、陳芝萍 譯｜心理出版社｜2012/01/01</div>
+          <p class="desc">以容易查閱的檢核形式，整理自閉症光譜兒童與青少年在家庭、學校及支持情境中的實務策略。</p>
+        </div>
+        <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010532137?sloc=main">查看出版品 →</a>
+      </article>
 
-    <article class="pub-card reveal">
-      <div class="cover-wrap">
-        <img class="cover" src="/images/books/handbook-of-preschool-mental-health.webp" alt="學齡前兒童精神健康手冊：發展、疾病和治療書封" loading="lazy">
-      </div>
-      <div>
-        <span class="badge">譯作 · Translation</span>
-        <h2>學齡前兒童精神健康手冊：發展、疾病和治療</h2>
-        <div class="meta">Joan L. Luby 主編｜林政佑、陳芝萍、陳威勝 譯｜心理出版社｜2009/09/18</div>
-        <p class="desc">從發展觀點探討學齡前兒童的心理健康、早發性心理疾患、評估與治療，兼顧研究基礎與臨床實務。</p>
-      </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010450142?sloc=main">查看出版品 →</a>
-    </article>
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/sensory-integration-for-preschool-teachers.webp" alt="兒童感覺統合：學齡前教師指南書封" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">譯作 · Translation</span>
+          <h2>兒童感覺統合：學齡前教師指南</h2>
+          <div class="meta">Christy Isbell、Rebecca Isbell 著｜陳威勝、陳芝萍 譯｜心理出版社｜2010/07/01</div>
+          <p class="desc">提供學齡前教師辨識感覺處理需求與安排教室活動的實務建議。</p>
+        </div>
+        <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010476650?sloc=main">查看出版品 →</a>
+      </article>
 
-    <article class="pub-card reveal">
-      <div class="cover-wrap">
-        <img class="cover" src="/images/books/adolescent-adult-sensory-profile-chinese-manual.webp" alt="青少年／成人感覺處理能力剖析量表中文版使用者手冊" loading="lazy">
-      </div>
-      <div>
-        <span class="badge">測驗修訂 · Assessment Adaptation</span>
-        <h2>青少年／成人感覺處理能力剖析量表（Adolescent/Adult Sensory Profile）中文版</h2>
-        <div class="meta">Brown, C. E.、Dunn, W. 原著｜曾美惠教授、陳威勝碩士 修訂｜中國行為科學社｜2009/07</div>
-        <p class="desc">適用於 11 歲以上青少年與成人，用以了解個體的感覺處理偏好，並連結感覺處理型態與日常生活經驗；由 NCS Pearson 授權於台灣修訂出版。</p>
-      </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.mytest.com.tw/Adult_listDS.aspx">查看測驗資訊 →</a>
-    </article>
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/building-bridges-sensory-integration.webp" alt="打造感覺統合的橋樑書封" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">譯作 · Translation</span>
+          <h2>打造感覺統合的橋樑：自閉症及其他廣泛性發展障礙兒童的治療</h2>
+          <div class="meta">E. Yack、P. Aquilla、S. Sutton 著｜陳威勝、陳芝萍 譯｜心理出版社｜2010/05/10</div>
+          <p class="desc">將感覺統合理論轉化為可理解、可執行的活動與環境策略。</p>
+        </div>
+        <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010470949?sloc=main">查看出版品 →</a>
+      </article>
 
-    <article class="pub-card reveal">
-      <div class="cover-wrap">
-        <img class="cover" src="/images/books/occupational-therapy-in-mental-health.webp" alt="精神健康職能治療：理論與實務書封" loading="lazy">
-      </div>
-      <div>
-        <span class="badge">著作 · Author</span>
-        <h2>精神健康職能治療：理論與實務</h2>
-        <div class="meta">黃曼聰、陳威勝、陳芝萍 著｜五南圖書出版｜2009/02/01（第二版）</div>
-        <p class="desc">涵蓋精神健康職能治療的專業基礎、臨床推理、評估介入、治療媒介、精神疾病與組織經營管理等實務內容。</p>
-      </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.sanmin.com.tw/product/index/000758420">查看出版品 →</a>
-    </article>
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/handbook-of-preschool-mental-health.webp" alt="學齡前兒童精神健康手冊書封" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">譯作 · Translation</span>
+          <h2>學齡前兒童精神健康手冊：發展、疾病和治療</h2>
+          <div class="meta">Joan L. Luby 主編｜林政佑、陳芝萍、陳威勝 譯｜心理出版社｜2009/09/18</div>
+          <p class="desc">從發展觀點探討學齡前兒童的心理健康、早發性心理疾患、評估與治療。</p>
+        </div>
+        <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.books.com.tw/products/0010450142?sloc=main">查看出版品 →</a>
+      </article>
 
-    <article class="pub-card reveal">
-      <div class="cover-wrap">
-        <img class="cover" src="/images/books/introduction-to-early-childhood-education.webp" alt="幼兒教育導論書封" loading="lazy">
-      </div>
-      <div>
-        <span class="badge">譯作 · Translation</span>
-        <h2>幼兒教育導論</h2>
-        <div class="meta">George S. Morrison 著｜徐聯恩、劉惠君、陳威勝、陳芝萍、孫麗卿、陳雅鈴 譯｜華都文化｜2007/08/31</div>
-        <p class="desc">從幼兒教育專業、理論到實務、家庭與社區、多元文化、適性教學與科技等面向，建立幼兒教育的整體基礎。</p>
-      </div>
-      <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.eslite.com/product/1001181681734811">查看出版品 →</a>
-    </article>
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/introduction-to-early-childhood-education.webp" alt="幼兒教育導論書封" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">譯作 · Translation</span>
+          <h2>幼兒教育導論</h2>
+          <div class="meta">George S. Morrison 著｜徐聯恩、劉惠君、陳威勝、陳芝萍、孫麗卿、陳雅鈴 譯｜華都文化｜2007/08/31</div>
+          <p class="desc">從幼兒教育專業、理論到實務、家庭與社區、多元文化與適性教學等面向建立整體基礎。</p>
+        </div>
+        <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.eslite.com/product/1001181681734811">查看出版品 →</a>
+      </article>
 
-  </div>
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/children-adolescent-mental-health-ot.webp" alt="兒童與青少年心理健康職能治療書封" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">譯作 · Translation</span>
+          <h2>兒童與青少年心理健康職能治療</h2>
+          <div class="meta">Lesley Lougher 原著｜朱靜宜、沈明德、林政佑、林煜涵、陳芝萍、陳威勝 譯｜五南圖書｜2006/08/01</div>
+          <p class="desc">聚焦兒童與青少年心理健康職能治療的理論、評估與介入實務。</p>
+        </div>
+        <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.sanmin.com.tw/product/index/000485603">查看出版品 →</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="pub-category" id="pub-assessment">
+    <div class="pub-category-head">
+      <span>04</span>
+      <div><small>PROFESSIONAL ASSESSMENT TOOLS</small><h3>專業測驗與評估工具</h3></div>
+    </div>
+    <div class="pub-list">
+      <article class="pub-card reveal">
+        <div class="cover-wrap">
+          <img class="cover" src="/images/books/adolescent-adult-sensory-profile-chinese-manual.webp" alt="青少年／成人感覺處理能力剖析量表中文版使用者手冊" loading="lazy">
+        </div>
+        <div>
+          <span class="badge">測驗修訂 · Assessment Adaptation</span>
+          <h2>青少年／成人感覺處理能力剖析量表（中文版）</h2>
+          <div class="meta">Brown, C. E. & Dunn, W. 原著｜曾美惠教授、陳威勝碩士 修訂｜中國行為科學社｜2009/07</div>
+          <p class="desc">專業測驗中文版修訂成果，用以理解青少年與成人的感覺處理型態與日常生活經驗。</p>
+        </div>
+        <a class="buy" target="_blank" rel="noopener noreferrer" href="https://www.mytest.com.tw/Adult_listDS.aspx">查看測驗資訊 →</a>
+      </article>
+    </div>
+  </section>
 </section>
 
 <section class="ending reveal">
