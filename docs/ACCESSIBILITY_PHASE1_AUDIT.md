@@ -73,3 +73,26 @@
 2. 優先清理缺少 skip link、main landmark、iframe title、img alt 等可機器判定項目。
 3. 再進入需人工判讀的對比、焦點順序、互動狀態與內容語意。
 4. 完成上述項目後再執行 Freego 全站 A 級檢測，避免過早送件造成大量往返。
+
+
+## 第三輪：全站公開頁 landmark / skip navigation 掃描
+已擴大抽查根目錄公開 HTML 與主要互動工具頁。
+
+### 本輪已修正
+- about.html：將主要內容完整包入 main landmark，skip link 現在落在真正的主要內容區。
+- notes.html：補正 main landmark，保留既有 skip link。
+- publications.html：補上 main landmark，讓既有 skip link 有明確目標。
+- management-self-study-quiz.html：新增 skip link 與 #aml-main。
+- pbs-self-study-quiz.html：新增 skip link 與 #aml-main。
+- pbs-companion-web.html：新增 skip link 與 #aml-main。
+- tools/management-interactive/index.html：新增 skip link 與 #aml-main。
+- tools/ai-judgment-challenge/index.html：新增 skip link 與 #aml-main。
+- tools/management-decision-lab/index.html：新增 skip link 與 #aml-main。
+- tools/management-fairness-challenge/index.html：新增 skip link 與 #aml-main。
+
+### 掃描工具校正
+- audit-accessibility.mjs 現在會忽略沒有 <html> 根元素的工程片段／暫存 HTML，避免把 lumi-tools-replacement.html 這類非獨立公開頁誤判成缺失。
+
+### 目前判斷
+- 核心主站頁面的 lang、H1、圖片 alt、main landmark 與 skip navigation 結構已大致一致。
+- 下一輪應把重點轉往較難由靜態掃描判斷的項目：色彩對比、鍵盤焦點順序、互動元件 focus 狀態、動態內容宣告與表單錯誤提示。
