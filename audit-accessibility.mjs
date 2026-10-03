@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const projectRoot = process.cwd();
@@ -122,5 +122,18 @@ if(restrictedFlags.length){
   restrictedFlags.forEach(x=>console.log('• '+x));
 }
 console.log(`\nResult: ${errors.length} error(s), ${warnings.length} warning(s).`);
+if(process.env.AUDIT_REPORT){
+  const reportPath=join(projectRoot,process.env.AUDIT_REPORT);
+  writeFileSync(reportPath,JSON.stringify({
+    generatedAt:new Date().toISOString(),
+    auditRoot:relative(projectRoot,root) || '.',
+    checkedCount:checked.length,
+    checked,
+    errors,
+    warnings,
+    restrictedFlags
+  },null,2));
+  console.log(`Report written: ${process.env.AUDIT_REPORT}`);
+}
 console.log('Note: 此工具僅做靜態預檢，不等同 Freego 或人工無障礙檢測。');
 process.exitCode = errors.length ? 1 : 0;
