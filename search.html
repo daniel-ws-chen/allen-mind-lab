@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex,follow"/>
 <style>
 :root{--navy:#0d1b2a;--navy2:#18324f;--gold:#c7a76a;--cream:#f6f1e8;--paper:#fffdf9;--ink:#1f2933;--muted:#6b7280;--line:#e7e1d6;--blue:#315d8b}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--paper);color:var(--ink);line-height:1.75}a{text-decoration:none;color:inherit}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--paper);color:var(--ink);line-height:1.75}a{text-decoration:none;color:inherit}.aml-skip-link{position:fixed;left:16px;top:-80px;z-index:1000;padding:10px 16px;border-radius:10px;background:#fff;color:#0d1b2a;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.15)}.aml-skip-link:focus{top:12px}
 .aml-global-nav{position:fixed;top:0;left:0;right:0;height:72px;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 6vw;background:rgba(8,22,38,.94);color:white;backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08)}
 .brand{font-weight:800;letter-spacing:.12em}.navlinks{display:flex;gap:22px;font-size:.9rem}.navlinks a{color:#e5e7eb}.navlinks a:hover{color:var(--gold)}
 .hero{padding:142px 8vw 74px;background:radial-gradient(circle at 82% 22%,rgba(199,167,106,.2),transparent 30%),linear-gradient(135deg,var(--navy),var(--navy2));color:#fff}.eyebrow{color:var(--gold);font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px}h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.05;margin:0 0 18px}.hero p{max-width:800px;margin:0;color:#d6dde6;font-size:1.06rem}
@@ -22,9 +22,10 @@ footer{padding:30px 8vw;background:#101719;color:#9eaaaf;display:flex;justify-co
 </style>
 </head>
 <body>
+<a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
 <nav class="aml-global-nav" aria-label="主要導覽"><a class="brand" href="/index.html">ALLEN MIND LAB</a><div class="navlinks"><a href="/articles.html">主題館藏</a><a href="/reading-paths.html">閱讀路徑</a><a href="/self-study.html">進階自學室</a><a href="/tools.html">互動實驗室</a><a href="/resources.html">資源</a></div></nav>
 <header class="hero"><div class="eyebrow">AML SEARCH · 1.1</div><h1>搜尋 AML</h1><p>知道自己要找什麼，就不用再一個館一個館翻。搜尋文章、閱讀路徑、自學系統、互動工具與精選資源；常用詞也會自動辨識相關說法。</p></header>
-<main><div class="search-shell">
+<main id="aml-main"><div class="search-shell">
 <form id="search-form" class="search-box" role="search"><label for="q" style="position:absolute;left:-9999px">搜尋 AML</label><input id="q" name="q" type="search" autocomplete="off" placeholder="例如：PBS、ADHD、管理、感覺處理、AI…"/><button id="search-btn" type="submit">搜尋</button></form>
 <div class="quick" aria-label="熱門搜尋"><button type="button" data-q="PBS">PBS</button><button type="button" data-q="ADHD">ADHD</button><button type="button" data-q="管理">管理</button><button type="button" data-q="AI">AI</button><button type="button" data-q="職能治療">職能治療</button><button type="button" data-q="情緒">情緒</button></div>
 <div class="toolbar"><p id="result-count" aria-live="polite">輸入關鍵字開始搜尋。</p><div class="filters" aria-label="搜尋結果類型"><button class="filter active" type="button" data-type="全部">全部</button><button class="filter" type="button" data-type="文章">文章</button><button class="filter" type="button" data-type="學習">學習</button><button class="filter" type="button" data-type="工具">工具</button><button class="filter" type="button" data-type="資源">資源</button><button class="filter" type="button" data-type="館藏">館藏</button></div></div>

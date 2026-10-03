@@ -26,9 +26,12 @@ h1{font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.1;color:var(--navy);margin:8
 
 .completion-exit{margin-top:22px;border:1px solid #d7e7e2;border-radius:22px;padding:22px;background:linear-gradient(135deg,#f8fffc,#fffdf8)}.completion-exit__kicker{font-size:.72rem;font-weight:900;letter-spacing:.13em;color:#2a7664}.completion-exit h2{margin:5px 0 7px;color:var(--navy);font-size:1.3rem}.completion-exit p{margin:0 0 14px;color:#667181}.completion-exit__actions{display:flex;gap:10px;flex-wrap:wrap}.completion-exit__actions a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:9px 14px;border-radius:999px;text-decoration:none;font-weight:900;border:1px solid #98bdb3;color:#275f54;background:#fff}.completion-exit__actions a.primary{background:#275f54;color:#fff;border-color:#275f54}@media(max-width:620px){.completion-exit__actions a{width:100%}}
 </style>
+<style>.aml-skip-link{position:fixed;left:16px;top:-80px;z-index:10000;padding:10px 16px;border-radius:10px;background:#fff;color:#0d1b2a;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.15)}.aml-skip-link:focus{top:12px}</style>
+<style>[tabindex="-1"]:focus{outline:3px solid currentColor;outline-offset:4px}</style>
 </head>
-<body><nav class="aml-lab-shell-nav" aria-label="進階自學室導覽"><a class="aml-lab-shell-nav__back" href="/self-study.html">← 回進階自學室</a><div class="aml-lab-shell-nav__links"><a href="/pbs-self-study.html">PBS 自學路徑</a><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div></nav>
-<main class="wrap">
+<body>
+<a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav class="aml-lab-shell-nav" aria-label="進階自學室導覽"><a class="aml-lab-shell-nav__back" href="/self-study.html">← 回進階自學室</a><div class="aml-lab-shell-nav__links"><a href="/pbs-self-study.html">PBS 自學路徑</a><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div></nav>
+<main class="wrap" id="aml-main">
 
 <div class="kicker">AML PBS · FINAL REVIEW</div>
 <h1>PBS 自學總複習</h1>
@@ -43,13 +46,13 @@ h1{font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.1;color:var(--navy);margin:8
 
 <section class="quiz-card" data-quiz>
   <div class="quiz-step" data-step></div>
-  <h2 data-question></h2>
+  <h2 data-question tabindex="-1"></h2>
   <div class="options" data-options></div>
 </section>
 
 <section class="result-card" data-result>
   <div class="score" data-score></div>
-  <h2 data-result-title></h2>
+  <h2 data-result-title tabindex="-1"></h2>
   <p data-result-text></p>
   <ul class="review-list" data-review></ul>
   <div class="action-row">
@@ -62,9 +65,10 @@ h1{font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.1;color:var(--navy);margin:8
   <h2>產生 AML PBS 自學完訓證明</h2>
   <p>姓名只用來顯示在這一頁，不會傳送到 AML 或其他伺服器。</p>
   <div class="certificate-form">
-    <input type="text" maxlength="40" placeholder="請輸入姓名" aria-label="姓名" data-name>
+    <input type="text" maxlength="40" placeholder="請輸入姓名" aria-label="姓名" data-name aria-describedby="certificate-name-status">
     <button class="btn" type="button" data-generate>產生證明</button>
   </div>
+  <p id="certificate-name-status" data-name-status role="alert" hidden></p>
   <div class="certificate" data-certificate hidden>
     <div class="brand">ALLEN MIND LAB · AML</div>
     <h2>PBS 自學完訓證明</h2>

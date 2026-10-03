@@ -32,6 +32,7 @@
   const nameInput=document.querySelector('[data-name]');
   const generate=document.querySelector('[data-generate]');
   const cert=document.querySelector('[data-certificate]');
+  const nameStatus=document.querySelector('[data-name-status]');
   const certName=document.querySelector('[data-cert-name]');
   const certDate=document.querySelector('[data-cert-date]');
   const certId=document.querySelector('[data-cert-id]');
@@ -72,6 +73,7 @@
       b.addEventListener('click',()=>answer(i));
       options.appendChild(b);
     });
+    requestAnimationFrame(()=>question.focus());
   }
   function answer(choice){
     const item=qs[idx];
@@ -105,10 +107,13 @@
       s.quiz.passed=true; s.quiz.date=s.quiz.date||today(); s.quiz.certificateId=s.quiz.certificateId||makeId();
       save(s); certPanel.style.display='block'; if(completionExit) completionExit.style.display='block';
     } else if(completionExit){ completionExit.style.display='none'; }else save(s);
+    requestAnimationFrame(()=>resultTitle.focus());
   }
   function generateCert(){
     const name=(nameInput.value||'').trim();
-    if(!name){nameInput.focus();return}
+    if(nameStatus){nameStatus.hidden=true;nameStatus.textContent='';}
+    if(!name){nameInput.setAttribute('aria-invalid','true');if(nameStatus){nameStatus.textContent='請先輸入姓名，再產生完訓證明。';nameStatus.hidden=false;}nameInput.focus();return}
+    nameInput.removeAttribute('aria-invalid');
     const s=load();
     if(!s.quiz.passed) return;
     s.quiz.name=name; save(s);
