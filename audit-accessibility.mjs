@@ -97,6 +97,14 @@ function inspect(file){
       warnings.push(`${rel}: role="button" 元件未偵測到 tabindex="0"，請確認鍵盤可操作性。`);
     }
   }
+
+  for(const m of html.matchAll(/<(div|section|nav|aside|article)\b([^>]*aria-hidden\s*=\s*["']true["'][^>]*)>([\s\S]*?)<\/\1>/gi)){
+    const attrs=m[2], body=m[3];
+    if(/\binert\b/i.test(attrs)) continue;
+    if(/<(?:a|button|input|select|textarea|summary)\b|tabindex\s*=\s*["']0["']/i.test(body)){
+      warnings.push(`${rel}: aria-hidden="true" 區塊內疑似仍有可聚焦控制項，且容器未標 inert；請人工確認收合狀態 Tab 不會進入。`);
+    }
+  }
 }
 
 if(!existsSync(root)){
