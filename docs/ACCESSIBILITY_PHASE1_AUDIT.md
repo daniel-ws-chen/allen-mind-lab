@@ -139,3 +139,8 @@
 - audit-accessibility.mjs 會標示 restricted candidate，但在真正 server/edge auth 證據完成前仍照公開頁面檢查，不會偷渡排除。
 - 發現 docs/ 與 audit-accessibility.mjs 原本會被 build-dist.mjs 複製到公開 dist。
 - 已將 docs/ 與 audit-accessibility.mjs 加入 build 排除清單，避免內部認證稽核文件與工程腳本公開發布。
+
+
+### Build guard
+- build-dist.mjs 現在會在建置後驗證 docs/、audit-accessibility.mjs、accessibility-scope.json 等內部稽核／工程檔沒有進入 dist；若誤發布會直接讓 build 失敗。
+- 對尚未真正受保護的感控 Pilot 與 Sera.Phina national-exam，部署時只提出警告，不阻斷部署，避免目前功能突然失效。
