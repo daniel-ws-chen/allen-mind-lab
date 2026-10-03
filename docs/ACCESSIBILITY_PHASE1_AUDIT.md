@@ -178,3 +178,10 @@
 - Accessibility preflight CI 已在 head f23bdf3 成功執行：source validation、public dist build、dist accessibility preflight、private artifact guard 全部通過。
 - 為了不只看到「成功／失敗」，audit-accessibility.mjs 現可輸出 JSON 報告。
 - workflow 會保存 accessibility-preflight-report artifact 14 天，後續可直接依 warnings 清單逐項修正。
+
+
+## 第十二輪：Skip link 與動態訊息人工可用性
+- 共用 aml-site.js 現在會在 skip link 啟動後，把程式焦點真正移到目標內容，而不只是改變捲動位置。
+- 共用 CSS 為 #aml-main / #main 增加 scroll-margin-top，降低 sticky 導覽遮住跳轉目標的風險。
+- prefers-reduced-motion 使用者不會被強制平滑捲動。
+- 文章分享／複製狀態現在自動補上 role="status"、aria-live="polite"、aria-atomic="true"，讓「連結已複製」等動態回饋可被輔助科技感知。
