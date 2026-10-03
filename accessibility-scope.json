@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "generated": "2026-10-03",
+  "public_include_prefixes": [
+    "/",
+    "/articles/",
+    "/tools/",
+    "/sera-phina/"
+  ],
+  "restricted_candidates": [
+    "/tools/infection-control-pilot/",
+    "/sera-phina/learning-lab/national-exam/"
+  ],
+  "notes": {
+    "/tools/infection-control-pilot/": "Front-end gate only; treat as public until real server/edge auth is confirmed.",
+    "/sera-phina/learning-lab/national-exam/": "OTP is declared in UI, but real edge/server enforcement is not yet verified."
+  }
+}
