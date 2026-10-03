@@ -11,13 +11,31 @@
     const final=document.getElementById('finalSelfCheck'); if(final){if(final.checked)complete(m.id);final.addEventListener('change',()=>{if(final.checked)complete(m.id);});}
   }
   function fmt(iso){if(!iso)return'';try{return new Intl.DateTimeFormat('zh-TW',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(iso));}catch(e){return''}}
-  function renderDashboard(){const recent=document.getElementById('spRecentLearning');if(!recent)return;const h=read();const items=Object.entries(h).map(([id,v])=>({id,...v})).sort((a,b)=>String(b.lastVisited||'').localeCompare(String(a.lastVisited||'')));
-    if(!items.length){recent.classList.add('hidden');return;} recent.classList.remove('hidden');const r=items[0];
-    document.getElementById('spRecentTitle').textContent=r.title||'Learning Lab';
-    document.getElementById('spRecentDesc').textContent=r.completed?'已完成一次流程，可回來複習或進行下一次練習。':(typeof r.progress==='number'?`目前紀錄約 ${r.progress}% 完成，可繼續上次的學習。`:'已開始使用，可繼續上次的學習。');
-    document.getElementById('spRecentMeta').textContent=`最近使用：${fmt(r.lastVisited)}${r.completed?' · 已完成':''}`;
-    const a=document.getElementById('spRecentLink');a.href=r.path||'#';a.textContent=r.completed?'再次進入 →':'繼續學習 →';
-    const list=document.getElementById('spHistoryList'); if(list){list.innerHTML=items.slice(0,3).map(x=>`<div class="sp-history-item"><strong>${x.title||x.id}</strong><small>${x.completed?'已完成':'進行中'}${typeof x.progress==='number'?' · '+x.progress+'%':''}<br>${fmt(x.lastVisited)}</small></div>`).join('');}
+  function renderDashboard(){
+    const recent=document.getElementById('spRecentLearning');
+    const list=document.getElementById('spHistoryList');
+    const h=read();
+    const items=Object.entries(h).map(([id,v])=>({id,...v})).sort((a,b)=>String(b.lastVisited||'').localeCompare(String(a.lastVisited||'')));
+    if(!items.length){
+      if(recent)recent.classList.add('hidden');
+      if(list)list.innerHTML='';
+      return;
+    }
+    if(recent){
+      recent.classList.remove('hidden');
+      const r=items[0];
+      const title=document.getElementById('spRecentTitle');
+      const desc=document.getElementById('spRecentDesc');
+      const meta=document.getElementById('spRecentMeta');
+      const link=document.getElementById('spRecentLink');
+      if(title)title.textContent=r.title||'Learning Lab';
+      if(desc)desc.textContent=r.completed?'已完成一次流程，可回來複習或進行下一次練習。':(typeof r.progress==='number'?('目前紀錄約 '+r.progress+'% 完成，可繼續上次的學習。'):'已開始使用，可繼續上次的學習。');
+      if(meta)meta.textContent='最近使用：'+fmt(r.lastVisited)+(r.completed?' · 已完成':'');
+      if(link){link.href=r.path||'#';link.textContent=r.completed?'再次進入 →':'繼續學習 →';}
+    }
+    if(list){
+      list.innerHTML=items.slice(0,3).map(x=>'<a class="sp-history-item" href="'+(x.path||'#')+'"><strong>'+(x.title||x.id)+'</strong><small>'+(x.completed?'已完成':'進行中')+(typeof x.progress==='number'?' · '+x.progress+'%':'')+'<br>'+fmt(x.lastVisited)+'</small></a>').join('');
+    }
   }
   document.addEventListener('DOMContentLoaded',()=>{initLab();renderDashboard();});
 })();
