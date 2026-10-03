@@ -129,3 +129,14 @@ Branch：`accessibility/phase1-a-preflight`
 
 因此目前適合描述為：**「Freego 前工程預檢已建立且持續通過；已進入人工驗收階段。」**  
 不適合描述為：**「已通過 A 級」或「已完成正式送審條件」。**
+
+
+## K. Zoom / Reflow 執行計畫
+
+- 已新增 `docs/ACCESSIBILITY_REFLOW_TEST_PLAN.md`。
+- 靜態風險排序：
+  - P0：`/tools.html`、首頁、Management Coach、PBS Companion
+  - P1：兩套 quiz、Library、Articles、Reading Paths
+  - P2：Self-study、Resources
+- 靜態掃描顯示 `tools.html` 的固定尺寸與 responsive 規則最多，因此優先人工測試，不直接視為錯誤。
+- nowrap 項目已整理成觀察清單；只有在 320px / 400% 造成頁面級 overflow 時才修正，避免不必要的視覺改版。
