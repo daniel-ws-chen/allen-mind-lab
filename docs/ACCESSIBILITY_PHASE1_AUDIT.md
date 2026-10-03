@@ -303,3 +303,11 @@
   - positive tabindex → error
   - autofocus / accesskey / meta refresh → warning
 - 目的在防止之後新頁面破壞自然 Tab 順序或 DOM 可及性關聯。
+
+
+## 第二十八輪：CI 真實抓錯與 ARIA 關聯完整性
+- 新增 duplicate-id guard 後，CI 成功抓出兩個真實錯誤：
+  - management-self-study.html：hero 與 main 重複使用 aml-main
+  - pbs-self-study.html：hero 與 main 重複使用 aml-main
+- 已移除 hero 上的重複 id，只保留 main 作為 skip link 唯一目標。
+- preflight 再新增 aria-labelledby / aria-describedby / aria-controls reference integrity；不存在的 id 目標視為 error。
