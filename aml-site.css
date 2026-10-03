@@ -1683,3 +1683,17 @@ body .newsletter-icon{
   .aml-related-reading__card{min-height:0;padding:18px}
 }
 /* ===== /AML Related Reading Engine v1 ===== */
+
+
+/* AML Phase 1 · Skip target visibility */
+#aml-main,
+#main{
+  scroll-margin-top:88px;
+}
+#aml-main[tabindex="-1"]:focus,
+#main[tabindex="-1"]:focus{
+  outline:none;
+}
+@media (prefers-reduced-motion: reduce){
+  html:focus-within{scroll-behavior:auto!important}
+}
