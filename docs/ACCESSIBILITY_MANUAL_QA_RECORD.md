@@ -180,3 +180,16 @@ Branch：`accessibility/phase1-a-preflight`
 - 新增 `docs/ACCESSIBILITY_REPRESENTATIVE_URLS.md`：固定正式全站掃描前的代表模板 URL 組。
 - 新增 `docs/ACCESSIBILITY_FREEGO_RUN_RECORD.md`：固定每次 Freego 掃描的 URL、規則、嚴重度、修正 commit 與重測紀錄。
 - 代表樣本只用於提早抓共通問題；最終範圍仍回到 104 個公開 URL 基線。
+
+
+## P. 代表樣本靜態反模式抽查
+
+已對核心代表頁與三篇文章樣本額外抽查下列項目：
+- duplicate id
+- positive tabindex
+- autofocus
+- accesskey
+- meta refresh
+- 非原生 div/span click/role=button 互動
+
+本輪代表樣本未發現上述反模式。為避免未來回歸，duplicate id 與 positive tabindex 已提升為 preflight error；autofocus / accesskey / meta refresh 則列 warning，保留人工判斷空間。
