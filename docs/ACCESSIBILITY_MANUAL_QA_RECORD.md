@@ -140,3 +140,15 @@ Branch：`accessibility/phase1-a-preflight`
   - P2：Self-study、Resources
 - 靜態掃描顯示 `tools.html` 的固定尺寸與 responsive 規則最多，因此優先人工測試，不直接視為錯誤。
 - nowrap 項目已整理成觀察清單；只有在 320px / 400% 造成頁面級 overflow 時才修正，避免不必要的視覺改版。
+
+
+## L. P0 實際操作腳本
+
+- 已新增 `docs/ACCESSIBILITY_P0_TEST_SCRIPT.md`。
+- P0 四頁已拆成逐步操作：
+  - 首頁：skip link、曦兒 dialog、搜尋、zoom/reflow
+  - tools：導覽、Xier、Engineering Bay inert/Escape、zoom/reflow
+  - Management Coach：錯誤焦點、step focus、檔案狀態、組員模式
+  - PBS Companion：target behavior error、ABC 表、七週期表
+- 問題嚴重度固定為 Blocker / Major / Minor，避免人工驗收時每次重新判斷優先級。
+- P0 只有在鍵盤 + 200% + 400% + 320px 都完成、且無未處理 Blocker 時，才能從 ◐ 改成 ✅。
