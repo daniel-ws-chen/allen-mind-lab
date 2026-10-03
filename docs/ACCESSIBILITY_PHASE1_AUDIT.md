@@ -311,3 +311,10 @@
   - pbs-self-study.html：hero 與 main 重複使用 aml-main
 - 已移除 hero 上的重複 id，只保留 main 作為 skip link 唯一目標。
 - preflight 再新增 aria-labelledby / aria-describedby / aria-controls reference integrity；不存在的 id 目標視為 error。
+
+
+## 第二十九輪：Mind 館閱讀路徑卡片疊字修正
+- 使用者實際畫面發現 `/mind` 的 guided path cards 發生 CTA 疊字。
+- 根因：共用 `.aml-route-card b` 原本設計給單一箭頭，使用 absolute positioning；Mind / OT 部分卡片卻把整段 CTA 文案放進 `<b>`，因此文字被定位到卡片右側並與正文重疊。
+- 新增 `.aml-route-card__action` 正常文流樣式，將 Mind / OT 的長 CTA 改成該 class；單純箭頭仍維持既有 absolute placement。
+- 這是語意與版面兼容修正，不改變卡片連結行為。
