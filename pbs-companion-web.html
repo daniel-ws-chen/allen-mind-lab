@@ -146,6 +146,7 @@
 <p>先產生可討論的草稿，再由團隊人工修正。</p>
 </header>
 <button class="pbsw-btn primary" id="analyzeBtn" type="button">產生分析與策略草稿</button>
+<p class="pbsw-status pbsw-status--error" id="analysisStatus" role="alert" hidden></p>
 <div class="pbsw-empty" id="analysisEmpty">尚未產生分析。請先完成前面的必要資料。</div>
 <div hidden="" id="analysisResult">
 <section class="pbsw-result-block">
@@ -170,6 +171,7 @@
 </header>
 <div class="pbsw-actions">
 <button class="pbsw-btn primary" id="reportBtn" type="button">產生完整報告初稿</button>
+<span class="pbsw-sr-only" id="reportStatus" role="status" aria-live="polite"></span>
 <button class="pbsw-btn secondary" disabled="" id="copyReportBtn" type="button">複製報告</button>
 <button class="pbsw-btn secondary" disabled="" id="copyAiBtn" type="button">複製 AI 任務包</button>
 <button class="pbsw-btn secondary" disabled="" id="printBtn" type="button">列印／存成 PDF</button>
