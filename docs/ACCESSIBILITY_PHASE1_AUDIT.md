@@ -162,3 +162,13 @@
   - table 是否至少具有 th
   - role="button" 非原生按鈕是否具 tabindex="0"
 - 這些新增規則先以 warning 為主，避免因靜態解析限制造成誤判；正式結論仍需 Freego 與人工測試。
+
+
+## 第十輪：以「真正公開 dist」作為稽核對象
+- audit-accessibility.mjs 新增 AUDIT_ROOT 支援；本機仍可掃 repo，但 CI 可指定 dist。
+- Accessibility preflight workflow 調整為：
+  1. node validate-aml.mjs
+  2. node build-dist.mjs
+  3. AUDIT_ROOT=dist node audit-accessibility.mjs
+  4. 驗證內部稽核／工程檔未進入 dist
+- 這可避免 article-template、工程片段或 repository-only 檔案造成假陽性，讓結果更接近 Freego 實際看到的公開網站。
