@@ -146,6 +146,29 @@
 })();
 
 (() => {
+  /* ===== Skip Link Focus Management ===== */
+  const bindSkipLinks = () => {
+    document.querySelectorAll('a.aml-skip-link[href^="#"]').forEach(link => {
+      if (link.dataset.amlSkipBound === "true") return;
+      link.dataset.amlSkipBound = "true";
+      link.addEventListener("click", event => {
+        const id = link.getAttribute("href")?.slice(1);
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        target.scrollIntoView({ block: "start", behavior: "auto" });
+      });
+    });
+  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindSkipLinks, { once: true });
+  } else {
+    bindSkipLinks();
+  }
+
   /* ===== Accessible Explore & Mobile Navigation ===== */
   const toggle = document.querySelector(".aml-menu-toggle");
   const menu = document.querySelector(".aml-mobile-menu");
@@ -304,6 +327,12 @@
 
   const shareStatus =
     document.querySelector("[data-aml-share-status]");
+
+  if (shareStatus) {
+    shareStatus.setAttribute("role", "status");
+    shareStatus.setAttribute("aria-live", "polite");
+    shareStatus.setAttribute("aria-atomic", "true");
+  }
 
   if (shareButton || lineShareButton || copyButton) {
 
