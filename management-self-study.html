@@ -35,9 +35,130 @@
 @media(max-width:640px){.aml-lab-shell-nav{padding:12px 6vw 0;align-items:stretch}.aml-lab-shell-nav__back,.aml-lab-shell-nav__links a{width:100%;justify-content:center}.aml-lab-shell-nav__links{width:100%}.aml-lab-mini-footer{padding:20px 6vw 28px;display:block}.aml-lab-mini-footer__links{margin-top:10px;display:grid}}
 
 </style>
+
+<style id="management-self-study-visual-v2">
+/* Stronger AML learning identity */
+body{
+  background:
+    linear-gradient(180deg,#f4f7fb 0,#fbfaf7 36%,#f7f4ee 100%);
+}
+.aml-lab-shell-nav{
+  background:#f6f1e8;
+  border-bottom:1px solid #e1d6c3;
+  max-width:none;
+  padding:12px 7vw;
+}
+.aml-lab-shell-nav__back,
+.aml-lab-shell-nav__links a{
+  color:#173a52;
+}
+.aml-lab-shell-nav__links a{
+  border-color:#cfd9df;
+  background:#fff;
+}
+.study-hero{
+  position:relative;
+  overflow:hidden;
+  padding:72px 7vw 58px;
+  background:
+    radial-gradient(circle at 86% 16%,rgba(199,167,106,.22),transparent 28%),
+    linear-gradient(135deg,#dfeaf3 0%,#f7f2e8 60%,#eef4f7 100%);
+  border-bottom:1px solid #d6dde2;
+}
+.study-hero::after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  bottom:-110px;
+  width:300px;
+  height:300px;
+  border-radius:50%;
+  border:1px solid rgba(23,58,82,.10);
+  pointer-events:none;
+}
+.study-route-nav a{
+  border-color:#becbd2;
+  background:rgba(255,255,255,.92);
+  color:#173a52;
+  box-shadow:0 4px 12px rgba(7,26,51,.04);
+}
+.kicker{color:#8a6423}
+.study-hero h1{color:#071a33}
+.study-hero p{color:#45566a}
+.study-flow span{
+  background:#fff;
+  border-color:#c8d4dc;
+  color:#173a52;
+  box-shadow:0 3px 10px rgba(7,26,51,.04);
+}
+.course-note{
+  background:#fff;
+  border-color:#dccfb8;
+  box-shadow:0 8px 20px rgba(91,67,31,.04);
+}
+.study-wrap{
+  position:relative;
+}
+.progress-panel{
+  background:linear-gradient(135deg,#ffffff 0%,#f0f6f8 100%);
+  border-color:#cbd8df;
+  box-shadow:0 12px 30px rgba(7,26,51,.07);
+}
+.progress-ring strong{color:#176552}
+.progress-bar{background:#dfe7e9}
+.progress-bar span{background:linear-gradient(90deg,#173a52,#3f7f74,#c7a76a)}
+.lesson-grid{gap:22px}
+.lesson-card{
+  border-color:#d6dde2;
+  box-shadow:0 10px 28px rgba(7,26,51,.07);
+}
+.lesson-card:nth-child(3n+1){border-top:4px solid #274f73}
+.lesson-card:nth-child(3n+2){border-top:4px solid #3d7568}
+.lesson-card:nth-child(3n){border-top:4px solid #b4873f}
+.lesson-card.is-done{
+  border-color:#88b7a0;
+  background:linear-gradient(180deg,#f3fbf6,#fff);
+}
+.lesson-no{color:#8a6423}
+.lesson-game{color:#2c6f61}
+.btn{
+  background:#285f55;
+  border-color:#285f55;
+}
+.btn.ghost{
+  background:#fff;
+  border-color:#87a79d;
+}
+.btn.game{
+  background:#0f2f50;
+  border-color:#0f2f50;
+}
+.bonus{
+  border-color:#c7a76a;
+  background:#fff8e8;
+}
+.finish-panel{
+  box-shadow:0 16px 34px rgba(7,26,51,.18);
+}
+.study-note{
+  background:#eef3f6;
+  border:1px solid #d5dfe5;
+}
+@media(max-width:760px){
+  .study-hero{padding:54px 6vw 44px}
+}
+</style>
 </head>
-<body><nav aria-label="進階自學室導覽" class="aml-lab-shell-nav"><a class="aml-lab-shell-nav__back" href="/self-study.html">← 回進階自學室</a><div class="aml-lab-shell-nav__links"><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div></nav>
-<header class="study-hero"><div class="study-inner"><div class="study-route-nav"><a href="/self-study.html">← 回進階自學室</a><a href="/management-learning.html">管理實務學習路徑</a></div><div class="kicker">AML MICRO-LEARNING · MANAGEMENT</div><h1>管理學自學路徑</h1><p>為大學生課後複習設計。每堂先完成一篇核心閱讀，再進行一組適度難度的情境小測；完成 6 堂後解鎖 15 題 Management Challenge，通過後可產生 AML 線上自學完訓證明。</p><div class="study-flow"><span>① 核心閱讀</span><span>② 課後小測</span><span>③ Reflection Bonus</span><span>④ 15 題綜合測驗</span><span>⑤ 完訓證明</span></div><div class="course-note"><strong>課程使用：</strong>亞洲大學《職能治療管理學》修課學生，可依當學期授課規定將完訓證明列入課程成績；Reflection Bonus 另依教師規定採計。一般讀者亦可自由使用本自學路徑。</div></div></header>
+<body>
+<a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
+<nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
+<details class="aml-nav-group"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
+<details class="aml-nav-group"><summary>主題館藏</summary><div class="aml-nav-panel aml-nav-panel--collection"><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a></div></details>
+<details class="aml-nav-group"><summary>閱讀路徑</summary><div class="aml-nav-panel aml-nav-panel--paths"><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div></details>
+<a class="aml-nav-direct" href="/self-study.html">進階自學室</a><details class="aml-nav-group" data-aml-lab-nav="true"><summary>互動實驗室</summary><div class="aml-nav-panel"><a class="aml-lab-subnav aml-lab-subnav--explore" href="/tools.html#lab-halls">互動探索艙</a><a class="aml-lab-subnav aml-lab-subnav--support" href="/tools.html#practice-tools">智能支援艙</a></div></details>
+<details class="aml-nav-group"><summary>資源與聯繫</summary><div class="aml-nav-panel"><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></details>
+</div><button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button><div class="aml-mobile-menu" id="aml-mobile-menu"><span class="aml-mobile-label">關於 AML</span><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a><span class="aml-mobile-label">主題館藏</span><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a><span class="aml-mobile-label">閱讀路徑</span><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a><span class="aml-mobile-label">進階自學室</span><a href="/self-study.html">進入進階自學室</a><span class="aml-mobile-label">互動實驗室</span><a class="aml-lab-subnav aml-lab-subnav--explore" href="/tools.html#lab-halls">互動探索艙</a><a class="aml-lab-subnav aml-lab-subnav--support" href="/tools.html#practice-tools">智能支援艙</a><span class="aml-mobile-label">資源與聯繫</span><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></nav><nav aria-label="進階自學室導覽" class="aml-lab-shell-nav"><a class="aml-lab-shell-nav__back" href="/self-study.html">← 回進階自學室</a><div class="aml-lab-shell-nav__links"><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div></nav>
+<header class="study-hero" id="aml-main"><div class="study-inner"><div class="study-route-nav"><a href="/self-study.html">← 回進階自學室</a><a href="/management-learning.html">管理實務學習路徑</a></div><div class="kicker">AML MICRO-LEARNING · MANAGEMENT</div><h1>管理學自學路徑</h1><p>為大學生課後複習設計。每堂先完成一篇核心閱讀，再進行一組適度難度的情境小測；完成 6 堂後解鎖 15 題 Management Challenge，通過後可產生 AML 線上自學完訓證明。</p><div class="study-flow"><span>① 核心閱讀</span><span>② 課後小測</span><span>③ Reflection Bonus</span><span>④ 15 題綜合測驗</span><span>⑤ 完訓證明</span></div><div class="course-note"><strong>課程使用：</strong>亞洲大學《職能治療管理學》修課學生，可依當學期授課規定將完訓證明列入課程成績；Reflection Bonus 另依教師規定採計。一般讀者亦可自由使用本自學路徑。</div></div></header>
 <main class="study-wrap" id="aml-main">
 <section class="progress-panel"><div><h2>你的學習進度</h2><p>核心進度為「6 篇文章＋6 組課後小測」共 12 項。文章需閱讀至頁面底部並按「完成閱讀，返回自學路徑」才會記錄完成；Reflection Bonus 獨立計算，不影響主測驗解鎖。</p><div class="progress-bar"><span data-progress-bar=""></span></div><div class="progress-tools"><button class="reset-progress-btn" data-reset-progress="" type="button">清除學習紀錄</button><span class="reset-progress-note">共用電腦或手機時，請在換人使用前先清除學習紀錄。進度只存在這台裝置的瀏覽器。</span></div></div><div class="progress-ring"><strong data-progress-count="">0 / 12</strong><span>核心完成項目</span><small data-bonus-count="">Reflection Bonus 0 / 6</small></div></section>
 <section class="lesson-grid">
@@ -53,4 +174,16 @@
 </main>
 <footer aria-label="進階自學室快速導覽" class="aml-lab-mini-footer"><div>Allen Mind Lab · 進階自學室</div><div class="aml-lab-mini-footer__links"><a href="/self-study.html">進階自學室</a><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div></footer>
 <script src="/management-self-study.js"></script>
+<script>
+(function(){
+  const btn=document.querySelector('.aml-menu-toggle');
+  const menu=document.getElementById('aml-mobile-menu');
+  if(!btn||!menu)return;
+  btn.addEventListener('click',function(){
+    const open=btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded',String(!open));
+    menu.classList.toggle('is-open',!open);
+  });
+})();
+</script>
 </body></html>
