@@ -264,3 +264,12 @@
 - 依靜態 CSS 複雜度與互動密度建立 P0/P1/P2 代表頁優先序。
 - `tools.html` 因固定尺寸、互動元件與 responsive 規則最多列為 P0；這是「測試優先級」，不是已判定缺失。
 - 已整理 nowrap 高風險觀察點，僅在實際造成頁面級水平 overflow 時再修，避免為了掃描數字破壞正常 UI。
+
+
+## 第二十三輪：P0 人工驗收腳本化
+- 新增 `docs/ACCESSIBILITY_P0_TEST_SCRIPT.md`。
+- 首頁、tools、Management Coach、PBS Companion 已拆成可直接照著執行的 Tab / Escape / 200% / 400% / 320px 測試步驟。
+- Engineering Bay 特別驗證收合時 Tab 略過、展開後可進入、Escape 關閉後焦點返回。
+- Management Coach 特別驗證錯誤後焦點導向與 panel H2 focus。
+- PBS Companion 特別驗證 target behavior error 與動態 ABC table。
+- P0 完成門檻固定：鍵盤 + 三組 reflow 測試完成，且沒有未處理 Blocker。
