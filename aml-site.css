@@ -850,6 +850,7 @@
 .aml-route-card strong{display:block;font-size:1rem;margin-bottom:5px}
 .aml-route-card span{display:block;color:#6e777d;font-size:.86rem;line-height:1.6}
 .aml-route-card b{position:absolute;right:18px;top:50%;transform:translateY(-50%);color:#9a7439;font-size:1.15rem}
+.aml-route-card__action{display:block!important;margin-top:9px;color:#9a7439!important;font-size:.9rem!important;font-weight:800;line-height:1.45!important}
 @media(max-width:900px){.aml-footer-links{grid-template-columns:repeat(2,minmax(0,1fr))}.aml-route-map__grid{grid-template-columns:1fr}}
 @media(max-width:620px){.aml-footer-links{grid-template-columns:1fr}.aml-route-map{padding:42px 6vw 48px}}
 
