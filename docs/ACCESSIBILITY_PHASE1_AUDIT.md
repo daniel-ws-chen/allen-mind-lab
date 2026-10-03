@@ -172,3 +172,9 @@
   3. AUDIT_ROOT=dist node audit-accessibility.mjs
   4. 驗證內部稽核／工程檔未進入 dist
 - 這可避免 article-template、工程片段或 repository-only 檔案造成假陽性，讓結果更接近 Freego 實際看到的公開網站。
+
+
+## 第十一輪：CI 產出可追蹤稽核報告
+- Accessibility preflight CI 已在 head f23bdf3 成功執行：source validation、public dist build、dist accessibility preflight、private artifact guard 全部通過。
+- 為了不只看到「成功／失敗」，audit-accessibility.mjs 現可輸出 JSON 報告。
+- workflow 會保存 accessibility-preflight-report artifact 14 天，後續可直接依 warnings 清單逐項修正。
