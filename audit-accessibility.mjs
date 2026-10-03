@@ -98,6 +98,25 @@ function inspect(file){
     }
   }
 
+  const ids=[...html.matchAll(/\bid\s*=\s*["']([^"']+)["']/gi)].map(m=>m[1]);
+  const duplicateIds=[...new Set(ids.filter((id,index)=>ids.indexOf(id)!==index))];
+  if(duplicateIds.length){
+    errors.push(`${rel}: 發現重複 id：${duplicateIds.join(', ')}。`);
+  }
+
+  if(/tabindex\s*=\s*["'][1-9]\d*["']/i.test(html)){
+    errors.push(`${rel}: 發現正值 tabindex，可能破壞自然鍵盤順序。`);
+  }
+  if(/\bautofocus\b/i.test(html)){
+    warnings.push(`${rel}: 發現 autofocus，請人工確認不會造成未預期焦點跳轉。`);
+  }
+  if(/\baccesskey\s*=/i.test(html)){
+    warnings.push(`${rel}: 發現 accesskey，請確認不與瀏覽器／輔助科技快捷鍵衝突。`);
+  }
+  if(/<meta\b[^>]*http-equiv\s*=\s*["']refresh["'][^>]*>/i.test(html)){
+    warnings.push(`${rel}: 發現 meta refresh，請人工確認自動重新整理／跳轉是否必要且可控。`);
+  }
+
   for(const m of html.matchAll(/<(div|section|nav|aside|article)\b([^>]*aria-hidden\s*=\s*["']true["'][^>]*)>([\s\S]*?)<\/\1>/gi)){
     const attrs=m[2], body=m[3];
     if(/\binert\b/i.test(attrs)) continue;
