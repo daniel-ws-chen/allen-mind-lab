@@ -249,3 +249,11 @@
 - 把 CI 無法可靠判定的項目固定成可重複執行的人工驗收：鍵盤、焦點、縮放/reflow、圖片與漸層對比、表單錯誤、表格、dialog、reduced motion、螢幕閱讀器與驗證邊界。
 - 清單明確區分「已自動檢查」與「仍需人工確認」，避免把 preflight success 誤寫成正式無障礙等級通過。
 - 建議流程固定為：代表頁人工 QA → 不同模板抽查 → Freego 全站掃描 → 逐項修正與重測。
+
+
+## 第二十一輪：代表頁驗收紀錄化
+- 新增 `docs/ACCESSIBILITY_MANUAL_QA_RECORD.md`，將人工 checklist 轉成實際狀態矩陣。
+- 狀態拆分為：已確認、待瀏覽器人工確認、待輔助科技確認、存取邊界未定。
+- 代表頁涵蓋首頁、館藏、閱讀路徑、自學、互動實驗室、文章、Management Coach、PBS Companion、兩套測驗。
+- 明確保留 zoom/reflow、圖片／漸層對比、完整 Tab 順序、screen reader 與 Freego 正式掃描為 pending，避免過度宣稱。
+- 目前可描述為「Freego 前工程預檢已建立且持續通過；已進入人工驗收階段」。
