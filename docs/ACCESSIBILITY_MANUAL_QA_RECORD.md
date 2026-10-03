@@ -200,3 +200,12 @@ Branch：`accessibility/phase1-a-preflight`
 - CI 新增 duplicate-id error 後，實際抓到 `management-self-study.html` 與 `pbs-self-study.html` 各有兩個 `id="aml-main"`。
 - 已保留真正的 `<main id="aml-main">`，移除 hero header 上的重複 id，讓 skip link 有唯一目標。
 - accessibility preflight 進一步新增 `aria-labelledby`、`aria-describedby`、`aria-controls` 的 id reference integrity 檢查；任何不存在的目標 id 將列為 error。
+
+
+## R. 靜態 Preflight 里程碑
+
+- Accessibility preflight run #118：✅ success
+- source validation：0 error / 0 warning
+- public dist accessibility audit：0 error / 0 warning
+- private artifact guard：✅
+- 狀態：工程靜態預檢已清零，後續焦點轉為人工 keyboard / zoom / screen reader 與 Freego 正式掃描。
