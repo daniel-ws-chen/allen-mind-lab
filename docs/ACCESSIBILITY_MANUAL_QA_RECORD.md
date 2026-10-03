@@ -162,3 +162,14 @@ Branch：`accessibility/phase1-a-preflight`
 - Quiz：keyboard + 200% + 400% + 320px。
 - 典型文章至少抽 3 種模板，確認 related reading、share status、圖片與表格 reflow。
 - P1 同樣採 Blocker / Major / Minor 分級；未實測前維持 ◐。
+
+
+## N. P2 與 Screen Reader 腳本
+
+- 已新增 `docs/ACCESSIBILITY_P2_SMOKE_TEST.md`：
+  - Self-study、Resources、About/Research/Publications/Recognition、Privacy/Terms/Contact，以及其他公開工具抽樣。
+  - P2 以 keyboard smoke test + 320px 為主，目的為抓共用模板回歸。
+- 已新增 `docs/ACCESSIBILITY_SCREEN_READER_TEST.md`：
+  - 首頁、Management Coach、PBS Companion、Quiz、典型文章與全站噪音抽查。
+  - 最低實測組合：首頁 + Management Coach + PBS Companion + 1 套 Quiz + 1 篇文章。
+- 螢幕閱讀器尚未實測，因此相關項目維持 ○。
