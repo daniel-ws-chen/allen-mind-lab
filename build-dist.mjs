@@ -18,6 +18,8 @@ const skipExact = new Set([
   "wrangler.toml",
   "build-dist.mjs",
   "validate-aml.mjs",
+  "audit-accessibility.mjs",
+  "docs",
   "publish-aml-article.mjs",
   "audit-aml-assets.mjs",
   "package.json",
