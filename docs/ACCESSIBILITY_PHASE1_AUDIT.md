@@ -220,3 +220,9 @@
 - accessibility preflight 新增規則：若 div/section/nav/aside/article 使用 aria-hidden="true"，內部又包含 a/button/input/select/textarea/summary 或 tabindex="0"，但容器沒有 inert，列為 warning。
 - 目的不是把所有 aria-hidden 都視為錯誤；裝飾性 icon / SVG 不受影響。規則只抓「隱藏區裡疑似還有可聚焦控制項」的情況。
 - Engineering Bay 已補 inert，因此不應再被此規則列為風險。
+
+
+## 第十七輪：隱藏區焦點抽查完成
+- 新增 hidden-focus 規則後，Accessibility preflight CI 已再次完整成功。
+- 另外抽查主要公開互動頁（tools.html、PBS Companion、兩套自學測驗、Management Coach、管理決策／公平挑戰、PBS 互動、自我覺察、能量節奏、感覺工具等），未再找到「aria-hidden=true + 可聚焦控制項 + 無 inert」的案例。
+- 這代表目前已知的「視覺隱藏但仍可 Tab 進入」風險已明顯收斂；仍需保留瀏覽器實際 Tab 測試作為人工確認。
