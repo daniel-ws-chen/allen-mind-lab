@@ -273,3 +273,11 @@
 - Management Coach 特別驗證錯誤後焦點導向與 panel H2 focus。
 - PBS Companion 特別驗證 target behavior error 與動態 ABC table。
 - P0 完成門檻固定：鍵盤 + 三組 reflow 測試完成，且沒有未處理 Blocker。
+
+
+## 第二十四輪：P1 人工驗收腳本化
+- 新增 `docs/ACCESSIBILITY_P1_TEST_SCRIPT.md`。
+- Library、Articles、Reading Paths、兩套自學測驗與典型文章模板已拆成逐步 keyboard / zoom / reflow 驗收流程。
+- 測驗頁特別確認結果 heading focus、姓名錯誤 aria-invalid/alert、憑證流程與 400% zoom。
+- 文章模板特別確認 share live status、related reading、圖片與表格 reflow。
+- P1 未實際執行前仍維持待確認，不因 CI success 自動升級為通過。
