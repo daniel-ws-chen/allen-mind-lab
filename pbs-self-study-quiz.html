@@ -65,9 +65,10 @@ h1{font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.1;color:var(--navy);margin:8
   <h2>產生 AML PBS 自學完訓證明</h2>
   <p>姓名只用來顯示在這一頁，不會傳送到 AML 或其他伺服器。</p>
   <div class="certificate-form">
-    <input type="text" maxlength="40" placeholder="請輸入姓名" aria-label="姓名" data-name>
+    <input type="text" maxlength="40" placeholder="請輸入姓名" aria-label="姓名" data-name aria-describedby="certificate-name-status">
     <button class="btn" type="button" data-generate>產生證明</button>
   </div>
+  <p id="certificate-name-status" data-name-status role="alert" hidden></p>
   <div class="certificate" data-certificate hidden>
     <div class="brand">ALLEN MIND LAB · AML</div>
     <h2>PBS 自學完訓證明</h2>
