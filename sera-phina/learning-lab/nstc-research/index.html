@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>國科會研究計畫 AI 顧問｜Sera.Phina</title>
-<meta name="description" content="Sera.Phina 國科會研究計畫 AI 顧問：支援計畫申請、模擬審查、計畫執行、成果報告與 SCI／SSCI 投稿，並要求涉及最新規範時優先查核國科會官方來源。"/>
+<title>學術輔助AI｜Sera.Phina</title>
+<meta name="description" content="Sera.Phina 學術輔助AI：支援計畫申請、模擬審查、計畫執行、成果報告與 SCI／SSCI 投稿，並要求涉及最新規範時優先查核國科會官方來源。"/>
 <link rel="stylesheet" href="../../seraphina.css"/>
 <link rel="stylesheet" href="../learning-lab-common.css"/>
 <style>
@@ -42,8 +42,8 @@ body{background:#fbfbfd}.shell{max-width:1120px;margin:0 auto;padding:48px 24px 
   </div></details>
 </header>
 <main id="main" class="shell">
-<div class="crumbs"><a href="../../index.html">Sera.Phina</a><span>›</span><a href="../index.html">Learning Lab</a><span>›</span><span>國科會研究計畫 AI 顧問</span></div>
-<section class="hero"><div class="eyebrow">NSTC · Research Proposal · Reviewer Lens</div><h1>國科會研究計畫 AI 顧問</h1><div class="en">NSTC Proposal, Review & Research Support</div><p>從申請前的研究構想到執行、成果報告與國際投稿，提供連續性的研究協作。工具的原則是「協助研究者判斷，不代替研究者決策」；遇到年度規定、期限、表單、補助項目或行政程序，先回到官方資料查核。</p><div class="tags"><span>計畫申請</span><span>模擬審查</span><span>執行支援</span><span>成果報告</span><span>SCI / SSCI 投稿</span><span>研究倫理</span></div><div class="official"><strong>官方查核入口：</strong> <a href="https://www.nstc.gov.tw/" target="_blank" rel="noopener">國家科學及技術委員會</a> · <a href="https://arspb.nstc.gov.tw/" target="_blank" rel="noopener">學術研發服務網</a> · <a href="https://www.nstc.gov.tw/folksonomy/qaList/60b9df2d-3ba9-4e33-919e-4327c63ad411?l=ch" target="_blank" rel="noopener">專題研究計畫申請常見問題</a></div></section>
+<div class="crumbs"><a href="../../index.html">Sera.Phina</a><span>›</span><a href="../index.html">Learning Lab</a><span>›</span><span>學術輔助AI</span></div>
+<section class="hero"><div class="eyebrow">NSTC · Research Proposal · Reviewer Lens</div><h1>學術輔助AI</h1><div class="en">NSTC Proposal, Review & Research Support</div><p>從申請前的研究構想到執行、成果報告與國際投稿，提供連續性的研究協作。工具的原則是「協助研究者判斷，不代替研究者決策」；遇到年度規定、期限、表單、補助項目或行政程序，先回到官方資料查核。</p><div class="tags"><span>計畫申請</span><span>模擬審查</span><span>執行支援</span><span>成果報告</span><span>SCI / SSCI 投稿</span><span>研究倫理</span></div><div class="official"><strong>官方查核入口：</strong> <a href="https://www.nstc.gov.tw/" target="_blank" rel="noopener">國家科學及技術委員會</a> · <a href="https://arspb.nstc.gov.tw/" target="_blank" rel="noopener">學術研發服務網</a> · <a href="https://www.nstc.gov.tw/folksonomy/qaList/60b9df2d-3ba9-4e33-919e-4327c63ad411?l=ch" target="_blank" rel="noopener">專題研究計畫申請常見問題</a></div></section>
 
 <section class="workflow" aria-label="研究支援階段">
 <button class="mode active" data-mode="proposal"><b>1</b><strong>計畫申請</strong><span>研究問題、創新性、方法、可行性與申請書修訂</span></button>
@@ -87,7 +87,7 @@ publication:{title:'SCI／SSCI 投稿協作',desc:'將計畫成果轉換成可�
 let current='proposal'; const $=id=>document.getElementById(id);
 function select(mode){current=mode;document.querySelectorAll('.mode').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode));$('modeTitle').textContent=modes[mode].title;$('modeDesc').textContent=modes[mode].desc;}
 document.querySelectorAll('.mode').forEach(b=>b.addEventListener('click',()=>select(b.dataset.mode)));
-function build(){const role=$('role').value,field=$('field').value.trim()||'未提供',topic=$('topic').value.trim()||'尚未定題',context=$('context').value.trim()||'目前尚未提供具體內容，請先透過提問協助我整理',year=$('year').value.trim()||'未提供',scheme=$('scheme').value.trim()||'未提供';return `你現在是「國科會研究計畫 AI 顧問」，協助臺灣研究人員進行研究計畫申請、模擬審查、執行問題處理、成果報告與 SCI／SSCI 投稿。你的工作是支持研究者形成更好的學術判斷，不是替研究者做最終決策。\n\n【本次模式】\n${modes[current].title}\n\n【研究者與計畫情境】\n角色：${role}\n研究領域：${field}\n計畫／研究主題：${topic}\n申請／執行年度：${year}\n計畫類型：${scheme}\n\n【目前內容或問題】\n${context}\n\n【本次任務】\n${modes[current].task}\n\n【共同工作規則】\n1. 涉及國科會最新規定、年度徵件、期限、資格、表單、頁數、經費、成果繳交或行政程序時，先連網查核國科會官方網站或學術研發服務網；回覆中附上來源名稱、網址／可辨識連結資訊與查核日期。若查不到，明確寫「尚待官方確認」，不要猜測。\n2. 不得捏造文獻、DOI、作者、期刊、研究結果、量表、統計結果、國科會規定或審查標準。未確認內容必須標示待查證。\n3. 若我上傳或貼入原計畫內容，後續建議須延續該計畫的研究問題、族群、方法、場域與已做決策；若出現矛盾，先指出再繼續。\n4. 先說明問題、證據與風險，再提出 2–3 個可選方向及各自取捨，不要直接替我決定。\n5. 模擬審查時，請把「可能的審查疑問」和「你的修改建議」分開，不要假裝知道真正審查委員會如何評分。\n6. 涉及研究倫理、IRB、個資、資料安全與作者資格時，以學術倫理與所屬機構正式規範為準；不得協助偽造資料、受試者資訊、審查紀錄或作者貢獻。\n7. 文字修改可以協助提升清楚度與論證，但請保留研究者原意；如有大幅改寫，先說明改動理由。\n\n現在請先用 3–6 點整理你對我的研究情境的理解，指出最需要先確認的 1–3 個問題，再開始本階段協作。`;}
+function build(){const role=$('role').value,field=$('field').value.trim()||'未提供',topic=$('topic').value.trim()||'尚未定題',context=$('context').value.trim()||'目前尚未提供具體內容，請先透過提問協助我整理',year=$('year').value.trim()||'未提供',scheme=$('scheme').value.trim()||'未提供';return `你現在是「學術輔助AI」，協助臺灣研究人員進行研究計畫申請、模擬審查、執行問題處理、成果報告與 SCI／SSCI 投稿。你的工作是支持研究者形成更好的學術判斷，不是替研究者做最終決策。\n\n【本次模式】\n${modes[current].title}\n\n【研究者與計畫情境】\n角色：${role}\n研究領域：${field}\n計畫／研究主題：${topic}\n申請／執行年度：${year}\n計畫類型：${scheme}\n\n【目前內容或問題】\n${context}\n\n【本次任務】\n${modes[current].task}\n\n【共同工作規則】\n1. 涉及國科會最新規定、年度徵件、期限、資格、表單、頁數、經費、成果繳交或行政程序時，先連網查核國科會官方網站或學術研發服務網；回覆中附上來源名稱、網址／可辨識連結資訊與查核日期。若查不到，明確寫「尚待官方確認」，不要猜測。\n2. 不得捏造文獻、DOI、作者、期刊、研究結果、量表、統計結果、國科會規定或審查標準。未確認內容必須標示待查證。\n3. 若我上傳或貼入原計畫內容，後續建議須延續該計畫的研究問題、族群、方法、場域與已做決策；若出現矛盾，先指出再繼續。\n4. 先說明問題、證據與風險，再提出 2–3 個可選方向及各自取捨，不要直接替我決定。\n5. 模擬審查時，請把「可能的審查疑問」和「你的修改建議」分開，不要假裝知道真正審查委員會如何評分。\n6. 涉及研究倫理、IRB、個資、資料安全與作者資格時，以學術倫理與所屬機構正式規範為準；不得協助偽造資料、受試者資訊、審查紀錄或作者貢獻。\n7. 文字修改可以協助提升清楚度與論證，但請保留研究者原意；如有大幅改寫，先說明改動理由。\n\n現在請先用 3–6 點整理你對我的研究情境的理解，指出最需要先確認的 1–3 個問題，再開始本階段協作。`;}
 $('generate').onclick=()=>{$('prompt').textContent=build();$('state').textContent='✓ 已產生本階段指令。可複製到 ChatGPT 或其他具連網能力的 AI 工作區。';};
 $('copy').onclick=async()=>{const text=$('prompt').textContent;if(text.startsWith('請先選擇')){$('prompt').textContent=build();}try{await navigator.clipboard.writeText($('prompt').textContent)}catch(e){const t=document.createElement('textarea');t.value=$('prompt').textContent;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove()}$('state').textContent='✓ 已複製 AI 指令。';};
 })();
