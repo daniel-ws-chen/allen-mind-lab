@@ -22,7 +22,8 @@ const skipExact = new Set([
   "audit-aml-assets.mjs",
   "package.json",
   "package-lock.json",
-  "README_fix.txt"
+  "README_fix.txt",
+  "DELETE_FILES.txt"
 ]);
 
 const skipPrefixes = [
@@ -150,6 +151,9 @@ const sourceOnlyAssets = [
   "images/articles/ot-management-needs-based-service-design-hero.png",
   "images/articles/schedule-empty-space-hero.png",
   "images/articles/ai-human-occupation-moho-social.png",
+
+  // Repository-only maintenance snippets.
+  "sera-phina/learning-lab/national-exam/LOGOUT_LINK_PATCH.html",
 
   // Non-public templates / superseded pages.
   "articles/article-template.html",
