@@ -247,6 +247,65 @@
 .pub-ref{min-width:180px;padding:12px 14px;border:1px solid #e2d8c7;border-radius:14px;background:#fbf8f2;color:#76684f;font-size:.8rem;line-height:1.65;font-weight:700}
 @media(max-width:820px){.pub-category{margin-bottom:52px}.pub-category-head h3{font-size:1.35rem}.pub-ref{min-width:0}}
 </style>
+
+<style id="publications-hero-nav-fix">
+/* Publications was migrated from a legacy standalone page.
+   Keep old generic nav rules from leaking into the AML global navigation. */
+.aml-global-nav{
+  position:sticky!important;
+  top:0!important;
+  left:auto!important;
+  right:auto!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:0!important;
+  display:flex!important;
+  background:#0d1b2a!important;
+  z-index:1000!important;
+}
+.aml-global-nav .aml-nav-panel{
+  display:none!important;
+}
+.aml-global-nav details[open] > .aml-nav-panel{
+  display:grid!important;
+}
+.aml-global-nav .aml-mobile-menu{
+  display:none!important;
+}
+.aml-global-nav .aml-mobile-menu.is-open{
+  display:block!important;
+}
+
+/* Compact the publication hero: it should introduce the section, not consume the viewport. */
+.hero{
+  min-height:0!important;
+  display:block!important;
+  padding:72px 8vw 64px!important;
+  background:
+    radial-gradient(circle at 82% 22%,rgba(199,167,106,.14),transparent 28%),
+    linear-gradient(135deg,#0d1b2a,#18324f)!important;
+}
+.hero-inner{
+  max-width:980px!important;
+}
+.hero h1{
+  margin:8px 0 18px!important;
+  font-size:clamp(3rem,6vw,5.25rem)!important;
+  line-height:.98!important;
+}
+.hero p{
+  max-width:900px!important;
+  margin:0!important;
+  font-size:1rem!important;
+  line-height:1.85!important;
+}
+@media(max-width:760px){
+  .hero{padding:54px 6vw 48px!important}
+  .hero h1{font-size:clamp(2.6rem,14vw,4.1rem)!important}
+}
+</style>
+
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
 
