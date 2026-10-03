@@ -63,6 +63,23 @@ body{background:#fbf9fc}
 @media(max-width:920px){.workbench-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.workbench-grid{grid-template-columns:1fr}.workbench-card{min-height:0}}
 </style>
+
+<style id="educator-compact-style">
+.edu-compact-hero{padding:30px 32px}
+.edu-quick{background:linear-gradient(145deg,#fff,#f7f2fa)}
+.edu-four-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.edu-four-steps article{padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.edu-four-steps b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#eee7f2;color:var(--sage-deep);font-size:11px}
+.edu-four-steps h3{margin:9px 0 5px;font-size:16px}.edu-four-steps p{margin:0;color:#786d7d;font-size:11.5px;line-height:1.65}
+.supervisor-labs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.supervisor-lab{--sl:#6f4f86;--slsoft:#f3edf7;padding:18px;border:1px solid color-mix(in srgb,var(--sl) 25%,#ddd);border-left:4px solid var(--sl);border-radius:16px;background:linear-gradient(145deg,#fff,var(--slsoft))}
+.supervisor-lab.interview{--sl:#4d8e91;--slsoft:#ebf7f7}.supervisor-lab.reflection{--sl:#5f8a78;--slsoft:#edf6f2}.supervisor-lab.reasoning{--sl:#3f8b6e;--slsoft:#e8f7f0}.supervisor-lab.assessment{--sl:#4f78b8;--slsoft:#eaf2ff}.supervisor-lab.research{--sl:#7650a8;--slsoft:#f2eafd}
+.supervisor-lab>span{font-size:9px;font-weight:900;letter-spacing:.12em;color:var(--sl)}.supervisor-lab h3{margin:6px 0 6px;font-size:18px}.supervisor-lab p{margin:0 0 10px;color:#716677;font-size:12px;line-height:1.65}.supervisor-lab strong{display:block;color:#54495a;font-size:11px}.supervisor-lab small{display:block;color:#756a7a;font-size:11px;line-height:1.6}.supervisor-lab a{display:inline-flex;margin-top:11px;color:var(--sl);font-size:11.5px;font-weight:900}
+.prompt-mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px}.prompt-mini-grid details{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:#fcfbfd}.prompt-mini-grid summary{cursor:pointer;font-weight:900;font-size:12px;color:#574b5d}.prompt-mini-grid p{margin:8px 0 0;color:#746979;font-size:12px;line-height:1.65}
+.compact-guard .guardrails{margin-top:14px}.training-compact{display:flex;align-items:center;justify-content:space-between;gap:22px}.training-compact h2{font-size:23px;margin:4px 0}.training-compact p{margin:0;color:#766a7b;font-size:12px}.closing-compact{text-align:left}
+@media(max-width:900px){.edu-four-steps{grid-template-columns:1fr 1fr}.supervisor-labs,.prompt-mini-grid{grid-template-columns:1fr}.training-compact{display:block}.training-compact .btn{margin-top:14px}}
+@media(max-width:620px){.edu-four-steps{grid-template-columns:1fr}.edu-compact-hero{padding:22px}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">跳至主要內容</a>
@@ -95,228 +112,101 @@ body{background:#fbf9fc}
 </header>
 
 <main id="main" class="edu-shell">
-<div class="crumbs"><a href="../index.html">Learning Lab</a><span>›</span><span>教師／督導入口</span></div>
+<div class="crumbs"><a href="../index.html">Learning Lab</a><span>›</span><span>督導／臨床教師入口</span></div>
 
-<section class="hero">
-  <div class="eyebrow">For Educators · Supervisors · Clinical Educators</div>
-  <h1>老師／督導／臨床教師入口</h1>
-  <p class="lead">Sera.Phina Learning Lab 的目的不是替學生提供更快的答案，而是讓學生的觀察、推論、選擇與修正歷程變得可見，讓回饋可以真正落在「怎麼想」。</p>
-  <div class="principle"><strong>教學核心：</strong>學生先形成自己的思考，再使用工具、AI 或教師回饋深化推理；回饋後，最重要的動作是回到原本的 reasoning trace 修改，而不是只留下老師或 AI 的答案。</div>
-  <div class="actions"><a class="btn primary" href="../index.html">瀏覽全部 Learning Labs</a><a class="btn" href="#feedback">查看回饋提示</a><button class="btn" type="button" onclick="window.print()">列印本頁</button></div>
+<section class="hero edu-compact-hero">
+  <div class="eyebrow">For Supervisors · Clinical Educators</div>
+  <h1>督導／臨床教師入口</h1>
+  <p class="lead">把 Learning Lab 放進課前準備、臨床討論或回饋後修正即可。重點不是讓 AI 給答案，而是讓學生把自己的觀察、推論與修正歷程說清楚。</p>
+  <div class="principle"><strong>最簡單的用法：</strong>學生先完成一輪 → 帶著輸出來督導 → 老師追問 reasoning → 學生回 Lab 修正。</div>
+  <div class="actions"><a class="btn primary" href="../index.html">瀏覽全部 Learning Labs</a><a class="btn" href="#how-to-use">看 4 步驟用法</a></div>
 </section>
 
-<section class="panel educator-workbench" id="workbench">
-  <div class="eyebrow">Educator Workbench</div>
-  <h2>先選擇今天的教學任務</h2>
-  <p>這個入口不是把學生版工具重新列一次，而是依教師、督導與臨床教師的實際工作重新組織。先選任務，再進入最適合的 Lab。</p>
-  <div class="workbench-grid">
-    <article class="workbench-card teaching">
-      <span class="workbench-icon" aria-hidden="true">✦</span>
-      <div><small>COURSE DESIGN</small><h3>課程與學習活動設計</h3><p>安排課前、課中、課後任務，設計 AI 介入點與 reasoning trace。</p>
-      <a href="../seminar-research/index.html">進入 Seminar AI 助教 →</a></div>
-    </article>
-    <article class="workbench-card clinical">
-      <span class="workbench-icon" aria-hidden="true">＋</span>
-      <div><small>CLINICAL SUPERVISION</small><h3>臨床督導與個案推理</h3><p>以觀察、假設、反證、缺失資訊與 occupation 作為督導對話核心。</p>
-      <a href="../clinical-reasoning/index.html">進入臨床推理 Lab →</a></div>
-    </article>
-    <article class="workbench-card osce">
-      <span class="workbench-icon" aria-hidden="true">◎</span>
-      <div><small>OSCE & INTERVIEW</small><h3>會談與 OSCE 演練</h3><p>讓學生練習提問、關係建立、職能探索與共享決策，再進行會談後回顧。</p>
-      <a href="../mental-health-ot-interview/index.html">進入會談實驗室 →</a></div>
-    </article>
-    <article class="workbench-card assessment">
-      <span class="workbench-icon" aria-hidden="true">⌁</span>
-      <div><small>FORMATIVE ASSESSMENT</small><h3>形成性評量與回饋</h3><p>看學生推理如何改變，而不是只評最後答案；搭配可複製的回饋 prompts。</p>
-      <a href="#feedback">查看回饋提示 →</a></div>
-    </article>
-    <article class="workbench-card research">
-      <span class="workbench-icon" aria-hidden="true">◇</span>
-      <div><small>RESEARCH MENTORING</small><h3>學生研究與專題指導</h3><p>協助學生聚焦題目、檢查方法、保留 AI 使用透明度與學術判斷。</p>
-      <a href="../seminar-research/index.html">進入研究共學 Lab →</a></div>
-    </article>
-    <article class="workbench-card ethics">
-      <span class="workbench-icon" aria-hidden="true">◐</span>
-      <div><small>AI LITERACY & ETHICS</small><h3>AI 使用與學術倫理</h3><p>建立可接受／不可接受的 AI 使用邊界、查證要求、隱私與學生責任。</p>
-      <a href="#ai-guidance">查看 AI 使用原則 →</a></div>
-    </article>
-  </div>
-</section>
-
-
-<section class="panel" id="training-package">
-  <div class="eyebrow">Training Package</div>
-  <h2>Sera.Phina 教師／督導教育訓練包</h2>
-  <p>這套材料可用於 90–120 分鐘的教師／督導工作坊。重點不是介紹網站功能，而是練習如何看見學生的推理歷程，並以形成性回饋促進修正。</p>
-  <div class="training-downloads">
-    <div class="download-feature">
-      <h3>一鍵下載完整訓練包</h3>
-      <p>內含講者手冊、學員手冊、案例實作、Feedback Prompts、投影片，以及 PDF 版本。</p>
-      <a class="big-download" href="./downloads/SeraPhina_TeacherTraining_Package_v1.0.zip" download>下載完整 ZIP</a>
-      <div class="download-note"><strong>建議使用：</strong>先下載完整包；若只要投影片或學員手冊，可從右側單獨下載。</div>
-    </div>
-    <div class="download-list">
-      <article class="download-item"><strong>講者手冊</strong><span>120 分鐘工作坊流程、帶領提醒與常見狀況處理。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_FacilitatorGuide_v1.0.docx" download>DOCX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_FacilitatorGuide_v1.0.pdf" download>PDF</a></div></article>
-      <article class="download-item"><strong>學員手冊</strong><span>給老師、督導與臨床教師列印使用的參與講義。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_ParticipantHandout_v1.0.docx" download>DOCX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_ParticipantHandout_v1.0.pdf" download>PDF</a></div></article>
-      <article class="download-item"><strong>案例實作包</strong><span>Lab 03 案例、學生任務與 Clinical Reasoning Map 空白版。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_CasePractice_v1.0.docx" download>DOCX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_CasePractice_v1.0.pdf" download>PDF</a></div></article>
-      <article class="download-item"><strong>Feedback Prompts</strong><span>教師可直接複製使用的回饋題庫與句型轉換。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_FeedbackPrompts_v1.0.docx" download>DOCX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_FeedbackPrompts_v1.0.pdf" download>PDF</a></div></article>
-      <article class="download-item"><strong>工作坊投影片</strong><span>14 張簡報，可直接用於教師／督導教育訓練。</span><div class="download-links"><a href="./downloads/SeraPhina_TeacherTraining_Slides_v1.0.pptx" download>PPTX</a><a class="pdf" href="./downloads/SeraPhina_TeacherTraining_Slides_v1.0.pdf" download>PDF</a></div></article>
-      <article class="download-item"><strong>檔案說明</strong><span>教育訓練包內容與使用提醒。</span><div class="download-links"><a href="./downloads/README_教育訓練包說明.txt" download>TXT</a></div></article>
-    </div>
+<section class="panel edu-quick" id="how-to-use">
+  <div class="eyebrow">Quick Start</div>
+  <h2>督導時怎麼用？</h2>
+  <div class="edu-four-steps">
+    <article><b>1</b><h3>先指定 Lab</h3><p>依本次實習或課程目標，指定學生完成一個 Lab 任務。</p></article>
+    <article><b>2</b><h3>學生先自己做</h3><p>要求學生先留下自己的觀察、假設、選擇理由，再使用 AI。</p></article>
+    <article><b>3</b><h3>督導看推理</h3><p>不要只看答案；找出推論跳躍、缺失資訊與沒有說明理由的地方。</p></article>
+    <article><b>4</b><h3>回去修正</h3><p>請學生依討論修改原本 reasoning，留下前後差異。</p></article>
   </div>
 </section>
 
 <section class="panel">
-  <div class="eyebrow">Sera.Phina Learning Loop</div>
-  <h2>共同的學習循環</h2>
-  <p>不同 Lab 的任務不同，但都遵循同一個原則：先建立自己的 reasoning，再引入外部工具與回饋。</p>
-  <div class="loop">
-    <div><span>01</span><strong>Think</strong><small>學生先形成自己的觀察、問題或假設。</small></div>
-    <div><span>02</span><strong>Organize</strong><small>把事實、推論、證據與缺失資訊分開。</small></div>
-    <div><span>03</span><strong>Ask AI if needed</strong><small>AI 用於檢查與延伸，不取代第一層思考。</small></div>
-    <div><span>04</span><strong>Discuss</strong><small>老師、督導或臨床教師聚焦 reasoning process。</small></div>
-    <div><span>05</span><strong>Revise</strong><small>學生修改原本推理，留下思考如何改變的痕跡。</small></div>
-  </div>
-</section>
-
-<section class="panel">
-  <div class="eyebrow">Core Clinical Teaching Labs</div>
-  <h2>三個核心臨床教學 Lab</h2>
-  <p>這三個 Lab 適合做為臨床教師與督導的核心入口，可依課程目標單獨使用，也可以串成「會談 → 研究／查證 → 臨床推理」的學習歷程。</p>
-  <div class="lab-grid">
-    <article class="lab">
-      <div class="lab-no">LAB 01 · INTERVIEW</div>
-      <h3>精神職能治療會談實驗室</h3>
-      <p>核心能力：建立關係、提問、聆聽、職能探索、目標設定與共享決策。</p>
-      <ul><li>適合：OSCE 前練習、會談課、實習前準備</li><li>可觀察：提問品質、順序、回應性、資訊整合</li><li>教師焦點：不是問得多，而是問得是否有目的</li></ul>
-      <a href="../mental-health-ot-interview/index.html">查看 Lab 01 →</a>
+  <div class="eyebrow">Choose a Lab</div>
+  <h2>依督導目的選 Lab</h2>
+  <p>以下是臨床教師最常用的入口；其他研究、創作與教學工具可從 Learning Lab 主頁進入。</p>
+  <div class="supervisor-labs">
+    <article class="supervisor-lab interview">
+      <span>會談</span><h3>精神職能治療會談實驗室</h3>
+      <p>適合會談前演練、OSCE、初談與復元目標討論。</p>
+      <strong>督導可看：</strong><small>提問是否有目的、是否回應個案、是否回到 occupation。</small>
+      <a href="../mental-health-ot-interview/index.html">進入 Lab →</a>
     </article>
-
-    <article class="lab">
-      <div class="lab-no">LAB 02 · RESEARCH</div>
-      <h3>專題研究 AI 共學實驗室</h3>
-      <p>核心能力：從模糊想法形成研究問題，辨識證據需求，與自己的 AI 合作但保留研究判斷。</p>
-      <ul><li>適合：專題研究、研究方法、課堂共學</li><li>可觀察：問題形成、方法匹配、AI 使用透明度</li><li>教師焦點：學生是否知道 AI 哪裡不能替代判斷</li></ul>
-      <a href="../seminar-research/index.html">查看 Lab 02 →</a>
+    <article class="supervisor-lab reflection">
+      <span>會談後回顧</span><h3>職能需求與復元目標會談後檢測員</h3>
+      <p>適合學生已有逐字稿、會談紀錄或想回顧自己的表現。</p>
+      <strong>督導可看：</strong><small>學生如何解讀對話、哪些地方是觀察、哪些只是推論。</small>
+      <a href="../interview-review/index.html">進入 Lab →</a>
     </article>
-
-    <article class="lab featured">
-      <div class="lab-no">LAB 03 · CLINICAL REASONING</div>
-      <h3>精神健康診斷與 OT 臨床推理實驗室</h3>
-      <p>核心能力：把描述、解讀、診斷假設、反證、Missing Information 與 Occupational reasoning 分開。</p>
-      <ul><li>適合：精神科 OT、個案討論、鑑別診斷教學</li><li>可觀察：支持／反證、資訊缺口、Occupation、Assessment/FOR 理由</li><li>教師焦點：學生如何修正原本假設</li></ul>
-      <a href="../clinical-reasoning/index.html">查看 Lab 03 →</a>
+    <article class="supervisor-lab reasoning">
+      <span>臨床推理</span><h3>精神健康診斷與 OT 臨床推理實驗室</h3>
+      <p>適合個案討論、鑑別假設、assessment / FOR 選擇與介入推理。</p>
+      <strong>督導可看：</strong><small>支持與反證、Missing Information、occupation 與環境因素。</small>
+      <a href="../clinical-reasoning/index.html">進入 Lab →</a>
     </article>
-  </div>
-</section>
-
-<section class="panel">
-  <div class="eyebrow">Teaching Use</div>
-  <h2>可以放在課程的哪一個位置？</h2>
-  <p>Sera.Phina 不需要整門課都圍繞工具。更適合把它放在學生需要「把思考外顯化」的節點。</p>
-  <div class="use-grid">
-    <article class="use"><b>1</b><h3>課前</h3><p>先完成初步 reasoning。老師進課堂前即可知道學生卡在哪裡，也避免一開始就被答案框住。</p></article>
-    <article class="use"><b>2</b><h3>課中</h3><p>用學生輸出做小組討論，比較不同推理路徑；老師可以追問「你為什麼這樣想？」而不是直接糾正。</p></article>
-    <article class="use"><b>3</b><h3>課後</h3><p>學生依回饋修改原本 reasoning trace，留下前後差異，作為形成性評量或反思紀錄。</p></article>
+    <article class="supervisor-lab assessment">
+      <span>評估學習</span><h3>艾倫認知測驗學習助理</h3>
+      <p>適合 ACLS 理論、標準化施測、評分推理與案例演練。</p>
+      <strong>督導可看：</strong><small>學生是否依版本與觀察證據判斷，而不是直接猜分數。</small>
+      <a href="../acls-tutor/index.html">進入 Lab →</a>
+    </article>
+    <article class="supervisor-lab research">
+      <span>專題／研究</span><h3>Seminar－專題討論課程 AI 助教</h3>
+      <p>適合實習期間的小型研究、文獻、方法與成果整理。</p>
+      <strong>督導可看：</strong><small>題目是否聚焦、證據是否足夠、AI 有沒有取代學生判斷。</small>
+      <a href="../seminar-research/index.html">進入 Lab →</a>
+    </article>
   </div>
 </section>
 
 <section class="panel" id="feedback">
-  <div class="eyebrow">Feedback Prompts</div>
-  <h2>回饋時，可以先問這些問題</h2>
-  <p>以下不是評分規準，而是幫助學生把推理說清楚的 prompting language。</p>
-  <div class="feedback-grid">
-    <article class="feedback">
-      <h3>釐清事實與推論</h3>
-      <p>當學生把觀察直接變成結論時，可用這組問題。</p>
-      <div class="copybox" id="promptFacts">你目前寫的內容中，哪些是個案實際說過或觀察到的資料？
-哪些是你的解讀？
-如果把解讀拿掉，原始資料本身是什麼？</div>
-      <button class="copybtn" data-copy="promptFacts">複製提示</button>
-    </article>
-
-    <article class="feedback">
-      <h3>檢查診斷假設</h3>
-      <p>避免「有某症狀＝某診斷」的過早收斂。</p>
-      <div class="copybox" id="promptDx">哪些資料支持你目前的假設？
-哪些資料其實不符合？
-如果你的第一個假設是錯的，還有哪些合理的解釋？</div>
-      <button class="copybtn" data-copy="promptDx">複製提示</button>
-    </article>
-
-    <article class="feedback">
-      <h3>找 Missing Information</h3>
-      <p>讓學生知道下一步要找什麼，而不是急著找答案。</p>
-      <div class="copybox" id="promptMissing">如果現在還不能下結論，最重要還缺哪三項資訊？
-這些資訊分別會改變哪一個判斷？
-哪一項應該優先取得？為什麼？</div>
-      <button class="copybtn" data-copy="promptMissing">複製提示</button>
-    </article>
-
-    <article class="feedback">
-      <h3>回到 Occupation</h3>
-      <p>避免討論停在症狀與診斷。</p>
-      <div class="copybox" id="promptOcc">這些症狀對這個人的日常生活真正造成了什麼影響？
-哪些 occupation、角色、routine 或 participation 被改變？
-這是個人的能力問題，還是環境也在限制參與？</div>
-      <button class="copybtn" data-copy="promptOcc">複製提示</button>
-    </article>
-
-    <article class="feedback">
-      <h3>檢查 Assessment / FOR 選擇</h3>
-      <p>要求學生先說明臨床問題。</p>
-      <div class="copybox" id="promptAssess">你選這個 assessment 是想回答什麼臨床問題？
-如果不知道診斷名稱，你還會選它嗎？
-這個 FOR / model 對目前哪一個 occupational problem 最有解釋力？</div>
-      <button class="copybtn" data-copy="promptAssess">複製提示</button>
-    </article>
-
-    <article class="feedback">
-      <h3>要求真正的 Revision</h3>
-      <p>回饋完成後，最重要的是學生修改原本 reasoning。</p>
-      <div class="copybox" id="promptRevise">討論前，你原本怎麼想？
-哪一個新資訊或回饋改變了你的想法？
-現在你會刪掉、保留或新增哪一個假設？為什麼？</div>
-      <button class="copybtn" data-copy="promptRevise">複製提示</button>
-    </article>
+  <div class="eyebrow">Supervisor Prompts</div>
+  <h2>督導時，問這幾句就夠了</h2>
+  <div class="prompt-mini-grid">
+    <details><summary>先分清楚事實與解讀</summary><p>「哪些是個案真的說過／你真的觀察到的？哪些是你的解讀？」</p></details>
+    <details><summary>避免太快下結論</summary><p>「哪些資料支持你的假設？哪些資料其實不符合？」</p></details>
+    <details><summary>找下一步需要什麼</summary><p>「如果現在還不能下結論，最重要還缺哪幾項資訊？」</p></details>
+    <details><summary>把討論拉回職能</summary><p>「這些問題實際影響了哪些 occupation、角色、routine 或 participation？」</p></details>
+    <details><summary>要求說明選擇理由</summary><p>「你為什麼選這個 assessment／FOR／介入？它要回答什麼問題？」</p></details>
+    <details><summary>確認學生真的有修正</summary><p>「討論後，你會保留、刪掉或新增哪個假設？為什麼？」</p></details>
   </div>
-  <div class="status" id="copyStatus" aria-live="polite"></div>
 </section>
 
-<section class="panel" id="ai-guidance">
-  <div class="eyebrow">AI in the Learning Loop</div>
-  <h2>AI 可以做什麼，也不應該做什麼</h2>
-  <p>Sera.Phina 不要求學生一定使用 AI；若使用，重點是讓 AI 成為第二層的 reflection partner。</p>
+<section class="panel compact-guard" id="ai-guidance">
+  <div class="eyebrow">AI & Privacy</div>
+  <h2>兩個使用底線</h2>
   <div class="guardrails">
-    <article class="guard good"><h3>可以鼓勵</h3><p>請 AI 找缺失資訊、指出推理跳躍、提出反證、協助整理不同解釋、產生需要查證的問題。</p></article>
-    <article class="guard caution"><h3>需要避免</h3><p>直接貼案例要求 AI「告訴我答案」、把 AI 產生的診斷或介入當成臨床事實、沒有查證就直接提交。</p></article>
-    <article class="guard good"><h3>教師可以追問</h3><p>「你在問 AI 前已經知道什麼？」「AI 哪一點讓你改變想法？」「哪一點你沒有接受？為什麼？」</p></article>
-    <article class="guard caution"><h3>隱私與倫理</h3><p>避免輸入可識別真實個案身分的資訊。使用外部 AI 時，資料處理仍受該平台的隱私政策約束。</p></article>
+    <article class="guard good"><h3>AI 是第二層工具</h3><p>鼓勵學生先形成自己的 reasoning，再用 AI 找遺漏、反證、替代解釋或整理問題。</p></article>
+    <article class="guard caution"><h3>真實個案先去識別化</h3><p>不要輸入可辨識身分、機密紀錄或不必要的敏感資料；重要判斷仍回到督導與正式專業來源。</p></article>
   </div>
 </section>
 
-<section class="panel">
-  <div class="eyebrow">Formative Assessment</div>
-  <h2>建議看「推理變化」，不只看最後答案</h2>
-  <p>若作為形成性評量，可觀察學生是否能完成以下動作，而不必把每次練習都轉成分數。</p>
-  <div class="reflection">
-    <h3>可觀察的學習證據</h3>
-    <ol>
-      <li>能否把描述、推論與假設分開。</li>
-      <li>能否提出支持與反對自己假設的資料。</li>
-      <li>能否辨識 Missing Information 與下一步資訊需求。</li>
-      <li>能否從 diagnosis 回到 occupation、role、routine、environment。</li>
-      <li>能否說明 assessment / FOR / intervention 的選擇理由。</li>
-      <li>接受 AI 或教師回饋後，是否真的修改原本 reasoning。</li>
-    </ol>
+<section class="panel training-compact">
+  <div>
+    <div class="eyebrow">Optional Resource</div>
+    <h2>需要帶教師工作坊時</h2>
+    <p>若要做較完整的教師／督導教育訓練，可再使用既有 90–120 分鐘訓練包。</p>
   </div>
+  <a class="btn" href="./downloads/SeraPhina_TeacherTraining_Package_v1.0.zip" download>下載教師／督導訓練包</a>
 </section>
 
-<section class="panel">
-  <div class="eyebrow">Closing Principle</div>
-  <h2>回饋的終點不是「老師告訴答案」。</h2>
-  <p>真正重要的是學生能說明：<strong>「我原本怎麼想、什麼讓我改變、現在我怎麼想，以及下一步還需要知道什麼。」</strong></p>
-  <div class="actions"><a class="btn primary" href="../index.html">回到 Learning Lab</a><a class="btn" href="../clinical-reasoning/index.html">查看 Clinical Reasoning Lab</a></div>
+<section class="panel closing-compact">
+  <div class="eyebrow">Core Principle</div>
+  <h2>看學生「怎麼想」，比只看最後答案更重要。</h2>
+  <p>最有價值的學習證據是：學生能說清楚自己原本怎麼想、什麼資訊讓他改變，以及下一步還需要知道什麼。</p>
+  <div class="actions"><a class="btn primary" href="../index.html">回 Learning Lab</a></div>
 </section>
 </main>
 
