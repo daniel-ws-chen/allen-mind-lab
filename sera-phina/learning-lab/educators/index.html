@@ -82,7 +82,45 @@ body{background:#fbf9fc}
   <h1>老師／督導／臨床教師入口</h1>
   <p class="lead">Sera.Phina Learning Lab 的目的不是替學生提供更快的答案，而是讓學生的觀察、推論、選擇與修正歷程變得可見，讓回饋可以真正落在「怎麼想」。</p>
   <div class="principle"><strong>教學核心：</strong>學生先形成自己的思考，再使用工具、AI 或教師回饋深化推理；回饋後，最重要的動作是回到原本的 reasoning trace 修改，而不是只留下老師或 AI 的答案。</div>
-  <div class="actions"><a class="btn primary" href="../index.html">查看三個 Learning Lab</a><a class="btn" href="#feedback">查看回饋提示</a><button class="btn" type="button" onclick="window.print()">列印本頁</button></div>
+  <div class="actions"><a class="btn primary" href="../index.html">瀏覽全部 Learning Labs</a><a class="btn" href="#feedback">查看回饋提示</a><button class="btn" type="button" onclick="window.print()">列印本頁</button></div>
+</section>
+
+<section class="panel educator-workbench" id="workbench">
+  <div class="eyebrow">Educator Workbench</div>
+  <h2>先選擇今天的教學任務</h2>
+  <p>這個入口不是把學生版工具重新列一次，而是依教師、督導與臨床教師的實際工作重新組織。先選任務，再進入最適合的 Lab。</p>
+  <div class="workbench-grid">
+    <article class="workbench-card teaching">
+      <span class="workbench-icon" aria-hidden="true">✦</span>
+      <div><small>COURSE DESIGN</small><h3>課程與學習活動設計</h3><p>安排課前、課中、課後任務，設計 AI 介入點與 reasoning trace。</p>
+      <a href="../seminar-research/index.html">進入 Seminar AI 助教 →</a></div>
+    </article>
+    <article class="workbench-card clinical">
+      <span class="workbench-icon" aria-hidden="true">＋</span>
+      <div><small>CLINICAL SUPERVISION</small><h3>臨床督導與個案推理</h3><p>以觀察、假設、反證、缺失資訊與 occupation 作為督導對話核心。</p>
+      <a href="../clinical-reasoning/index.html">進入臨床推理 Lab →</a></div>
+    </article>
+    <article class="workbench-card osce">
+      <span class="workbench-icon" aria-hidden="true">◎</span>
+      <div><small>OSCE & INTERVIEW</small><h3>會談與 OSCE 演練</h3><p>讓學生練習提問、關係建立、職能探索與共享決策，再進行會談後回顧。</p>
+      <a href="../mental-health-ot-interview/index.html">進入會談實驗室 →</a></div>
+    </article>
+    <article class="workbench-card assessment">
+      <span class="workbench-icon" aria-hidden="true">⌁</span>
+      <div><small>FORMATIVE ASSESSMENT</small><h3>形成性評量與回饋</h3><p>看學生推理如何改變，而不是只評最後答案；搭配可複製的回饋 prompts。</p>
+      <a href="#feedback">查看回饋提示 →</a></div>
+    </article>
+    <article class="workbench-card research">
+      <span class="workbench-icon" aria-hidden="true">◇</span>
+      <div><small>RESEARCH MENTORING</small><h3>學生研究與專題指導</h3><p>協助學生聚焦題目、檢查方法、保留 AI 使用透明度與學術判斷。</p>
+      <a href="../seminar-research/index.html">進入研究共學 Lab →</a></div>
+    </article>
+    <article class="workbench-card ethics">
+      <span class="workbench-icon" aria-hidden="true">◐</span>
+      <div><small>AI LITERACY & ETHICS</small><h3>AI 使用與學術倫理</h3><p>建立可接受／不可接受的 AI 使用邊界、查證要求、隱私與學生責任。</p>
+      <a href="#ai-guidance">查看 AI 使用原則 →</a></div>
+    </article>
+  </div>
 </section>
 
 
@@ -111,7 +149,7 @@ body{background:#fbf9fc}
 <section class="panel">
   <div class="eyebrow">Sera.Phina Learning Loop</div>
   <h2>共同的學習循環</h2>
-  <p>三個 Lab 的任務不同，但都遵循同一個原則：先建立自己的 reasoning，再引入外部工具與回饋。</p>
+  <p>不同 Lab 的任務不同，但都遵循同一個原則：先建立自己的 reasoning，再引入外部工具與回饋。</p>
   <div class="loop">
     <div><span>01</span><strong>Think</strong><small>學生先形成自己的觀察、問題或假設。</small></div>
     <div><span>02</span><strong>Organize</strong><small>把事實、推論、證據與缺失資訊分開。</small></div>
@@ -122,9 +160,9 @@ body{background:#fbf9fc}
 </section>
 
 <section class="panel">
-  <div class="eyebrow">Three Labs</div>
-  <h2>三個 Lab 分別訓練什麼？</h2>
-  <p>可依課程目標單獨使用，也可以串成「會談 → 研究／查證 → 臨床推理」的學習歷程。</p>
+  <div class="eyebrow">Core Clinical Teaching Labs</div>
+  <h2>三個核心臨床教學 Lab</h2>
+  <p>這三個 Lab 適合做為臨床教師與督導的核心入口，可依課程目標單獨使用，也可以串成「會談 → 研究／查證 → 臨床推理」的學習歷程。</p>
   <div class="lab-grid">
     <article class="lab">
       <div class="lab-no">LAB 01 · INTERVIEW</div>
@@ -225,7 +263,7 @@ body{background:#fbf9fc}
   <div class="status" id="copyStatus" aria-live="polite"></div>
 </section>
 
-<section class="panel">
+<section class="panel" id="ai-guidance">
   <div class="eyebrow">AI in the Learning Loop</div>
   <h2>AI 可以做什麼，也不應該做什麼</h2>
   <p>Sera.Phina 不要求學生一定使用 AI；若使用，重點是讓 AI 成為第二層的 reflection partner。</p>
