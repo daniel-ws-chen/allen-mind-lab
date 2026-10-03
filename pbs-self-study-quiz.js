@@ -72,6 +72,7 @@
       b.addEventListener('click',()=>answer(i));
       options.appendChild(b);
     });
+    requestAnimationFrame(()=>question.focus());
   }
   function answer(choice){
     const item=qs[idx];
@@ -105,6 +106,7 @@
       s.quiz.passed=true; s.quiz.date=s.quiz.date||today(); s.quiz.certificateId=s.quiz.certificateId||makeId();
       save(s); certPanel.style.display='block'; if(completionExit) completionExit.style.display='block';
     } else if(completionExit){ completionExit.style.display='none'; }else save(s);
+    requestAnimationFrame(()=>resultTitle.focus());
   }
   function generateCert(){
     const name=(nameInput.value||'').trim();
