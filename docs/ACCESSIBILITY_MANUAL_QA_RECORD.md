@@ -193,3 +193,10 @@ Branch：`accessibility/phase1-a-preflight`
 - 非原生 div/span click/role=button 互動
 
 本輪代表樣本未發現上述反模式。為避免未來回歸，duplicate id 與 positive tabindex 已提升為 preflight error；autofocus / accesskey / meta refresh 則列 warning，保留人工判斷空間。
+
+
+## Q. Duplicate ID 修正與 ARIA reference guard
+
+- CI 新增 duplicate-id error 後，實際抓到 `management-self-study.html` 與 `pbs-self-study.html` 各有兩個 `id="aml-main"`。
+- 已保留真正的 `<main id="aml-main">`，移除 hero header 上的重複 id，讓 skip link 有唯一目標。
+- accessibility preflight 進一步新增 `aria-labelledby`、`aria-describedby`、`aria-controls` 的 id reference integrity 檢查；任何不存在的目標 id 將列為 error。
