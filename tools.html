@@ -1336,10 +1336,25 @@
 .lumi-bay__toggle{appearance:none;border:1px solid #173c36;background:#173c36;color:#fff;border-radius:999px;padding:10px 15px;font:inherit;font-weight:850;cursor:pointer;white-space:nowrap}
 .lumi-bay__toggle:hover{background:#21564e}.lumi-bay__toggle:focus-visible{outline:3px solid rgba(23,169,133,.25);outline-offset:3px}
 .lumi-bay__reveal{max-height:0;overflow:hidden;opacity:0;transform:translateY(-8px);transition:max-height .7s ease,opacity .4s ease,transform .4s ease,padding .4s ease;padding:0}
-.lumi-bay.is-open .lumi-bay__reveal{max-height:900px;opacity:1;transform:none;padding:26px 0 0}
+.lumi-bay.is-open .lumi-bay__reveal{max-height:1800px;opacity:1;transform:none;padding:26px 0 0}
 .lumi-bay__fullart{margin:0 auto;width:100%;max-width:1200px;background:#fff;overflow:hidden;border-radius:24px;box-shadow:0 18px 48px rgba(9,46,40,.12);border:1px solid rgba(16,75,65,.10)}
 .lumi-bay__fullart img{display:block;width:100%;height:auto;object-fit:contain}
-@media(max-width:720px){.lumi-bay{padding:24px 16px 36px}.lumi-bay__signal{align-items:flex-start;flex-direction:column;padding:14px 16px}.lumi-bay__toggle{width:100%}.lumi-bay.is-open .lumi-bay__reveal{padding-top:18px;max-height:900px}.lumi-bay__fullart{border-radius:18px}}
+.lumi-bay__routes{margin:22px auto 0;max-width:1200px;padding:22px;border:1px solid rgba(16,75,65,.12);border-radius:22px;background:linear-gradient(145deg,rgba(9,37,54,.97),rgba(15,69,72,.95));box-shadow:0 18px 48px rgba(9,46,40,.14);color:#fff}
+.lumi-bay__routes-head{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:16px}
+.lumi-bay__routes-kicker{font-size:.7rem;letter-spacing:.18em;font-weight:900;color:#e6bb61}
+.lumi-bay__routes h3{margin:4px 0 0;font-size:1.25rem;color:#fff}
+.lumi-bay__routes-note{margin:0;max-width:520px;color:#c8dcda;font-size:.9rem;line-height:1.65}
+.lumi-bay__route-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.lumi-bay__route{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;min-height:78px;padding:12px 13px;border:1px solid rgba(197,230,224,.18);border-radius:16px;background:rgba(255,255,255,.075);color:#fff;text-decoration:none;transition:transform .22s ease,border-color .22s ease,background .22s ease}
+.lumi-bay__route:hover{transform:translateY(-2px);border-color:rgba(230,187,97,.68);background:rgba(255,255,255,.12)}
+.lumi-bay__route:focus-visible{outline:3px solid rgba(230,187,97,.38);outline-offset:3px}
+.lumi-bay__route-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:rgba(230,187,97,.13);font-size:1rem}
+.lumi-bay__route-copy{display:grid;gap:2px;min-width:0}
+.lumi-bay__route-code{font-size:.62rem;letter-spacing:.11em;font-weight:900;color:#e6bb61;white-space:nowrap}
+.lumi-bay__route-name{font-size:.9rem;font-weight:850;color:#fff}
+.lumi-bay__route-arrow{font-size:1.05rem;color:#b9d8d3}
+@media(max-width:980px){.lumi-bay__route-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.lumi-bay__route:last-child{grid-column:1/-1}}
+@media(max-width:720px){.lumi-bay{padding:24px 16px 36px}.lumi-bay__signal{align-items:flex-start;flex-direction:column;padding:14px 16px}.lumi-bay__toggle{width:100%}.lumi-bay.is-open .lumi-bay__reveal{padding-top:18px;max-height:1800px}.lumi-bay__fullart{border-radius:18px}.lumi-bay__routes{padding:17px;border-radius:18px}.lumi-bay__routes-head{display:grid;gap:7px}.lumi-bay__route-grid{grid-template-columns:1fr}.lumi-bay__route:last-child{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){.lumi-bay__reveal{transition:none}}
 </style>
 </head>
@@ -1580,6 +1595,42 @@
       <figure class="lumi-bay__fullart">
         <img alt="Lumi｜AML 艦隊維護技師 Engineering Bay 完整角色視覺" src="/images/lumi-engineering-bay-poster.webp" loading="lazy" decoding="async">
       </figure>
+      <nav class="lumi-bay__routes" aria-label="AML 系統航圖">
+        <div class="lumi-bay__routes-head">
+          <div>
+            <div class="lumi-bay__routes-kicker">AML SYSTEM ROUTES · 系統航圖</div>
+            <h3>已部署的公開服務與索引節點</h3>
+          </div>
+          <p class="lumi-bay__routes-note">從維護艙直接前往 AML 的公開訊號、網站政策、訂閱與索引入口。</p>
+        </div>
+        <div class="lumi-bay__route-grid">
+          <a class="lumi-bay__route" href="https://buttondown.com/danielwschen" target="_blank" rel="noopener noreferrer">
+            <span class="lumi-bay__route-icon" aria-hidden="true">✎</span>
+            <span class="lumi-bay__route-copy"><span class="lumi-bay__route-code">PUBLIC SIGNAL</span><span class="lumi-bay__route-name">Notes from the Lab</span></span>
+            <span class="lumi-bay__route-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="lumi-bay__route" href="/privacy.html">
+            <span class="lumi-bay__route-icon" aria-hidden="true">◈</span>
+            <span class="lumi-bay__route-copy"><span class="lumi-bay__route-code">PRIVACY PROTOCOL</span><span class="lumi-bay__route-name">Privacy</span></span>
+            <span class="lumi-bay__route-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="lumi-bay__route" href="/terms.html">
+            <span class="lumi-bay__route-icon" aria-hidden="true">▤</span>
+            <span class="lumi-bay__route-copy"><span class="lumi-bay__route-code">SERVICE TERMS</span><span class="lumi-bay__route-name">Terms</span></span>
+            <span class="lumi-bay__route-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="lumi-bay__route" href="/rss.xml">
+            <span class="lumi-bay__route-icon" aria-hidden="true">◔</span>
+            <span class="lumi-bay__route-copy"><span class="lumi-bay__route-code">RSS BEACON</span><span class="lumi-bay__route-name">RSS Feed</span></span>
+            <span class="lumi-bay__route-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="lumi-bay__route" href="/sitemap.xml">
+            <span class="lumi-bay__route-icon" aria-hidden="true">⌘</span>
+            <span class="lumi-bay__route-copy"><span class="lumi-bay__route-code">SITE NAV GRID</span><span class="lumi-bay__route-name">Sitemap</span></span>
+            <span class="lumi-bay__route-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </nav>
     </div>
   </div>
 </section>
