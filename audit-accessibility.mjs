@@ -67,6 +67,35 @@ function inspect(file){
       errors.push(`${rel}: 發現沒有可存取名稱的 button。`);
     }
   }
+
+  for(const m of html.matchAll(/<a\b[^>]*target\s*=\s*["']_blank["'][^>]*>/gi)){
+    if(!/\brel\s*=\s*["'][^"']*noopener/i.test(m[0])){
+      warnings.push(`${rel}: target="_blank" 連結未偵測到 rel="noopener"。`);
+    }
+  }
+
+  const labelsByFor=new Set([...html.matchAll(/<label\b[^>]*for\s*=\s*["']([^"']+)["']/gi)].map(m=>m[1]));
+  for(const m of html.matchAll(/<(input|select|textarea)\b([^>]*)>/gi)){
+    const tag=m[1].toLowerCase(), attrs=m[2];
+    if(/type\s*=\s*["'](?:hidden|submit|button|reset|image)["']/i.test(attrs)) continue;
+    const id=(attrs.match(/\bid\s*=\s*["']([^"']+)["']/i)||[])[1];
+    const named=/aria-label\s*=|aria-labelledby\s*=/i.test(attrs) || (id && labelsByFor.has(id));
+    const before=html.slice(Math.max(0,m.index-500),m.index);
+    const insideLabel=/<label\b[^>]*>[^<]*(?:<[^>]+>[^<]*)*$/i.test(before);
+    if(!named && !insideLabel){
+      warnings.push(`${rel}: ${tag} 可能缺少可程式判定的標籤${id?`（id=${id}）`:''}。`);
+    }
+  }
+
+  for(const m of html.matchAll(/<table\b[\s\S]*?<\/table>/gi)){
+    if(!/<th\b/i.test(m[0])) warnings.push(`${rel}: table 未偵測到 th，請人工確認表格標題語意。`);
+  }
+
+  for(const m of html.matchAll(/<[^>]+role\s*=\s*["']button["'][^>]*>/gi)){
+    if(!/tabindex\s*=\s*["']0["']/i.test(m[0]) && !/^<button\b/i.test(m[0])){
+      warnings.push(`${rel}: role="button" 元件未偵測到 tabindex="0"，請確認鍵盤可操作性。`);
+    }
+  }
 }
 
 walk(root);
