@@ -281,3 +281,10 @@
 - 測驗頁特別確認結果 heading focus、姓名錯誤 aria-invalid/alert、憑證流程與 400% zoom。
 - 文章模板特別確認 share live status、related reading、圖片與表格 reflow。
 - P1 未實際執行前仍維持待確認，不因 CI success 自動升級為通過。
+
+
+## 第二十五輪：人工 QA 架構補齊
+- 新增 `docs/ACCESSIBILITY_P2_SMOKE_TEST.md` 與 `docs/ACCESSIBILITY_SCREEN_READER_TEST.md`。
+- P2 負責低互動頁與共用模板回歸；以 keyboard smoke test + 320px reflow 為核心。
+- Screen reader 腳本固定首頁、Management Coach、PBS Companion、Quiz、文章五類最低驗收流程。
+- 至此 P0 / P1 / P2 / Screen Reader 的人工 QA 架構已完整；未實際執行的項目仍維持 pending。
