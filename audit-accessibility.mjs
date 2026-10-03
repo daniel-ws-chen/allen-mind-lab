@@ -24,6 +24,8 @@ function stripNonDom(html){
 }
 function inspect(file){
   const raw=readFileSync(file,'utf8');
+  // Ignore HTML fragments / engineering snippets that are not standalone public documents.
+  if(!/<html\b/i.test(raw)) return;
   const html=stripNonDom(raw);
   const rel=relative(root,file).replaceAll('\\','/');
   checked.push(rel);
