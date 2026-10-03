@@ -288,3 +288,9 @@
 - P2 負責低互動頁與共用模板回歸；以 keyboard smoke test + 320px reflow 為核心。
 - Screen reader 腳本固定首頁、Management Coach、PBS Companion、Quiz、文章五類最低驗收流程。
 - 至此 P0 / P1 / P2 / Screen Reader 的人工 QA 架構已完整；未實際執行的項目仍維持 pending。
+
+
+## 第二十六輪：Freego 執行紀錄標準化
+- 新增代表樣本 URL 組與 Freego run record template。
+- 之後每次掃描都能追蹤 URL、規則、嚴重度、修正 commit、branch preview 與重測結果。
+- 流程固定為：代表樣本 → 共通修正 → 104 URL 全站掃描 → 重測。
