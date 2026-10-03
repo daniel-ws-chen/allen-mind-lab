@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
 const root = process.cwd();
@@ -6,6 +6,9 @@ const excludedDirs = new Set(['.git','node_modules','dist','.wrangler']);
 const errors = [];
 const warnings = [];
 const checked = [];
+const restrictedFlags = [];
+const scopeFile = join(root,'accessibility-scope.json');
+const scope = existsSync(scopeFile) ? JSON.parse(readFileSync(scopeFile,'utf8')) : null;
 
 function walk(dir){
   for(const name of readdirSync(dir)){
@@ -29,6 +32,14 @@ function inspect(file){
   const html=stripNonDom(raw);
   const rel=relative(root,file).replaceAll('\\','/');
   checked.push(rel);
+  if(scope?.restricted_candidates){
+    const urlPath='/' + rel.replace(/index\.html$/i,'').replace(/\.html$/i,'.html');
+    for(const prefix of scope.restricted_candidates){
+      if(urlPath.startsWith(prefix)){
+        restrictedFlags.push(`${rel}: 位於 restricted candidate「${prefix}」，在真正 server/edge auth 證據完成前仍納入公開預檢。`);
+      }
+    }
+  }
 
   if(!/<html[^>]*\blang\s*=\s*["'][^"']+["']/i.test(html)) errors.push(`${rel}: <html> 缺少 lang。`);
   if(!/<title>[^<]+<\/title>/i.test(html)) errors.push(`${rel}: 缺少有效 <title>。`);
@@ -70,6 +81,10 @@ if(warnings.length){
 if(errors.length){
   console.log(`\nERRORS (${errors.length})`);
   errors.forEach(x=>console.log('✗ '+x));
+}
+if(restrictedFlags.length){
+  console.log(`\nRESTRICTED CANDIDATES (${restrictedFlags.length})`);
+  restrictedFlags.forEach(x=>console.log('• '+x));
 }
 console.log(`\nResult: ${errors.length} error(s), ${warnings.length} warning(s).`);
 console.log('Note: 此工具僅做靜態預檢，不等同 Freego 或人工無障礙檢測。');
