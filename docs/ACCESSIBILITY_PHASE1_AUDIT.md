@@ -47,3 +47,16 @@
 
 ## 注意
 此報告是 AML 自有程式碼的申請前預檢，不等同官方 Freego 或人工檢測通過結果。
+
+
+## 第二輪：鍵盤導覽與動態狀態
+本輪新增檢查 search.html 與 tools/management-coach/index.html。
+
+### 已修正
+- search.html：新增「跳到主要內容」skip link，並為 main 補上 id="aml-main"。
+- tools/management-coach/index.html：新增「跳到主要內容」skip link，並為 main 補上 id="aml-main"。
+- Management Coach 的章節辨識狀態 stateBadge 新增 aria-live="polite"，讓狀態更新可被輔助科技感知。
+
+### 判讀說明
+- Management Coach 靜態原始碼可看到多個 h1 字串，但其中兩個位於輸出／列印用的 JavaScript 樣板字串；實際主介面仍以頁首 h1 為主要頁面標題，因此不直接視為主 DOM 多 h1 缺失。
+- 動態 textarea/select 雖未逐一設 id，但目前置於 label 元素內，已有標籤關聯；下一輪仍會以實際鍵盤與輔助科技行為為準。
