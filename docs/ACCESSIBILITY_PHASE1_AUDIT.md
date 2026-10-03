@@ -144,3 +144,11 @@
 ### Build guard
 - build-dist.mjs 現在會在建置後驗證 docs/、audit-accessibility.mjs、accessibility-scope.json 等內部稽核／工程檔沒有進入 dist；若誤發布會直接讓 build 失敗。
 - 對尚未真正受保護的感控 Pilot 與 Sera.Phina national-exam，部署時只提出警告，不阻斷部署，避免目前功能突然失效。
+
+
+## 第八輪：公開 URL 基線固定
+- 目前 sitemap.xml 共 104 個 URL。
+- 未發現重複 URL。
+- 感控 Pilot 與 Sera.Phina national-exam 兩個受限候選區都不在 sitemap。
+- 新增 docs/ACCESSIBILITY_PUBLIC_URLS.md，將 sitemap 現況固定為 Freego 前的 INCLUDE 基線。
+- 注意：不在 sitemap 不等於私有；仍須依實際可達性與 server/edge auth 判定。
