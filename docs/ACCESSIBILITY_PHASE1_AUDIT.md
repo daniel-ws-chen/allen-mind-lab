@@ -124,3 +124,11 @@
 - 感控 Pilot 現行 gate 為前端 JavaScript 共用帳密，內容仍隨公開資產部署；因此目前不能把登入後區域當作真正私有內容排除。
 - Sera.Phina 與 AML 共用網域，且 resources.html / tools.html 均有公開連結，因此送件前也要確認是否被視為同一網站範圍。
 - 在真正伺服器端 / Cloudflare Access / OTP 邊界完成前，不會把受限工具目錄從 accessibility audit 中整體排除。
+
+
+## 第六輪：受限工具證據門檻
+- 確認 Sera.Phina Learning Lab 公開頁有連到 national-exam。
+- national-exam 本身再直接連到 practice.html。
+- 目前沒有 repo / Worker 證據能證明國考工具已被真正 OTP 保護。
+- 外部匿名抓取環境本輪無法連線正式站，因此不把「抓不到」誤判成 Access 已生效。
+- 在看到 Cloudflare Access policy 或完成未登入三 URL 實測前，national-exam 不列入 RESTRICTED。
