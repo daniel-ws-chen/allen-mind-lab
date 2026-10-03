@@ -1,13 +1,14 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative } from 'node:path';
 
-const root = process.cwd();
+const projectRoot = process.cwd();
+const root = process.env.AUDIT_ROOT ? join(projectRoot, process.env.AUDIT_ROOT) : projectRoot;
 const excludedDirs = new Set(['.git','node_modules','dist','.wrangler']);
 const errors = [];
 const warnings = [];
 const checked = [];
 const restrictedFlags = [];
-const scopeFile = join(root,'accessibility-scope.json');
+const scopeFile = join(projectRoot,'accessibility-scope.json');
 const scope = existsSync(scopeFile) ? JSON.parse(readFileSync(scopeFile,'utf8')) : null;
 
 function walk(dir){
@@ -98,10 +99,15 @@ function inspect(file){
   }
 }
 
+if(!existsSync(root)){
+  console.error(`Audit root does not exist: ${root}`);
+  process.exit(2);
+}
 walk(root);
 
 console.log('\nAML ACCESSIBILITY PREFLIGHT');
 console.log('='.repeat(34));
+console.log(`Audit root: ${relative(projectRoot,root) || '.'}`);
 console.log(`Checked: ${checked.length} HTML file(s)`);
 if(warnings.length){
   console.log(`\nWARNINGS (${warnings.length})`);
