@@ -1,0 +1,154 @@
+<!-- Lumi Engineering Bay · FULL POSTER CARD
+Replace the existing <style id="lumi-engineering-bay-easter-egg">...</style>,
+the existing <section class="lumi-bay" id="engineering-bay">...</section>,
+and the existing Lumi toggle script with the blocks below.
+Asset path: /images/lumi-engineering-bay-poster.webp
+-->
+
+<style id="lumi-engineering-bay-easter-egg">
+.lumi-bay{
+  padding:36px 6vw 52px;
+  background:linear-gradient(180deg,#f8fbfa,#eef6f3);
+  border-top:1px solid #dbe8e3;
+}
+.lumi-bay__inner{
+  max-width:1180px;
+  margin:0 auto;
+}
+.lumi-bay__signal{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:16px 18px;
+  border:1px dashed #9dbbb1;
+  border-radius:18px;
+  background:rgba(255,255,255,.78);
+}
+.lumi-bay__signal-copy{
+  display:grid;
+  gap:2px;
+}
+.lumi-bay__eyebrow{
+  font-size:.72rem;
+  letter-spacing:.16em;
+  font-weight:900;
+  color:#88682d;
+}
+.lumi-bay__signal strong{
+  color:#173c36;
+  font-size:1rem;
+}
+.lumi-bay__toggle{
+  appearance:none;
+  border:1px solid #173c36;
+  background:#173c36;
+  color:#fff;
+  border-radius:999px;
+  padding:10px 15px;
+  font:inherit;
+  font-weight:850;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.lumi-bay__toggle:hover{background:#21564e}
+.lumi-bay__toggle:focus-visible{
+  outline:3px solid rgba(23,169,133,.25);
+  outline-offset:3px;
+}
+.lumi-bay__reveal{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(-8px);
+  transition:max-height .65s ease,opacity .35s ease,transform .35s ease,padding .35s ease;
+  padding:0;
+}
+.lumi-bay.is-open .lumi-bay__reveal{
+  max-height:1000px;
+  opacity:1;
+  transform:none;
+  padding:28px 0 0;
+}
+.lumi-bay__poster{
+  margin:0 auto;
+  width:100%;
+  max-width:1180px;
+  overflow:hidden;
+  border-radius:24px;
+  background:#fff;
+  border:1px solid rgba(16,75,65,.10);
+  box-shadow:0 20px 50px rgba(9,46,40,.10);
+}
+.lumi-bay__poster img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+}
+@media(max-width:720px){
+  .lumi-bay{padding:24px 16px 38px}
+  .lumi-bay__signal{
+    align-items:flex-start;
+    flex-direction:column;
+    padding:14px 16px;
+  }
+  .lumi-bay__toggle{width:100%}
+  .lumi-bay.is-open .lumi-bay__reveal{
+    padding-top:18px;
+    max-height:900px;
+  }
+  .lumi-bay__poster{border-radius:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .lumi-bay__reveal{transition:none}
+}
+</style>
+
+<section class="lumi-bay" id="engineering-bay" aria-label="Lumi Engineering Bay 彩蛋">
+  <div class="lumi-bay__inner">
+    <div class="lumi-bay__signal">
+      <div class="lumi-bay__signal-copy">
+        <span class="lumi-bay__eyebrow">MAINTENANCE SIGNAL DETECTED · ENGINEERING BAY</span>
+        <strong>互動實驗室的最深處，偵測到一個維護訊號。</strong>
+      </div>
+      <button class="lumi-bay__toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="lumi-bay-reveal">開啟維護艙 ✦</button>
+    </div>
+
+    <div class="lumi-bay__reveal"
+         id="lumi-bay-reveal"
+         aria-hidden="true">
+      <figure class="lumi-bay__poster">
+        <img
+          src="/images/lumi-engineering-bay-poster.webp"
+          alt="Lumi｜AML 艦隊維護技師完整 Engineering Bay 角色介紹卡"
+          width="1600"
+          height="900"
+          loading="lazy"
+          decoding="async">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const bay=document.getElementById('engineering-bay');
+  if(!bay)return;
+  const button=bay.querySelector('.lumi-bay__toggle');
+  const reveal=document.getElementById('lumi-bay-reveal');
+  if(!button||!reveal)return;
+
+  button.addEventListener('click',function(){
+    const open=button.getAttribute('aria-expanded')==='true';
+    const next=!open;
+    button.setAttribute('aria-expanded',String(next));
+    reveal.setAttribute('aria-hidden',String(!next));
+    bay.classList.toggle('is-open',next);
+    button.textContent=next?'關閉維護艙':'開啟維護艙 ✦';
+  });
+})();
+</script>
