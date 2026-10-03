@@ -106,7 +106,7 @@ function inspect(file){
 
   for(const attr of ['aria-labelledby','aria-describedby','aria-controls']){
     for(const m of html.matchAll(new RegExp(`${attr}\\s*=\\s*["']([^"']+)["']`, 'gi'))){
-      const refs=m[1].trim().split(/\\s+/).filter(Boolean);
+      const refs=m[1].trim().split(/\s+/).filter(Boolean);
       for(const ref of refs){
         if(!ids.includes(ref)){
           errors.push(`${rel}: ${attr} 指向不存在的 id「${ref}」。`);
