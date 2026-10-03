@@ -114,3 +114,13 @@
 
 ### 本輪意義
 這些修正主要處理「視覺上看得到新內容，但鍵盤／螢幕閱讀器使用者不知道畫面已經換了」的風險，是人工無障礙檢查常見的互動流程問題。
+
+
+## 第五輪：公開檢測範圍界定
+已新增 docs/ACCESSIBILITY_SCOPE_MAP.md。
+
+重要發現：
+- 感控 Pilot 雖有 noindex,nofollow 且未列 sitemap，但 tools.html 有公開入口。
+- 感控 Pilot 現行 gate 為前端 JavaScript 共用帳密，內容仍隨公開資產部署；因此目前不能把登入後區域當作真正私有內容排除。
+- Sera.Phina 與 AML 共用網域，且 resources.html / tools.html 均有公開連結，因此送件前也要確認是否被視為同一網站範圍。
+- 在真正伺服器端 / Cloudflare Access / OTP 邊界完成前，不會把受限工具目錄從 accessibility audit 中整體排除。
