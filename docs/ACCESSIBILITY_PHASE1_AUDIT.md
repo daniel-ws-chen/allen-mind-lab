@@ -214,3 +214,9 @@
 - aria-expanded / aria-hidden / is-open / inert 由同一個 setOpen() 統一同步，降低狀態不同步風險。
 - 在 Engineering Bay 內容中按 Escape 會關閉維護艙，並把焦點送回「開啟維護艙」按鈕。
 - 這一修正直接處理「視覺上隱藏，但鍵盤仍能進入」的人工 QA 風險。
+
+
+## 第十六輪：隱藏區焦點風險自動化
+- accessibility preflight 新增規則：若 div/section/nav/aside/article 使用 aria-hidden="true"，內部又包含 a/button/input/select/textarea/summary 或 tabindex="0"，但容器沒有 inert，列為 warning。
+- 目的不是把所有 aria-hidden 都視為錯誤；裝飾性 icon / SVG 不受影響。規則只抓「隱藏區裡疑似還有可聚焦控制項」的情況。
+- Engineering Bay 已補 inert，因此不應再被此規則列為風險。
