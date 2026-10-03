@@ -185,3 +185,10 @@
 - 共用 CSS 為 #aml-main / #main 增加 scroll-margin-top，降低 sticky 導覽遮住跳轉目標的風險。
 - prefers-reduced-motion 使用者不會被強制平滑捲動。
 - 文章分享／複製狀態現在自動補上 role="status"、aria-live="polite"、aria-atomic="true"，讓「連結已複製」等動態回饋可被輔助科技感知。
+
+
+## 第十三輪：表單狀態、流程焦點與表格語意
+- Management Coach 既有 import/workspace/member import/confirm/cafe/prompt 狀態區補上 role="status" + aria-live="polite"。
+- 組員模式新增 assertive 錯誤訊息區；缺少課前評量或章節內容時，不再只依賴 alert，而會顯示可被輔助科技讀取的錯誤並把焦點移到需要修正的欄位。
+- 主流程與組員流程切換 panel 後，焦點會移到新 panel 的 h2；捲動會尊重 prefers-reduced-motion。
+- PBS Companion 兩張資料表新增 caption 與 th scope="col"；原本空白的操作欄改為「操作」，提升螢幕閱讀器表格導覽語意。
