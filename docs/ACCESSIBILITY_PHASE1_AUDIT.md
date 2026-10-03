@@ -192,3 +192,17 @@
 - 組員模式新增 assertive 錯誤訊息區；缺少課前評量或章節內容時，不再只依賴 alert，而會顯示可被輔助科技讀取的錯誤並把焦點移到需要修正的欄位。
 - 主流程與組員流程切換 panel 後，焦點會移到新 panel 的 h2；捲動會尊重 prefers-reduced-motion。
 - PBS Companion 兩張資料表新增 caption 與 th scope="col"；原本空白的操作欄改為「操作」，提升螢幕閱讀器表格導覽語意。
+
+
+## 第十四輪：Mobile navigation 與共用色彩對比
+- 修正 aml-site.js 動態注入的下拉導覽樣式：原本 focus-visible 會被較高 specificity 的 outline:none 蓋掉；現在下拉選單連結有明確 3px gold focus ring。
+- 行動版選單按鈕開啟後 aria-label 會從「開啟網站選單」切換為「關閉網站選單」，關閉時再恢復；aria-expanded 原有狀態同步保留。
+- 共用 AML 色彩抽樣（以實際不透明色值計算 WCAG 對比）：
+  - #5f6875 / #ffffff ≈ 5.64:1
+  - #6b7280 / #ffffff ≈ 4.83:1
+  - #8c6f38 / #ffffff ≈ 4.72:1
+  - #c7a76a / #071a33 ≈ 7.61:1
+  - #e5e7eb / #081626 ≈ 14.71:1
+  - #aab6c5 / #081626 ≈ 8.85:1
+  - footer #7f8b90 / #101719 ≈ 5.18:1
+- 以上核心文字配色均高於一般文字 4.5:1 門檻；但漸層、半透明覆蓋、圖片背景上的文字仍需人工／瀏覽器實測，不能據此宣稱全站對比已通過。
