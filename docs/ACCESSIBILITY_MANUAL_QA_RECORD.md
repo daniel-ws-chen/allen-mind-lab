@@ -173,3 +173,10 @@ Branch：`accessibility/phase1-a-preflight`
   - 首頁、Management Coach、PBS Companion、Quiz、典型文章與全站噪音抽查。
   - 最低實測組合：首頁 + Management Coach + PBS Companion + 1 套 Quiz + 1 篇文章。
 - 螢幕閱讀器尚未實測，因此相關項目維持 ○。
+
+
+## O. Freego 代表樣本與掃描紀錄
+
+- 新增 `docs/ACCESSIBILITY_REPRESENTATIVE_URLS.md`：固定正式全站掃描前的代表模板 URL 組。
+- 新增 `docs/ACCESSIBILITY_FREEGO_RUN_RECORD.md`：固定每次 Freego 掃描的 URL、規則、嚴重度、修正 commit 與重測紀錄。
+- 代表樣本只用於提早抓共通問題；最終範圍仍回到 104 個公開 URL 基線。
