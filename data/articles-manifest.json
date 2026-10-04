@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-02T08:07:34.509Z",
+  "generatedAt": "2026-10-04T12:45:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 59,
-    "ot": 26,
+    "total": 61,
+    "ot": 27,
     "mind": 14,
     "pbs": 14,
-    "education": 13,
-    "management": 31,
-    "ai": 20,
+    "education": 14,
+    "management": 33,
+    "ai": 21,
     "notes": 7
   },
   "featuredReading": [
@@ -78,6 +78,106 @@
     }
   },
   "articles": [
+    {
+      "slug": "knowledge-worker-to-judgment-worker",
+      "title": "從知識工作者到判斷工作者：AI正在改寫我們的專業價值",
+      "summary": "當 AI 能快速分析、整理與提出方案，人的專業價值正從產生答案轉向判斷、選擇、試作與修正。本文從 SWOT、管理學與教育評量出發，重新思考 AI 時代的共通素養。",
+      "date": "2026-10-04",
+      "domains": [
+        "management",
+        "ai",
+        "education"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ai",
+        "education"
+      ],
+      "tag": "Management & Leadership × AI × Practice × Education",
+      "cardMeta": "2026.10.04 · Management & Leadership × AI × Practice × Education",
+      "keywords": [
+        "AI",
+        "判斷工作者",
+        "知識工作者",
+        "管理學",
+        "SWOT",
+        "決策",
+        "策略選擇",
+        "小規模試作",
+        "滾動修正",
+        "判斷痕跡",
+        "教育評量",
+        "謙卑"
+      ],
+      "articlePath": "/articles/knowledge-worker-to-judgment-worker.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/knowledge-worker-to-judgment-worker",
+      "hero": "/images/articles/knowledge-worker-to-judgment-worker-hero.webp",
+      "ogImage": "/images/articles/knowledge-worker-to-judgment-worker-hero.webp",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 大缺工時代，照顧工作需要重新設計",
+          "href": "/articles/care-work-redesign-labor-shortage.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 資源可以集中，視野不能有盲區：從資源盤點到服務布局的管理思維 →",
+          "href": "/articles/resource-mapping-service-layout.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
+      "slug": "resource-mapping-service-layout",
+      "title": "資源可以集中，視野不能有盲區：從資源盤點到服務布局的管理思維",
+      "summary": "資源不必平均，但服務視野不能有盲區。從利害關係人、服務階段、80/20 與小缺口監測，重新思考有限資源如何形成更完整的服務布局。",
+      "date": "2026-10-04",
+      "domains": [
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "Management & Leadership × OT & Human Occupation",
+      "cardMeta": "2026.10.04 · Management & Leadership × OT & Human Occupation",
+      "keywords": [
+        "資源盤點",
+        "服務布局",
+        "利害關係人",
+        "服務階段",
+        "80/20",
+        "破窗",
+        "服務缺口",
+        "服務設計",
+        "資源配置",
+        "職能治療",
+        "管理學"
+      ],
+      "articlePath": "/articles/resource-mapping-service-layout.html",
+      "order": -4,
+      "canonical": "https://allenmindlab.com/articles/resource-mapping-service-layout",
+      "hero": "/images/articles/resource-mapping-service-layout-hero.webp",
+      "ogImage": "/images/articles/resource-mapping-service-layout-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 從知識工作者到判斷工作者：AI正在改寫我們的專業價值",
+          "href": "/articles/knowledge-worker-to-judgment-worker.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "care-work-redesign-labor-shortage",
       "title": "大缺工時代，照顧工作需要重新設計",
