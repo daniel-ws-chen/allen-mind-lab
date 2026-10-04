@@ -556,7 +556,7 @@
   box-shadow:0 10px 24px rgba(15,23,42,.05);
 }
 .aml-library-snapshot__item:focus-visible{
-  outline:3px solid rgba(199,167,106,.5);
+  outline:3px solid #8a6423;
   outline-offset:3px;
 }
 .aml-library-snapshot__item strong{
@@ -824,7 +824,7 @@
 .aml-curated-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
 .aml-curated-card{overflow:hidden;display:grid;grid-template-columns:minmax(0,42%) 1fr;min-height:300px;border:1px solid #e4dccf;border-radius:24px;background:#fff;color:#142031;text-decoration:none;box-shadow:0 10px 28px rgba(15,23,42,.035);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
 .aml-curated-card:hover{transform:translateY(-2px);border-color:#c7a76a;box-shadow:0 16px 34px rgba(15,23,42,.07)}
-.aml-curated-card:focus-visible{outline:3px solid rgba(199,167,106,.5);outline-offset:3px}
+.aml-curated-card:focus-visible{outline:3px solid #8a6423;outline-offset:3px}
 .aml-curated-card__media{min-height:100%;background:#eef1f2}
 .aml-curated-card__media img{width:100%;height:100%;min-height:300px;object-fit:cover;display:block}
 .aml-curated-card__body{display:flex;min-width:0;flex-direction:column;padding:26px}
