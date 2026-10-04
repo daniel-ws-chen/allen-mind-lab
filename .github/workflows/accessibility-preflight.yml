@@ -1,0 +1,56 @@
+name: Accessibility preflight
+
+on:
+  pull_request:
+    paths:
+      - "**/*.html"
+      - "**/*.css"
+      - "**/*.js"
+      - "audit-accessibility.mjs"
+      - "accessibility-scope.json"
+      - "build-dist.mjs"
+      - ".github/workflows/accessibility-preflight.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  accessibility-preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate AML source integrity
+        run: node validate-aml.mjs
+
+      - name: Build public dist
+        run: node build-dist.mjs
+
+      - name: Run accessibility preflight against public dist
+        env:
+          AUDIT_ROOT: dist
+          AUDIT_REPORT: accessibility-preflight-report.json
+        run: node audit-accessibility.mjs
+
+      - name: Upload accessibility preflight report
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-preflight-report
+          path: accessibility-preflight-report.json
+          retention-days: 14
+
+      - name: Verify private audit artifacts are not public
+        shell: bash
+        run: |
+          test ! -e dist/docs
+          test ! -e dist/audit-accessibility.mjs
+          test ! -e dist/accessibility-scope.json
+          test ! -e dist/validate-aml.mjs
+          test ! -e dist/wrangler.jsonc

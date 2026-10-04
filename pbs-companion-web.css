@@ -34,7 +34,7 @@ button,input,textarea,select{font:inherit}
 label{display:grid;gap:7px;margin:0 0 16px;font-size:.86rem;font-weight:800}
 input[type=text],input[type=file],select,textarea{width:100%;padding:11px 12px;border:1px solid #cfd8dd;border-radius:11px;background:#fff;color:#17202b}
 textarea{resize:vertical;line-height:1.6}
-input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid rgba(199,167,106,.28);outline-offset:2px}
+input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #8a6423;outline-offset:2px}
 .pbsw-upload{display:grid;grid-template-columns:minmax(240px,.8fr) minmax(420px,1.2fr);gap:22px;align-items:start;padding:20px;border:1px dashed #bdcbd3;border-radius:16px;background:#f9fbfc}
 .pbsw-upload p{margin:5px 0 0;color:var(--pbsw-soft);font-size:.82rem}
 .pbsw-upload-flow{display:grid;grid-template-columns:minmax(210px,1fr) minmax(220px,1fr) auto;gap:10px;align-items:end}
@@ -102,3 +102,12 @@ input:focus,select:focus,textarea:focus,button:focus-visible,a:focus-visible,sum
   body{background:#fff}.pbsw-main{padding:0}.pbsw-panel{border:0;box-shadow:none;margin:0;padding:0}.pbsw-report{border:0;padding:0}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.pbsw-btn{transition:none}.pbsw-btn:hover{transform:none}}
+
+
+/* Accessibility Phase 1 */
+.pbsw-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.pbsw-status--error{margin:10px 0 0;color:#7f1d1d;font-weight:800}
+#targetBehavior[aria-invalid="true"]{border-color:#b42318!important;box-shadow:0 0 0 3px rgba(180,35,24,.14)!important}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #1d6f8f;outline-offset:3px}
+.pbsw-hero .pbsw-back:focus-visible{outline-color:#f1dca8}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

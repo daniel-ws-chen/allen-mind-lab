@@ -18,6 +18,9 @@ const skipExact = new Set([
   "wrangler.toml",
   "build-dist.mjs",
   "validate-aml.mjs",
+  "audit-accessibility.mjs",
+  "accessibility-scope.json",
+  "docs",
   "publish-aml-article.mjs",
   "audit-aml-assets.mjs",
   "package.json",
@@ -174,6 +177,34 @@ function countFiles(dir) {
     else count++;
   }
   return count;
+}
+
+// AML private build guard: internal audit / engineering artifacts must never enter public dist.
+const privateBuildArtifacts = [
+  "docs",
+  "audit-accessibility.mjs",
+  "accessibility-scope.json",
+  "validate-aml.mjs",
+  "wrangler.jsonc"
+];
+
+for (const privateArtifact of privateBuildArtifacts) {
+  const target = join(dist, privateArtifact);
+  if (existsSync(target)) {
+    throw new Error(`AML private build guard failed: ${privateArtifact} was copied into public dist/`);
+  }
+}
+
+// Restricted candidates are intentionally still deployed until a real edge/server auth boundary exists.
+// Keep this warning visible in deployment logs so they are not accidentally treated as private.
+const restrictedCandidatePaths = [
+  "tools/infection-control-pilot",
+  "sera-phina/learning-lab/national-exam"
+];
+for (const candidate of restrictedCandidatePaths) {
+  if (existsSync(join(dist, candidate))) {
+    console.warn(`AML access-scope warning: ${candidate} is still publicly deployed; do not classify it as private without verified edge/server authentication.`);
+  }
 }
 
 console.log(`AML build complete: ${countFiles(dist)} public files copied to dist/`);

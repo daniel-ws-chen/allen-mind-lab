@@ -16,7 +16,8 @@
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--home::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--home::before{background:#d7a84f;box-shadow:0 0 13px rgba(215,168,79,.38)}
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--management::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--management::before{background:#7da9ff;box-shadow:0 0 13px rgba(125,169,255,.42)}
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--pbs::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--pbs::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
-      .aml-nav-group .aml-nav-panel a:hover,.aml-nav-group .aml-nav-panel a:focus-visible{background:linear-gradient(90deg,rgba(215,168,79,.08),rgba(111,103,255,.04));outline:none}
+      .aml-nav-group .aml-nav-panel a:hover,.aml-nav-group .aml-nav-panel a:focus-visible{background:linear-gradient(90deg,rgba(215,168,79,.08),rgba(111,103,255,.04))}
+      .aml-nav-group .aml-nav-panel a:focus-visible{outline:3px solid var(--aml-gold);outline-offset:2px}
       @media(max-width:720px){
         .aml-menu-toggle{min-width:44px;min-height:44px}
         .aml-mobile-menu a{min-height:44px;display:flex;align-items:center}
@@ -146,6 +147,29 @@
 })();
 
 (() => {
+  /* ===== Skip Link Focus Management ===== */
+  const bindSkipLinks = () => {
+    document.querySelectorAll('a.aml-skip-link[href^="#"]').forEach(link => {
+      if (link.dataset.amlSkipBound === "true") return;
+      link.dataset.amlSkipBound = "true";
+      link.addEventListener("click", event => {
+        const id = link.getAttribute("href")?.slice(1);
+        if (!id) return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+        target.scrollIntoView({ block: "start", behavior: "auto" });
+      });
+    });
+  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindSkipLinks, { once: true });
+  } else {
+    bindSkipLinks();
+  }
+
   /* ===== Accessible Explore & Mobile Navigation ===== */
   const toggle = document.querySelector(".aml-menu-toggle");
   const menu = document.querySelector(".aml-mobile-menu");
@@ -162,6 +186,7 @@
     if (!toggle || !menu) return;
     menu.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "開啟網站選單");
     toggle.textContent = "☰";
   };
 
@@ -239,6 +264,7 @@
         closeExplore();
         menu.classList.add("is-open");
         toggle.setAttribute("aria-expanded", "true");
+        toggle.setAttribute("aria-label", "關閉網站選單");
         toggle.textContent = "×";
       }
     });
@@ -304,6 +330,12 @@
 
   const shareStatus =
     document.querySelector("[data-aml-share-status]");
+
+  if (shareStatus) {
+    shareStatus.setAttribute("role", "status");
+    shareStatus.setAttribute("aria-live", "polite");
+    shareStatus.setAttribute("aria-atomic", "true");
+  }
 
   if (shareButton || lineShareButton || copyButton) {
 
