@@ -17,6 +17,15 @@
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--management::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--management::before{background:#7da9ff;box-shadow:0 0 13px rgba(125,169,255,.42)}
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--pbs::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--pbs::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
       .aml-nav-group .aml-nav-panel a:hover,.aml-nav-group .aml-nav-panel a:focus-visible{background:linear-gradient(90deg,rgba(215,168,79,.08),rgba(111,103,255,.04));outline:none}
+      .aml-nav-group[data-aml-collection-nav] .aml-nav-panel{min-width:270px}
+      .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--overview{font-weight:800;color:#173d63;padding-top:.9rem;padding-bottom:.85rem}
+      .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--overview::before{background:#315d8b;box-shadow:0 0 10px rgba(49,93,139,.28)}
+      .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--core-start,
+      .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--notes,
+      .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--library{border-top:1px solid rgba(15,23,42,.10);margin-top:.22rem;padding-top:.82rem}
+      .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--notes::before{background:#9a6d9f;box-shadow:0 0 10px rgba(154,109,159,.28)}
+      .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--library{font-weight:750;color:#173d63}
+      .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--library::before{content:"⌕";width:auto;height:auto;border-radius:0;background:none;box-shadow:none;font-size:.95rem;font-weight:900;line-height:1;color:#315d8b}
       @media(max-width:720px){
         .aml-menu-toggle{min-width:44px;min-height:44px}
         .aml-mobile-menu a{min-height:44px;display:flex;align-items:center}
@@ -46,6 +55,56 @@
     });
     details.append(summary, panel);
     return details;
+  }
+
+  function normalizeCollectionNav() {
+    const order = [
+      {href:'/articles.html', label:'探索主題館藏', className:'aml-collection-entry aml-collection-entry--overview'},
+      {href:'/ot.html', label:'職能治療與人類職能', className:'aml-collection-entry aml-collection-entry--core aml-collection-entry--core-start'},
+      {href:'/pbs.html', label:'PBS 正向行為支持', className:'aml-collection-entry aml-collection-entry--core'},
+      {href:'/management.html', label:'管理與領導', className:'aml-collection-entry aml-collection-entry--core'},
+      {href:'/education.html', label:'教育與學習', className:'aml-collection-entry aml-collection-entry--core'},
+      {href:'/ai.html', label:'AI × 實務', className:'aml-collection-entry aml-collection-entry--core'},
+      {href:'/mind.html', label:'身心與福祉', className:'aml-collection-entry aml-collection-entry--core'},
+      {href:'/notes.html', label:'AML 小品集', className:'aml-collection-entry aml-collection-entry--notes'},
+      {href:'/library.html', label:'搜尋全部文章', className:'aml-collection-entry aml-collection-entry--library'}
+    ];
+
+    document.querySelectorAll('.aml-desktop-links .aml-nav-group').forEach((details) => {
+      const summary = details.querySelector(':scope > summary');
+      if (!summary || summary.textContent.trim() !== '主題館藏') return;
+      details.dataset.amlCollectionNav = 'true';
+      const panel = details.querySelector(':scope > .aml-nav-panel');
+      if (!panel) return;
+      panel.textContent = '';
+      order.forEach(item => {
+        const a = document.createElement('a');
+        a.href = item.href;
+        a.className = item.className;
+        a.textContent = item.label;
+        panel.appendChild(a);
+      });
+    });
+
+    document.querySelectorAll('.aml-mobile-menu').forEach((menu) => {
+      const label = Array.from(menu.querySelectorAll('.aml-mobile-label'))
+        .find(el => el.textContent.trim() === '主題館藏');
+      if (!label) return;
+      let node = label.nextElementSibling;
+      while (node && !node.classList.contains('aml-mobile-label')) {
+        const next = node.nextElementSibling;
+        node.remove();
+        node = next;
+      }
+      order.forEach((item, index) => {
+        const a = document.createElement('a');
+        a.href = item.href;
+        a.className = item.className;
+        a.textContent = item.label;
+        if (index === 1 || index === 7 || index === 8) a.style.borderTop = '1px solid rgba(15,23,42,.10)';
+        menu.insertBefore(a, node || null);
+      });
+    });
   }
 
   function buildDesktopNav() {
@@ -137,6 +196,7 @@
 
   function buildGlobalNav() {
     ensureNavStyles();
+    normalizeCollectionNav();
     buildDesktopNav();
     buildMobileNav();
     document.dispatchEvent(new CustomEvent('aml:nav-updated'));
