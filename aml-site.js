@@ -26,6 +26,36 @@
       .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--notes::before{background:#9a6d9f;box-shadow:0 0 10px rgba(154,109,159,.28)}
       .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--library{font-weight:750;color:#173d63}
       .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--library::before{content:"⌕";width:auto;height:auto;border-radius:0;background:none;box-shadow:none;font-size:.95rem;font-weight:900;line-height:1;color:#315d8b}
+
+      /* AML inner-page hero normalization — keep homepage and article detail pages unchanged. */
+      body.aml-inner-compact-hero .hero,
+      body.aml-inner-compact-hero .topic-hero,
+      body.aml-inner-compact-hero .resource-hero,
+      body.aml-inner-compact-hero .aml-compact-hero{
+        padding-top:clamp(58px,5.5vw,76px)!important;
+        padding-bottom:clamp(38px,3.8vw,52px)!important;
+      }
+      body.aml-inner-compact-hero .hero h1,
+      body.aml-inner-compact-hero .topic-hero h1,
+      body.aml-inner-compact-hero .resource-hero h1,
+      body.aml-inner-compact-hero .aml-compact-hero h1{
+        font-size:clamp(2.25rem,4.2vw,3.75rem)!important;
+        line-height:1.14!important;
+        margin-top:12px!important;
+        margin-bottom:14px!important;
+      }
+      body.aml-inner-compact-hero .hero p,
+      body.aml-inner-compact-hero .topic-hero p,
+      body.aml-inner-compact-hero .resource-hero p,
+      body.aml-inner-compact-hero .aml-compact-hero p{
+        line-height:1.72!important;
+      }
+      body.aml-inner-compact-hero .notes-hero:after{
+        top:38px!important;
+        width:250px!important;
+        height:165px!important;
+        opacity:.72;
+      }
       @media(max-width:720px){
         .aml-menu-toggle{min-width:44px;min-height:44px}
         .aml-mobile-menu a{min-height:44px;display:flex;align-items:center}
@@ -36,6 +66,27 @@
       }
     `;
     document.head.appendChild(style);
+  }
+
+  function markCompactInnerHero() {
+    const path = (window.location.pathname || '/').replace(/\/+$/, '') || '/';
+    const compactPaths = new Set([
+      '/articles','/articles.html',
+      '/library','/library.html',
+      '/notes','/notes.html',
+      '/ot','/ot.html',
+      '/pbs','/pbs.html',
+      '/management','/management.html',
+      '/education','/education.html',
+      '/ai','/ai.html',
+      '/mind','/mind.html',
+      '/reading-paths','/reading-paths.html',
+      '/research','/research.html',
+      '/resources','/resources.html',
+      '/publications','/publications.html',
+      '/recognition','/recognition.html'
+    ]);
+    if (compactPaths.has(path)) document.body.classList.add('aml-inner-compact-hero');
   }
 
   function makeDetails(label, attrName, links) {
@@ -196,6 +247,7 @@
 
   function buildGlobalNav() {
     ensureNavStyles();
+    markCompactInnerHero();
     normalizeCollectionNav();
     buildDesktopNav();
     buildMobileNav();
