@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AML Kids｜數學五上第八單元・整數四則運算</title>
+<link rel="stylesheet" href="../../assets/kids-home.css">
+<link rel="stylesheet" href="../assets/math5a.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="math-header">
+  <div>
+    <p class="eyebrow">AML Kids｜五上數學・康軒版</p>
+    <h1>第八單元｜整數四則運算</h1>
+    <p>學會看懂括號與運算順序，把多步驟生活問題整理成正確算式。</p>
+  </div>
+  <div class="score-card" aria-live="polite">
+    <strong>🫘 拼豆能量</strong><span id="scoreText">0 / 1000</span>
+    <progress id="scoreProgress" max="1000" value="0">0 / 1000</progress>
+    <small id="unitScoreText">本單元 0 / 250</small>
+  </div>
+</header>
+<nav class="lesson-nav" aria-label="數學第八單元導覽">
+  <a class="tab-btn" href="../../">← AML Kids</a>
+  <a class="tab-btn" href="../">數學首頁</a>
+  <a class="tab-btn" href="../unit7/">第七單元</a>
+  <button class="tab-btn" data-target="home">開始</button>
+  <button class="tab-btn" data-target="order">8-1 運算順序</button>
+  <button class="tab-btn" data-target="paren">8-2 括號</button>
+  <button class="tab-btn" data-target="multi">8-3 多步驟</button>
+  <button class="tab-btn" data-target="apply">8-4 應用題</button>
+  <button class="tab-btn" data-target="challenge">50題</button>
+  <button class="tab-btn" data-target="mistakes">錯題</button>
+</nav>
+
+<main id="main">
+<section id="home" class="panel active">
+<h2>今天的任務</h2>
+<p class="lead">四則混合運算最容易出錯的地方，不是加減乘除本身，而是<strong>先算哪一步</strong>。這一單元要把「括號優先、先乘除後加減、同級由左到右」練熟。</p>
+<div class="progress-hero"><div><span class="hero-kicker">第八單元任務地圖</span><strong>運算順序 → 括號 → 多步驟算式 → 生活情境 → 合理性檢查</strong></div><div class="hero-stat"><span id="heroDone">0</span><small>已完成題數</small></div></div>
+<div class="grid cards">
+<article class="card mission-card"><div class="mission-icon">1️⃣</div><div><span class="card-kicker">活動一</span><h3>沒有括號怎麼算</h3><p>先乘除，後加減；同一級由左到右。</p></div></article>
+<article class="card mission-card"><div class="mission-icon">🧩</div><div><span class="card-kicker">活動二</span><h3>有括號先算括號</h3><p>括號用來改變原本的運算順序。</p></div></article>
+<article class="card mission-card"><div class="mission-icon">🧠</div><div><span class="card-kicker">活動三</span><h3>多步驟算式</h3><p>一步一步算，不跳步、不混順序。</p></div></article>
+<article class="card mission-card"><div class="mission-icon">🛒</div><div><span class="card-kicker">活動四</span><h3>應用題</h3><p>先把題意變成算式，再計算與檢查。</p></div></article>
+</div>
+<div class="resume-card" id="resumeCard" hidden><div class="resume-copy"><span class="hero-kicker">上次學習紀錄</span><strong id="resumeTitle"></strong><p id="resumeText"></p></div><button class="primary resume-btn" id="resumeChallenge">繼續挑戰</button></div>
+<div class="reward-box"><h3>🎁 第八單元積分</h3><p><strong>20 基礎＋20 進階＋10 素養＝50 題</strong>，每題 5 點，共 250 點。</p></div>
+<button class="primary" data-go="order">開始學習</button>
+</section>
+
+<section id="order" class="panel">
+<h2>8-1｜沒有括號的運算順序</h2>
+<div class="remember">一句話記住：<strong>先乘除，後加減；只有加減或只有乘除時，由左到右。</strong></div>
+<div class="worked-example"><h3>例題｜18＋6×4</h3><p>先算 6×4=24，再算 18＋24=<strong>42</strong>。</p></div>
+<div class="worked-example"><h3>例題｜48÷6×3</h3><p>乘除同級，由左到右：48÷6=8，再算8×3=<strong>24</strong>。</p></div>
+<button class="primary" data-go="paren">下一個：括號</button>
+</section>
+
+<section id="paren" class="panel">
+<h2>8-2｜有括號的運算</h2>
+<div class="remember">看到括號，<strong>先算括號裡面</strong>。</div>
+<div class="worked-example"><h3>例題｜(18＋6)×4</h3><p>先算括號：18＋6=24，再算24×4=<strong>96</strong>。</p></div>
+<div class="math-tip"><strong>比較：</strong>18＋6×4=42，但(18＋6)×4=96。括號真的會改變答案。</div>
+<button class="primary" data-go="multi">下一個：多步驟</button>
+</section>
+
+<section id="multi" class="panel">
+<h2>8-3｜多步驟算式</h2>
+<div class="remember">每做完一步就重寫剩下的算式，能大幅降低看錯順序的機會。</div>
+<div class="worked-example"><h3>例題｜72÷(6＋3)＋5×4</h3><p>先括號：6＋3=9；再乘除：72÷9=8、5×4=20；最後8＋20=<strong>28</strong>。</p></div>
+<div class="math-tip"><strong>檢查：</strong>如果結果明顯太大或太小，要回頭檢查是否把順序算錯。</div>
+<button class="primary" data-go="apply">下一個：應用題</button>
+</section>
+
+<section id="apply" class="panel">
+<h2>8-4｜把生活問題寫成算式</h2>
+<div class="remember">應用題先分辨<strong>每一組有多少、共有幾組、先花掉多少、剩下多少</strong>，再決定括號位置。</div>
+<div class="worked-example"><h3>例題｜買文具</h3><p>每盒彩色筆35元，買4盒，再買20元橡皮擦。總共：35×4＋20=<strong>160元</strong>。</p></div>
+<div class="worked-example"><h3>例題｜平均分</h3><p>買了3袋糖，每袋24顆，先吃掉12顆，再平均分給6人：(24×3−12)÷6=<strong>10顆</strong>。</p></div>
+<button class="primary" data-go="challenge">前往 50 題挑戰</button>
+</section>
+
+<section id="challenge" class="panel">
+<div class="section-heading"><span class="section-badge">Math Challenge</span><h2>🧮 第八單元｜50 題挑戰</h2><p>運算順序、括號、多步驟計算、錯誤診斷與生活應用混合出題。</p></div>
+<div class="challenge-progress"><strong id="challengeProgressText">已完成 0 / 50 題</strong><progress id="challengeProgress" max="50" value="0"></progress><span>每題 5 點｜本單元最高 250 點</span></div>
+<div class="challenge-segment-nav">
+<button class="segment-btn segment-basic" data-segment="基礎"><span class="segment-icon">1️⃣</span><span class="segment-name">基礎 20 題</span><span class="segment-subtitle">順序與括號</span><span class="segment-count" data-count-for="基礎">0 / 20</span><span class="segment-state" data-state-for="基礎">尚未開始</span></button>
+<button class="segment-btn segment-advanced" data-segment="進階"><span class="segment-icon">🧠</span><span class="segment-name">進階 20 題</span><span class="segment-subtitle">多步驟與診斷</span><span class="segment-count" data-count-for="進階">0 / 20</span><span class="segment-state" data-state-for="進階">尚未開始</span></button>
+<button class="segment-btn segment-literacy" data-segment="素養"><span class="segment-icon">🛒</span><span class="segment-name">素養 10 題</span><span class="segment-subtitle">生活情境</span><span class="segment-count" data-count-for="素養">0 / 10</span><span class="segment-state" data-state-for="素養">尚未開始</span></button>
+</div>
+<div class="segment-summary"><div><strong id="segmentTitle" tabindex="-1"></strong><p id="segmentIntro"></p></div><span id="segmentProgressText"></span></div>
+<div id="questionList"></div><div class="result-card" id="unitResult" hidden></div>
+</section>
+
+<section id="mistakes" class="panel">
+<div class="section-heading"><span class="section-badge">Review</span><h2>📒 錯題小本本</h2><p>答錯會保留，重新答對後仍可拿完整 5 點。</p></div>
+<div class="mistake-overview"><div><strong id="mistakeTotal">0</strong><span>曾答錯</span></div><div><strong id="mistakeCorrected">0</strong><span>已訂正</span></div><div><strong id="mistakePending">0</strong><span>待複習</span></div></div>
+<div id="mistakeList" class="mistake-list"></div>
+</section>
+</main>
+<footer><p>AML Kids｜五上數學・康軒版｜第八單元</p></footer>
+<script src="unit8.js"></script>
+</body>
+</html>
