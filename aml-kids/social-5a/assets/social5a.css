@@ -187,3 +187,27 @@ body{background:linear-gradient(180deg,#f7fbff 0%,#fbfcfe 55%,#f7fafc 100%);colo
  .question-actions{justify-content:stretch}
  .question-actions .check{width:100%}
 }
+
+.mistake-overview{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin:1rem 0}
+.mistake-overview>div{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:.85rem;text-align:center;box-shadow:0 6px 16px rgba(51,79,112,.05)}
+.mistake-overview strong{display:block;font-size:1.55rem;line-height:1.1;color:#294b6d}
+.mistake-overview span{display:block;margin-top:.25rem;color:#65788c;font-size:.86rem;font-weight:700}
+.mistake-filters{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}
+.mistake-filter{border:1px solid #aebfd0;background:#fff;color:#35506c;border-radius:999px;padding:.48rem .8rem;font-weight:800;cursor:pointer}
+.mistake-filter.is-active{background:#294b6d;color:#fff;border-color:#294b6d}
+.mistake-filter:focus-visible{outline:4px solid #f59e0b;outline-offset:2px}
+.mistake-list{display:grid;gap:.85rem}
+.mistake-card{background:#fff;border:1px solid #d8e3ed;border-left:5px solid #b45b68;border-radius:1rem;padding:1rem;box-shadow:0 7px 18px rgba(51,79,112,.05)}
+.mistake-card.is-corrected{border-left-color:#4e8b63;background:linear-gradient(180deg,#fff,#f8fcf9)}
+.mistake-card h3{font-size:1rem;line-height:1.7;margin:.55rem 0 .35rem}
+.mistake-card p{margin:.25rem 0 .65rem;color:#607286}
+.mistake-meta{display:flex;gap:.45rem;flex-wrap:wrap;align-items:center}
+.lesson-chip,.mistake-status{border-radius:999px;padding:.12rem .5rem;font-size:.8rem;font-weight:800}
+.lesson-chip{background:#f4f7fa;border:1px solid #cad6e2;color:#50667d}
+.mistake-status{margin-left:auto;background:#fff4f5;border:1px solid #d9a7ae;color:#8f3e4c}
+.is-corrected .mistake-status{background:#f0faf3;border-color:#91b59c;color:#2f6d43}
+.mistake-empty{text-align:center;background:#fff;border:1px dashed #bdcad7;border-radius:1rem;padding:1.5rem}
+.mistake-empty>span{display:block;font-size:2rem}
+.mistake-empty strong{display:block;margin:.35rem 0}
+.mistake-empty p{margin:.2rem 0;color:#66798d}
+@media(max-width:700px){.mistake-overview{grid-template-columns:repeat(3,1fr);gap:.45rem}.mistake-overview>div{padding:.65rem .4rem}.mistake-status{margin-left:0}}
