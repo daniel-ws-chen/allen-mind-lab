@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AML Kids｜數學五上第二單元・因數與公因數</title>
+<link rel="stylesheet" href="../../assets/kids-home.css">
+<link rel="stylesheet" href="../assets/math5a.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+
+<header class="math-header">
+  <div>
+    <p class="eyebrow">AML Kids｜五上數學・康軒版</p>
+    <h1>第二單元｜因數與公因數</h1>
+    <p>先理解「整除」，再學會完整找出因數、公因數與最大公因數。</p>
+  </div>
+  <div class="score-card" aria-live="polite">
+    <strong>🫘 拼豆能量</strong><span id="scoreText">0 / 1000</span>
+    <progress id="scoreProgress" max="1000" value="0">0 / 1000</progress>
+    <small id="unitScoreText">本單元 0 / 250</small>
+  </div>
+</header>
+
+<nav class="lesson-nav" aria-label="數學第二單元導覽">
+  <a class="tab-btn" href="../../">← AML Kids</a>
+  <a class="tab-btn" href="../">數學首頁</a>
+  <a class="tab-btn" href="../unit1/">第一單元</a>
+  <button class="tab-btn" data-target="home">開始</button>
+  <button class="tab-btn" data-target="divide">2-1 整除</button>
+  <button class="tab-btn" data-target="factor">2-2 因數</button>
+  <button class="tab-btn" data-target="common">2-3 公因數</button>
+  <button class="tab-btn" data-target="challenge">50題</button>
+  <button class="tab-btn" data-target="mistakes">錯題</button>
+</nav>
+
+<main id="main">
+<section id="home" class="panel active">
+  <h2>今天的任務</h2>
+  <p class="lead">這一單元最重要的是分清楚：<strong>整除是「除得盡」，因數是「能整除某數的數」，公因數則是「兩個數共同的因數」。</strong></p>
+  <div class="progress-hero"><div><span class="hero-kicker">第二單元任務地圖</span><strong>整除 → 因數 → 公因數 → 最大公因數 → 50 題</strong></div><div class="hero-stat"><span id="heroDone">0</span><small>已完成題數</small></div></div>
+  <div class="grid cards">
+    <article class="card mission-card"><div class="mission-icon">➗</div><div><span class="card-kicker">活動一</span><h3>整除</h3><p>理解沒有餘數時，才能說「整除」。</p></div></article>
+    <article class="card mission-card"><div class="mission-icon">🔢</div><div><span class="card-kicker">活動二</span><h3>因數</h3><p>成對找因數，避免漏掉。</p></div></article>
+    <article class="card mission-card"><div class="mission-icon">🤝</div><div><span class="card-kicker">活動三</span><h3>公因數與最大公因數</h3><p>先各自列出因數，再找共同部分。</p></div></article>
+    <article class="card mission-card"><div class="mission-icon">🧠</div><div><span class="card-kicker">解題策略</span><h3>看到「最多分成幾組」</h3><p>常常是在找最大公因數。</p></div></article>
+  </div>
+  <div class="resume-card" id="resumeCard" hidden><div class="resume-copy"><span class="hero-kicker">上次學習紀錄</span><strong id="resumeTitle"></strong><p id="resumeText"></p></div><button class="primary resume-btn" id="resumeChallenge">繼續挑戰</button></div>
+  <div class="reward-box"><h3>🎁 第二單元積分</h3><p><strong>20 基礎＋20 應用＋10 素養＝50 題</strong>，每題 5 點，共 250 點。</p></div>
+  <button class="primary" data-go="divide">開始學習</button>
+</section>
+
+<section id="divide" class="panel">
+<h2>2-1｜整除</h2>
+<div class="remember">一句話記住：<strong>a ÷ b 沒有餘數，就可以說 b 整除 a。</strong></div>
+<div class="worked-example">
+  <h3>例題｜24 ÷ 6 = 4</h3>
+  <p>沒有餘數，所以可以說：<strong>6 能整除 24</strong>。</p>
+</div>
+<div class="worked-example">
+  <h3>反例｜25 ÷ 6 = 4…1</h3>
+  <p>有餘數，所以 <strong>6 不能整除 25</strong>。</p>
+</div>
+<div class="math-tip"><strong>不要顛倒：</strong>「6 整除 24」和「24 可以被 6 整除」意思相同；不是說 24 整除 6。</div>
+<button class="primary" data-go="factor">下一個：因數</button>
+</section>
+
+<section id="factor" class="panel">
+<h2>2-2｜因數</h2>
+<div class="remember">如果某個數可以整除另一個數，它就是那個數的<strong>因數</strong>。</div>
+<div class="worked-example">
+  <h3>例題｜找出 24 的全部因數</h3>
+  <p>從乘法配對找：1×24、2×12、3×8、4×6。</p>
+  <p><strong>24 的因數：1、2、3、4、6、8、12、24。</strong></p>
+</div>
+<div class="math-tip"><strong>成對找最快：</strong>找到一個因數，就會同時找到另一個因數；超過平方根附近後就會開始重複。</div>
+<button class="primary" data-go="common">下一個：公因數</button>
+</section>
+
+<section id="common" class="panel">
+<h2>2-3｜公因數與最大公因數</h2>
+<div class="remember">兩個數<strong>共同擁有的因數</strong>叫公因數；其中最大的就是最大公因數。</div>
+<div class="worked-example">
+  <h3>例題｜18 和 24 的最大公因數</h3>
+  <p>18 的因數：1、2、3、6、9、18</p>
+  <p>24 的因數：1、2、3、4、6、8、12、24</p>
+  <p>公因數：1、2、3、6，所以<strong>最大公因數是 6</strong>。</p>
+</div>
+<div class="math-tip"><strong>生活題線索：</strong>「最多分成幾組，而且每組數量一樣、不剩下」常常就是在找最大公因數。</div>
+<button class="primary" data-go="challenge">前往 50 題挑戰</button>
+</section>
+
+<section id="challenge" class="panel">
+<div class="section-heading"><span class="section-badge">Math Challenge</span><h2>🧮 第二單元｜50 題挑戰</h2><p>整除、因數、公因數、最大公因數與生活分組題混合出題。</p></div>
+<div class="challenge-progress"><strong id="challengeProgressText">已完成 0 / 50 題</strong><progress id="challengeProgress" max="50" value="0"></progress><span>每題 5 點｜本單元最高 250 點</span></div>
+<div class="challenge-segment-nav">
+<button class="segment-btn segment-basic" data-segment="基礎"><span class="segment-icon">🔢</span><span class="segment-name">基礎 20 題</span><span class="segment-subtitle">整除與因數</span><span class="segment-count" data-count-for="基礎">0 / 20</span><span class="segment-state" data-state-for="基礎">尚未開始</span></button>
+<button class="segment-btn segment-advanced" data-segment="進階"><span class="segment-icon">🧠</span><span class="segment-name">應用 20 題</span><span class="segment-subtitle">公因數與診斷</span><span class="segment-count" data-count-for="進階">0 / 20</span><span class="segment-state" data-state-for="進階">尚未開始</span></button>
+<button class="segment-btn segment-literacy" data-segment="素養"><span class="segment-icon">📦</span><span class="segment-name">素養 10 題</span><span class="segment-subtitle">分組與包裝</span><span class="segment-count" data-count-for="素養">0 / 10</span><span class="segment-state" data-state-for="素養">尚未開始</span></button>
+</div>
+<div class="segment-summary"><div><strong id="segmentTitle" tabindex="-1"></strong><p id="segmentIntro"></p></div><span id="segmentProgressText"></span></div>
+<div id="questionList"></div>
+<div class="result-card" id="unitResult" hidden></div>
+</section>
+
+<section id="mistakes" class="panel">
+<div class="section-heading"><span class="section-badge">Review</span><h2>📒 錯題小本本</h2><p>答錯題目會留下，重新答對仍可拿完整 5 點。</p></div>
+<div class="mistake-overview"><div><strong id="mistakeTotal">0</strong><span>曾答錯</span></div><div><strong id="mistakeCorrected">0</strong><span>已訂正</span></div><div><strong id="mistakePending">0</strong><span>待複習</span></div></div>
+<div id="mistakeList" class="mistake-list"></div>
+</section>
+</main>
+
+<footer><p>AML Kids｜五上數學・康軒版｜第二單元</p></footer>
+<script src="unit2.js"></script>
+</body>
+</html>
