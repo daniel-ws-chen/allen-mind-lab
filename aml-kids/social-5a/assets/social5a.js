@@ -58,9 +58,11 @@ function renderChallengeProgress(){
  if(hero)hero.textContent=done;
  if(document.querySelector('#segmentTitle')) updateSegmentUI();
  const result=document.querySelector('#bossResult');
- if(result && done===50){
-  result.hidden=false;
-  result.textContent='🎉 第一單元 50 題全部完成！本單元獲得 250 / 250 點。';
+ if(result){
+  result.hidden=done!==50;
+  if(done===50){
+   result.innerHTML='<div class="completion-medal" aria-hidden="true">🏅</div><div><strong>第一單元挑戰完成！</strong><p>50 / 50 題全部完成，本單元獲得 250 / 250 點。</p><p class="completion-note">你完成的不只是題目，也完成了一次完整的閱讀與作答耐力訓練。</p></div>';
+  }
  }
 }
 function showPanel(id){
@@ -115,8 +117,18 @@ function updateSegmentUI(){
  document.querySelector('#segmentTitle').textContent=cfg.title;
  document.querySelector('#segmentProgressText').textContent=`已完成 ${done} / ${cfg.count} 題`;
  document.querySelectorAll('.segment-btn').forEach(btn=>{
-  const active=btn.dataset.segment===activeSegment;
+  const level=btn.dataset.segment;
+  const active=level===activeSegment;
+  const levelQuestions=questions.filter(q=>q.level===level);
+  const levelDone=levelQuestions.filter(q=>state.awards.has(q.id)).length;
+  const isComplete=levelDone===levelQuestions.length;
   btn.setAttribute('aria-pressed',String(active));
+  btn.classList.toggle('segment-complete',isComplete);
+  const count=btn.querySelector('[data-count-for]');
+  const status=btn.querySelector('[data-state-for]');
+  if(count) count.textContent=`${levelDone} / ${levelQuestions.length}`;
+  if(status) status.textContent=isComplete?'✓ 已完成':(levelDone>0?'進行中':'尚未開始');
+  btn.setAttribute('aria-label',`${level}題，已完成 ${levelDone} / ${levelQuestions.length}${isComplete?'，已完成':''}`);
  });
 }
 
@@ -147,7 +159,7 @@ function renderQuestions(){
   d.className='quiz challenge-question';
   d.dataset.quiz=item.id;
   if(state.awards.has(item.id)) d.classList.add('correct');
-  d.innerHTML=`<div class="question-meta"><span class="level-chip">${item.level}</span><span>第 ${globalIndex+1} / 50 題</span><span class="source-chip">${item.s}</span></div><h4>${item.q}</h4>${item.o.map((t,j)=>`<label><input type="radio" name="${item.id}" value="${j}"> ${String.fromCharCode(65+j)}. ${t}</label>`).join('')}<button class="check bank-check">送出答案</button><p class="feedback" aria-live="polite">${state.awards.has(item.id)?'✅ 這題已完成並取得 5 點。':''}</p>`;
+  d.innerHTML=`<div class="question-meta"><span class="level-chip">${item.level}</span><span>第 ${globalIndex+1} / 50 題</span><span class="source-chip">${item.s}</span>${state.awards.has(item.id)?'<span class="done-chip">✓ 已完成</span>':''}</div><h4>${item.q}</h4>${item.o.map((t,j)=>`<label><input type="radio" name="${item.id}" value="${j}"> ${String.fromCharCode(65+j)}. ${t}</label>`).join('')}<button class="check bank-check">送出答案</button><p class="feedback" aria-live="polite">${state.awards.has(item.id)?'✅ 這題已完成並取得 5 點。':''}</p>`;
   wrap.appendChild(d);
  });
 
@@ -163,6 +175,15 @@ function renderQuestions(){
    fb.textContent=(gained?'✅ 答對！+5 點。 ':'✅ 答對！這題 5 點已領取過。 ')+item.e;
    box.classList.add('correct');box.classList.remove('incorrect');
    updateSegmentUI();
+   if(gained){
+    const meta=box.querySelector('.question-meta');
+    if(meta && !meta.querySelector('.done-chip')){
+     const chip=document.createElement('span');
+     chip.className='done-chip';
+     chip.textContent='✓ 已完成';
+     meta.appendChild(chip);
+    }
+   }
   }else{
    fb.textContent='🔍 目前答案不對。先重新讀題，找出關鍵證據後再作答；答對仍可取得完整 5 點。';
    box.classList.add('incorrect');box.classList.remove('correct');
