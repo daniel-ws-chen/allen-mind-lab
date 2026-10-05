@@ -1092,7 +1092,8 @@
           "label": "下一篇 入戲 →",
           "href": "/articles/enter-the-play.html"
         }
-      ]
+      ],
+      "isNote": true
     },
     {
       "slug": "schedule-empty-space",
@@ -1133,7 +1134,8 @@
           "label": "上一篇 ← 原來，修行是第一個念頭開始改變",
           "href": "/articles/cultivation-first-thought.html"
         }
-      ]
+      ],
+      "isNote": true
     },
     {
       "slug": "cultivation-first-thought",
@@ -1177,7 +1179,8 @@
           "label": "下一篇 你的 schedule，有沒有一格寫著「放空」？ →",
           "href": "/articles/schedule-empty-space.html"
         }
-      ]
+      ],
+      "isNote": true
     },
     {
       "slug": "ot-management-health-service-last-mile",
@@ -1583,7 +1586,8 @@
           "label": "延伸前站 ← 當 AI 開始參與我們的選擇",
           "href": "/articles/ai-human-occupation-moho.html"
         }
-      ]
+      ],
+      "isNote": true
     },
     {
       "slug": "ai-practice-refined-learning",
@@ -3210,7 +3214,8 @@
           "label": "下一站 助人者也需要被支持 →",
           "href": "/articles/helper-support-system.html"
         }
-      ]
+      ],
+      "isNote": true
     },
     {
       "slug": "medical-care-and-inner-practice",
@@ -3251,7 +3256,8 @@
           "label": "接著閱讀 當 AI 愈來愈強，人為什麼反而更需要修行？ →",
           "href": "/articles/ai-cultivation-inner-life.html"
         }
-      ]
+      ],
+      "isNote": true
     }
   ]
 }
