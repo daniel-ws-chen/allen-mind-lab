@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>AML Kids｜五上社會第一單元 Prototype</title>
+  <link rel="stylesheet" href="assets/social5a.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="site-header">
+  <div>
+    <p class="eyebrow">AML Kids｜五年級上學期・翰林版社會</p>
+    <h1>第一單元｜臺灣的位置與先民足跡</h1>
+  </div>
+  <div class="score-card" aria-live="polite">
+    <strong>🫘 拼豆能量</strong>
+    <span id="scoreText">0 / 1000</span>
+    <progress id="scoreProgress" max="1000" value="0">0 / 1000</progress>
+    <small id="unitScoreText">本單元 0 / 250</small>
+  </div>
+</header>
+
+<nav class="lesson-nav" aria-label="第一單元課程導覽">
+  <button class="tab-btn" data-target="home" aria-controls="home">開始</button>
+  <button class="tab-btn" data-target="l11" aria-controls="l11">1-1</button>
+  <button class="tab-btn" data-target="l12" aria-controls="l12">1-2</button>
+  <button class="tab-btn" data-target="l13" aria-controls="l13">1-3</button>
+  <button class="tab-btn" data-target="boss" aria-controls="boss">Boss</button>
+  <button class="tab-btn" data-target="mistakes" aria-controls="mistakes">錯題</button>
+</nav>
+
+<main id="main" tabindex="-1">
+  <section id="home" class="panel active" tabindex="-1">
+    <h2>今天的任務</h2>
+    <p class="lead">用三條主線學會第一單元：<strong>位置與因果、證據與推論、人與環境。</strong></p>
+    <div class="grid cards">
+      <article class="card"><h3>🗺 1-1 地圖與位置</h3><p>找出臺灣在哪裡，理解位置如何影響交流、季風與生活。</p></article>
+      <article class="card"><h3>🔎 1-2 小小考古學家</h3><p>從石器、陶器、魚骨與遺址找線索，練習「有證據的推測」。</p></article>
+      <article class="card"><h3>🌱 1-3 文化與環境</h3><p>理解不同環境如何影響生活，也學會尊重文化差異。</p></article>
+    </div>
+    <div class="reward-box">
+      <h3>🎁 本單元積分規則</h3>
+      <p>完成基本闖關、Boss 與素養挑戰，本單元最高約 <strong>250 點</strong>。</p>
+      <p>所有科目共用拼豆能量；累積滿 <strong>1000 點</strong>，可由爸爸媽媽確認兌換一次獎勵（目前目標：拼豆補充設備）。</p>
+    </div>
+    <div class="reward-box" id="redeemBox" hidden aria-live="polite">
+      <h3>🎉 1000 點獎勵已解鎖</h3>
+      <p>請爸爸媽媽確認兌換一次獎勵。</p>
+      <button type="button" class="secondary" id="parentRedeemInfo">請爸爸媽媽確認兌換</button>
+      <p id="redeemInfo" class="feedback" aria-live="polite"></p>
+    </div>
+    <button class="primary" data-go="l11">開始第一課</button>
+  </section>
+
+  <section id="l11" class="panel" tabindex="-1">
+    <h2>1-1｜從地圖探索位置與發展有何關聯？</h2>
+    <div class="remember">一句話記住：<strong>一個地方在哪裡，會影響它和哪些地方交流，也會影響生活。</strong></div>
+    <ol class="steps">
+      <li><strong>臺灣在哪裡？</strong> 臺灣位在亞洲東部、太平洋西側，是四面環海的島嶼。</li>
+      <li><strong>位置為什麼重要？</strong> 靠近東亞不同地區，容易產生交通、人口與文化交流。</li>
+      <li><strong>風也會影響生活。</strong> 季風吹來的方向不同，會影響天氣，也可能影響農業與交通。</li>
+      <li><strong>四面環海代表什麼？</strong> 海洋同時是資源、交通與文化交流的空間。</li>
+      <li><strong>位置會影響歷史。</strong> 臺灣的位置，會影響後續不同族群與外來勢力的交流。</li>
+    </ol>
+    <div class="quiz" data-quiz="l11q1">
+      <h3>小練習</h3>
+      <p>哪一項最能說明「地理位置會影響發展」？</p>
+      <label><input type="radio" name="l11q1" value="a"> 臺灣有很多便利商店</label>
+      <label><input type="radio" name="l11q1" value="b"> 臺灣位在東亞海上交通的重要位置</label>
+      <label><input type="radio" name="l11q1" value="c"> 臺灣有很多高樓</label>
+      <button class="check" data-answer="b" data-points="10">送出答案</button>
+      <p class="feedback" aria-live="polite"></p>
+    </div>
+    <div class="competency">
+      <h3>⭐⭐ 素養挑戰｜如果臺灣搬家了？</h3>
+      <p>假設臺灣位在太平洋中央一個非常偏遠的位置，哪一項最可能改變？</p>
+      <label><input type="radio" name="l11c1" value="a"> 每天仍然有白天和晚上</label>
+      <label><input type="radio" name="l11c1" value="b"> 與周圍地區的人員和貿易交流可能減少</label>
+      <label><input type="radio" name="l11c1" value="c"> 所有山都會消失</label>
+      <button class="check" data-answer="b" data-points="15">挑戰送出</button>
+      <p class="feedback" aria-live="polite"></p>
+    </div>
+    <button class="primary" data-go="l12">下一課：1-2</button>
+  </section>
+
+  <section id="l12" class="panel" tabindex="-1">
+    <h2>1-2｜史前人們如何善用資源維持生活？</h2>
+    <div class="remember">一句話記住：<strong>史前不是沒有歷史，而是要靠遺址與文物找線索。</strong></div>
+    <ol class="steps">
+      <li><strong>什麼叫史前？</strong> 沒有足夠文字紀錄的時期。</li>
+      <li><strong>文物會說話嗎？</strong> 石器、陶器、魚骨、貝殼與居住痕跡都能提供線索。</li>
+      <li><strong>人會利用環境。</strong> 海岸、山林、平原能提供不同資源，生活方式也可能不同。</li>
+      <li><strong>工具會改變生活。</strong> 工具反映人們的生活需求與技術。</li>
+      <li><strong>推測要有證據。</strong> 一個文物不能證明所有事情。</li>
+    </ol>
+    <div class="quiz" data-quiz="l12q1">
+      <h3>小練習</h3>
+      <p>某遺址發現大量魚骨和貝殼，最合理的推測是：</p>
+      <label><input type="radio" name="l12q1" value="a"> 居民可能經常利用水域資源</label>
+      <label><input type="radio" name="l12q1" value="b"> 居民一定住在高山頂</label>
+      <label><input type="radio" name="l12q1" value="c"> 居民從不吃魚</label>
+      <button class="check" data-answer="a" data-points="10">送出答案</button>
+      <p class="feedback" aria-live="polite"></p>
+    </div>
+    <div class="competency">
+      <h3>⭐⭐⭐ 素養挑戰｜哪些事情不能確定？</h3>
+      <p>某遺址出土大量陶器與農作痕跡。哪一項「不能只靠這些證據確定」？</p>
+      <label><input type="radio" name="l12c1" value="a"> 可能有耕作</label>
+      <label><input type="radio" name="l12c1" value="b"> 可能使用陶器盛裝東西</label>
+      <label><input type="radio" name="l12c1" value="c"> 所有人每天都吃一模一樣的食物</label>
+      <button class="check" data-answer="c" data-points="15">挑戰送出</button>
+      <p class="feedback" aria-live="polite"></p>
+    </div>
+    <button class="primary" data-go="l13">下一課：1-3</button>
+  </section>
+
+  <section id="l13" class="panel" tabindex="-1">
+    <h2>1-3｜原住民族的文化與環境有何關聯？</h2>
+    <div class="remember">一句話記住：<strong>環境會影響生活，但文化也受到歷史、傳統與交流影響。</strong></div>
+    <ol class="steps">
+      <li><strong>不同族群不一樣。</strong> 語言、文化、居住地與生活方式都可能不同。</li>
+      <li><strong>環境影響資源。</strong> 海岸、山區、平地可利用的資源不同。</li>
+      <li><strong>資源影響生活。</strong> 食衣住行會和可取得的資源有關。</li>
+      <li><strong>文化沒有高低。</strong> 差異需要理解與尊重。</li>
+      <li><strong>文化會改變。</strong> 傳統與現代生活可以同時存在。</li>
+    </ol>
+    <div class="quiz" data-quiz="l13q1">
+      <h3>小練習</h3>
+      <p>下列哪個說法較合理？</p>
+      <label><input type="radio" name="l13q1" value="a"> 所有原住民族文化都完全一樣</label>
+      <label><input type="radio" name="l13q1" value="b"> 不同族群可能發展出不同文化</label>
+      <label><input type="radio" name="l13q1" value="c"> 原住民族只住在山上</label>
+      <button class="check" data-answer="b" data-points="10">送出答案</button>
+      <p class="feedback" aria-live="polite"></p>
+    </div>
+    <div class="competency">
+      <h3>⭐⭐⭐ 素養挑戰｜環境不是唯一答案</h3>
+      <p>兩個族群都住在山區，但文化仍然不同。這最能說明什麼？</p>
+      <label><input type="radio" name="l13c1" value="a"> 環境完全沒有影響</label>
+      <label><input type="radio" name="l13c1" value="b"> 只要住在同一環境，文化就一定一樣</label>
+      <label><input type="radio" name="l13c1" value="c"> 環境會影響生活，但歷史、傳統與交流也會影響文化</label>
+      <button class="check" data-answer="c" data-points="15">挑戰送出</button>
+      <p class="feedback" aria-live="polite"></p>
+    </div>
+    <button class="primary" data-go="boss">前往單元 Boss</button>
+  </section>
+
+  <section id="boss" class="panel" tabindex="-1">
+    <h2>🕵️ 第一單元 Boss｜臺灣探索家</h2>
+    <p>基本 Boss 共 5 題，每題 25 點。完成全部 Boss 可再獲得 25 點完成獎勵；三課素養挑戰全部完成再加 25 點。本單元最高約 250 點。</p>
+    <div id="bossQuestions"></div>
+    <div class="result-card" id="bossResult" hidden aria-live="polite"></div>
+  </section>
+
+  <section id="mistakes" class="panel" tabindex="-1">
+    <h2>錯題小本本</h2>
+    <p>這裡只記錄本裝置上的錯題。重新答對後仍保留「曾經錯過」的紀錄，方便考前複習。</p>
+    <ul id="mistakeList"></ul>
+  </section>
+</main>
+
+<footer>
+  <p>答案為逐題演算與整理，若與老師答案不同，以老師為準。</p>
+  <p>Prototype：獨立測試版，不連動 AML 主站全域 CSS / JS。</p>
+</footer>
+
+<script src="assets/social5a.js"></script>
+</body>
+</html>
