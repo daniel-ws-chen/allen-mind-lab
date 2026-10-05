@@ -67,3 +67,14 @@
 .answer-option.option-wrong::after{content:"再想想";grid-column:2;color:#8f3e4c;font-size:.82rem;font-weight:850}
 .answer-option:has(input:focus-visible){outline:4px solid #f59e0b;outline-offset:2px}
 @media(max-width:760px){.mini-question-table,.mini-question-table.two-col,.mini-question-table.three-col,.compare-records{grid-template-columns:1fr}.mini-question-table span{text-align:left}}
+
+/* AML Kids child-readable typography */
+.science-header>div>p{font-size:1.02rem;line-height:1.75}
+.tab-btn,.primary,.secondary,.check,.segment-btn{font-size:1rem;min-height:2.75rem}
+.lead{font-size:1.16rem;line-height:1.75}
+.remember{font-size:1.1rem;line-height:1.8}
+.steps{font-size:1.04rem;line-height:1.9}
+.question-stem h4{font-size:1.12rem;line-height:1.85}
+.answer-option{font-size:1.04rem;line-height:1.7;padding:.82rem}
+.level-chip,.source-chip,.done-chip,.reading-material-tag,.segment-state{font-size:.88rem}
+.feedback{font-size:1rem;line-height:1.7}
