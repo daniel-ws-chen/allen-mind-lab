@@ -85,3 +85,12 @@ footer p{margin:.2rem 0}
  .portal-arrow{display:none}
  .how-grid{grid-template-columns:1fr 1fr}
 }
+
+/* AML Kids child-readable typography */
+html{font-size:18px}
+body{line-height:1.75}
+button,a{touch-action:manipulation}
+.portal-unit-link strong,.unit-card h3,.subject-copy h3{font-size:1.08rem;line-height:1.5}
+.portal-unit-link small,.unit-meta span,.subject-progress span,.status,.rule-grid span,.dashboard-strip span{font-size:.88rem;line-height:1.55}
+.subject-home-link,.enter{font-size:1rem}
+@media(max-width:800px){html{font-size:18px}}
