@@ -1,4 +1,4 @@
-import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, statSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const root = process.cwd();
@@ -165,6 +165,69 @@ for (const sourceOnlyAsset of sourceOnlyAssets) {
   const target = join(dist, sourceOnlyAsset);
   if (existsSync(target)) rmSync(target, { recursive: true, force: true });
 }
+
+
+const skipLinkStyle = `
+<style data-aml-skip-link-a11y>
+.aml-skip-link{position:fixed;left:16px;top:-80px;z-index:10000;padding:10px 16px;border-radius:10px;background:#fff;color:#0d1b2a;font-weight:800;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.aml-skip-link:focus{top:12px}
+</style>`;
+
+function ensureSkipLink(html) {
+  if (!/<body\\b/i.test(html)) return html;
+
+  let targetId = null;
+  const mainWithId = html.match(/<main\\b[^>]*\\bid=["']([^"']+)["'][^>]*>/i);
+  if (mainWithId) {
+    targetId = mainWithId[1];
+  } else if (/<main\\b/i.test(html)) {
+    targetId = "aml-main";
+    html = html.replace(/<main\\b(?![^>]*\\bid=)([^>]*)>/i, '<main id="aml-main"$1>');
+  } else {
+    const h1WithId = html.match(/<h1\\b[^>]*\\bid=["']([^"']+)["'][^>]*>/i);
+    if (h1WithId) {
+      targetId = h1WithId[1];
+    } else if (/<h1\\b/i.test(html)) {
+      targetId = "aml-main";
+      html = html.replace(/<h1\\b(?![^>]*\\bid=)([^>]*)>/i, '<h1 id="aml-main"$1>');
+    }
+  }
+
+  if (!targetId) return html;
+
+  const skipPattern = /<a\\b([^>]*\\bclass=["'][^"']*aml-skip-link[^"']*["'][^>]*)>[\\s\\S]*?<\\/a>/i;
+  if (skipPattern.test(html)) {
+    html = html.replace(skipPattern, (link) =>
+      /\\bhref=["'][^"']*["']/i.test(link)
+        ? link.replace(/\\bhref=["'][^"']*["']/i, `href="#${targetId}"`)
+        : link.replace(/<a\\b/i, `<a href="#${targetId}"`)
+    );
+  } else {
+    html = html.replace(/<body\\b([^>]*)>/i, `<body$1><a class="aml-skip-link" href="#${targetId}">跳至主要內容</a>`);
+  }
+
+  if (!/data-aml-skip-link-a11y/i.test(html) && /<\\/head>/i.test(html)) {
+    html = html.replace(/<\\/head>/i, `${skipLinkStyle}</head>`);
+  }
+
+  return html;
+}
+
+function patchHtmlFiles(dir) {
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    if (statSync(p).isDirectory()) {
+      patchHtmlFiles(p);
+      continue;
+    }
+    if (!/\\.html?$/i.test(name)) continue;
+    const before = readFileSync(p, "utf8");
+    const after = ensureSkipLink(before);
+    if (after !== before) writeFileSync(p, after, "utf8");
+  }
+}
+
+patchHtmlFiles(dist);
 
 function countFiles(dir) {
   let count = 0;
