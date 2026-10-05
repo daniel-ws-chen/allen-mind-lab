@@ -170,6 +170,15 @@
     <div class="source-note">
       <strong>題庫來源說明：</strong>以現行翰林五上第一單元課程重點為範圍，並參考公開校內評量與歷屆翰林題型進行改編；不直接複製整份試卷。
     </div>
+    <div class="challenge-segment-nav" role="group" aria-label="50題挑戰分區">
+      <button type="button" class="segment-btn" data-segment="基礎" aria-controls="questionSegment">基礎 20 題</button>
+      <button type="button" class="segment-btn" data-segment="進階" aria-controls="questionSegment">進階挑戰 20 題</button>
+      <button type="button" class="segment-btn" data-segment="素養" aria-controls="questionSegment">素養 10 題</button>
+    </div>
+    <div class="segment-summary" aria-live="polite">
+      <strong id="segmentTitle">第一區｜基礎 20 題</strong>
+      <span id="segmentProgressText">已完成 0 / 20 題</span>
+    </div>
     <div id="bossQuestions"></div>
     <div class="result-card" id="bossResult" hidden aria-live="polite"></div>
   </section>
