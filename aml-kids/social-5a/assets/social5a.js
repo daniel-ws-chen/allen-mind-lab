@@ -119,8 +119,25 @@ function showPanel(id){
   if(b.dataset.target===id)b.setAttribute('aria-current','page');
   else b.removeAttribute('aria-current');
  });
- const p=document.getElementById(id);p.focus();
  history.replaceState(null,'',`#${id}`);
+
+ // 換頁時固定回到目前內容區塊頂端，避免焦點造成畫面停在中段。
+ const p=document.getElementById(id);
+ const nav=document.querySelector('.lesson-nav');
+ const offset=(nav?.offsetHeight||0)+12;
+ const top=Math.max(0,p.getBoundingClientRect().top+window.scrollY-offset);
+ window.scrollTo({top,behavior:'auto'});
+
+ // 先捲動再把焦點移到該頁第一個標題；preventScroll 避免瀏覽器再次把畫面拉到中間。
+ requestAnimationFrame(()=>{
+  const heading=p.querySelector('h2');
+  if(heading){
+   if(!heading.hasAttribute('tabindex')) heading.setAttribute('tabindex','-1');
+   heading.focus({preventScroll:true});
+  }else{
+   p.focus({preventScroll:true});
+  }
+ });
 }
 document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>showPanel(b.dataset.target)));
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showPanel(b.dataset.go)));
