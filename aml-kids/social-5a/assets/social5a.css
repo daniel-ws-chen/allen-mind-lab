@@ -35,3 +35,12 @@ footer{max-width:960px;margin:2rem auto;padding:1rem;border-top:1px solid #cbd5e
 .reading-passage p{margin:.25rem 0 1rem}
 .reading-passage p:last-child{margin-bottom:.25rem}
 .reading-set h4{font-size:1.08rem;margin:.6rem 0}
+
+.challenge-progress{position:sticky;top:4.4rem;z-index:8;background:#fff;border:2px solid #334155;border-radius:1rem;padding:.8rem 1rem;margin:1rem 0;display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;align-items:center}
+.challenge-progress progress{min-width:180px}
+.source-note{background:#eef6ff;border-left:5px solid #1d4ed8;padding:1rem;margin:1rem 0;border-radius:.5rem}
+.question-section-title{margin:2rem 0 1rem;padding:.75rem 1rem;border-bottom:3px solid #334155}
+.question-meta{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;color:#475569;font-size:.92rem}
+.source-chip{border:1px dashed #64748b;border-radius:999px;padding:.15rem .55rem;background:#fff}
+.challenge-question h4{font-size:1.08rem;line-height:1.75;margin:.65rem 0}
+@media(max-width:700px){.challenge-progress{top:4rem;grid-template-columns:1fr}.challenge-progress progress{width:100%}}
