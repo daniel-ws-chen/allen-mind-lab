@@ -218,3 +218,16 @@ body{background:linear-gradient(180deg,#f7fbff 0%,#fbfcfe 55%,#f7fafc 100%);colo
 .resume-copy p{margin:.2rem 0;color:#60758b}
 .resume-btn{margin-top:0;white-space:nowrap}
 @media(max-width:700px){.resume-card{align-items:stretch;flex-direction:column}.resume-btn{width:100%}}
+
+/* AML Kids child-readable typography */
+html{font-size:18px}
+body{line-height:1.75}
+.tab-btn,.primary,.check,.secondary{font-size:1rem;min-height:2.75rem}
+.lead{font-size:1.2rem}
+.remember{font-size:1.18rem;line-height:1.8}
+.steps{font-size:1.04rem;line-height:1.85}
+.question-stem h4,.reading-set h4{font-size:1.12rem;line-height:1.8}
+.answer-option,.quiz label,.competency label{font-size:1.04rem;line-height:1.7}
+.level-chip,.source-chip,.done-chip,.segment-state,.segment-subtitle{font-size:.88rem}
+.feedback{font-size:1rem;line-height:1.7}
+@media(max-width:700px){html{font-size:18px}}
