@@ -28,3 +28,10 @@ footer{max-width:960px;margin:2rem auto;padding:1rem;border-top:1px solid #cbd5e
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 .panel{scroll-margin-top:5rem}
 .panel>h2:focus{outline:none}
+
+.reading-set{margin:1.25rem 0 2rem;padding:1rem;border:2px solid #94a3b8;border-radius:1rem;background:#f8fafc}
+.reading-set>h3{margin-top:0}
+.reading-passage{background:#fff;border:1px solid #cbd5e1;border-radius:.85rem;padding:1rem 1.1rem;margin-bottom:1rem}
+.reading-passage p{margin:.25rem 0 1rem}
+.reading-passage p:last-child{margin-bottom:.25rem}
+.reading-set h4{font-size:1.08rem;margin:.6rem 0}
