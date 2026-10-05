@@ -174,17 +174,17 @@ const skipLinkStyle = `
 </style>`;
 
 function ensureSkipLink(html) {
-  if (!/<body\\b/i.test(html)) return html;
+  if (!/<body\b/i.test(html)) return html;
 
   let targetId = null;
-  const mainWithId = html.match(/<main\\b[^>]*\\bid=["']([^"']+)["'][^>]*>/i);
+  const mainWithId = html.match(/<main\b[^>]*\bid=["']([^"']+)["'][^>]*>/i);
   if (mainWithId) {
     targetId = mainWithId[1];
   } else if (/<main\b/i.test(html)) {
     targetId = "aml-main";
     html = html.replace(/<main\b(?![^>]*\bid=)([^>]*)>/i, '<main id="aml-main"$1>');
   } else {
-    const h1WithId = html.match(/<h1\\b[^>]*\\bid=["']([^"']+)["'][^>]*>/i);
+    const h1WithId = html.match(/<h1\b[^>]*\bid=["']([^"']+)["'][^>]*>/i);
     if (h1WithId) {
       targetId = h1WithId[1];
     } else if (/<h1\b/i.test(html)) {
@@ -195,11 +195,11 @@ function ensureSkipLink(html) {
 
   if (!targetId) return html;
 
-  const skipPattern = /<a\\b([^>]*\\bclass=["'][^"']*aml-skip-link[^"']*["'][^>]*)>[\\s\\S]*?<\\/a>/i;
+  const skipPattern = /<a\b([^>]*\bclass=["'][^"']*aml-skip-link[^"']*["'][^>]*)>[\s\S]*?<\/a>/i;
   if (skipPattern.test(html)) {
     html = html.replace(skipPattern, (link) =>
-      /\\bhref=["'][^"']*["']/i.test(link)
-        ? link.replace(/\\bhref=["'][^"']*["']/i, `href="#${targetId}"`)
+      /\bhref=["'][^"']*["']/i.test(link)
+        ? link.replace(/\bhref=["'][^"']*["']/i, `href="#${targetId}"`)
         : link.replace(/<a\b/i, `<a href="#${targetId}"`)
     );
   } else {
