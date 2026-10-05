@@ -159,3 +159,31 @@ body{background:linear-gradient(180deg,#f7fbff 0%,#fbfcfe 55%,#f7fafc 100%);colo
  .segment-icon{font-size:1.4rem}
  .segment-summary{gap:.45rem}
 }
+
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.question-stem{margin:.65rem 0 .85rem;padding:.15rem .1rem}
+.question-stem h4{margin:0;font-size:1.08rem;line-height:1.85}
+.reading-material-tag{display:inline-block;margin-top:.7rem;padding:.18rem .55rem;border-radius:.45rem;background:#f1ecfa;border:1px solid #c7b6df;color:#654b8a;font-size:.8rem;font-weight:800}
+.reading-stem{background:#fbf9fe;border:1px solid #ded4ec;border-left:5px solid #9b82bd;border-radius:.8rem;padding:1rem 1.05rem;margin:.55rem 0 1rem}
+.reading-stem h4{font-size:1.08rem;line-height:2}
+.answer-options{border:0;padding:0;margin:.25rem 0 0;display:grid;gap:.6rem}
+.answer-option{display:grid!important;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;border:1px solid #d8e3ed;border-radius:.8rem;padding:.75rem .85rem!important;background:#fff;cursor:pointer}
+.answer-option:hover{background:#f8fbfe!important;border-color:#aebfd0}
+.answer-option:has(input:focus-visible){outline:4px solid #f59e0b;outline-offset:2px}
+.answer-option input{margin-top:.35rem}
+.option-letter{display:inline-flex;align-items:center;justify-content:center;width:1.7rem;height:1.7rem;border-radius:50%;background:#eef3f8;border:1px solid #c5d2df;font-weight:900;font-size:.9rem;color:#38536d}
+.option-text{line-height:1.65;padding-top:.05rem}
+.answer-option.option-selected{border-width:2px;border-color:#6f8daa;background:#f5f9fd!important}
+.answer-option.option-right{border-width:2px;border-color:#4e8b63;background:#f2faf4!important}
+.answer-option.option-wrong{border-width:2px;border-color:#b45b68;background:#fff5f6!important}
+.answer-option.option-right::after{content:"✓ 正確";grid-column:2;color:#2f6d43;font-size:.82rem;font-weight:800}
+.answer-option.option-wrong::after{content:"再想想";grid-column:2;color:#8f3e4c;font-size:.82rem;font-weight:800}
+.question-actions{display:flex;justify-content:flex-end;margin-top:.75rem}
+.question-actions .check{min-width:112px}
+.challenge-question .feedback{border-top:1px dashed #d9e2eb;margin-top:.8rem;padding-top:.7rem}
+@media(max-width:700px){
+ .answer-option{padding:.7rem!important}
+ .reading-stem{padding:.85rem}
+ .question-actions{justify-content:stretch}
+ .question-actions .check{width:100%}
+}
