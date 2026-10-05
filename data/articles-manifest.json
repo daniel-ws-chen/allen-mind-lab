@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-05T12:15:00.000Z",
+  "generatedAt": "2026-10-06T00:00:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 63,
+    "total": 64,
     "ot": 27,
     "mind": 14,
-    "pbs": 14,
+    "pbs": 15,
     "education": 15,
     "management": 33,
     "ai": 22,
@@ -78,6 +78,51 @@
     }
   },
   "articles": [
+    {
+      "slug": "school-refusal-pbs-behavior-function",
+      "title": "孩子為什麼不再去上學？從 PBS 看青少年拒學背後的行為功能",
+      "summary": "從 PBS 的功能性思考重新理解青少年拒學：及早辨識核心功能脈絡，避免行為在強化歷史、負向標籤與歸屬感改變中逐漸複雜化。",
+      "date": "2026-10-06",
+      "domains": [
+        "pbs"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [],
+      "tag": "PBS",
+      "cardMeta": "2026.10.06 · PBS",
+      "keywords": [
+        "青少年拒學",
+        "PBS",
+        "正向行為支持",
+        "行為功能",
+        "功能性行為評估",
+        "早期介入",
+        "自我認同",
+        "學校適應"
+      ],
+      "articlePath": "/articles/school-refusal-pbs-behavior-function.html",
+      "order": -7,
+      "canonical": "https://allenmindlab.com/articles/school-refusal-pbs-behavior-function",
+      "hero": "/images/articles/school-refusal-pbs-behavior-function-hero.webp",
+      "ogImage": "/images/articles/school-refusal-pbs-behavior-function-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "相關閱讀 ← 塑造有利於 PBS 推動的照顧環境",
+          "href": "/articles/pbs-supportive-care-environment.html"
+        },
+        {
+          "kind": "next",
+          "label": "延伸閱讀 當「被看見」成為高挑戰行為 →",
+          "href": "/articles/pbs-being-seen.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "one-month-10000-pageviews",
       "title": "一個月，10,000 次閱讀之後",
