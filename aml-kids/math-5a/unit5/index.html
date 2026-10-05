@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AML Kids｜數學五上第五單元・多邊形與扇形</title>
+<link rel="stylesheet" href="../../assets/kids-home.css">
+<link rel="stylesheet" href="../assets/math5a.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="math-header">
+  <div>
+    <p class="eyebrow">AML Kids｜五上數學・康軒版</p>
+    <h1>第五單元｜多邊形與扇形</h1>
+    <p>從圖形特徵開始，理解三角形邊長、三角形與四邊形內角和，以及扇形和圓心角。</p>
+  </div>
+  <div class="score-card" aria-live="polite">
+    <strong>🫘 拼豆能量</strong><span id="scoreText">0 / 1000</span>
+    <progress id="scoreProgress" max="1000" value="0">0 / 1000</progress>
+    <small id="unitScoreText">本單元 0 / 250</small>
+  </div>
+</header>
+
+<nav class="lesson-nav" aria-label="數學第五單元導覽">
+  <a class="tab-btn" href="../../">← AML Kids</a>
+  <a class="tab-btn" href="../">數學首頁</a>
+  <a class="tab-btn" href="../unit4/">第四單元</a>
+  <button class="tab-btn" data-target="home">開始</button>
+  <button class="tab-btn" data-target="polygon">5-1 多邊形</button>
+  <button class="tab-btn" data-target="triangle">5-2 三角形邊長</button>
+  <button class="tab-btn" data-target="angle">5-3 內角和</button>
+  <button class="tab-btn" data-target="sector">5-4 扇形</button>
+  <button class="tab-btn" data-target="challenge">50題</button>
+  <button class="tab-btn" data-target="mistakes">錯題</button>
+</nav>
+
+<main id="main">
+<section id="home" class="panel active">
+  <h2>今天的任務</h2>
+  <p class="lead">第五單元不是只認圖形名稱，而是學會用<strong>邊、角、長度關係與圓心角</strong>來判斷圖形。</p>
+  <div class="progress-hero"><div><span class="hero-kicker">第五單元任務地圖</span><strong>多邊形 → 三角形邊長 → 內角和 → 扇形與圓心角 → 50 題</strong></div><div class="hero-stat"><span id="heroDone">0</span><small>已完成題數</small></div></div>
+  <div class="grid cards">
+    <article class="card mission-card"><div class="mission-icon">⬟</div><div><span class="card-kicker">活動一</span><h3>認識多邊形</h3><p>從邊與頂點辨認多邊形、正多邊形。</p></div></article>
+    <article class="card mission-card"><div class="mission-icon">📐</div><div><span class="card-kicker">活動二</span><h3>三角形邊長關係</h3><p>任意兩邊和要大於第三邊。</p></div></article>
+    <article class="card mission-card"><div class="mission-icon">🔺</div><div><span class="card-kicker">活動三</span><h3>內角和</h3><p>三角形180°，四邊形360°。</p></div></article>
+    <article class="card mission-card"><div class="mission-icon">🥧</div><div><span class="card-kicker">活動四</span><h3>扇形與圓心角</h3><p>看懂扇形是圓的一部分，以及幾分之幾圓。</p></div></article>
+  </div>
+  <div class="resume-card" id="resumeCard" hidden><div class="resume-copy"><span class="hero-kicker">上次學習紀錄</span><strong id="resumeTitle"></strong><p id="resumeText"></p></div><button class="primary resume-btn" id="resumeChallenge">繼續挑戰</button></div>
+  <div class="reward-box"><h3>🎁 第五單元積分</h3><p><strong>20 基礎＋20 進階＋10 素養＝50 題</strong>，每題 5 點，共 250 點。</p></div>
+  <button class="primary" data-go="polygon">開始學習</button>
+</section>
+
+<section id="polygon" class="panel">
+<h2>5-1｜多邊形</h2>
+<div class="remember">一句話記住：<strong>由三條以上線段首尾相接圍成的封閉圖形，就是多邊形。</strong></div>
+<div class="worked-example"><h3>正多邊形</h3><p>正多邊形的邊長相等、內角也相等。例如正三角形、正方形。</p></div>
+<div class="math-tip"><strong>判斷：</strong>只是「每邊一樣長」還不夠，正多邊形還要每個內角相等。</div>
+<button class="primary" data-go="triangle">下一個：三角形邊長</button>
+</section>
+
+<section id="triangle" class="panel">
+<h2>5-2｜三角形的邊長關係</h2>
+<div class="remember">三角形任意兩邊的和<strong>都要大於第三邊</strong>。</div>
+<div class="worked-example"><h3>例題｜3、4、5 可以組成三角形嗎？</h3><p>3+4&gt;5、3+5&gt;4、4+5&gt;3，所以可以。</p></div>
+<div class="worked-example"><h3>例題｜2、3、5 呢？</h3><p>2+3=5，沒有「大於」第三邊，所以不能組成三角形。</p></div>
+<button class="primary" data-go="angle">下一個：內角和</button>
+</section>
+
+<section id="angle" class="panel">
+<h2>5-3｜三角形和四邊形的內角和</h2>
+<div class="remember"><strong>三角形內角和＝180°；四邊形內角和＝360°。</strong></div>
+<div class="worked-example"><h3>三角形缺角</h3><p>若兩個角是50°、60°，第三角＝180°−50°−60°＝70°。</p></div>
+<div class="worked-example"><h3>四邊形缺角</h3><p>若三個角是80°、90°、100°，第四角＝360°−270°＝90°。</p></div>
+<button class="primary" data-go="sector">下一個：扇形</button>
+</section>
+
+<section id="sector" class="panel">
+<h2>5-4｜扇形與圓心角</h2>
+<div class="remember">扇形由<strong>兩條半徑和一段圓弧</strong>圍成；兩條半徑夾的角叫圓心角。</div>
+<div class="worked-example"><h3>幾分之幾圓？</h3><p>圓周一整圈是360°。90°扇形占 90/360＝<strong>1/4 圓</strong>；180°就是1/2圓。</p></div>
+<div class="math-tip"><strong>連結分數：</strong>扇形是幾分之幾圓，可以用「圓心角 ÷ 360°」思考。</div>
+<button class="primary" data-go="challenge">前往 50 題挑戰</button>
+</section>
+
+<section id="challenge" class="panel">
+<div class="section-heading"><span class="section-badge">Math Challenge</span><h2>🧮 第五單元｜50 題挑戰</h2><p>多邊形、三角形邊長、內角和、扇形與圓心角混合出題。</p></div>
+<div class="challenge-progress"><strong id="challengeProgressText">已完成 0 / 50 題</strong><progress id="challengeProgress" max="50" value="0"></progress><span>每題 5 點｜本單元最高 250 點</span></div>
+<div class="challenge-segment-nav">
+<button class="segment-btn segment-basic" data-segment="基礎"><span class="segment-icon">🔺</span><span class="segment-name">基礎 20 題</span><span class="segment-subtitle">圖形與角度</span><span class="segment-count" data-count-for="基礎">0 / 20</span><span class="segment-state" data-state-for="基礎">尚未開始</span></button>
+<button class="segment-btn segment-advanced" data-segment="進階"><span class="segment-icon">📐</span><span class="segment-name">進階 20 題</span><span class="segment-subtitle">推理與缺角</span><span class="segment-count" data-count-for="進階">0 / 20</span><span class="segment-state" data-state-for="進階">尚未開始</span></button>
+<button class="segment-btn segment-literacy" data-segment="素養"><span class="segment-icon">🥧</span><span class="segment-name">素養 10 題</span><span class="segment-subtitle">生活圖形情境</span><span class="segment-count" data-count-for="素養">0 / 10</span><span class="segment-state" data-state-for="素養">尚未開始</span></button>
+</div>
+<div class="segment-summary"><div><strong id="segmentTitle" tabindex="-1"></strong><p id="segmentIntro"></p></div><span id="segmentProgressText"></span></div>
+<div id="questionList"></div>
+<div class="result-card" id="unitResult" hidden></div>
+</section>
+
+<section id="mistakes" class="panel">
+<div class="section-heading"><span class="section-badge">Review</span><h2>📒 錯題小本本</h2><p>答錯會保留，重新答對後仍可拿完整 5 點。</p></div>
+<div class="mistake-overview"><div><strong id="mistakeTotal">0</strong><span>曾答錯</span></div><div><strong id="mistakeCorrected">0</strong><span>已訂正</span></div><div><strong id="mistakePending">0</strong><span>待複習</span></div></div>
+<div id="mistakeList" class="mistake-list"></div>
+</section>
+</main>
+<footer><p>AML Kids｜五上數學・康軒版｜第五單元</p></footer>
+<script src="unit5.js"></script>
+</body>
+</html>
