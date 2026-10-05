@@ -86,3 +86,12 @@ body{background:linear-gradient(180deg,#f7fbff 0%,#fbfcfe 55%,#f7fafc 100%);colo
 .primary{background:#294b6d;border-color:#294b6d}
 .primary:hover{filter:brightness(.96)}
 @media(max-width:700px){.progress-hero{align-items:flex-start}.hero-stat{min-width:78px}.mission-card{grid-template-columns:auto 1fr}}
+
+.challenge-segment-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;margin:1rem 0}
+.segment-btn{border:2px solid #9fb2c7;background:#fff;color:#29445f;border-radius:.9rem;padding:.8rem 1rem;font-weight:800;cursor:pointer}
+.segment-btn[aria-pressed="true"]{background:#294b6d;color:#fff;border-color:#294b6d;box-shadow:0 6px 16px rgba(41,75,109,.14)}
+.segment-btn:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.segment-summary{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:#f7fafc;border:1px solid #dbe5ef;border-radius:.8rem;padding:.75rem 1rem;margin-bottom:.75rem}
+.segment-summary strong{font-size:1.05rem}
+#segmentTitle:focus{outline:none}
+@media(max-width:700px){.challenge-segment-nav{grid-template-columns:1fr}.segment-summary{align-items:flex-start;flex-direction:column;gap:.15rem}}
