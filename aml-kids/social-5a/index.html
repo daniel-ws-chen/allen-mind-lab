@@ -27,7 +27,7 @@
   <button class="tab-btn" data-target="l11" aria-controls="l11">1-1</button>
   <button class="tab-btn" data-target="l12" aria-controls="l12">1-2</button>
   <button class="tab-btn" data-target="l13" aria-controls="l13">1-3</button>
-  <button class="tab-btn" data-target="boss" aria-controls="boss">Boss</button>
+  <button class="tab-btn" data-target="boss" aria-controls="boss">50題挑戰</button>
   <button class="tab-btn" data-target="mistakes" aria-controls="mistakes">錯題</button>
 </nav>
 
@@ -42,7 +42,7 @@
     </div>
     <div class="reward-box">
       <h3>🎁 本單元積分規則</h3>
-      <p>三課理解應用與素養挑戰共 <strong>105 點</strong>，Boss 共 <strong>100 點</strong>，Boss 全完成再加 <strong>20 點</strong>，三課素養挑戰全完成再加 <strong>25 點</strong>；本單元最高 <strong>250 點</strong>。</p>
+      <p><strong>50 題 × 每題 5 點＝250 點</strong>。題庫分為基礎 20 題、進階挑戰 20 題、素養題 10 題，並混入公開考古題的命題型態改編。</p>
       <p>所有科目共用拼豆能量；累積滿 <strong>1000 點</strong>，可由爸爸媽媽確認兌換一次獎勵。</p>
     </div>
     <div class="reward-box" id="redeemBox" hidden aria-live="polite">
@@ -160,8 +160,16 @@
   </section>
 
   <section id="boss" class="panel" tabindex="-1">
-    <h2>🕵️ 第一單元 Boss｜臺灣探索家</h2>
-    <p>Boss 改成<strong>閱讀題組</strong>：先讀一段材料，再連續回答 2～3 個子題。共 5 題，每題 20 點；5 題全完成再加 20 點。重點是抓關鍵資訊、分辨證據與推論，不是只找關鍵字。</p>
+    <h2>📝 第一單元｜50 題連續挑戰</h2>
+    <p>一次完成 50 題，訓練持續閱讀與作答耐力。題目分成 <strong>基礎 20 題、進階挑戰 20 題、素養 10 題</strong>，但內容會交錯涵蓋 1-1、1-2、1-3。</p>
+    <div class="challenge-progress" aria-live="polite">
+      <strong id="challengeProgressText">已完成 0 / 50 題</strong>
+      <progress id="challengeProgress" max="50" value="0">0 / 50</progress>
+      <span>每題 5 點｜本單元最高 250 點</span>
+    </div>
+    <div class="source-note">
+      <strong>題庫來源說明：</strong>以現行翰林五上第一單元課程重點為範圍，並參考公開校內評量與歷屆翰林題型進行改編；不直接複製整份試卷。
+    </div>
     <div id="bossQuestions"></div>
     <div class="result-card" id="bossResult" hidden aria-live="polite"></div>
   </section>
