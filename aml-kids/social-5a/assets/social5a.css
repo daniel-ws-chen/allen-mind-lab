@@ -44,3 +44,45 @@ footer{max-width:960px;margin:2rem auto;padding:1rem;border-top:1px solid #cbd5e
 .source-chip{border:1px dashed #64748b;border-radius:999px;padding:.15rem .55rem;background:#fff}
 .challenge-question h4{font-size:1.08rem;line-height:1.75;margin:.65rem 0}
 @media(max-width:700px){.challenge-progress{top:4rem;grid-template-columns:1fr}.challenge-progress progress{width:100%}}
+
+:root{
+ --kids-ink:#20324a;
+ --kids-soft:#eef5ff;
+ --kids-warm:#fff7e8;
+ --kids-card:#ffffff;
+ --kids-line:#d8e3f0;
+ --kids-accent:#315a8a;
+}
+body{background:linear-gradient(180deg,#f7fbff 0%,#fbfcfe 55%,#f7fafc 100%);color:var(--kids-ink)}
+.site-header{padding-top:1.65rem;padding-bottom:1.35rem}
+.eyebrow{letter-spacing:.02em;color:#52677f}
+.score-card{box-shadow:0 8px 24px rgba(39,68,101,.08);border-color:var(--kids-line)}
+.lesson-nav{box-shadow:0 4px 18px rgba(39,68,101,.06)}
+.tab-btn{border-color:#9fb2c7;color:#29445f}
+.tab-btn[aria-current="page"]{background:#edf4fb;border-color:#315a8a;text-decoration:none}
+.progress-hero{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:linear-gradient(135deg,#edf5ff,#fff9ec);border:1px solid #d7e3ef;border-radius:1.2rem;padding:1rem 1.15rem;margin:1rem 0 1.15rem;box-shadow:0 10px 28px rgba(51,79,112,.08)}
+.progress-hero strong{display:block;font-size:1.15rem;margin-top:.2rem}
+.hero-kicker,.card-kicker,.section-badge{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#5f7690}
+.hero-stat{min-width:92px;text-align:center;background:#fff;border:1px solid #d6e2ef;border-radius:1rem;padding:.65rem .8rem}
+.hero-stat span{display:block;font-size:1.7rem;font-weight:900;line-height:1}
+.hero-stat small{display:block;margin-top:.25rem;color:#60758b}
+.mission-card{display:grid;grid-template-columns:auto 1fr;align-items:start;gap:.85rem;box-shadow:0 8px 22px rgba(51,79,112,.06);border-color:#dbe5ef}
+.mission-card h3{margin:.12rem 0 .25rem}
+.mission-icon{font-size:1.8rem;line-height:1;background:#f5f8fc;border:1px solid #dde6ef;border-radius:.85rem;padding:.6rem}
+.reward-box{background:linear-gradient(180deg,#fffdf7,#fff9ec);border-color:#eadfca}
+.remember{background:linear-gradient(90deg,#fff7e8,#fffdf7);border-left-color:#d69a2d}
+.quiz,.competency,.reading-set{box-shadow:0 8px 20px rgba(51,79,112,.045)}
+.section-heading{margin-bottom:1rem}
+.section-heading h2{margin:.25rem 0 .35rem}
+.section-heading p{margin:.2rem 0;color:#5f7183}
+.section-badge{display:inline-block;background:#edf4fb;border:1px solid #bfd0e1;border-radius:999px;padding:.2rem .6rem}
+.challenge-progress{box-shadow:0 8px 22px rgba(51,79,112,.08);border-color:#8aa5bf}
+.question-section-title{background:#f7fafc;border:1px solid #d9e4ef;border-bottom:3px solid #647f9c;border-radius:.85rem;padding:.85rem 1rem}
+.challenge-question{border-left:5px solid #b9c9d9}
+.challenge-question.correct{border-left-color:#2f7d4b}
+.challenge-question.incorrect{border-left-color:#a94455}
+.level-chip{background:#f4f8fc;border-color:#b8c8d8;color:#35506c}
+.source-chip{background:#fffdf8;border-color:#c7b999;color:#685b3d}
+.primary{background:#294b6d;border-color:#294b6d}
+.primary:hover{filter:brightness(.96)}
+@media(max-width:700px){.progress-hero{align-items:flex-start}.hero-stat{min-width:78px}.mission-card{grid-template-columns:auto 1fr}}
