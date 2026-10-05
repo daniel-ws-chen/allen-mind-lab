@@ -174,40 +174,40 @@ const skipLinkStyle = `
 </style>`;
 
 function ensureSkipLink(html) {
-  if (!/<body\\b/i.test(html)) return html;
+  if (!/<body\b/i.test(html)) return html;
 
   let targetId = null;
-  const mainWithId = html.match(/<main\\b[^>]*\\bid=["']([^"']+)["'][^>]*>/i);
+  const mainWithId = html.match(/<main\b[^>]*\bid=["']([^"']+)["'][^>]*>/i);
   if (mainWithId) {
     targetId = mainWithId[1];
-  } else if (/<main\\b/i.test(html)) {
+  } else if (/<main\b/i.test(html)) {
     targetId = "aml-main";
-    html = html.replace(/<main\\b(?![^>]*\\bid=)([^>]*)>/i, '<main id="aml-main"$1>');
+    html = html.replace(/<main\b(?![^>]*\bid=)([^>]*)>/i, '<main id="aml-main"$1>');
   } else {
-    const h1WithId = html.match(/<h1\\b[^>]*\\bid=["']([^"']+)["'][^>]*>/i);
+    const h1WithId = html.match(/<h1\b[^>]*\bid=["']([^"']+)["'][^>]*>/i);
     if (h1WithId) {
       targetId = h1WithId[1];
-    } else if (/<h1\\b/i.test(html)) {
+    } else if (/<h1\b/i.test(html)) {
       targetId = "aml-main";
-      html = html.replace(/<h1\\b(?![^>]*\\bid=)([^>]*)>/i, '<h1 id="aml-main"$1>');
+      html = html.replace(/<h1\b(?![^>]*\bid=)([^>]*)>/i, '<h1 id="aml-main"$1>');
     }
   }
 
   if (!targetId) return html;
 
-  const skipPattern = /<a\\b([^>]*\\bclass=["'][^"']*aml-skip-link[^"']*["'][^>]*)>[\\s\\S]*?<\\/a>/i;
+  const skipPattern = /<a\b([^>]*\bclass=["'][^"']*aml-skip-link[^"']*["'][^>]*)>[\s\S]*?<\/a>/i;
   if (skipPattern.test(html)) {
     html = html.replace(skipPattern, (link) =>
-      /\\bhref=["'][^"']*["']/i.test(link)
-        ? link.replace(/\\bhref=["'][^"']*["']/i, `href="#${targetId}"`)
-        : link.replace(/<a\\b/i, `<a href="#${targetId}"`)
+      /\bhref=["'][^"']*["']/i.test(link)
+        ? link.replace(/\bhref=["'][^"']*["']/i, `href="#${targetId}"`)
+        : link.replace(/<a\b/i, `<a href="#${targetId}"`)
     );
   } else {
-    html = html.replace(/<body\\b([^>]*)>/i, `<body$1><a class="aml-skip-link" href="#${targetId}">跳至主要內容</a>`);
+    html = html.replace(/<body\b([^>]*)>/i, `<body$1><a class="aml-skip-link" href="#${targetId}">跳至主要內容</a>`);
   }
 
-  if (!/data-aml-skip-link-a11y/i.test(html) && /<\\/head>/i.test(html)) {
-    html = html.replace(/<\\/head>/i, `${skipLinkStyle}</head>`);
+  if (!/data-aml-skip-link-a11y/i.test(html) && /<\/head>/i.test(html)) {
+    html = html.replace(/<\/head>/i, `${skipLinkStyle}</head>`);
   }
 
   return html;
@@ -220,7 +220,7 @@ function patchHtmlFiles(dir) {
       patchHtmlFiles(p);
       continue;
     }
-    if (!/\\.html?$/i.test(name)) continue;
+    if (!/\.html?$/i.test(name)) continue;
     const before = readFileSync(p, "utf8");
     const after = ensureSkipLink(before);
     if (after !== before) writeFileSync(p, after, "utf8");
