@@ -99,6 +99,13 @@
 <section id="mistakes" class="panel" tabindex="-1">
   <div class="section-heading"><span class="section-badge">複習基地</span><h2>📒 第二單元錯題小本本</h2><p>答錯的題目會留在這裡，訂正後仍保留紀錄。</p></div>
   <div class="mistake-overview"><div><strong id="mistakeTotal">0</strong><span>曾答錯</span></div><div><strong id="mistakeCorrected">0</strong><span>已訂正</span></div><div><strong id="mistakePending">0</strong><span>待複習</span></div></div>
+  <div class="mistake-filters" role="group" aria-label="錯題篩選">
+    <button type="button" class="mistake-filter is-active" data-mistake-filter="全部" aria-pressed="true">全部</button>
+    <button type="button" class="mistake-filter" data-mistake-filter="基礎" aria-pressed="false">基礎</button>
+    <button type="button" class="mistake-filter" data-mistake-filter="進階" aria-pressed="false">進階</button>
+    <button type="button" class="mistake-filter" data-mistake-filter="素養" aria-pressed="false">素養</button>
+    <button type="button" class="mistake-filter" data-mistake-filter="待複習" aria-pressed="false">待複習</button>
+  </div>
   <div id="mistakeList" class="mistake-list"></div>
 </section>
 </main>
