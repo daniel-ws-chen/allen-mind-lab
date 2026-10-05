@@ -448,13 +448,14 @@ body{background:#fffdf9}
 .aml-notes-catalog__head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .aml-notes-catalog__count{white-space:nowrap;color:var(--navy);font-weight:700;font-size:.95rem}
 .aml-notes-catalog__count strong{font-size:2.4rem;line-height:1.1;display:block;color:var(--navy)}
-.aml-notes-catalog__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.aml-notes-catalog__card{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .18s ease,border-color .18s ease}
-.aml-notes-catalog__card:hover{transform:translateY(-2px);border-color:var(--gold)}
-.aml-notes-catalog__meta{font-size:.78rem;letter-spacing:.04em;color:var(--muted);font-weight:700}
-.aml-notes-catalog__card h3{font-size:1.28rem;line-height:1.45;margin:0;color:var(--navy)}
-.aml-notes-catalog__card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.8;flex:1}
-@media(max-width:700px){.aml-notes-curated__grid,.aml-notes-catalog__grid{grid-template-columns:1fr}.aml-notes-curated,.aml-notes-catalog{padding-left:6vw;padding-right:6vw}.aml-notes-catalog__card{padding:22px}}
+.aml-notes-catalog__grid{display:block;border-top:1px solid var(--line)}
+.aml-notes-catalog__card{display:grid;grid-template-columns:minmax(240px,.34fr) minmax(0,.66fr);column-gap:28px;row-gap:8px;text-decoration:none;color:var(--ink);padding:26px 8px;border-bottom:1px solid var(--line);background:transparent}
+.aml-notes-catalog__card:hover{background:#fffdf8}
+.aml-notes-catalog__meta{grid-column:1;grid-row:1 / span 3;font-size:.82rem;line-height:1.65;letter-spacing:.03em;color:var(--muted);font-weight:700}
+.aml-notes-catalog__card h3{grid-column:2;font-size:1.22rem;line-height:1.45;margin:0;color:var(--navy)}
+.aml-notes-catalog__card p{grid-column:2;margin:0;color:var(--muted);font-size:.95rem;line-height:1.8}
+.aml-notes-catalog__read{grid-column:2}
+@media(max-width:700px){.aml-notes-curated__grid{grid-template-columns:1fr}.aml-notes-curated,.aml-notes-catalog{padding-left:6vw;padding-right:6vw}.aml-notes-catalog__card{grid-template-columns:1fr;padding:22px 4px}.aml-notes-catalog__meta,.aml-notes-catalog__card h3,.aml-notes-catalog__card p,.aml-notes-catalog__read{grid-column:1;grid-row:auto}}
 </style>
 </head>
 <body>
