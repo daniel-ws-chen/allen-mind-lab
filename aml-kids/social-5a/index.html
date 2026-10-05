@@ -171,12 +171,15 @@
       <strong>題庫來源說明：</strong>以現行翰林五上第一單元課程重點為範圍，並參考公開校內評量與歷屆翰林題型進行改編；不直接複製整份試卷。
     </div>
     <div class="challenge-segment-nav" role="group" aria-label="50題挑戰分區">
-      <button type="button" class="segment-btn" data-segment="基礎" aria-controls="bossQuestions"><span class="segment-name">基礎 20 題</span><span class="segment-count" data-count-for="基礎">0 / 20</span><span class="segment-state" data-state-for="基礎">進行中</span></button>
-      <button type="button" class="segment-btn" data-segment="進階" aria-controls="bossQuestions"><span class="segment-name">進階挑戰 20 題</span><span class="segment-count" data-count-for="進階">0 / 20</span><span class="segment-state" data-state-for="進階">尚未完成</span></button>
-      <button type="button" class="segment-btn" data-segment="素養" aria-controls="bossQuestions"><span class="segment-name">素養 10 題</span><span class="segment-count" data-count-for="素養">0 / 10</span><span class="segment-state" data-state-for="素養">尚未完成</span></button>
+      <button type="button" class="segment-btn segment-basic" data-segment="基礎" aria-controls="bossQuestions"><span class="segment-icon" aria-hidden="true">🧭</span><span class="segment-name">基礎 20 題</span><span class="segment-subtitle">核心理解</span><span class="segment-count" data-count-for="基礎">0 / 20</span><span class="segment-state" data-state-for="基礎">進行中</span></button>
+      <button type="button" class="segment-btn segment-advanced" data-segment="進階" aria-controls="bossQuestions"><span class="segment-icon" aria-hidden="true">🔍</span><span class="segment-name">進階挑戰 20 題</span><span class="segment-subtitle">證據推理</span><span class="segment-count" data-count-for="進階">0 / 20</span><span class="segment-state" data-state-for="進階">尚未完成</span></button>
+      <button type="button" class="segment-btn segment-literacy" data-segment="素養" aria-controls="bossQuestions"><span class="segment-icon" aria-hidden="true">📚</span><span class="segment-name">素養 10 題</span><span class="segment-subtitle">閱讀整合</span><span class="segment-count" data-count-for="素養">0 / 10</span><span class="segment-state" data-state-for="素養">尚未完成</span></button>
     </div>
     <div class="segment-summary" aria-live="polite">
-      <strong id="segmentTitle">第一區｜基礎 20 題</strong>
+      <div>
+        <strong id="segmentTitle" tabindex="-1">第一區｜基礎 20 題</strong>
+        <p id="segmentIntro">先把本單元的核心概念讀懂、判斷清楚。</p>
+      </div>
       <span id="segmentProgressText">已完成 0 / 20 題</span>
     </div>
     <div id="bossQuestions"></div>
