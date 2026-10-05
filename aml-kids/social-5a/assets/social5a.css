@@ -113,3 +113,49 @@ body{background:linear-gradient(180deg,#f7fbff 0%,#fbfcfe 55%,#f7fafc 100%);colo
 .result-card p{margin:.25rem 0}
 .completion-note{color:#5b6a75}
 @media(max-width:700px){.segment-btn{grid-template-columns:1fr auto}.result-card:not([hidden]){align-items:flex-start}.completion-medal{font-size:2rem}}
+
+.segment-btn{
+ grid-template-columns:auto 1fr auto;
+ grid-template-areas:
+   "icon name count"
+   "icon subtitle subtitle"
+   "icon state state";
+ align-items:center;
+ padding:.9rem 1rem;
+ min-height:104px;
+}
+.segment-icon{grid-area:icon;font-size:1.65rem;line-height:1;background:#fff;border:1px solid currentColor;border-radius:.8rem;padding:.45rem;opacity:.92}
+.segment-name{grid-area:name}
+.segment-subtitle{grid-area:subtitle;font-size:.8rem;font-weight:700;opacity:.78}
+.segment-count{grid-area:count}
+.segment-state{grid-area:state}
+
+.segment-basic{border-color:#8fb3d5;background:#f7fbff;color:#315d86}
+.segment-advanced{border-color:#d7a65d;background:#fffaf0;color:#7a5521}
+.segment-literacy{border-color:#aa93cd;background:#fbf8ff;color:#654b8a}
+
+.segment-basic[aria-pressed="true"]{background:#315d86;border-color:#315d86;color:#fff}
+.segment-advanced[aria-pressed="true"]{background:#8a6126;border-color:#8a6126;color:#fff}
+.segment-literacy[aria-pressed="true"]{background:#69508d;border-color:#69508d;color:#fff}
+.segment-btn[aria-pressed="true"] .segment-icon{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.75)}
+.segment-btn[aria-pressed="true"] .segment-subtitle{opacity:.92}
+
+.segment-summary>div{min-width:0}
+.segment-summary p{margin:.18rem 0 0;color:#62758a;font-size:.92rem}
+#boss[data-active-segment="基礎"] .segment-summary{border-left:5px solid #5f8fbd;background:#f7fbff}
+#boss[data-active-segment="進階"] .segment-summary{border-left:5px solid #c68a35;background:#fffaf1}
+#boss[data-active-segment="素養"] .segment-summary{border-left:5px solid #8364ad;background:#fbf8ff}
+
+.segment-question-basic{border-left-color:#7fa6ca}
+.segment-question-advanced{border-left-color:#d5a052}
+.segment-question-literacy{border-left-color:#9a80bf}
+
+#boss[data-active-segment="基礎"] .level-chip{background:#eef6ff;border-color:#9fbedb;color:#315d86}
+#boss[data-active-segment="進階"] .level-chip{background:#fff6e7;border-color:#d9b475;color:#7a5521}
+#boss[data-active-segment="素養"] .level-chip{background:#f5effc;border-color:#b8a1d7;color:#654b8a}
+
+@media(max-width:700px){
+ .segment-btn{grid-template-columns:auto 1fr auto;min-height:92px}
+ .segment-icon{font-size:1.4rem}
+ .segment-summary{gap:.45rem}
+}
