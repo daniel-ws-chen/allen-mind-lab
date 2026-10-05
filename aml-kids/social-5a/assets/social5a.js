@@ -108,14 +108,18 @@ function segmentQuestions(){
 
 function updateSegmentUI(){
  const configs={
-  '基礎':{title:'第一區｜基礎 20 題',count:20},
-  '進階':{title:'第二區｜進階挑戰 20 題',count:20},
-  '素養':{title:'第三區｜素養 10 題',count:10}
+  '基礎':{title:'第一區｜基礎 20 題',count:20,intro:'先把本單元的核心概念讀懂、判斷清楚。'},
+  '進階':{title:'第二區｜進階挑戰 20 題',count:20,intro:'開始比較證據、判斷因果，練習不被表面關鍵字帶走。'},
+  '素養':{title:'第三區｜素養 10 題',count:10,intro:'閱讀較長情境，整合多個線索後再做出判斷。'}
  };
  const cfg=configs[activeSegment];
  const done=segmentQuestions().filter(q=>state.awards.has(q.id)).length;
  document.querySelector('#segmentTitle').textContent=cfg.title;
+ const intro=document.querySelector('#segmentIntro');
+ if(intro) intro.textContent=cfg.intro;
  document.querySelector('#segmentProgressText').textContent=`已完成 ${done} / ${cfg.count} 題`;
+ const boss=document.querySelector('#boss');
+ if(boss) boss.dataset.activeSegment=activeSegment;
  document.querySelectorAll('.segment-btn').forEach(btn=>{
   const level=btn.dataset.segment;
   const active=level===activeSegment;
@@ -156,7 +160,7 @@ function renderQuestions(){
  segment.forEach((item,localIndex)=>{
   const globalIndex=baseIndex+localIndex;
   const d=document.createElement('article');
-  d.className='quiz challenge-question';
+  d.className='quiz challenge-question segment-question-'+(activeSegment==='基礎'?'basic':activeSegment==='進階'?'advanced':'literacy');
   d.dataset.quiz=item.id;
   if(state.awards.has(item.id)) d.classList.add('correct');
   d.innerHTML=`<div class="question-meta"><span class="level-chip">${item.level}</span><span>第 ${globalIndex+1} / 50 題</span><span class="source-chip">${item.s}</span>${state.awards.has(item.id)?'<span class="done-chip">✓ 已完成</span>':''}</div><h4>${item.q}</h4>${item.o.map((t,j)=>`<label><input type="radio" name="${item.id}" value="${j}"> ${String.fromCharCode(65+j)}. ${t}</label>`).join('')}<button class="check bank-check">送出答案</button><p class="feedback" aria-live="polite">${state.awards.has(item.id)?'✅ 這題已完成並取得 5 點。':''}</p>`;
