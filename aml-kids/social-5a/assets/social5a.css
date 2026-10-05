@@ -4,9 +4,25 @@ body{margin:0}
 .skip-link{position:absolute;left:-9999px;top:0}.skip-link:focus{left:1rem;top:1rem;background:#fff;padding:.75rem 1rem;border:2px solid #111;z-index:999}
 .site-header{display:flex;gap:1rem;justify-content:space-between;align-items:flex-start;padding:1.25rem;max-width:1100px;margin:auto}
 .eyebrow{margin:0 0 .25rem;font-weight:700}
-h1{font-size:clamp(1.5rem,3vw,2.3rem);margin:.2rem 0}.score-card{min-width:220px;background:#fff;border:1px solid #cbd5e1;border-radius:1rem;padding:1rem;display:grid;gap:.5rem}
-progress{width:100%;height:1rem}.lesson-nav{position:sticky;top:0;z-index:10;display:flex;gap:.5rem;flex-wrap:wrap;padding:.75rem;justify-content:center;background:#fff;border-block:1px solid #e2e8f0}
-button{font:inherit}.tab-btn,.primary,.check,.secondary{border:2px solid #334155;background:#fff;border-radius:.75rem;padding:.7rem 1rem;cursor:pointer}.primary{background:#111827;color:white;margin-top:1rem}.check{margin-top:.75rem}.tab-btn:focus-visible,.primary:focus-visible,.check:focus-visible,.secondary:focus-visible,input:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}.tab-btn[aria-current="page"]{font-weight:800;text-decoration:underline;text-underline-offset:.2rem}
-main{max-width:960px;margin:auto;padding:1rem}.panel{display:none}.panel.active{display:block}.lead{font-size:1.15rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}.card,.reward-box,.quiz,.competency,.result-card{background:#fff;border:1px solid #cbd5e1;border-radius:1rem;padding:1rem;margin:1rem 0}.remember{font-size:1.2rem;background:#fff7ed;border-left:6px solid #f59e0b;padding:1rem;border-radius:.5rem}.steps{display:grid;gap:.85rem}.quiz label,.competency label{display:block;padding:.5rem 0}.feedback{font-weight:700;min-height:1.8rem}.correct{border-color:#166534}.incorrect{border-color:#9f1239}.reward-box strong{font-size:1.15rem}footer{max-width:960px;margin:2rem auto;padding:1rem;border-top:1px solid #cbd5e1;color:#475569}
+h1{font-size:clamp(1.5rem,3vw,2.3rem);margin:.2rem 0}
+.score-card{min-width:220px;background:#fff;border:1px solid #cbd5e1;border-radius:1rem;padding:1rem;display:grid;gap:.5rem}
+progress{width:100%;height:1rem}
+.lesson-nav{position:sticky;top:0;z-index:10;display:flex;gap:.5rem;flex-wrap:wrap;padding:.75rem;justify-content:center;background:#fff;border-block:1px solid #e2e8f0}
+button{font:inherit}.tab-btn,.primary,.check,.secondary{border:2px solid #334155;background:#fff;border-radius:.75rem;padding:.7rem 1rem;cursor:pointer}
+.primary{background:#111827;color:#fff;margin-top:1rem}.check{margin-top:.75rem}
+.tab-btn:focus-visible,.primary:focus-visible,.check:focus-visible,.secondary:focus-visible,input:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.tab-btn[aria-current="page"]{font-weight:800;text-decoration:underline;text-underline-offset:.2rem}
+main{max-width:960px;margin:auto;padding:1rem}.panel{display:none}.panel.active{display:block}.lead{font-size:1.15rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
+.card,.reward-box,.quiz,.competency,.result-card{background:#fff;border:1px solid #cbd5e1;border-radius:1rem;padding:1rem;margin:1rem 0}
+.remember{font-size:1.2rem;background:#fff7ed;border-left:6px solid #f59e0b;padding:1rem;border-radius:.5rem}
+.steps{display:grid;gap:.85rem}
+.quiz label,.competency label{display:block;padding:.65rem .5rem;border-radius:.5rem}
+.quiz label:hover,.competency label:hover{background:#f8fafc}
+.feedback{font-weight:700;min-height:1.8rem}
+.correct{border-color:#166534}.incorrect{border-color:#9f1239}
+.reward-box strong{font-size:1.15rem}
+.level-chip{display:inline-block;font-size:.9rem;font-weight:800;border:1px solid #64748b;border-radius:999px;padding:.15rem .6rem;margin-bottom:.25rem;background:#f8fafc}
+footer{max-width:960px;margin:2rem auto;padding:1rem;border-top:1px solid #cbd5e1;color:#475569}
 @media(max-width:700px){.site-header{display:block}.score-card{margin-top:1rem}.lesson-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.tab-btn{flex:0 0 auto}main{padding:.75rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
