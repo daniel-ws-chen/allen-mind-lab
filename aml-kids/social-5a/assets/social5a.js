@@ -56,6 +56,7 @@ function renderChallengeProgress(){
  if(p)p.value=done;
  const hero=document.querySelector('#heroDone');
  if(hero)hero.textContent=done;
+ if(document.querySelector('#segmentTitle')) updateSegmentUI();
  const result=document.querySelector('#bossResult');
  if(result && done===50){
   result.hidden=false;
@@ -97,23 +98,59 @@ document.querySelectorAll('.check').forEach(btn=>btn.addEventListener('click',()
  box.classList.toggle('incorrect',!correct);
 }));
 
+let activeSegment='基礎';
+
+function segmentQuestions(){
+ return questions.filter(q=>q.level===activeSegment);
+}
+
+function updateSegmentUI(){
+ const configs={
+  '基礎':{title:'第一區｜基礎 20 題',count:20},
+  '進階':{title:'第二區｜進階挑戰 20 題',count:20},
+  '素養':{title:'第三區｜素養 10 題',count:10}
+ };
+ const cfg=configs[activeSegment];
+ const done=segmentQuestions().filter(q=>state.awards.has(q.id)).length;
+ document.querySelector('#segmentTitle').textContent=cfg.title;
+ document.querySelector('#segmentProgressText').textContent=`已完成 ${done} / ${cfg.count} 題`;
+ document.querySelectorAll('.segment-btn').forEach(btn=>{
+  const active=btn.dataset.segment===activeSegment;
+  btn.setAttribute('aria-pressed',String(active));
+ });
+}
+
+function showSegment(level,{scroll=true}={}){
+ activeSegment=level;
+ renderQuestions();
+ updateSegmentUI();
+ if(scroll){
+  const target=document.querySelector('#segmentTitle');
+  const nav=document.querySelector('.lesson-nav');
+  const sticky=document.querySelector('.challenge-progress');
+  const offset=(nav?.offsetHeight||0)+(sticky?.offsetHeight||0)+28;
+  const top=Math.max(0,target.getBoundingClientRect().top+window.scrollY-offset);
+  window.scrollTo({top,behavior:'auto'});
+  requestAnimationFrame(()=>target.focus({preventScroll:true}));
+ }
+}
+
 function renderQuestions(){
  const wrap=document.querySelector('#bossQuestions');
- let currentLevel='';
- questions.forEach((item,i)=>{
-  if(item.level!==currentLevel){
-   currentLevel=item.level;
-   const h=document.createElement('h3');
-   h.className='question-section-title';
-   h.textContent=currentLevel==='基礎'?'第一區｜基礎 20 題':currentLevel==='進階'?'第二區｜進階挑戰 20 題':'第三區｜素養 10 題';
-   wrap.appendChild(h);
-  }
+ wrap.innerHTML='';
+ const segment=segmentQuestions();
+ const baseIndex=activeSegment==='基礎'?0:activeSegment==='進階'?20:40;
+
+ segment.forEach((item,localIndex)=>{
+  const globalIndex=baseIndex+localIndex;
   const d=document.createElement('article');
   d.className='quiz challenge-question';
   d.dataset.quiz=item.id;
-  d.innerHTML=`<div class="question-meta"><span class="level-chip">${item.level}</span><span>第 ${i+1} / 50 題</span><span class="source-chip">${item.s}</span></div><h4>${item.q}</h4>${item.o.map((t,j)=>`<label><input type="radio" name="${item.id}" value="${j}"> ${String.fromCharCode(65+j)}. ${t}</label>`).join('')}<button class="check bank-check">送出答案</button><p class="feedback" aria-live="polite"></p>`;
+  if(state.awards.has(item.id)) d.classList.add('correct');
+  d.innerHTML=`<div class="question-meta"><span class="level-chip">${item.level}</span><span>第 ${globalIndex+1} / 50 題</span><span class="source-chip">${item.s}</span></div><h4>${item.q}</h4>${item.o.map((t,j)=>`<label><input type="radio" name="${item.id}" value="${j}"> ${String.fromCharCode(65+j)}. ${t}</label>`).join('')}<button class="check bank-check">送出答案</button><p class="feedback" aria-live="polite">${state.awards.has(item.id)?'✅ 這題已完成並取得 5 點。':''}</p>`;
   wrap.appendChild(d);
  });
+
  document.querySelectorAll('.bank-check').forEach(btn=>btn.addEventListener('click',()=>{
   const box=btn.closest('.challenge-question');
   const item=questions.find(x=>x.id===box.dataset.quiz);
@@ -125,6 +162,7 @@ function renderQuestions(){
    const gained=award(item.id);
    fb.textContent=(gained?'✅ 答對！+5 點。 ':'✅ 答對！這題 5 點已領取過。 ')+item.e;
    box.classList.add('correct');box.classList.remove('incorrect');
+   updateSegmentUI();
   }else{
    fb.textContent='🔍 目前答案不對。先重新讀題，找出關鍵證據後再作答；答對仍可取得完整 5 點。';
    box.classList.add('incorrect');box.classList.remove('correct');
@@ -132,9 +170,13 @@ function renderQuestions(){
   }
  }));
 }
+
+document.querySelectorAll('.segment-btn').forEach(btn=>{
+ btn.addEventListener('click',()=>showSegment(btn.dataset.segment));
+});
 const redeemBtn=document.querySelector('#parentRedeemInfo');
 if(redeemBtn)redeemBtn.addEventListener('click',()=>{
  document.querySelector('#redeemInfo').textContent='請由爸爸媽媽確認實際獎勵與兌換；Prototype 暫不自動扣點，避免誤觸。';
 });
-renderQuestions();renderScore();renderMistakes();
+showSegment('基礎',{scroll:false});renderScore();renderMistakes();
 showPanel(location.hash?.slice(1)&&document.getElementById(location.hash.slice(1))?location.hash.slice(1):'home');
