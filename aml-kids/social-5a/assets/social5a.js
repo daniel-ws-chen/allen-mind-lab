@@ -33,20 +33,77 @@ function award(id){
  save();renderScore();
  return true;
 }
+function inferLesson(id){
+ const n=Number(String(id).replace(/\D/g,''));
+ if([1,2,3,4,5,6,16,17,18,19,21,22,23,30,31,32,37,38,40,41,42,47,48].includes(n)) return '1-1';
+ if([7,8,9,10,24,25,26,29,33,39,43,44].includes(n)) return '1-2';
+ if([11,12,13,14,20,27,28,34,35,36,45,46,49].includes(n)) return '1-3';
+ return '跨課整合';
+}
+function questionForMistake(id){return questions.find(q=>q.id===id);}
 function recordMistake(id,text,review){
  if(!state.mistakes.some(x=>x.id===id)){
-  state.mistakes.push({id,text,review});
+  const q=questionForMistake(id);
+  state.mistakes.push({id,text,review,level:q?.level||'課前',lesson:q?inferLesson(id):'課前'});
   save();renderMistakes();
  }
 }
+let mistakeFilter='全部';
 function renderMistakes(){
- const ul=document.querySelector('#mistakeList');ul.innerHTML='';
- if(!state.mistakes.length){ul.innerHTML='<li>目前沒有錯題，繼續保持！</li>';return;}
- state.mistakes.forEach(m=>{
-  const li=document.createElement('li');
-  li.textContent=`${m.text}｜建議回看：${m.review}`;
-  ul.appendChild(li);
+ const wrap=document.querySelector('#mistakeList');
+ if(!wrap)return;
+ const normalized=state.mistakes.map(m=>{
+  const q=questionForMistake(m.id);
+  return {...m,level:m.level||q?.level||'課前',lesson:m.lesson||(q?inferLesson(m.id):'課前')};
  });
+ const corrected=normalized.filter(m=>state.awards.has(m.id)).length;
+ const pending=normalized.length-corrected;
+ const totalEl=document.querySelector('#mistakeTotal');
+ const correctedEl=document.querySelector('#mistakeCorrected');
+ const pendingEl=document.querySelector('#mistakePending');
+ if(totalEl)totalEl.textContent=normalized.length;
+ if(correctedEl)correctedEl.textContent=corrected;
+ if(pendingEl)pendingEl.textContent=pending;
+
+ let visible=normalized;
+ if(mistakeFilter==='待複習') visible=normalized.filter(m=>!state.awards.has(m.id));
+ else if(mistakeFilter!=='全部') visible=normalized.filter(m=>m.level===mistakeFilter);
+
+ wrap.innerHTML='';
+ if(!normalized.length){
+  wrap.innerHTML='<div class="mistake-empty"><span aria-hidden="true">✨</span><strong>目前沒有錯題</strong><p>先去完成挑戰題，曾經答錯的題目會自動整理到這裡。</p></div>';
+  return;
+ }
+ if(!visible.length){
+  wrap.innerHTML='<div class="mistake-empty"><strong>這個分類目前沒有題目</strong><p>可以切換其他分類查看。</p></div>';
+  return;
+ }
+ visible.forEach(m=>{
+  const q=questionForMistake(m.id);
+  const fixed=state.awards.has(m.id);
+  const card=document.createElement('article');
+  card.className='mistake-card '+(fixed?'is-corrected':'is-pending');
+  card.innerHTML=`<div class="mistake-meta"><span class="level-chip">${m.level}</span><span class="lesson-chip">${m.lesson}</span><span class="mistake-status">${fixed?'✓ 已訂正':'待複習'}</span></div><h3>${m.text}</h3><p>${fixed?(q?.e||'已重新答對，考前仍可再確認一次。'):'先回到題目重新判讀，再查看解析。'}</p>${q?`<button type="button" class="secondary review-question" data-review-id="${m.id}" data-review-level="${m.level}">回到這一題</button>`:''}`;
+  wrap.appendChild(card);
+ });
+ document.querySelectorAll('.review-question').forEach(btn=>btn.addEventListener('click',()=>{
+  const id=btn.dataset.reviewId;
+  const level=btn.dataset.reviewLevel;
+  showPanel('boss');
+  showSegment(level,{scroll:false});
+  requestAnimationFrame(()=>{
+   const card=document.querySelector(`[data-quiz="${id}"]`);
+   if(card){
+    const nav=document.querySelector('.lesson-nav');
+    const sticky=document.querySelector('.challenge-progress');
+    const offset=(nav?.offsetHeight||0)+(sticky?.offsetHeight||0)+24;
+    const top=Math.max(0,card.getBoundingClientRect().top+window.scrollY-offset);
+    window.scrollTo({top,behavior:'auto'});
+    const heading=card.querySelector('h4');
+    if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+   }
+  });
+ }));
 }
 function renderChallengeProgress(){
  const done=questions.filter(x=>state.awards.has(x.id)).length;
@@ -209,6 +266,17 @@ function renderQuestions(){
 
 document.querySelectorAll('.segment-btn').forEach(btn=>{
  btn.addEventListener('click',()=>showSegment(btn.dataset.segment));
+});
+document.querySelectorAll('.mistake-filter').forEach(btn=>{
+ btn.addEventListener('click',()=>{
+  mistakeFilter=btn.dataset.mistakeFilter;
+  document.querySelectorAll('.mistake-filter').forEach(b=>{
+   const active=b===btn;
+   b.classList.toggle('is-active',active);
+   b.setAttribute('aria-pressed',String(active));
+  });
+  renderMistakes();
+ });
 });
 const redeemBtn=document.querySelector('#parentRedeemInfo');
 if(redeemBtn)redeemBtn.addEventListener('click',()=>{
