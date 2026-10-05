@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-04T12:45:00.000Z",
+  "generatedAt": "2026-10-05T05:10:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 61,
+    "total": 62,
     "ot": 27,
     "mind": 14,
     "pbs": 14,
-    "education": 14,
+    "education": 15,
     "management": 33,
-    "ai": 21,
+    "ai": 22,
     "notes": 7
   },
   "featuredReading": [
@@ -78,6 +78,56 @@
     }
   },
   "articles": [
+    {
+      "slug": "ai-learning-accessibility-journey",
+      "title": "AI 降低專業門檻之後：從架站到無障礙標章申請，學習每時每刻都在發生",
+      "summary": "從 AML 母網、子網、GitHub、Cloudflare 到 197 個頁面的 A 級自動檢測，記錄 AI 如何降低跨專業實作門檻，讓學習在真實任務中持續發生。",
+      "date": "2026-10-05",
+      "domains": [
+        "ai",
+        "education"
+      ],
+      "primaryDomain": "ai",
+      "crossDomains": [
+        "education"
+      ],
+      "tag": "AI × Practice × Education",
+      "cardMeta": "2026.10.05 · AI × Practice × Education",
+      "keywords": [
+        "AI",
+        "人機協作",
+        "學習",
+        "跨專業",
+        "網站工程",
+        "GitHub",
+        "Cloudflare",
+        "Freego",
+        "網頁無障礙",
+        "WCAG",
+        "Codex",
+        "Lumi",
+        "AML",
+        "持續學習",
+        "無障礙標章"
+      ],
+      "articlePath": "/articles/ai-learning-accessibility-journey.html",
+      "order": -5,
+      "canonical": "https://allenmindlab.com/articles/ai-learning-accessibility-journey",
+      "hero": "/images/articles/ai-learning-accessibility-journey-hero.webp",
+      "ogImage": "/images/articles/ai-learning-accessibility-journey-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 資源可以集中，視野不能有盲區：從資源盤點到服務布局的管理思維",
+          "href": "/articles/resource-mapping-service-layout.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "knowledge-worker-to-judgment-worker",
       "title": "從知識工作者到判斷工作者：AI正在改寫我們的專業價值",
@@ -173,6 +223,11 @@
           "kind": "previous",
           "label": "上一篇 ← 從知識工作者到判斷工作者：AI正在改寫我們的專業價值",
           "href": "/articles/knowledge-worker-to-judgment-worker.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 AI 降低專業門檻之後：從架站到無障礙標章申請，學習每時每刻都在發生 →",
+          "href": "/articles/ai-learning-accessibility-journey.html"
         }
       ],
       "readingPaths": [],

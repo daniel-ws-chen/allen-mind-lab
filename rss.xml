@@ -5,7 +5,7 @@
 <link>https://allenmindlab.com/</link>
 <description>Allen Mind Lab｜Notes from the Lab</description>
 <language>zh-TW</language>
-<lastBuildDate>Sun, 04 Oct 2026 12:45:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 05 Oct 2026 05:10:00 GMT</lastBuildDate>
 
     
     
@@ -35,6 +35,13 @@
     
     
     
+    <item>
+      <title>AI 降低專業門檻之後：從架站到無障礙標章申請，學習每時每刻都在發生</title>
+      <link>https://allenmindlab.com/articles/ai-learning-accessibility-journey</link>
+      <guid isPermaLink="true">https://allenmindlab.com/articles/ai-learning-accessibility-journey</guid>
+      <pubDate>Sun, 05 Oct 2026 00:00:00 GMT</pubDate>
+      <description>從 AML 母網、子網、GitHub、Cloudflare 到 197 個頁面的 A 級自動檢測，記錄 AI 如何降低跨專業實作門檻，讓學習在真實任務中持續發生。</description>
+    </item>
     <item>
       <title>資源可以集中，視野不能有盲區：從資源盤點到服務布局的管理思維</title>
       <link>https://allenmindlab.com/articles/resource-mapping-service-layout</link>
