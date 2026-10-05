@@ -163,10 +163,17 @@ function renderQuestions(){
   d.className='quiz challenge-question segment-question-'+(activeSegment==='基礎'?'basic':activeSegment==='進階'?'advanced':'literacy');
   d.dataset.quiz=item.id;
   if(state.awards.has(item.id)) d.classList.add('correct');
-  d.innerHTML=`<div class="question-meta"><span class="level-chip">${item.level}</span><span>第 ${globalIndex+1} / 50 題</span><span class="source-chip">${item.s}</span>${state.awards.has(item.id)?'<span class="done-chip">✓ 已完成</span>':''}</div><h4>${item.q}</h4>${item.o.map((t,j)=>`<label><input type="radio" name="${item.id}" value="${j}"> ${String.fromCharCode(65+j)}. ${t}</label>`).join('')}<button class="check bank-check">送出答案</button><p class="feedback" aria-live="polite">${state.awards.has(item.id)?'✅ 這題已完成並取得 5 點。':''}</p>`;
+  const isReading=/^【(閱讀|題組|總整)】/.test(item.q);
+  const stem=isReading?item.q.replace(/^【[^】]+】/,'').trim():item.q;
+  d.innerHTML=`<div class="question-meta"><span class="level-chip">${item.level}</span><span>第 ${globalIndex+1} / 50 題</span><span class="source-chip">${item.s}</span>${state.awards.has(item.id)?'<span class="done-chip">✓ 已完成</span>':''}</div>${isReading?'<div class="reading-material-tag">閱讀材料</div>':''}<div class="${isReading?'question-stem reading-stem':'question-stem'}"><h4>${stem}</h4></div><fieldset class="answer-options"><legend class="sr-only">請選擇一個答案</legend>${item.o.map((t,j)=>`<label class="answer-option"><input type="radio" name="${item.id}" value="${j}"><span class="option-letter" aria-hidden="true">${String.fromCharCode(65+j)}</span><span class="option-text">${t}</span></label>`).join('')}</fieldset><div class="question-actions"><button class="check bank-check">送出答案</button></div><p class="feedback" aria-live="polite">${state.awards.has(item.id)?'✅ 這題已完成並取得 5 點。':''}</p>`;
   wrap.appendChild(d);
  });
 
+ document.querySelectorAll('.answer-option input').forEach(input=>input.addEventListener('change',()=>{
+  const box=input.closest('.challenge-question');
+  box.querySelectorAll('.answer-option').forEach(label=>label.classList.remove('option-selected'));
+  input.closest('.answer-option').classList.add('option-selected');
+ }));
  document.querySelectorAll('.bank-check').forEach(btn=>btn.addEventListener('click',()=>{
   const box=btn.closest('.challenge-question');
   const item=questions.find(x=>x.id===box.dataset.quiz);
@@ -178,6 +185,8 @@ function renderQuestions(){
    const gained=award(item.id);
    fb.textContent=(gained?'✅ 答對！+5 點。 ':'✅ 答對！這題 5 點已領取過。 ')+item.e;
    box.classList.add('correct');box.classList.remove('incorrect');
+   box.querySelectorAll('.answer-option').forEach(label=>label.classList.remove('option-wrong','option-right'));
+   sel.closest('.answer-option')?.classList.add('option-right');
    updateSegmentUI();
    if(gained){
     const meta=box.querySelector('.question-meta');
@@ -191,6 +200,8 @@ function renderQuestions(){
   }else{
    fb.textContent='🔍 目前答案不對。先重新讀題，找出關鍵證據後再作答；答對仍可取得完整 5 點。';
    box.classList.add('incorrect');box.classList.remove('correct');
+   box.querySelectorAll('.answer-option').forEach(label=>label.classList.remove('option-wrong','option-right'));
+   sel.closest('.answer-option')?.classList.add('option-wrong');
    recordMistake(item.id,item.q,item.level+'題｜回看相關課次與解析');
   }
  }));
