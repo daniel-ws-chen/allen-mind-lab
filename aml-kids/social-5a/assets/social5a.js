@@ -1,7 +1,7 @@
 const WALLET_KEY='amlKidsRewardWalletV1';
-const UNIT_SCORE_KEY='amlKidsSocial5aU1ScoreV3';
-const AWARDS_KEY='amlKidsSocial5aU1AwardsV3';
-const MISTAKES_KEY='amlKidsSocial5aU1MistakesV3';
+const UNIT_SCORE_KEY='amlKidsSocial5aU1ScoreV4';
+const AWARDS_KEY='amlKidsSocial5aU1AwardsV4';
+const MISTAKES_KEY='amlKidsSocial5aU1MistakesV4';
 const UNIT_MAX=250;
 
 const state={
@@ -11,58 +11,70 @@ const state={
  mistakes:JSON.parse(localStorage.getItem(MISTAKES_KEY)||'[]')
 };
 
-const bossQuestions=[
+const bossSets=[
  {
-  id:'bossv3-1',
-  title:'Boss 1｜位置 × 交流',
-  q:'十五至十七世紀，東亞海上貿易逐漸頻繁。若一座島嶼位在日本、中國大陸與東南亞之間的海域，下列哪一項最合理？',
-  opts:[['a','這座島嶼一定會成為所有國家的首都'],['b','它可能因交通位置而增加與不同地區接觸的機會'],['c','只要四面環海就不可能與外界交流'],['d','地理位置只會影響氣候，不會影響人的活動']],
-  ans:'b',
-  review:'1-1｜位置與交流',
-  explain:'題目不是要你背「重要位置」，而是從相對位置推論：位在多個地區之間，可能提高交通與交流機會。'
- },
- {
-  id:'bossv3-2',
-  title:'Boss 2｜資料判讀',
-  q:'某地冬季常有來自東北方向的風，迎風面的地區降雨較多。若要解釋這個現象，下列哪一組資料最有幫助？',
-  opts:[['a','風向資料＋地形位置'],['b','便利商店數量＋人口姓名'],['c','學校數量＋道路名稱'],['d','手機品牌＋房屋顏色']],
-  ans:'a',
-  review:'1-1｜季風、位置與生活',
-  explain:'判讀天氣差異時，風從哪裡來與地形是否迎風，比與天氣無直接關係的生活資料更有解釋力。'
- },
- {
-  id:'bossv3-3',
-  title:'Boss 3｜證據的界線',
-  q:'遺址出土大量魚骨、貝殼、捕魚工具與少量穀物。哪一個結論最符合目前證據？',
-  opts:[['a','居民只吃魚，完全沒有其他食物'],['b','居民可能重視水域資源，也可能接觸或使用部分植物性食物'],['c','居民一定不會耕作，因為魚骨比較多'],['d','只要有穀物，就能確定居民已經有大型農業社會']],
-  ans:'b',
-  review:'1-2｜多項證據與合理推論',
-  explain:'證據可以支持「較常利用什麼」，卻不代表能排除所有其他可能。'
- },
- {
-  id:'bossv3-4',
-  title:'Boss 4｜人與環境',
-  q:'甲、乙兩個族群都生活在山區，但各自保留不同語言、祭儀與社會傳統。哪個說法最能解釋這個現象？',
-  opts:[['a','自然環境對文化沒有任何影響'],['b','只要住山區，文化理論上就必須完全相同'],['c','環境會影響資源與生活，但歷史與傳統也會讓文化走出不同發展'],['d','文化不同代表其中一族一定比較落後']],
-  ans:'c',
-  review:'1-3｜環境不是唯一因素',
-  explain:'文化是多種因素共同形成的，不能只用單一環境特徵解釋。'
- },
- {
-  id:'bossv3-5',
-  title:'Boss 5｜跨課整合',
-  q:'下列哪一段推理同時符合第一單元三課強調的方法？',
-  opts:[
-   ['a','看到臺灣在地圖上的位置→思考交流機會；看到文物→依證據推測生活；看到文化差異→同時考慮環境與歷史'],
-   ['b','看到地圖→直接猜歷史；看到一件文物→斷定全部生活；看到傳統服飾→認為所有族人每天都一樣'],
-   ['c','所有問題都只要記住一個固定答案，不必看資料'],
-   ['d','只要選項有「一定」兩字就一定正確']
+  id:'set-a',
+  title:'題組一｜航線、季風與臺灣的位置',
+  passage:[
+   '小恩閱讀一份東亞航海資料。資料指出：某商船從日本南部出發，準備前往菲律賓與東南亞港口。航線經過臺灣附近海域。船長在冬季航行時，也會特別注意東北季風、海象與港口位置。',
+   '小恩因此提出一個想法：「臺灣雖然面積不大，但因為位在東亞不同地區之間，地理位置可能同時影響交通、交流與人們的生活安排。」老師提醒他：要判斷這個說法是否合理，必須把『資料中真正提供的證據』和『自己過度延伸的想像』分開。'
   ],
-  ans:'a',
-  review:'第一單元概念總圖',
-  explain:'第一單元真正共通的方法是：看資料、找關係、根據證據推論，而且避免把有限資訊說成絕對結論。'
+  questions:[
+   {
+    id:'bossv4-1',
+    q:'根據材料，哪一項最能支持「臺灣的位置有利於區域往來」？',
+    opts:[['a','商船航線經過臺灣附近海域'],['b','臺灣有許多山地'],['c','冬天有時很冷'],['d','臺灣有很多城市']],
+    ans:'a',
+    review:'1-1｜位置與交流',
+    explain:'材料直接提供「日本往東南亞的航線經過臺灣附近」這項證據，因此最能支持位置與區域往來的關係。'
+   },
+   {
+    id:'bossv4-2',
+    q:'船長冬季特別注意東北季風與海象，這最能說明哪一個觀念？',
+    opts:[['a','季風只影響課本內容，不影響生活'],['b','自然環境條件可能影響交通與人的活動安排'],['c','只要有季風，所有船一定不能航行'],['d','臺灣的位置與季風完全無關']],
+    ans:'b',
+    review:'1-1｜季風、環境與生活',
+    explain:'材料沒有說「一定不能航行」，而是指出航行者需要依季風與海象調整安排，這就是環境條件影響人類活動。'
+   },
+   {
+    id:'bossv4-3',
+    q:'下列哪一句屬於「材料還不能證明的過度推論」？',
+    opts:[['a','臺灣附近可能有區域航線經過'],['b','季風可能影響航行安排'],['c','所有經過臺灣附近的商船都一定停靠臺灣'],['d','位置可能影響交流機會']],
+    ans:'c',
+    review:'1-1｜證據與推論的界線',
+    explain:'「航線經過」不等於「每艘船都一定停靠」。素養題常考的正是：資料支持到哪裡，就說到哪裡。'
+   }
+  ]
+ },
+ {
+  id:'set-b',
+  title:'題組二｜考古線索與文化理解',
+  passage:[
+   '考古隊在一處靠近河口的遺址發現大量魚骨、貝殼、捕魚工具、陶器與少量穀物痕跡。研究人員因此推測，當地居民可能經常利用水域資源，但他們沒有直接說「居民完全不種植作物」，因為目前的證據還不足以排除其他可能。',
+   '另一份資料記錄兩個都居住在山區的族群。兩個族群利用的自然資源有部分相似，但語言、祭儀、飲食與社會傳統仍有不同。研究者認為，自然環境會影響生活條件，但歷史經驗、傳統與族群交流也會共同形塑文化。'
+  ],
+  questions:[
+   {
+    id:'bossv4-4',
+    q:'根據第一段考古資料，哪一項推論最合理？',
+    opts:[['a','居民一定只吃魚和貝類'],['b','居民可能常利用水域資源，但不能因此斷定完全沒有農作'],['c','只要找到陶器，就能證明有文字'],['d','少量穀物可以證明當地一定是大型農業社會']],
+    ans:'b',
+    review:'1-2｜證據能支持到哪裡',
+    explain:'大量魚骨、貝殼與捕魚工具支持水域資源利用；但證據不足時，不能把「尚未發現」說成「一定不存在」。'
+   },
+   {
+    id:'bossv4-5',
+    q:'第二段資料最能支持下列哪一項說法？',
+    opts:[['a','相同自然環境一定形成相同文化'],['b','文化差異表示其中一族比較進步'],['c','環境是影響文化的因素之一，但不是唯一因素'],['d','只要保留傳統，就不能有現代生活']],
+    ans:'c',
+    review:'1-3｜環境、歷史與文化',
+    explain:'兩族群都在山區卻有不同文化，正好說明環境會影響生活，但不能單獨解釋所有文化差異。'
+   }
+  ]
  }
 ];
+
+const bossQuestions=bossSets.flatMap(s=>s.questions);
 
 function save(){
  localStorage.setItem(WALLET_KEY,String(state.wallet));
@@ -94,9 +106,9 @@ function awardBonus(id,points){
 }
 function checkBonuses(){
  const allBoss=bossQuestions.every(q=>state.awards.has(q.id));
- if(allBoss) awardBonus('u1-v3-boss-complete',20);
+ if(allBoss) awardBonus('u1-v4-boss-complete',20);
  const allCompetency=['l11c1','l12c1','l13c1'].every(id=>state.awards.has(id));
- if(allCompetency) awardBonus('u1-v3-competency-complete',25);
+ if(allCompetency) awardBonus('u1-v4-competency-complete',25);
 }
 function recordMistake(id,text,review){
  if(!state.mistakes.some(x=>x.id===id)){
@@ -120,15 +132,11 @@ function showPanel(id){
   else b.removeAttribute('aria-current');
  });
  history.replaceState(null,'',`#${id}`);
-
- // 換頁時固定回到目前內容區塊頂端，避免焦點造成畫面停在中段。
  const p=document.getElementById(id);
  const nav=document.querySelector('.lesson-nav');
  const offset=(nav?.offsetHeight||0)+12;
  const top=Math.max(0,p.getBoundingClientRect().top+window.scrollY-offset);
  window.scrollTo({top,behavior:'auto'});
-
- // 先捲動再把焦點移到該頁第一個標題；preventScroll 避免瀏覽器再次把畫面拉到中間。
  requestAnimationFrame(()=>{
   const heading=p.querySelector('h2');
   if(heading){
@@ -163,13 +171,35 @@ document.querySelectorAll('.check').forEach(btn=>btn.addEventListener('click',()
 
 function renderBoss(){
  const wrap=document.querySelector('#bossQuestions');
- bossQuestions.forEach((q,i)=>{
-  const d=document.createElement('div');
-  d.className='quiz';
-  d.dataset.quiz=q.id;
-  d.innerHTML=`<span class="level-chip">高階挑戰</span><h3>${q.title}</h3><p>${q.q}</p>${q.opts.map(([v,t])=>`<label><input type="radio" name="${q.id}" value="${v}"> ${t}</label>`).join('')}<button class="check boss-check">送出答案</button><p class="feedback" aria-live="polite"></p>`;
-  wrap.appendChild(d);
+ bossSets.forEach((set,setIndex)=>{
+  const group=document.createElement('section');
+  group.className='reading-set';
+  group.setAttribute('aria-labelledby',`${set.id}-title`);
+  const title=document.createElement('h3');
+  title.id=`${set.id}-title`;
+  title.textContent=set.title;
+  group.appendChild(title);
+
+  const passage=document.createElement('div');
+  passage.className='reading-passage';
+  passage.setAttribute('aria-label',`${set.title}閱讀材料`);
+  set.passage.forEach((para,i)=>{
+   const p=document.createElement('p');
+   p.innerHTML=`<strong>材料${i+1}：</strong>${para}`;
+   passage.appendChild(p);
+  });
+  group.appendChild(passage);
+
+  set.questions.forEach((q,i)=>{
+   const d=document.createElement('div');
+   d.className='quiz';
+   d.dataset.quiz=q.id;
+   d.innerHTML=`<span class="level-chip">題組 ${setIndex+1}－第 ${i+1} 題</span><h4>${q.q}</h4>${q.opts.map(([v,t])=>`<label><input type="radio" name="${q.id}" value="${v}"> ${t}</label>`).join('')}<button class="check boss-check">送出答案</button><p class="feedback" aria-live="polite"></p>`;
+   group.appendChild(d);
+  });
+  wrap.appendChild(group);
  });
+
  document.querySelectorAll('.boss-check').forEach(btn=>btn.addEventListener('click',()=>{
    const box=btn.closest('.quiz');
    const q=bossQuestions.find(x=>x.id===box.dataset.quiz);
@@ -181,14 +211,14 @@ function renderBoss(){
      fb.textContent=(gained?'✅ Boss 推理成功！+20 點。 ':'✅ 推理正確！這題積分已領取過。 ')+q.explain;
      box.classList.add('correct');box.classList.remove('incorrect');
    }else{
-     fb.textContent=`🔍 這題不是只找關鍵字。建議回看：${q.review}`;
+     fb.textContent=`🔍 先回到上方材料找證據。建議回看：${q.review}`;
      box.classList.add('incorrect');box.classList.remove('correct');
      recordMistake(q.id,q.q,q.review);
    }
    const done=bossQuestions.filter(x=>state.awards.has(x.id)).length;
    const result=document.querySelector('#bossResult');
    result.hidden=false;
-   result.textContent=done===bossQuestions.length?'🎉 Boss 全部完成！已加上 20 點 Boss 完成獎勵。':`目前 Boss 已完成 ${done} / ${bossQuestions.length} 題。`;
+   result.textContent=done===bossQuestions.length?'🎉 兩組閱讀 Boss 全部完成！已加上 20 點 Boss 完成獎勵。':`目前 Boss 已完成 ${done} / ${bossQuestions.length} 題。`;
  }));
 }
 
