@@ -211,3 +211,10 @@ body{background:linear-gradient(180deg,#f7fbff 0%,#fbfcfe 55%,#f7fafc 100%);colo
 .mistake-empty strong{display:block;margin:.35rem 0}
 .mistake-empty p{margin:.2rem 0;color:#66798d}
 @media(max-width:700px){.mistake-overview{grid-template-columns:repeat(3,1fr);gap:.45rem}.mistake-overview>div{padding:.65rem .4rem}.mistake-status{margin-left:0}}
+
+.resume-card{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:linear-gradient(135deg,#eef7ff,#f7fbff);border:1px solid #c9dbe9;border-left:6px solid #4f82ad;border-radius:1rem;padding:1rem 1.1rem;margin:1rem 0;box-shadow:0 8px 22px rgba(51,79,112,.07)}
+.resume-copy{min-width:0}
+.resume-copy strong{display:block;font-size:1.08rem;margin:.12rem 0}
+.resume-copy p{margin:.2rem 0;color:#60758b}
+.resume-btn{margin-top:0;white-space:nowrap}
+@media(max-width:700px){.resume-card{align-items:stretch;flex-direction:column}.resume-btn{width:100%}}
