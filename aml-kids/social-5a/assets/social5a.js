@@ -54,6 +54,8 @@ function renderChallengeProgress(){
  const p=document.querySelector('#challengeProgress');
  if(t)t.textContent=`已完成 ${done} / 50 題`;
  if(p)p.value=done;
+ const hero=document.querySelector('#heroDone');
+ if(hero)hero.textContent=done;
  const result=document.querySelector('#bossResult');
  if(result && done===50){
   result.hidden=false;
