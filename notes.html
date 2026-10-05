@@ -428,33 +428,33 @@ body{background:#fffdf9}
   .aml-footer-links{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 </style>
-<style id="aml-notes-domain-catalog-layout">
-/* Align AML Notes with the visual language of the other topic collections. */
-.notes-hero{padding:104px 7vw 76px}
-.notes-intro{max-width:1120px;margin:auto;padding:58px 6vw 30px}
-#notes{max-width:1120px;margin:auto;padding:34px 6vw 78px}
-#notes .article-grid{display:grid;grid-template-columns:1fr!important;gap:0!important;max-width:none!important;margin:0!important;padding:0!important}
-#notes .article-card,#notes .article-card:first-child{display:grid!important;grid-template-columns:minmax(260px,.34fr) minmax(0,.66fr)!important;gap:28px!important;min-height:0!important;padding:28px 8px!important;border:0!important;border-top:1px solid var(--line)!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;transform:none!important}
-#notes .article-card:first-child::before,#notes .article-card:not(:first-child)::before{display:none!important;content:none!important}
-#notes .article-card .aml-note-card-body,#notes .article-card:first-child .aml-note-card-body{display:contents!important}
-#notes .article-card .meta{grid-column:1;grid-row:1 / span 4;margin:0!important;padding:0!important;color:#657081;font-size:.82rem;font-weight:700;letter-spacing:.03em}
-#notes .article-card .tag{grid-column:1;grid-row:1;align-self:end;justify-self:start;margin:34px 0 0!important}
-#notes .article-card h2{grid-column:2;margin:0!important;font-size:1.28rem!important;line-height:1.45;color:var(--navy)}
-#notes .article-card p{grid-column:2;margin:0!important;color:#657081;font-size:.95rem;line-height:1.8}
-#notes .article-card .read{grid-column:2;margin:0!important;padding:0!important;color:#8a6a32;font-size:.9rem;font-weight:800}
-#notes .article-card:hover{transform:none!important;background:#fffdf8!important}
-#notes .article-card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-@media(max-width:700px){
- .notes-hero{padding:92px 6vw 58px}
- .notes-intro{padding:46px 6vw 22px}
- #notes{padding:24px 6vw 58px}
- #notes .article-card,#notes .article-card:first-child{grid-template-columns:1fr!important;gap:8px!important;padding:22px 4px!important}
- #notes .article-card .aml-note-card-body,#notes .article-card:first-child .aml-note-card-body{display:block!important}
- #notes .article-card .meta,#notes .article-card .tag,#notes .article-card h2,#notes .article-card p,#notes .article-card .read{grid-column:1;grid-row:auto;margin-left:0!important}
- #notes .article-card .tag{margin-top:8px!important}
- #notes .article-card h2{margin-top:8px!important}
- #notes .article-card .read{padding-top:10px!important}
-}
+<style id="aml-notes-ot-aligned-layout">
+.aml-notes-curated,.aml-notes-catalog{max-width:1120px;margin:auto;padding:64px 6vw}
+.aml-notes-curated__head,.aml-notes-catalog__head{margin-bottom:28px}
+.aml-notes-curated__head h2,.aml-notes-catalog__head h2{font-size:clamp(1.85rem,3vw,2.75rem);line-height:1.18;color:var(--navy);margin:.25em 0 .4em}
+.aml-notes-curated__head p,.aml-notes-catalog__head p{margin:0;max-width:780px;color:var(--muted)}
+.aml-notes-curated__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.aml-notes-curated__card{display:flex;flex-direction:column;overflow:hidden;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:20px;transition:transform .18s ease,border-color .18s ease}
+.aml-notes-curated__card:hover{transform:translateY(-2px);border-color:var(--gold)}
+.aml-notes-curated__card:focus-visible,.aml-notes-catalog__card:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.aml-notes-curated__media{aspect-ratio:16/9;background:#f2eee7;overflow:hidden}
+.aml-notes-curated__media img{width:100%;height:100%;object-fit:cover;display:block}
+.aml-notes-curated__body{display:flex;flex-direction:column;gap:10px;padding:24px;flex:1}
+.aml-notes-curated__label{font-size:.78rem;letter-spacing:.08em;color:#8a6a32;font-weight:800}
+.aml-notes-curated__body h3{font-size:1.3rem;line-height:1.45;margin:0;color:var(--navy)}
+.aml-notes-curated__body p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.8;flex:1}
+.aml-notes-curated__go,.aml-notes-catalog__read{color:#8a6a32;font-size:.9rem;font-weight:800}
+.aml-notes-catalog{padding-top:44px}
+.aml-notes-catalog__head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.aml-notes-catalog__count{white-space:nowrap;color:var(--navy);font-weight:700;font-size:.95rem}
+.aml-notes-catalog__count strong{font-size:2.4rem;line-height:1.1;display:block;color:var(--navy)}
+.aml-notes-catalog__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.aml-notes-catalog__card{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;transition:transform .18s ease,border-color .18s ease}
+.aml-notes-catalog__card:hover{transform:translateY(-2px);border-color:var(--gold)}
+.aml-notes-catalog__meta{font-size:.78rem;letter-spacing:.04em;color:var(--muted);font-weight:700}
+.aml-notes-catalog__card h3{font-size:1.28rem;line-height:1.45;margin:0;color:var(--navy)}
+.aml-notes-catalog__card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.8;flex:1}
+@media(max-width:700px){.aml-notes-curated__grid,.aml-notes-catalog__grid{grid-template-columns:1fr}.aml-notes-curated,.aml-notes-catalog{padding-left:6vw;padding-right:6vw}.aml-notes-catalog__card{padding:22px}}
 </style>
 </head>
 <body>
@@ -467,8 +467,14 @@ body{background:#fffdf9}
 <details class="aml-nav-group"><summary>資源與聯繫</summary><div class="aml-nav-panel"><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></details>
 </div><button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button><div class="aml-mobile-menu" id="aml-mobile-menu"><span class="aml-mobile-label">關於 AML</span><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a><span class="aml-mobile-label">主題館藏</span><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a><span class="aml-mobile-label">閱讀路徑</span><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a><span class="aml-mobile-label">進階自學室</span><a href="/self-study.html">進入進階自學室</a><span class="aml-mobile-label">互動實驗室</span><a class="aml-lab-subnav aml-lab-subnav--explore" href="/tools.html#lab-halls">互動探索艙</a><a class="aml-lab-subnav aml-lab-subnav--support" href="/tools.html#practice-tools">智能支援艙</a><span class="aml-mobile-label">資源與聯繫</span><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></nav>
 <main id="aml-main"><header class="hero notes-hero"><div class="eyebrow">AML NOTES COLLECTION</div><h1>小品集</h1><p><strong>把生活留下來。</strong><br/>不一定從一個專業問題開始，也可能只是一個念頭、一段生活、一場修習，或某個值得停下來想一想的瞬間。</p></header>
-<section class="notes-intro"><div class="eyebrow">Notes from the Lab</div><h2 class="title">生活，也是思考與實踐發生的地方。</h2><p class="lead">Articles，把事情說清楚；Notes，把生活留下來。先從最新一則開始，或從下面任一篇小品慢慢讀。</p></section>
-<section id="notes" aria-labelledby="aml-notes-list-title"><h2 class="aml-visually-hidden" id="aml-notes-list-title">AML 小品文章列表</h2><div class="article-grid" id="aml-notes-grid" style="max-width:1180px;margin:0 auto 90px;padding:0 24px;"><p id="aml-notes-status" role="status">正在載入小品文章…</p></div></section>
+<section class="aml-notes-curated" aria-labelledby="aml-notes-curated-title" id="curated-reading">
+<div class="aml-notes-curated__head"><div class="eyebrow">CURATED READING · 2 NOTES</div><h2 id="aml-notes-curated-title">精選小品</h2><p>先從最近兩則小品開始；其餘內容可繼續往下瀏覽完整小品集。</p></div>
+<div class="aml-notes-curated__grid" id="aml-notes-curated-grid"><p role="status">正在載入精選小品…</p></div>
+</section>
+<section class="aml-notes-catalog" aria-labelledby="aml-notes-list-title" id="notes">
+<div class="aml-notes-catalog__head"><div><div class="eyebrow">EXPLORE NOTES · AML NOTES</div><h2 id="aml-notes-list-title">小品集全部文章</h2><p>依 AML 文章 Manifest 自動同步，從最新一則開始慢慢讀。</p></div><div class="aml-notes-catalog__count" id="aml-notes-count" aria-live="polite"><strong>—</strong>篇文章</div></div>
+<div class="aml-notes-catalog__grid" id="aml-notes-grid"><p id="aml-notes-status" role="status">正在載入小品文章…</p></div>
+</section>
 <section class="notes-bridge">
 <div class="notes-bridge__inner">
 <div><div class="eyebrow">KEEP EXPLORING</div><h2 class="title">想讀完整一點的內容？</h2><p class="lead">小品留白，長文展開。需要深入一個主題時，可以回到完整館藏或沿著閱讀路徑繼續。</p></div>
@@ -503,13 +509,15 @@ body{background:#fffdf9}
 </main><footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a></div><div class="aml-footer-group"><h4>探索內容</h4><a href="/articles.html">主題館藏</a><a href="/library.html">完整文章館藏</a><a href="/reading-paths.html">閱讀路徑</a><a href="/search.html">搜尋 AML</a></div><div class="aml-footer-group"><h4>學習與互動</h4><a href="/self-study.html">進階自學室</a><a href="/tools.html">互動實驗室</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer>
 
 <script id="aml-notes-manifest-sync">
-(()=>{const g=document.getElementById('aml-notes-grid'),st=document.getElementById('aml-notes-status');if(!g)return;
+(()=>{const curated=document.getElementById('aml-notes-curated-grid'),grid=document.getElementById('aml-notes-grid'),count=document.getElementById('aml-notes-count');if(!curated||!grid)return;
 const e=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 fetch('/data/articles-manifest.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(m=>{
  const a=[...(m.articles||[])].filter(x=>x.isNote===true).sort((x,y)=>String(y.date).localeCompare(String(x.date))||(Number(x.order)||0)-(Number(y.order)||0));
  if(!a.length)throw 0;
- g.innerHTML=a.map((x,i)=>'<a class="article-card" href="'+e(x.articlePath||('/articles/'+x.slug+'.html'))+'"'+(i===0&&x.hero?' style="--aml-note-hero:url(\''+e(x.hero)+'\')"':'')+'><div class="aml-note-card-body"><div class="meta">'+e(x.cardMeta||x.date)+(i===0?' · 最新小品':'')+'</div><span class="tag">'+e(x.tag||'AML Notes')+'</span><h2>'+e(x.title)+'</h2><p>'+e(x.summary||'')+'</p><div class="read">閱讀小品 →</div></div></a>').join('');
- }).catch(()=>{if(st)st.innerHTML='小品文章暫時無法載入，請前往<a href="/library.html">完整文章館藏</a>。';});
+ count.innerHTML='<strong>'+a.length+'</strong>篇文章';count.setAttribute('aria-label','小品集收錄 '+a.length+' 篇文章');
+ curated.innerHTML=a.slice(0,2).map((x,i)=>'<a class="aml-notes-curated__card" href="'+e(x.articlePath||('/articles/'+x.slug+'.html'))+'"><div class="aml-notes-curated__media"><img alt="" loading="lazy" decoding="async" src="'+e(x.hero||x.ogImage||'/images/allen-banner.png')+'"></div><div class="aml-notes-curated__body"><span class="aml-notes-curated__label">0'+(i+1)+' · '+(i===0?'LATEST':'NOTES')+'</span><h3>'+e(x.title)+'</h3><p>'+e(x.summary||'')+'</p><span class="aml-notes-curated__go">閱讀小品 →</span></div></a>').join('');
+ grid.innerHTML=a.map(x=>'<a class="aml-notes-catalog__card" href="'+e(x.articlePath||('/articles/'+x.slug+'.html'))+'"><div class="aml-notes-catalog__meta">'+e(x.cardMeta||x.date)+'</div><h3>'+e(x.title)+'</h3><p>'+e(x.summary||'')+'</p><span class="aml-notes-catalog__read">閱讀小品 →</span></a>').join('');
+ }).catch(()=>{curated.innerHTML='<p role="alert">精選小品暫時無法載入。</p>';grid.innerHTML='<p role="alert">小品文章暫時無法載入，請前往<a href="/library.html">完整文章館藏</a>。</p>';});
 })();</script>
 <script defer="" src="aml-site.js"></script>
 <script defer="" src="/aml-domain-sync.js"></script>
