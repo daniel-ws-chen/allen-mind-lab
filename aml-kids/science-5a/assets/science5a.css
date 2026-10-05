@@ -22,3 +22,28 @@
 .mini-data strong,.mini-data span{display:block}
 .mini-data span{color:#607568;font-size:.9rem;margin-top:.15rem}
 @media(max-width:760px){.science-method{grid-template-columns:repeat(2,1fr)}.science-row{grid-template-columns:1fr}.science-head{display:none}.evidence-grid,.mini-data{grid-template-columns:1fr}}
+
+.data-lab{background:linear-gradient(180deg,#f8fbff,#f5f9fd);border:1px solid #cfddea;border-left:6px solid #5b83ad;border-radius:1rem;padding:1rem;margin:1rem 0}
+.lab-heading{display:flex;gap:.65rem;align-items:flex-start;margin-bottom:.8rem}
+.lab-heading>span{font-size:1.45rem}
+.lab-heading strong{display:block;font-size:1.03rem;color:#2f5274}
+.lab-heading p{margin:.15rem 0 0;color:#63788d}
+.science-table.compact .science-row{grid-template-columns:.55fr 1fr 1.7fr}
+.reasoning-reveal{margin-top:.8rem;border:1px solid #ccd9e5;border-radius:.8rem;background:#fff;padding:.65rem .8rem}
+.reasoning-reveal summary{font-weight:850;cursor:pointer;color:#315d86}
+.reasoning-reveal summary:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.reasoning-reveal p{margin:.6rem 0 0}
+.variable-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem}
+.variable-grid>div{background:#fff;border:1px solid #d6e2eb;border-radius:.8rem;padding:.75rem}
+.variable-grid span,.variable-grid strong,.variable-grid small{display:block}
+.variable-grid span{font-size:.78rem;font-weight:900;color:#5f7890}
+.variable-grid strong{margin:.18rem 0;color:#294e70}
+.variable-grid small{color:#6c7d8d;line-height:1.5}
+.experiment-steps{display:grid;gap:.6rem}
+.experiment-steps>div{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;background:#fff;border:1px solid #d6e2eb;border-radius:.8rem;padding:.7rem .8rem}
+.experiment-steps>div>span{display:flex;align-items:center;justify-content:center;width:1.8rem;height:1.8rem;border-radius:50%;background:#eaf2f9;color:#315d86;font-weight:900}
+.experiment-steps p{margin:0;line-height:1.65}
+@media(max-width:760px){
+ .science-table.compact .science-row{grid-template-columns:1fr}
+ .variable-grid{grid-template-columns:1fr}
+}
