@@ -95,9 +95,17 @@ function renderQuestions(){
   if(Number(sel.value)===item.a){
    const gained=award(item.id);fb.textContent=(gained?'✅ 答對！+5 點。 ':'✅ 答對！這題已領取過。 ')+item.e;
    box.classList.add('correct');box.classList.remove('incorrect');
+   box.querySelectorAll('.answer-option').forEach(x=>x.classList.remove('option-wrong','option-right'));
+   sel.closest('.answer-option')?.classList.add('option-right');
+   const meta=box.querySelector('.question-meta');
+   if(meta && !meta.querySelector('.done-chip')){
+    const chip=document.createElement('span');chip.className='done-chip';chip.textContent='✓ 已完成';meta.appendChild(chip);
+   }
   }else{
    fb.textContent='🔍 目前答案不對。重新找出「誰、為什麼、造成什麼影響」再判斷；訂正後仍可拿完整 5 點。';
    box.classList.add('incorrect');box.classList.remove('correct');
+   box.querySelectorAll('.answer-option').forEach(x=>x.classList.remove('option-wrong','option-right'));
+   sel.closest('.answer-option')?.classList.add('option-wrong');
    if(!state.mistakes.some(m=>m.id===item.id)){state.mistakes.push({id:item.id,text:item.q,level:item.level});save();renderMistakes();}
   }
  }));
@@ -114,13 +122,48 @@ function renderResume(){
  document.querySelector('#resumeTitle').textContent=`繼續第二單元挑戰｜第 ${idx} 題`;
  document.querySelector('#resumeText').textContent=`目前已完成 ${done} / 50 題；下一題位於「${n.level}」區。`;
 }
-document.querySelector('#resumeChallenge').addEventListener('click',()=>{const n=nextQuestion();if(!n)return;showPanel('challenge');showSegment(n.level,{scroll:false});requestAnimationFrame(()=>document.querySelector(`[data-quiz="${n.id}"]`)?.scrollIntoView({block:'start'}));});
+document.querySelector('#resumeChallenge').addEventListener('click',()=>{
+ const n=nextQuestion();if(!n)return;
+ showPanel('challenge');showSegment(n.level,{scroll:false});
+ requestAnimationFrame(()=>{
+  const card=document.querySelector(`[data-quiz="${n.id}"]`);if(!card)return;
+  const offset=(document.querySelector('.lesson-nav')?.offsetHeight||0)+(document.querySelector('.challenge-progress')?.offsetHeight||0)+24;
+  window.scrollTo({top:Math.max(0,card.getBoundingClientRect().top+window.scrollY-offset),behavior:'auto'});
+  const heading=card.querySelector('h4');if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+ });
+});
 
+let mistakeFilter='全部';
 function renderMistakes(){
  const wrap=document.querySelector('#mistakeList'),all=state.mistakes,corrected=all.filter(m=>state.awards.has(m.id)).length;
- document.querySelector('#mistakeTotal').textContent=all.length;document.querySelector('#mistakeCorrected').textContent=corrected;document.querySelector('#mistakePending').textContent=all.length-corrected;
+ document.querySelector('#mistakeTotal').textContent=all.length;
+ document.querySelector('#mistakeCorrected').textContent=corrected;
+ document.querySelector('#mistakePending').textContent=all.length-corrected;
+ let visible=all;
+ if(mistakeFilter==='待複習')visible=all.filter(m=>!state.awards.has(m.id));
+ else if(mistakeFilter!=='全部')visible=all.filter(m=>m.level===mistakeFilter);
  wrap.innerHTML='';
- if(!all.length){wrap.innerHTML='<div class="mistake-empty"><strong>目前沒有錯題</strong><p>挑戰中答錯的題目會自動出現在這裡。</p></div>';return;}
- all.forEach(m=>{const fixed=state.awards.has(m.id),card=document.createElement('article');card.className='mistake-card '+(fixed?'is-corrected':'is-pending');card.innerHTML=`<div class="mistake-meta"><span class="level-chip">${m.level}</span><span class="mistake-status">${fixed?'✓ 已訂正':'待複習'}</span></div><h3>${m.text}</h3></article>`;wrap.appendChild(card);});
+ if(!all.length){wrap.innerHTML='<div class="mistake-empty"><span aria-hidden="true">✨</span><strong>目前沒有錯題</strong><p>挑戰中答錯的題目會自動出現在這裡。</p></div>';return;}
+ if(!visible.length){wrap.innerHTML='<div class="mistake-empty"><strong>這個分類目前沒有題目</strong><p>可以切換其他分類查看。</p></div>';return;}
+ visible.forEach(m=>{
+  const fixed=state.awards.has(m.id),item=questions.find(q=>q.id===m.id),card=document.createElement('article');
+  card.className='mistake-card '+(fixed?'is-corrected':'is-pending');
+  card.innerHTML=`<div class="mistake-meta"><span class="level-chip">${m.level}</span><span class="mistake-status">${fixed?'✓ 已訂正':'待複習'}</span></div><h3>${m.text}</h3><p>${fixed?(item?.e||'已重新答對，可以考前再確認一次。'):'先回到原題重新閱讀與判斷。'}</p><button type="button" class="secondary review-question" data-review-id="${m.id}" data-review-level="${m.level}">回到這一題</button>`;
+  wrap.appendChild(card);
+ });
+ document.querySelectorAll('.review-question').forEach(btn=>btn.addEventListener('click',()=>{
+  showPanel('challenge');showSegment(btn.dataset.reviewLevel,{scroll:false});
+  requestAnimationFrame(()=>{
+   const card=document.querySelector(`[data-quiz="${btn.dataset.reviewId}"]`);if(!card)return;
+   const offset=(document.querySelector('.lesson-nav')?.offsetHeight||0)+(document.querySelector('.challenge-progress')?.offsetHeight||0)+24;
+   window.scrollTo({top:Math.max(0,card.getBoundingClientRect().top+window.scrollY-offset),behavior:'auto'});
+   const heading=card.querySelector('h4');if(heading){heading.setAttribute('tabindex','-1');heading.focus({preventScroll:true});}
+  });
+ }));
 }
+document.querySelectorAll('.mistake-filter').forEach(btn=>btn.addEventListener('click',()=>{
+ mistakeFilter=btn.dataset.mistakeFilter;
+ document.querySelectorAll('.mistake-filter').forEach(b=>{const active=b===btn;b.classList.toggle('is-active',active);b.setAttribute('aria-pressed',String(active));});
+ renderMistakes();
+}));
 showSegment(state.resume?.level||'基礎',{scroll:false});renderAll();showPanel(location.hash.slice(1)&&document.getElementById(location.hash.slice(1))?location.hash.slice(1):'home');
