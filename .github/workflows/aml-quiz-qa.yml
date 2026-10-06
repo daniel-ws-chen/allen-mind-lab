@@ -1,0 +1,38 @@
+name: AML Quiz QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'management-self-study-quiz.js'
+      - 'pbs-self-study-quiz.js'
+      - 'tools/management-self-study/management-self-study-challenge.js'
+      - 'tools/pbs-interactive/pbs-interactive.js'
+      - 'tools/management-interactive/management-interactive.js'
+      - 'validate-aml-quiz-answer-distribution.mjs'
+      - '.github/workflows/aml-quiz-qa.yml'
+  pull_request:
+    paths:
+      - 'management-self-study-quiz.js'
+      - 'pbs-self-study-quiz.js'
+      - 'tools/management-self-study/management-self-study-challenge.js'
+      - 'tools/pbs-interactive/pbs-interactive.js'
+      - 'tools/management-interactive/management-interactive.js'
+      - 'validate-aml-quiz-answer-distribution.mjs'
+      - '.github/workflows/aml-quiz-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate AML quiz answers
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check answer-position distribution
+        run: node validate-aml-quiz-answer-distribution.mjs
