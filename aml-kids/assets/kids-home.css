@@ -160,3 +160,12 @@ button,a{touch-action:manipulation}
 .points-note{margin:1rem 0 0;color:#60758b;text-align:center}
 @media(max-width:800px){.points-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.points-grid{grid-template-columns:1fr}}
+
+
+/* AML Kids public use guidance */
+.public-note{background:#fff;border:1px solid #d8e3ed;border-radius:1.25rem;padding:1.2rem;box-shadow:0 10px 26px rgba(51,79,112,.055)}
+.public-note-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-top:1rem}
+.public-note-grid>div{background:#f7fafc;border:1px solid #e1e8ef;border-radius:1rem;padding:1rem}
+.public-note-grid strong{display:block;color:#294b6d;margin-bottom:.25rem}
+.public-note-grid p{margin:0;color:#60758b;line-height:1.7}
+@media(max-width:800px){.public-note-grid{grid-template-columns:1fr}}
