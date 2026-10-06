@@ -1,5 +1,14 @@
 const WALLET_KEY='amlKidsRewardWalletV1';
 const SCOPE_KEY='amlKidsMyScopeV1';
+const VISUAL_KEY='amlKidsVisualChallengeV1';
+const VISUAL_LAST_KEY='amlKidsVisualLastActivityV1';
+const visualSubjects=[
+  {key:'chinese',label:'國文'},
+  {key:'english',label:'英文'},
+  {key:'math',label:'數學'},
+  {key:'science',label:'自然'},
+  {key:'social',label:'社會'}
+];
 
 const catalog=window.AML_KIDS_CATALOG;
 const units=(catalog?.units||[]).map(unit=>({...unit}));
@@ -61,8 +70,66 @@ scopeSelect.value=selectedScope;
 
 let lastActivity=null;
 try{lastActivity=JSON.parse(localStorage.getItem('amlKidsLastActivityV1')||'null');}catch{}
+let visualLastActivity=null;
+try{visualLastActivity=JSON.parse(localStorage.getItem(VISUAL_LAST_KEY)||'null');}catch{}
+let visualState={};
+try{visualState=JSON.parse(localStorage.getItem(VISUAL_KEY)||'{}')||{};}catch{}
+
+function renderVisualProgress(){
+  const wrap=document.getElementById('visualProgress');
+  if(!wrap) return;
+  wrap.innerHTML='';
+  visualSubjects.forEach(item=>{
+    const state=visualState[item.key]||{};
+    const done=Math.min(10,new Set(Array.isArray(state.completed)?state.completed:[]).size);
+    const pending=new Set(Array.isArray(state.mistakes)?state.mistakes:[]).size;
+    const percent=Math.round(done/10*100);
+    const link=document.createElement('a');
+    link.className='visual-progress-card';
+    link.href='../visual-challenges/?subject='+item.key;
+    link.innerHTML=
+      '<strong>'+item.label+' '+done+' / 10</strong>'+
+      '<span>'+(done===10?'已完成':(done>0?'進行中':'尚未開始'))+(pending?' · 待複習 '+pending:'')+'</span>'+
+      '<div class="mini-track" role="progressbar" aria-label="'+item.label+'視覺挑戰完成度 '+percent+'%" aria-valuemin="0" aria-valuemax="10" aria-valuenow="'+done+'"><i style="width:'+percent+'%"></i></div>'+
+      '<span>開啟視覺挑戰 →</span>';
+    wrap.appendChild(link);
+  });
+}
+
+function renderRecentLearning(){
+  const wrap=document.getElementById('recentLearning');
+  if(!wrap) return;
+  const standardTime=Number(lastActivity?.updatedAt||0);
+  const visualTime=Number(visualLastActivity?.updatedAt||0);
+
+  if(!standardTime&&!visualTime){
+    wrap.innerHTML='<strong>還沒有最近學習紀錄</strong><p>完成任一題目或開始視覺挑戰後，這裡會顯示最近一次活動。</p>';
+    return;
+  }
+
+  if(visualTime>standardTime){
+    const label=visualLastActivity?.label||'視覺';
+    const qn=Number(visualLastActivity?.index)+1;
+    wrap.innerHTML='<strong>'+label+'｜視覺挑戰</strong><p>最近做到第 '+(Number.isFinite(qn)?qn:1)+' 題。</p><a href="../visual-challenges/?subject='+encodeURIComponent(visualLastActivity?.subject||'chinese')+'">回到視覺挑戰 →</a>';
+    return;
+  }
+
+  const recentUnit=lastActivity?.path
+    ? data.find(u=>u.url===lastActivity.path||u.url.replace(/\/$/,'')===String(lastActivity.path).replace(/\/$/,''))
+    : null;
+  if(recentUnit){
+    const qn=Number(String(lastActivity.questionId||'').replace(/\D/g,''));
+    const detail=qn?('第 '+qn+' 題'+(lastActivity.level?'（'+lastActivity.level+'）':'')):'最近一次題目';
+    const params=lastActivity.questionId?('?resume='+encodeURIComponent(lastActivity.questionId)):'';
+    wrap.innerHTML='<strong>'+recentUnit.subject+'｜'+recentUnit.title+'</strong><p>最近活動：'+detail+'。</p><a href="'+recentUnit.url+params+'#challenge">回到最近學習 →</a>';
+  }else{
+    wrap.innerHTML='<strong>最近學習已記錄</strong><p>目前找不到對應單元入口，可從各科完成度繼續。</p>';
+  }
+}
 
 function renderDashboard(){
+  renderVisualProgress();
+  renderRecentLearning();
   const scopedData=data.filter(u=>scopeKey(u)===selectedScope);
   const scopedUnits=units.filter(u=>scopeKey(u)===selectedScope);
   const totalPoints=Number(localStorage.getItem(WALLET_KEY)||0);
