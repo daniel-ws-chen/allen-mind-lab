@@ -13,6 +13,7 @@
 .backup-card h2{margin-top:.15rem}
 .backup-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border:0;border-radius:999px;background:#20324a;color:#fff;padding:.7rem 1rem;font:inherit;font-weight:900;cursor:pointer;text-decoration:none}
 .backup-button.secondary{background:#fff;color:#20324a;border:1px solid #9eb1c5}
+.backup-button[disabled]{opacity:.55;cursor:not-allowed}
 .backup-button:focus-visible,input:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
 .file-field{display:block;margin:.8rem 0}
 .file-field input{display:block;width:100%;min-height:48px;margin-top:.35rem;border:1px solid #9eb1c5;border-radius:.8rem;padding:.6rem;background:#fff;font:inherit}
@@ -65,6 +66,8 @@
         <span>我知道匯入會覆寫這台裝置中同名的 AML Kids 學習紀錄。</span>
       </label>
       <button class="backup-button" id="importButton" type="button" disabled>匯入學習紀錄</button>
+      <p><button class="backup-button secondary" id="undoImportButton" type="button" disabled>復原上次匯入</button></p>
+      <p class="scope-help">每次匯入前，系統會先在這台瀏覽器建立一份「匯入前還原點」。還原點只保留最近一次匯入前的狀態。</p>
     </article>
   </section>
 
@@ -73,6 +76,7 @@
   <section class="section privacy-note" aria-labelledby="privacy-title">
     <h2 id="privacy-title">隱私與安全</h2>
     <p>備份檔只包含鍵名以 <code>amlKids</code> 開頭的本機學習紀錄，例如學習點數、完成題目、錯題、最近學習與目前學習範圍。檔案不會自動上傳到 AML、GitHub 或其他伺服器。</p>
+    <p>「匯入前還原點」只保存在目前瀏覽器，不會放進下載的備份檔，也不會上傳。</p>
     <p>備份檔可能反映孩子的學習進度，建議由孩子與爸爸／媽媽、家人或其他照顧者自行妥善保管。</p>
   </section>
 </main>
