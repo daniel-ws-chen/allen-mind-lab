@@ -10,6 +10,19 @@ const gradeLabels={1:'一',2:'二',3:'三',4:'四',5:'五',6:'六',7:'七',8:'�
 function readArray(key){
   try{const x=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(x)?x:[];}catch{return [];}
 }
+function readResumeId(key){
+  try{
+    const value=JSON.parse(localStorage.getItem(key)||'null');
+    if(value&&typeof value==='object'&&typeof value.id==='string') return value.id;
+    if(typeof value==='string') return value;
+  }catch{}
+  return '';
+}
+function unitState(unit){
+  if(unit.complete) return {key:'complete',label:'已完成'};
+  if(unit.done>0) return {key:'active',label:'進行中'};
+  return {key:'new',label:'未開始'};
+}
 function stats(unit){
   const awards=new Set(readArray(unit.awards));
   const mistakes=readArray(unit.mistakes);
@@ -91,7 +104,8 @@ function renderDashboard(){
     if(inProgress){
       continueSection.hidden=false;
       continueText.textContent=inProgress.subject+'｜'+inProgress.title+'，目前完成 '+inProgress.done+' / '+questionsPerUnit+' 題。';
-      continueLink.href=inProgress.url+'#challenge';
+      const resumeId=readResumeId(inProgress.resume);
+      continueLink.href=inProgress.url+(resumeId?('?resume='+encodeURIComponent(resumeId)):'')+'#challenge';
       continueLink.textContent='繼續 '+inProgress.subject+' →';
     }
   }
@@ -121,12 +135,16 @@ function renderDashboard(){
       const editionLabel=edition.publisher+' '+edition.version;
       const article=document.createElement('article');
       article.className='subject-progress-card';
+      const percent=max?Math.round(done/max*100):0;
       article.innerHTML=
-        '<div class="subject-progress-head"><div><span class="section-kicker">'+subject+'｜'+editionLabel+'</span><h3>'+complete+' / '+list.length+' 單元完成</h3></div><strong>'+done+' / '+max+' 題</strong></div>'+
-        '<div class="progress-line" role="progressbar" aria-label="'+subject+' '+editionLabel+' 完成度" aria-valuemin="0" aria-valuemax="'+max+'" aria-valuenow="'+done+'"><div class="progress-fill" style="width:'+Math.round(done/max*100)+'%"></div></div>'+
-        '<div class="unit-mini-grid">'+list.map(u=>
-          '<a class="unit-mini" href="'+u.url+'"><span><strong>'+u.title+'</strong><small>'+u.done+' / '+questionsPerUnit+' 題'+(u.pending?' · 待訂正 '+u.pending:'')+'</small></span><span aria-hidden="true">'+(u.complete?'✓':'→')+'</span></a>'
-        ).join('')+'</div>';
+        '<div class="subject-progress-head"><div><span class="section-kicker">'+subject+'｜'+editionLabel+'</span><h3>'+complete+' / '+list.length+' 單元完成</h3></div><strong>'+done+' / '+max+' 題<span class="subject-progress-percent">'+percent+'%</span></strong></div>'+
+        '<div class="progress-line" role="progressbar" aria-label="'+subject+' '+editionLabel+' 完成度 '+percent+'%" aria-valuemin="0" aria-valuemax="'+max+'" aria-valuenow="'+done+'"><div class="progress-fill" style="width:'+percent+'%"></div></div>'+
+        '<div class="unit-mini-grid">'+list.map(u=>{
+          const state=unitState(u);
+          const resumeId=state.key==='active'?readResumeId(u.resume):'';
+          const href=u.url+(resumeId?('?resume='+encodeURIComponent(resumeId)):'')+(state.key==='active'?'#challenge':'');
+          return '<a class="unit-mini unit-mini--'+state.key+'" href="'+href+'"><span class="unit-mini-copy"><span class="unit-mini-head"><strong>'+u.title+'</strong><span class="unit-mini-state">'+state.label+'</span></span><small>'+u.done+' / '+questionsPerUnit+' 題'+(u.pending?' · 待訂正 '+u.pending:'')+'</small></span><span aria-hidden="true">'+(u.complete?'✓':'→')+'</span></a>';
+        }).join('')+'</div>';
       wrap.appendChild(article);
     });
   });
