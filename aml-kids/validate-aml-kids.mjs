@@ -275,6 +275,9 @@ if(fs.existsSync(myJsFile)){
   const myJs=fs.readFileSync(myJsFile,'utf8');
   if(/const subjectOrder=\[['"]/.test(myJs)) fail(myJsFile,'hard-coded subject order found; use shared catalog');
   if(/length\*50/.test(myJs)) fail(myJsFile,'hard-coded 50-question total found; use questionsPerUnit');
+  if(!myJs.includes('unitState')) fail(myJsFile,'My AML Kids unit cards do not expose explicit learning states');
+  if(!myJs.includes('readResumeId')) fail(myJsFile,'My AML Kids in-progress links are not resume-aware');
+  if(!myJs.includes('subject-progress-percent')) fail(myJsFile,'My AML Kids subject completion percentage missing');
 }
 const backupJsFile=path.join(ROOT,'my','backup','backup.js');
 if(fs.existsSync(backupJsFile)){
