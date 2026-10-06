@@ -8,21 +8,28 @@ const unit=document.getElementById('unit');
 const need=document.getElementById('need');
 const statusLine=document.getElementById('wishStatus');
 
-const grades={
-  '國小':['一年級','二年級','三年級','四年級','五年級','六年級'],
-  '國中':['七年級','八年級','九年級'],
-  '高中':['十年級','十一年級','十二年級']
+const stageForGrade=label=>{
+  const map={
+    '一年級':'國小','二年級':'國小','三年級':'國小','四年級':'國小','五年級':'國小','六年級':'國小',
+    '七年級':'國中','八年級':'國中','九年級':'國中',
+    '十年級':'高中','十一年級':'高中','十二年級':'高中'
+  };
+  return map[label]||'';
 };
 
-function fillGrades(selected=''){
-  const list=grades[stage.value]||[];
-  grade.innerHTML='<option value="">請選擇</option>'+list.map(x=>'<option>'+x+'</option>').join('');
-  if(list.includes(selected)) grade.value=selected;
-}
-stage.addEventListener('change',()=>fillGrades());
+grade.addEventListener('change',()=>{
+  const inferred=stageForGrade(grade.value);
+  if(inferred) stage.value=inferred;
+});
+
+stage.addEventListener('change',()=>{
+  const current=stageForGrade(grade.value);
+  if(grade.value && current!==stage.value) grade.value='';
+});
 
 const params=new URLSearchParams(location.search);
-if(params.get('stage')){stage.value=params.get('stage');fillGrades(params.get('grade')||'');}
+if(params.get('stage')) stage.value=params.get('stage');
+if(params.get('grade')){grade.value=params.get('grade');const inferred=stageForGrade(grade.value);if(inferred)stage.value=inferred;}
 if(params.get('semester')) semester.value=params.get('semester');
 if(params.get('subject')) subject.value=params.get('subject');
 if(params.get('version')) version.value=params.get('version');
