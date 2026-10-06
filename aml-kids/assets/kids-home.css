@@ -56,6 +56,12 @@ footer p{margin:.2rem 0}
 .portal-hero{padding-bottom:2.2rem}
 .section-heading.center{text-align:center}
 .quick-start{margin-top:1.2rem}
+.subject-jump{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;margin:.4rem 0 1rem;padding:.75rem;border:1px solid #d8e3ed;border-radius:1rem;background:#f7fafc}
+.subject-jump__label{font-size:.82rem;font-weight:900;color:#5d7691;margin-right:.15rem}
+.subject-jump a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.45rem .72rem;border:1px solid #c9d5df;border-radius:999px;background:#fff;color:#315d86;text-decoration:none;font-weight:900}
+.subject-jump a:hover{border-color:#87a4c0;background:#f7fbff}
+.subject-jump a:focus-visible{outline:4px solid #f59e0b;outline-offset:2px}
+.subject-portal{scroll-margin-top:1rem}
 .subject-portal-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
 .subject-portal{background:#fff;border:1px solid #d8e3ed;border-radius:1.35rem;padding:1.15rem;box-shadow:0 12px 28px rgba(51,79,112,.075)}
 .social-portal{border-top:6px solid #5d86ad}
