@@ -2,10 +2,40 @@ const catalog=window.AML_KIDS_CATALOG;
 const units=(catalog?.units||[]).map(unit=>({...unit}));
 const questionsPerUnit=catalog?.questionsPerUnit||50;
 const subjectOrder=catalog?.subjects||[];
+const SCOPE_KEY='amlKidsMyScopeV1';
+const gradeLabels={1:'一',2:'二',3:'三',4:'四',5:'五',6:'六',7:'七',8:'八',9:'九',10:'十',11:'十一',12:'十二'};
 
 function readArray(key){
   try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[];}catch{return [];}
 }
+function scopeKey(unit){
+  return [unit.stage,unit.grade,unit.semester].join('|');
+}
+function scopeLabel(unit){
+  return (unit.stage||'')+(gradeLabels[unit.grade]||unit.grade||'')+'年級'+(unit.semester||'');
+}
+
+const scopes=[];
+const seenScopes=new Set();
+units.forEach(unit=>{
+  const key=scopeKey(unit);
+  if(seenScopes.has(key)) return;
+  seenScopes.add(key);
+  scopes.push({key,stage:unit.stage,grade:unit.grade,semester:unit.semester});
+});
+
+const defaultScope=catalog?.currentScope?scopeKey(catalog.currentScope):(scopes[0]?.key||'');
+let selectedScope=localStorage.getItem(SCOPE_KEY)||defaultScope;
+if(!scopes.some(s=>s.key===selectedScope)) selectedScope=defaultScope;
+
+const scopeFilter=document.getElementById('scopeFilter');
+scopes.forEach(scope=>{
+  const option=document.createElement('option');
+  option.value=scope.key;
+  option.textContent=scopeLabel(scope);
+  scopeFilter.appendChild(option);
+});
+scopeFilter.value=selectedScope;
 
 const mistakes=[];
 units.forEach(unit=>{
@@ -28,40 +58,51 @@ units.forEach(unit=>{
   });
 });
 
-const all=mistakes.length;
-const corrected=mistakes.filter(m=>m.corrected).length;
-const pending=all-corrected;
-document.getElementById('allMistakes').textContent=all;
-document.getElementById('pendingMistakes').textContent=pending;
-document.getElementById('correctedMistakes').textContent=corrected;
-
-const gradeLabels={1:'一',2:'二',3:'三',4:'四',5:'五',6:'六',7:'七',8:'八',9:'九',10:'十',11:'十一',12:'十二'};
-function scopeLabel(m){
-  return (m.stage||'')+(gradeLabels[m.grade]||m.grade||'')+'年級'+(m.semester||'');
-}
-
 let statusFilter='pending';
 let subjectFilter='全部';
 
 const subjectFilters=document.getElementById('subjectFilters');
-if(subjectFilters){
-  ['全部',...subjectOrder].forEach(subject=>{
-    const btn=document.createElement('button');
-    btn.className='filter-btn subject-filter';
-    btn.type='button';
-    btn.dataset.subject=subject;
-    btn.setAttribute('aria-pressed',String(subject==='全部'));
-    btn.textContent=subject==='全部'?'全部科目':subject;
-    subjectFilters.appendChild(btn);
-  });
-}
 const correctionRule=document.getElementById('correctionRule');
 if(correctionRule){
   correctionRule.textContent='點「回單元重新挑戰」回到原單元，在 '+questionsPerUnit+' 題挑戰中再次作答；答對後，這題會自動轉成「已訂正」，並獲得完整 5 點學習點數。';
 }
 
+function renderSubjectFilters(){
+  if(!subjectFilters) return;
+  const subjects=subjectOrder.filter(subject=>units.some(u=>scopeKey(u)===selectedScope&&u.subject===subject));
+  if(subjectFilter!=='全部'&&!subjects.includes(subjectFilter)) subjectFilter='全部';
+  subjectFilters.innerHTML='';
+  ['全部',...subjects].forEach(subject=>{
+    const btn=document.createElement('button');
+    btn.className='filter-btn subject-filter';
+    btn.type='button';
+    btn.dataset.subject=subject;
+    btn.setAttribute('aria-pressed',String(subject===subjectFilter));
+    btn.textContent=subject==='全部'?'全部科目':subject;
+    btn.addEventListener('click',()=>{
+      subjectFilter=subject;
+      renderSubjectFilters();
+      render();
+    });
+    subjectFilters.appendChild(btn);
+  });
+}
+
+function scopedMistakes(){
+  return mistakes.filter(m=>scopeKey(m)===selectedScope);
+}
+
+function renderSummary(){
+  const scoped=scopedMistakes();
+  const corrected=scoped.filter(m=>m.corrected).length;
+  const pending=scoped.length-corrected;
+  document.getElementById('allMistakes').textContent=scoped.length;
+  document.getElementById('pendingMistakes').textContent=pending;
+  document.getElementById('correctedMistakes').textContent=corrected;
+}
+
 function render(){
-  let list=mistakes;
+  let list=scopedMistakes();
   if(statusFilter==='pending') list=list.filter(m=>!m.corrected);
   else if(statusFilter==='corrected') list=list.filter(m=>m.corrected);
   if(subjectFilter!=='全部') list=list.filter(m=>m.subject===subjectFilter);
@@ -106,10 +147,14 @@ document.querySelectorAll('[data-status]').forEach(btn=>btn.addEventListener('cl
   render();
 }));
 
-document.querySelectorAll('[data-subject]').forEach(btn=>btn.addEventListener('click',()=>{
-  subjectFilter=btn.dataset.subject;
-  document.querySelectorAll('[data-subject]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
+scopeFilter.addEventListener('change',()=>{
+  selectedScope=scopeFilter.value;
+  localStorage.setItem(SCOPE_KEY,selectedScope);
+  renderSubjectFilters();
+  renderSummary();
   render();
-}));
+});
 
+renderSubjectFilters();
+renderSummary();
 render();
