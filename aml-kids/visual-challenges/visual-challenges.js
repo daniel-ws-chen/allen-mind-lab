@@ -3,6 +3,8 @@ const DATA=window.AML_KIDS_VISUAL_DATA||{};
 const CATALOG=window.AML_KIDS_CATALOG||{};
 const KEY='amlKidsVisualChallengeV2';
 const LEGACY_KEY='amlKidsVisualChallengeV1';
+const WALLET_KEY='amlKidsRewardWalletV1';
+const POINTS_PER_QUESTION=5;
 const LAST_KEY='amlKidsVisualLastActivityV1';
 const qs=s=>document.querySelector(s);
 const params=new URLSearchParams(location.search);
@@ -43,13 +45,51 @@ function migrateLegacy(all){
 }
 function subjectState(){
   const all=migrateLegacy(load());
-  const base=all[scopeKey]||{completed:[],mistakes:[],wrongEver:[],firstAttempt:{},resume:0,lastCompleted:null};
+  const base=all[scopeKey]||{completed:[],mistakes:[],wrongEver:[],firstAttempt:{},awarded:[],rewardMigrationV1:false,resume:0,lastCompleted:null};
+  if(!Array.isArray(base.awarded)) base.awarded=[];
+  if(base.rewardMigrationV1!==true){
+    const completed=new Set(Array.isArray(base.completed)?base.completed:[]);
+    const awarded=new Set(base.awarded);
+    let added=0;
+    completed.forEach(id=>{
+      if(!awarded.has(id)){
+        awarded.add(id);
+        added+=POINTS_PER_QUESTION;
+      }
+    });
+    if(added>0){
+      const wallet=Number(localStorage.getItem(WALLET_KEY)||0);
+      localStorage.setItem(WALLET_KEY,String(wallet+added));
+    }
+    base.awarded=[...awarded];
+    base.rewardMigrationV1=true;
+    all[scopeKey]=base;
+    save(all);
+  }
   return {all,base};
 }
 function persist(patch){
   const {all,base}=subjectState();
   all[scopeKey]={...base,...patch};
   save(all);
+}
+function awardedSet(){
+  const {base}=subjectState();
+  return new Set(Array.isArray(base.awarded)?base.awarded:[]);
+}
+function visualRewardPoints(){
+  return awardedSet().size*POINTS_PER_QUESTION;
+}
+function grantReward(questionId){
+  const {all,base}=subjectState();
+  const awarded=new Set(Array.isArray(base.awarded)?base.awarded:[]);
+  if(awarded.has(questionId)) return false;
+  awarded.add(questionId);
+  const wallet=Number(localStorage.getItem(WALLET_KEY)||0);
+  localStorage.setItem(WALLET_KEY,String(wallet+POINTS_PER_QUESTION));
+  all[scopeKey]={...base,awarded:[...awarded],rewardMigrationV1:true};
+  save(all);
+  return true;
 }
 function completedSet(){
   const {base}=subjectState();
@@ -133,7 +173,8 @@ function render(){
   });
   const feedback=qs('#feedback');
   if(locked){
-    feedback.textContent='已完成。'+q.e;
+    const rewarded=awardedSet().has(q.id);
+    feedback.textContent=(rewarded?'已完成並取得 5 點。':'已完成。')+q.e;
     feedback.className='feedback good';
   }else{
     feedback.textContent='';
@@ -174,8 +215,10 @@ function check(){
       resume:index,
       lastCompleted:q.id
     });
+    const gained=grantReward(q.id);
     recordActivity(q.id);
-    fb.textContent='答對了。'+q.e;fb.className='feedback good';
+    fb.textContent=(gained?'答對了！＋5 點。':'答對了！這題 5 點之前已經取得。')+q.e;
+    fb.className='feedback good';
     document.querySelectorAll('input[name="visual-answer"]').forEach(x=>x.disabled=true);
     qs('#check-answer').hidden=true;
     updateProgressDisplay(completed.size);
@@ -189,7 +232,7 @@ function check(){
       resume:index
     });
     recordActivity(q.id);
-    fb.textContent='答錯了。再看一次圖中的線索。'+(q.hint?' 提示：'+q.hint:'');
+    fb.textContent='答錯了，這題暫時不加點。再看一次圖中的線索；訂正成功仍可取得 5 點。'+(q.hint?' 提示：'+q.hint:'');
     fb.className='feedback note';
   }
 }
@@ -205,6 +248,7 @@ function renderCompletionSummary(){
   qs('#completion-accuracy').textContent=accuracy+'%';
   qs('#completion-first-correct').textContent=firstCorrect+' / '+answeredIds.length;
   qs('#completion-wrong-count').textContent=wrongEver.size+' 題';
+  qs('#completion-reward-points').textContent=visualRewardPoints()+' / '+(questions.length*POINTS_PER_QUESTION)+' 點';
 
   const list=qs('#completion-wrong-list');
   list.innerHTML='';
@@ -262,7 +306,17 @@ function next(){
   qs('#completion').focus();
 }
 function restart(){
-  persist({completed:[],mistakes:[],wrongEver:[],firstAttempt:{},resume:0,lastCompleted:null});
+  const {base}=subjectState();
+  persist({
+    completed:[],
+    mistakes:[],
+    wrongEver:[],
+    firstAttempt:{},
+    awarded:[...(base.awarded||[])],
+    rewardMigrationV1:true,
+    resume:0,
+    lastCompleted:null
+  });
   index=0;qs('#completion').hidden=true;qs('#question-card').hidden=false;render();qs('#question-card').scrollIntoView({block:'start'});
 }
 function init(){
