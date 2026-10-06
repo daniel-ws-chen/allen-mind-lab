@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex,nofollow" />
-  <title>AML Kids｜我的學習基地</title>
+  <title>AML Kids｜跨學段自主學習基地</title>
   <link rel="stylesheet" href="assets/kids-home.css" />
 </head>
 <body>
@@ -13,23 +13,59 @@
 <header class="hero portal-hero">
   <div class="hero-inner">
     <p class="eyebrow">AML Kids</p>
-    <h1>我的學習基地</h1>
-    <p class="hero-lead">今天想先挑戰哪一科？從這裡出發就好。</p>
+    <h1>從國小到高中，找到適合自己的學習路徑</h1>
+    <p class="hero-lead">已完成的內容可以直接開始；還沒有的年級、科目或版本，也可以向 AML 許願。AML Kids 將依需求持續擴充。</p>
     <div class="hero-badges" aria-label="AML Kids學習特色">
       <span>📖 讀懂題目</span>
       <span>🧠 找出證據</span>
       <span>🎯 完成挑戰</span>
-      <span>🫘 累積拼豆</span>
+      <span>✨ 累積學習點數</span>
     </div>
   </div>
 </header>
 
 <main id="main">
+  <section class="section stage-section" aria-labelledby="stage-title">
+    <div class="section-heading center">
+      <span class="section-kicker">選擇學習階段</span>
+      <h2 id="stage-title">你現在在哪一個學習階段？</h2>
+      <p>AML Kids 以「教育階段 → 年級 → 學期 → 科目 → 版本」逐步擴充。</p>
+    </div>
+    <div class="stage-grid">
+      <article class="stage-card stage-live">
+        <span class="stage-icon" aria-hidden="true">🎒</span>
+        <div>
+          <span class="status live">已有內容</span>
+          <h3>國小</h3>
+          <p>目前已完成五年級上學期 5 科複習內容。</p>
+          <a class="stage-link" href="#quick-title">查看國小內容 →</a>
+        </div>
+      </article>
+      <article class="stage-card">
+        <span class="stage-icon" aria-hidden="true">📘</span>
+        <div>
+          <span class="status">陸續建置中</span>
+          <h3>國中</h3>
+          <p>七至九年級可依科目與教材版本提出需求。</p>
+          <a class="stage-link" href="wish/?stage=國中">前往許願 →</a>
+        </div>
+      </article>
+      <article class="stage-card">
+        <span class="stage-icon" aria-hidden="true">🎓</span>
+        <div>
+          <span class="status">陸續建置中</span>
+          <h3>高中</h3>
+          <p>十至十二年級可依科目、教材版本或主題提出需求。</p>
+          <a class="stage-link" href="wish/?stage=高中">前往許願 →</a>
+        </div>
+      </article>
+    </div>
+  </section>
   <section class="section quick-start" aria-labelledby="quick-title">
     <div class="section-heading center">
-      <span class="section-kicker">單一入口</span>
-      <h2 id="quick-title">選一科，直接開始</h2>
-      <p>目前開放五年級上學期的國文、社會、自然、英文與數學。</p>
+      <span class="section-kicker">目前已開放｜國小五年級上學期</span>
+      <h2 id="quick-title">先選科目，再選教材版本</h2>
+      <p>目前各科先完成一個教材版本；其他版本會陸續建置，也可以直接許願。</p>
     </div>
 
     <div class="subject-portal-grid">
@@ -42,6 +78,12 @@
           </div>
         </div>
         <p>從課文理解、語詞與句型一路練到推論、主旨、篇章結構與閱讀素養。</p>
+        <div class="version-picker" aria-label="國文教材版本">
+          <span class="version-label">教材版本</span>
+          <a class="version-chip active" href="chinese-5a/" aria-current="page">南一｜已開放</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=國文&version=康軒">康軒｜陸續建置中</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=國文&version=翰林">翰林｜陸續建置中</a>
+        </div>
         <div class="portal-units">
           <a class="portal-unit-link" href="chinese-5a/unit1/">
             <span class="portal-unit-number">01</span>
@@ -75,6 +117,12 @@
           </div>
         </div>
         <p>讀懂歷史與地理，不只是背人名、年代與地名。</p>
+        <div class="version-picker" aria-label="社會教材版本">
+          <span class="version-label">教材版本</span>
+          <a class="version-chip active" href="social-5a/" aria-current="page">翰林｜已開放</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=社會&version=康軒">康軒｜陸續建置中</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=社會&version=南一">南一｜陸續建置中</a>
+        </div>
 
         <div class="portal-units">
           <a class="portal-unit-link" href="social-5a/">
@@ -115,6 +163,12 @@
           </div>
         </div>
         <p>從觀察、實驗與資料開始，練習「怎麼知道答案」。</p>
+        <div class="version-picker" aria-label="自然教材版本">
+          <span class="version-label">教材版本</span>
+          <a class="version-chip active" href="science-5a/" aria-current="page">康軒｜已開放</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=自然&version=南一">南一｜陸續建置中</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=自然&version=翰林">翰林｜陸續建置中</a>
+        </div>
 
         <div class="portal-units">
           <a class="portal-unit-link" href="science-5a/unit1/">
@@ -150,6 +204,12 @@
           </div>
         </div>
         <p>從單字、句型、phonics 到閱讀理解，練習真正看懂與使用英文。</p>
+        <div class="version-picker" aria-label="英文教材版本">
+          <span class="version-label">教材版本</span>
+          <a class="version-chip active" href="english-5a/" aria-current="page">翰林 Here We Go｜已開放</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=英文&version=康軒">康軒｜陸續建置中</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=英文&version=南一">南一｜陸續建置中</a>
+        </div>
 
         <div class="portal-units">
           <a class="portal-unit-link" href="english-5a/unit1/">
@@ -184,6 +244,12 @@
           </div>
         </div>
         <p>先看懂數量關係，再計算；練習位值、估算、直式與應用題。</p>
+        <div class="version-picker" aria-label="數學教材版本">
+          <span class="version-label">教材版本</span>
+          <a class="version-chip active" href="math-5a/" aria-current="page">康軒｜已開放</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=數學&version=南一">南一｜陸續建置中</a>
+          <a class="version-chip" href="wish/?stage=國小&grade=五年級&semester=上學期&subject=數學&version=翰林">翰林｜陸續建置中</a>
+        </div>
 
         <div class="portal-units">
           <a class="portal-unit-link" href="math-5a/unit1/">
@@ -240,6 +306,16 @@
         <a class="subject-home-link" href="math-5a/">進入數學學習區</a>
       </section>
     </div>
+  </section>
+
+  <section class="section wish-banner" aria-labelledby="wish-title">
+    <div class="wish-icon" aria-hidden="true">✨</div>
+    <div class="wish-copy">
+      <span class="section-kicker">AML 許願單</span>
+      <h2 id="wish-title">找不到需要的年級、科目或版本？</h2>
+      <p>國小、國中、高中都可以許願。告訴 AML 你的教育階段、年級、學期、科目與教材版本，作為後續建置排序的參考。</p>
+    </div>
+    <a class="wish-button" href="wish/">前往 AML Kids 許願單 →</a>
   </section>
 
   <section class="section dashboard-strip" aria-label="目前學習內容">
