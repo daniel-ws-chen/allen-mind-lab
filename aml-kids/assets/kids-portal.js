@@ -81,6 +81,19 @@ function wishUrl(scope,subject,version){
   });
   return 'wish/?'+params.toString();
 }
+function renderSubjectJump(scoped,details,order){
+  const nav=document.getElementById('subjectJump');
+  if(!nav) return;
+  nav.innerHTML='<span class="subject-jump__label">快速選科目</span>';
+  order.filter(subject=>scoped.some(u=>u.subject===subject)).forEach((subject,index)=>{
+    const detail=details.find(d=>d.subject===subject)||{slug:'subject-'+index,icon:'📘'};
+    const link=document.createElement('a');
+    link.href='#subject-'+detail.slug;
+    link.textContent=detail.icon+' '+subject;
+    nav.appendChild(link);
+  });
+}
+
 function renderSubjectPortal(){
   const wrap=document.getElementById('subjectPortalGrid');
   const scope=catalog.currentScope;
@@ -94,6 +107,7 @@ function renderSubjectPortal(){
   const details=catalog.subjectDetails||[];
   const order=catalog.subjects||[];
   wrap.innerHTML='';
+  renderSubjectJump(scoped,details,order);
 
   order.filter(subject=>scoped.some(u=>u.subject===subject)).forEach((subject,index)=>{
     const detail=details.find(d=>d.subject===subject)||{subject,slug:'subject-'+index,icon:'📘',intro:'自主學習內容',wishVersions:[]};
@@ -112,6 +126,7 @@ function renderSubjectPortal(){
 
     const section=document.createElement('section');
     section.className='subject-portal '+detail.slug+'-portal';
+    section.id='subject-'+detail.slug;
     const titleId='subject-'+detail.slug+'-title';
     section.setAttribute('aria-labelledby',titleId);
 
