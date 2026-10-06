@@ -57,3 +57,18 @@ jobs:
             echo "\`\`\`"
           } >> "$GITHUB_STEP_SUMMARY"
           exit "$status"
+
+      - name: Validate visual challenges
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          node aml-kids/validate-aml-kids-visual.mjs 2>&1 | tee aml-kids-visual.log
+          status=${PIPESTATUS[0]}
+          {
+            echo "### AML Kids visual challenges"
+            echo "\`\`\`text"
+            cat aml-kids-visual.log
+            echo "\`\`\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
