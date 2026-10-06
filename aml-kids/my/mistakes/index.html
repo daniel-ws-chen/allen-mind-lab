@@ -35,7 +35,7 @@
   <div class="hero-inner">
     <p class="eyebrow">My AML Kids</p>
     <h1>跨科錯題中心</h1>
-    <p class="hero-lead">把國文、社會、自然、英文與數學的錯題集中在一起，優先處理還沒訂正完成的題目。</p>
+    <p class="hero-lead">把目前已開放內容的錯題集中在一起，優先處理還沒訂正完成的題目。</p>
   </div>
 </header>
 <main id="main" class="mistakes-page">
@@ -64,20 +64,13 @@
       <button class="filter-btn" type="button" data-status="all" aria-pressed="false">全部</button>
       <button class="filter-btn" type="button" data-status="corrected" aria-pressed="false">已訂正</button>
     </div>
-    <div class="filter-bar" aria-label="科目篩選">
-      <button class="filter-btn subject-filter" type="button" data-subject="全部" aria-pressed="true">全部科目</button>
-      <button class="filter-btn subject-filter" type="button" data-subject="國文" aria-pressed="false">國文</button>
-      <button class="filter-btn subject-filter" type="button" data-subject="社會" aria-pressed="false">社會</button>
-      <button class="filter-btn subject-filter" type="button" data-subject="自然" aria-pressed="false">自然</button>
-      <button class="filter-btn subject-filter" type="button" data-subject="英文" aria-pressed="false">英文</button>
-      <button class="filter-btn subject-filter" type="button" data-subject="數學" aria-pressed="false">數學</button>
-    </div>
+    <div class="filter-bar" id="subjectFilters" aria-label="科目篩選"></div>
     <div id="mistakeList" class="mistake-list" aria-live="polite"></div>
   </section>
 
   <section class="section note-box" aria-labelledby="note-title">
     <h2 id="note-title">怎麼完成訂正？</h2>
-    <p>點「回單元重新挑戰」回到原單元，在 50 題挑戰中再次作答；答對後，這題會自動轉成「已訂正」，並獲得完整 5 點學習點數。</p>
+    <p><span id="correctionRule">點「回單元重新挑戰」回到原單元再次作答；答對後，這題會自動轉成「已訂正」，並獲得完整 5 點學習點數。</span></p>
   </section>
 </main>
 <footer><p>My AML Kids｜跨科錯題中心</p></footer>
