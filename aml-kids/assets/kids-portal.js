@@ -134,6 +134,10 @@ function createUnitLink(unit){
   const strong=document.createElement('strong');
   strong.textContent=unit.title;
   const progress=unitProgress(unit);
+  link.dataset.progressState=progress.state;
+  link.classList.toggle('portal-unit-link--complete',progress.state==='complete');
+  link.classList.toggle('portal-unit-link--active',progress.state==='active');
+
   const progressBadge=document.createElement('span');
   progressBadge.className='portal-unit-progress portal-unit-progress--'+progress.state;
   progressBadge.textContent=progress.label+(progress.state==='new'?'':' '+progress.done+'/'+progress.total);
