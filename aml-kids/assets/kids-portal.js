@@ -10,6 +10,33 @@ const stageForGrade=n=>n<=6?'國小':n<=9?'國中':'高中';
 const gradeName=n=>['','一年級','二年級','三年級','四年級','五年級','六年級','七年級','八年級','九年級','十年級','十一年級','十二年級'][n];
 const semesterOrder=['上學期','下學期'];
 
+function stageDefinition(stage){
+  return (catalog.stages||[]).find(item=>item.stage===stage);
+}
+function syncGradeOptions(stage,preferredGrade){
+  const def=stageDefinition(stage);
+  const grades=(def?.grades||[]).map(Number).filter(Boolean);
+  if(!grades.length) return Number(gradeSelect.value||preferredGrade||1);
+
+  const wanted=grades.includes(Number(preferredGrade))?Number(preferredGrade):grades[0];
+  gradeSelect.innerHTML='';
+  grades.forEach(grade=>{
+    const option=document.createElement('option');
+    option.value=String(grade);
+    option.textContent=gradeName(grade);
+    option.selected=grade===wanted;
+    gradeSelect.appendChild(option);
+  });
+  return wanted;
+}
+function initializeLearningSelector(){
+  const current=catalog.currentScope;
+  const initialStage=current?.stage||stageSelect.value||'國小';
+  stageSelect.value=initialStage;
+  const initialGrade=Number(current?.grade||gradeSelect.value||5);
+  return syncGradeOptions(initialStage,initialGrade);
+}
+
 function unitsFor(stage,grade){
   return (catalog.units||[]).filter(unit=>unit.stage===stage&&Number(unit.grade)===grade);
 }
@@ -404,16 +431,11 @@ function updateSelector(source){
   if(source==='grade'){
     stageSelect.value=stageForGrade(grade);
   }else if(source==='stage'){
-    const ranges={國小:[1,6],國中:[7,9],高中:[10,12]};
-    const [min,max]=ranges[stageSelect.value];
-    if(grade<min||grade>max){
-      const available=(catalog.units||[])
-        .filter(u=>u.stage===stageSelect.value)
-        .map(u=>Number(u.grade))
-        .sort((a,b)=>a-b);
-      grade=available[0]||min;
-      gradeSelect.value=String(grade);
-    }
+    const available=(catalog.units||[])
+      .filter(u=>u.stage===stageSelect.value)
+      .map(u=>Number(u.grade))
+      .sort((a,b)=>a-b);
+    grade=syncGradeOptions(stageSelect.value,available[0]||grade);
   }
 
   const stage=stageSelect.value;
@@ -445,6 +467,7 @@ function updateSelector(source){
   }
 }
 
+initializeLearningSelector();
 stageSelect.addEventListener('change',()=>updateSelector('stage'));
 gradeSelect.addEventListener('change',()=>updateSelector('grade'));
 updatePortalSummary();
