@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>My AML Kids｜學習紀錄備份與移轉</title>
+<link rel="stylesheet" href="../../assets/kids-home.css">
+<style>
+.backup-page{max-width:920px;margin:auto;padding:1rem}
+.backup-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.backup-card{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem}
+.backup-card h2{margin-top:.15rem}
+.backup-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border:0;border-radius:999px;background:#20324a;color:#fff;padding:.7rem 1rem;font:inherit;font-weight:900;cursor:pointer;text-decoration:none}
+.backup-button.secondary{background:#fff;color:#20324a;border:1px solid #9eb1c5}
+.backup-button:focus-visible,input:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.file-field{display:block;margin:.8rem 0}
+.file-field input{display:block;width:100%;min-height:48px;margin-top:.35rem;border:1px solid #9eb1c5;border-radius:.8rem;padding:.6rem;background:#fff;font:inherit}
+.confirm-row{display:flex;align-items:flex-start;gap:.6rem;margin:.9rem 0}
+.confirm-row input{width:1.25rem;height:1.25rem;margin-top:.2rem;flex:0 0 auto}
+.status-box{margin-top:1rem;border-radius:.9rem;padding:.8rem 1rem;background:#f7fafc;border:1px solid #dfe7ef}
+.status-box[data-kind="success"]{border-color:#9bc5a9;background:#f5fbf7}
+.status-box[data-kind="error"]{border-color:#d7a7ad;background:#fff7f8}
+.status-box[data-kind="warning"]{border-color:#dfc887;background:#fffaf0}
+.privacy-note{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
+.backup-meta{display:grid;gap:.35rem;margin:.7rem 0;padding:.8rem;border-radius:.8rem;background:#f7fafc}
+.backup-meta span{display:block}
+@media(max-width:760px){.backup-grid{grid-template-columns:1fr}.backup-button{width:100%}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="hero portal-hero">
+  <div class="hero-inner">
+    <p class="eyebrow">My AML Kids</p>
+    <h1>學習紀錄備份與移轉</h1>
+    <p class="hero-lead">不需帳號，也能把這台裝置上的 AML Kids 學習紀錄備份成檔案，或移到另一個瀏覽器。</p>
+  </div>
+</header>
+<main id="main" class="backup-page">
+  <p><a class="enter" href="../">← 回我的學習進度</a></p>
+
+  <section class="section backup-grid" aria-label="備份與匯入">
+    <article class="backup-card">
+      <span class="section-kicker">匯出</span>
+      <h2>下載學習紀錄備份</h2>
+      <p>只會匯出 AML Kids 自己使用的瀏覽器資料，不會讀取其他網站資料。</p>
+      <div class="backup-meta" aria-live="polite">
+        <span>目前可備份：<strong id="backupKeyCount">0</strong> 筆資料</span>
+        <span>學習點數：<strong id="backupPoints">0</strong> 點</span>
+      </div>
+      <button class="backup-button" id="exportButton" type="button">下載備份檔</button>
+    </article>
+
+    <article class="backup-card">
+      <span class="section-kicker">匯入</span>
+      <h2>從備份檔恢復</h2>
+      <p>匯入只會覆寫備份檔中同名的 AML Kids 資料，不會刪除其他網站資料。</p>
+      <label class="file-field" for="backupFile">選擇 AML Kids 備份檔
+        <input id="backupFile" type="file" accept="application/json,.json">
+      </label>
+      <div id="importPreview" class="backup-meta" hidden></div>
+      <label class="confirm-row">
+        <input id="confirmImport" type="checkbox">
+        <span>我知道匯入會覆寫這台裝置中同名的 AML Kids 學習紀錄。</span>
+      </label>
+      <button class="backup-button" id="importButton" type="button" disabled>匯入學習紀錄</button>
+    </article>
+  </section>
+
+  <div id="statusBox" class="status-box" role="status" aria-live="polite">尚未進行備份或匯入。</div>
+
+  <section class="section privacy-note" aria-labelledby="privacy-title">
+    <h2 id="privacy-title">隱私與安全</h2>
+    <p>備份檔只包含鍵名以 <code>amlKids</code> 開頭的本機學習紀錄，例如學習點數、完成題目、錯題、最近學習與目前學習範圍。檔案不會自動上傳到 AML、GitHub 或其他伺服器。</p>
+    <p>備份檔可能反映孩子的學習進度，建議由孩子與爸爸／媽媽、家人或其他照顧者自行妥善保管。</p>
+  </section>
+</main>
+<footer><p>My AML Kids｜學習紀錄備份與移轉</p></footer>
+<script src="../../assets/kids-catalog.js"></script>
+<script src="backup.js"></script>
+</body>
+</html>
