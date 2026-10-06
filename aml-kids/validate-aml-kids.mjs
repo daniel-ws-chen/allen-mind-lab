@@ -48,7 +48,10 @@ for(const file of htmlFiles){
 for(const file of cssFiles){
   const text=fs.readFileSync(file,'utf8');
   if(/outline\s*:\s*none/i.test(text)) fail(file,'outline:none is not allowed');
-  if(!text.includes('prefers-reduced-motion')) warn(file,'no prefers-reduced-motion rule');
+  if(!text.includes('prefers-reduced-motion')) fail(file,'missing prefers-reduced-motion rule');
+  if(!text.includes(':focus-visible')&&!text.includes(':focus{')&&!text.includes(':focus {')){
+    fail(file,'no visible keyboard-focus styling found');
+  }
 }
 
 let entries=[];
