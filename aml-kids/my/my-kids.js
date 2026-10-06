@@ -1,15 +1,8 @@
 const WALLET_KEY='amlKidsRewardWalletV1';
 const SCOPE_KEY='amlKidsMyScopeV1';
-const VISUAL_KEY='amlKidsVisualChallengeV1';
+const VISUAL_KEY='amlKidsVisualChallengeV2';
 const VISUAL_LAST_KEY='amlKidsVisualLastActivityV1';
 const DAILY_KEY='amlKidsDaily5V1';
-const visualSubjects=[
-  {key:'chinese',label:'國文'},
-  {key:'english',label:'英文'},
-  {key:'math',label:'數學'},
-  {key:'science',label:'自然'},
-  {key:'social',label:'社會'}
-];
 
 const catalog=window.AML_KIDS_CATALOG;
 const units=(catalog?.units||[]).map(unit=>({...unit}));
@@ -93,25 +86,24 @@ function renderDailyFive(){
     '<a href="../daily/">'+(done>=5?'查看今日題目':'繼續今日 5 題')+' →</a>';
 }
 
-function renderVisualProgress(){
-  const wrap=document.getElementById('visualProgress');
-  if(!wrap) return;
-  wrap.innerHTML='';
-  visualSubjects.forEach(item=>{
-    const state=visualState[item.key]||{};
-    const done=Math.min(10,new Set(Array.isArray(state.completed)?state.completed:[]).size);
-    const pending=new Set(Array.isArray(state.mistakes)?state.mistakes:[]).size;
-    const percent=Math.round(done/10*100);
-    const link=document.createElement('a');
-    link.className='visual-progress-card';
-    link.href='../visual-challenges/?subject='+item.key;
-    link.innerHTML=
-      '<strong>'+item.label+' '+done+' / 10</strong>'+
-      '<span>'+(done===10?'已完成':(done>0?'進行中':'尚未開始'))+(pending?' · 待複習 '+pending:'')+'</span>'+
-      '<div class="mini-track" role="progressbar" aria-label="'+item.label+'視覺挑戰完成度 '+percent+'%" aria-valuemin="0" aria-valuemax="10" aria-valuenow="'+done+'"><i style="width:'+percent+'%"></i></div>'+
-      '<span>開啟視覺挑戰 →</span>';
-    wrap.appendChild(link);
-  });
+function visualScopeKey(subject,publisher,version){
+  const selected=scopes.find(s=>s.key===selectedScope);
+  const stage=selected?.stage||catalog?.currentScope?.stage||'國小';
+  const grade=selected?.grade||catalog?.currentScope?.grade||5;
+  const semester=selected?.semester||catalog?.currentScope?.semester||'上學期';
+  return [stage,grade,semester,subject,publisher,version].join('|');
+}
+function visualHref(subject,publisher,version){
+  const selected=scopes.find(s=>s.key===selectedScope);
+  const stage=selected?.stage||catalog?.currentScope?.stage||'國小';
+  const grade=selected?.grade||catalog?.currentScope?.grade||5;
+  const semester=selected?.semester||catalog?.currentScope?.semester||'上學期';
+  return '../visual-challenges/?stage='+encodeURIComponent(stage)+
+    '&grade='+encodeURIComponent(grade)+
+    '&semester='+encodeURIComponent(semester)+
+    '&subject='+encodeURIComponent(subject)+
+    '&publisher='+encodeURIComponent(publisher)+
+    '&version='+encodeURIComponent(version);
 }
 
 function renderRecentLearning(){
@@ -128,7 +120,12 @@ function renderRecentLearning(){
   if(visualTime>standardTime){
     const label=visualLastActivity?.label||'視覺';
     const qn=Number(visualLastActivity?.index)+1;
-    wrap.innerHTML='<strong>'+label+'｜視覺挑戰</strong><p>最近做到第 '+(Number.isFinite(qn)?qn:1)+' 題。</p><a href="../visual-challenges/?subject='+encodeURIComponent(visualLastActivity?.subject||'chinese')+'">回到視覺挑戰 →</a>';
+    const href=visualLastActivity?.path||visualHref(
+      visualLastActivity?.subject||'',
+      visualLastActivity?.publisher||'',
+      visualLastActivity?.version||''
+    );
+    wrap.innerHTML='<strong>'+label+'｜視覺題</strong><p>最近做到第 '+(Number.isFinite(qn)?qn:1)+' 題。</p><a href="'+href+'">回到視覺題 →</a>';
     return;
   }
 
@@ -147,7 +144,6 @@ function renderRecentLearning(){
 
 function renderDashboard(){
   renderDailyFive();
-  renderVisualProgress();
   renderRecentLearning();
   const scopedData=data.filter(u=>scopeKey(u)===selectedScope);
   const scopedUnits=units.filter(u=>scopeKey(u)===selectedScope);
@@ -222,9 +218,14 @@ function renderDashboard(){
       const article=document.createElement('article');
       article.className='subject-progress-card';
       const percent=max?Math.round(done/max*100):0;
+      const visualKey=visualScopeKey(subject,edition.publisher,edition.version);
+      const visual=visualState[visualKey]||{};
+      const visualDone=Math.min(10,new Set(Array.isArray(visual.completed)?visual.completed:[]).size);
+      const visualPending=new Set(Array.isArray(visual.mistakes)?visual.mistakes:[]).size;
       article.innerHTML=
         '<div class="subject-progress-head"><div><span class="section-kicker">'+subject+'｜'+editionLabel+'</span><h3>'+complete+' / '+list.length+' 單元完成</h3></div><strong>'+done+' / '+max+' 題<span class="subject-progress-percent">'+percent+'%</span></strong></div>'+
         '<div class="progress-line" role="progressbar" aria-label="'+subject+' '+editionLabel+' 完成度 '+percent+'%" aria-valuemin="0" aria-valuemax="'+max+'" aria-valuenow="'+done+'"><div class="progress-fill" style="width:'+percent+'%"></div></div>'+
+        '<a class="edition-visual-link" href="'+visualHref(subject,edition.publisher,edition.version)+'"><strong>👁 視覺題 '+visualDone+' / 10</strong><span>'+(visualPending?'待複習 '+visualPending+' 題':'版本內第四題型')+' →</span></a>'+
         '<div class="unit-mini-grid">'+list.map(u=>{
           const state=unitState(u);
           const resumeId=state.key==='active'?readResumeId(u.resume):'';
