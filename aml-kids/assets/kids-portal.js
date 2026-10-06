@@ -110,6 +110,14 @@ function unitProgress(unit){
   if(safeDone>0) return {done:safeDone,total,label:'進行中',state:'active'};
   return {done:0,total,label:'未開始',state:'new'};
 }
+function readResumeId(key){
+  try{
+    const value=JSON.parse(localStorage.getItem(key)||'null');
+    if(value&&typeof value==='object'&&typeof value.id==='string') return value.id;
+    if(typeof value==='string') return value;
+  }catch{}
+  return '';
+}
 
 function createUnitLink(unit){
   const link=document.createElement('a');
@@ -197,8 +205,7 @@ function renderActiveLearning(){
   inProgress.forEach(({unit,progress})=>{
     const link=document.createElement('a');
     link.className='active-learning__item';
-    const resume=readArray(unit.resume);
-    const q=Array.isArray(resume)?'':String(localStorage.getItem(unit.resume)||'').replace(/^"|"$/g,'');
+    const q=readResumeId(unit.resume);
     link.href=unit.url+(q?('?resume='+encodeURIComponent(q)):'')+'#challenge';
 
     const strong=document.createElement('strong');
