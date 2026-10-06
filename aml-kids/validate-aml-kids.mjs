@@ -75,6 +75,29 @@ for(const file of files.filter(f=>f.endsWith('.css'))){
 if(unitHtml.length!==27) fail(ROOT,'expected 27 live unit HTML pages, found '+unitHtml.length);
 if(unitJs.length!==27) fail(ROOT,'expected 27 live unit JS files, found '+unitJs.length);
 
+const catalogFile=path.join(ROOT,'assets','kids-catalog.js');
+if(!fs.existsSync(catalogFile)){
+  fail(ROOT,'missing shared kids-catalog.js');
+}else{
+  const catalog=fs.readFileSync(catalogFile,'utf8');
+  const entries=[...catalog.matchAll(/\{subject:'([^']+)',unit:'([^']+)',title:'([^']+)',url:'([^']+)',awards:'([^']+)',mistakes:'([^']+)',resume:'([^']+)'\}/g)];
+  if(entries.length!==27) fail(catalogFile,'expected 27 catalog units, found '+entries.length);
+  const urls=entries.map(m=>m[4]);
+  const duplicateUrls=[...new Set(urls.filter((x,i)=>urls.indexOf(x)!==i))];
+  if(duplicateUrls.length) fail(catalogFile,'duplicate unit URLs: '+duplicateUrls.join(', '));
+  for(const m of entries){
+    const url=m[4];
+    const local=url.replace(/^\/+/,'');
+    const target=path.join(process.cwd(),local,'index.html');
+    if(!fs.existsSync(target)) fail(catalogFile,'catalog URL has no index.html: '+url);
+  }
+  for(const keyIndex of [5,6,7]){
+    const keys=entries.map(m=>m[keyIndex]);
+    const dup=[...new Set(keys.filter((x,i)=>keys.indexOf(x)!==i))];
+    if(dup.length) fail(catalogFile,'duplicate catalog storage keys: '+dup.join(', '));
+  }
+}
+
 console.log(`AML Kids QA: ${unitHtml.length} unit pages / ${unitJs.length} unit scripts checked.`);
 if(warnings.length){
   console.log('\nWarnings:');
