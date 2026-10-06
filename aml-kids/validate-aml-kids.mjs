@@ -311,6 +311,18 @@ if(!fs.existsSync(aboutFile)){
   if(!about.includes('../my/backup/')) fail(aboutFile,'usage notice missing backup link');
 }
 
+const contentQaFile=path.join(ROOT,'validate-aml-kids-content.mjs');
+if(!fs.existsSync(contentQaFile)){
+  fail(ROOT,'missing validate-aml-kids-content.mjs');
+}else{
+  const contentQa=fs.readFileSync(contentQaFile,'utf8');
+  if(!contentQa.includes('answer distribution is highly concentrated')) fail(contentQaFile,'content QA does not inspect answer-distribution bias');
+  if(!contentQa.includes('same answer index appears')) fail(contentQaFile,'content QA does not inspect long same-answer runs');
+  if(!contentQa.includes('duplicate or near-identical options')) fail(contentQaFile,'content QA does not inspect duplicate options');
+  if(!contentQa.includes('same normalized question stem appears across units')) fail(contentQaFile,'content QA does not inspect repeated stems across units');
+  if(!contentQa.includes('short explanations')) fail(contentQaFile,'content QA does not inspect explanation depth');
+}
+
 const qaJsFile=path.join(ROOT,'qa','qa.js');
 if(fs.existsSync(qaJsFile)){
   const qaJs=fs.readFileSync(qaJsFile,'utf8');
