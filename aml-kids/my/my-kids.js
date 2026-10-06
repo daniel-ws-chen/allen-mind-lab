@@ -11,7 +11,7 @@ function stats(unit){
   const awards=new Set(readArray(unit.awards));
   const mistakes=readArray(unit.mistakes);
   const pending=mistakes.filter(m=>!awards.has(m.id)).length;
-  return {...unit,done:awards.size,pending,complete:awards.size>=50};
+  return {...unit,done:awards.size,pending,complete:awards.size>=questionsPerUnit};
 }
 
 const data=units.map(stats);
