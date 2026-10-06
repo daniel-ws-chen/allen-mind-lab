@@ -130,11 +130,20 @@ if(fs.existsSync(engineFile)){
     'firstAttempt',
     'wrongEver',
     'function renderCompletionSummary',
-    "className='review-wrong-btn'"
+    "className='review-wrong-btn'",
+    "WALLET_KEY='amlKidsRewardWalletV1'",
+    "POINTS_PER_QUESTION=5",
+    "function grantReward",
+    "awarded",
+    "rewardMigrationV1",
+    "這題 5 點之前已經取得",
+    "訂正成功仍可取得 5 點"
   ]){
     if(!js.includes(token)) fail('visual engine missing '+token);
   }
   if(js.includes('const progress=index')) fail('visual progress must not use question index as completion count');
+  if(js.includes("persist({completed:[],mistakes:[],wrongEver:[],firstAttempt:{},awarded:[]")) fail('restart must not clear awarded visual rewards');
+
 }
 
 if(fs.existsSync(cssFile)){
