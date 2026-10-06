@@ -148,3 +148,15 @@ button,a{touch-action:manipulation}
   .selector-result{grid-column:auto;display:block}
   .selector-action{margin-top:.65rem;width:100%;white-space:normal;text-align:center}
 }
+
+
+/* AML Kids learning points guide */
+.points-guide{background:#fff;border:1px solid #d8e3ed;border-radius:1.25rem;padding:1.2rem;box-shadow:0 10px 26px rgba(51,79,112,.055)}
+.points-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1rem}
+.points-grid>div{background:#f7fafc;border:1px solid #e1e8ef;border-radius:1rem;padding:1rem;text-align:center}
+.points-grid strong{display:block;font-size:1.35rem;color:#294b6d}
+.points-grid span{display:block;margin:.2rem 0;font-weight:900}
+.points-grid small{display:block;color:#60758b;line-height:1.5}
+.points-note{margin:1rem 0 0;color:#60758b;text-align:center}
+@media(max-width:800px){.points-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.points-grid{grid-template-columns:1fr}}
