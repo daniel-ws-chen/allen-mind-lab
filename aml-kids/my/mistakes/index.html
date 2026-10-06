@@ -12,6 +12,11 @@
 .mistake-stat{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem;text-align:center}
 .mistake-stat strong{display:block;font-size:1.7rem;color:#294b6d}
 .mistake-stat span{color:#60758b}
+.scope-filter{display:grid;grid-template-columns:minmax(220px,360px) 1fr;gap:1rem;align-items:end;background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;margin:1rem 0}
+.scope-filter label{display:block;font-weight:900;margin-bottom:.35rem}
+.scope-filter select{width:100%;min-height:48px;border:1px solid #9eb1c5;border-radius:.8rem;background:#fff;color:#20324a;padding:.65rem .75rem;font:inherit}
+.scope-filter select:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.scope-filter p{margin:0;color:#60758b}
 .filter-bar{display:flex;gap:.55rem;flex-wrap:wrap;margin:1rem 0}
 .filter-btn{min-height:44px;border:1px solid #aebfd0;background:#fff;color:#35506c;border-radius:999px;padding:.55rem .85rem;font:inherit;font-weight:850;cursor:pointer}
 .filter-btn[aria-pressed="true"]{background:#294b6d;color:#fff;border-color:#294b6d}
@@ -26,7 +31,7 @@
 .mistake-link{display:inline-flex;align-items:center;min-height:44px;padding:.55rem .8rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900}
 .empty-state{background:#fff;border:1px dashed #aebfd0;border-radius:1rem;padding:1.4rem;text-align:center;color:#60758b}
 .note-box{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
-@media(max-width:720px){.mistake-summary{grid-template-columns:1fr}.mistake-link{width:100%;justify-content:center}}
+@media(max-width:720px){.mistake-summary{grid-template-columns:1fr}.mistake-link{width:100%;justify-content:center}.scope-filter{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -58,6 +63,13 @@
       <span class="section-kicker">篩選複習</span>
       <h2 id="mistake-list-title">我的錯題</h2>
       <p>預設先顯示「待訂正」，也可以依科目查看。</p>
+    </div>
+    <div class="scope-filter">
+      <div>
+        <label for="scopeFilter">學習範圍</label>
+        <select id="scopeFilter"></select>
+      </div>
+      <p>只顯示所選年級與學期的錯題；未來新增其他學習範圍時會自動加入。</p>
     </div>
     <div class="filter-bar" aria-label="錯題篩選">
       <button class="filter-btn" type="button" data-status="pending" aria-pressed="true">待訂正</button>
