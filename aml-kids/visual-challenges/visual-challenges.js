@@ -30,6 +30,16 @@ function persist(patch){
   all[subject]={...base,...patch};
   save(all);
 }
+function completedSet(){
+  const {base}=subjectState();
+  return new Set(Array.isArray(base.completed)?base.completed:[]);
+}
+function updateProgressDisplay(count=completedSet().size){
+  const safe=Math.max(0,Math.min(questions.length,Number(count)||0));
+  qs('#progress-text').textContent=safe+' / '+questions.length;
+  qs('#progress-bar').setAttribute('aria-valuenow',String(safe));
+  qs('#progress-fill').style.width=(safe/questions.length*100)+'%';
+}
 function recordActivity(questionId=''){
   localStorage.setItem(LAST_KEY,JSON.stringify({
     subject,
@@ -65,10 +75,7 @@ function render(){
   qs('#feedback').textContent='';qs('#feedback').className='feedback';
   qs('#next-question').hidden=true;
   qs('#check-answer').hidden=false;
-  const progress=index;
-  qs('#progress-text').textContent=progress+' / '+questions.length;
-  qs('#progress-bar').setAttribute('aria-valuenow',String(progress));
-  qs('#progress-fill').style.width=(progress/questions.length*100)+'%';
+  updateProgressDisplay();
   persist({resume:index});
   recordActivity(q.id);
 }
@@ -90,9 +97,7 @@ function check(){
     fb.textContent='答對了 ✓ '+q.e;fb.className='feedback good';
     document.querySelectorAll('input[name="visual-answer"]').forEach(x=>x.disabled=true);
     qs('#check-answer').hidden=true;qs('#next-question').hidden=false;
-    qs('#progress-text').textContent=completed.size+' / '+questions.length;
-    qs('#progress-bar').setAttribute('aria-valuenow',String(completed.size));
-    qs('#progress-fill').style.width=(completed.size/questions.length*100)+'%';
+    updateProgressDisplay(completed.size);
   }else{
     mistakes.add(q.id);persist({mistakes:[...mistakes],resume:index});
     recordActivity(q.id);
@@ -103,13 +108,28 @@ function check(){
 function next(){
   if(index<questions.length-1){
     index++;render();qs('#question-card').scrollIntoView({block:'start'});
-  }else{
-    persist({resume:0});
-    qs('#question-card').hidden=true;qs('#completion').hidden=false;
-    const {base}=subjectState();
-    qs('#completion-copy').textContent='已完成 '+(base.completed||[]).length+' / '+questions.length+' 題；視覺挑戰進度獨立保存，不影響原本單元與學習點數。';
-    qs('#completion').focus();
+    return;
   }
+
+  const done=completedSet();
+  updateProgressDisplay(done.size);
+
+  if(done.size<questions.length){
+    const firstIncomplete=questions.findIndex(q=>!done.has(q.id));
+    index=firstIncomplete>=0?firstIncomplete:0;
+    persist({resume:index});
+    render();
+    qs('#feedback').textContent='還有 '+(questions.length-done.size)+' 題尚未完成，先回到未完成題目。';
+    qs('#feedback').className='feedback note';
+    qs('#question-card').scrollIntoView({block:'start'});
+    return;
+  }
+
+  persist({resume:0});
+  qs('#question-card').hidden=true;
+  qs('#completion').hidden=false;
+  qs('#completion-copy').textContent='已完成 '+done.size+' / '+questions.length+' 題；視覺挑戰進度獨立保存，不影響原本單元與學習點數。';
+  qs('#completion').focus();
 }
 function restart(){
   persist({completed:[],mistakes:[],resume:0,lastCompleted:null});
