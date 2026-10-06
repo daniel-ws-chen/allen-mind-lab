@@ -168,6 +168,9 @@ button,a{touch-action:manipulation}
 .public-note-grid>div{background:#f7fafc;border:1px solid #e1e8ef;border-radius:1rem;padding:1rem}
 .public-note-grid strong{display:block;color:#294b6d;margin-bottom:.25rem}
 .public-note-grid p{margin:0;color:#60758b;line-height:1.7}
+.public-note-grid .public-note-contact{margin-top:.45rem}
+.public-note-grid a{font-weight:850;color:#315d86;text-underline-offset:.15em}
+.public-note-grid a:focus-visible{outline:4px solid #f59e0b;outline-offset:3px;border-radius:.2rem}
 @media(max-width:800px){.public-note-grid{grid-template-columns:1fr}}
 
 
