@@ -125,7 +125,7 @@ if(fs.existsSync(engineFile)){
     'firstIncomplete',
     'function renderQuestionNav',
     "qs('#prev-question')",
-    "fb.textContent='答錯了。",
+    "答錯了，這題暫時不加點。",
     "答對了！＋5 點。",
     'firstAttempt',
     'wrongEver',
