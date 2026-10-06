@@ -14,29 +14,21 @@ function walk(dir){
 function rel(file){return path.relative(process.cwd(),file).replaceAll('\\','/');}
 function fail(file,msg){failures.push(rel(file)+': '+msg);}
 function warn(file,msg){warnings.push(rel(file)+': '+msg);}
-
-const files=walk(ROOT);
-const htmlFiles=files.filter(f=>f.endsWith('.html'));
-const jsFiles=files.filter(f=>f.endsWith('.js'));
-const unitHtml=htmlFiles.filter(f=>/\/(?:unit\d+\/index\.html|social-5a\/index\.html)$/.test(f.replaceAll('\\','/')));
-const unitJs=jsFiles.filter(f=>/\/(?:unit\d+\/unit\d+\.js|social-5a\/assets\/social5a\.js)$/.test(f.replaceAll('\\','/')));
-
-function unitScriptForUrl(url){
-  const clean=url.replace(/^\/+|\/$/g,'');
-  if(clean==='aml-kids/social-5a') return path.join(process.cwd(),'aml-kids','social-5a','assets','social5a.js');
-  const m=clean.match(/^aml-kids\/(chinese-5a|english-5a|science-5a|math-5a|social-5a)\/unit(\d+)$/);
-  if(!m) return null;
-  return path.join(process.cwd(),'aml-kids',m[1],'unit'+m[2],'unit'+m[2]+'.js');
-}
+function localFromUrl(url){return path.join(process.cwd(),url.replace(/^\/+/,'').replaceAll('/',path.sep));}
 function storageKeyMap(text){
   const out={};
-  for(const name of ['AWARDS_KEY','MISTAKES_KEY','RESUME_KEY']){
+  for(const name of ['SCORE_KEY','UNIT_SCORE_KEY','AWARDS_KEY','MISTAKES_KEY','RESUME_KEY']){
     const m=text.match(new RegExp(name+"\\s*=\\s*'([^']+)'"));
     if(m) out[name]=m[1];
   }
   return out;
 }
 
+const files=walk(ROOT);
+const htmlFiles=files.filter(f=>f.endsWith('.html'));
+const cssFiles=files.filter(f=>f.endsWith('.css'));
+const jsFiles=files.filter(f=>f.endsWith('.js'));
+const catalogFile=path.join(ROOT,'assets','kids-catalog.js');
 
 for(const file of htmlFiles){
   const text=fs.readFileSync(file,'utf8');
@@ -53,50 +45,31 @@ for(const file of htmlFiles){
   }
 }
 
-const storageKeys=new Map();
-for(const file of unitJs){
-  const text=fs.readFileSync(file,'utf8');
-  const keys=[...text.matchAll(/(?:SCORE_KEY|UNIT_SCORE_KEY|AWARDS_KEY|MISTAKES_KEY|RESUME_KEY)\s*=\s*'([^']+)'/g)].map(m=>m[1]);
-  for(const key of keys){
-    if(!storageKeys.has(key)) storageKeys.set(key,[]);
-    storageKeys.get(key).push(file);
-  }
-  const qBlock=text.match(/const questions=\[(.*?)\];/s);
-  if(!qBlock){fail(file,'questions array not found');continue;}
-  const count=(qBlock[1].match(/"id":"q\d+"/g)||[]).length;
-  if(count!==50) fail(file,'expected 50 questions, found '+count);
-  const levels=[...qBlock[1].matchAll(/"level":"([^"]+)"/g)].map(m=>m[1]);
-  const counts={基礎:0,進階:0,素養:0};
-  for(const level of levels) if(level in counts) counts[level]++;
-  if(counts.基礎!==20||counts.進階!==20||counts.素養!==10){
-    fail(file,`question mix should be 20/20/10, found ${counts.基礎}/${counts.進階}/${counts.素養}`);
-  }
-  if(/outline\s*:\s*none/i.test(text)) warn(file,'outline:none found in JS text');
-  for(const legacy of ['拼豆',' / 1000','wallet<1000','Math.min(1000']){
-    if(text.includes(legacy)) fail(file,'legacy reward logic remains: '+legacy);
-  }
-}
-
-for(const [key,owners] of storageKeys){
-  if(owners.length>1 && !key.includes('RewardWallet')){
-    fail(owners[0],`storage key collision ${key}: ${owners.map(rel).join(', ')}`);
-  }
-}
-
-for(const file of files.filter(f=>f.endsWith('.css'))){
+for(const file of cssFiles){
   const text=fs.readFileSync(file,'utf8');
   if(/outline\s*:\s*none/i.test(text)) fail(file,'outline:none is not allowed');
   if(!text.includes('prefers-reduced-motion')) warn(file,'no prefers-reduced-motion rule');
 }
 
-if(unitHtml.length!==27) fail(ROOT,'expected 27 live unit HTML pages, found '+unitHtml.length);
-if(unitJs.length!==27) fail(ROOT,'expected 27 live unit JS files, found '+unitJs.length);
+let entries=[];
+let expectedUnits=0;
+let questionsPerUnit=50;
+let currentScope=null;
 
-const catalogFile=path.join(ROOT,'assets','kids-catalog.js');
 if(!fs.existsSync(catalogFile)){
   fail(ROOT,'missing shared kids-catalog.js');
 }else{
   const catalog=fs.readFileSync(catalogFile,'utf8');
+  const version=Number(catalog.match(/version:\s*(\d+)/)?.[1]||0);
+  if(version<3) fail(catalogFile,'catalog version should be 3 or newer');
+
+  expectedUnits=Number(catalog.match(/totalUnits:\s*(\d+)/)?.[1]||0);
+  questionsPerUnit=Number(catalog.match(/questionsPerUnit:\s*(\d+)/)?.[1]||50);
+
+  const current=catalog.match(/currentScope:\s*\{stage:'([^']+)',grade:(\d+),semester:'([^']+)',label:'([^']+)'\}/);
+  if(current) currentScope={stage:current[1],grade:Number(current[2]),semester:current[3],label:current[4]};
+  else warn(catalogFile,'currentScope metadata missing');
+
   const unitLines=catalog.split('\n').map(x=>x.trim()).filter(x=>x.startsWith('{stage:')&&x.includes("unit:'"));
   const field=(line,name)=>{
     const stringMatch=line.match(new RegExp(name+":'([^']*)'"));
@@ -104,7 +77,8 @@ if(!fs.existsSync(catalogFile)){
     const numberMatch=line.match(new RegExp(name+":(\\d+)"));
     return numberMatch?Number(numberMatch[1]):undefined;
   };
-  const entries=unitLines.map(line=>({
+
+  entries=unitLines.map(line=>({
     stage:field(line,'stage'),
     grade:field(line,'grade'),
     semester:field(line,'semester'),
@@ -114,55 +88,33 @@ if(!fs.existsSync(catalogFile)){
     unit:field(line,'unit'),
     title:field(line,'title'),
     url:field(line,'url'),
+    script:field(line,'script'),
     awards:field(line,'awards'),
     mistakes:field(line,'mistakes'),
     resume:field(line,'resume')
   }));
 
-  if(!/version:\s*2\b/.test(catalog)) fail(catalogFile,'catalog version should be 2');
-  if(entries.length!==27) fail(catalogFile,'expected 27 catalog units, found '+entries.length);
+  if(expectedUnits!==entries.length) fail(catalogFile,'totalUnits='+expectedUnits+' but catalog contains '+entries.length+' units');
 
-  const required=['stage','grade','semester','subject','publisher','version','unit','title','url','awards','mistakes','resume'];
+  const required=['stage','grade','semester','subject','publisher','version','unit','title','url','script','awards','mistakes','resume'];
+  const gradeRange={國小:[1,6],國中:[7,9],高中:[10,12]};
   entries.forEach((entry,index)=>{
     const missing=required.filter(k=>entry[k]===undefined||entry[k]==='');
     if(missing.length) fail(catalogFile,'unit '+(index+1)+' missing metadata: '+missing.join(', '));
-    if(!['國小','國中','高中'].includes(entry.stage)) fail(catalogFile,'invalid stage for '+entry.url+': '+entry.stage);
-    if(!Number.isInteger(entry.grade)||entry.grade<1||entry.grade>12) fail(catalogFile,'invalid grade for '+entry.url+': '+entry.grade);
+    if(!gradeRange[entry.stage]) fail(catalogFile,'invalid stage for '+entry.url+': '+entry.stage);
+    else if(entry.grade<gradeRange[entry.stage][0]||entry.grade>gradeRange[entry.stage][1]) fail(catalogFile,'grade/stage mismatch for '+entry.url);
     if(!['上學期','下學期'].includes(entry.semester)) fail(catalogFile,'invalid semester for '+entry.url+': '+entry.semester);
   });
 
-  const urls=entries.map(e=>e.url);
-  const duplicateUrls=[...new Set(urls.filter((x,i)=>urls.indexOf(x)!==i))];
-  if(duplicateUrls.length) fail(catalogFile,'duplicate unit URLs: '+duplicateUrls.join(', '));
-
-  for(const entry of entries){
-    const url=entry.url;
-    const local=url.replace(/^\/+/,'');
-    const target=path.join(process.cwd(),local,'index.html');
-    if(!fs.existsSync(target)) fail(catalogFile,'catalog URL has no index.html: '+url);
-
-    const script=unitScriptForUrl(url);
-    if(!script || !fs.existsSync(script)){
-      fail(catalogFile,'catalog URL has no matching unit script: '+url);
-    }else{
-      const scriptText=fs.readFileSync(script,'utf8');
-      const keys=storageKeyMap(scriptText);
-      if(keys.AWARDS_KEY!==entry.awards) fail(catalogFile,`awards key mismatch for ${url}: catalog=${entry.awards} script=${keys.AWARDS_KEY||'missing'}`);
-      if(keys.MISTAKES_KEY!==entry.mistakes) fail(catalogFile,`mistakes key mismatch for ${url}: catalog=${entry.mistakes} script=${keys.MISTAKES_KEY||'missing'}`);
-      if(keys.RESUME_KEY!==entry.resume) fail(catalogFile,`resume key mismatch for ${url}: catalog=${entry.resume} script=${keys.RESUME_KEY||'missing'}`);
-    }
-  }
-
-  for(const keyName of ['awards','mistakes','resume']){
-    const keys=entries.map(e=>e[keyName]);
-    const dup=[...new Set(keys.filter((x,i)=>keys.indexOf(x)!==i))];
-    if(dup.length) fail(catalogFile,'duplicate catalog '+keyName+' keys: '+dup.join(', '));
+  for(const keyName of ['url','script','awards','mistakes','resume']){
+    const values=entries.map(e=>e[keyName]);
+    const dup=[...new Set(values.filter((x,i)=>values.indexOf(x)!==i))];
+    if(dup.length) fail(catalogFile,'duplicate '+keyName+': '+dup.join(', '));
   }
 
   const subjectDecl=catalog.match(/subjects:\s*\[([^\]]+)\]/);
-  if(!subjectDecl){
-    fail(catalogFile,'subjects list missing');
-  }else{
+  if(!subjectDecl) fail(catalogFile,'subjects list missing');
+  else{
     const subjects=[...subjectDecl[1].matchAll(/'([^']+)'/g)].map(m=>m[1]);
     const entrySubjects=[...new Set(entries.map(e=>e.subject))];
     const missing=entrySubjects.filter(s=>!subjects.includes(s));
@@ -171,33 +123,94 @@ if(!fs.existsSync(catalogFile)){
     if(unused.length) warn(catalogFile,'subjects list contains no units yet: '+unused.join(', '));
   }
 
-  if(!/currentScope:\s*\{stage:'國小',grade:5,semester:'上學期',label:'國小五年級上學期'\}/.test(catalog)){
-    warn(catalogFile,'currentScope metadata missing or unexpected');
-  }
-  if(!/scopeLabel:\s*'[^']+'/.test(catalog)) warn(catalogFile,'scopeLabel metadata missing');
-
   const stageDecl=[...catalog.matchAll(/\{stage:'(國小|國中|高中)',grades:\[([^\]]+)\]\}/g)];
   if(stageDecl.length!==3) fail(catalogFile,'expected 3 education stage definitions');
+
+  if(currentScope){
+    const scopeExists=entries.some(e=>e.stage===currentScope.stage&&e.grade===currentScope.grade&&e.semester===currentScope.semester);
+    if(!scopeExists) fail(catalogFile,'currentScope does not match any catalog unit');
+  }
 }
-for(const file of unitJs){
-  const text=fs.readFileSync(file,'utf8');
-  if(!text.includes("AML_KIDS_LAST_ACTIVITY_KEY='amlKidsLastActivityV1'")) fail(file,'missing recent activity tracking');
-  if(!text.includes("new URLSearchParams(location.search).get('resume')")) fail(file,'missing resume query support');
+
+const storageOwners=new Map();
+const catalogScripts=new Set();
+
+for(const entry of entries){
+  const htmlFile=path.join(localFromUrl(entry.url),'index.html');
+  const scriptFile=localFromUrl(entry.script);
+  if(!fs.existsSync(htmlFile)){fail(catalogFile,'catalog URL has no index.html: '+entry.url);continue;}
+  if(!fs.existsSync(scriptFile)){fail(catalogFile,'catalog script missing: '+entry.script);continue;}
+
+  catalogScripts.add(path.resolve(scriptFile));
+  const text=fs.readFileSync(scriptFile,'utf8');
+  const qBlock=text.match(/const questions=\[(.*?)\];/s);
+  if(!qBlock){fail(scriptFile,'questions array not found');continue;}
+
+  const count=(qBlock[1].match(/"id":"q\d+"/g)||[]).length;
+  if(count!==questionsPerUnit) fail(scriptFile,'expected '+questionsPerUnit+' questions, found '+count);
+
+  const levels=[...qBlock[1].matchAll(/"level":"([^"]+)"/g)].map(m=>m[1]);
+  const counts={基礎:0,進階:0,素養:0};
+  for(const level of levels) if(level in counts) counts[level]++;
+  if(questionsPerUnit===50&&(counts.基礎!==20||counts.進階!==20||counts.素養!==10)){
+    fail(scriptFile,`question mix should be 20/20/10, found ${counts.基礎}/${counts.進階}/${counts.素養}`);
+  }
+
+  const keys=storageKeyMap(text);
+  if(keys.AWARDS_KEY!==entry.awards) fail(catalogFile,`awards key mismatch for ${entry.url}: catalog=${entry.awards} script=${keys.AWARDS_KEY||'missing'}`);
+  if(keys.MISTAKES_KEY!==entry.mistakes) fail(catalogFile,`mistakes key mismatch for ${entry.url}: catalog=${entry.mistakes} script=${keys.MISTAKES_KEY||'missing'}`);
+  if(keys.RESUME_KEY!==entry.resume) fail(catalogFile,`resume key mismatch for ${entry.url}: catalog=${entry.resume} script=${keys.RESUME_KEY||'missing'}`);
+
+  Object.values(keys).forEach(key=>{
+    if(!storageOwners.has(key)) storageOwners.set(key,[]);
+    storageOwners.get(key).push(scriptFile);
+  });
+
+  if(!text.includes("AML_KIDS_LAST_ACTIVITY_KEY='amlKidsLastActivityV1'")) fail(scriptFile,'missing recent activity tracking');
+  if(!text.includes("new URLSearchParams(location.search).get('resume')")) fail(scriptFile,'missing resume query support');
+  if(/outline\s*:\s*none/i.test(text)) warn(scriptFile,'outline:none found in JS text');
+  for(const legacy of ['拼豆',' / 1000','wallet<1000','Math.min(1000']){
+    if(text.includes(legacy)) fail(scriptFile,'legacy reward logic remains: '+legacy);
+  }
 }
+
+for(const [key,owners] of storageOwners){
+  if(owners.length>1&&!key.includes('RewardWallet')) fail(owners[0],`storage key collision ${key}: ${owners.map(rel).join(', ')}`);
+}
+
+const questionScripts=jsFiles.filter(file=>/const questions=\[/.test(fs.readFileSync(file,'utf8')));
+for(const file of questionScripts){
+  if(!catalogScripts.has(path.resolve(file))) fail(file,'question-bearing unit script is not listed in AML Kids catalog');
+}
+if(questionScripts.length!==entries.length) fail(ROOT,'catalog/unit script count mismatch: catalog='+entries.length+', question scripts='+questionScripts.length);
 
 for(const [htmlRel,jsName,catalogSrc] of [
   ['my/index.html','my-kids.js','../assets/kids-catalog.js'],
-  ['my/mistakes/index.html','mistakes.js','../../assets/kids-catalog.js']
+  ['my/mistakes/index.html','mistakes.js','../../assets/kids-catalog.js'],
+  ['qa/index.html','qa.js','../assets/kids-catalog.js']
 ]){
   const htmlFile=path.join(ROOT,...htmlRel.split('/'));
+  if(!fs.existsSync(htmlFile)){fail(ROOT,'missing '+htmlRel);continue;}
   const html=fs.readFileSync(htmlFile,'utf8');
   const catalogAt=html.indexOf(catalogSrc);
   const pageAt=html.indexOf(jsName);
   if(catalogAt<0) fail(htmlFile,'shared catalog script not loaded');
   if(pageAt<0) fail(htmlFile,'page script not loaded: '+jsName);
   if(catalogAt>=0&&pageAt>=0&&catalogAt>pageAt) fail(htmlFile,'shared catalog must load before '+jsName);
-  const jsFile=path.join(path.dirname(htmlFile),jsName);
+}
+
+for(const [htmlRel,jsRel] of [
+  ['my/index.html','my/my-kids.js'],
+  ['my/mistakes/index.html','my/mistakes/mistakes.js']
+]){
+  const htmlFile=path.join(ROOT,...htmlRel.split('/'));
+  const jsFile=path.join(ROOT,...jsRel.split('/'));
+  const html=fs.readFileSync(htmlFile,'utf8');
   const js=fs.readFileSync(jsFile,'utf8');
+  if(!html.includes('id="scopeSelect"')&&!html.includes('id="scopeFilter"')) fail(htmlFile,'learning scope selector missing');
+  if(!js.includes("amlKidsMyScopeV1")) fail(jsFile,'shared learning scope persistence missing');
+  if(!js.includes('catalog?.currentScope')) fail(jsFile,'currentScope fallback missing');
+  if(!js.includes('scopeKey(')) fail(jsFile,'scope-aware filtering missing');
   if(js.includes('const units=[')) fail(jsFile,'local duplicate unit catalog found');
   if(!js.includes('window.AML_KIDS_CATALOG')) fail(jsFile,'does not read shared AML Kids catalog');
 }
@@ -214,21 +227,7 @@ if(fs.existsSync(mistakesJsFile)){
   if(/\['國文','社會','自然','英文','數學'\]/.test(mistakesJs)) fail(mistakesJsFile,'hard-coded subject list found; use shared catalog');
 }
 
-for(const [htmlRel,jsRel] of [
-  ['my/index.html','my/my-kids.js'],
-  ['my/mistakes/index.html','my/mistakes/mistakes.js']
-]){
-  const htmlFile=path.join(ROOT,...htmlRel.split('/'));
-  const jsFile=path.join(ROOT,...jsRel.split('/'));
-  const html=fs.readFileSync(htmlFile,'utf8');
-  const js=fs.readFileSync(jsFile,'utf8');
-  if(!html.includes('id="scopeSelect"')&&!html.includes('id="scopeFilter"')) fail(htmlFile,'learning scope selector missing');
-  if(!js.includes("amlKidsMyScopeV1")) fail(jsFile,'shared learning scope persistence missing');
-  if(!js.includes('catalog?.currentScope')) fail(jsFile,'currentScope fallback missing');
-  if(!js.includes('scopeKey(')) fail(jsFile,'scope-aware filtering missing');
-}
-
-console.log(`AML Kids QA: ${unitHtml.length} unit pages / ${unitJs.length} unit scripts checked.`);
+console.log(`AML Kids QA: ${entries.length} catalog units / ${questionScripts.length} question scripts / ${htmlFiles.length} HTML pages checked.`);
 if(warnings.length){
   console.log('\nWarnings:');
   warnings.forEach(x=>console.log('  - '+x));
