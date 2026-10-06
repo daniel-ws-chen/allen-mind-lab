@@ -138,6 +138,11 @@ function renderSummary(){
   document.getElementById('allMistakes').textContent=scoped.length;
   document.getElementById('pendingMistakes').textContent=pending;
   document.getElementById('correctedMistakes').textContent=corrected;
+  const counts={all:scoped.length,pending,corrected};
+  Object.entries(counts).forEach(([key,value])=>{
+    const el=document.querySelector('[data-status-count="'+key+'"]');
+    if(el) el.textContent=value;
+  });
 }
 
 function render(){
@@ -159,23 +164,27 @@ function render(){
 
   list.forEach(m=>{
     const card=document.createElement('article');
-    card.className='mistake-card'+(m.corrected?' corrected':'');
+    card.className='mistake-card '+(m.corrected?'corrected':'pending');
     const meta=document.createElement('div');
     meta.className='mistake-meta';
-    [scopeLabel(m),m.subject,m.publisher+' '+m.version,m.unit,m.level,m.corrected?'已訂正':'待訂正'].forEach(x=>{
+    [scopeLabel(m),m.subject,m.publisher+' '+m.version,m.unit,m.level].forEach(x=>{
       const chip=document.createElement('span');
       chip.className='mistake-chip';
       chip.textContent=x;
       meta.appendChild(chip);
     });
+    const stateChip=document.createElement('span');
+    stateChip.className='mistake-chip mistake-state';
+    stateChip.textContent=m.corrected?'已訂正':'待訂正';
+    meta.appendChild(stateChip);
     const title=document.createElement('h3');
     title.textContent=m.text;
     const note=document.createElement('p');
     note.textContent=m.corrected?'這題已經重新答對，可以保留作為複習紀錄。':'回到原單元重新挑戰，答對後會自動更新為已訂正。';
     const link=document.createElement('a');
     link.className='mistake-link';
-    link.href=m.url+'#challenge';
-    link.textContent=m.corrected?'回單元再複習 →':'回單元重新挑戰 →';
+    link.href=m.url+'?resume='+encodeURIComponent(m.id)+'#challenge';
+    link.textContent=m.corrected?'回到這一題再複習 →':'直接回到這一題訂正 →';
     card.append(meta,title,note,link);
     wrap.appendChild(card);
   });
@@ -184,6 +193,7 @@ function render(){
 document.querySelectorAll('[data-status]').forEach(btn=>btn.addEventListener('click',()=>{
   statusFilter=btn.dataset.status;
   document.querySelectorAll('[data-status]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
+  renderSummary();
   render();
 }));
 
