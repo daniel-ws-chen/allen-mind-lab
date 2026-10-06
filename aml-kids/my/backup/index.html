@@ -26,6 +26,9 @@
 .privacy-note{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
 .backup-meta{display:grid;gap:.35rem;margin:.7rem 0;padding:.8rem;border-radius:.8rem;background:#f7fafc}
 .backup-meta span{display:block}
+.backup-meta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.backup-warning{margin-top:.55rem;padding:.65rem .75rem;border-radius:.75rem;border:1px solid #dfc887;background:#fffaf0;color:#6f581e}
+@media(max-width:520px){.backup-meta-grid{grid-template-columns:1fr}}
 @media(max-width:760px){.backup-grid{grid-template-columns:1fr}.backup-button{width:100%}}
 </style>
 </head>
@@ -46,9 +49,11 @@
       <span class="section-kicker">匯出</span>
       <h2>下載學習紀錄備份</h2>
       <p>只會匯出 AML Kids 自己使用的瀏覽器資料，不會讀取其他網站資料。</p>
-      <div class="backup-meta" aria-live="polite">
+      <div class="backup-meta backup-meta-grid" aria-live="polite">
         <span>目前可備份：<strong id="backupKeyCount">0</strong> 筆資料</span>
         <span>學習點數：<strong id="backupPoints">0</strong> 點</span>
+        <span>有學習紀錄：<strong id="backupActiveUnits">0</strong> 個單元</span>
+        <span>待訂正：<strong id="backupPendingMistakes">0</strong> 題</span>
       </div>
       <button class="backup-button" id="exportButton" type="button">下載備份檔</button>
     </article>
