@@ -94,6 +94,60 @@ function renderSubjectJump(scoped,details,order){
   });
 }
 
+const compactSubjectQuery=window.matchMedia('(max-width:800px)');
+
+function createUnitLink(unit){
+  const link=document.createElement('a');
+  link.className='portal-unit-link';
+  link.href=unit.url;
+
+  const no=document.createElement('span');
+  no.className='portal-unit-number';
+  no.textContent=String(Number(unit.unit.replace(/\D/g,''))).padStart(2,'0');
+
+  const copy=document.createElement('span');
+  const strong=document.createElement('strong');
+  strong.textContent=unit.title;
+  const small=document.createElement('small');
+  small.textContent=unit.summary||('進入 '+unit.title+' 學習');
+  copy.append(strong,small);
+
+  const arrow=document.createElement('span');
+  arrow.className='portal-arrow';
+  arrow.setAttribute('aria-hidden','true');
+  arrow.textContent='→';
+
+  link.append(no,copy,arrow);
+  return link;
+}
+
+function appendEditionUnits(group,edition){
+  const sorted=edition.units
+    .slice()
+    .sort((a,b)=>Number(a.unit.replace(/\D/g,''))-Number(b.unit.replace(/\D/g,'')));
+
+  const visibleCount=compactSubjectQuery.matches?4:sorted.length;
+  const visible=sorted.slice(0,visibleCount);
+  const hidden=sorted.slice(visibleCount);
+
+  const units=document.createElement('div');
+  units.className='portal-units';
+  visible.forEach(unit=>units.appendChild(createUnitLink(unit)));
+  group.appendChild(units);
+
+  if(hidden.length){
+    const details=document.createElement('details');
+    details.className='portal-more-units';
+    const summary=document.createElement('summary');
+    summary.textContent='查看另外 '+hidden.length+' 個單元';
+    const more=document.createElement('div');
+    more.className='portal-units portal-units--more';
+    hidden.forEach(unit=>more.appendChild(createUnitLink(unit)));
+    details.append(summary,more);
+    group.appendChild(details);
+  }
+}
+
 function renderSubjectPortal(){
   const wrap=document.getElementById('subjectPortalGrid');
   const scope=catalog.currentScope;
@@ -183,36 +237,7 @@ function renderSubjectPortal(){
         editionTitle.textContent=edition.publisher+' '+edition.version;
         group.appendChild(editionTitle);
       }
-      const units=document.createElement('div');
-      units.className='portal-units';
-      edition.units
-        .slice()
-        .sort((a,b)=>Number(a.unit.replace(/\D/g,''))-Number(b.unit.replace(/\D/g,'')))
-        .forEach(unit=>{
-          const link=document.createElement('a');
-          link.className='portal-unit-link';
-          link.href=unit.url;
-
-          const no=document.createElement('span');
-          no.className='portal-unit-number';
-          no.textContent=String(Number(unit.unit.replace(/\D/g,''))).padStart(2,'0');
-
-          const copy=document.createElement('span');
-          const strong=document.createElement('strong');
-          strong.textContent=unit.title;
-          const small=document.createElement('small');
-          small.textContent=unit.summary||('進入 '+unit.title+' 學習');
-          copy.append(strong,small);
-
-          const arrow=document.createElement('span');
-          arrow.className='portal-arrow';
-          arrow.setAttribute('aria-hidden','true');
-          arrow.textContent='→';
-
-          link.append(no,copy,arrow);
-          units.appendChild(link);
-        });
-      group.appendChild(units);
+      appendEditionUnits(group,edition);
 
       const home=document.createElement('a');
       home.className='subject-home-link';
@@ -346,3 +371,9 @@ updateQuickScopeLabel();
 renderSubjectPortal();
 updateHeroLauncher();
 updateSelector('grade');
+
+if(typeof compactSubjectQuery.addEventListener==='function'){
+  compactSubjectQuery.addEventListener('change',renderSubjectPortal);
+}else if(typeof compactSubjectQuery.addListener==='function'){
+  compactSubjectQuery.addListener(renderSubjectPortal);
+}
