@@ -169,3 +169,13 @@ button,a{touch-action:manipulation}
 .public-note-grid strong{display:block;color:#294b6d;margin-bottom:.25rem}
 .public-note-grid p{margin:0;color:#60758b;line-height:1.7}
 @media(max-width:800px){.public-note-grid{grid-template-columns:1fr}}
+
+
+/* My AML Kids */
+.my-kids-banner{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem;background:linear-gradient(135deg,#eef8ff,#f7f2ff);border:1px solid #d5deea;border-radius:1.25rem;padding:1.2rem 1.3rem;box-shadow:0 10px 26px rgba(51,79,112,.055)}
+.my-kids-icon{font-size:2.4rem}
+.my-kids-copy h2{margin:.1rem 0 .3rem}
+.my-kids-copy p{margin:0;color:#60758b}
+.my-kids-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900;white-space:nowrap}
+.my-kids-button:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+@media(max-width:760px){.my-kids-banner{grid-template-columns:auto 1fr}.my-kids-button{grid-column:1/-1;white-space:normal;text-align:center}}
