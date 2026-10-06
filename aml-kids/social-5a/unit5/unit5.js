@@ -58,7 +58,7 @@ function save(){
 }
 function award(id){
  if(state.awards.has(id))return false;
- state.awards.add(id);state.unitScore=Math.min(UNIT_MAX,state.unitScore+5);state.wallet+=5;save();renderAll();return true;
+ state.awards.add(id);state.unitScore=Math.min(UNIT_MAX,state.unitScore+5);state.wallet+=5;save();renderScore();renderProgress();renderResume();renderMistakes();updateSegmentUI();return true;
 }
 function renderAll(){renderScore();renderProgress();renderResume();renderMistakes();updateSegmentUI();}
 function renderScore(){
