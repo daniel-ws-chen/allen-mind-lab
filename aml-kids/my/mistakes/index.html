@@ -20,6 +20,12 @@
 .filter-bar{display:flex;gap:.55rem;flex-wrap:wrap;margin:1rem 0}
 .filter-btn{min-height:44px;border:1px solid #aebfd0;background:#fff;color:#35506c;border-radius:999px;padding:.55rem .85rem;font:inherit;font-weight:850;cursor:pointer}
 .filter-btn[aria-pressed="true"]{background:#294b6d;color:#fff;border-color:#294b6d}
+.filter-btn [data-status-count]{display:inline-flex;align-items:center;justify-content:center;min-width:1.7rem;margin-left:.2rem;padding:.05rem .35rem;border-radius:999px;background:#edf2f6;color:#40566d;font-size:.76rem}
+.filter-btn[aria-pressed="true"] [data-status-count]{background:#fff;color:#294b6d}
+.mistake-card.pending{border-left-color:#b45b68;background:#fff}
+.mistake-state{font-weight:900}
+.mistake-card.pending .mistake-state{background:#fff4f5;border-color:#d9aab1;color:#7d3641}
+.mistake-card.corrected .mistake-state{background:#eff9f2;border-color:#9ac0a5;color:#2f6942}
 .filter-btn:focus-visible,.mistake-link:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
 .mistake-list{display:grid;gap:.8rem}
 .mistake-card{background:#fff;border:1px solid #d8e3ed;border-left:6px solid #b45b68;border-radius:1rem;padding:1rem}
@@ -31,7 +37,7 @@
 .mistake-link{display:inline-flex;align-items:center;min-height:44px;padding:.55rem .8rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900}
 .empty-state{background:#fff;border:1px dashed #aebfd0;border-radius:1rem;padding:1.4rem;text-align:center;color:#60758b}
 .note-box{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
-@media(max-width:720px){.mistake-summary{grid-template-columns:1fr}.mistake-link{width:100%;justify-content:center}.scope-filter{grid-template-columns:1fr}}
+@media(max-width:720px){.mistake-summary{grid-template-columns:1fr}.mistake-link{width:100%;justify-content:center}.scope-filter{grid-template-columns:1fr}.mistake-card.corrected p{display:none}.mistake-card.corrected{padding:.8rem}.mistake-card.corrected h3{margin:.25rem 0 .55rem}}
 </style>
 </head>
 <body>
@@ -72,9 +78,9 @@
       <p>只顯示所選年級與學期的錯題；未來新增其他學習範圍時會自動加入。</p>
     </div>
     <div class="filter-bar" aria-label="錯題篩選">
-      <button class="filter-btn" type="button" data-status="pending" aria-pressed="true">待訂正</button>
-      <button class="filter-btn" type="button" data-status="all" aria-pressed="false">全部</button>
-      <button class="filter-btn" type="button" data-status="corrected" aria-pressed="false">已訂正</button>
+      <button class="filter-btn" type="button" data-status="pending" aria-pressed="true">待訂正 <span data-status-count="pending">0</span></button>
+      <button class="filter-btn" type="button" data-status="all" aria-pressed="false">全部 <span data-status-count="all">0</span></button>
+      <button class="filter-btn" type="button" data-status="corrected" aria-pressed="false">已訂正 <span data-status-count="corrected">0</span></button>
     </div>
     <div class="filter-bar" id="subjectFilters" aria-label="科目篩選"></div>
     <div class="filter-bar" id="editionFilters" aria-label="教材版本篩選" hidden></div>
