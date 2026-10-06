@@ -244,6 +244,8 @@ if(fs.existsSync(portalJsFile)){
   if(!portalJs.includes('renderSubjectJump')) fail(portalJsFile,'subject quick navigation is not catalog-driven');
   if(!portalJs.includes("window.matchMedia('(max-width:800px)')")) fail(portalJsFile,'mobile subject compaction breakpoint missing');
   if(!portalJs.includes('appendEditionUnits')) fail(portalJsFile,'long unit lists are not compacted for mobile');
+  if(!portalJs.includes('unitProgress')) fail(portalJsFile,'home unit cards do not show local learning progress');
+  if(!portalJs.includes('portal-unit-progress')) fail(portalJsFile,'home unit progress badge markup missing');
   if(!portalJs.includes("document.createElement('details')")) fail(portalJsFile,'mobile unit disclosure must use native details/summary');
   if(!portalJs.includes('catalog.subjectDetails')) fail(portalJsFile,'subject portal does not use catalog subjectDetails');
   if(!portalJs.includes('updateHeroLauncher')) fail(portalJsFile,'home quick-start launcher is not catalog-driven');
