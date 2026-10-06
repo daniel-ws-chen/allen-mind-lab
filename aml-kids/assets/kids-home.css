@@ -10,6 +10,20 @@ h1{font-size:clamp(2.2rem,7vw,4rem);margin:.1rem 0 .35rem;line-height:1.1}
 .hero-lead{font-size:1.12rem;max-width:720px;margin:.65rem 0 1.2rem}
 .hero-badges{display:flex;gap:.55rem;flex-wrap:wrap}
 .hero-badges span{background:#fff;border:1px solid #d7e2ed;border-radius:999px;padding:.4rem .7rem;font-weight:800;font-size:.9rem}
+.hero-launcher{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;margin-top:1rem;padding:1rem 1.05rem;border:1px solid #cfdae5;border-radius:1.1rem;background:rgba(255,255,255,.86);box-shadow:0 10px 26px rgba(51,79,112,.06)}
+.hero-launcher__copy strong,.hero-launcher__copy small{display:block}
+.hero-launcher__copy strong{margin-top:.15rem;font-size:1.08rem;color:#20324a}
+.hero-launcher__copy small{margin-top:.15rem;color:#60758b;line-height:1.55}
+.hero-launcher__actions{display:flex;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+.hero-launcher__primary,.hero-launcher__secondary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.65rem .9rem;border-radius:999px;text-decoration:none;font-weight:900}
+.hero-launcher__primary{background:#20324a;color:#fff}
+.hero-launcher__secondary{background:#fff;color:#315d86;border:1px solid #b8c7d5}
+.hero-launcher__primary:focus-visible,.hero-launcher__secondary:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+@media(max-width:700px){
+  .hero-launcher{grid-template-columns:1fr}
+  .hero-launcher__actions{justify-content:stretch}
+  .hero-launcher__primary,.hero-launcher__secondary{width:100%}
+}
 main{max-width:1040px;margin:auto;padding:1rem}
 .section{margin:1.5rem 0 2.5rem}
 .section-heading h2,.learning-rule h2{margin:.15rem 0}
