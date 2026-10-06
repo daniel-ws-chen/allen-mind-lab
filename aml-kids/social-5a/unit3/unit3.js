@@ -27,8 +27,8 @@ function award(id){
 }
 function renderAll(){renderScore();renderProgress();renderResume();renderMistakes();updateSegmentUI();}
 function renderScore(){
- document.querySelector('#scoreText').textContent=`${state.wallet} / 1000`;
- document.querySelector('#scoreProgress').value=Math.min(state.wallet,1000);
+ document.querySelector('#scoreText').textContent=`${state.wallet} 點`;
+ document.querySelector('#scoreProgress').hidden=true;
  document.querySelector('#unitScoreText').textContent=`本單元 ${state.unitScore} / 250`;
 }
 function renderProgress(){
