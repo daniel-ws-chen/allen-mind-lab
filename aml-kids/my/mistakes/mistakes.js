@@ -60,8 +60,10 @@ units.forEach(unit=>{
 
 let statusFilter='pending';
 let subjectFilter='全部';
+let editionFilter='全部';
 
 const subjectFilters=document.getElementById('subjectFilters');
+const editionFilters=document.getElementById('editionFilters');
 const correctionRule=document.getElementById('correctionRule');
 if(correctionRule){
   correctionRule.textContent='點「回單元重新挑戰」回到原單元，在 '+questionsPerUnit+' 題挑戰中再次作答；答對後，這題會自動轉成「已訂正」，並獲得完整 5 點學習點數。';
@@ -81,7 +83,9 @@ function renderSubjectFilters(){
     btn.textContent=subject==='全部'?'全部科目':subject;
     btn.addEventListener('click',()=>{
       subjectFilter=subject;
+      editionFilter='全部';
       renderSubjectFilters();
+      renderEditionFilters();
       render();
     });
     subjectFilters.appendChild(btn);
@@ -90,6 +94,41 @@ function renderSubjectFilters(){
 
 function scopedMistakes(){
   return mistakes.filter(m=>scopeKey(m)===selectedScope);
+}
+
+function editionKey(m){
+  return (m.publisher||'')+'|'+(m.version||'');
+}
+function editionLabel(key){
+  if(key==='全部') return '全部版本';
+  const [publisher,version]=key.split('|');
+  return [publisher,version].filter(Boolean).join(' ');
+}
+function renderEditionFilters(){
+  if(!editionFilters) return;
+  let source=scopedMistakes();
+  if(subjectFilter!=='全部') source=source.filter(m=>m.subject===subjectFilter);
+  const editions=[...new Set(source.map(editionKey))].filter(Boolean);
+
+  if(editionFilter!=='全部'&&!editions.includes(editionFilter)) editionFilter='全部';
+  editionFilters.innerHTML='';
+  editionFilters.hidden=editions.length<=1;
+  if(editions.length<=1) return;
+
+  ['全部',...editions].forEach(key=>{
+    const btn=document.createElement('button');
+    btn.className='filter-btn edition-filter';
+    btn.type='button';
+    btn.dataset.edition=key;
+    btn.setAttribute('aria-pressed',String(key===editionFilter));
+    btn.textContent=editionLabel(key);
+    btn.addEventListener('click',()=>{
+      editionFilter=key;
+      renderEditionFilters();
+      render();
+    });
+    editionFilters.appendChild(btn);
+  });
 }
 
 function renderSummary(){
@@ -106,6 +145,7 @@ function render(){
   if(statusFilter==='pending') list=list.filter(m=>!m.corrected);
   else if(statusFilter==='corrected') list=list.filter(m=>m.corrected);
   if(subjectFilter!=='全部') list=list.filter(m=>m.subject===subjectFilter);
+  if(editionFilter!=='全部') list=list.filter(m=>editionKey(m)===editionFilter);
 
   const wrap=document.getElementById('mistakeList');
   wrap.innerHTML='';
@@ -150,11 +190,14 @@ document.querySelectorAll('[data-status]').forEach(btn=>btn.addEventListener('cl
 scopeFilter.addEventListener('change',()=>{
   selectedScope=scopeFilter.value;
   localStorage.setItem(SCOPE_KEY,selectedScope);
+  editionFilter='全部';
   renderSubjectFilters();
+  renderEditionFilters();
   renderSummary();
   render();
 });
 
 renderSubjectFilters();
+renderEditionFilters();
 renderSummary();
 render();
