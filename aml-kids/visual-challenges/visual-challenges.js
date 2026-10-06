@@ -22,7 +22,7 @@ function load(){
 function save(state){localStorage.setItem(KEY,JSON.stringify(state));}
 function subjectState(){
   const all=load();
-  const base=all[subject]||{completed:[],mistakes:[],resume:0,lastCompleted:null};
+  const base=all[subject]||{completed:[],mistakes:[],wrongEver:[],firstAttempt:{},resume:0,lastCompleted:null};
   return {all,base};
 }
 function persist(patch){
@@ -123,9 +123,21 @@ function check(){
   const {base}=subjectState();
   const completed=new Set(base.completed||[]);
   const mistakes=new Set(base.mistakes||[]);
-  if(choice===q.a){
+  const wrongEver=new Set(base.wrongEver||[]);
+  const firstAttempt={...(base.firstAttempt||{})};
+  const isCorrect=choice===q.a;
+  if(!(q.id in firstAttempt)) firstAttempt[q.id]=isCorrect;
+  if(!isCorrect) wrongEver.add(q.id);
+  if(isCorrect){
     locked=true;completed.add(q.id);mistakes.delete(q.id);
-    persist({completed:[...completed],mistakes:[...mistakes],resume:index,lastCompleted:q.id});
+    persist({
+      completed:[...completed],
+      mistakes:[...mistakes],
+      wrongEver:[...wrongEver],
+      firstAttempt,
+      resume:index,
+      lastCompleted:q.id
+    });
     recordActivity(q.id);
     fb.textContent='答對了。'+q.e;fb.className='feedback good';
     document.querySelectorAll('input[name="visual-answer"]').forEach(x=>x.disabled=true);
@@ -133,12 +145,57 @@ function check(){
     updateProgressDisplay(completed.size);
     renderQuestionNav();
   }else{
-    mistakes.add(q.id);persist({mistakes:[...mistakes],resume:index});
+    mistakes.add(q.id);
+    persist({
+      mistakes:[...mistakes],
+      wrongEver:[...wrongEver],
+      firstAttempt,
+      resume:index
+    });
     recordActivity(q.id);
     fb.textContent='答錯了。再看一次圖中的線索。'+(q.hint?' 提示：'+q.hint:'');
     fb.className='feedback note';
   }
 }
+function renderCompletionSummary(){
+  const {base}=subjectState();
+  const firstAttempt=base.firstAttempt||{};
+  const answeredIds=questions.map(q=>q.id).filter(id=>id in firstAttempt);
+  const firstCorrect=answeredIds.filter(id=>firstAttempt[id]===true).length;
+  const total=questions.length;
+  const accuracy=answeredIds.length?Math.round(firstCorrect/answeredIds.length*100):0;
+  const wrongEver=new Set(base.wrongEver||[]);
+
+  qs('#completion-accuracy').textContent=accuracy+'%';
+  qs('#completion-first-correct').textContent=firstCorrect+' / '+answeredIds.length;
+  qs('#completion-wrong-count').textContent=wrongEver.size+' 題';
+
+  const list=qs('#completion-wrong-list');
+  list.innerHTML='';
+
+  if(!wrongEver.size){
+    qs('#completion-review-note').textContent='這次沒有首次答錯題目，表現很好。';
+    return;
+  }
+
+  qs('#completion-review-note').textContent='點題號可以回到原題，查看正確答案與解析。';
+  questions.forEach((q,i)=>{
+    if(!wrongEver.has(q.id)) return;
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='review-wrong-btn';
+    btn.textContent='第 '+(i+1)+' 題';
+    btn.addEventListener('click',()=>{
+      index=i;
+      qs('#completion').hidden=true;
+      qs('#question-card').hidden=false;
+      render();
+      qs('#question-card').scrollIntoView({block:'start'});
+    });
+    list.appendChild(btn);
+  });
+}
+
 function next(){
   if(index<questions.length-1){
     index++;
@@ -165,10 +222,11 @@ function next(){
   qs('#question-card').hidden=true;
   qs('#completion').hidden=false;
   qs('#completion-copy').textContent='已完成 '+done.size+' / '+questions.length+' 題；視覺挑戰進度獨立保存，不影響原本單元與學習點數。';
+  renderCompletionSummary();
   qs('#completion').focus();
 }
 function restart(){
-  persist({completed:[],mistakes:[],resume:0,lastCompleted:null});
+  persist({completed:[],mistakes:[],wrongEver:[],firstAttempt:{},resume:0,lastCompleted:null});
   index=0;qs('#completion').hidden=true;qs('#question-card').hidden=false;render();qs('#question-card').scrollIntoView({block:'start'});
 }
 function init(){
