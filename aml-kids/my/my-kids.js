@@ -66,7 +66,7 @@ subjectOrder.forEach(subject=>{
     '<div class="subject-progress-head"><div><span class="section-kicker">'+subject+'</span><h3>'+complete+' / '+list.length+' 單元完成</h3></div><strong>'+done+' / '+max+' 題</strong></div>'+
     '<div class="progress-line" role="progressbar" aria-label="'+subject+'完成度" aria-valuemin="0" aria-valuemax="'+max+'" aria-valuenow="'+done+'"><div class="progress-fill" style="width:'+Math.round(done/max*100)+'%"></div></div>'+
     '<div class="unit-mini-grid">'+list.map(u=>
-      '<a class="unit-mini" href="'+u.url+'"><span><strong>'+u.title+'</strong><small>'+u.done+' / '+questionsPerUnit+' 題'+(u.pending?' · 待訂正 '+u.pending:'')+'</small></span><span aria-hidden="true">'+(u.complete?'✓':'→')+'</span></a>'
+      '<a class="unit-mini" href="'+u.url+'"><span><strong>'+u.title+'</strong><small>'+u.publisher+' '+u.version+' · '+u.done+' / '+questionsPerUnit+' 題'+(u.pending?' · 待訂正 '+u.pending:'')+'</small></span><span aria-hidden="true">'+(u.complete?'✓':'→')+'</span></a>'
     ).join('')+'</div>';
   wrap.appendChild(article);
 });
