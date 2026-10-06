@@ -23,7 +23,19 @@ function readJson(key){
 if(!catalog||!Array.isArray(catalog.units)){
   add('fail','共用 Catalog 無法讀取','請檢查 kids-catalog.js 是否正常載入。');
 }else{
-  add(catalog.units.length===27?'pass':'fail','Catalog 單元數',catalog.units.length+' 個單元；目前基準應為 27。');
+  const expectedUnits=Number(catalog.totalUnits||catalog.units.length);
+  add(catalog.units.length===expectedUnits?'pass':'fail','Catalog 單元數',catalog.units.length+' 個單元；Catalog 基準為 '+expectedUnits+'。');
+
+  const requiredMeta=['stage','grade','semester','subject','publisher','version','unit','title','url','awards','mistakes','resume'];
+  const missingMeta=catalog.units.filter(u=>requiredMeta.some(k=>u[k]===undefined||u[k]===''));
+  add(missingMeta.length===0?'pass':'fail','Catalog v2 學習脈絡',missingMeta.length===0?'教育階段、年級、學期、科目、出版社與版本資料完整。':missingMeta.length+' 個單元缺少跨學段 metadata。');
+
+  const scope=catalog.currentScope;
+  if(scope&&scope.stage&&scope.grade&&scope.semester){
+    add('pass','目前學習範圍',(scope.label||scope.stage+scope.grade+scope.semester)+'。');
+  }else{
+    add('warn','目前學習範圍','currentScope 尚未完整設定。');
+  }
 
   const urls=catalog.units.map(u=>u.url);
   add(new Set(urls).size===urls.length?'pass':'fail','Catalog 單元網址唯一性',new Set(urls).size===urls.length?'沒有重複網址。':'發現重複單元網址。');
@@ -45,7 +57,7 @@ if(!catalog||!Array.isArray(catalog.units)){
     pendingMistakes+=mistakes.value.filter(m=>!awardSet.has(m.id)).length;
   });
 
-  add(parseErrors===0?'pass':'fail','學習紀錄格式',parseErrors===0?'27 個單元的 localStorage 紀錄都可正常解析。':parseErrors+' 個單元有無法解析的紀錄。');
+  add(parseErrors===0?'pass':'fail','學習紀錄格式',parseErrors===0?catalog.units.length+' 個單元的 localStorage 紀錄都可正常解析。':parseErrors+' 個單元有無法解析的紀錄。');
 
   const wallet=Number(localStorage.getItem('amlKidsRewardWalletV1')||0);
   const expected=totalAwards*5;
@@ -68,7 +80,7 @@ if(!catalog||!Array.isArray(catalog.units)){
     const path=recent.value.path||'';
     const unit=catalog.units.find(u=>u.url===path||u.url.replace(/\/$/,'')===path.replace(/\/$/,''));
     if(!unit){
-      add('warn','最近學習路徑','最近路徑「'+path+'」不在目前 27 單元 Catalog 中。');
+      add('warn','最近學習路徑','最近路徑「'+path+'」不在目前 Catalog 中。');
     }else{
       const q=recent.value.questionId||'';
       const qOk=!q||/^q(?:0?[1-9]|[1-4]\d|50)$/.test(q);
