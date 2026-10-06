@@ -85,6 +85,16 @@
     <span class="completion-icon" aria-hidden="true">🎉</span>
     <h2>這一科的視覺挑戰完成了</h2>
     <p id="completion-copy"></p>
+    <div class="completion-stats" aria-label="視覺挑戰作答結果">
+      <div><strong id="completion-accuracy">—</strong><span>首次作答正確率</span></div>
+      <div><strong id="completion-first-correct">—</strong><span>首次答對</span></div>
+      <div><strong id="completion-wrong-count">—</strong><span>曾答錯</span></div>
+    </div>
+    <section class="completion-review" id="completion-review" aria-labelledby="completion-review-title">
+      <h3 id="completion-review-title">錯題回顧</h3>
+      <p id="completion-review-note">曾答錯的題目會整理在這裡，可以直接回去看答案與解析。</p>
+      <div id="completion-wrong-list"></div>
+    </section>
     <div class="completion-actions">
       <button type="button" class="primary" id="restart">再挑戰一次</button>
       <a class="secondary-link" href="../">回 AML Kids</a>
