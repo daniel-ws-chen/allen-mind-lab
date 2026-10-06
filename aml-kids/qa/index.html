@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AML Kids QA｜裝置資料診斷</title>
+<link rel="stylesheet" href="../assets/kids-home.css">
+<style>
+.qa-page{max-width:980px;margin:auto;padding:1rem}
+.qa-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.qa-stat{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem;text-align:center}
+.qa-stat strong{display:block;font-size:1.7rem}
+.qa-list{display:grid;gap:.7rem}
+.qa-item{background:#fff;border:1px solid #d8e3ed;border-left:6px solid #6d8fb0;border-radius:1rem;padding:.9rem 1rem}
+.qa-item.pass{border-left-color:#4e8b63}.qa-item.warn{border-left-color:#d39b34}.qa-item.fail{border-left-color:#b45b68}
+.qa-item strong,.qa-item span{display:block}.qa-item span{margin-top:.25rem;color:#60758b}
+.qa-note{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
+@media(max-width:700px){.qa-summary{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="hero portal-hero">
+  <div class="hero-inner">
+    <p class="eyebrow">AML Kids QA</p>
+    <h1>裝置資料診斷</h1>
+    <p class="hero-lead">這個頁面只讀取目前瀏覽器中的 AML Kids 學習紀錄，不會修改、清除或重設任何資料。</p>
+  </div>
+</header>
+<main id="main" class="qa-page">
+  <p><a class="enter" href="../my/">← 回 My AML Kids</a></p>
+
+  <section class="section" aria-labelledby="summary-title">
+    <div class="section-heading">
+      <span class="section-kicker">整合測試</span>
+      <h2 id="summary-title">目前裝置狀態</h2>
+    </div>
+    <div class="qa-summary">
+      <div class="qa-stat"><strong id="passCount">0</strong><span>通過</span></div>
+      <div class="qa-stat"><strong id="warnCount">0</strong><span>提醒</span></div>
+      <div class="qa-stat"><strong id="failCount">0</strong><span>需處理</span></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="checks-title">
+    <div class="section-heading">
+      <h2 id="checks-title">檢查結果</h2>
+      <p>用來確認「作答 → 點數 → 錯題 → 最近學習 → My AML Kids」的資料是否一致。</p>
+    </div>
+    <div id="qaList" class="qa-list" aria-live="polite"></div>
+  </section>
+
+  <section class="section qa-note" aria-labelledby="note-title">
+    <h2 id="note-title">如何使用</h2>
+    <p>可以先到任一單元實際答對一題、答錯一題並完成訂正，再回到這頁重新整理。若所有核心檢查都通過，代表目前裝置的跨頁資料流大致一致。</p>
+  </section>
+</main>
+<footer><p>AML Kids QA｜僅供公開前驗收使用</p></footer>
+<script src="../assets/kids-catalog.js"></script>
+<script src="qa.js"></script>
+</body>
+</html>
