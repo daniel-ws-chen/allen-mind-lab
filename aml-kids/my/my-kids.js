@@ -222,10 +222,11 @@ function renderDashboard(){
       const visual=visualState[visualKey]||{};
       const visualDone=Math.min(10,new Set(Array.isArray(visual.completed)?visual.completed:[]).size);
       const visualPending=new Set(Array.isArray(visual.mistakes)?visual.mistakes:[]).size;
+      const visualPoints=Math.min(50,new Set(Array.isArray(visual.awarded)?visual.awarded:[]).size*5);
       article.innerHTML=
         '<div class="subject-progress-head"><div><span class="section-kicker">'+subject+'｜'+editionLabel+'</span><h3>'+complete+' / '+list.length+' 單元完成</h3></div><strong>'+done+' / '+max+' 題<span class="subject-progress-percent">'+percent+'%</span></strong></div>'+
         '<div class="progress-line" role="progressbar" aria-label="'+subject+' '+editionLabel+' 完成度 '+percent+'%" aria-valuemin="0" aria-valuemax="'+max+'" aria-valuenow="'+done+'"><div class="progress-fill" style="width:'+percent+'%"></div></div>'+
-        '<a class="edition-visual-link" href="'+visualHref(subject,edition.publisher,edition.version)+'"><strong>👁 視覺題 '+visualDone+' / 10</strong><span>'+(visualPending?'待複習 '+visualPending+' 題':'版本內第四題型')+' →</span></a>'+
+        '<a class="edition-visual-link" href="'+visualHref(subject,edition.publisher,edition.version)+'"><strong>👁 視覺題 '+visualDone+' / 10</strong><span>獎勵 '+visualPoints+' / 50 點'+(visualPending?' · 待複習 '+visualPending+' 題':'')+' →</span></a>'+
         '<div class="unit-mini-grid">'+list.map(u=>{
           const state=unitState(u);
           const resumeId=state.key==='active'?readResumeId(u.resume):'';
