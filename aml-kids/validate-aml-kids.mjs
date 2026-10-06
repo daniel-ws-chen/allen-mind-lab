@@ -239,6 +239,9 @@ if(fs.existsSync(portalJsFile)){
     if(!portalJs.includes(id)) fail(portalJsFile,'dynamic portal summary missing: '+id);
   }
   if(!portalJs.includes("document.querySelectorAll('[data-stage-card]')")) fail(portalJsFile,'stage cards are not catalog-driven');
+  if(!portalJs.includes('syncGradeOptions')) fail(portalJsFile,'grade selector is not filtered by education stage');
+  if(!portalJs.includes('catalog.stages')) fail(portalJsFile,'stage/grade selector does not use catalog stage definitions');
+  if(!portalJs.includes('initializeLearningSelector')) fail(portalJsFile,'learning selector does not initialize from catalog currentScope');
   if(!portalJs.includes('updateQuickScopeLabel')) fail(portalJsFile,'current scope label is not catalog-driven');
   if(!portalJs.includes('renderSubjectPortal')) fail(portalJsFile,'subject portal is not catalog-driven');
   if(!portalJs.includes('renderSubjectJump')) fail(portalJsFile,'subject quick navigation is not catalog-driven');
