@@ -3,6 +3,7 @@ const WALLET_KEY='amlKidsRewardWalletV1';
 const catalog=window.AML_KIDS_CATALOG;
 const units=(catalog?.units||[]).map(unit=>({...unit}));
 const questionsPerUnit=catalog?.questionsPerUnit||50;
+const subjectOrder=catalog?.subjects||[];
 
 function readArray(key){
   try{const x=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(x)?x:[];}catch{return [];}
@@ -24,6 +25,10 @@ document.getElementById('totalPoints').textContent=totalPoints.toLocaleString();
 document.getElementById('completedUnits').textContent=completeUnits+' / '+units.length;
 document.getElementById('completedQuestions').textContent=totalDone+' / '+(units.length*questionsPerUnit);
 document.getElementById('pendingMistakes').textContent=totalPending;
+const scopeLabel=document.getElementById('scopeLabel');
+if(scopeLabel) scopeLabel.textContent=(catalog?.scopeLabel||'目前內容')+'學習地圖';
+const progressRule=document.getElementById('progressRule');
+if(progressRule) progressRule.textContent='完成度依每單元 '+questionsPerUnit+' 題計算。';
 
 let lastActivity=null;
 try{lastActivity=JSON.parse(localStorage.getItem('amlKidsLastActivityV1')||'null');}catch{}
@@ -43,18 +48,17 @@ if(lastActivity&&lastActivity.path&&lastActivity.path.startsWith('/aml-kids/')){
   const inProgress=data.find(u=>u.done>0&&!u.complete);
   if(inProgress){
     continueSection.hidden=false;
-    continueText.textContent=inProgress.subject+'｜'+inProgress.title+'，目前完成 '+inProgress.done+' / 50 題。';
+    continueText.textContent=inProgress.subject+'｜'+inProgress.title+'，目前完成 '+inProgress.done+' / '+questionsPerUnit+' 題。';
     continueLink.href=inProgress.url+'#challenge';
     continueLink.textContent='繼續 '+inProgress.subject+' →';
   }
 }
 
-const subjectOrder=['國文','社會','自然','英文','數學'];
 const wrap=document.getElementById('subjectProgress');
 subjectOrder.forEach(subject=>{
   const list=data.filter(u=>u.subject===subject);
   const done=list.reduce((a,u)=>a+Math.min(questionsPerUnit,u.done),0);
-  const max=list.length*50;
+  const max=list.length*questionsPerUnit;
   const complete=list.filter(u=>u.complete).length;
   const article=document.createElement('article');
   article.className='subject-progress-card';
