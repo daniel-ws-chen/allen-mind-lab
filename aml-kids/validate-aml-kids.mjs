@@ -61,7 +61,7 @@ if(!fs.existsSync(catalogFile)){
 }else{
   const catalog=fs.readFileSync(catalogFile,'utf8');
   const version=Number(catalog.match(/version:\s*(\d+)/)?.[1]||0);
-  if(version<3) fail(catalogFile,'catalog version should be 3 or newer');
+  if(version<4) fail(catalogFile,'catalog version should be 4 or newer');
 
   expectedUnits=Number(catalog.match(/totalUnits:\s*(\d+)/)?.[1]||0);
   questionsPerUnit=Number(catalog.match(/questionsPerUnit:\s*(\d+)/)?.[1]||50);
@@ -87,6 +87,7 @@ if(!fs.existsSync(catalogFile)){
     version:field(line,'version'),
     unit:field(line,'unit'),
     title:field(line,'title'),
+    summary:field(line,'summary'),
     url:field(line,'url'),
     script:field(line,'script'),
     awards:field(line,'awards'),
@@ -96,7 +97,7 @@ if(!fs.existsSync(catalogFile)){
 
   if(expectedUnits!==entries.length) fail(catalogFile,'totalUnits='+expectedUnits+' but catalog contains '+entries.length+' units');
 
-  const required=['stage','grade','semester','subject','publisher','version','unit','title','url','script','awards','mistakes','resume'];
+  const required=['stage','grade','semester','subject','publisher','version','unit','title','summary','url','script','awards','mistakes','resume'];
   const gradeRange={國小:[1,6],國中:[7,9],高中:[10,12]};
   entries.forEach((entry,index)=>{
     const missing=required.filter(k=>entry[k]===undefined||entry[k]==='');
@@ -110,6 +111,18 @@ if(!fs.existsSync(catalogFile)){
     const values=entries.map(e=>e[keyName]);
     const dup=[...new Set(values.filter((x,i)=>values.indexOf(x)!==i))];
     if(dup.length) fail(catalogFile,'duplicate '+keyName+': '+dup.join(', '));
+  }
+
+  const subjectDetailsBlock=catalog.match(/subjectDetails:\s*\[([\s\S]*?)\],\n\s*units:/);
+  if(!subjectDetailsBlock){
+    fail(catalogFile,'subjectDetails metadata missing');
+  }else{
+    const details=[...subjectDetailsBlock[1].matchAll(/\{subject:'([^']+)',slug:'([^']+)',icon:'([^']+)',intro:'([^']+)',wishVersions:\[([^\]]*)\]\}/g)];
+    const detailSubjects=details.map(m=>m[1]);
+    const entrySubjects=[...new Set(entries.map(e=>e.subject))];
+    const missingDetails=entrySubjects.filter(s=>!detailSubjects.includes(s));
+    if(missingDetails.length) fail(catalogFile,'subjects missing display metadata: '+missingDetails.join(', '));
+    if(new Set(detailSubjects).size!==detailSubjects.length) fail(catalogFile,'duplicate subjectDetails entries');
   }
 
   const subjectDecl=catalog.match(/subjects:\s*\[([^\]]+)\]/);
@@ -227,6 +240,8 @@ if(fs.existsSync(portalJsFile)){
   }
   if(!portalJs.includes("document.querySelectorAll('[data-stage-card]')")) fail(portalJsFile,'stage cards are not catalog-driven');
   if(!portalJs.includes('updateQuickScopeLabel')) fail(portalJsFile,'current scope label is not catalog-driven');
+  if(!portalJs.includes('renderSubjectPortal')) fail(portalJsFile,'subject portal is not catalog-driven');
+  if(!portalJs.includes('catalog.subjectDetails')) fail(portalJsFile,'subject portal does not use catalog subjectDetails');
 }
 
 const portalHtmlFile=path.join(ROOT,'index.html');
@@ -235,6 +250,8 @@ if(fs.existsSync(portalHtmlFile)){
   const stageCards=(portalHtml.match(/data-stage-card="(國小|國中|高中)"/g)||[]).length;
   if(stageCards!==3) fail(portalHtmlFile,'expected 3 catalog-driven stage cards, found '+stageCards);
   if(!portalHtml.includes('id="quickScopeLabel"')) fail(portalHtmlFile,'dynamic quick-start scope label missing');
+  if(!portalHtml.includes('id="subjectPortalGrid"')) fail(portalHtmlFile,'dynamic subject portal mount missing');
+  if(/<section class="subject-portal [^"]+-portal"/.test(portalHtml)) fail(portalHtmlFile,'static subject portal cards remain in home page');
 }
 
 const myJsFile=path.join(ROOT,'my','my-kids.js');
