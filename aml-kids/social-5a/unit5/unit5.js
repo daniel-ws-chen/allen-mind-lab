@@ -141,7 +141,7 @@ function renderQuestions(){
    box.classList.add('incorrect');box.classList.remove('correct');
    box.querySelectorAll('.answer-option').forEach(x=>x.classList.remove('option-wrong','option-right'));
    sel.closest('.answer-option')?.classList.add('option-wrong');
-   if(!state.mistakes.some(m=>m.id===item.id)){state.mistakes.push({id:item.id,text:item.q,level:item.level});save();renderMistakes();}
+   if(!state.mistakes.some(m=>m.id===item.id)){state.mistakes.push({id:item.id,text:item.q,level:item.level,topic:item.s||item.tag||'未分類'});save();renderMistakes();}
   }
  }));
 }
