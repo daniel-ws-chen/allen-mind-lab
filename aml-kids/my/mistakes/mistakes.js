@@ -12,7 +12,12 @@ units.forEach(unit=>{
   const awards=new Set(readArray(unit.awards));
   readArray(unit.mistakes).forEach((m,index)=>{
     mistakes.push({
+      stage:unit.stage,
+      grade:unit.grade,
+      semester:unit.semester,
       subject:unit.subject,
+      publisher:unit.publisher,
+      version:unit.version,
       unit:unit.title,
       url:unit.url,
       id:m.id||('m'+index),
@@ -29,6 +34,11 @@ const pending=all-corrected;
 document.getElementById('allMistakes').textContent=all;
 document.getElementById('pendingMistakes').textContent=pending;
 document.getElementById('correctedMistakes').textContent=corrected;
+
+const gradeLabels={1:'一',2:'二',3:'三',4:'四',5:'五',6:'六',7:'七',8:'八',9:'九',10:'十',11:'十一',12:'十二'};
+function scopeLabel(m){
+  return (m.stage||'')+(gradeLabels[m.grade]||m.grade||'')+'年級'+(m.semester||'');
+}
 
 let statusFilter='pending';
 let subjectFilter='全部';
@@ -71,7 +81,7 @@ function render(){
     card.className='mistake-card'+(m.corrected?' corrected':'');
     const meta=document.createElement('div');
     meta.className='mistake-meta';
-    [m.subject,m.unit,m.level,m.corrected?'已訂正':'待訂正'].forEach(x=>{
+    [scopeLabel(m),m.subject,m.publisher+' '+m.version,m.unit,m.level,m.corrected?'已訂正':'待訂正'].forEach(x=>{
       const chip=document.createElement('span');
       chip.className='mistake-chip';
       chip.textContent=x;
