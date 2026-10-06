@@ -74,6 +74,18 @@ function recordActivity(questionId=''){
     updatedAt:Date.now()
   }));
 }
+function versionHomeUrl(){
+  const first=scopeUnits[0]?.url||'/aml-kids/';
+  const clean=String(first).replace(/\/$/,'');
+  return clean.replace(/\/unit\d+$/,'')+'/';
+}
+function updateVersionBackLinks(){
+  const href=versionHomeUrl();
+  const top=qs('#version-back');
+  const bottom=qs('#completion-version-back');
+  if(top) top.href=href;
+  if(bottom) bottom.href=href;
+}
 function renderVisual(q){
   qs('#visual-content').innerHTML=q.svg;
   qs('#visual-caption').textContent=q.caption||'';
@@ -254,6 +266,7 @@ function restart(){
   index=0;qs('#completion').hidden=true;qs('#question-card').hidden=false;render();qs('#question-card').scrollIntoView({block:'start'});
 }
 function init(){
+  updateVersionBackLinks();
   if(!questions.length||!scopeUnits.length){
     qs('#question-card').innerHTML='<div class="feedback note">目前這個教材版本尚未建立視覺題，請回到版本頁選擇其他題型。</div>';
     qs('#challenge-title').textContent='此版本尚無視覺題';
