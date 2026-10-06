@@ -36,8 +36,13 @@
 .mistake-card p{color:#60758b;margin:.3rem 0 .8rem}
 .mistake-link{display:inline-flex;align-items:center;min-height:44px;padding:.55rem .8rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900}
 .empty-state{background:#fff;border:1px dashed #aebfd0;border-radius:1rem;padding:1.4rem;text-align:center;color:#60758b}
+.concept-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.concept-card{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:.9rem}
+.concept-card strong{display:block;color:#294b6d;font-size:1.05rem}
+.concept-card span{display:block;color:#60758b;font-size:.86rem;margin-top:.2rem}
+.concept-card--empty{grid-column:1/-1;background:#f7fafc;color:#60758b}
 .note-box{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
-@media(max-width:720px){.mistake-summary{grid-template-columns:1fr}.mistake-link{width:100%;justify-content:center}.scope-filter{grid-template-columns:1fr}.mistake-card.corrected p{display:none}.mistake-card.corrected{padding:.8rem}.mistake-card.corrected h3{margin:.25rem 0 .55rem}}
+@media(max-width:720px){.mistake-summary{grid-template-columns:1fr}.concept-summary{grid-template-columns:1fr}.mistake-link{width:100%;justify-content:center}.scope-filter{grid-template-columns:1fr}.mistake-card.corrected p{display:none}.mistake-card.corrected{padding:.8rem}.mistake-card.corrected h3{margin:.25rem 0 .55rem}}
 </style>
 </head>
 <body>
@@ -62,6 +67,15 @@
       <div class="mistake-stat"><strong id="pendingMistakes">0</strong><span>待訂正</span></div>
       <div class="mistake-stat"><strong id="correctedMistakes">0</strong><span>已訂正</span></div>
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="concept-summary-title">
+    <div class="section-heading">
+      <span class="section-kicker">概念線索</span>
+      <h2 id="concept-summary-title">目前較常出現的待訂正概念</h2>
+      <p>依實際錯題的主題 tag 整理，僅作為複習方向；舊錯題若沒有主題資料，會列為未分類。</p>
+    </div>
+    <div id="conceptSummary" class="concept-summary" aria-live="polite"></div>
   </section>
 
   <section class="section" aria-labelledby="mistake-list-title">
