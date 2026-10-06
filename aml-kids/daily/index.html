@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AML Kids｜今日 5 題</title>
+<link rel="stylesheet" href="../assets/kids-home.css">
+<link rel="stylesheet" href="daily.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="hero portal-hero">
+  <div class="hero-inner">
+    <p class="eyebrow">AML Kids · Daily 5</p>
+    <h1>今天只做 5 題，也算前進</h1>
+    <p class="hero-lead">每天從現有題庫選出國文、英文、數學、自然、社會各 1 題。同一天重新開啟會看到同一組題目，隔天再換一組。</p>
+    <div class="hero-badges" aria-label="今日5題特色">
+      <span>5️⃣ 每天 5 題</span><span>📚 五科各 1 題</span><span>🔁 每日更新</span><span>🧭 不影響原單元進度</span>
+    </div>
+  </div>
+</header>
+<main id="main" class="daily-page">
+  <p><a class="enter" href="../">← 回 AML Kids</a>　<a class="enter" href="../my/">查看我的進度</a></p>
+
+  <section class="section daily-overview" aria-labelledby="daily-title">
+    <div>
+      <span class="section-kicker" id="daily-date">今日挑戰</span>
+      <h2 id="daily-title">五科各一題</h2>
+      <p>今日挑戰只記錄是否完成，不增加原單元學習點數，也不改變 50 題完成度。</p>
+    </div>
+    <div class="daily-stat" aria-live="polite">
+      <strong id="daily-progress-text">0 / 5</strong>
+      <span>今日完成</span>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="questions-title">
+    <div class="section-heading">
+      <span class="section-kicker">Daily Mix</span>
+      <h2 id="questions-title">今日題目</h2>
+      <p id="load-note">正在從既有題庫準備今天的 5 題。</p>
+    </div>
+    <div id="daily-questions" class="daily-questions" aria-live="polite"></div>
+  </section>
+
+  <section class="section daily-complete" id="daily-complete" hidden tabindex="-1" aria-labelledby="complete-title">
+    <span class="complete-icon" aria-hidden="true">🌟</span>
+    <h2 id="complete-title">今天的 5 題完成了</h2>
+    <p>不用一次做很多。明天再回來，會有新的一組跨科小挑戰。</p>
+    <a class="daily-button" href="../my/">看看我的學習進度 →</a>
+  </section>
+
+  <section class="section daily-note" aria-labelledby="daily-note-title">
+    <h2 id="daily-note-title">今日 5 題怎麼運作？</h2>
+    <p>系統以本機日期產生固定組合，並直接讀取目前 AML Kids 已上線題庫。因此不需要另做一份重複題庫，也不會修改原題目。</p>
+  </section>
+</main>
+<footer><p>AML Kids｜今日 5 題</p></footer>
+<script src="../assets/kids-catalog.js"></script>
+<script src="daily.js"></script>
+</body>
+</html>
