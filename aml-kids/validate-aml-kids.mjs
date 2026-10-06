@@ -185,6 +185,7 @@ for(const entry of entries){
   if(!text.includes("AML_KIDS_LAST_ACTIVITY_KEY='amlKidsLastActivityV1'")) fail(scriptFile,'missing recent activity tracking');
   if(!text.includes("new URLSearchParams(location.search).get('resume')")) fail(scriptFile,'missing resume query support');
   if(!text.includes('aria-live="polite"')) fail(scriptFile,'answer feedback live region missing');
+  if(!text.includes('topic:')) fail(scriptFile,'mistake records must preserve a concept topic tag');
   if(!text.includes('fieldset class="answer-options"')||!text.includes('legend class="sr-only"')) fail(scriptFile,'answer choices must use fieldset with a screen-reader legend');
   const awardBlock=text.match(/function award\([^)]*\)\{[\s\S]*?return true;\s*\}/)?.[0]||'';
   if(awardBlock.includes('renderAll()')) fail(scriptFile,'award() must not rebuild the question DOM before answer feedback is announced');
