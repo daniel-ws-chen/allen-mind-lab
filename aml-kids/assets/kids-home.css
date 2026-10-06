@@ -104,6 +104,9 @@ footer p{margin:.2rem 0}
 .portal-units--more{padding:.65rem}
 .portal-unit-link{display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;align-items:center;text-decoration:none;border:1px solid #d8e3ed;background:#fbfdff;border-radius:1rem;padding:.8rem}
 .portal-unit-link:hover{border-color:#87a4c0;background:#f7fbff}
+.portal-unit-link--complete{background:#f8fbf9;border-color:#cfe0d4}
+.portal-unit-link--complete:hover{background:#f3f9f5;border-color:#9ac0a5}
+.portal-unit-link--active{border-color:#ddc48f;background:#fffdf6}
 .portal-unit-link:focus-visible,.subject-home-link:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
 .portal-unit-number{display:flex;align-items:center;justify-content:center;width:2.2rem;height:2.2rem;border-radius:.75rem;background:#edf4fa;font-weight:950;color:#456784}
 .science-portal .portal-unit-number{background:#edf7f0;color:#39704b}
@@ -139,6 +142,10 @@ footer p{margin:.2rem 0}
 @media(max-width:480px){
  .portal-unit-link{grid-template-columns:auto 1fr}
  .portal-arrow{display:none}
+ .portal-unit-link--complete{padding:.62rem .7rem}
+ .portal-unit-link--complete .portal-unit-number{width:2rem;height:2rem}
+ .portal-unit-link--complete small{display:none}
+ .portal-unit-link--complete .portal-unit-title-row{align-items:center}
  .how-grid{grid-template-columns:1fr 1fr}
 }
 
