@@ -289,6 +289,9 @@ if(fs.existsSync(backupJsFile)){
   if(!backupJs.includes("if(!includeRestorePoint&&key===RESTORE_POINT_KEY) continue")) fail(backupJsFile,'restore point must be excluded from downloadable backups');
   if(!backupJs.includes("createRestorePoint();")) fail(backupJsFile,'import must create a restore point first');
   if(!backupJs.includes("clearCurrentAmlKidsData();")) fail(backupJsFile,'rollback must clear imported AML Kids state before restoring snapshot');
+  if(!backupJs.includes('learningSummary')) fail(backupJsFile,'backup page does not summarize learning data before export/import');
+  if(!backupJs.includes('catalogMismatch')) fail(backupJsFile,'backup import preview does not warn about Catalog version mismatch');
+  if(!backupJs.includes('backupPendingMistakes')) fail(backupJsFile,'backup summary does not expose pending correction count');
 }
 
 const homeCssFile=path.join(ROOT,'assets','kids-home.css');
