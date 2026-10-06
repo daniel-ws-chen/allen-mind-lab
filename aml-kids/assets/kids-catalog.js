@@ -2,6 +2,7 @@ window.AML_KIDS_CATALOG = {
   version: 1,
   totalUnits: 27,
   questionsPerUnit: 50,
+  scopeLabel: '國小五年級上學期',
   subjects: ['國文','社會','自然','英文','數學'],
   units: [
     {subject:'國文',unit:'U1',title:'品格小學堂',url:'/aml-kids/chinese-5a/unit1/',awards:'amlKidsChinese5aU1AwardsV1',mistakes:'amlKidsChinese5aU1MistakesV1',resume:'amlKidsChinese5aU1ResumeV1'},
