@@ -187,7 +187,8 @@ if(questionScripts.length!==entries.length) fail(ROOT,'catalog/unit script count
 for(const [htmlRel,jsName,catalogSrc] of [
   ['my/index.html','my-kids.js','../assets/kids-catalog.js'],
   ['my/mistakes/index.html','mistakes.js','../../assets/kids-catalog.js'],
-  ['qa/index.html','qa.js','../assets/kids-catalog.js']
+  ['qa/index.html','qa.js','../assets/kids-catalog.js'],
+  ['my/backup/index.html','backup.js','../../assets/kids-catalog.js']
 ]){
   const htmlFile=path.join(ROOT,...htmlRel.split('/'));
   if(!fs.existsSync(htmlFile)){fail(ROOT,'missing '+htmlRel);continue;}
@@ -221,6 +222,14 @@ if(fs.existsSync(myJsFile)){
   if(/const subjectOrder=\[['"]/.test(myJs)) fail(myJsFile,'hard-coded subject order found; use shared catalog');
   if(/length\*50/.test(myJs)) fail(myJsFile,'hard-coded 50-question total found; use questionsPerUnit');
 }
+const backupJsFile=path.join(ROOT,'my','backup','backup.js');
+if(fs.existsSync(backupJsFile)){
+  const backupJs=fs.readFileSync(backupJsFile,'utf8');
+  if(!backupJs.includes("key.startsWith('amlKids')")) fail(backupJsFile,'backup import/export must stay limited to amlKids keys');
+  if(!backupJs.includes("MAX_FILE_BYTES=1024*1024")) fail(backupJsFile,'backup file-size guard missing');
+  if(!backupJs.includes("confirmImport")) fail(backupJsFile,'backup import confirmation missing');
+}
+
 const mistakesJsFile=path.join(ROOT,'my','mistakes','mistakes.js');
 if(fs.existsSync(mistakesJsFile)){
   const mistakesJs=fs.readFileSync(mistakesJsFile,'utf8');
