@@ -26,8 +26,13 @@
 .continue-box{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:#fff8e8;border:1px solid #e3d5ae;border-radius:1rem;padding:1rem}
 .continue-box a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.6rem .85rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900}
 .continue-box a:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.scope-picker{display:grid;grid-template-columns:minmax(220px,360px) 1fr;gap:1rem;align-items:end;background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem}
+.scope-field label{display:block;font-weight:900;margin-bottom:.35rem}
+.scope-field select{width:100%;min-height:48px;border:1px solid #9eb1c5;border-radius:.8rem;background:#fff;color:#20324a;padding:.65rem .75rem;font:inherit}
+.scope-field select:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.scope-help{margin:0;color:#60758b}
 .device-note{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
-@media(max-width:760px){.my-summary{grid-template-columns:repeat(2,1fr)}.unit-mini-grid{grid-template-columns:1fr}.continue-box{display:block}.continue-box a{margin-top:.7rem;width:100%}}
+@media(max-width:760px){.my-summary{grid-template-columns:repeat(2,1fr)}.unit-mini-grid{grid-template-columns:1fr}.continue-box{display:block}.continue-box a{margin-top:.7rem;width:100%}.scope-picker{grid-template-columns:1fr}}
 @media(max-width:460px){.my-summary{grid-template-columns:1fr}}
 </style>
 </head>
@@ -42,6 +47,20 @@
 </header>
 <main id="main" class="my-page">
   <p><a class="enter" href="../">← 回 AML Kids</a></p>
+
+  <section class="section" aria-labelledby="scope-picker-title">
+    <div class="section-heading">
+      <span class="section-kicker">學習範圍</span>
+      <h2 id="scope-picker-title">選擇要查看的年級與學期</h2>
+    </div>
+    <div class="scope-picker">
+      <div class="scope-field">
+        <label for="scopeSelect">學習範圍</label>
+        <select id="scopeSelect" aria-describedby="scopeHelp"></select>
+      </div>
+      <p class="scope-help" id="scopeHelp">目前只有已開放的學習範圍會出現在這裡；未來新增六年級、國中或高中內容時會自動加入。</p>
+    </div>
+  </section>
 
   <section class="section" aria-labelledby="summary-title">
     <div class="section-heading">
