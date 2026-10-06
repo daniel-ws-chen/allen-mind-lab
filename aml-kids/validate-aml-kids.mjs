@@ -124,6 +124,20 @@ if(!fs.existsSync(catalogFile)){
     const dup=[...new Set(keys.filter((x,i)=>keys.indexOf(x)!==i))];
     if(dup.length) fail(catalogFile,'duplicate catalog storage keys: '+dup.join(', '));
   }
+
+  const subjectDecl=catalog.match(/subjects:\s*\[([^\]]+)\]/);
+  if(!subjectDecl){
+    fail(catalogFile,'subjects list missing');
+  }else{
+    const subjects=[...subjectDecl[1].matchAll(/'([^']+)'/g)].map(m=>m[1]);
+    const entrySubjects=[...new Set(entries.map(m=>m[1]))];
+    const missing=entrySubjects.filter(s=>!subjects.includes(s));
+    const unused=subjects.filter(s=>!entrySubjects.includes(s));
+    if(missing.length) fail(catalogFile,'unit subjects missing from subjects list: '+missing.join(', '));
+    if(unused.length) warn(catalogFile,'subjects list contains no units yet: '+unused.join(', '));
+  }
+
+  if(!/scopeLabel:\s*'[^']+'/.test(catalog)) warn(catalogFile,'scopeLabel metadata missing');
 }
 
 for(const file of unitJs){
@@ -147,6 +161,18 @@ for(const [htmlRel,jsName,catalogSrc] of [
   const js=fs.readFileSync(jsFile,'utf8');
   if(js.includes('const units=[')) fail(jsFile,'local duplicate unit catalog found');
   if(!js.includes('window.AML_KIDS_CATALOG')) fail(jsFile,'does not read shared AML Kids catalog');
+}
+
+const myJsFile=path.join(ROOT,'my','my-kids.js');
+if(fs.existsSync(myJsFile)){
+  const myJs=fs.readFileSync(myJsFile,'utf8');
+  if(/const subjectOrder=\[['"]/.test(myJs)) fail(myJsFile,'hard-coded subject order found; use shared catalog');
+  if(/length\*50/.test(myJs)) fail(myJsFile,'hard-coded 50-question total found; use questionsPerUnit');
+}
+const mistakesJsFile=path.join(ROOT,'my','mistakes','mistakes.js');
+if(fs.existsSync(mistakesJsFile)){
+  const mistakesJs=fs.readFileSync(mistakesJsFile,'utf8');
+  if(/\['國文','社會','自然','英文','數學'\]/.test(mistakesJs)) fail(mistakesJsFile,'hard-coded subject list found; use shared catalog');
 }
 
 console.log(`AML Kids QA: ${unitHtml.length} unit pages / ${unitJs.length} unit scripts checked.`);
