@@ -97,7 +97,7 @@ if(!fs.existsSync(catalogFile)){
   fail(ROOT,'missing shared kids-catalog.js');
 }else{
   const catalog=fs.readFileSync(catalogFile,'utf8');
-  const unitLines=catalog.split('\n').map(x=>x.trim()).filter(x=>x.startsWith('{stage:'));
+  const unitLines=catalog.split('\n').map(x=>x.trim()).filter(x=>x.startsWith('{stage:')&&x.includes("unit:'"));
   const field=(line,name)=>{
     const stringMatch=line.match(new RegExp(name+":'([^']*)'"));
     if(stringMatch) return stringMatch[1];
