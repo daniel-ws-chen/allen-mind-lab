@@ -13,6 +13,27 @@ const statusBox=document.getElementById('statusBox');
 
 let pendingBackup=null;
 
+function parseStoredArray(raw){
+  if(raw===null||raw===undefined) return [];
+  try{
+    const value=JSON.parse(raw);
+    return Array.isArray(value)?value:[];
+  }catch{return [];}
+}
+function learningSummary(storage){
+  const units=window.AML_KIDS_CATALOG?.units||[];
+  let activeUnits=0;
+  let pendingMistakes=0;
+  units.forEach(unit=>{
+    const awards=new Set(parseStoredArray(storage[unit.awards]??null));
+    const mistakes=parseStoredArray(storage[unit.mistakes]??null);
+    if(awards.size||mistakes.length) activeUnits++;
+    pendingMistakes+=mistakes.filter(item=>!awards.has(item.id)).length;
+  });
+  const points=Number(storage.amlKidsRewardWalletV1||0);
+  return {activeUnits,pendingMistakes,points:Number.isFinite(points)?points:0};
+}
+
 function amlKidsStorage({includeRestorePoint=false}={}){
   const storage={};
   for(let i=0;i<localStorage.length;i++){
@@ -26,8 +47,11 @@ function amlKidsStorage({includeRestorePoint=false}={}){
 
 function updateSummary(){
   const storage=amlKidsStorage();
+  const summary=learningSummary(storage);
   document.getElementById('backupKeyCount').textContent=Object.keys(storage).length;
-  document.getElementById('backupPoints').textContent=Number(localStorage.getItem('amlKidsRewardWalletV1')||0).toLocaleString();
+  document.getElementById('backupPoints').textContent=summary.points.toLocaleString();
+  document.getElementById('backupActiveUnits').textContent=summary.activeUnits.toLocaleString();
+  document.getElementById('backupPendingMistakes').textContent=summary.pendingMistakes.toLocaleString();
   undoImportButton.disabled=!localStorage.getItem(RESTORE_POINT_KEY);
 }
 
@@ -123,10 +147,20 @@ backupFile.addEventListener('change',async()=>{
     pendingBackup=data;
     const count=Object.keys(data.storage).length;
     const created=data.createdAt?new Date(data.createdAt):null;
+    const summary=learningSummary(data.storage);
+    const currentCatalogVersion=window.AML_KIDS_CATALOG?.version??null;
+    const catalogMismatch=data.catalogVersion!=null&&currentCatalogVersion!=null&&Number(data.catalogVersion)!==Number(currentCatalogVersion);
     importPreview.hidden=false;
     const createdText=created&&!Number.isNaN(created.getTime())?created.toLocaleString('zh-TW'):'未知';
-    importPreview.innerHTML='<span>備份時間：<strong>'+createdText+'</strong></span><span>資料筆數：<strong>'+count+'</strong></span><span>Catalog 版本：<strong>'+(data.catalogVersion??'未知')+'</strong></span>';
-    setStatus('備份檔已通過格式檢查。確認後即可匯入。','warning');
+    importPreview.innerHTML=
+      '<span>備份時間：<strong>'+createdText+'</strong></span>'+
+      '<span>資料筆數：<strong>'+count+'</strong></span>'+
+      '<span>學習點數：<strong>'+summary.points.toLocaleString()+'</strong></span>'+
+      '<span>有學習紀錄：<strong>'+summary.activeUnits+' 個單元</strong></span>'+
+      '<span>待訂正：<strong>'+summary.pendingMistakes+' 題</strong></span>'+
+      '<span>Catalog 版本：<strong>'+(data.catalogVersion??'未知')+'</strong></span>'+
+      (catalogMismatch?'<span class="backup-warning"><strong>版本提醒：</strong>這份備份建立於 Catalog v'+data.catalogVersion+'，目前網站為 v'+currentCatalogVersion+'。仍可匯入，但匯入後建議回 My AML Kids 檢查進度。</span>':'');
+    setStatus(catalogMismatch?'備份檔格式有效，但 Catalog 版本不同；請確認預覽後再匯入。':'備份檔已通過格式檢查。確認後即可匯入。','warning');
   }catch{
     setStatus('無法讀取這個 JSON 備份檔。','error');
   }
