@@ -81,3 +81,5 @@
 
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+.tab-btn:focus-visible,.primary:focus-visible,.secondary:focus-visible,.check:focus-visible,.segment-btn:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
