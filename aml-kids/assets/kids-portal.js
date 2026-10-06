@@ -171,6 +171,54 @@ function appendEditionUnits(group,edition){
   }
 }
 
+function renderActiveLearning(){
+  const section=document.getElementById('activeLearning');
+  const list=document.getElementById('activeLearningList');
+  if(!section||!list) return;
+
+  const scope=catalog.currentScope;
+  const inProgress=(catalog.units||[])
+    .filter(unit=>!scope||(
+      unit.stage===scope.stage &&
+      Number(unit.grade)===Number(scope.grade) &&
+      unit.semester===scope.semester
+    ))
+    .map(unit=>({unit,progress:unitProgress(unit)}))
+    .filter(item=>item.progress.state==='active')
+    .slice(0,3);
+
+  if(!inProgress.length){
+    section.hidden=true;
+    list.innerHTML='';
+    return;
+  }
+
+  list.innerHTML='';
+  inProgress.forEach(({unit,progress})=>{
+    const link=document.createElement('a');
+    link.className='active-learning__item';
+    const resume=readArray(unit.resume);
+    const q=Array.isArray(resume)?'':String(localStorage.getItem(unit.resume)||'').replace(/^"|"$/g,'');
+    link.href=unit.url+(q?('?resume='+encodeURIComponent(q)):'')+'#challenge';
+
+    const strong=document.createElement('strong');
+    strong.textContent=unit.subject+'｜'+unit.title;
+    const small=document.createElement('small');
+    small.textContent='已完成 '+progress.done+' / '+progress.total+' 題';
+
+    const meter=document.createElement('span');
+    meter.className='active-learning__meter';
+    meter.setAttribute('aria-hidden','true');
+    const fill=document.createElement('span');
+    fill.style.width=Math.round((progress.done/progress.total)*100)+'%';
+    meter.appendChild(fill);
+
+    link.append(strong,small,meter);
+    list.appendChild(link);
+  });
+  section.hidden=false;
+}
+
 function renderSubjectPortal(){
   const wrap=document.getElementById('subjectPortalGrid');
   const scope=catalog.currentScope;
@@ -392,6 +440,7 @@ updatePortalSummary();
 updateStageCards();
 updateQuickScopeLabel();
 renderSubjectPortal();
+renderActiveLearning();
 updateHeroLauncher();
 updateSelector('grade');
 
