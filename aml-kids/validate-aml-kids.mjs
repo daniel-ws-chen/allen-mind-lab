@@ -234,6 +234,17 @@ if(fs.existsSync(backupJsFile)){
   if(!backupJs.includes("clearCurrentAmlKidsData();")) fail(backupJsFile,'rollback must clear imported AML Kids state before restoring snapshot');
 }
 
+const aboutFile=path.join(ROOT,'about','index.html');
+if(!fs.existsSync(aboutFile)){
+  fail(ROOT,'missing AML Kids usage and rights notice page');
+}else{
+  const about=fs.readFileSync(aboutFile,'utf8');
+  for(const phrase of ['智慧財產權','免費公開','不負學習進度','daniel.ws.chen@gmail.com']){
+    if(!about.includes(phrase)) fail(aboutFile,'usage notice missing required phrase: '+phrase);
+  }
+  if(!about.includes('../my/backup/')) fail(aboutFile,'usage notice missing backup link');
+}
+
 const mistakesJsFile=path.join(ROOT,'my','mistakes','mistakes.js');
 if(fs.existsSync(mistakesJsFile)){
   const mistakesJs=fs.readFileSync(mistakesJsFile,'utf8');
