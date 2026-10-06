@@ -185,6 +185,7 @@ for(const file of questionScripts){
 if(questionScripts.length!==entries.length) fail(ROOT,'catalog/unit script count mismatch: catalog='+entries.length+', question scripts='+questionScripts.length);
 
 for(const [htmlRel,jsName,catalogSrc] of [
+  ['index.html','kids-portal.js','assets/kids-catalog.js'],
   ['my/index.html','my-kids.js','../assets/kids-catalog.js'],
   ['my/mistakes/index.html','mistakes.js','../../assets/kids-catalog.js'],
   ['qa/index.html','qa.js','../assets/kids-catalog.js'],
@@ -214,6 +215,16 @@ for(const [htmlRel,jsRel] of [
   if(!js.includes('scopeKey(')) fail(jsFile,'scope-aware filtering missing');
   if(js.includes('const units=[')) fail(jsFile,'local duplicate unit catalog found');
   if(!js.includes('window.AML_KIDS_CATALOG')) fail(jsFile,'does not read shared AML Kids catalog');
+}
+
+const portalJsFile=path.join(ROOT,'assets','kids-portal.js');
+if(fs.existsSync(portalJsFile)){
+  const portalJs=fs.readFileSync(portalJsFile,'utf8');
+  if(!portalJs.includes('window.AML_KIDS_CATALOG')) fail(portalJsFile,'portal must read shared AML Kids catalog');
+  if(portalJs.includes("stage==='國小'&&grade===5")) fail(portalJsFile,'hard-coded grade availability found; use shared catalog');
+  for(const id of ['portalSubjectCount','portalUnitCount','portalQuestionCount','portalQuestionsPerUnit']){
+    if(!portalJs.includes(id)) fail(portalJsFile,'dynamic portal summary missing: '+id);
+  }
 }
 
 const myJsFile=path.join(ROOT,'my','my-kids.js');
