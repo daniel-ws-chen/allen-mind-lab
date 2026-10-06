@@ -79,3 +79,30 @@ footer p{margin:.2rem 0}
 .question-nav-key{margin-top:.45rem;color:#60758b;font-size:.84rem}
 .feedback.good::before{content:"✅ "}
 .feedback.note::before{content:"❌ "}
+
+
+/* Compact desktop question layout */
+@media(min-width:761px){
+  .hero{padding:1.65rem 1rem 1.25rem}
+  .hero h1{font-size:clamp(1.9rem,4.2vw,3rem)}
+  .hero-lead{margin:.35rem 0 .65rem}
+  .hero-badges span{padding:.28rem .58rem}
+  .subject-picker,.challenge-shell,.visual-note{margin:.8rem 0 1.25rem;padding:.9rem 1rem}
+  .challenge-head{margin-bottom:.65rem}
+  .question-card{padding:.8rem .9rem}
+  .question-nav{margin:.05rem 0 .55rem}
+  #question-nav-list{gap:.35rem}
+  .question-nav-btn{width:36px;height:36px;font-size:.9rem}
+  .question-card h3{font-size:1.12rem;line-height:1.45;margin:.45rem 0}
+  .visual-stage{margin:.55rem 0;padding:.55rem .75rem}
+  #visual-content{min-height:0;max-height:190px}
+  #visual-content svg{max-height:180px;width:auto}
+  .visual-stage figcaption{margin-top:.25rem;font-size:.84rem}
+  .answer-options{margin:.55rem 0}
+  #options{gap:.38rem}
+  .answer-option{gap:.55rem;border-radius:.75rem;padding:.52rem .7rem;line-height:1.45}
+  .answer-option input{margin-top:.2rem}
+  .question-actions{margin-top:.55rem;gap:.45rem}
+  .primary,.secondary,.secondary-link{min-height:42px;padding:.5rem .82rem}
+  .feedback{min-height:0;margin-top:.55rem;padding:.55rem .7rem;line-height:1.5}
+}
