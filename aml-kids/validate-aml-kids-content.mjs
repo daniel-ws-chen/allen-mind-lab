@@ -76,6 +76,9 @@ if(!fs.existsSync(CATALOG_FILE)){
     let lastAnswer=null;
     let shortStemCount=0;
     let shortExplanationCount=0;
+    let qualityShortExplanationCount=0;
+    let answerLengthCueCount=0;
+    const levelCounts={基礎:0,進階:0,素養:0};
     let duplicateStemCount=0;
     let duplicateOptionCount=0;
     let invalidQuestionCount=0;
@@ -107,10 +110,12 @@ if(!fs.existsSync(CATALOG_FILE)){
 
       if(!['基礎','進階','素養'].includes(q.level)){
         fail(scriptFile,(q.id||expectedId)+' has unsupported level '+String(q.level));
+      }else{
+        levelCounts[q.level]++;
       }
 
-      if(!Array.isArray(q.o)||q.o.length<2){
-        fail(scriptFile,(q.id||expectedId)+' options must be an array with at least 2 choices');
+      if(!Array.isArray(q.o)||q.o.length!==4){
+        fail(scriptFile,(q.id||expectedId)+' must have exactly 4 answer choices');
       }else{
         const normalizedOptions=q.o.map(normalize);
         if(normalizedOptions.some(x=>!x)){
@@ -147,6 +152,19 @@ if(!fs.existsSync(CATALOG_FILE)){
 
       if(visibleLength(q.q)<6) shortStemCount++;
       if(visibleLength(q.e)<6) shortExplanationCount++;
+      if(visibleLength(q.e)<10) qualityShortExplanationCount++;
+
+      if(Array.isArray(q.o)&&q.o.length===4&&Number.isInteger(q.a)&&q.a>=0&&q.a<4){
+        const lengths=q.o.map(visibleLength);
+        const correctLength=lengths[q.a];
+        const otherLengths=lengths.filter((_,i)=>i!==q.a);
+        const otherAverage=otherLengths.reduce((sum,n)=>sum+n,0)/otherLengths.length;
+        const otherMax=Math.max(...otherLengths);
+        if(correctLength>=10&&correctLength>=otherAverage*1.7&&correctLength-otherMax>=4){
+          answerLengthCueCount++;
+        }
+      }
+
       if(normalize(q.q)&&normalize(q.q)===normalize(q.e)){
         warn(scriptFile,(q.id||expectedId)+' explanation repeats the question instead of explaining the answer');
       }
@@ -155,10 +173,18 @@ if(!fs.existsSync(CATALOG_FILE)){
     const validAnswerTotal=answerCounts.reduce((a,b)=>a+(b||0),0);
     const maxAnswerCount=Math.max(0,...answerCounts.map(x=>x||0));
     const maxAnswerRatio=validAnswerTotal?maxAnswerCount/validAnswerTotal:0;
+    if(questionsPerUnit===50&&(levelCounts.基礎!==20||levelCounts.進階!==20||levelCounts.素養!==10)){
+      fail(scriptFile,'question mix should be 20/20/10, found '+levelCounts.基礎+'/'+levelCounts.進階+'/'+levelCounts.素養);
+    }
+
+    const nonzeroAnswerCounts=answerCounts.map(x=>x||0);
+    const answerSpread=Math.max(...nonzeroAnswerCounts)-Math.min(...nonzeroAnswerCounts);
     if(maxAnswerRatio>=0.7){
       warn(scriptFile,'answer distribution is highly concentrated: '+answerCounts.map((n,i)=>String.fromCharCode(65+i)+'='+(n||0)).join(', ')+'; largest share '+Math.round(maxAnswerRatio*100)+'%');
+    }else if(answerSpread>2){
+      warn(scriptFile,'answer positions are imbalanced: '+nonzeroAnswerCounts.map((n,i)=>String.fromCharCode(65+i)+'='+(n||0)).join(', '));
     }
-    if(longestAnswerRun>=8){
+    if(longestAnswerRun>=4){
       warn(scriptFile,'same answer index appears '+longestAnswerRun+' questions in a row');
     }
     if(shortStemCount>=Math.ceil(questions.length*0.2)){
@@ -166,6 +192,12 @@ if(!fs.existsSync(CATALOG_FILE)){
     }
     if(shortExplanationCount>=Math.ceil(questions.length*0.2)){
       warn(scriptFile,shortExplanationCount+' explanations are very short; review whether feedback teaches the concept');
+    }
+    if(qualityShortExplanationCount>0){
+      warn(scriptFile,qualityShortExplanationCount+' explanations are under the current QA target of 10 visible characters');
+    }
+    if(answerLengthCueCount>0){
+      warn(scriptFile,answerLengthCueCount+' questions may cue the answer because the correct option is much longer than distractors');
     }
 
     unitReports.push({
@@ -175,6 +207,9 @@ if(!fs.existsSync(CATALOG_FILE)){
       longestAnswerRun,
       shortStemCount,
       shortExplanationCount,
+      qualityShortExplanationCount,
+      answerLengthCueCount,
+      levelCounts,
       duplicateStemCount,
       duplicateOptionCount,
       invalidQuestionCount
@@ -201,6 +236,9 @@ for(const report of unitReports){
     ' | longest run '+report.longestAnswerRun+
     ' | short stems '+report.shortStemCount+
     ' | short explanations '+report.shortExplanationCount+
+    ' | QA<10 '+report.qualityShortExplanationCount+
+    ' | length cues '+report.answerLengthCueCount+
+    ' | levels '+report.levelCounts.基礎+'/'+report.levelCounts.進階+'/'+report.levelCounts.素養+
     ' | duplicate stems '+report.duplicateStemCount+
     ' | duplicate options '+report.duplicateOptionCount
   );
