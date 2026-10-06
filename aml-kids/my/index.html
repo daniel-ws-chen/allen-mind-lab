@@ -40,9 +40,21 @@
 .scope-field select{width:100%;min-height:48px;border:1px solid #9eb1c5;border-radius:.8rem;background:#fff;color:#20324a;padding:.65rem .75rem;font:inherit}
 .scope-field select:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
 .scope-help{margin:0;color:#60758b}
+.visual-progress-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem}
+.visual-progress-card{display:block;text-decoration:none;background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:.9rem;color:inherit}
+.visual-progress-card:hover{border-color:#87a4c0}
+.visual-progress-card:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.visual-progress-card strong{display:block;font-size:1.25rem;color:#294b6d}
+.visual-progress-card span{display:block;color:#60758b;font-size:.86rem}
+.visual-progress-card .mini-track{height:8px;background:#edf2f6;border-radius:999px;overflow:hidden;margin:.55rem 0}
+.visual-progress-card .mini-track i{display:block;height:100%;background:#6d8fb0}
+.recent-learning-card{background:#fbfdff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem}
+.recent-learning-card strong{display:block;margin-bottom:.25rem}
+.recent-learning-card p{margin:.25rem 0;color:#60758b}
+.recent-learning-card a{display:inline-flex;margin-top:.45rem;font-weight:900;color:#315d86}
 .device-note{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
-@media(max-width:760px){.my-summary{grid-template-columns:repeat(2,1fr)}.unit-mini-grid{grid-template-columns:1fr}.continue-box{display:block}.continue-box a{margin-top:.7rem;width:100%}.scope-picker{grid-template-columns:1fr}.subject-progress-head{align-items:flex-start}.subject-progress-head>strong{text-align:right}.unit-mini--complete{padding:.58rem .7rem}.unit-mini--complete small{display:none}}
-@media(max-width:460px){.my-summary{grid-template-columns:1fr}}
+@media(max-width:760px){.my-summary{grid-template-columns:repeat(2,1fr)}.visual-progress-grid{grid-template-columns:repeat(2,1fr)}.unit-mini-grid{grid-template-columns:1fr}.continue-box{display:block}.continue-box a{margin-top:.7rem;width:100%}.scope-picker{grid-template-columns:1fr}.subject-progress-head{align-items:flex-start}.subject-progress-head>strong{text-align:right}.unit-mini--complete{padding:.58rem .7rem}.unit-mini--complete small{display:none}}
+@media(max-width:460px){.my-summary{grid-template-columns:1fr}.visual-progress-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -93,6 +105,23 @@
       </div>
       <a id="continueLink" href="../">繼續 →</a>
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="visual-progress-title">
+    <div class="section-heading">
+      <span class="section-kicker">新增學習面向</span>
+      <h2 id="visual-progress-title">視覺挑戰進度</h2>
+      <p>五科視覺挑戰採獨立進度，不計入原本 1,350 題與學習點數。</p>
+    </div>
+    <div id="visualProgress" class="visual-progress-grid"></div>
+  </section>
+
+  <section class="section" aria-labelledby="recent-learning-title">
+    <div class="section-heading">
+      <span class="section-kicker">最近學習</span>
+      <h2 id="recent-learning-title">最近一次活動</h2>
+    </div>
+    <div id="recentLearning" class="recent-learning-card" role="status" aria-live="polite"></div>
   </section>
 
   <section class="section" aria-labelledby="subjects-title">
