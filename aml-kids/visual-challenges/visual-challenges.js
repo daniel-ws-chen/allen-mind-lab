@@ -301,7 +301,7 @@ function next(){
   persist({resume:0});
   qs('#question-card').hidden=true;
   qs('#completion').hidden=false;
-  qs('#completion-copy').textContent='已完成 '+done.size+' / '+questions.length+' 題；視覺挑戰進度獨立保存，不影響原本單元與學習點數。';
+  qs('#completion-copy').textContent='已完成 '+done.size+' / '+questions.length+' 題；視覺題進度獨立保存，不影響原單元 250 點，但取得的獎勵會加入 AML Kids 總點數。';
   renderCompletionSummary();
   qs('#completion').focus();
 }
