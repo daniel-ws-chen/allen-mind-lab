@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AML Kids｜視覺挑戰</title>
+<link rel="stylesheet" href="visual-challenges.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">AML Kids · Visual Challenge</p>
+    <h1>看圖、判讀、再作答</h1>
+    <p class="hero-lead">原本的 1,350 題完全不動。這裡是額外加入的視覺挑戰，用圖示、示意圖、地圖、表格與流程圖練習從視覺資料找線索。</p>
+    <div class="hero-badges" aria-label="視覺挑戰特色">
+      <span>👀 看懂圖像</span><span>🔎 找出線索</span><span>🧠 整合判斷</span><span>♿ 提供文字替代</span>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<section class="subject-picker" aria-labelledby="subject-title">
+  <div>
+    <span class="section-kicker">Phase 1</span>
+    <h2 id="subject-title">五科各 10 題</h2>
+    <p>視覺挑戰是獨立加值題型，不列入原單元 50 題完成度與學習點數。</p>
+  </div>
+  <nav class="subject-tabs" aria-label="選擇視覺挑戰科目">
+    <a href="?subject=chinese" data-subject-link="chinese">國文</a>
+    <a href="?subject=english" data-subject-link="english">英文</a>
+    <a href="?subject=math" data-subject-link="math">數學</a>
+    <a href="?subject=science" data-subject-link="science">自然</a>
+    <a href="?subject=social" data-subject-link="social">社會</a>
+  </nav>
+</section>
+
+<section class="challenge-shell" aria-labelledby="challenge-title">
+  <div class="challenge-head">
+    <div>
+      <span class="section-kicker" id="subject-kicker">視覺挑戰</span>
+      <h2 id="challenge-title">載入中</h2>
+      <p id="challenge-note">正在準備題目。</p>
+    </div>
+    <div class="challenge-progress" aria-label="視覺挑戰進度">
+      <strong id="progress-text">0 / 10</strong>
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="10" aria-valuenow="0" id="progress-bar">
+        <span id="progress-fill"></span>
+      </div>
+    </div>
+  </div>
+
+  <article class="question-card" id="question-card">
+    <div class="question-meta">
+      <span id="question-number">第 1 題</span>
+      <span id="question-tag">視覺判讀</span>
+    </div>
+    <h3 id="question-stem">題目載入中</h3>
+
+    <figure class="visual-stage" id="visual-stage">
+      <div id="visual-content" aria-hidden="true"></div>
+      <figcaption id="visual-caption"></figcaption>
+      <p class="sr-only" id="visual-description"></p>
+    </figure>
+
+    <fieldset class="answer-options">
+      <legend class="sr-only">請選擇一個答案</legend>
+      <div id="options"></div>
+    </fieldset>
+
+    <div class="question-actions">
+      <button type="button" class="primary" id="check-answer">送出答案</button>
+      <button type="button" class="secondary" id="next-question" hidden>下一題 →</button>
+    </div>
+    <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+  </article>
+
+  <section class="completion" id="completion" hidden tabindex="-1">
+    <span class="completion-icon" aria-hidden="true">🎉</span>
+    <h2>這一科的視覺挑戰完成了</h2>
+    <p id="completion-copy"></p>
+    <div class="completion-actions">
+      <button type="button" class="primary" id="restart">再挑戰一次</button>
+      <a class="secondary-link" href="../">回 AML Kids</a>
+    </div>
+  </section>
+</section>
+
+<section class="visual-note" aria-labelledby="visual-note-title">
+  <span class="section-kicker">無障礙說明</span>
+  <h2 id="visual-note-title">看圖題，也要讓資訊可以被文字取得</h2>
+  <p>每一題都提供等價的文字描述。圖像本身是作答線索，但不會把關鍵資訊只藏在顏色、圖形或位置裡。</p>
+</section>
+</main>
+
+<footer>
+  <p>AML Kids｜視覺挑戰 Phase 1</p>
+  <p>獨立加值題型，不影響原有 1,350 題與學習點數。</p>
+</footer>
+<script src="visual-data.js"></script>
+<script src="visual-challenges.js"></script>
+</body>
+</html>
