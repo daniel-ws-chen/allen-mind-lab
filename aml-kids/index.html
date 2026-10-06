@@ -74,31 +74,31 @@
     </div>
 
     <div class="stage-grid">
-      <article class="stage-card stage-live">
+      <article class="stage-card" data-stage-card="國小">
         <span class="stage-icon" aria-hidden="true">🎒</span>
         <div>
-          <span class="status live">已有內容</span>
+          <span class="status" data-stage-status>檢查中</span>
           <h3>國小</h3>
-          <p>目前已完成五年級上學期 5 科複習內容。</p>
-          <a class="stage-link" href="#quick-title">查看國小內容 →</a>
+          <p data-stage-note>正在整理目前已開放內容。</p>
+          <a class="stage-link" data-stage-link href="wish/?stage=國小">查看內容 →</a>
         </div>
       </article>
-      <article class="stage-card">
+      <article class="stage-card" data-stage-card="國中">
         <span class="stage-icon" aria-hidden="true">📘</span>
         <div>
-          <span class="status">陸續建置中</span>
+          <span class="status" data-stage-status>檢查中</span>
           <h3>國中</h3>
-          <p>七至九年級可依科目與教材版本提出需求。</p>
-          <a class="stage-link" href="wish/?stage=國中">前往許願 →</a>
+          <p data-stage-note>正在整理目前已開放內容。</p>
+          <a class="stage-link" data-stage-link href="wish/?stage=國中">查看內容 →</a>
         </div>
       </article>
-      <article class="stage-card">
+      <article class="stage-card" data-stage-card="高中">
         <span class="stage-icon" aria-hidden="true">🎓</span>
         <div>
-          <span class="status">陸續建置中</span>
+          <span class="status" data-stage-status>檢查中</span>
           <h3>高中</h3>
-          <p>十至十二年級可依科目、教材版本或主題提出需求。</p>
-          <a class="stage-link" href="wish/?stage=高中">前往許願 →</a>
+          <p data-stage-note>正在整理目前已開放內容。</p>
+          <a class="stage-link" data-stage-link href="wish/?stage=高中">查看內容 →</a>
         </div>
       </article>
     </div>
@@ -115,7 +115,7 @@
 
   <section class="section quick-start" aria-labelledby="quick-title">
     <div class="section-heading center">
-      <span class="section-kicker">目前已開放｜國小五年級上學期</span>
+      <span class="section-kicker" id="quickScopeLabel">目前已開放｜國小五年級上學期</span>
       <h2 id="quick-title">先選科目，再選教材版本</h2>
       <p>目前各科先完成一個教材版本；其他版本會陸續建置，也可以直接許願。</p>
     </div>
