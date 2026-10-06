@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>My AML Kids｜跨科錯題中心</title>
+<link rel="stylesheet" href="../../assets/kids-home.css">
+<style>
+.mistakes-page{max-width:1040px;margin:auto;padding:1rem}
+.mistake-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.mistake-stat{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem;text-align:center}
+.mistake-stat strong{display:block;font-size:1.7rem;color:#294b6d}
+.mistake-stat span{color:#60758b}
+.filter-bar{display:flex;gap:.55rem;flex-wrap:wrap;margin:1rem 0}
+.filter-btn{min-height:44px;border:1px solid #aebfd0;background:#fff;color:#35506c;border-radius:999px;padding:.55rem .85rem;font:inherit;font-weight:850;cursor:pointer}
+.filter-btn[aria-pressed="true"]{background:#294b6d;color:#fff;border-color:#294b6d}
+.filter-btn:focus-visible,.mistake-link:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.mistake-list{display:grid;gap:.8rem}
+.mistake-card{background:#fff;border:1px solid #d8e3ed;border-left:6px solid #b45b68;border-radius:1rem;padding:1rem}
+.mistake-card.corrected{border-left-color:#4e8b63;background:#f9fcfa}
+.mistake-meta{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:.45rem}
+.mistake-chip{border:1px solid #ccd8e3;border-radius:999px;padding:.15rem .55rem;font-size:.84rem;font-weight:850;background:#f7fafc}
+.mistake-card h3{font-size:1.05rem;line-height:1.7;margin:.35rem 0}
+.mistake-card p{color:#60758b;margin:.3rem 0 .8rem}
+.mistake-link{display:inline-flex;align-items:center;min-height:44px;padding:.55rem .8rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900}
+.empty-state{background:#fff;border:1px dashed #aebfd0;border-radius:1rem;padding:1.4rem;text-align:center;color:#60758b}
+.note-box{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
+@media(max-width:720px){.mistake-summary{grid-template-columns:1fr}.mistake-link{width:100%;justify-content:center}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="hero portal-hero">
+  <div class="hero-inner">
+    <p class="eyebrow">My AML Kids</p>
+    <h1>跨科錯題中心</h1>
+    <p class="hero-lead">把國文、社會、自然、英文與數學的錯題集中在一起，優先處理還沒訂正完成的題目。</p>
+  </div>
+</header>
+<main id="main" class="mistakes-page">
+  <p><a class="enter" href="../">← 回我的學習進度</a>　<a class="enter" href="../../">回 AML Kids</a></p>
+
+  <section class="section" aria-labelledby="mistake-summary-title">
+    <div class="section-heading">
+      <span class="section-kicker">錯題總覽</span>
+      <h2 id="mistake-summary-title">先看需要處理多少題</h2>
+    </div>
+    <div class="mistake-summary">
+      <div class="mistake-stat"><strong id="allMistakes">0</strong><span>曾經答錯</span></div>
+      <div class="mistake-stat"><strong id="pendingMistakes">0</strong><span>待訂正</span></div>
+      <div class="mistake-stat"><strong id="correctedMistakes">0</strong><span>已訂正</span></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="mistake-list-title">
+    <div class="section-heading">
+      <span class="section-kicker">篩選複習</span>
+      <h2 id="mistake-list-title">我的錯題</h2>
+      <p>預設先顯示「待訂正」，也可以依科目查看。</p>
+    </div>
+    <div class="filter-bar" aria-label="錯題篩選">
+      <button class="filter-btn" type="button" data-status="pending" aria-pressed="true">待訂正</button>
+      <button class="filter-btn" type="button" data-status="all" aria-pressed="false">全部</button>
+      <button class="filter-btn" type="button" data-status="corrected" aria-pressed="false">已訂正</button>
+    </div>
+    <div class="filter-bar" aria-label="科目篩選">
+      <button class="filter-btn subject-filter" type="button" data-subject="全部" aria-pressed="true">全部科目</button>
+      <button class="filter-btn subject-filter" type="button" data-subject="國文" aria-pressed="false">國文</button>
+      <button class="filter-btn subject-filter" type="button" data-subject="社會" aria-pressed="false">社會</button>
+      <button class="filter-btn subject-filter" type="button" data-subject="自然" aria-pressed="false">自然</button>
+      <button class="filter-btn subject-filter" type="button" data-subject="英文" aria-pressed="false">英文</button>
+      <button class="filter-btn subject-filter" type="button" data-subject="數學" aria-pressed="false">數學</button>
+    </div>
+    <div id="mistakeList" class="mistake-list" aria-live="polite"></div>
+  </section>
+
+  <section class="section note-box" aria-labelledby="note-title">
+    <h2 id="note-title">怎麼完成訂正？</h2>
+    <p>點「回單元重新挑戰」回到原單元，在 50 題挑戰中再次作答；答對後，這題會自動轉成「已訂正」，並獲得完整 5 點學習點數。</p>
+  </section>
+</main>
+<footer><p>My AML Kids｜跨科錯題中心</p></footer>
+<script src="mistakes.js"></script>
+</body>
+</html>
