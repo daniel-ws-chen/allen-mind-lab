@@ -182,6 +182,15 @@ for(const file of versionPages){
   for(const param of ['stage=','grade=','semester=','subject=','publisher=','version=']){
     if(!link.includes(param)) fail(file+': visual link missing '+param);
   }
+
+  if(file.includes('social-5a/')){
+    if(!html.includes('視覺題 10 題')&&!html.includes('視覺題 10')) fail(file+': social edition must present visual questions as an edition-level type');
+    if(!html.includes('本版本題型')) fail(file+': social edition must explain the four question types');
+  }else{
+    for(const token of ['本版本題型','基礎 20 題','進階 20 題','素養 10 題','視覺 10 題']){
+      if(!html.includes(token)) fail(file+': edition question-type map missing '+token);
+    }
+  }
 }
 
 warnings.forEach(x=>console.warn('WARN:',x));
