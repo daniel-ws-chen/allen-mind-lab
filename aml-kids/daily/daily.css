@@ -1,0 +1,24 @@
+.daily-page{max-width:1040px;margin:auto;padding:1rem}
+.daily-overview{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;align-items:center;background:linear-gradient(135deg,#eef7ff,#fff8e8)}
+.daily-overview h2{margin:.15rem 0}.daily-overview p{margin:.25rem 0;color:#60758b}
+.daily-stat{min-width:130px;text-align:center;background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem}
+.daily-stat strong{display:block;font-size:1.8rem;color:#294b6d}.daily-stat span{color:#60758b}
+.daily-questions{display:grid;gap:1rem}
+.daily-question{background:#fff;border:1px solid #d8e3ed;border-left:6px solid #6d8fb0;border-radius:1rem;padding:1rem}
+.daily-question.is-complete{border-left-color:#4e8b63;background:#f9fcfa}
+.daily-meta{display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:.45rem}
+.daily-chip{border:1px solid #ccd8e3;border-radius:999px;padding:.15rem .55rem;font-size:.82rem;font-weight:850;background:#f7fafc}
+.daily-question h3{font-size:1.08rem;line-height:1.7;margin:.45rem 0 .75rem}
+.daily-options{border:0;margin:0;padding:0;display:grid;gap:.55rem}
+.daily-option{display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-items:start;border:1px solid #ccd8e3;border-radius:.85rem;padding:.7rem .8rem;background:#fff;cursor:pointer}
+.daily-option:hover{border-color:#87a4c0;background:#f7fbff}.daily-option input{margin-top:.32rem;width:1.1rem;height:1.1rem}
+.daily-option input:focus-visible+span{outline:4px solid #f59e0b;outline-offset:3px}
+.daily-actions{display:flex;gap:.55rem;align-items:center;flex-wrap:wrap;margin-top:.75rem}
+.daily-check,.daily-button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.6rem .9rem;border:0;border-radius:999px;background:#20324a;color:#fff;font:inherit;font-weight:900;text-decoration:none;cursor:pointer}
+.daily-check:focus-visible,.daily-button:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.daily-feedback{min-height:1.7rem;margin:.65rem 0 0;color:#60758b}
+.daily-feedback.good{color:#2f6942}.daily-feedback.note{color:#795b1f}
+.daily-complete{text-align:center;background:#f4fbf6;border:1px dashed #9ac0a5}.complete-icon{font-size:2.5rem}
+.daily-note{background:#f7fafc;color:#60758b}
+@media(max-width:700px){.daily-overview{grid-template-columns:1fr}.daily-stat{text-align:left}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
