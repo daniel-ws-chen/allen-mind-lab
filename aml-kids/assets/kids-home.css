@@ -245,3 +245,24 @@ button,a{touch-action:manipulation}
 .my-kids-button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900;white-space:nowrap}
 .my-kids-button:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
 @media(max-width:760px){.my-kids-banner{grid-template-columns:auto 1fr}.my-kids-button{grid-column:1/-1;white-space:normal;text-align:center}}
+
+
+/* AML Kids visual challenge */
+.visual-challenge-banner{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;background:linear-gradient(135deg,#eef7ff,#fff8e8);border:1px solid #d5e1eb;border-radius:1.25rem;padding:1.2rem 1.3rem;box-shadow:0 10px 26px rgba(51,79,112,.055)}
+.visual-challenge-banner__icon{font-size:2.3rem;line-height:1;background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:.7rem}
+.visual-challenge-banner h2{margin:.1rem 0 .3rem}
+.visual-challenge-banner p{margin:0;color:#60758b}
+.visual-challenge-banner__button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900;white-space:nowrap}
+.visual-challenge-banner__button:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.visual-unit-card{display:block;margin-top:1rem;text-decoration:none;background:linear-gradient(135deg,#f2f8ff,#fffaf0);border:2px solid #c8d9e8;border-radius:1.1rem;padding:1rem;box-shadow:0 8px 22px rgba(51,79,112,.055)}
+.visual-unit-card:hover{border-color:#7597b8}
+.visual-unit-card:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.visual-unit-card .visual-unit-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.visual-unit-card h3{margin:.55rem 0 .25rem}
+.visual-unit-card p{margin:.2rem 0;color:#60758b}
+.visual-unit-card .visual-unit-meta{display:flex;gap:.4rem;flex-wrap:wrap;margin:.8rem 0}
+.visual-unit-card .visual-unit-meta span{font-size:.82rem;font-weight:800;border-radius:999px;background:#fff;border:1px solid #d8e3ed;padding:.2rem .55rem}
+@media(max-width:800px){
+  .visual-challenge-banner{grid-template-columns:auto 1fr}
+  .visual-challenge-banner__button{grid-column:1/-1;white-space:normal;text-align:center}
+}
