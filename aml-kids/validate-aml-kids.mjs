@@ -225,6 +225,16 @@ if(fs.existsSync(portalJsFile)){
   for(const id of ['portalSubjectCount','portalUnitCount','portalQuestionCount','portalQuestionsPerUnit']){
     if(!portalJs.includes(id)) fail(portalJsFile,'dynamic portal summary missing: '+id);
   }
+  if(!portalJs.includes("document.querySelectorAll('[data-stage-card]')")) fail(portalJsFile,'stage cards are not catalog-driven');
+  if(!portalJs.includes('updateQuickScopeLabel')) fail(portalJsFile,'current scope label is not catalog-driven');
+}
+
+const portalHtmlFile=path.join(ROOT,'index.html');
+if(fs.existsSync(portalHtmlFile)){
+  const portalHtml=fs.readFileSync(portalHtmlFile,'utf8');
+  const stageCards=(portalHtml.match(/data-stage-card="(國小|國中|高中)"/g)||[]).length;
+  if(stageCards!==3) fail(portalHtmlFile,'expected 3 catalog-driven stage cards, found '+stageCards);
+  if(!portalHtml.includes('id="quickScopeLabel"')) fail(portalHtmlFile,'dynamic quick-start scope label missing');
 }
 
 const myJsFile=path.join(ROOT,'my','my-kids.js');
