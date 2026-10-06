@@ -228,6 +228,10 @@ if(fs.existsSync(backupJsFile)){
   if(!backupJs.includes("key.startsWith('amlKids')")) fail(backupJsFile,'backup import/export must stay limited to amlKids keys');
   if(!backupJs.includes("MAX_FILE_BYTES=1024*1024")) fail(backupJsFile,'backup file-size guard missing');
   if(!backupJs.includes("confirmImport")) fail(backupJsFile,'backup import confirmation missing');
+  if(!backupJs.includes("RESTORE_POINT_KEY='amlKidsBackupRestorePointV1'")) fail(backupJsFile,'pre-import restore point missing');
+  if(!backupJs.includes("if(!includeRestorePoint&&key===RESTORE_POINT_KEY) continue")) fail(backupJsFile,'restore point must be excluded from downloadable backups');
+  if(!backupJs.includes("createRestorePoint();")) fail(backupJsFile,'import must create a restore point first');
+  if(!backupJs.includes("clearCurrentAmlKidsData();")) fail(backupJsFile,'rollback must clear imported AML Kids state before restoring snapshot');
 }
 
 const mistakesJsFile=path.join(ROOT,'my','mistakes','mistakes.js');
