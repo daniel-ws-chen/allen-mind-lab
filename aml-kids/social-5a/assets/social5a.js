@@ -24,7 +24,6 @@ function renderScore(){
  document.querySelector('#scoreText').textContent=`${state.wallet} 點`;
  document.querySelector('#scoreProgress').hidden=true;
  document.querySelector('#unitScoreText').textContent=`本單元 ${Math.min(state.unitScore,UNIT_MAX)} / ${UNIT_MAX}`;
- const redeem=document.querySelector('#redeemBox'); if(redeem) redeem.hidden=true;
  renderChallengeProgress();
  renderResume();
 }
@@ -331,10 +330,6 @@ document.querySelectorAll('.mistake-filter').forEach(btn=>{
   });
   renderMistakes();
  });
-});
-const redeemBtn=document.querySelector('#parentRedeemInfo');
-if(redeemBtn)redeemBtn.addEventListener('click',()=>{
- document.querySelector('#redeemInfo').textContent='請由爸爸媽媽確認實際獎勵與兌換；Prototype 暫不自動扣點，避免誤觸。';
 });
 showSegment(state.resume?.level||'基礎',{scroll:false});renderScore();renderMistakes();renderResume();
 showPanel(location.hash?.slice(1)&&document.getElementById(location.hash.slice(1))?location.hash.slice(1):'home');
