@@ -174,7 +174,7 @@ for(const entry of entries){
   if(keys.MISTAKES_KEY!==entry.mistakes) fail(catalogFile,`mistakes key mismatch for ${entry.url}: catalog=${entry.mistakes} script=${keys.MISTAKES_KEY||'missing'}`);
   if(keys.RESUME_KEY!==entry.resume) fail(catalogFile,`resume key mismatch for ${entry.url}: catalog=${entry.resume} script=${keys.RESUME_KEY||'missing'}`);
 
-  Object.values(keys).forEach(key=>{
+  [...new Set(Object.values(keys))].forEach(key=>{
     if(!storageOwners.has(key)) storageOwners.set(key,[]);
     storageOwners.get(key).push(scriptFile);
   });
