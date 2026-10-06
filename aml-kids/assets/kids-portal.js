@@ -65,6 +65,160 @@ function updateQuickScopeLabel(){
   el.textContent='目前已開放｜'+(current.label||current.stage+gradeName(Number(current.grade))+current.semester);
 }
 
+function editionHome(list){
+  const urls=list.map(u=>u.url);
+  const direct=urls.find(url=>!/\/unit\d+\/$/.test(url));
+  if(direct) return direct;
+  return (urls[0]||'/aml-kids/').replace(/\/unit\d+\/$/,'/');
+}
+function wishUrl(scope,subject,version){
+  const params=new URLSearchParams({
+    stage:scope.stage,
+    grade:gradeName(Number(scope.grade)),
+    semester:scope.semester,
+    subject,
+    version
+  });
+  return 'wish/?'+params.toString();
+}
+function renderSubjectPortal(){
+  const wrap=document.getElementById('subjectPortalGrid');
+  const scope=catalog.currentScope;
+  if(!wrap||!scope) return;
+
+  const scoped=(catalog.units||[]).filter(unit=>
+    unit.stage===scope.stage &&
+    Number(unit.grade)===Number(scope.grade) &&
+    unit.semester===scope.semester
+  );
+  const details=catalog.subjectDetails||[];
+  const order=catalog.subjects||[];
+  wrap.innerHTML='';
+
+  order.filter(subject=>scoped.some(u=>u.subject===subject)).forEach((subject,index)=>{
+    const detail=details.find(d=>d.subject===subject)||{subject,slug:'subject-'+index,icon:'📘',intro:'自主學習內容',wishVersions:[]};
+    const subjectUnits=scoped.filter(u=>u.subject===subject);
+    const editions=[];
+    const map=new Map();
+    subjectUnits.forEach(unit=>{
+      const key=unit.publisher+'|'+unit.version;
+      if(!map.has(key)){
+        const edition={key,publisher:unit.publisher,version:unit.version,units:[]};
+        map.set(key,edition);
+        editions.push(edition);
+      }
+      map.get(key).units.push(unit);
+    });
+
+    const section=document.createElement('section');
+    section.className='subject-portal '+detail.slug+'-portal';
+    const titleId='subject-'+detail.slug+'-title';
+    section.setAttribute('aria-labelledby',titleId);
+
+    const top=document.createElement('div');
+    top.className='portal-top';
+    const icon=document.createElement('div');
+    icon.className='portal-icon';
+    icon.setAttribute('aria-hidden','true');
+    icon.textContent=detail.icon;
+    const headingWrap=document.createElement('div');
+    const label=document.createElement('span');
+    label.className='subject-label';
+    label.textContent=editions.map(e=>e.publisher).filter((v,i,a)=>a.indexOf(v)===i).join('／')+'｜'+subject;
+    const h3=document.createElement('h3');
+    h3.id=titleId;
+    h3.textContent=gradeName(Number(scope.grade))+scope.semester+subject;
+    headingWrap.append(label,h3);
+    top.append(icon,headingWrap);
+
+    const intro=document.createElement('p');
+    intro.textContent=detail.intro;
+
+    const picker=document.createElement('div');
+    picker.className='version-picker';
+    picker.setAttribute('aria-label',subject+'教材版本');
+    const pickerLabel=document.createElement('span');
+    pickerLabel.className='version-label';
+    pickerLabel.textContent='教材版本';
+    picker.appendChild(pickerLabel);
+
+    editions.forEach(edition=>{
+      const chip=document.createElement('a');
+      chip.className='version-chip active';
+      chip.href=editionHome(edition.units);
+      chip.textContent=edition.publisher+' '+edition.version+'｜已開放';
+      picker.appendChild(chip);
+    });
+    (detail.wishVersions||[]).filter(version=>!editions.some(e=>e.publisher===version)).forEach(version=>{
+      const chip=document.createElement('a');
+      chip.className='version-chip';
+      chip.href=wishUrl(scope,subject,version);
+      chip.textContent=version+'｜陸續建置中';
+      picker.appendChild(chip);
+    });
+
+    const editionContainer=document.createElement('div');
+    editionContainer.className='portal-editions';
+    editions.forEach(edition=>{
+      const group=document.createElement('div');
+      group.className='portal-edition-group';
+      if(editions.length>1){
+        const editionTitle=document.createElement('h4');
+        editionTitle.className='portal-edition-title';
+        editionTitle.textContent=edition.publisher+' '+edition.version;
+        group.appendChild(editionTitle);
+      }
+      const units=document.createElement('div');
+      units.className='portal-units';
+      edition.units
+        .slice()
+        .sort((a,b)=>Number(a.unit.replace(/\D/g,''))-Number(b.unit.replace(/\D/g,'')))
+        .forEach(unit=>{
+          const link=document.createElement('a');
+          link.className='portal-unit-link';
+          link.href=unit.url;
+
+          const no=document.createElement('span');
+          no.className='portal-unit-number';
+          no.textContent=String(Number(unit.unit.replace(/\D/g,''))).padStart(2,'0');
+
+          const copy=document.createElement('span');
+          const strong=document.createElement('strong');
+          strong.textContent=unit.title;
+          const small=document.createElement('small');
+          small.textContent=unit.summary||('進入 '+unit.title+' 學習');
+          copy.append(strong,small);
+
+          const arrow=document.createElement('span');
+          arrow.className='portal-arrow';
+          arrow.setAttribute('aria-hidden','true');
+          arrow.textContent='→';
+
+          link.append(no,copy,arrow);
+          units.appendChild(link);
+        });
+      group.appendChild(units);
+
+      const home=document.createElement('a');
+      home.className='subject-home-link';
+      home.href=editionHome(edition.units);
+      home.textContent='進入'+subject+'｜'+edition.publisher+' '+edition.version+' 學習區';
+      group.appendChild(home);
+      editionContainer.appendChild(group);
+    });
+
+    section.append(top,intro,picker,editionContainer);
+    wrap.appendChild(section);
+  });
+
+  if(!wrap.children.length){
+    const empty=document.createElement('p');
+    empty.className='portal-loading';
+    empty.textContent='目前這個學習範圍尚未有已開放科目。';
+    wrap.appendChild(empty);
+  }
+}
+
 function updatePortalSummary(){
   const units=catalog.units||[];
   const subjects=[...new Set(units.map(u=>u.subject))];
@@ -132,4 +286,5 @@ gradeSelect.addEventListener('change',()=>updateSelector('grade'));
 updatePortalSummary();
 updateStageCards();
 updateQuickScopeLabel();
+renderSubjectPortal();
 updateSelector('grade');
