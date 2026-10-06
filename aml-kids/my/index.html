@@ -52,8 +52,13 @@
 .recent-learning-card strong{display:block;margin-bottom:.25rem}
 .recent-learning-card p{margin:.25rem 0;color:#60758b}
 .recent-learning-card a{display:inline-flex;margin-top:.45rem;font-weight:900;color:#315d86}
+.daily-five-card{display:flex;justify-content:space-between;gap:1rem;align-items:center;background:linear-gradient(135deg,#fff8e8,#f3f9ff);border:1px solid #dfd4b4;border-radius:1rem;padding:1rem}
+.daily-five-card strong{display:block;font-size:1.15rem;color:#294b6d}
+.daily-five-card p{margin:.25rem 0;color:#60758b}
+.daily-five-card a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.6rem .85rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900;white-space:nowrap}
+.daily-five-card a:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
 .device-note{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
-@media(max-width:760px){.my-summary{grid-template-columns:repeat(2,1fr)}.visual-progress-grid{grid-template-columns:repeat(2,1fr)}.unit-mini-grid{grid-template-columns:1fr}.continue-box{display:block}.continue-box a{margin-top:.7rem;width:100%}.scope-picker{grid-template-columns:1fr}.subject-progress-head{align-items:flex-start}.subject-progress-head>strong{text-align:right}.unit-mini--complete{padding:.58rem .7rem}.unit-mini--complete small{display:none}}
+@media(max-width:760px){.my-summary{grid-template-columns:repeat(2,1fr)}.visual-progress-grid{grid-template-columns:repeat(2,1fr)}.daily-five-card{display:block}.daily-five-card a{margin-top:.7rem;width:100%;white-space:normal}.unit-mini-grid{grid-template-columns:1fr}.continue-box{display:block}.continue-box a{margin-top:.7rem;width:100%}.scope-picker{grid-template-columns:1fr}.subject-progress-head{align-items:flex-start}.subject-progress-head>strong{text-align:right}.unit-mini--complete{padding:.58rem .7rem}.unit-mini--complete small{display:none}}
 @media(max-width:460px){.my-summary{grid-template-columns:1fr}.visual-progress-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -105,6 +110,14 @@
       </div>
       <a id="continueLink" href="../">繼續 →</a>
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="daily-five-progress-title">
+    <div class="section-heading">
+      <span class="section-kicker">Daily 5</span>
+      <h2 id="daily-five-progress-title">今日 5 題</h2>
+    </div>
+    <div id="dailyFiveCard" class="daily-five-card" role="status" aria-live="polite"></div>
   </section>
 
   <section class="section" aria-labelledby="visual-progress-title">
