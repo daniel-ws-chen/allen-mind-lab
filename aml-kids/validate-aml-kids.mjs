@@ -247,6 +247,7 @@ if(fs.existsSync(portalJsFile)){
   if(!portalJs.includes('unitProgress')) fail(portalJsFile,'home unit cards do not show local learning progress');
   if(!portalJs.includes('renderActiveLearning')) fail(portalJsFile,'home does not surface in-progress units');
   if(!portalJs.includes('portal-unit-progress')) fail(portalJsFile,'home unit progress badge markup missing');
+  if(!portalJs.includes("portal-unit-link--complete")) fail(portalJsFile,'completed unit card state marker missing');
   if(!portalJs.includes("document.createElement('details')")) fail(portalJsFile,'mobile unit disclosure must use native details/summary');
   if(!portalJs.includes('catalog.subjectDetails')) fail(portalJsFile,'subject portal does not use catalog subjectDetails');
   if(!portalJs.includes('updateHeroLauncher')) fail(portalJsFile,'home quick-start launcher is not catalog-driven');
@@ -282,6 +283,12 @@ if(fs.existsSync(backupJsFile)){
   if(!backupJs.includes("if(!includeRestorePoint&&key===RESTORE_POINT_KEY) continue")) fail(backupJsFile,'restore point must be excluded from downloadable backups');
   if(!backupJs.includes("createRestorePoint();")) fail(backupJsFile,'import must create a restore point first');
   if(!backupJs.includes("clearCurrentAmlKidsData();")) fail(backupJsFile,'rollback must clear imported AML Kids state before restoring snapshot');
+}
+
+const homeCssFile=path.join(ROOT,'assets','kids-home.css');
+if(fs.existsSync(homeCssFile)){
+  const homeCss=fs.readFileSync(homeCssFile,'utf8');
+  if(!homeCss.includes('.portal-unit-link--complete small{display:none}')) warn(homeCssFile,'mobile completed-unit compaction missing');
 }
 
 const aboutFile=path.join(ROOT,'about','index.html');
