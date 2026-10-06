@@ -276,3 +276,17 @@ button,a{touch-action:manipulation}
 .daily-five-banner__button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.7rem 1rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900;white-space:nowrap}
 .daily-five-banner__button:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
 @media(max-width:800px){.daily-five-banner{grid-template-columns:auto 1fr}.daily-five-banner__button{grid-column:1/-1;white-space:normal;text-align:center}}
+
+
+/* Edition question type map */
+.question-type-map{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-top:.85rem}
+.question-type-card{border:1px solid #d4dfe8;border-radius:1rem;background:#fff;padding:.85rem}
+.question-type-card strong{display:block;font-size:1rem;color:#294b6d}
+.question-type-card span{display:block;margin-top:.15rem;color:#60758b;font-size:.84rem}
+.question-type-card--visual{display:block;text-decoration:none;background:linear-gradient(135deg,#f2f8ff,#fffaf0);border:2px solid #9fb8cf}
+.question-type-card--visual:hover{border-color:#7597b8}
+.question-type-card--visual:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.question-type-card--visual strong{color:#315d86}
+.question-type-note{margin:.7rem 0 0;color:#60758b;font-size:.9rem}
+@media(max-width:820px){.question-type-map{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.question-type-map{grid-template-columns:1fr}}
