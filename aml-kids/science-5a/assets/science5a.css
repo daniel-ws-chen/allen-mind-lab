@@ -78,3 +78,6 @@
 .answer-option{font-size:1.04rem;line-height:1.7;padding:.82rem}
 .level-chip,.source-chip,.done-chip,.reading-material-tag,.segment-state{font-size:.88rem}
 .feedback{font-size:1rem;line-height:1.7}
+
+
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
