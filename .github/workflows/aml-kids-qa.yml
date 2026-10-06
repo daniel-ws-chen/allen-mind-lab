@@ -1,0 +1,36 @@
+name: AML Kids QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'aml-kids/**'
+      - '.github/workflows/aml-kids-qa.yml'
+  pull_request:
+    paths:
+      - 'aml-kids/**'
+      - '.github/workflows/aml-kids-qa.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate AML Kids
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Validate site structure
+        run: node aml-kids/validate-aml-kids.mjs
+
+      - name: Validate question content
+        run: node aml-kids/validate-aml-kids-content.mjs
