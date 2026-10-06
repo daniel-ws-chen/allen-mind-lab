@@ -311,6 +311,16 @@ if(!fs.existsSync(aboutFile)){
   if(!about.includes('../my/backup/')) fail(aboutFile,'usage notice missing backup link');
 }
 
+const qaJsFile=path.join(ROOT,'qa','qa.js');
+if(fs.existsSync(qaJsFile)){
+  const qaJs=fs.readFileSync(qaJsFile,'utf8');
+  if(!qaJs.includes("'summary'")) fail(qaJsFile,'device QA does not validate Catalog v4 summary metadata');
+  if(!qaJs.includes('resumeShapeWarnings')) fail(qaJsFile,'device QA does not validate resume record shape');
+  if(!qaJs.includes('mistakeIdWarnings')) fail(qaJsFile,'device QA does not validate exact mistake question IDs');
+  if(!qaJs.includes("amlKidsMyScopeV1")) fail(qaJsFile,'device QA does not validate My AML Kids scope persistence');
+  if(!qaJs.includes("amlKidsBackupRestorePointV1")) fail(qaJsFile,'device QA does not inspect backup restore-point readiness');
+}
+
 const mistakesJsFile=path.join(ROOT,'my','mistakes','mistakes.js');
 if(fs.existsSync(mistakesJsFile)){
   const mistakesJs=fs.readFileSync(mistakesJsFile,'utf8');
