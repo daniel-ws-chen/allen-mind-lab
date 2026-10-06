@@ -11,7 +11,7 @@
 .my-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
 .my-stat{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem;text-align:center}
 .my-stat strong{display:block;font-size:1.7rem;color:#294b6d}
-.my-stat span{color:#60758b}
+.my-stat span{color:#60758b}.my-stat-link{text-decoration:none;color:inherit}.my-stat-link small{display:block;margin-top:.35rem;color:#315d86;font-weight:850}.my-stat-link:hover{border-color:#87a4c0}.my-stat-link:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
 .subject-progress-list{display:grid;gap:.9rem}
 .subject-progress-card{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem}
 .subject-progress-head{display:flex;justify-content:space-between;gap:1rem;align-items:center}
@@ -52,7 +52,7 @@
       <div class="my-stat"><strong id="totalPoints">0</strong><span>學習點數</span></div>
       <div class="my-stat"><strong id="completedUnits">0 / 27</strong><span>完成單元</span></div>
       <div class="my-stat"><strong id="completedQuestions">0 / 1350</strong><span>完成題數</span></div>
-      <div class="my-stat"><strong id="pendingMistakes">0</strong><span>待訂正題目</span></div>
+      <a class="my-stat my-stat-link" href="mistakes/"><strong id="pendingMistakes">0</strong><span>待訂正題目</span><small>開啟跨科錯題中心 →</small></a>
     </div>
   </section>
 
