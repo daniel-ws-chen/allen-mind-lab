@@ -75,6 +75,12 @@ footer p{margin:.2rem 0}
 .portal-edition-group{display:grid;gap:.65rem}
 .portal-edition-title{margin:.1rem 0;color:#40566d;font-size:.95rem}
 .portal-units{display:grid;gap:.65rem}
+.portal-more-units{margin-top:.15rem;border:1px solid #d8e3ed;border-radius:.9rem;background:#f7fafc;overflow:hidden}
+.portal-more-units summary{display:flex;align-items:center;justify-content:center;min-height:46px;padding:.55rem .8rem;cursor:pointer;font-weight:900;color:#315d86;list-style-position:inside}
+.portal-more-units summary:hover{background:#eef5fb}
+.portal-more-units summary:focus-visible{outline:4px solid #f59e0b;outline-offset:-4px}
+.portal-more-units[open] summary{border-bottom:1px solid #d8e3ed;background:#eef5fb}
+.portal-units--more{padding:.65rem}
 .portal-unit-link{display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;align-items:center;text-decoration:none;border:1px solid #d8e3ed;background:#fbfdff;border-radius:1rem;padding:.8rem}
 .portal-unit-link:hover{border-color:#87a4c0;background:#f7fbff}
 .portal-unit-link:focus-visible,.subject-home-link:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
