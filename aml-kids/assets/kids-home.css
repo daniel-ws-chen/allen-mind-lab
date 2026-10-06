@@ -50,6 +50,10 @@ footer p{margin:.2rem 0}
 .portal-icon{font-size:2.2rem;line-height:1;background:#f5f8fb;border-radius:1rem;padding:.7rem}
 .portal-top h3{margin:.08rem 0;font-size:1.25rem}
 .subject-portal>p{color:#60758b;margin:.75rem 0 1rem}
+.portal-loading{grid-column:1/-1;margin:0;padding:1rem;border:1px dashed #b8c7d5;border-radius:1rem;background:#f7fafc;color:#60758b;text-align:center}
+.portal-editions{display:grid;gap:1rem}
+.portal-edition-group{display:grid;gap:.65rem}
+.portal-edition-title{margin:.1rem 0;color:#40566d;font-size:.95rem}
 .portal-units{display:grid;gap:.65rem}
 .portal-unit-link{display:grid;grid-template-columns:auto 1fr auto;gap:.75rem;align-items:center;text-decoration:none;border:1px solid #d8e3ed;background:#fbfdff;border-radius:1rem;padding:.8rem}
 .portal-unit-link:hover{border-color:#87a4c0;background:#f7fbff}
