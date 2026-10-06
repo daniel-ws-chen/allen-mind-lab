@@ -245,6 +245,7 @@ if(fs.existsSync(portalJsFile)){
   if(!portalJs.includes("window.matchMedia('(max-width:800px)')")) fail(portalJsFile,'mobile subject compaction breakpoint missing');
   if(!portalJs.includes('appendEditionUnits')) fail(portalJsFile,'long unit lists are not compacted for mobile');
   if(!portalJs.includes('unitProgress')) fail(portalJsFile,'home unit cards do not show local learning progress');
+  if(!portalJs.includes('renderActiveLearning')) fail(portalJsFile,'home does not surface in-progress units');
   if(!portalJs.includes('portal-unit-progress')) fail(portalJsFile,'home unit progress badge markup missing');
   if(!portalJs.includes("document.createElement('details')")) fail(portalJsFile,'mobile unit disclosure must use native details/summary');
   if(!portalJs.includes('catalog.subjectDetails')) fail(portalJsFile,'subject portal does not use catalog subjectDetails');
@@ -260,6 +261,7 @@ if(fs.existsSync(portalHtmlFile)){
   if(!portalHtml.includes('id="quickScopeLabel"')) fail(portalHtmlFile,'dynamic quick-start scope label missing');
   if(!portalHtml.includes('id="subjectPortalGrid"')) fail(portalHtmlFile,'dynamic subject portal mount missing');
   if(!portalHtml.includes('id="subjectJump"')) fail(portalHtmlFile,'subject quick navigation mount missing');
+  if(!portalHtml.includes('id="activeLearning"')) fail(portalHtmlFile,'active-learning section missing');
   if(!portalHtml.includes('id="heroLaunchPrimary"')) fail(portalHtmlFile,'home quick-start launcher missing');
   if(/<section class="subject-portal [^"]+-portal"/.test(portalHtml)) fail(portalHtmlFile,'static subject portal cards remain in home page');
 }
