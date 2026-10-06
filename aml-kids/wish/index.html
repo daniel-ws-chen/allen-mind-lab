@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AML Kids 許願單｜年級・科目・版本</title>
+<link rel="stylesheet" href="../assets/kids-home.css">
+<style>
+.wish-page{max-width:820px;margin:auto}
+.wish-form{background:#fff;border:1px solid #d8e3ed;border-radius:1.25rem;padding:1.2rem;box-shadow:0 12px 28px rgba(51,79,112,.075)}
+.wish-form fieldset{border:0;padding:0;margin:0 0 1.25rem}
+.wish-form legend,.wish-form label{font-weight:900;color:#20324a}
+.wish-form label{display:block;margin:.85rem 0 .3rem}
+.wish-form select,.wish-form input,.wish-form textarea{width:100%;font:inherit;min-height:48px;border:1px solid #bac9d6;border-radius:.8rem;padding:.65rem .75rem;background:#fff;color:#20324a}
+.wish-form textarea{min-height:130px;resize:vertical}
+.wish-form select:focus,.wish-form input:focus,.wish-form textarea:focus,.wish-form button:focus-visible{outline:4px solid #f59e0b;outline-offset:2px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 1rem}
+.help{color:#60758b;font-size:.88rem;margin:.3rem 0}
+.actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.2rem}
+.actions button,.actions a{min-height:48px;border-radius:999px;padding:.7rem 1rem;font:inherit;font-weight:900;text-decoration:none;cursor:pointer}
+.primary-action{border:0;background:#20324a;color:#fff}
+.secondary-action{border:1px solid #9fb1c2;background:#fff;color:#20324a}
+.status-line{min-height:1.7rem;margin-top:.7rem;font-weight:800;color:#2f6942}
+.privacy-box{margin-top:1.2rem;padding:1rem;border-radius:1rem;background:#f7fafc;color:#60758b}
+@media(max-width:680px){.form-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="hero portal-hero">
+  <div class="hero-inner">
+    <p class="eyebrow">AML Kids × AML Wish</p>
+    <h1>告訴我們，你下一個想學什麼？</h1>
+    <p class="hero-lead">從國小、國中到高中，都可以提出年級、科目與教材版本需求。這些願望會作為 AML Kids 後續建置排序的參考。</p>
+  </div>
+</header>
+<main id="main" class="wish-page">
+  <section class="section">
+    <p><a class="enter" href="../">← 回 AML Kids</a></p>
+    <div class="wish-form">
+      <h2>AML Kids 學習內容許願單</h2>
+      <p>填好後會開啟你的郵件程式，由你確認後寄出；網站本身不儲存表單內容。</p>
+      <form id="kidsWishForm">
+        <div class="form-grid">
+          <div>
+            <label for="stage">教育階段</label>
+            <select id="stage" name="stage" required>
+              <option value="">請選擇</option>
+              <option>國小</option><option>國中</option><option>高中</option>
+            </select>
+          </div>
+          <div>
+            <label for="grade">年級</label>
+            <select id="grade" name="grade" required>
+              <option value="">請先選教育階段</option>
+            </select>
+          </div>
+          <div>
+            <label for="semester">學期</label>
+            <select id="semester" name="semester" required>
+              <option value="">請選擇</option><option>上學期</option><option>下學期</option>
+            </select>
+          </div>
+          <div>
+            <label for="subject">科目</label>
+            <input id="subject" name="subject" required maxlength="40" placeholder="例如：數學、自然、國文、生物">
+          </div>
+          <div>
+            <label for="version">教材版本／出版社</label>
+            <input id="version" name="version" maxlength="50" placeholder="例如：康軒、南一、翰林、龍騰">
+          </div>
+          <div>
+            <label for="unit">希望優先的單元／主題</label>
+            <input id="unit" name="unit" maxlength="80" placeholder="選填，例如：分數、細胞、古典文學">
+          </div>
+        </div>
+        <label for="need">希望 AML Kids 怎麼幫你？</label>
+        <textarea id="need" name="need" maxlength="500" placeholder="例如：希望有段考前複習、素養題、會考型題目、觀念整理等。"></textarea>
+        <p class="help">請不要填寫姓名、學校、班級、電話等個人資料。</p>
+        <div class="actions">
+          <button class="primary-action" type="submit">✨ 寄出願望</button>
+          <button class="secondary-action" id="copyWish" type="button">複製願望內容</button>
+          <a class="secondary-action" href="/wish.html">前往一般 AML 許願單</a>
+        </div>
+        <div id="wishStatus" class="status-line" role="status" aria-live="polite"></div>
+      </form>
+      <div class="privacy-box"><strong>隱私提醒：</strong>表單只在瀏覽器中組合文字，不會儲存在 AML Kids。真正寄出前仍會由你的郵件程式再次確認。</div>
+    </div>
+  </section>
+</main>
+<footer><p>AML Kids｜學習內容許願單</p></footer>
+<script src="wish.js"></script>
+</body>
+</html>
