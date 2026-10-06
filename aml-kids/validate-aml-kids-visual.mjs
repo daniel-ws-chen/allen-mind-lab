@@ -93,6 +93,10 @@ if(fs.existsSync(engineFile)){
   if(!js.includes("qs('#prev-question')")) fail('visual challenge previous-question control missing');
   if(!js.includes("fb.textContent='答錯了。")) fail('visual challenge must explicitly announce an incorrect answer');
   if(!js.includes("fb.textContent='答對了。")) fail('visual challenge must explicitly announce a correct answer');
+  if(!js.includes('firstAttempt')) fail('visual challenge must preserve first-attempt correctness');
+  if(!js.includes('wrongEver')) fail('visual challenge must preserve wrong-answer history after correction');
+  if(!js.includes('function renderCompletionSummary')) fail('visual challenge completion summary missing');
+  if(!js.includes("className='review-wrong-btn'")) fail('wrong-answer review buttons missing');
 }
 
 if(fs.existsSync(cssFile)){
