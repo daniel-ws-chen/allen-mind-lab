@@ -19,6 +19,52 @@ function scopeSummary(units){
   const semesterText=semesters.length?semesters.join('、'):'目前';
   return {semesters,subjects,text:semesterText+'已有 '+subjects.length+' 科、'+units.length+' 個單元。'};
 }
+function stageSummary(stage){
+  const list=(catalog.units||[]).filter(unit=>unit.stage===stage);
+  const grades=[...new Set(list.map(u=>Number(u.grade)))].sort((a,b)=>a-b);
+  const subjects=[...new Set(list.map(u=>u.subject))];
+  return {list,grades,subjects};
+}
+function updateStageCards(){
+  document.querySelectorAll('[data-stage-card]').forEach(card=>{
+    const stage=card.dataset.stageCard;
+    const status=card.querySelector('[data-stage-status]');
+    const note=card.querySelector('[data-stage-note]');
+    const link=card.querySelector('[data-stage-link]');
+    const summary=stageSummary(stage);
+
+    if(summary.list.length){
+      card.classList.add('stage-live');
+      status.textContent='已有內容';
+      status.classList.add('live');
+      const gradeText=summary.grades.map(gradeName).join('、');
+      note.textContent=gradeText+'已有 '+summary.subjects.length+' 科、'+summary.list.length+' 個單元。';
+
+      const current=catalog.currentScope;
+      if(current&&current.stage===stage){
+        link.href='#quick-title';
+        link.textContent='查看'+stage+'內容 →';
+      }else{
+        link.href=summary.list[0].url;
+        link.textContent='從已開放內容開始 →';
+      }
+    }else{
+      card.classList.remove('stage-live');
+      status.textContent='陸續建置中';
+      status.classList.remove('live');
+      note.textContent='目前尚未開放，可依年級、科目與教材版本提出需求。';
+      link.href='wish/?stage='+encodeURIComponent(stage);
+      link.textContent='前往許願 →';
+    }
+  });
+}
+function updateQuickScopeLabel(){
+  const el=document.getElementById('quickScopeLabel');
+  const current=catalog.currentScope;
+  if(!el||!current) return;
+  el.textContent='目前已開放｜'+(current.label||current.stage+gradeName(Number(current.grade))+current.semester);
+}
+
 function updatePortalSummary(){
   const units=catalog.units||[];
   const subjects=[...new Set(units.map(u=>u.subject))];
@@ -84,4 +130,6 @@ function updateSelector(source){
 stageSelect.addEventListener('change',()=>updateSelector('stage'));
 gradeSelect.addEventListener('change',()=>updateSelector('grade'));
 updatePortalSummary();
+updateStageCards();
+updateQuickScopeLabel();
 updateSelector('grade');
