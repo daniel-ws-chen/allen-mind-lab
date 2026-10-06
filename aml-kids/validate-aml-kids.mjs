@@ -242,6 +242,8 @@ if(fs.existsSync(portalJsFile)){
   if(!portalJs.includes('updateQuickScopeLabel')) fail(portalJsFile,'current scope label is not catalog-driven');
   if(!portalJs.includes('renderSubjectPortal')) fail(portalJsFile,'subject portal is not catalog-driven');
   if(!portalJs.includes('catalog.subjectDetails')) fail(portalJsFile,'subject portal does not use catalog subjectDetails');
+  if(!portalJs.includes('updateHeroLauncher')) fail(portalJsFile,'home quick-start launcher is not catalog-driven');
+  if(!portalJs.includes("localStorage.getItem('amlKidsLastActivityV1')")) fail(portalJsFile,'home quick-start launcher does not support recent learning resume');
 }
 
 const portalHtmlFile=path.join(ROOT,'index.html');
@@ -251,6 +253,7 @@ if(fs.existsSync(portalHtmlFile)){
   if(stageCards!==3) fail(portalHtmlFile,'expected 3 catalog-driven stage cards, found '+stageCards);
   if(!portalHtml.includes('id="quickScopeLabel"')) fail(portalHtmlFile,'dynamic quick-start scope label missing');
   if(!portalHtml.includes('id="subjectPortalGrid"')) fail(portalHtmlFile,'dynamic subject portal mount missing');
+  if(!portalHtml.includes('id="heroLaunchPrimary"')) fail(portalHtmlFile,'home quick-start launcher missing');
   if(/<section class="subject-portal [^"]+-portal"/.test(portalHtml)) fail(portalHtmlFile,'static subject portal cards remain in home page');
 }
 
