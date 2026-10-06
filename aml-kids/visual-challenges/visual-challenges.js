@@ -8,6 +8,7 @@ const SUBJECTS={
   social:{label:'社會',kicker:'社會視覺挑戰',note:'地圖、時間軸、土地利用與史料判讀'}
 };
 const KEY='amlKidsVisualChallengeV1';
+const LAST_KEY='amlKidsVisualLastActivityV1';
 const qs=s=>document.querySelector(s);
 const params=new URLSearchParams(location.search);
 let subject=params.get('subject');
@@ -28,6 +29,16 @@ function persist(patch){
   const {all,base}=subjectState();
   all[subject]={...base,...patch};
   save(all);
+}
+function recordActivity(questionId=''){
+  localStorage.setItem(LAST_KEY,JSON.stringify({
+    subject,
+    label:SUBJECTS[subject].label,
+    questionId,
+    index,
+    path:'/aml-kids/visual-challenges/?subject='+subject,
+    updatedAt:Date.now()
+  }));
 }
 function renderVisual(q){
   qs('#visual-content').innerHTML=q.svg;
@@ -59,6 +70,7 @@ function render(){
   qs('#progress-bar').setAttribute('aria-valuenow',String(progress));
   qs('#progress-fill').style.width=(progress/questions.length*100)+'%';
   persist({resume:index});
+  recordActivity(q.id);
 }
 function check(){
   if(locked)return;
@@ -74,6 +86,7 @@ function check(){
   if(choice===q.a){
     locked=true;completed.add(q.id);mistakes.delete(q.id);
     persist({completed:[...completed],mistakes:[...mistakes],resume:index,lastCompleted:q.id});
+    recordActivity(q.id);
     fb.textContent='答對了 ✓ '+q.e;fb.className='feedback good';
     document.querySelectorAll('input[name="visual-answer"]').forEach(x=>x.disabled=true);
     qs('#check-answer').hidden=true;qs('#next-question').hidden=false;
@@ -82,6 +95,7 @@ function check(){
     qs('#progress-fill').style.width=(completed.size/questions.length*100)+'%';
   }else{
     mistakes.add(q.id);persist({mistakes:[...mistakes],resume:index});
+    recordActivity(q.id);
     fb.textContent='再看一次圖中的線索。'+(q.hint?' 提示：'+q.hint:'');
     fb.className='feedback note';
   }
