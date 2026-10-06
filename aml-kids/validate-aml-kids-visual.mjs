@@ -86,6 +86,9 @@ if(fs.existsSync(engineFile)){
   if(!js.includes("amlKidsVisualChallengeV1")) fail('visual progress storage key missing');
   if(!js.includes("input[name=\"visual-answer\"]:checked")) fail('radio answer handling missing');
   if(!js.includes("localStorage")) fail('independent progress persistence missing');
+  if(!js.includes('function updateProgressDisplay')) fail('visual challenge must use saved completion count for progress');
+  if(js.includes('const progress=index')) fail('visual progress must not use question index as completion count');
+  if(!js.includes('firstIncomplete')) fail('completion flow must return to unfinished questions instead of showing a false completion state');
 }
 
 if(fs.existsSync(cssFile)){
