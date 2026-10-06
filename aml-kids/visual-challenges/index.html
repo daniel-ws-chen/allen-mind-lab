@@ -52,6 +52,10 @@
   </div>
 
   <article class="question-card" id="question-card">
+    <nav class="question-nav" aria-label="視覺挑戰題號">
+      <span class="sr-only">選擇題目</span>
+      <div id="question-nav-list"></div>
+    </nav>
     <div class="question-meta">
       <span id="question-number">第 1 題</span>
       <span id="question-tag">視覺判讀</span>
@@ -70,8 +74,9 @@
     </fieldset>
 
     <div class="question-actions">
+      <button type="button" class="secondary" id="prev-question">← 上一題</button>
       <button type="button" class="primary" id="check-answer">送出答案</button>
-      <button type="button" class="secondary" id="next-question" hidden>下一題 →</button>
+      <button type="button" class="secondary" id="next-question">下一題 →</button>
     </div>
     <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
   </article>
