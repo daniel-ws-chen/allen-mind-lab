@@ -96,6 +96,21 @@ function renderSubjectJump(scoped,details,order){
 
 const compactSubjectQuery=window.matchMedia('(max-width:800px)');
 
+function readArray(key){
+  try{
+    const value=JSON.parse(localStorage.getItem(key)||'[]');
+    return Array.isArray(value)?value:[];
+  }catch{return [];}
+}
+function unitProgress(unit){
+  const total=Number(catalog.questionsPerUnit||50);
+  const done=new Set(readArray(unit.awards)).size;
+  const safeDone=Math.min(total,done);
+  if(safeDone>=total) return {done:safeDone,total,label:'已完成',state:'complete'};
+  if(safeDone>0) return {done:safeDone,total,label:'進行中',state:'active'};
+  return {done:0,total,label:'未開始',state:'new'};
+}
+
 function createUnitLink(unit){
   const link=document.createElement('a');
   link.className='portal-unit-link';
@@ -106,11 +121,19 @@ function createUnitLink(unit){
   no.textContent=String(Number(unit.unit.replace(/\D/g,''))).padStart(2,'0');
 
   const copy=document.createElement('span');
+  const titleRow=document.createElement('span');
+  titleRow.className='portal-unit-title-row';
   const strong=document.createElement('strong');
   strong.textContent=unit.title;
+  const progress=unitProgress(unit);
+  const progressBadge=document.createElement('span');
+  progressBadge.className='portal-unit-progress portal-unit-progress--'+progress.state;
+  progressBadge.textContent=progress.label+(progress.state==='new'?'':' '+progress.done+'/'+progress.total);
+  titleRow.append(strong,progressBadge);
+
   const small=document.createElement('small');
   small.textContent=unit.summary||('進入 '+unit.title+' 學習');
-  copy.append(strong,small);
+  copy.append(titleRow,small);
 
   const arrow=document.createElement('span');
   arrow.className='portal-arrow';
