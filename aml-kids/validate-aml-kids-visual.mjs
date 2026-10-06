@@ -89,6 +89,10 @@ if(fs.existsSync(engineFile)){
   if(!js.includes('function updateProgressDisplay')) fail('visual challenge must use saved completion count for progress');
   if(js.includes('const progress=index')) fail('visual progress must not use question index as completion count');
   if(!js.includes('firstIncomplete')) fail('completion flow must return to unfinished questions instead of showing a false completion state');
+  if(!js.includes('function renderQuestionNav')) fail('visual challenge must expose direct question-number navigation');
+  if(!js.includes("qs('#prev-question')")) fail('visual challenge previous-question control missing');
+  if(!js.includes("fb.textContent='答錯了。")) fail('visual challenge must explicitly announce an incorrect answer');
+  if(!js.includes("fb.textContent='答對了。")) fail('visual challenge must explicitly announce a correct answer');
 }
 
 if(fs.existsSync(cssFile)){
