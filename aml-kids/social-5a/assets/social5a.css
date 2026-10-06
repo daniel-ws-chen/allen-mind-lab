@@ -27,7 +27,7 @@ footer{max-width:960px;margin:2rem auto;padding:1rem;border-top:1px solid #cbd5e
 @media(max-width:700px){.site-header{display:block}.score-card{margin-top:1rem}.lesson-nav{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.tab-btn{flex:0 0 auto}main{padding:.75rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 .panel{scroll-margin-top:5rem}
-.panel>h2:focus{outline:none}
+.panel>h2:focus{outline:4px solid #f59e0b;outline-offset:4px;border-radius:.25rem}
 
 .reading-set{margin:1.25rem 0 2rem;padding:1rem;border:2px solid #94a3b8;border-radius:1rem;background:#f8fafc}
 .reading-set>h3{margin-top:0}
