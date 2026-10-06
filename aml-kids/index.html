@@ -31,6 +31,48 @@
       <h2 id="stage-title">你現在在哪一個學習階段？</h2>
       <p>AML Kids 以「教育階段 → 年級 → 學期 → 科目 → 版本」逐步擴充。</p>
     </div>
+    <div class="learning-selector" aria-label="選擇教育階段與年級">
+      <div class="selector-field">
+        <label for="learningStage">教育階段</label>
+        <select id="learningStage">
+          <option value="國小" selected>國小</option>
+          <option value="國中">國中</option>
+          <option value="高中">高中</option>
+        </select>
+      </div>
+      <div class="selector-field">
+        <label for="learningGrade">年級</label>
+        <select id="learningGrade">
+          <optgroup label="國小">
+            <option value="1">一年級</option>
+            <option value="2">二年級</option>
+            <option value="3">三年級</option>
+            <option value="4">四年級</option>
+            <option value="5" selected>五年級</option>
+            <option value="6">六年級</option>
+          </optgroup>
+          <optgroup label="國中">
+            <option value="7">七年級</option>
+            <option value="8">八年級</option>
+            <option value="9">九年級</option>
+          </optgroup>
+          <optgroup label="高中">
+            <option value="10">十年級</option>
+            <option value="11">十一年級</option>
+            <option value="12">十二年級</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="selector-result" id="selectorResult" role="status" aria-live="polite">
+        <div>
+          <span class="status live" id="selectorStatus">已有內容</span>
+          <strong id="selectorTitle">國小五年級</strong>
+          <small id="selectorNote">目前已完成五年級上學期 5 科複習內容。</small>
+        </div>
+        <a id="selectorAction" class="selector-action" href="#quick-title">查看已開放內容 →</a>
+      </div>
+    </div>
+
     <div class="stage-grid">
       <article class="stage-card stage-live">
         <span class="stage-icon" aria-hidden="true">🎒</span>
@@ -351,5 +393,6 @@
   <p>AML Kids｜家庭學習實驗室</p>
   <p>目前為家庭測試版本，學習紀錄會保留在這台裝置的瀏覽器中。</p>
 </footer>
+  <script src="assets/kids-portal.js"></script>
 </body>
 </html>
