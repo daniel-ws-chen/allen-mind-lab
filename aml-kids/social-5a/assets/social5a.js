@@ -81,7 +81,7 @@ function questionForMistake(id){return questions.find(q=>q.id===id);}
 function recordMistake(id,text,review){
  if(!state.mistakes.some(x=>x.id===id)){
   const q=questionForMistake(id);
-  state.mistakes.push({id,text,review,level:q?.level||'課前',lesson:q?inferLesson(id):'課前'});
+  state.mistakes.push({id,text,review,level:q?.level||'課前',lesson:q?inferLesson(id):'課前',topic:q?.s||q?.tag||'未分類'});
   save();renderMistakes();
  }
 }
