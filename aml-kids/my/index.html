@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>My AML Kids｜我的學習進度</title>
+<link rel="stylesheet" href="../assets/kids-home.css">
+<style>
+.my-page{max-width:1040px;margin:auto;padding:1rem}
+.my-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+.my-stat{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem;text-align:center}
+.my-stat strong{display:block;font-size:1.7rem;color:#294b6d}
+.my-stat span{color:#60758b}
+.subject-progress-list{display:grid;gap:.9rem}
+.subject-progress-card{background:#fff;border:1px solid #d8e3ed;border-radius:1rem;padding:1rem}
+.subject-progress-head{display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.subject-progress-head h3{margin:.1rem 0}
+.progress-line{height:12px;background:#edf2f6;border-radius:999px;overflow:hidden;margin:.65rem 0}
+.progress-fill{height:100%;background:#6d8fb0}
+.unit-mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem}
+.unit-mini{display:flex;justify-content:space-between;gap:.7rem;align-items:center;border:1px solid #e1e8ef;border-radius:.8rem;padding:.7rem .8rem;text-decoration:none;background:#fbfdff}
+.unit-mini:hover{border-color:#87a4c0}
+.unit-mini:focus-visible{outline:4px solid #f59e0b;outline-offset:2px}
+.unit-mini small{color:#60758b}
+.continue-box{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:#fff8e8;border:1px solid #e3d5ae;border-radius:1rem;padding:1rem}
+.continue-box a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.6rem .85rem;border-radius:999px;background:#20324a;color:#fff;text-decoration:none;font-weight:900}
+.continue-box a:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.device-note{background:#f7fafc;border:1px solid #dfe7ef;border-radius:1rem;padding:1rem;color:#60758b}
+@media(max-width:760px){.my-summary{grid-template-columns:repeat(2,1fr)}.unit-mini-grid{grid-template-columns:1fr}.continue-box{display:block}.continue-box a{margin-top:.7rem;width:100%}}
+@media(max-width:460px){.my-summary{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<header class="hero portal-hero">
+  <div class="hero-inner">
+    <p class="eyebrow">My AML Kids</p>
+    <h1>我的學習進度</h1>
+    <p class="hero-lead">這裡整理這台裝置上的學習點數、完成進度與待訂正題目。</p>
+  </div>
+</header>
+<main id="main" class="my-page">
+  <p><a class="enter" href="../">← 回 AML Kids</a></p>
+
+  <section class="section" aria-labelledby="summary-title">
+    <div class="section-heading">
+      <span class="section-kicker">總覽</span>
+      <h2 id="summary-title">目前學習紀錄</h2>
+    </div>
+    <div class="my-summary">
+      <div class="my-stat"><strong id="totalPoints">0</strong><span>學習點數</span></div>
+      <div class="my-stat"><strong id="completedUnits">0 / 27</strong><span>完成單元</span></div>
+      <div class="my-stat"><strong id="completedQuestions">0 / 1350</strong><span>完成題數</span></div>
+      <div class="my-stat"><strong id="pendingMistakes">0</strong><span>待訂正題目</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="continueSection" aria-labelledby="continue-title" hidden>
+    <div class="continue-box">
+      <div>
+        <span class="section-kicker">繼續學習</span>
+        <h2 id="continue-title">從上次還沒完成的地方繼續</h2>
+        <p id="continueText"></p>
+      </div>
+      <a id="continueLink" href="../">繼續 →</a>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="subjects-title">
+    <div class="section-heading">
+      <span class="section-kicker">五上學習地圖</span>
+      <h2 id="subjects-title">各科完成度</h2>
+      <p>完成度依每單元 50 題計算。</p>
+    </div>
+    <div id="subjectProgress" class="subject-progress-list"></div>
+  </section>
+
+  <section class="section device-note" aria-labelledby="device-title">
+    <h2 id="device-title">關於學習紀錄</h2>
+    <p>目前不需要登入帳號，學習紀錄儲存在這台裝置的瀏覽器中。更換瀏覽器、使用其他裝置或清除瀏覽資料時，紀錄可能不會跟著移動。</p>
+  </section>
+</main>
+<footer><p>My AML Kids｜我的學習進度</p></footer>
+<script src="my-kids.js"></script>
+</body>
+</html>
