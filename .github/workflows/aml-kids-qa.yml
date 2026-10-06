@@ -30,7 +30,30 @@ jobs:
           node-version: '22'
 
       - name: Validate site structure
-        run: node aml-kids/validate-aml-kids.mjs
+        shell: bash
+        run: |
+          set +e
+          node aml-kids/validate-aml-kids.mjs 2>&1 | tee aml-kids-structure.log
+          status=${PIPESTATUS[0]}
+          {
+            echo "### AML Kids site structure"
+            echo "\`\`\`text"
+            cat aml-kids-structure.log
+            echo "\`\`\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
 
       - name: Validate question content
-        run: node aml-kids/validate-aml-kids-content.mjs
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          node aml-kids/validate-aml-kids-content.mjs 2>&1 | tee aml-kids-content.log
+          status=${PIPESTATUS[0]}
+          {
+            echo "### AML Kids question content"
+            echo "\`\`\`text"
+            cat aml-kids-content.log
+            echo "\`\`\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
