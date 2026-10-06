@@ -55,13 +55,28 @@ document.getElementById('completedUnits').textContent=completeUnits+' / '+units.
 document.getElementById('completedQuestions').textContent=totalDone+' / '+(units.length*50);
 document.getElementById('pendingMistakes').textContent=totalPending;
 
-const inProgress=data.find(u=>u.done>0&&!u.complete);
-if(inProgress){
-  document.getElementById('continueSection').hidden=false;
-  document.getElementById('continueText').textContent=inProgress.subject+'｜'+inProgress.title+'，目前完成 '+inProgress.done+' / 50 題。';
-  const link=document.getElementById('continueLink');
-  link.href=inProgress.url+'#challenge';
-  link.textContent='繼續 '+inProgress.subject+' →';
+let lastActivity=null;
+try{lastActivity=JSON.parse(localStorage.getItem('amlKidsLastActivityV1')||'null');}catch{}
+const continueSection=document.getElementById('continueSection');
+const continueText=document.getElementById('continueText');
+const continueLink=document.getElementById('continueLink');
+
+if(lastActivity&&lastActivity.path&&lastActivity.path.startsWith('/aml-kids/')){
+  continueSection.hidden=false;
+  const qn=Number(String(lastActivity.questionId||'').replace(/\D/g,''));
+  const detail=qn?('，上次做到第 '+qn+' 題'+(lastActivity.level?'（'+lastActivity.level+'）':'')):'';
+  continueText.textContent=(lastActivity.title||'最近學習單元')+detail+'。';
+  const params=lastActivity.questionId?('?resume='+encodeURIComponent(lastActivity.questionId)):'';
+  continueLink.href=lastActivity.path+params+'#challenge';
+  continueLink.textContent='回到最近學習 →';
+}else{
+  const inProgress=data.find(u=>u.done>0&&!u.complete);
+  if(inProgress){
+    continueSection.hidden=false;
+    continueText.textContent=inProgress.subject+'｜'+inProgress.title+'，目前完成 '+inProgress.done+' / 50 題。';
+    continueLink.href=inProgress.url+'#challenge';
+    continueLink.textContent='繼續 '+inProgress.subject+' →';
+  }
 }
 
 const subjectOrder=['國文','社會','自然','英文','數學'];
