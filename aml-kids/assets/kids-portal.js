@@ -219,6 +219,48 @@ function renderSubjectPortal(){
   }
 }
 
+function readLastActivity(){
+  try{return JSON.parse(localStorage.getItem('amlKidsLastActivityV1')||'null');}catch{return null;}
+}
+function updateHeroLauncher(){
+  const title=document.getElementById('heroLaunchTitle');
+  const note=document.getElementById('heroLaunchNote');
+  const primary=document.getElementById('heroLaunchPrimary');
+  if(!title||!note||!primary) return;
+
+  const scope=catalog.currentScope;
+  const scoped=(catalog.units||[]).filter(unit=>!scope||(
+    unit.stage===scope.stage &&
+    Number(unit.grade)===Number(scope.grade) &&
+    unit.semester===scope.semester
+  ));
+  const fallback=scoped[0]||(catalog.units||[])[0];
+  const last=readLastActivity();
+  const recent=last?.path
+    ? (catalog.units||[]).find(unit=>unit.url===last.path||unit.url.replace(/\/$/,'')===String(last.path).replace(/\/$/,''))
+    : null;
+
+  if(recent){
+    const q=last.questionId||'';
+    title.textContent='繼續 '+recent.subject+'｜'+recent.title;
+    note.textContent=q?'上次停在 '+q+'，可以直接回到原來的位置。':'可以直接回到上次學習的單元。';
+    primary.textContent='繼續上次學習 →';
+    primary.href=recent.url+(q?('?resume='+encodeURIComponent(q)):'')+'#challenge';
+    return;
+  }
+
+  if(scope) title.textContent=scope.label||scope.stage+gradeName(Number(scope.grade))+scope.semester;
+  if(fallback){
+    note.textContent='第一次來，可以先從「'+fallback.subject+'｜'+fallback.title+'」開始，也可以往下選自己想學的科目。';
+    primary.textContent='從第一個單元開始 →';
+    primary.href=fallback.url;
+  }else{
+    note.textContent='目前內容正在建置中，可以先向 AML Kids 許願。';
+    primary.textContent='前往許願 →';
+    primary.href='wish/';
+  }
+}
+
 function updatePortalSummary(){
   const units=catalog.units||[];
   const subjects=[...new Set(units.map(u=>u.subject))];
@@ -287,4 +329,5 @@ updatePortalSummary();
 updateStageCards();
 updateQuickScopeLabel();
 renderSubjectPortal();
+updateHeroLauncher();
 updateSelector('grade');
