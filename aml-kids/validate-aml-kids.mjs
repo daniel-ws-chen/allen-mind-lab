@@ -312,6 +312,9 @@ const mistakesJsFile=path.join(ROOT,'my','mistakes','mistakes.js');
 if(fs.existsSync(mistakesJsFile)){
   const mistakesJs=fs.readFileSync(mistakesJsFile,'utf8');
   if(/\['國文','社會','自然','英文','數學'\]/.test(mistakesJs)) fail(mistakesJsFile,'hard-coded subject list found; use shared catalog');
+  if(!mistakesJs.includes("'?resume='+encodeURIComponent(m.id)+'#challenge'")) fail(mistakesJsFile,'mistake correction links do not target the exact question');
+  if(!mistakesJs.includes('data-status-count')) fail(mistakesJsFile,'mistake status counts are not updated dynamically');
+  if(!mistakesJs.includes('mistake-state')) fail(mistakesJsFile,'mistake cards do not expose explicit correction state text');
 }
 
 console.log(`AML Kids QA: ${entries.length} catalog units / ${questionScripts.length} question scripts / ${htmlFiles.length} HTML pages checked.`);
