@@ -1,33 +1,54 @@
 (()=>{
 const DATA=window.AML_KIDS_VISUAL_DATA||{};
-const SUBJECTS={
-  chinese:{label:'國文',kicker:'國文視覺挑戰',note:'事件順序、人物動作、段落結構與圖像線索'},
-  english:{label:'英文',kicker:'英文視覺挑戰',note:'課表、場所、數量、位置與生活情境'},
-  math:{label:'數學',kicker:'數學視覺挑戰',note:'數線、幾何、對稱、面積與立體圖形'},
-  science:{label:'自然',kicker:'自然視覺挑戰',note:'實驗裝置、天體位置、生物構造與條件比較'},
-  social:{label:'社會',kicker:'社會視覺挑戰',note:'地圖、時間軸、土地利用與史料判讀'}
-};
-const KEY='amlKidsVisualChallengeV1';
+const CATALOG=window.AML_KIDS_CATALOG||{};
+const KEY='amlKidsVisualChallengeV2';
+const LEGACY_KEY='amlKidsVisualChallengeV1';
 const LAST_KEY='amlKidsVisualLastActivityV1';
 const qs=s=>document.querySelector(s);
 const params=new URLSearchParams(location.search);
-let subject=params.get('subject');
-if(!SUBJECTS[subject]||!DATA[subject]) subject='chinese';
-const questions=DATA[subject];
+
+const scope={
+  stage:params.get('stage')||'國小',
+  grade:Number(params.get('grade')||5),
+  semester:params.get('semester')||'上學期',
+  subject:params.get('subject')||'',
+  publisher:params.get('publisher')||'',
+  version:params.get('version')||''
+};
+const scopeKey=[scope.stage,scope.grade,scope.semester,scope.subject,scope.publisher,scope.version].join('|');
+const questions=DATA.scopes?.[scopeKey]||[];
+const scopeUnits=(CATALOG.units||[]).filter(u=>
+  u.stage===scope.stage&&u.grade===scope.grade&&u.semester===scope.semester&&
+  u.subject===scope.subject&&u.publisher===scope.publisher&&u.version===scope.version
+);
+const scopeLabel=[scope.subject,scope.publisher,scope.version].filter(Boolean).join('｜');
 let index=0,locked=false;
 
 function load(){
   try{return JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){return{};}
 }
 function save(state){localStorage.setItem(KEY,JSON.stringify(state));}
+function migrateLegacy(all){
+  if(all[scopeKey]) return all;
+  try{
+    const legacy=JSON.parse(localStorage.getItem(LEGACY_KEY)||'{}')||{};
+    const slugMap={國文:'chinese',英文:'english',數學:'math',自然:'science',社會:'social'};
+    const legacyState=legacy[slugMap[scope.subject]];
+    if(legacyState){
+      all[scopeKey]=legacyState;
+      save(all);
+    }
+  }catch{}
+  return all;
+}
 function subjectState(){
-  const all=load();
-  const base=all[subject]||{completed:[],mistakes:[],wrongEver:[],firstAttempt:{},resume:0,lastCompleted:null};
+  const all=migrateLegacy(load());
+  const base=all[scopeKey]||{completed:[],mistakes:[],wrongEver:[],firstAttempt:{},resume:0,lastCompleted:null};
   return {all,base};
 }
 function persist(patch){
   const {all,base}=subjectState();
-  all[subject]={...base,...patch};
+  all[scopeKey]={...base,...patch};
   save(all);
 }
 function completedSet(){
@@ -42,11 +63,14 @@ function updateProgressDisplay(count=completedSet().size){
 }
 function recordActivity(questionId=''){
   localStorage.setItem(LAST_KEY,JSON.stringify({
-    subject,
-    label:SUBJECTS[subject].label,
+    scopeKey,
+    subject:scope.subject,
+    publisher:scope.publisher,
+    version:scope.version,
+    label:scopeLabel,
     questionId,
     index,
-    path:'/aml-kids/visual-challenges/?subject='+subject,
+    path:'/aml-kids/visual-challenges/?stage='+encodeURIComponent(scope.stage)+'&grade='+scope.grade+'&semester='+encodeURIComponent(scope.semester)+'&subject='+encodeURIComponent(scope.subject)+'&publisher='+encodeURIComponent(scope.publisher)+'&version='+encodeURIComponent(scope.version),
     updatedAt:Date.now()
   }));
 }
@@ -79,9 +103,9 @@ function render(){
   const q=questions[index];
   const done=completedSet();
   locked=done.has(q.id);
-  qs('#challenge-title').textContent=SUBJECTS[subject].label+'｜10 題視覺挑戰';
-  qs('#subject-kicker').textContent=SUBJECTS[subject].kicker;
-  qs('#challenge-note').textContent=SUBJECTS[subject].note;
+  qs('#challenge-title').textContent=scopeLabel+'｜10 題視覺挑戰';
+  qs('#subject-kicker').textContent='版本內視覺題型';
+  qs('#challenge-note').textContent='此視覺題屬於 '+scopeLabel+'，與同版本的基礎、進階、素養題並列。';
   qs('#question-number').textContent='第 '+(index+1)+' 題';
   qs('#question-tag').textContent=q.tag;
   qs('#question-stem').textContent=q.q;
@@ -230,9 +254,11 @@ function restart(){
   index=0;qs('#completion').hidden=true;qs('#question-card').hidden=false;render();qs('#question-card').scrollIntoView({block:'start'});
 }
 function init(){
-  document.querySelectorAll('[data-subject-link]').forEach(a=>{
-    if(a.dataset.subjectLink===subject)a.setAttribute('aria-current','page');
-  });
+  if(!questions.length||!scopeUnits.length){
+    qs('#question-card').innerHTML='<div class="feedback note">目前這個教材版本尚未建立視覺題，請回到版本頁選擇其他題型。</div>';
+    qs('#challenge-title').textContent='此版本尚無視覺題';
+    return;
+  }
   const {base}=subjectState();
   index=Math.min(Number(base.resume)||0,questions.length-1);
   qs('#check-answer').addEventListener('click',check);
