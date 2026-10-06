@@ -21,6 +21,23 @@ const jsFiles=files.filter(f=>f.endsWith('.js'));
 const unitHtml=htmlFiles.filter(f=>/\/(?:unit\d+\/index\.html|social-5a\/index\.html)$/.test(f.replaceAll('\\','/')));
 const unitJs=jsFiles.filter(f=>/\/(?:unit\d+\/unit\d+\.js|social-5a\/assets\/social5a\.js)$/.test(f.replaceAll('\\','/')));
 
+function unitScriptForUrl(url){
+  const clean=url.replace(/^\/+|\/$/g,'');
+  if(clean==='aml-kids/social-5a') return path.join(process.cwd(),'aml-kids','social-5a','assets','social5a.js');
+  const m=clean.match(/^aml-kids\/(chinese-5a|english-5a|science-5a|math-5a|social-5a)\/unit(\d+)$/);
+  if(!m) return null;
+  return path.join(process.cwd(),'aml-kids',m[1],'unit'+m[2],'unit'+m[2]+'.js');
+}
+function storageKeyMap(text){
+  const out={};
+  for(const name of ['AWARDS_KEY','MISTAKES_KEY','RESUME_KEY']){
+    const m=text.match(new RegExp(name+"\\s*=\\s*'([^']+)'"));
+    if(m) out[name]=m[1];
+  }
+  return out;
+}
+
+
 for(const file of htmlFiles){
   const text=fs.readFileSync(file,'utf8');
   if(!text.includes('<meta name="robots" content="noindex,nofollow"')) fail(file,'missing noindex,nofollow');
@@ -90,12 +107,46 @@ if(!fs.existsSync(catalogFile)){
     const local=url.replace(/^\/+/,'');
     const target=path.join(process.cwd(),local,'index.html');
     if(!fs.existsSync(target)) fail(catalogFile,'catalog URL has no index.html: '+url);
+
+    const script=unitScriptForUrl(url);
+    if(!script || !fs.existsSync(script)){
+      fail(catalogFile,'catalog URL has no matching unit script: '+url);
+    }else{
+      const scriptText=fs.readFileSync(script,'utf8');
+      const keys=storageKeyMap(scriptText);
+      if(keys.AWARDS_KEY!==m[5]) fail(catalogFile,`awards key mismatch for ${url}: catalog=${m[5]} script=${keys.AWARDS_KEY||'missing'}`);
+      if(keys.MISTAKES_KEY!==m[6]) fail(catalogFile,`mistakes key mismatch for ${url}: catalog=${m[6]} script=${keys.MISTAKES_KEY||'missing'}`);
+      if(keys.RESUME_KEY!==m[7]) fail(catalogFile,`resume key mismatch for ${url}: catalog=${m[7]} script=${keys.RESUME_KEY||'missing'}`);
+    }
   }
   for(const keyIndex of [5,6,7]){
     const keys=entries.map(m=>m[keyIndex]);
     const dup=[...new Set(keys.filter((x,i)=>keys.indexOf(x)!==i))];
     if(dup.length) fail(catalogFile,'duplicate catalog storage keys: '+dup.join(', '));
   }
+}
+
+for(const file of unitJs){
+  const text=fs.readFileSync(file,'utf8');
+  if(!text.includes("AML_KIDS_LAST_ACTIVITY_KEY='amlKidsLastActivityV1'")) fail(file,'missing recent activity tracking');
+  if(!text.includes("new URLSearchParams(location.search).get('resume')")) fail(file,'missing resume query support');
+}
+
+for(const [htmlRel,jsName,catalogSrc] of [
+  ['my/index.html','my-kids.js','../assets/kids-catalog.js'],
+  ['my/mistakes/index.html','mistakes.js','../../assets/kids-catalog.js']
+]){
+  const htmlFile=path.join(ROOT,...htmlRel.split('/'));
+  const html=fs.readFileSync(htmlFile,'utf8');
+  const catalogAt=html.indexOf(catalogSrc);
+  const pageAt=html.indexOf(jsName);
+  if(catalogAt<0) fail(htmlFile,'shared catalog script not loaded');
+  if(pageAt<0) fail(htmlFile,'page script not loaded: '+jsName);
+  if(catalogAt>=0&&pageAt>=0&&catalogAt>pageAt) fail(htmlFile,'shared catalog must load before '+jsName);
+  const jsFile=path.join(path.dirname(htmlFile),jsName);
+  const js=fs.readFileSync(jsFile,'utf8');
+  if(js.includes('const units=[')) fail(jsFile,'local duplicate unit catalog found');
+  if(!js.includes('window.AML_KIDS_CATALOG')) fail(jsFile,'does not read shared AML Kids catalog');
 }
 
 console.log(`AML Kids QA: ${unitHtml.length} unit pages / ${unitJs.length} unit scripts checked.`);
