@@ -21,11 +21,10 @@ function save(){
  localStorage.setItem(RESUME_KEY,JSON.stringify(state.resume));
 }
 function renderScore(){
- document.querySelector('#scoreText').textContent=`${state.wallet} / 1000`;
- document.querySelector('#scoreProgress').value=Math.min(state.wallet,1000);
+ document.querySelector('#scoreText').textContent=`${state.wallet} 點`;
+ document.querySelector('#scoreProgress').hidden=true;
  document.querySelector('#unitScoreText').textContent=`本單元 ${Math.min(state.unitScore,UNIT_MAX)} / ${UNIT_MAX}`;
- const redeem=document.querySelector('#redeemBox');
- if(redeem) redeem.hidden=state.wallet<1000;
+ const redeem=document.querySelector('#redeemBox'); if(redeem) redeem.hidden=true;
  renderChallengeProgress();
  renderResume();
 }
