@@ -1,6 +1,7 @@
 const catalog=window.AML_KIDS_CATALOG;
 const units=(catalog?.units||[]).map(unit=>({...unit}));
 const questionsPerUnit=catalog?.questionsPerUnit||50;
+const subjectOrder=catalog?.subjects||[];
 
 function readArray(key){
   try{const v=JSON.parse(localStorage.getItem(key)||'[]');return Array.isArray(v)?v:[];}catch{return [];}
@@ -31,6 +32,23 @@ document.getElementById('correctedMistakes').textContent=corrected;
 
 let statusFilter='pending';
 let subjectFilter='全部';
+
+const subjectFilters=document.getElementById('subjectFilters');
+if(subjectFilters){
+  ['全部',...subjectOrder].forEach(subject=>{
+    const btn=document.createElement('button');
+    btn.className='filter-btn subject-filter';
+    btn.type='button';
+    btn.dataset.subject=subject;
+    btn.setAttribute('aria-pressed',String(subject==='全部'));
+    btn.textContent=subject==='全部'?'全部科目':subject;
+    subjectFilters.appendChild(btn);
+  });
+}
+const correctionRule=document.getElementById('correctionRule');
+if(correctionRule){
+  correctionRule.textContent='點「回單元重新挑戰」回到原單元，在 '+questionsPerUnit+' 題挑戰中再次作答；答對後，這題會自動轉成「已訂正」，並獲得完整 5 點學習點數。';
+}
 
 function render(){
   let list=mistakes;
