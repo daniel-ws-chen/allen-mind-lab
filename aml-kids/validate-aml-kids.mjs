@@ -214,6 +214,20 @@ if(fs.existsSync(mistakesJsFile)){
   if(/\['國文','社會','自然','英文','數學'\]/.test(mistakesJs)) fail(mistakesJsFile,'hard-coded subject list found; use shared catalog');
 }
 
+for(const [htmlRel,jsRel] of [
+  ['my/index.html','my/my-kids.js'],
+  ['my/mistakes/index.html','my/mistakes/mistakes.js']
+]){
+  const htmlFile=path.join(ROOT,...htmlRel.split('/'));
+  const jsFile=path.join(ROOT,...jsRel.split('/'));
+  const html=fs.readFileSync(htmlFile,'utf8');
+  const js=fs.readFileSync(jsFile,'utf8');
+  if(!html.includes('id="scopeSelect"')&&!html.includes('id="scopeFilter"')) fail(htmlFile,'learning scope selector missing');
+  if(!js.includes("amlKidsMyScopeV1")) fail(jsFile,'shared learning scope persistence missing');
+  if(!js.includes('catalog?.currentScope')) fail(jsFile,'currentScope fallback missing');
+  if(!js.includes('scopeKey(')) fail(jsFile,'scope-aware filtering missing');
+}
+
 console.log(`AML Kids QA: ${unitHtml.length} unit pages / ${unitJs.length} unit scripts checked.`);
 if(warnings.length){
   console.log('\nWarnings:');
