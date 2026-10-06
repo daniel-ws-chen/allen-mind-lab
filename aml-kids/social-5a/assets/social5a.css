@@ -11,7 +11,7 @@ progress{width:100%;height:1rem}
 button{font:inherit}.tab-btn,.primary,.check,.secondary{border:2px solid #334155;background:#fff;border-radius:.75rem;padding:.7rem 1rem;cursor:pointer}
 .primary{background:#111827;color:#fff;margin-top:1rem}.check{margin-top:.75rem}
 .tab-btn:focus-visible,.primary:focus-visible,.check:focus-visible,.secondary:focus-visible,input:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
-.tab-btn[aria-current="page"]{font-weight:800;text-decoration:underline;text-underline-offset:.2rem}
+.tab-btn[aria-current]{font-weight:800;text-decoration:underline;text-underline-offset:.2rem}
 main{max-width:960px;margin:auto;padding:1rem}.panel{display:none}.panel.active{display:block}.lead{font-size:1.15rem}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
 .card,.reward-box,.quiz,.competency,.result-card{background:#fff;border:1px solid #cbd5e1;border-radius:1rem;padding:1rem;margin:1rem 0}
@@ -59,7 +59,7 @@ body{background:linear-gradient(180deg,#f7fbff 0%,#fbfcfe 55%,#f7fafc 100%);colo
 .score-card{box-shadow:0 8px 24px rgba(39,68,101,.08);border-color:var(--kids-line)}
 .lesson-nav{box-shadow:0 4px 18px rgba(39,68,101,.06)}
 .tab-btn{border-color:#9fb2c7;color:#29445f}
-.tab-btn[aria-current="page"]{background:#edf4fb;border-color:#315a8a;text-decoration:none}
+.tab-btn[aria-current]{background:#edf4fb;border-color:#315a8a;text-decoration:none}
 .progress-hero{display:flex;justify-content:space-between;align-items:center;gap:1rem;background:linear-gradient(135deg,#edf5ff,#fff9ec);border:1px solid #d7e3ef;border-radius:1.2rem;padding:1rem 1.15rem;margin:1rem 0 1.15rem;box-shadow:0 10px 28px rgba(51,79,112,.08)}
 .progress-hero strong{display:block;font-size:1.15rem;margin-top:.2rem}
 .hero-kicker,.card-kicker,.section-badge{font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#5f7690}
