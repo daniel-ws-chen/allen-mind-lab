@@ -72,3 +72,18 @@ jobs:
             echo "\`\`\`"
           } >> "$GITHUB_STEP_SUMMARY"
           exit "$status"
+
+      - name: Validate Daily 5
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          node aml-kids/validate-aml-kids-daily.mjs 2>&1 | tee aml-kids-daily.log
+          status=${PIPESTATUS[0]}
+          {
+            echo "### AML Kids Daily 5"
+            echo "\`\`\`text"
+            cat aml-kids-daily.log
+            echo "\`\`\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
