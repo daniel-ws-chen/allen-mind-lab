@@ -56,6 +56,27 @@ footer p{margin:.2rem 0}
 .portal-hero{padding-bottom:2.2rem}
 .section-heading.center{text-align:center}
 .quick-start{margin-top:1.2rem}
+.active-learning{margin:.2rem 0 1rem;padding:1rem;border:1px solid #e1d3a7;border-radius:1.1rem;background:linear-gradient(135deg,#fff9e9,#fff)}
+.active-learning__head{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.7rem}
+.active-learning__head h3{margin:.1rem 0;font-size:1.15rem;color:#4f4327}
+.active-learning__all{display:inline-flex;align-items:center;min-height:44px;color:#315d86;font-weight:900;text-decoration:none}
+.active-learning__all:focus-visible{outline:4px solid #f59e0b;outline-offset:3px;border-radius:.25rem}
+.active-learning__list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem}
+.active-learning__item{display:grid;gap:.25rem;min-width:0;padding:.8rem;border:1px solid #e4d8b8;border-radius:.9rem;background:#fff;text-decoration:none}
+.active-learning__item:hover{border-color:#c7ae70;background:#fffdf7}
+.active-learning__item:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+.active-learning__item strong{display:block;color:#20324a}
+.active-learning__item small{display:block;color:#60758b;line-height:1.5}
+.active-learning__meter{height:8px;border-radius:999px;background:#edf2f6;overflow:hidden;margin-top:.25rem}
+.active-learning__meter span{display:block;height:100%;background:#b88f3b}
+@media(max-width:800px){
+  .active-learning__head{align-items:flex-start}
+  .active-learning__list{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .active-learning__head{display:block}
+  .active-learning__all{margin-top:.35rem}
+}
 .subject-jump{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;margin:.4rem 0 1rem;padding:.75rem;border:1px solid #d8e3ed;border-radius:1rem;background:#f7fafc}
 .subject-jump__label{font-size:.82rem;font-weight:900;color:#5d7691;margin-right:.15rem}
 .subject-jump a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:.45rem .72rem;border:1px solid #c9d5df;border-radius:999px;background:#fff;color:#315d86;text-decoration:none;font-weight:900}
