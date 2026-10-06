@@ -126,7 +126,7 @@ if(fs.existsSync(engineFile)){
     'function renderQuestionNav',
     "qs('#prev-question')",
     "fb.textContent='答錯了。",
-    "fb.textContent='答對了。",
+    "答對了！＋5 點。",
     'firstAttempt',
     'wrongEver',
     'function renderCompletionSummary',
