@@ -97,13 +97,46 @@ if(!fs.existsSync(catalogFile)){
   fail(ROOT,'missing shared kids-catalog.js');
 }else{
   const catalog=fs.readFileSync(catalogFile,'utf8');
-  const entries=[...catalog.matchAll(/\{subject:'([^']+)',unit:'([^']+)',title:'([^']+)',url:'([^']+)',awards:'([^']+)',mistakes:'([^']+)',resume:'([^']+)'\}/g)];
+  const unitLines=catalog.split('\n').map(x=>x.trim()).filter(x=>x.startsWith('{stage:'));
+  const field=(line,name)=>{
+    const stringMatch=line.match(new RegExp(name+":'([^']*)'"));
+    if(stringMatch) return stringMatch[1];
+    const numberMatch=line.match(new RegExp(name+":(\\d+)"));
+    return numberMatch?Number(numberMatch[1]):undefined;
+  };
+  const entries=unitLines.map(line=>({
+    stage:field(line,'stage'),
+    grade:field(line,'grade'),
+    semester:field(line,'semester'),
+    subject:field(line,'subject'),
+    publisher:field(line,'publisher'),
+    version:field(line,'version'),
+    unit:field(line,'unit'),
+    title:field(line,'title'),
+    url:field(line,'url'),
+    awards:field(line,'awards'),
+    mistakes:field(line,'mistakes'),
+    resume:field(line,'resume')
+  }));
+
+  if(!/version:\s*2\b/.test(catalog)) fail(catalogFile,'catalog version should be 2');
   if(entries.length!==27) fail(catalogFile,'expected 27 catalog units, found '+entries.length);
-  const urls=entries.map(m=>m[4]);
+
+  const required=['stage','grade','semester','subject','publisher','version','unit','title','url','awards','mistakes','resume'];
+  entries.forEach((entry,index)=>{
+    const missing=required.filter(k=>entry[k]===undefined||entry[k]==='');
+    if(missing.length) fail(catalogFile,'unit '+(index+1)+' missing metadata: '+missing.join(', '));
+    if(!['國小','國中','高中'].includes(entry.stage)) fail(catalogFile,'invalid stage for '+entry.url+': '+entry.stage);
+    if(!Number.isInteger(entry.grade)||entry.grade<1||entry.grade>12) fail(catalogFile,'invalid grade for '+entry.url+': '+entry.grade);
+    if(!['上學期','下學期'].includes(entry.semester)) fail(catalogFile,'invalid semester for '+entry.url+': '+entry.semester);
+  });
+
+  const urls=entries.map(e=>e.url);
   const duplicateUrls=[...new Set(urls.filter((x,i)=>urls.indexOf(x)!==i))];
   if(duplicateUrls.length) fail(catalogFile,'duplicate unit URLs: '+duplicateUrls.join(', '));
-  for(const m of entries){
-    const url=m[4];
+
+  for(const entry of entries){
+    const url=entry.url;
     const local=url.replace(/^\/+/,'');
     const target=path.join(process.cwd(),local,'index.html');
     if(!fs.existsSync(target)) fail(catalogFile,'catalog URL has no index.html: '+url);
@@ -114,15 +147,16 @@ if(!fs.existsSync(catalogFile)){
     }else{
       const scriptText=fs.readFileSync(script,'utf8');
       const keys=storageKeyMap(scriptText);
-      if(keys.AWARDS_KEY!==m[5]) fail(catalogFile,`awards key mismatch for ${url}: catalog=${m[5]} script=${keys.AWARDS_KEY||'missing'}`);
-      if(keys.MISTAKES_KEY!==m[6]) fail(catalogFile,`mistakes key mismatch for ${url}: catalog=${m[6]} script=${keys.MISTAKES_KEY||'missing'}`);
-      if(keys.RESUME_KEY!==m[7]) fail(catalogFile,`resume key mismatch for ${url}: catalog=${m[7]} script=${keys.RESUME_KEY||'missing'}`);
+      if(keys.AWARDS_KEY!==entry.awards) fail(catalogFile,`awards key mismatch for ${url}: catalog=${entry.awards} script=${keys.AWARDS_KEY||'missing'}`);
+      if(keys.MISTAKES_KEY!==entry.mistakes) fail(catalogFile,`mistakes key mismatch for ${url}: catalog=${entry.mistakes} script=${keys.MISTAKES_KEY||'missing'}`);
+      if(keys.RESUME_KEY!==entry.resume) fail(catalogFile,`resume key mismatch for ${url}: catalog=${entry.resume} script=${keys.RESUME_KEY||'missing'}`);
     }
   }
-  for(const keyIndex of [5,6,7]){
-    const keys=entries.map(m=>m[keyIndex]);
+
+  for(const keyName of ['awards','mistakes','resume']){
+    const keys=entries.map(e=>e[keyName]);
     const dup=[...new Set(keys.filter((x,i)=>keys.indexOf(x)!==i))];
-    if(dup.length) fail(catalogFile,'duplicate catalog storage keys: '+dup.join(', '));
+    if(dup.length) fail(catalogFile,'duplicate catalog '+keyName+' keys: '+dup.join(', '));
   }
 
   const subjectDecl=catalog.match(/subjects:\s*\[([^\]]+)\]/);
@@ -130,16 +164,21 @@ if(!fs.existsSync(catalogFile)){
     fail(catalogFile,'subjects list missing');
   }else{
     const subjects=[...subjectDecl[1].matchAll(/'([^']+)'/g)].map(m=>m[1]);
-    const entrySubjects=[...new Set(entries.map(m=>m[1]))];
+    const entrySubjects=[...new Set(entries.map(e=>e.subject))];
     const missing=entrySubjects.filter(s=>!subjects.includes(s));
     const unused=subjects.filter(s=>!entrySubjects.includes(s));
     if(missing.length) fail(catalogFile,'unit subjects missing from subjects list: '+missing.join(', '));
     if(unused.length) warn(catalogFile,'subjects list contains no units yet: '+unused.join(', '));
   }
 
+  if(!/currentScope:\s*\{stage:'國小',grade:5,semester:'上學期',label:'國小五年級上學期'\}/.test(catalog)){
+    warn(catalogFile,'currentScope metadata missing or unexpected');
+  }
   if(!/scopeLabel:\s*'[^']+'/.test(catalog)) warn(catalogFile,'scopeLabel metadata missing');
-}
 
+  const stageDecl=[...catalog.matchAll(/\{stage:'(國小|國中|高中)',grades:\[([^\]]+)\]\}/g)];
+  if(stageDecl.length!==3) fail(catalogFile,'expected 3 education stage definitions');
+}
 for(const file of unitJs){
   const text=fs.readFileSync(file,'utf8');
   if(!text.includes("AML_KIDS_LAST_ACTIVITY_KEY='amlKidsLastActivityV1'")) fail(file,'missing recent activity tracking');
