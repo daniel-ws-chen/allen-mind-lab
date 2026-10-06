@@ -53,6 +53,7 @@ units.forEach(unit=>{
       id:m.id||('m'+index),
       text:m.text||'這題曾經答錯，請回原單元重新挑戰。',
       level:m.level||'未分類',
+      topic:m.topic||'未分類',
       corrected:awards.has(m.id)
     });
   });
@@ -86,6 +87,7 @@ function renderSubjectFilters(){
       editionFilter='全部';
       renderSubjectFilters();
       renderEditionFilters();
+      renderConceptSummary();
       render();
     });
     subjectFilters.appendChild(btn);
@@ -125,10 +127,52 @@ function renderEditionFilters(){
     btn.addEventListener('click',()=>{
       editionFilter=key;
       renderEditionFilters();
+      renderConceptSummary();
       render();
     });
     editionFilters.appendChild(btn);
   });
+}
+
+function renderConceptSummary(){
+  const wrap=document.getElementById('conceptSummary');
+  if(!wrap) return;
+
+  let source=scopedMistakes().filter(m=>!m.corrected);
+  if(subjectFilter!=='全部') source=source.filter(m=>m.subject===subjectFilter);
+  if(editionFilter!=='全部') source=source.filter(m=>editionKey(m)===editionFilter);
+
+  const counts=new Map();
+  source.forEach(m=>{
+    const key=(m.topic||'未分類').trim()||'未分類';
+    counts.set(key,(counts.get(key)||0)+1);
+  });
+
+  const ranked=[...counts.entries()].sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0],'zh-Hant'));
+  wrap.innerHTML='';
+
+  if(!ranked.length){
+    const empty=document.createElement('div');
+    empty.className='concept-card concept-card--empty';
+    empty.innerHTML='<strong>目前沒有待訂正概念 🎉</strong><span>完成新的挑戰後，錯題主題會逐步整理在這裡。</span>';
+    wrap.appendChild(empty);
+    return;
+  }
+
+  ranked.slice(0,6).forEach(([topic,count],index)=>{
+    const card=document.createElement('div');
+    card.className='concept-card';
+    card.innerHTML='<strong>'+(index+1)+'. '+topic+'</strong><span>'+count+' 題待訂正</span>';
+    wrap.appendChild(card);
+  });
+
+  const unclassified=counts.get('未分類')||0;
+  if(unclassified){
+    const note=document.createElement('div');
+    note.className='concept-card concept-card--empty';
+    note.innerHTML='<strong>還有 '+unclassified+' 題舊紀錄未分類</strong><span>舊錯題沒有主題 tag 時會保留在錯題中心，但不強行推測概念。</span>';
+    wrap.appendChild(note);
+  }
 }
 
 function renderSummary(){
@@ -167,7 +211,7 @@ function render(){
     card.className='mistake-card '+(m.corrected?'corrected':'pending');
     const meta=document.createElement('div');
     meta.className='mistake-meta';
-    [scopeLabel(m),m.subject,m.publisher+' '+m.version,m.unit,m.level].forEach(x=>{
+    [scopeLabel(m),m.subject,m.publisher+' '+m.version,m.unit,m.level,m.topic].forEach(x=>{
       const chip=document.createElement('span');
       chip.className='mistake-chip';
       chip.textContent=x;
@@ -194,6 +238,7 @@ document.querySelectorAll('[data-status]').forEach(btn=>btn.addEventListener('cl
   statusFilter=btn.dataset.status;
   document.querySelectorAll('[data-status]').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
   renderSummary();
+  renderConceptSummary();
   render();
 }));
 
@@ -204,10 +249,12 @@ scopeFilter.addEventListener('change',()=>{
   renderSubjectFilters();
   renderEditionFilters();
   renderSummary();
+  renderConceptSummary();
   render();
 });
 
 renderSubjectFilters();
 renderEditionFilters();
 renderSummary();
+renderConceptSummary();
 render();
