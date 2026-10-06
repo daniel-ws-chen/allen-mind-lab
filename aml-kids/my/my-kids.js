@@ -100,19 +100,35 @@ function renderDashboard(){
   wrap.innerHTML='';
   const scopedSubjects=subjectOrder.filter(subject=>scopedData.some(u=>u.subject===subject));
   scopedSubjects.forEach(subject=>{
-    const list=scopedData.filter(u=>u.subject===subject);
-    const done=list.reduce((a,u)=>a+Math.min(questionsPerUnit,u.done),0);
-    const max=list.length*questionsPerUnit;
-    const complete=list.filter(u=>u.complete).length;
-    const article=document.createElement('article');
-    article.className='subject-progress-card';
-    article.innerHTML=
-      '<div class="subject-progress-head"><div><span class="section-kicker">'+subject+'</span><h3>'+complete+' / '+list.length+' 單元完成</h3></div><strong>'+done+' / '+max+' 題</strong></div>'+
-      '<div class="progress-line" role="progressbar" aria-label="'+subject+'完成度" aria-valuemin="0" aria-valuemax="'+max+'" aria-valuenow="'+done+'"><div class="progress-fill" style="width:'+Math.round(done/max*100)+'%"></div></div>'+
-      '<div class="unit-mini-grid">'+list.map(u=>
-        '<a class="unit-mini" href="'+u.url+'"><span><strong>'+u.title+'</strong><small>'+u.publisher+' '+u.version+' · '+u.done+' / '+questionsPerUnit+' 題'+(u.pending?' · 待訂正 '+u.pending:'')+'</small></span><span aria-hidden="true">'+(u.complete?'✓':'→')+'</span></a>'
-      ).join('')+'</div>';
-    wrap.appendChild(article);
+    const subjectUnits=scopedData.filter(u=>u.subject===subject);
+    const editions=[];
+    const editionMap=new Map();
+    subjectUnits.forEach(unit=>{
+      const key=unit.publisher+'|'+unit.version;
+      if(!editionMap.has(key)){
+        const group={publisher:unit.publisher,version:unit.version,units:[]};
+        editionMap.set(key,group);
+        editions.push(group);
+      }
+      editionMap.get(key).units.push(unit);
+    });
+
+    editions.forEach(edition=>{
+      const list=edition.units;
+      const done=list.reduce((a,u)=>a+Math.min(questionsPerUnit,u.done),0);
+      const max=list.length*questionsPerUnit;
+      const complete=list.filter(u=>u.complete).length;
+      const editionLabel=edition.publisher+' '+edition.version;
+      const article=document.createElement('article');
+      article.className='subject-progress-card';
+      article.innerHTML=
+        '<div class="subject-progress-head"><div><span class="section-kicker">'+subject+'｜'+editionLabel+'</span><h3>'+complete+' / '+list.length+' 單元完成</h3></div><strong>'+done+' / '+max+' 題</strong></div>'+
+        '<div class="progress-line" role="progressbar" aria-label="'+subject+' '+editionLabel+' 完成度" aria-valuemin="0" aria-valuemax="'+max+'" aria-valuenow="'+done+'"><div class="progress-fill" style="width:'+Math.round(done/max*100)+'%"></div></div>'+
+        '<div class="unit-mini-grid">'+list.map(u=>
+          '<a class="unit-mini" href="'+u.url+'"><span><strong>'+u.title+'</strong><small>'+u.done+' / '+questionsPerUnit+' 題'+(u.pending?' · 待訂正 '+u.pending:'')+'</small></span><span aria-hidden="true">'+(u.complete?'✓':'→')+'</span></a>'
+        ).join('')+'</div>';
+      wrap.appendChild(article);
+    });
   });
 }
 
