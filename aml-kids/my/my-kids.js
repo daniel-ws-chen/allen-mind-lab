@@ -2,6 +2,7 @@ const WALLET_KEY='amlKidsRewardWalletV1';
 const SCOPE_KEY='amlKidsMyScopeV1';
 const VISUAL_KEY='amlKidsVisualChallengeV1';
 const VISUAL_LAST_KEY='amlKidsVisualLastActivityV1';
+const DAILY_KEY='amlKidsDaily5V1';
 const visualSubjects=[
   {key:'chinese',label:'國文'},
   {key:'english',label:'英文'},
@@ -75,6 +76,23 @@ try{visualLastActivity=JSON.parse(localStorage.getItem(VISUAL_LAST_KEY)||'null')
 let visualState={};
 try{visualState=JSON.parse(localStorage.getItem(VISUAL_KEY)||'{}')||{};}catch{}
 
+function todayKey(){
+  const d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function renderDailyFive(){
+  const wrap=document.getElementById('dailyFiveCard');
+  if(!wrap) return;
+  let all={};
+  try{all=JSON.parse(localStorage.getItem(DAILY_KEY)||'{}')||{};}catch{}
+  const state=all[todayKey()]||{};
+  const done=Math.min(5,new Set(Array.isArray(state.completed)?state.completed:[]).size);
+  wrap.innerHTML=
+    '<div><strong>'+(done>=5?'今天完成了 5 / 5 題 🌟':'今天完成 '+done+' / 5 題')+'</strong>'+
+    '<p>'+(done>=5?'明天會換成新的五科題目。':'國文、英文、數學、自然、社會各 1 題；不影響原單元進度與點數。')+'</p></div>'+
+    '<a href="../daily/">'+(done>=5?'查看今日題目':'繼續今日 5 題')+' →</a>';
+}
+
 function renderVisualProgress(){
   const wrap=document.getElementById('visualProgress');
   if(!wrap) return;
@@ -128,6 +146,7 @@ function renderRecentLearning(){
 }
 
 function renderDashboard(){
+  renderDailyFive();
   renderVisualProgress();
   renderRecentLearning();
   const scopedData=data.filter(u=>scopeKey(u)===selectedScope);
