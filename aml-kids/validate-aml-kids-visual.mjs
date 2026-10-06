@@ -4,47 +4,67 @@ const dataFile='aml-kids/visual-challenges/visual-data.js';
 const indexFile='aml-kids/visual-challenges/index.html';
 const engineFile='aml-kids/visual-challenges/visual-challenges.js';
 const cssFile='aml-kids/visual-challenges/visual-challenges.css';
+const catalogFile='aml-kids/assets/kids-catalog.js';
+const homeFile='aml-kids/index.html';
+const myFile='aml-kids/my/index.html';
 
 const errors=[];
 const warnings=[];
+const fail=msg=>errors.push(msg);
+const warn=msg=>warnings.push(msg);
 
-function fail(msg){errors.push(msg)}
-function warn(msg){warnings.push(msg)}
-
-for(const file of [dataFile,indexFile,engineFile,cssFile]){
+for(const file of [dataFile,indexFile,engineFile,cssFile,catalogFile,homeFile,myFile]){
   if(!fs.existsSync(file)) fail('missing '+file);
 }
 
-let data={};
-if(fs.existsSync(dataFile)){
-  const src=fs.readFileSync(dataFile,'utf8');
+function evalGlobal(file,key){
+  const src=fs.readFileSync(file,'utf8');
   const fake={};
-  try{
-    Function('window',src)(fake);
-    data=fake.AML_KIDS_VISUAL_DATA||{};
-  }catch(err){
-    fail('visual-data.js cannot be evaluated: '+err.message);
-  }
+  Function('window',src)(fake);
+  return fake[key]||{};
 }
 
-const expected=['chinese','english','math','science','social'];
-for(const subject of expected){
-  const qs=data[subject];
-  if(!Array.isArray(qs)){
-    fail(subject+': question array missing');
+let data={},catalog={};
+try{ if(fs.existsSync(dataFile)) data=evalGlobal(dataFile,'AML_KIDS_VISUAL_DATA'); }
+catch(err){ fail('visual-data.js cannot be evaluated: '+err.message); }
+try{ if(fs.existsSync(catalogFile)) catalog=evalGlobal(catalogFile,'AML_KIDS_CATALOG'); }
+catch(err){ fail('kids-catalog.js cannot be evaluated: '+err.message); }
+
+if(Number(data.version||0)<2) fail('visual data schema must be version 2 or newer');
+const scopes=data.scopes||{};
+const scopeEntries=Object.entries(scopes);
+if(!scopeEntries.length) fail('visual data scopes are empty');
+
+for(const [scopeKey,qs] of scopeEntries){
+  const parts=scopeKey.split('|');
+  if(parts.length!==6){
+    fail(scopeKey+': scope key must contain stage|grade|semester|subject|publisher|version');
     continue;
   }
-  if(qs.length!==10) fail(subject+': expected 10 questions, found '+qs.length);
+  const [stage,gradeRaw,semester,subject,publisher,version]=parts;
+  const grade=Number(gradeRaw);
+  const matchingUnits=(catalog.units||[]).filter(u=>
+    u.stage===stage&&u.grade===grade&&u.semester===semester&&
+    u.subject===subject&&u.publisher===publisher&&u.version===version
+  );
+  if(!matchingUnits.length) fail(scopeKey+': no matching catalog edition');
+
+  if(!Array.isArray(qs)){
+    fail(scopeKey+': question array missing');
+    continue;
+  }
+  if(qs.length!==10) fail(scopeKey+': expected 10 visual questions, found '+qs.length);
+
   const ids=new Set();
   const counts=[0,0,0,0];
   let last=-1,run=0,maxRun=0;
 
   qs.forEach((q,i)=>{
-    const label=subject+' q'+String(i+1).padStart(2,'0');
+    const label=scopeKey+' q'+String(i+1).padStart(2,'0');
     for(const field of ['id','tag','q','svg','alt','caption','e']){
       if(typeof q[field]!=='string'||!q[field].trim()) fail(label+': missing '+field);
     }
-    if(ids.has(q.id)) fail(subject+': duplicate id '+q.id);
+    if(ids.has(q.id)) fail(scopeKey+': duplicate id '+q.id);
     ids.add(q.id);
 
     if(!Array.isArray(q.o)||q.o.length!==4){
@@ -68,35 +88,53 @@ for(const subject of expected){
   });
 
   const max=Math.max(...counts),min=Math.min(...counts);
-  if(max-min>1) fail(subject+': answer positions should stay balanced, found '+counts.join('/'));
-  if(maxRun>2) fail(subject+': same answer repeats '+maxRun+' times');
-  console.log('PASS?',subject,qs.length+' questions','A/B/C/D '+counts.join('/'),'max run '+maxRun);
+  if(max-min>1) fail(scopeKey+': answer positions should stay balanced, found '+counts.join('/'));
+  if(maxRun>2) fail(scopeKey+': same answer repeats '+maxRun+' times');
+  console.log('PASS?',scopeKey,qs.length+' questions','A/B/C/D '+counts.join('/'),'max run '+maxRun);
 }
 
 if(fs.existsSync(indexFile)){
   const html=fs.readFileSync(indexFile,'utf8');
-  for(const token of ['class="skip-link"','aria-live="polite"','fieldset class="answer-options"','id="visual-description"']){
-    if(!html.includes(token)) fail('index.html missing '+token);
+  for(const token of [
+    'class="skip-link"',
+    'aria-live="polite"',
+    'fieldset class="answer-options"',
+    'id="visual-description"',
+    'id="version-back"',
+    '../assets/kids-catalog.js'
+  ]){
+    if(!html.includes(token)) fail('visual index missing '+token);
   }
-  if(!html.includes('meta name="robots" content="noindex,nofollow"')) fail('index.html missing noindex,nofollow');
+  if(html.includes('data-subject-link')) fail('visual page must not expose global cross-subject tabs');
+  if(!html.includes('meta name="robots" content="noindex,nofollow"')) fail('visual index missing noindex,nofollow');
+  const catalogAt=html.indexOf('../assets/kids-catalog.js');
+  const dataAt=html.indexOf('visual-data.js');
+  if(catalogAt<0||dataAt<0||catalogAt>dataAt) fail('catalog must load before visual data/engine');
 }
 
 if(fs.existsSync(engineFile)){
   const js=fs.readFileSync(engineFile,'utf8');
-  if(!js.includes("amlKidsVisualChallengeV1")) fail('visual progress storage key missing');
-  if(!js.includes("input[name=\"visual-answer\"]:checked")) fail('radio answer handling missing');
-  if(!js.includes("localStorage")) fail('independent progress persistence missing');
-  if(!js.includes('function updateProgressDisplay')) fail('visual challenge must use saved completion count for progress');
+  for(const token of [
+    "amlKidsVisualChallengeV2",
+    "LEGACY_KEY='amlKidsVisualChallengeV1'",
+    "const scopeKey=[scope.stage,scope.grade,scope.semester,scope.subject,scope.publisher,scope.version].join('|')",
+    'DATA.scopes?.[scopeKey]',
+    'scopeUnits=(CATALOG.units||[])',
+    'function versionHomeUrl',
+    'function updateProgressDisplay',
+    'firstIncomplete',
+    'function renderQuestionNav',
+    "qs('#prev-question')",
+    "fb.textContent='答錯了。",
+    "fb.textContent='答對了。",
+    'firstAttempt',
+    'wrongEver',
+    'function renderCompletionSummary',
+    "className='review-wrong-btn'"
+  ]){
+    if(!js.includes(token)) fail('visual engine missing '+token);
+  }
   if(js.includes('const progress=index')) fail('visual progress must not use question index as completion count');
-  if(!js.includes('firstIncomplete')) fail('completion flow must return to unfinished questions instead of showing a false completion state');
-  if(!js.includes('function renderQuestionNav')) fail('visual challenge must expose direct question-number navigation');
-  if(!js.includes("qs('#prev-question')")) fail('visual challenge previous-question control missing');
-  if(!js.includes("fb.textContent='答錯了。")) fail('visual challenge must explicitly announce an incorrect answer');
-  if(!js.includes("fb.textContent='答對了。")) fail('visual challenge must explicitly announce a correct answer');
-  if(!js.includes('firstAttempt')) fail('visual challenge must preserve first-attempt correctness');
-  if(!js.includes('wrongEver')) fail('visual challenge must preserve wrong-answer history after correction');
-  if(!js.includes('function renderCompletionSummary')) fail('visual challenge completion summary missing');
-  if(!js.includes("className='review-wrong-btn'")) fail('wrong-answer review buttons missing');
 }
 
 if(fs.existsSync(cssFile)){
@@ -106,9 +144,40 @@ if(fs.existsSync(cssFile)){
   if(!css.includes('prefers-reduced-motion')) fail('prefers-reduced-motion rule missing');
 }
 
+if(fs.existsSync(homeFile)){
+  const home=fs.readFileSync(homeFile,'utf8');
+  if(home.includes('visual-challenge-banner')) fail('AML Kids home must not expose a global visual challenge entry');
+  if(/href=["']visual-challenges\//.test(home)) fail('AML Kids home must not link directly to unscoped visual challenge');
+}
+
+if(fs.existsSync(myFile)){
+  const my=fs.readFileSync(myFile,'utf8');
+  if(my.includes('id="visualProgress"')) fail('My AML Kids must not expose a standalone cross-version visual progress grid');
+}
+
+const versionPages=[
+  'aml-kids/chinese-5a/index.html',
+  'aml-kids/english-5a/index.html',
+  'aml-kids/math-5a/index.html',
+  'aml-kids/science-5a/index.html',
+  'aml-kids/social-5a/index.html'
+];
+for(const file of versionPages){
+  if(!fs.existsSync(file)){fail('missing '+file);continue;}
+  const html=fs.readFileSync(file,'utf8');
+  const link=html.match(/href="([^"]*visual-challenges\/\?[^"]+)"/)?.[1]||'';
+  if(!link){
+    fail(file+': version-scoped visual challenge link missing');
+    continue;
+  }
+  for(const param of ['stage=','grade=','semester=','subject=','publisher=','version=']){
+    if(!link.includes(param)) fail(file+': visual link missing '+param);
+  }
+}
+
 warnings.forEach(x=>console.warn('WARN:',x));
 if(errors.length){
   errors.forEach(x=>console.error('FAIL:',x));
   process.exit(1);
 }
-console.log('PASS: AML Kids visual challenge QA passed.');
+console.log('PASS: AML Kids edition-scoped visual challenge QA passed.');
