@@ -79,6 +79,46 @@
   },
   "articles": [
     {
+      "slug": "some-last-times-we-didnt-know",
+      "title": "有些最後一次，當下並不知道",
+      "summary": "有些最後一次，發生的時候並不會有人通知。從過年家族聚會的熱鬧，到成年後逐漸改變的團圓形式，重新理解：珍惜不是害怕失去，而是在還能相聚的時候，好好去愛。",
+      "date": "2026-10-07",
+      "domains": [
+        "notes"
+      ],
+      "primaryDomain": "notes",
+      "crossDomains": [],
+      "tag": "AML Notes",
+      "cardMeta": "2026.10.07 · AML Notes",
+      "keywords": [
+        "家族",
+        "團圓",
+        "過年",
+        "親情",
+        "珍惜",
+        "關係",
+        "AML Notes"
+      ],
+      "articlePath": "/articles/some-last-times-we-didnt-know.html",
+      "order": -7,
+      "canonical": "https://allenmindlab.com/articles/some-last-times-we-didnt-know",
+      "hero": "/images/articles/some-last-times-we-didnt-know-hero.webp",
+      "ogImage": "/images/articles/some-last-times-we-didnt-know-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇小品 ← 一個月，10,000 次閱讀之後",
+          "href": "/articles/one-month-10000-pageviews.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": true
+    },
+    {
       "slug": "pbs-classroom-environment-teacher-student-conflict",
       "title": "環境可以先做哪些調整？——從 PBS 重新思考師生衝突",
       "summary": "從 PBS 的情境觀點重新思考師生衝突：從座位、課程彈性、課堂節奏、正向語言到退出與調節設計，找出教室裡今天就能開始改變的條件。",
@@ -208,6 +248,11 @@
           "kind": "previous",
           "label": "上一篇小品 ← 入戲",
           "href": "/articles/enter-the-play.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇小品 → 有些最後一次，當下並不知道",
+          "href": "/articles/some-last-times-we-didnt-know.html"
         }
       ],
       "readingPaths": [],
