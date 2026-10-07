@@ -1,14 +1,14 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-06T00:00:00.000Z",
+  "generatedAt": "2026-10-07T02:03:09.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 64,
+    "total": 65,
     "ot": 27,
     "mind": 14,
-    "pbs": 15,
-    "education": 15,
+    "pbs": 16,
+    "education": 16,
     "management": 33,
     "ai": 22,
     "notes": 8
@@ -78,6 +78,56 @@
     }
   },
   "articles": [
+    {
+      "slug": "pbs-classroom-environment-teacher-student-conflict",
+      "title": "環境可以先做哪些調整？——從 PBS 重新思考師生衝突",
+      "summary": "從 PBS 的情境觀點重新思考師生衝突：從座位、課程彈性、課堂節奏、正向語言到退出與調節設計，找出教室裡今天就能開始改變的條件。",
+      "date": "2026-10-07",
+      "domains": [
+        "pbs",
+        "education"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [
+        "education"
+      ],
+      "tag": "PBS × Education",
+      "cardMeta": "2026.10.07 · PBS × Education",
+      "keywords": [
+        "PBS",
+        "正向行為支持",
+        "師生衝突",
+        "班級經營",
+        "融合教育",
+        "課程彈性",
+        "環境調整",
+        "正向語言",
+        "情緒調節",
+        "教室環境"
+      ],
+      "articlePath": "/articles/pbs-classroom-environment-teacher-student-conflict.html",
+      "order": -8,
+      "canonical": "https://allenmindlab.com/articles/pbs-classroom-environment-teacher-student-conflict",
+      "hero": "/images/articles/pbs-classroom-environment-teacher-student-conflict-hero.webp",
+      "ogImage": "/images/articles/pbs-classroom-environment-teacher-student-conflict-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "相關閱讀 ← 孩子為什麼不再去上學？從 PBS 看青少年拒學背後的行為功能",
+          "href": "/articles/school-refusal-pbs-behavior-function.html"
+        },
+        {
+          "kind": "next",
+          "label": "延伸閱讀 塑造有利於 PBS 推動的照顧環境 →",
+          "href": "/articles/pbs-supportive-care-environment.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "school-refusal-pbs-behavior-function",
       "title": "孩子為什麼不再去上學？從 PBS 看青少年拒學背後的行為功能",
