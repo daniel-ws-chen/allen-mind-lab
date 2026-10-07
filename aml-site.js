@@ -720,39 +720,192 @@
       .catch(() => {});
   }
 
-  /* ===== AML Related Reading Network v1 ===== */
-  const amlRelatedReading = {"/articles/ai-cultivation-inner-life":[["/articles/research-update-ai-digital-burnout-meditation","研究新知｜AI 愈方便，人反而更需要留白？","Research Update × AI × Mind"],["/articles/medical-care-and-inner-practice","醫療照顧身體，修習安頓身心","Mind & Well-being"],["/articles/helper-self-awareness","心安方能助人，理明方能成事","Mind & Well-being"]],"/articles/ai-era-teaching-learning":[["/articles/management-coach-leader-workflow","當組長不再一個人救火","Management × AI × Education"],["/articles/ai-review-quality-collaboration","當 GPT 開始審 GPT","AI × Practice"],["/articles/ai-human-occupation-moho","當 AI 開始參與我們的選擇","OT × AI"]],"/articles/ot-management-transition-support-life":[["/articles/pbs-support-transition-real-life","走出治療室以後","PBS × OT × Management"],["/articles/pbs-plan-contextual-fit","為什麼同一份 PBS 計畫，換個地方就不一定有效？","PBS × Disability Services"],["/articles/ot-management-service-development-choice","機會很多，但不是每一個都要抓住","Management & Leadership × OT"]],"/articles/ot-management-service-development-choice":[["/articles/ot-management-strategy-swot","好的策略，不是從填 SWOT 開始","Management & Leadership"],["/articles/ot-management-organizational-planning","組織為什麼存在？從願景、使命到可執行的服務方向","Management & Leadership"],["/articles/ot-management-transition-support-life","讓改變走得更遠","Management × PBS × OT"]],"/articles/ot-management-kpi-data-pdca":[["/articles/ot-management-functions-quality-improvement","從管理五大功能到品質改善","Management & Leadership"],["/articles/ot-management-strategy-swot","好的策略，不是從填 SWOT 開始","Management & Leadership"],["/articles/ot-management-decision-accountability","從管理決策到當責文化","Management & Leadership"]],"/articles/ot-management-strategy-swot":[["/articles/ot-management-organizational-planning","組織為什麼存在？從願景、使命到可執行的服務方向","Management & Leadership"],["/articles/ot-management-kpi-data-pdca","我們做了很多，然後呢？","Management & Leadership"],["/articles/ot-management-service-development-choice","機會很多，但不是每一個都要抓住","Management & Leadership × OT"]],"/articles/pbs-plan-contextual-fit":[["/articles/pbs-support-transition-real-life","走出治療室以後","PBS × OT × Management"],["/articles/ot-management-transition-support-life","讓改變走得更遠","Management × PBS × OT"],["/articles/pbs-being-seen","當「被看見」成為高挑戰行為","PBS"]],"/articles/ai-manager-leadership-human-ai-collaboration":[["/articles/ot-management-decision-accountability","從管理決策到當責文化","Management & Leadership"],["/articles/ot-management-leadership-team-change","管理與領導：如何帶領團隊一起前進？","Management & Leadership"],["/articles/management-coach-leader-workflow","當組長不再一個人救火","Management × AI × Education"]],"/articles/ot-management-organizational-planning":[["/articles/ot-management-strategy-swot","好的策略，不是從填 SWOT 開始","Management & Leadership"],["/articles/ot-management-service-development-choice","機會很多，但不是每一個都要抓住","Management & Leadership × OT"],["/articles/ot-management-why-management-matters","職能治療師為什麼需要學管理？","Management & Leadership"]],"/articles/management-coach-leader-workflow":[["/articles/ai-manager-leadership-human-ai-collaboration","當 AI 越來越會管事，管理者該如何帶人？","Management × AI"],["/articles/ai-era-teaching-learning","當學生已經有了 AI，老師還要教什麼？","Education × AI × OT"],["/articles/ai-review-quality-collaboration","當 GPT 開始審 GPT","AI × Practice"]],"/articles/pbs-support-transition-real-life":[["/articles/ot-management-transition-support-life","讓改變走得更遠","Management × PBS × OT"],["/articles/pbs-plan-contextual-fit","為什麼同一份 PBS 計畫，換個地方就不一定有效？","PBS × Disability Services"],["/articles/pbs-being-seen","當「被看見」成為高挑戰行為","PBS"]],"/articles/ai-review-quality-collaboration":[["/articles/management-coach-leader-workflow","當組長不再一個人救火","Management × AI × Education"],["/articles/ai-era-teaching-learning","當學生已經有了 AI，老師還要教什麼？","Education × AI × OT"],["/articles/digital-communication-boundaries","不是不想回，是不能一直在線","AI × Practice"]],"/articles/ot-management-decision-accountability":[["/articles/ot-management-leadership-team-change","管理與領導：如何帶領團隊一起前進？","Management & Leadership"],["/articles/ot-management-functions-quality-improvement","從管理五大功能到品質改善","Management & Leadership"],["/articles/ot-management-kpi-data-pdca","我們做了很多，然後呢？","Management & Leadership"]],"/articles/ot-management-leadership-team-change":[["/articles/ai-manager-leadership-human-ai-collaboration","當 AI 越來越會管事，管理者該如何帶人？","Management × AI"],["/articles/ot-management-decision-accountability","從管理決策到當責文化","Management & Leadership"],["/articles/helper-support-system","助人者也需要被支持","Management & Leadership"]],"/articles/ot-management-functions-quality-improvement":[["/articles/ot-management-kpi-data-pdca","我們做了很多，然後呢？","Management & Leadership"],["/articles/ot-management-why-management-matters","職能治療師為什麼需要學管理？","Management & Leadership"],["/articles/ot-management-strategy-swot","好的策略，不是從填 SWOT 開始","Management & Leadership"]],"/articles/ot-management-why-management-matters":[["/articles/ot-management-functions-quality-improvement","從管理五大功能到品質改善","Management & Leadership"],["/articles/ot-management-organizational-planning","組織為什麼存在？從願景、使命到可執行的服務方向","Management & Leadership"],["/articles/ot-management-leadership-team-change","管理與領導：如何帶領團隊一起前進？","Management & Leadership"]],"/articles/ai-human-occupation-moho":[["/articles/ai-cultivation-inner-life","當 AI 愈來愈強，人為什麼反而更需要修行？","Mind × AI × OT"],["/articles/ai-era-teaching-learning","當學生已經有了 AI，老師還要教什麼？","Education × AI × OT"],["/articles/ai-review-quality-collaboration","當 GPT 開始審 GPT","AI × Practice"]],"/articles/pbs-being-seen":[["/articles/pbs-plan-contextual-fit","為什麼同一份 PBS 計畫，換個地方就不一定有效？","PBS × Disability Services"],["/articles/pbs-support-transition-real-life","走出治療室以後","PBS × OT × Management"],["/articles/ot-management-transition-support-life","讓改變走得更遠","Management × PBS × OT"]],"/articles/digital-communication-boundaries":[["/articles/research-update-ai-digital-burnout-meditation","研究新知｜AI 愈方便，人反而更需要留白？","Research Update × AI × Mind"],["/articles/ai-review-quality-collaboration","當 GPT 開始審 GPT","AI × Practice"],["/articles/helper-support-system","助人者也需要被支持：自我照顧之外，還有團隊與組織的責任","Management & Leadership"]],"/articles/helper-support-system":[["/articles/helper-self-awareness","心安方能助人，理明方能成事","Mind & Well-being"],["/articles/digital-communication-boundaries","不是不想回，是不能一直在線","AI × Practice"],["/articles/ot-management-leadership-team-change","管理與領導：如何帶領團隊一起前進？","Management & Leadership"]],"/articles/helper-self-awareness":[["/articles/research-update-ai-digital-burnout-meditation","研究新知｜AI 愈方便，人反而更需要留白？","Research Update × AI × Mind"],["/articles/helper-support-system","助人者也需要被支持：自我照顧之外，還有團隊與組織的責任","Management & Leadership"],["/articles/medical-care-and-inner-practice","醫療照顧身體，修習安頓身心","Mind & Well-being"]],"/articles/medical-care-and-inner-practice":[["/articles/helper-self-awareness","心安方能助人，理明方能成事","Mind & Well-being"],["/articles/ai-cultivation-inner-life","當 AI 愈來愈強，人為什麼反而更需要修行？","Mind × AI × OT"],["/articles/helper-support-system","助人者也需要被支持","Management & Leadership"]],"/articles/research-update-ai-digital-burnout-meditation":[["/articles/ai-cultivation-inner-life","當 AI 愈來愈強，人為什麼反而更需要修行？","Mind × AI × OT"],["/articles/helper-self-awareness","心安方能助人，理明方能成事","Mind & Well-being"],["/articles/digital-communication-boundaries","不是不想回，是不能一直在線","AI × Practice"]]};
-  const relatedItems = amlRelatedReading[currentPath];
+  /* ===== AML Related Reading Network v2 ===== */
+  (() => {
+    if (!currentPath.startsWith("/articles/")) return;
 
-  if (relatedItems && !document.querySelector(".aml-related-reading")) {
-    const footer = document.querySelector(".aml-global-footer");
-    if (footer) {
+    const normalizeArticlePath = (path) =>
+      normalizePath(String(path || "").replace(/^https?:\/\/[^/]+/i, ""));
+
+    const domainLabels = {
+      ot: "OT & Human Occupation",
+      mind: "Mind & Well-being",
+      pbs: "PBS",
+      education: "Education",
+      management: "Management & Leadership",
+      ai: "AI × Practice",
+      notes: "AML Notes"
+    };
+
+    const labelFor = (article) =>
+      article?.tag ||
+      domainLabels[article?.primaryDomain] ||
+      "Allen Mind Lab";
+
+    const collectManualRelated = () => {
+      const headings = Array.from(document.querySelectorAll("main h2, main h3"));
+      const heading = headings.find((el) =>
+        el.id === "section-related" ||
+        el.textContent.trim() === "延伸閱讀"
+      );
+      if (!heading) return { items: [], nodes: [] };
+
+      const list = heading.nextElementSibling;
+      if (!list || !["UL", "OL"].includes(list.tagName)) {
+        return { items: [], nodes: [] };
+      }
+
+      const items = Array.from(list.querySelectorAll("a[href]"))
+        .map((a) => ({
+          path: normalizeArticlePath(a.getAttribute("href")),
+          title: a.textContent.trim()
+        }))
+        .filter((x) => x.path.startsWith("/articles/"));
+
+      return { items, nodes: [heading, list] };
+    };
+
+    const scoreCandidate = (current, candidate) => {
+      if (!candidate || candidate.slug === current.slug || candidate.isNote) return -Infinity;
+
+      let score = 0;
+      const currentDomains = new Set(current.domains || []);
+      const candidateDomains = new Set(candidate.domains || []);
+      const sharedDomains = [...currentDomains].filter((d) => candidateDomains.has(d));
+
+      if (candidate.primaryDomain && candidate.primaryDomain === current.primaryDomain) score += 12;
+      score += sharedDomains.length * 4;
+
+      const currentSeries = new Set(current.series || []);
+      const candidateSeries = new Set(candidate.series || []);
+      score += [...currentSeries].filter((s) => candidateSeries.has(s)).length * 8;
+
+      const currentPaths = new Set(current.readingPaths || []);
+      const candidatePaths = new Set(candidate.readingPaths || []);
+      score += [...currentPaths].filter((p) => candidatePaths.has(p)).length * 7;
+
+      const currentKeywords = new Set((current.keywords || []).map((k) => String(k).toLocaleLowerCase()));
+      const candidateKeywords = new Set((candidate.keywords || []).map((k) => String(k).toLocaleLowerCase()));
+      score += Math.min(
+        6,
+        [...currentKeywords].filter((k) => candidateKeywords.has(k)).length
+      ) * 1.5;
+
+      if (current.tag && candidate.tag && current.tag === candidate.tag) score += 2;
+
+      const a = Date.parse(current.date || "");
+      const b = Date.parse(candidate.date || "");
+      if (Number.isFinite(a) && Number.isFinite(b)) {
+        const days = Math.abs(a - b) / 86400000;
+        score += Math.max(0, 2 - Math.min(days, 180) / 90);
+      }
+
+      return score;
+    };
+
+    const renderRelated = async () => {
+      if (document.querySelector(".aml-related-reading")) return;
+
+      let manifest;
+      try {
+        const res = await fetch("/data/articles-manifest.json", { cache: "no-cache" });
+        if (!res.ok) return;
+        manifest = await res.json();
+      } catch (_) {
+        return;
+      }
+
+      const articles = Array.isArray(manifest?.articles) ? manifest.articles : [];
+      const current = articles.find((a) =>
+        normalizeArticlePath(a.articlePath || a.canonical) === currentPath
+      );
+      if (!current || current.isNote) return;
+
+      const byPath = new Map(
+        articles.map((a) => [
+          normalizeArticlePath(a.articlePath || a.canonical),
+          a
+        ])
+      );
+
+      const manual = collectManualRelated();
+      const picked = [];
+      const seen = new Set([currentPath]);
+
+      manual.items.forEach((item) => {
+        const article = byPath.get(item.path);
+        if (!article || article.isNote || seen.has(item.path)) return;
+        seen.add(item.path);
+        picked.push(article);
+      });
+
+      if (picked.length < 3) {
+        articles
+          .map((candidate) => ({ candidate, score: scoreCandidate(current, candidate) }))
+          .filter(({ candidate, score }) => {
+            const path = normalizeArticlePath(candidate.articlePath || candidate.canonical);
+            return Number.isFinite(score) && !seen.has(path);
+          })
+          .sort((a, b) =>
+            b.score - a.score ||
+            String(b.candidate.date || "").localeCompare(String(a.candidate.date || ""))
+          )
+          .forEach(({ candidate }) => {
+            if (picked.length >= 3) return;
+            const path = normalizeArticlePath(candidate.articlePath || candidate.canonical);
+            seen.add(path);
+            picked.push(candidate);
+          });
+      }
+
+      if (!picked.length) return;
+
+      const footer = document.querySelector(".aml-global-footer");
+      if (!footer) return;
+
       const section = document.createElement("section");
       section.className = "aml-related-reading";
       section.setAttribute("aria-labelledby", "aml-related-reading-title");
 
-      const cards = relatedItems.map(([href, title, label]) => `
-        <a class="aml-related-reading__card" href="${href}">
-          <span class="aml-related-reading__label">${label}</span>
-          <strong>${title}</strong>
-          <span class="aml-related-reading__go">繼續閱讀 →</span>
-        </a>
-      `).join("");
+      const cards = picked.slice(0, 3).map((article) => {
+        const href = article.articlePath || ("/articles/" + article.slug + ".html");
+        return `
+          <a class="aml-related-reading__card" href="${href}">
+            <span class="aml-related-reading__label">${labelFor(article)}</span>
+            <strong>${article.title}</strong>
+            <p>${article.summary || ""}</p>
+            <span class="aml-related-reading__go">延伸閱讀 →</span>
+          </a>
+        `;
+      }).join("");
 
       section.innerHTML = `
         <div class="aml-related-reading__inner">
-          <div class="aml-related-reading__kicker">KEEP EXPLORING</div>
-          <h2 id="aml-related-reading-title">沿著這個問題，繼續讀下去。</h2>
-          <p>從相近的主題、實務情境與思考路徑延伸閱讀。</p>
+          <div class="aml-related-reading__head">
+            <div>
+              <div class="aml-related-reading__kicker">KEEP EXPLORING</div>
+              <h2 id="aml-related-reading-title">延伸閱讀</h2>
+            </div>
+            <p>依文章主題、系列與關鍵字推薦</p>
+          </div>
           <div class="aml-related-reading__grid">${cards}</div>
           <a class="aml-related-reading__all" href="/articles.html">瀏覽全部文章 →</a>
         </div>
       `;
-      footer.parentNode.insertBefore(section, footer);
-    }
-  }
 
-})();
+      footer.parentNode.insertBefore(section, footer);
+
+      /* Manual text links are preserved as priority recommendations,
+         then removed from the article body to avoid duplicate presentation. */
+      manual.nodes.forEach((node) => node.remove());
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", renderRelated, { once: true });
+    } else {
+      renderRelated();
+    }
+  })();
 
 /* =========================================================
    AML PBS Self-study: article completion return card
