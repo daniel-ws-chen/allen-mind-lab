@@ -321,11 +321,24 @@
         closeTimer = setTimeout(() => { details.open = false; closeTimer = null; }, 220);
       };
 
+      const summary = details.querySelector(":scope > summary");
+
       details.addEventListener("toggle", () => {
         if (details.open) { closeExplore(details); fitNavPanel(details); }
         else cancelClose();
       });
       details.querySelectorAll(".aml-nav-panel a").forEach(a => a.addEventListener("click", () => { details.open = false; }));
+
+      /* Open only one desktop dropdown at a time.
+         Moving directly from one menu trigger to another closes the previous menu immediately,
+         avoiding overlapping panels that can trap the pointer between two <details> elements. */
+      const activateThisMenu = () => {
+        closeExplore(details);
+        cancelClose();
+      };
+      summary?.addEventListener("pointerenter", activateThisMenu);
+      summary?.addEventListener("focusin", activateThisMenu);
+      summary?.addEventListener("click", () => closeExplore(details));
 
       if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
         details.addEventListener("pointerenter", cancelClose);
