@@ -246,6 +246,11 @@
   }
 
   function buildGlobalNav() {
+    /* Native HTML mutual-exclusion group: only one primary desktop dropdown can stay open.
+       Supported by current Chromium and works even if later event handlers fail. */
+    document.querySelectorAll('.aml-desktop-links > details.aml-nav-group').forEach((details) => {
+      details.setAttribute('name', 'aml-primary-nav');
+    });
     ensureNavStyles();
     markCompactInnerHero();
     normalizeCollectionNav();
