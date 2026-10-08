@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-07T02:03:09.000Z",
+  "generatedAt": "2026-10-08T00:35:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 65,
+    "total": 66,
     "ot": 27,
     "mind": 14,
     "pbs": 16,
     "education": 16,
     "management": 33,
-    "ai": 22,
+    "ai": 23,
     "notes": 8
   },
   "featuredReading": [
@@ -78,6 +78,54 @@
     }
   },
   "articles": [
+    {
+      "slug": "digital-accessibility-easy-read-information-equity",
+      "title": "當資訊成為服務入口：從美國 2026 身障政策年報，看無障礙與易讀資訊平權",
+      "summary": "從美國最新身障政策年報的數位無障礙焦點，回看陽明教養院易讀易懂與資訊平權實踐，再延伸到 AML 無障礙標章申請與 AI 世代的普及性設計。",
+      "date": "2026-10-08",
+      "domains": [
+        "ai"
+      ],
+      "primaryDomain": "ai",
+      "crossDomains": [],
+      "tag": "AI × Practice",
+      "cardMeta": "2026.10.08 · AI × Practice",
+      "keywords": [
+        "資訊平權",
+        "數位無障礙",
+        "易讀易懂",
+        "身心障礙",
+        "CRPD",
+        "NCD",
+        "無障礙標章",
+        "AI",
+        "普及性設計",
+        "accessibility",
+        "Easy Read"
+      ],
+      "articlePath": "/articles/digital-accessibility-easy-read-information-equity.html",
+      "order": -9,
+      "canonical": "https://allenmindlab.com/articles/digital-accessibility-easy-read-information-equity",
+      "hero": "/images/articles/digital-accessibility-easy-read-information-equity-hero.png",
+      "ogImage": "/images/articles/digital-accessibility-easy-read-information-equity-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "相關閱讀 ← AI 降低專業門檻之後：從架站到無障礙標章申請",
+          "href": "/articles/ai-learning-accessibility-journey.html"
+        },
+        {
+          "kind": "next",
+          "label": "延伸閱讀 當 AI 開始參與我們的選擇 →",
+          "href": "/articles/ai-human-occupation-moho.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "some-last-times-we-didnt-know",
       "title": "有些最後一次，當下並不知道",
