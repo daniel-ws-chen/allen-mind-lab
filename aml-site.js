@@ -350,6 +350,23 @@
   };
 
   bindExploreMenus();
+
+  /* Hard guard: at desktop size, pointer/focus activity inside one nav group
+     immediately closes every other open <details>. This runs in capture phase
+     so it also works when moving directly between overlapping dropdown panels. */
+  const closeOtherNavGroups = (target) => {
+    const active = target && target.closest ? target.closest(".aml-nav-group") : null;
+    if (!active) return;
+    getExploreMenus().forEach((details) => {
+      if (details !== active && details.open) details.open = false;
+    });
+  };
+  document.addEventListener("pointerover", (e) => {
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    closeOtherNavGroups(e.target);
+  }, true);
+  document.addEventListener("focusin", (e) => closeOtherNavGroups(e.target), true);
+
   document.addEventListener("aml:nav-updated", bindExploreMenus);
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", bindExploreMenus, { once: true });
