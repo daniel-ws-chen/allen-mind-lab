@@ -92,6 +92,7 @@
   function makeDetails(label, attrName, links) {
     const details = document.createElement('details');
     details.className = 'aml-nav-group';
+    details.setAttribute('name', 'aml-primary-nav');
     details.dataset[attrName] = 'true';
     const summary = document.createElement('summary');
     summary.textContent = label;
