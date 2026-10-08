@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-08T00:35:00.000Z",
+  "generatedAt": "2026-10-08T06:10:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 66,
+    "total": 67,
     "ot": 27,
     "mind": 14,
     "pbs": 16,
     "education": 16,
     "management": 33,
     "ai": 23,
-    "notes": 8
+    "notes": 9
   },
   "featuredReading": [
     "pbs-support-transition-real-life",
@@ -78,6 +78,48 @@
     }
   },
   "articles": [
+    {
+      "slug": "oden-in-the-minds-eye",
+      "title": "當識海裡出現關東煮",
+      "summary": "一次心輪頌波靜坐裡，識海先出現了光，接著卻浮現三塊關東煮白蘿蔔。從一段奇妙又莞爾的經驗，重新思考我們如何感受、詮釋，並把修行帶回日常。",
+      "date": "2026-10-08",
+      "domains": [
+        "notes"
+      ],
+      "primaryDomain": "notes",
+      "crossDomains": [],
+      "tag": "AML Notes",
+      "cardMeta": "2026.10.08 · AML Notes",
+      "keywords": [
+        "AML 小品",
+        "靜坐",
+        "脈輪頌波",
+        "心輪",
+        "修行",
+        "自我覺察",
+        "滋養",
+        "光明指引",
+        "日常生活"
+      ],
+      "articlePath": "/articles/oden-in-the-minds-eye.html",
+      "order": -10,
+      "canonical": "https://allenmindlab.com/articles/oden-in-the-minds-eye",
+      "hero": "/images/articles/oden-in-the-minds-eye-hero.webp",
+      "ogImage": "/images/articles/oden-in-the-minds-eye-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇小品 ← 有些最後一次，當下並不知道",
+          "href": "/articles/some-last-times-we-didnt-know.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": true
+    },
     {
       "slug": "digital-accessibility-easy-read-information-equity",
       "title": "當資訊成為服務入口：從美國 2026 身障政策年報，看無障礙與易讀資訊平權",
@@ -161,6 +203,11 @@
           "kind": "previous",
           "label": "上一篇小品 ← 一個月，10,000 次閱讀之後",
           "href": "/articles/one-month-10000-pageviews.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇小品 → 當識海裡出現關東煮",
+          "href": "/articles/oden-in-the-minds-eye.html"
         }
       ],
       "readingPaths": [],
