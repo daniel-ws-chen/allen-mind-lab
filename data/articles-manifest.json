@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-08T06:10:00.000Z",
+  "generatedAt": "2026-10-08T06:25:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 67,
+    "total": 68,
     "ot": 27,
     "mind": 14,
     "pbs": 16,
     "education": 16,
     "management": 33,
     "ai": 23,
-    "notes": 9
+    "notes": 10
   },
   "featuredReading": [
     "pbs-support-transition-real-life",
