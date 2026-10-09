@@ -3,3 +3,9 @@ html{font-size:18px}body{line-height:1.8}.chinese-header{max-width:1040px;margin
 .reset-segment{border:1px solid #9a6b45;background:#fff;color:#6f4527;border-radius:.75rem;padding:.5rem .8rem;font:inherit;font-weight:850;cursor:pointer;min-height:2.5rem}
 .reset-segment:hover{background:#fff7ef}
 .reset-segment:focus-visible{outline:4px solid #f59e0b;outline-offset:3px}
+
+.reading-material{margin:.9rem 0 1rem;padding:1rem 1.05rem;border:1px solid #d8c6b7;border-radius:1rem;background:#fffaf5;line-height:1.8}
+.reading-material-title{font-weight:900;margin-bottom:.45rem}
+.reading-material p{margin:0;white-space:pre-line}
+.challenge-question .reading-stem{margin-top:.85rem}
+@media (max-width:700px){.reading-material{padding:.9rem}.reading-material p{line-height:1.75}}
