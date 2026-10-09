@@ -40,6 +40,24 @@ function renderQuestions(){questionList.innerHTML='';const base=activeSegment===
 document.querySelectorAll('.answer-option input').forEach(input=>input.addEventListener('change',()=>{const box=input.closest('.challenge-question');box.querySelectorAll('.answer-option').forEach(x=>x.classList.remove('option-selected'));input.closest('.answer-option').classList.add('option-selected')}));
 document.querySelectorAll('.bank-check').forEach(btn=>btn.addEventListener('click',()=>{const box=btn.closest('.challenge-question'),q=questions.find(x=>x.id===box.dataset.quiz),sel=box.querySelector('input:checked'),fb=box.querySelector('.feedback');if(!sel){fb.textContent='請先選一個答案。';return}state.resume={id:q.id,level:q.level};save();amlKidsRecordActivity(q.id,q.level);box.querySelectorAll('.answer-option').forEach(x=>x.classList.remove('option-wrong','option-right'));if(Number(sel.value)===q.a){const got=award(q);fb.textContent=(got?'✅ 答對！+5 點。 ':'✅ 這題已完成。 ')+q.e;box.classList.add('correct');box.classList.remove('incorrect');sel.closest('.answer-option')?.classList.add('option-right')}else{fb.textContent='🔍 目前答案不對。請回到材料，檢查敘事位置、語氣與文本證據，再試一次。';box.classList.add('incorrect');box.classList.remove('correct');sel.closest('.answer-option')?.classList.add('option-wrong');if(!state.mistakes.some(m=>m.id===q.id)){state.mistakes.push({id:q.id,text:q.q,level:q.level,topic:q.s||'未分類'});save();renderMistakes()}}}))}
 document.querySelectorAll('.segment-btn').forEach(b=>b.addEventListener('click',()=>showSegment(b.dataset.segment)));
+resetSegment.addEventListener('click',()=>{
+  const list=segment();
+  const ids=new Set(list.map(q=>q.id));
+  const earned=list.filter(q=>state.awards.has(q.id)).length*5;
+  const label=activeSegment+' '+list.length+' 題';
+  if(!confirm('確定要重測「'+label+'」嗎？\n\n這一區的作答進度與錯題紀錄會清除；已取得的 '+earned+' 點會先扣回，重新答對後可再取得，不會重複累積總點數。'))return;
+  state.awards=new Set([...state.awards].filter(id=>!ids.has(id)));
+  state.mistakes=state.mistakes.filter(m=>!ids.has(m.id));
+  state.score=Math.max(0,state.score-earned);
+  state.wallet=Math.max(0,state.wallet-earned);
+  const first=list[0];
+  state.resume=first?{id:first.id,level:activeSegment}:null;
+  save();
+  renderAll();
+  showSegment(activeSegment,{scroll:false});
+  segmentTitle.focus();
+  amlKidsRecordActivity(first?.id||'',activeSegment);
+});
 function nextQuestion(){const i=questions.findIndex(q=>q.id===state.resume?.id);for(let n=Math.max(0,i+1);n<questions.length;n++)if(!state.awards.has(questions[n].id))return questions[n];return questions.find(q=>!state.awards.has(q.id))}
 function renderResume(){const done=questions.filter(q=>state.awards.has(q.id)).length;if(!state.resume&&done===0){resumeCard.hidden=true;return}resumeCard.hidden=false;const n=nextQuestion();if(!n){resumeTitle.textContent='第一單元已完成';resumeText.textContent='可以前往錯題小本本複習。';return}resumeTitle.textContent='繼續第一單元｜第 '+(questions.indexOf(n)+1)+' 題';resumeText.textContent='目前完成 '+done+' / 50 題；下一題在「'+n.level+'」區。'}
 resumeChallenge.addEventListener('click',()=>{const n=nextQuestion();if(!n)return;showPanel('challenge');showSegment(n.level,{scroll:false});requestAnimationFrame(()=>document.querySelector('[data-quiz="'+n.id+'"]')?.scrollIntoView({block:'start'}))});
