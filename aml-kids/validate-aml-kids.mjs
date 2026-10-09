@@ -355,6 +355,20 @@ if(warnings.length){
   console.log('\nWarnings:');
   warnings.forEach(x=>console.log('  - '+x));
 }
+
+for(let n=1;n<=5;n++){
+  const htmlPath=path.join(root,'chinese-11a-lungteng',`unit${n}`,'index.html');
+  const jsPath=path.join(root,'chinese-11a-lungteng',`unit${n}`,`unit${n}.js`);
+  if(fs.existsSync(htmlPath)&&fs.existsSync(jsPath)){
+    const html=fs.readFileSync(htmlPath,'utf8');
+    const js=fs.readFileSync(jsPath,'utf8');
+    if(!html.includes('id="resetSegment"')) fail(`grade 11 Chinese U${n}: section retest control missing`);
+    for(const token of ['resetSegment.addEventListener','state.awards=new Set','state.mistakes=state.mistakes.filter','state.wallet=Math.max(0,state.wallet-earned)']){
+      if(!js.includes(token)) fail(`grade 11 Chinese U${n}: section retest logic missing ${token}`);
+    }
+  }
+}
+
 if(failures.length){
   console.error('\nFailures:');
   failures.forEach(x=>console.error('  - '+x));
