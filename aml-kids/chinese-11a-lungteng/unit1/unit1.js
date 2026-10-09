@@ -1,6 +1,24 @@
 const AML_KIDS_LAST_ACTIVITY_KEY='amlKidsLastActivityV1';
 function amlKidsRecordActivity(questionId='',level=''){let previous=null;try{previous=JSON.parse(localStorage.getItem(AML_KIDS_LAST_ACTIVITY_KEY)||'null')}catch{};if(!questionId&&previous&&previous.path===location.pathname){questionId=previous.questionId||'';level=previous.level||''}const title=document.querySelector('h1')?.textContent.trim()||document.title;const context=document.querySelector('.eyebrow')?.textContent.trim()||'AML Kids';localStorage.setItem(AML_KIDS_LAST_ACTIVITY_KEY,JSON.stringify({path:location.pathname,title,context,questionId,level,updatedAt:Date.now()}))}
-window.addEventListener('DOMContentLoaded',()=>amlKidsRecordActivity());
+window.addEventListener('DOMContentLoaded',()=>{
+  amlKidsRecordActivity();
+  const resumeId=new URLSearchParams(location.search).get('resume');
+  if(resumeId){
+    setTimeout(()=>{
+      const q=questions.find(x=>x.id===resumeId);
+      if(!q)return;
+      showPanel('challenge');
+      showSegment(q.level,{scroll:false});
+      requestAnimationFrame(()=>{
+        const target=document.querySelector('[data-quiz="'+resumeId+'"]');
+        if(target){
+          target.scrollIntoView({block:'center',behavior:'auto'});
+          target.querySelector('input,button')?.focus();
+        }
+      });
+    },120);
+  }
+});
 const WALLET_KEY='amlKidsRewardWalletV1';
 const SCORE_KEY='amlKidsChinese11aLungtengU1ScoreV1';
 const AWARDS_KEY='amlKidsChinese11aLungtengU1AwardsV1';
