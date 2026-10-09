@@ -4,12 +4,12 @@
   "generatedAt": "2026-10-09",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 71,
+    "total": 72,
     "ot": 27,
     "mind": 14,
-    "pbs": 18,
+    "pbs": 19,
     "education": 16,
-    "management": 34,
+    "management": 35,
     "ai": 23,
     "notes": 11
   },
@@ -78,6 +78,42 @@
     }
   },
   "articles": [
+    {
+      "slug": "pbs-management-care-culture",
+      "title": "當 PBS 遇上管理學：那些看似無傷的嘲諷，如何侵蝕照顧文化？",
+      "summary": "從照顧現場的嘲諷文化出發，探討PBS、心理安全感、非正式權力與中階主管的管理挑戰。",
+      "date": "2026-10-09",
+      "domains": [
+        "management",
+        "pbs"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "pbs"
+      ],
+      "tag": "Management & Leadership × PBS",
+      "cardMeta": "2026.10.09 · Management & Leadership × PBS",
+      "keywords": [
+        "PBS",
+        "正向行為支持",
+        "照顧文化",
+        "團隊信任",
+        "心理安全感",
+        "中階主管"
+      ],
+      "articlePath": "/articles/pbs-management-care-culture.html",
+      "order": -14,
+      "canonical": "https://allenmindlab.com/articles/pbs-management-care-culture",
+      "hero": "/images/articles/pbs-management-care-culture-hero.webp",
+      "ogImage": "/images/articles/pbs-management-care-culture-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "pbs-double-abc-relationships",
       "title": "當行為改善了，關係也改善了嗎？",
