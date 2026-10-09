@@ -244,6 +244,21 @@ for(const report of unitReports){
   );
 }
 
+
+for(let n=1;n<=5;n++){
+  const p=path.join(ROOT,'chinese-11a-lungteng',`unit${n}`,`unit${n}.js`);
+  if(!fs.existsSync(p)) continue;
+  const src=fs.readFileSync(p,'utf8');
+  const match=src.match(/const questions=(\[[\s\S]*?\]);\nconst state=/);
+  if(!match){fail(p,'cannot parse grade 11 Chinese questions');continue;}
+  const qs=JSON.parse(match[1]);
+  const literacy=qs.filter(q=>q.level==='素養');
+  if(literacy.length!==10) fail(p,`expected 10 literacy questions, got ${literacy.length}`);
+  const missing=literacy.filter(q=>typeof q.m!=='string'||q.m.trim().length<40).map(q=>q.id);
+  if(missing.length) fail(p,`literacy reading material missing/too short: ${missing.join(', ')}`);
+  if(!src.includes('class="reading-material"')||!src.includes('aria-label="閱讀材料"')) fail(p,'literacy reading-material renderer missing');
+}
+
 if(warnings.length){
   console.log('\nWarnings:');
   warnings.forEach(x=>console.log('  - '+x));
