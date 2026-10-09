@@ -1,6 +1,6 @@
 window.AML_KIDS_CATALOG = {
-  version: 4,
-  totalUnits: 27,
+  version: 5,
+  totalUnits: 28,
   questionsPerUnit: 50,
   scopeLabel: '國小五年級上學期',
   currentScope: {stage:'國小',grade:5,semester:'上學期',label:'國小五年級上學期'},
@@ -11,13 +11,15 @@ window.AML_KIDS_CATALOG = {
   ],
   subjects: ['國文','社會','自然','英文','數學'],
   subjectDetails: [
-    {subject:'國文',slug:'chinese',icon:'📚',intro:'從課文理解、語詞與句型一路練到推論、主旨、篇章結構與閱讀素養。',wishVersions:['康軒','翰林']},
+    {subject:'國文',slug:'chinese',icon:'📚',intro:'從課文理解、語詞與句型一路練到推論、主旨、篇章結構與閱讀素養。',wishVersions:['康軒','翰林','龍騰']},
     {subject:'社會',slug:'social',icon:'🌏',intro:'讀懂歷史與地理，不只是背人名、年代與地名。',wishVersions:['康軒','南一']},
     {subject:'自然',slug:'science',icon:'🔬',intro:'從觀察、實驗與資料開始，練習「怎麼知道答案」。',wishVersions:['南一','翰林']},
     {subject:'英文',slug:'english',icon:'🔤',intro:'從單字、句型、phonics 到閱讀理解，練習真正看懂與使用英文。',wishVersions:['康軒','南一']},
     {subject:'數學',slug:'math',icon:'➗',intro:'先看懂數量關係，再計算；練習位值、估算、直式與應用題。',wishVersions:['南一','翰林']}
   ],
   units: [
+    {stage:'高中',grade:11,semester:'上學期',subject:'國文',publisher:'龍騰',version:'國文3',unit:'U1',title:'現代散文與文化觀看',summary:'敘事視角 · 文化詮釋 · 文本證據 · 意象',url:'/aml-kids/chinese-11a-lungteng/unit1/',script:'/aml-kids/chinese-11a-lungteng/unit1/unit1.js',awards:'amlKidsChinese11aLungtengU1AwardsV1',mistakes:'amlKidsChinese11aLungtengU1MistakesV1',resume:'amlKidsChinese11aLungtengU1ResumeV1'},
+
     {stage:'國小',grade:5,semester:'上學期',subject:'國文',publisher:'南一',version:'5A',unit:'U1',title:'品格小學堂',summary:'人物行動 · 因果 · 主旨 · 語詞句型',url:'/aml-kids/chinese-5a/unit1/',script:'/aml-kids/chinese-5a/unit1/unit1.js',awards:'amlKidsChinese5aU1AwardsV1',mistakes:'amlKidsChinese5aU1MistakesV1',resume:'amlKidsChinese5aU1ResumeV1'},
     {stage:'國小',grade:5,semester:'上學期',subject:'國文',publisher:'南一',version:'5A',unit:'U2',title:'自然筆記',summary:'景物描寫 · 遊記 · 環境議題 · 說明推論',url:'/aml-kids/chinese-5a/unit2/',script:'/aml-kids/chinese-5a/unit2/unit2.js',awards:'amlKidsChinese5aU2AwardsV1',mistakes:'amlKidsChinese5aU2MistakesV1',resume:'amlKidsChinese5aU2ResumeV1'},
     {stage:'國小',grade:5,semester:'上學期',subject:'國文',publisher:'南一',version:'5A',unit:'U3',title:'用心看世界',summary:'說明文 · 文化比較 · 人物行動 · 觀點整合',url:'/aml-kids/chinese-5a/unit3/',script:'/aml-kids/chinese-5a/unit3/unit3.js',awards:'amlKidsChinese5aU3AwardsV1',mistakes:'amlKidsChinese5aU3MistakesV1',resume:'amlKidsChinese5aU3ResumeV1'},
