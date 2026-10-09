@@ -1017,6 +1017,7 @@
       renderRelated();
     }
   })();
+})(); // Close accessible navigation and article-share module
 
 /* =========================================================
    AML PBS Self-study: article completion return card
