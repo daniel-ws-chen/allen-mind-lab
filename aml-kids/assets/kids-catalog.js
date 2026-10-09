@@ -1,6 +1,6 @@
 window.AML_KIDS_CATALOG = {
-  version: 6,
-  totalUnits: 29,
+  version: 7,
+  totalUnits: 30,
   questionsPerUnit: 50,
   scopeLabel: '國小五年級上學期',
   currentScope: {stage:'國小',grade:5,semester:'上學期',label:'國小五年級上學期'},
@@ -20,6 +20,7 @@ window.AML_KIDS_CATALOG = {
   units: [
     {stage:'高中',grade:11,semester:'上學期',subject:'國文',publisher:'龍騰',version:'國文3',unit:'U1',title:'現代散文與文化觀看',summary:'敘事視角 · 文化詮釋 · 文本證據 · 意象',url:'/aml-kids/chinese-11a-lungteng/unit1/',script:'/aml-kids/chinese-11a-lungteng/unit1/unit1.js',awards:'amlKidsChinese11aLungtengU1AwardsV1',mistakes:'amlKidsChinese11aLungtengU1MistakesV1',resume:'amlKidsChinese11aLungtengU1ResumeV1'},
     {stage:'高中',grade:11,semester:'上學期',subject:'國文',publisher:'龍騰',version:'國文3',unit:'U2',title:'古典散文與史傳說服',summary:'文言理解 · 說服策略 · 人物立場 · 情理結構',url:'/aml-kids/chinese-11a-lungteng/unit2/',script:'/aml-kids/chinese-11a-lungteng/unit2/unit2.js',awards:'amlKidsChinese11aLungtengU2AwardsV1',mistakes:'amlKidsChinese11aLungtengU2MistakesV1',resume:'amlKidsChinese11aLungtengU2ResumeV1'},
+    {stage:'高中',grade:11,semester:'上學期',subject:'國文',publisher:'龍騰',version:'國文3',unit:'U3',title:'小說與生命敘事',summary:'情節轉折 · 人物心理 · 伏筆象徵 · 價值判斷',url:'/aml-kids/chinese-11a-lungteng/unit3/',script:'/aml-kids/chinese-11a-lungteng/unit3/unit3.js',awards:'amlKidsChinese11aLungtengU3AwardsV1',mistakes:'amlKidsChinese11aLungtengU3MistakesV1',resume:'amlKidsChinese11aLungtengU3ResumeV1'},
 
     {stage:'國小',grade:5,semester:'上學期',subject:'國文',publisher:'南一',version:'5A',unit:'U1',title:'品格小學堂',summary:'人物行動 · 因果 · 主旨 · 語詞句型',url:'/aml-kids/chinese-5a/unit1/',script:'/aml-kids/chinese-5a/unit1/unit1.js',awards:'amlKidsChinese5aU1AwardsV1',mistakes:'amlKidsChinese5aU1MistakesV1',resume:'amlKidsChinese5aU1ResumeV1'},
     {stage:'國小',grade:5,semester:'上學期',subject:'國文',publisher:'南一',version:'5A',unit:'U2',title:'自然筆記',summary:'景物描寫 · 遊記 · 環境議題 · 說明推論',url:'/aml-kids/chinese-5a/unit2/',script:'/aml-kids/chinese-5a/unit2/unit2.js',awards:'amlKidsChinese5aU2AwardsV1',mistakes:'amlKidsChinese5aU2MistakesV1',resume:'amlKidsChinese5aU2ResumeV1'},
