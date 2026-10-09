@@ -357,14 +357,14 @@ if(warnings.length){
 }
 
 for(let n=1;n<=5;n++){
-  const htmlPath=path.join(root,'chinese-11a-lungteng',`unit${n}`,'index.html');
-  const jsPath=path.join(root,'chinese-11a-lungteng',`unit${n}`,`unit${n}.js`);
+  const htmlPath=path.join(ROOT,'chinese-11a-lungteng',`unit${n}`,'index.html');
+  const jsPath=path.join(ROOT,'chinese-11a-lungteng',`unit${n}`,`unit${n}.js`);
   if(fs.existsSync(htmlPath)&&fs.existsSync(jsPath)){
     const html=fs.readFileSync(htmlPath,'utf8');
     const js=fs.readFileSync(jsPath,'utf8');
-    if(!html.includes('id="resetSegment"')) fail(`grade 11 Chinese U${n}: section retest control missing`);
+    if(!html.includes('id="resetSegment"')) fail(htmlPath,`grade 11 Chinese U${n}: section retest control missing`);
     for(const token of ['resetSegment.addEventListener','state.awards=new Set','state.mistakes=state.mistakes.filter','state.wallet=Math.max(0,state.wallet-earned)']){
-      if(!js.includes(token)) fail(`grade 11 Chinese U${n}: section retest logic missing ${token}`);
+      if(!js.includes(token)) fail(jsPath,`grade 11 Chinese U${n}: section retest logic missing ${token}`);
     }
   }
 }
