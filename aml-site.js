@@ -1,3 +1,78 @@
+/* AML Article Share resilient delegation — global, accessible, progressive enhancement. */
+(function () {
+  'use strict';
+  function show(message, button) {
+    var box = button.closest('.aml-share');
+    var status = box && box.querySelector('[data-aml-share-status]');
+    if (status) { status.setAttribute('role', 'status'); status.textContent = message; }
+  }
+  function shareUrl() {
+    var canonical = document.querySelector('link[rel="canonical"]');
+    return canonical ? canonical.href : location.href;
+  }
+  function manual(url, button) {
+    var box = button.closest('.aml-share');
+    if (!box) return;
+    var field = box.querySelector('[data-aml-manual-link]');
+    if (!field) {
+      field = document.createElement('input');
+      field.type = 'text';
+      field.readOnly = true;
+      field.setAttribute('data-aml-manual-link', '');
+      field.setAttribute('aria-label', '可手動複製的文章網址');
+      field.style.cssText = 'display:block;width:min(100%,640px);margin-top:12px;padding:10px;border:1px solid #9cabb7;border-radius:8px;font-size:1rem';
+      (box.querySelector('[data-aml-share-status]') || box).insertAdjacentElement('afterend', field);
+    }
+    field.value = url;
+    field.focus();
+    field.select();
+    show('無法自動複製，請複製已選取的文章網址。', button);
+  }
+  async function copy(url, button) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(url);
+        show('文章連結已複製 ✓', button);
+        return;
+      }
+    } catch (_) {}
+    var area = document.createElement('textarea');
+    area.value = url;
+    area.readOnly = true;
+    area.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0';
+    document.body.appendChild(area);
+    area.focus(); area.select();
+    var copied = false;
+    try { copied = document.execCommand('copy'); } catch (_) {}
+    area.remove();
+    if (copied) show('文章連結已複製 ✓', button);
+    else manual(url, button);
+  }
+  document.addEventListener('click', function (event) {
+    var target = event.target;
+    if (!(target instanceof Element)) return;
+    var button = target.closest('[data-aml-share], [data-aml-copy-link]');
+    if (!button || !button.closest('.aml-share')) return;
+    event.preventDefault();
+    event.stopImmediatePropagation(); // Prevent legacy per-page/share handlers from double firing.
+    var url = shareUrl();
+    if (button.hasAttribute('data-aml-copy-link')) { void copy(url, button); return; }
+    if (typeof navigator.share === 'function') {
+      try {
+        var title = document.querySelector('h1');
+        var desc = document.querySelector('meta[name="description"]');
+        Promise.resolve(navigator.share({
+          title: title ? title.textContent.trim() : document.title,
+          text: desc ? desc.content : '',
+          url: url
+        })).catch(function (err) {
+          if (!err || err.name !== 'AbortError') { manual(url, button); }
+        });
+      } catch (_) { manual(url, button); }
+    } else { void copy(url, button); }
+  }, true);
+})();
+
 /* AML 3.3 global navigation: dual-bay + advanced self-study dropdown */
 (function () {
   function ensureNavStyles() {
