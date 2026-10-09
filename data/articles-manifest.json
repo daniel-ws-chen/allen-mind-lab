@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-09T00:00:00.000Z",
+  "generatedAt": "2026-10-09",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 70,
+    "total": 71,
     "ot": 27,
     "mind": 14,
-    "pbs": 17,
+    "pbs": 18,
     "education": 16,
     "management": 34,
     "ai": 23,
@@ -78,6 +78,47 @@
     }
   },
   "articles": [
+    {
+      "slug": "pbs-double-abc-relationships",
+      "title": "當行為改善了，關係也改善了嗎？",
+      "summary": "從 PBS 的雙 ABC，看見接納、歸屬與共同生活，探討行為功能、關係安全、危機後修復與日常支持。",
+      "date": "2026-10-09",
+      "domains": [
+        "pbs"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [],
+      "tag": "PBS",
+      "cardMeta": "2026.10.09 · PBS",
+      "keywords": [
+        "PBS",
+        "正向行為支持",
+        "雙 ABC",
+        "Acceptance",
+        "Belonging",
+        "Commoning",
+        "關係支持",
+        "行為功能分析"
+      ],
+      "articlePath": "/articles/pbs-double-abc-relationships.html",
+      "order": -13,
+      "canonical": "https://allenmindlab.com/articles/pbs-double-abc-relationships",
+      "hero": "/images/articles/aml-pbs-double-abc-hero.webp",
+      "ogImage": "/images/articles/aml-pbs-double-abc-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "next",
+          "label": "延伸閱讀 → 塑造有利於 PBS 推動的照顧環境",
+          "href": "/articles/pbs-supportive-care-environment.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "crisis-management-support-system",
       "title": "當危機處理成為管理的日常：我們是否把系統的無力，歸咎於服務對象？",
