@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-08T13:30:00.000Z",
+  "generatedAt": "2026-10-09T00:00:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 69,
+    "total": 70,
     "ot": 27,
     "mind": 14,
-    "pbs": 16,
+    "pbs": 17,
     "education": 16,
-    "management": 33,
+    "management": 34,
     "ai": 23,
     "notes": 11
   },
@@ -78,6 +78,56 @@
     }
   },
   "articles": [
+    {
+      "slug": "crisis-management-support-system",
+      "title": "當危機處理成為管理的日常：我們是否把系統的無力，歸咎於服務對象？",
+      "summary": "當攻擊、住院與返院反覆發生，問題是否只在服務對象？本文結合2026年研究與PBS觀點，探討機構資源限制、組織無力感與危機管理慣性，重新思考照顧系統的支持責任。",
+      "date": "2026-10-09",
+      "domains": [
+        "management",
+        "pbs"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "pbs"
+      ],
+      "tag": "Management & Leadership × PBS",
+      "cardMeta": "2026.10.09 · Management & Leadership × PBS",
+      "keywords": [
+        "PBS",
+        "正向行為支持",
+        "危機管理",
+        "組織管理",
+        "挑戰行為",
+        "身心障礙住宿服務",
+        "照顧品質",
+        "系統支持",
+        "人力配置"
+      ],
+      "articlePath": "/articles/crisis-management-support-system.html",
+      "order": -12,
+      "canonical": "https://allenmindlab.com/articles/crisis-management-support-system",
+      "hero": "/images/articles/aml-crisis-support-hero.webp",
+      "ogImage": "/images/articles/aml-crisis-support-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "相關閱讀 ← 塑造有利於 PBS 推動的照顧環境",
+          "href": "/articles/pbs-supportive-care-environment.html"
+        },
+        {
+          "kind": "next",
+          "label": "延伸閱讀 助人者也需要被支持 →",
+          "href": "/articles/helper-support-system.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "what-are-we-carrying",
       "title": "每天到底是在「重」什麼？",
