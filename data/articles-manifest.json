@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-09",
+  "generatedAt": "2026-10-11",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 72,
-    "ot": 27,
+    "total": 73,
+    "ot": 28,
     "mind": 14,
     "pbs": 19,
     "education": 16,
-    "management": 35,
-    "ai": 23,
+    "management": 36,
+    "ai": 24,
     "notes": 11
   },
   "featuredReading": [
@@ -78,6 +78,44 @@
     }
   },
   "articles": [
+    {
+      "slug": "ai-literacy-how-much-is-enough",
+      "title": "AI 力，多少才夠？",
+      "summary": "AI 工具日新月異，一般工作者需要追上每一次更新嗎？從 AI 焦慮與 AI 素養切入，結合管理學及職能平衡，重新思考工作、學習與生活的選擇。",
+      "date": "2026-10-11",
+      "domains": [
+        "ai",
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "ai",
+      "crossDomains": [
+        "management",
+        "ot"
+      ],
+      "tag": "AI × Practice × Management & Leadership",
+      "cardMeta": "2026.10.11 · AI × Practice",
+      "keywords": [
+        "AI 素養",
+        "AI 焦慮",
+        "職能平衡",
+        "工作者",
+        "管理學",
+        "人機協作"
+      ],
+      "articlePath": "/articles/ai-literacy-how-much-is-enough.html",
+      "order": -15,
+      "canonical": "https://allenmindlab.com/articles/ai-literacy-how-much-is-enough",
+      "hero": "/images/articles/ai-literacy-how-much-is-enough.webp",
+      "ogImage": "/images/articles/ai-literacy-how-much-is-enough.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "pbs-management-care-culture",
       "title": "當 PBS 遇上管理學：那些看似無傷的嘲諷，如何侵蝕照顧文化？",
