@@ -4,14 +4,14 @@
   "generatedAt": "2026-10-11",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 73,
+    "total": 74,
     "ot": 28,
     "mind": 14,
     "pbs": 19,
     "education": 16,
     "management": 36,
     "ai": 24,
-    "notes": 11
+    "notes": 12
   },
   "featuredReading": [
     "pbs-support-transition-real-life",
@@ -78,6 +78,45 @@
     }
   },
   "articles": [
+    {
+      "slug": "let-light-gently-grow",
+      "title": "讓光慢慢發生",
+      "summary": "原本只是週末的一句玩笑，沒想到真的為 Allen Mind Lab 創作了一首主題曲。當文字有了旋律，關於理解、學習、科技與生活的想法，也有了另一種被感受的方式。",
+      "date": "2026-10-11",
+      "domains": [
+        "notes"
+      ],
+      "primaryDomain": "notes",
+      "crossDomains": [],
+      "tag": "AML Notes",
+      "cardMeta": "2026.10.11 · AML Notes",
+      "keywords": [
+        "AML 小品",
+        "主題曲",
+        "讓光慢慢發生",
+        "AI 共作",
+        "Suno",
+        "創作與生活"
+      ],
+      "articlePath": "/articles/let-light-gently-grow.html",
+      "order": -16,
+      "canonical": "https://allenmindlab.com/articles/let-light-gently-grow",
+      "hero": "/images/articles/let-light-gently-grow-hero.webp",
+      "ogImage": "/images/articles/let-light-gently-grow-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇小品 ← 每天到底是在「重」什麼？",
+          "href": "/articles/what-are-we-carrying.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": true
+    },
     {
       "slug": "ai-literacy-how-much-is-enough",
       "title": "AI 力，多少才夠？",
