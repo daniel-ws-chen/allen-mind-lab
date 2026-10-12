@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-11",
+  "generatedAt": "2026-10-13",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 74,
-    "ot": 28,
+    "total": 75,
+    "ot": 29,
     "mind": 14,
     "pbs": 19,
     "education": 16,
-    "management": 36,
-    "ai": 24,
+    "management": 37,
+    "ai": 25,
     "notes": 12
   },
   "featuredReading": [
@@ -78,6 +78,50 @@
     }
   },
   "articles": [
+    {
+      "slug": "ai-tools-deep-collaboration",
+      "title": "AI 越來越多，我們真的需要那麼多 AI 嗎？",
+      "summary": "從文書簡報、網站建置到 AI 郵件提醒，重新思考 AI 工具選擇、深度使用與職能平衡。",
+      "date": "2026-10-13",
+      "domains": [
+        "ai",
+        "management",
+        "ot"
+      ],
+      "primaryDomain": "ai",
+      "crossDomains": [
+        "management",
+        "ot"
+      ],
+      "tag": "AI × Practice",
+      "cardMeta": "2026.10.13 · AI × Practice",
+      "keywords": [
+        "生成式 AI",
+        "工具選擇",
+        "訂閱",
+        "人機協作",
+        "數位素養",
+        "職能平衡"
+      ],
+      "articlePath": "/articles/ai-tools-deep-collaboration.html",
+      "order": -17,
+      "canonical": "https://allenmindlab.com/articles/ai-tools-deep-collaboration",
+      "hero": "/images/articles/ai-tools-deep-collaboration.webp",
+      "ogImage": "/images/articles/ai-tools-deep-collaboration.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "next",
+          "label": "延伸閱讀 → AI 力，多少才夠？",
+          "href": "/articles/ai-literacy-how-much-is-enough.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "let-light-gently-grow",
       "title": "讓光慢慢發生",
