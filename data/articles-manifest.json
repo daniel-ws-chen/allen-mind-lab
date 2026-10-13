@@ -4,12 +4,12 @@
   "generatedAt": "2026-10-13",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 75,
+    "total": 76,
     "ot": 29,
     "mind": 14,
     "pbs": 19,
     "education": 16,
-    "management": 37,
+    "management": 38,
     "ai": 25,
     "notes": 12
   },
@@ -78,6 +78,45 @@
     }
   },
   "articles": [
+    {
+      "slug": "when-helping-becomes-routine-management",
+      "title": "當「順便幫忙」成為管理日常：談組織分工與隱形管理成本",
+      "summary": "當熱心協助成為工作習慣，如何在組織公民行為、機會成本與角色清晰度之間建立可持續的合作？",
+      "date": "2026-10-13",
+      "domains": [
+        "management"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [],
+      "tag": "Management & Leadership",
+      "cardMeta": "2026.10.13 · Management & Leadership",
+      "keywords": [
+        "跨部門協作",
+        "組織公民行為",
+        "角色清晰度",
+        "有限理性",
+        "管理決策",
+        "機會成本"
+      ],
+      "articlePath": "/articles/when-helping-becomes-routine-management.html",
+      "order": -18,
+      "canonical": "https://allenmindlab.com/articles/when-helping-becomes-routine-management",
+      "hero": "/images/articles/when-helping-becomes-routine-management.webp",
+      "ogImage": "/images/articles/when-helping-becomes-routine-management.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "next",
+          "label": "延伸閱讀 → 從管理決策到當責文化",
+          "href": "/articles/ot-management-decision-accountability.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "ai-tools-deep-collaboration",
       "title": "AI 越來越多，我們真的需要那麼多 AI 嗎？",
