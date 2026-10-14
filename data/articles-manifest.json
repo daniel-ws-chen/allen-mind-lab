@@ -4,13 +4,13 @@
   "generatedAt": "2026-10-14",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 77,
+    "total": 78,
     "ot": 29,
     "mind": 14,
     "pbs": 19,
     "education": 16,
-    "management": 39,
-    "ai": 26,
+    "management": 40,
+    "ai": 27,
     "notes": 12
   },
   "featuredReading": [
@@ -78,6 +78,49 @@
     }
   },
   "articles": [
+    {
+      "slug": "visible-efficiency-hidden-costs",
+      "title": "看得見的效率，與看不見的成本",
+      "summary": "從虛構企業情境出發，探討數位轉型背後的隱形工作成本、機會成本，以及管理工具為誰創造價值。",
+      "date": "2026-10-14",
+      "domains": [
+        "management",
+        "ai"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "Management & Leadership",
+      "cardMeta": "2026.10.14 · Management & Leadership",
+      "keywords": [
+        "數位轉型",
+        "管理效率",
+        "精實管理",
+        "機會成本",
+        "組織公平",
+        "自動化",
+        "AI"
+      ],
+      "articlePath": "/articles/visible-efficiency-hidden-costs.html",
+      "order": 0,
+      "canonical": "https://allenmindlab.com/articles/visible-efficiency-hidden-costs",
+      "hero": "/images/articles/visible-efficiency-hidden-costs.webp",
+      "ogImage": "/images/articles/visible-efficiency-hidden-costs.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "next",
+          "label": "延伸閱讀：當依法行政成為停止思考的理由",
+          "href": "/articles/when-compliance-stops-thinking.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "when-compliance-stops-thinking",
       "title": "當依法行政成為停止思考的理由",
