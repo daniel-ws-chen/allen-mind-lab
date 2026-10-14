@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-14",
+  "generatedAt": "2026-10-14T07:05:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 78,
+    "total": 79,
     "ot": 29,
     "mind": 14,
     "pbs": 19,
     "education": 16,
-    "management": 40,
+    "management": 41,
     "ai": 27,
     "notes": 12
   },
@@ -78,6 +78,45 @@
     }
   },
   "articles": [
+    {
+      "slug": "local-success-overall-dilemma",
+      "title": "局部的成功，有時候正是整體困境的開始",
+      "summary": "從利害關係人管理、整合順序與路徑依賴，探討階段性成功如何影響改革的整體目標。",
+      "date": "2026-10-14",
+      "domains": [
+        "management"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [],
+      "tag": "Management & Leadership",
+      "cardMeta": "2026.10.14 · Management & Leadership",
+      "keywords": [
+        "利害關係人",
+        "策略管理",
+        "組織公平",
+        "系統思考",
+        "組織變革",
+        "路徑依賴"
+      ],
+      "articlePath": "/articles/local-success-overall-dilemma.html",
+      "order": -21,
+      "canonical": "https://allenmindlab.com/articles/local-success-overall-dilemma",
+      "hero": "/images/articles/local-success-overall-dilemma-hero.webp",
+      "ogImage": "/images/articles/local-success-overall-dilemma-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "延伸閱讀：看得見的效率，與看不見的成本",
+          "href": "/articles/visible-efficiency-hidden-costs.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "visible-efficiency-hidden-costs",
       "title": "看得見的效率，與看不見的成本",
