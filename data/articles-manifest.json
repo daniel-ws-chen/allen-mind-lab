@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-13",
+  "generatedAt": "2026-10-14",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 76,
+    "total": 77,
     "ot": 29,
     "mind": 14,
     "pbs": 19,
     "education": 16,
-    "management": 38,
-    "ai": 25,
+    "management": 39,
+    "ai": 26,
     "notes": 12
   },
   "featuredReading": [
@@ -78,6 +78,49 @@
     }
   },
   "articles": [
+    {
+      "slug": "when-compliance-stops-thinking",
+      "title": "當依法行政成為停止思考的理由",
+      "summary": "從行政審查透明度、AI 人機協作、機會成本與員工福祉，重新思考依法行政與積極治理如何兼顧。",
+      "date": "2026-10-14",
+      "domains": [
+        "management",
+        "ai"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "Management & Leadership",
+      "cardMeta": "2026.10.14 · Management & Leadership",
+      "keywords": [
+        "依法行政",
+        "公共治理",
+        "行政審查",
+        "AI人機協作",
+        "機會成本",
+        "制度公平",
+        "員工福祉"
+      ],
+      "articlePath": "/articles/when-compliance-stops-thinking.html",
+      "order": -19,
+      "canonical": "https://allenmindlab.com/articles/when-compliance-stops-thinking",
+      "hero": "/images/articles/when-compliance-stops-thinking.webp",
+      "ogImage": "/images/articles/when-compliance-stops-thinking.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "featuredMeta": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "延伸閱讀：當順便幫忙成為管理日常",
+          "href": "/articles/when-helping-becomes-routine-management.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "when-helping-becomes-routine-management",
       "title": "當「順便幫忙」成為管理日常：談組織分工與隱形管理成本",
