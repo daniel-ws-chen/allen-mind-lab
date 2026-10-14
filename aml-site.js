@@ -1227,6 +1227,8 @@
    Existing manual related-reading sections are preserved.
 */
 (function () {
+  // Legacy v1 disabled: Related Reading Network v2 already handles article recommendations.
+  return;
   const pathMatch = location.pathname.match(/^\/articles\/([^/]+?)(?:\.html)?\/?$/i);
   if (!pathMatch) return;
 
