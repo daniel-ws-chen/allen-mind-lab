@@ -279,7 +279,7 @@
   grid-template-columns:repeat(2,1fr);
   gap:28px 38px;
 }
-.aml-footer-group h4{
+.aml-footer-group h3{
   margin:0 0 12px;
   color:var(--aml-gold);
   font-size:.78rem;
