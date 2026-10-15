@@ -1696,9 +1696,10 @@ body .newsletter-icon{
 /* ===== /AML Related Reading Engine v1 ===== */
 
 /* A-level accessibility review 2026-10-15: keyboard focus and path contrast */
-:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
-  outline:3px solid #b66b00;
-  outline-offset:3px;
+:is(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
+  outline:3px solid #e9a943 !important;
+  outline-offset:3px !important;
+  box-shadow:0 0 0 2px #0d1b2a !important;
 }
 .aml-stage-card span,.aml-path-home-card span{color:#725321;}
 .aml-reading-route-meta{color:#374151;}
