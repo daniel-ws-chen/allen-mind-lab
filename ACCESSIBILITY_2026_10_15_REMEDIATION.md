@@ -34,3 +34,12 @@
 ## 風險
 
 共用 :focus-visible 規則尚需實際瀏覽器驗證。將 `outline:none` 覆寫不代表複雜元件已符合鍵盤可操作性。新增的 title 也不應當作重複連結或可見新視窗告知的完全替代。
+
+## 2026-10-15 後續修正驗證紀錄
+- [x] `tools.html` 轉銜評估 DOCX 下載連結改為明示檔案格式。
+- [x] `search.html` 增加可見跳至主要內容連結與鍵盤焦點樣式。
+- [x] `self-study.html` 增加跳至主要內容連結。
+- [x] `articles.html`、`library.html` 修正頁尾 h3 樣式對應。
+- [x] `publications.html` 八個重複「查看出版品」改為包含作品名稱與新視窗提示。
+- [ ] 原始 DOCX GitHub blob 可讀取 base64，仍缺實際 ODT 轉換、格式校對及上傳。不得標示完成。
+- [ ] 正式網站無障礙報告工具端無法完整擷取，缺失核對仍有風險。
