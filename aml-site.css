@@ -1699,7 +1699,6 @@ body .newsletter-icon{
 :is(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
   outline:3px solid #e9a943 !important;
   outline-offset:3px !important;
-  box-shadow:0 0 0 2px #0d1b2a !important;
 }
 .aml-stage-card span,.aml-path-home-card span{color:#725321;}
 .aml-reading-route-meta{color:#374151;}
