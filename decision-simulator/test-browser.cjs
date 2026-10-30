@@ -38,6 +38,8 @@ const assert = require("node:assert/strict");
           assert.equal(await buttons.count(),4,"three options + leave action");
           await buttons.nth((idx+stage-1)%3).click();
           assert.match(await heading.innerText(),/模擬推演/);
+          assert.match(await page.locator("#body").innerText(),/專家觀點（情境示意）/);
+          assert.match(await page.locator("#body").innerText(),/可以再試什麼/);
           assert.equal(await heading.evaluate(e=>document.activeElement===e),true,"outcome heading focus");
           assert.equal(await page.locator("#log li").count(),stage);
           if(stage<3)await page.getByRole("button",{name:"繼續下一階段"}).click();
@@ -45,6 +47,8 @@ const assert = require("node:assert/strict");
         }
         assert.match(await page.locator("#stepTitle").innerText(),/我的探索回顧/);
         const reviewText=await page.locator("#body").innerText();
+        assert.match(reviewText,/三階段專家解析重點/);
+        assert.equal((reviewText.match(/專家觀點：/g)||[]).length,3,"every decision has expert review");
         assert.match(reviewText,/安全、自主、參與、時間與資源/,"review should prompt balanced reflection");
         assert.doesNotMatch(reviewText,/您多次選擇/,"review must not infer a user strategy profile");
         await page.getByRole("button",{name:"探索其他領域",exact:true}).click();
