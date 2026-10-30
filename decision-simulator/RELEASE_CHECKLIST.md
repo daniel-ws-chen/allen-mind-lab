@@ -57,12 +57,17 @@
 ## 0.8 後續：可重複檢查機制
 - 已新增獨立 GitHub Actions 工作流程 `.github/workflows/aml-decision-simulator-qa.yml`，在影響模擬艙的 Pull Request 上執行 `node decision-simulator/test-routes.cjs`。
 - 這是**結構性回歸防線**，不取代真實手機、鍵盤完整操作、螢幕閱讀器、色彩對比、WCAG 人工審核或專家內容審查。
-- [ ] 確認 GitHub Actions 首次實際執行結果為綠燈。
+- [x] GitHub Actions 首次結構驗證與 Chromium 冒煙測試已取得 success 結果（2026-10-30）。
 
 ## 0.9 自動化瀏覽器冒煙測試
 - 新增 `test-browser.cjs`，使用 Playwright Chromium 在 390px 手機尺寸及 1280px 桌機尺寸操作三個領域的完整流程，檢查焦點、階段切換、紀錄清除與橫向溢出。
 - GitHub Actions 已加入實際瀏覽器測試。**須確認首次 GitHub Actions 測試結果，才能將此項目視為通過。**
 - 自動化瀏覽器測試不等同真實手機、NVDA / VoiceOver 使用、200%/400% 字體或專業內容審查。
+
+## 1.0 自動化無障礙檢查
+- 已加入 `test-axe.cjs` 與 CI axe-core 掃描，涵蓋 320px / 390px / 1280px 的進入、選擇與結果畫面，檢查 WCAG A / AA 自動化可偵測問題及橫向溢出。
+- [ ] 待最新 Actions 執行完成並確認掃描結果。
+- 這類測試只能涵蓋機器可檢測的子集，不能聲稱已通過 WCAG 或保證原標章維持。
 
 ## 發布前必須完成（尚未驗收）
 - [x] 第二、三階段加入依前一階段選擇切換的情境文字（規則式分支）。
