@@ -26,6 +26,10 @@ const assert = require("node:assert/strict");
         // Independent complete three-stage pathway on each viewport.
         await page.getByRole("button",{name:label,exact:true}).click();
         for(let stage=1;stage<=3;stage++){
+          if(label==="PBS 正向行為支持" && stage===2){
+            const narrative=await page.locator("#body").innerText();
+            assert.match(narrative,/待驗證的行為功能假設/,"PBS dual functions must remain hypotheses");
+          }
           const heading=page.locator("#stepTitle");
           await heading.waitFor();
           assert.match(await heading.innerText(),new RegExp("第 "+stage+" / 3 階段"));
