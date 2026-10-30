@@ -717,7 +717,11 @@ button:focus-visible,.islandCard:focus-visible{outline:4px solid #f8bf4a!importa
 @media(prefers-reduced-motion:reduce){.investigationBox *{scroll-behavior:auto!important}}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
 .choice:focus-visible,.act:focus-visible,.investigationButton:focus-visible{outline:3px solid #9a6200!important;outline-offset:4px!important}
-</style><meta name="application-version" content="5.8-playtest-candidate"></head><body><main class="app"><header class="top"><div><div class="brand">🏝️ AML · PBS 闖關島</div><div class="sub">快問快答 · 同理對話 · 點擊關卡 · AML 品牌冒險版 v5.8</div></div><div class="chip" id="status">獨立試玩</div></header><section class="body" id="screen" tabindex="-1" aria-live="off"></section><div id="game-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div></main><script>
+.aml-return-nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.aml-return-nav a{color:#fff;text-decoration:underline;text-underline-offset:4px;font-weight:800;background:#13566a;padding:9px 12px;border-radius:10px}
+.aml-return-nav a:focus-visible{outline:3px solid #ffe08c;outline-offset:3px}
+@media(max-width:620px){.top{flex-wrap:wrap;gap:12px}.aml-return-nav{justify-content:flex-start}}
+</style><meta name="application-version" content="5.8-playtest-candidate"></head><body><main class="app"><header class="top"><div><div class="brand">🏝️ AML · PBS 闖關島</div><div class="sub">快問快答 · 同理對話 · 點擊關卡 · AML 品牌冒險版 v5.8</div></div><div class="aml-return-nav"><a href="/tools.html#lab-halls" title="返回 AML 互動實驗室的互動探索艙">← 返回互動實驗室</a><span class="chip" id="status">公開測試</span></div></header><section class="body" id="screen" tabindex="-1" aria-live="off"></section><div id="game-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div></main><script>
 const levels=[
  {name:'客廳 · 活動轉換',face:'📺',intro:'「我還要看！不要關！」',levels:[
   {face:'😠',line:'小安緊握遙控器，不肯關電視。',choices:[{t:'「看完這一小段，我陪你切換到用餐。」',effect:1,reply:'小安看了進度條，手稍微放鬆。',why:'具體的結束點與陪同，有助活動轉換。'},{t:'「我已經提醒過你了，現在就要關。」',effect:-1,reply:'小安提高音量：「不要！」',why:'要求本身未必有錯，但當下重複施壓可能升高衝突。'},{t:'「那你自己決定什麼時候關。」',effect:0,reply:'小安繼續看，下一步的活動仍無法安排。',why:'保留自主性有價值，但缺少可理解的安排與界線。'}]},
