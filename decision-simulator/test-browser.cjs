@@ -40,6 +40,9 @@ const assert = require("node:assert/strict");
           else await page.getByRole("button",{name:"閱讀本次探索回顧"}).click();
         }
         assert.match(await page.locator("#stepTitle").innerText(),/我的探索回顧/);
+        const reviewText=await page.locator("#body").innerText();
+        assert.match(reviewText,/安全、自主、參與、時間與資源/,"review should prompt balanced reflection");
+        assert.doesNotMatch(reviewText,/您多次選擇/,"review must not infer a user strategy profile");
         await page.getByRole("button",{name:"探索其他領域",exact:true}).click();
         assert.equal(await page.locator("#historyPanel").isHidden(),true,"history must reset");
         paths++;
