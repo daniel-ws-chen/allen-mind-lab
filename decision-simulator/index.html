@@ -13,7 +13,7 @@
 <section class="panel"><h2>探索說明</h2><p>這裡不打分、不排名，也不判定您的專業資格。請根據情境選擇您可能採取的做法，觀察示意性的後續情節，再思考其他可能。</p><p class="warning">本平台使用虛構案例與規則式分支，不是臨床、法律或管理專業決策建議。遇到立即安全風險，請依現場安全程序尋求協助。請勿輸入任何真實個案個資。</p></section>
 <section class="panel" id="app" aria-labelledby="stepTitle"><h2 id="stepTitle">選擇探索領域</h2><div id="body"><p>請選擇一個主題開始。</p></div><div id="actions" class="choices" role="group" aria-label="本階段可選擇的行動"></div><p id="status" class="subtle" role="status" aria-live="polite" aria-atomic="true"></p></section>
 <section class="panel" id="historyPanel" hidden aria-labelledby="historyTitle"><h2 id="historyTitle">我的決策探索紀錄</h2><ol id="log"></ol><p class="subtle">此紀錄僅在當前網頁開啟期間保留，重新整理即可清除；不會傳送至伺服器。</p></section>
-<footer><p><a href="/">Allen Mind Lab 首頁</a> · <a href="/self-study">進階自學室</a></p><small>AML Decision Simulator 0.6 · AML 3.3 候選功能 · 測試版，尚未正式上線</small></footer>
+<footer><p><a href="/">Allen Mind Lab 首頁</a> · <a href="/self-study">進階自學室</a></p><small>AML Decision Simulator 0.7 · AML 3.3 候選功能 · 測試版，尚未正式上線</small></footer>
 </main>
 <script>
 "use strict";
@@ -21,44 +21,44 @@ const catalog={
 pbs:{name:"PBS 正向行為支持",stages:[
 {scene:"下午活動轉換時，小宇握緊平板、後退並提高音量。團體活動即將開始，尚未確認行為功能。",options:[
 {label:"降低語速，給予可理解的預告與選擇",reaction:"小宇停止後退，但仍緊握平板。",reflection:"您優先考慮可預測性與選擇權；還需要了解他想避免什麼，或想保留什麼。",tag:"support"},
-{label:"清楚說明活動時間已到，請小宇現在開始準備",reaction:"小宇後退並提高音量，工作人員開始擔心現場安全。",reflection:"要求可能提高衝突；若有立即危險，仍須依個別安全計畫處理。",tag:"pressure"},
-{label:"先保留一段觀察時間，再決定是否調整活動",reaction:"小宇逐漸安靜，但活動安排仍未協調。",reflection:"觀察可以減少過早推論；下一步也需考慮替代溝通與參與。",tag:"pause"}]},
+{label:"清楚說明活動時間已到，請小宇現在開始準備",reaction:"小宇仍有些抗拒，工作人員注意到他持續後退，需要判斷是否應調整要求方式。",reflection:"要求可能提高衝突；若有立即危險，仍須依個別安全計畫處理。",tag:"pressure"},
+{label:"先保留一段觀察時間，再決定是否調整活動",reaction:"觀察期間小宇稍微放鬆，但團隊仍須釐清活動轉換的支持需求。",reflection:"觀察可以減少過早推論；下一步也需考慮替代溝通與參與。",tag:"pause"}]},
 {scene:"新增資訊：小宇指著影片說「還要看」，同時搖頭拒絕團體活動。團隊發現可能同時存在取得平板與逃避活動兩種功能。",options:[
 {label:"提供短暫延長與清楚結束提示，教導表達休息需求",reaction:"小宇願意看提示卡，但仍需要時間轉換。",reflection:"您同時考慮兩種需求，也應觀察此安排是否有助於自主表達。",tag:"support"},
-{label:"先以減少活動逃避為主要目標，維持參與安排",reaction:"小宇再次拒絕，團隊尚未回應平板需求。",reflection:"單一功能假設可能忽略其他維持因素。",tag:"pressure"},
-{label:"先延長影片時間，之後再評估活動安排",reaction:"小宇保持平靜，但活動與替代技能都未有後續安排。",reflection:"短期平靜不等於支持目標已全部達成。",tag:"pause"}]},
+{label:"先以減少活動逃避為主要目標，維持參與安排",reaction:"小宇持續表達想觀看影片，團隊需要再檢視是否遺漏取得活動的需求。",reflection:"單一功能假設可能忽略其他維持因素。",tag:"pressure"},
+{label:"先延長影片時間，之後再評估活動安排",reaction:"小宇暫時沒有升高情緒，但下一次活動轉換仍需要另外規劃。",reflection:"短期平靜不等於支持目標已全部達成。",tag:"pause"}]},
 {scene:"團隊準備重新檢視活動參與的支持方式，並評估是否需要進一步教導替代溝通。",options:[
 {label:"先邀請短時間參與，並保留可使用的休息選項",reaction:"小宇先在活動區旁觀，再嘗試參與部分活動。",reflection:"請思考如何與本人共同確認參與目標，並持續記錄生活品質。",tag:"support"},
-{label:"恢復原本活動時數，以維持參與的一致性",reaction:"小宇猶豫並再次遠離活動區。",reflection:"即使情緒降低，也需留意突然增加要求的影響。",tag:"pressure"},
-{label:"先以尖叫次數作為本週主要追蹤指標",reaction:"團隊無法確認溝通技能及活動參與是否改善。",reflection:"PBS 成效不宜僅依單一問題行為指標判定。",tag:"pause"}]}
+{label:"恢復原本活動時數，以維持參與的一致性",reaction:"小宇對恢復原時數仍顯得猶豫，團隊需要評估他目前可接受的參與程度。",reflection:"即使情緒降低，也需留意突然增加要求的影響。",tag:"pressure"},
+{label:"先以尖叫次數作為本週主要追蹤指標",reaction:"尖叫次數提供了一項線索，但尚不足以了解溝通技能與參與品質。",reflection:"PBS 成效不宜僅依單一問題行為指標判定。",tag:"pause"}]}
 ]},
 management:{name:"管理學",stages:[
 {scene:"住宿服務單位當班兩人臨時請假，既定活動與必要照護工作同時受到影響。",options:[
 {label:"先盤點必要照護、安全需求與可調整活動",reaction:"團隊找出不能延後的工作，但部分服務對象表達失望。",reflection:"您的起點是風險優先序；下一步仍需納入服務對象的聲音。",tag:"support"},
-{label:"維持既定服務項目，請同仁協調調整執行方式",reaction:"團隊工作負荷升高，必要照護可能受到擠壓。",reflection:"維持原計畫未必能維持實際服務品質。",tag:"pressure"},
-{label:"先暫停非必要活動，稍後再與團隊討論",reaction:"短期排班壓力降低，團隊沒有討論替代參與方案。",reflection:"減少任務可能必要，但需交代決策依據及影響。",tag:"pause"}]},
+{label:"維持既定服務項目，請同仁協調調整執行方式",reaction:"維持原服務項目後，部分同仁反映執行時間緊縮，需監測必要照護品質。",reflection:"維持原計畫未必能維持實際服務品質。",tag:"pressure"},
+{label:"先暫停非必要活動，稍後再與團隊討論",reaction:"暫停部分活動緩解了即時負荷，團隊仍需確認如何補足參與機會。",reflection:"減少任務可能必要，但需交代決策依據及影響。",tag:"pause"}]},
 {scene:"新增資訊：一位同仁表示負荷過大，另一位擔心調整將犧牲住民權益。",options:[
 {label:"與團隊及住民代表檢視替代方案與分工",reaction:"討論出短時活動與必要照護安排，但需要再確認執行能力。",reflection:"您把資源配置與服務權益一起納入考慮。",tag:"support"},
-{label:"先由主管依現有資料決定排班，再收集回饋",reaction:"執行速度快，但第一線風險資訊沒有充分進入決策。",reflection:"何時須立即指揮，何時適合參與式決策？",tag:"pressure"},
-{label:"先授權各班別自行調整，再統一彙整做法",reaction:"不同班別採取不同標準，容易出現協作落差。",reflection:"授權仍需要共同底線與回報機制。",tag:"pause"}]},
+{label:"先由主管依現有資料決定排班，再收集回饋",reaction:"主管先完成初步排班，後續回饋指出部分現場限制仍需要調整。",reflection:"何時須立即指揮，何時適合參與式決策？",tag:"pressure"},
+{label:"先授權各班別自行調整，再統一彙整做法",reaction:"各班別提出不同安排，團隊需要釐清共同底線以避免協作落差。",reflection:"授權仍需要共同底線與回報機制。",tag:"pause"}]},
 {scene:"一天結束後，未通報重大意外，但部分活動參與受到影響，團隊也感到疲憊。",options:[
 {label:"檢視工作負荷、參與品質與備援流程",reaction:"團隊形成可供下次應變的紀錄與建議。",reflection:"除了是否出事，也應重視員工可持續性與服務品質。",tag:"support"},
-{label:"先確認安全事件數，再考慮是否需要額外檢討",reaction:"部分風險與經驗沒有被記錄。",reflection:"無事故並不等於決策沒有改善空間。",tag:"pressure"},
-{label:"先加強個別同仁的工作提醒與應變要求",reaction:"團隊缺乏可操作的流程改善。",reflection:"系統性問題通常不能只靠個人努力解決。",tag:"pause"}]}
+{label:"先確認安全事件數，再考慮是否需要額外檢討",reaction:"安全事件數已有紀錄，但工作負荷與參與品質尚未充分回顧。",reflection:"無事故並不等於決策沒有改善空間。",tag:"pressure"},
+{label:"先加強個別同仁的工作提醒與應變要求",reaction:"個別提醒可能改善部分執行問題，但備援流程仍需共同檢視。",reflection:"系統性問題通常不能只靠個人努力解決。",tag:"pause"}]}
 ]},
 disability:{name:"身心障礙服務知能",stages:[
 {scene:"服務對象想自行參與社區活動，家屬擔心交通安全，工作人員希望尊重其自主權。",options:[
 {label:"先和本人確認意願、理解及需要哪些支持",reaction:"服務對象說明想參加的原因，也提出不熟悉交通路線。",reflection:"先確認當事人意願與支持需求，是合理調整的起點。",tag:"support"},
-{label:"先尊重家屬的安全顧慮，延後活動安排",reaction:"服務對象感到失望，未有機會參與討論。",reflection:"家屬顧慮重要，但不能取代當事人的意願探索。",tag:"pressure"},
-{label:"先尊重本人外出意願，再視情況提供後續協助",reaction:"自主選擇受到尊重，但必要支持與求助方式尚未確認。",reflection:"支持自主與不提供支持，不是同一件事。",tag:"pause"}]},
+{label:"先尊重家屬的安全顧慮，延後活動安排",reaction:"活動暫緩後，當事人仍希望表達對外出的想法與期待。",reflection:"家屬顧慮重要，但不能取代當事人的意願探索。",tag:"pressure"},
+{label:"先尊重本人外出意願，再視情況提供後續協助",reaction:"當事人獲得自行安排的空間，但交通風險與求助方式仍需進一步確認。",reflection:"支持自主與不提供支持，不是同一件事。",tag:"pause"}]},
 {scene:"新增資訊：當事人能辨識路線圖，但對轉車地點和迷路時如何求助仍不熟悉。",options:[
 {label:"和本人規劃交通練習及可選擇的協助方式",reaction:"服務對象參與練習，並提出想先由支持者陪同一次。",reflection:"支持是讓人逐步增加選擇機會，不是永遠替他決定。",tag:"support"},
-{label:"暫時安排家屬陪同，再討論未來自行外出的可能",reaction:"可降低部分風險，但限制超過目前已確認的需求。",reflection:"限制措施是否符合比例原則，應持續檢視。",tag:"pressure"},
-{label:"先提供路線圖與求助資訊，讓本人自主準備",reaction:"當事人仍不確定臨時狀況如何求助。",reflection:"資訊提供與能力支持之間，可能還有落差。",tag:"pause"}]},
+{label:"暫時安排家屬陪同，再討論未來自行外出的可能",reaction:"陪同安排可回應部分安全顧慮，但團隊仍須確認是否符合本人意願及支持需求。",reflection:"限制措施是否符合比例原則，應持續檢視。",tag:"pressure"},
+{label:"先提供路線圖與求助資訊，讓本人自主準備",reaction:"當事人取得資訊後，仍希望能有人協助演練突發情況。",reflection:"資訊提供與能力支持之間，可能還有落差。",tag:"pause"}]},
 {scene:"團隊需要與當事人確認下一步行動，並討論後續支持與回饋方式。",options:[
 {label:"共同決定下一步，並設定可調整的求助安排",reaction:"本人與團隊確認可執行的支持方式，保留重新調整的空間。",reflection:"請思考如何避免支持逐漸轉化為不必要的控制。",tag:"support"},
-{label:"維持工作人員陪同，待團隊更有把握再調整",reaction:"短期安排清楚，但自主練習的機會受到限制。",reflection:"安全措施是否能逐步檢討並調整？",tag:"pressure"},
-{label:"先完成當次活動安排，暫緩進行後續回饋",reaction:"團隊難以得知此安排對生活品質及自主感的影響。",reflection:"服務效果也需要由當事人的觀點理解。",tag:"pause"}]}
+{label:"維持工作人員陪同，待團隊更有把握再調整",reaction:"持續陪同提供了支持，也需要定期與本人討論何時調整協助程度。",reflection:"安全措施是否能逐步檢討並調整？",tag:"pressure"},
+{label:"先完成當次活動安排，暫緩進行後續回饋",reaction:"當次活動已完成，但若缺少本人回饋，團隊較難理解參與經驗。",reflection:"服務效果也需要由當事人的觀點理解。",tag:"pause"}]}
 ]}};
 const branchScenes={
 pbs:[
