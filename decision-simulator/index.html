@@ -94,16 +94,16 @@ function orderFor(key,step){const offset={pbs:1,management:2,disability:0}[key];
 const recommendedReading={
 pbs:[
 {title:"當行為改善了，關係也改善了嗎？",url:"https://allenmindlab.com/articles/pbs-double-abc-relationships",why:"延伸思考行為指標、關係與生活品質"},
-{title:"PBS 計畫如何貼合真實情境",url:"https://allenmindlab.com/articles/pbs-plan-contextual-fit",why:"檢視支持策略與現場條件的適配"},
-{title:"情緒週期與介入時機",url:"https://allenmindlab.com/articles/pbs-emotional-cycle-intervention-timing",why:"進一步理解活動轉換與情緒支持時機"}],
+{title:"為什麼同一份 PBS 計畫，換個地方就不一定有效？",url:"https://allenmindlab.com/articles/pbs-plan-contextual-fit",why:"檢視支持策略與現場條件的適配"},
+{title:"明明是在幫他冷靜，為什麼結果可能完全不同？",url:"https://allenmindlab.com/articles/pbs-emotional-cycle-intervention-timing",why:"進一步理解活動轉換與情緒支持時機"}],
 management:[
 {title:"從管理決策到當責文化",url:"https://allenmindlab.com/articles/ot-management-decision-accountability",why:"思考決策依據、分工與後續改善"},
-{title:"照顧工作再設計與人力不足",url:"https://allenmindlab.com/articles/care-work-redesign-labor-shortage",why:"延伸探討人力限制下的服務設計"},
-{title:"管理學沒有唯一正確答案",url:"https://allenmindlab.com/articles/management-no-single-right-answer",why:"理解策略取捨與管理判斷"}],
+{title:"大缺工時代，照顧工作需要重新設計",url:"https://allenmindlab.com/articles/care-work-redesign-labor-shortage",why:"延伸探討人力限制下的服務設計"},
+{title:"當管理沒有唯一正解：風格可以改變，核心不能漂移",url:"https://allenmindlab.com/articles/management-no-single-right-answer",why:"理解策略取捨與管理判斷"}],
 disability:[
-{title:"讓改變走得更遠",url:"https://allenmindlab.com/articles/ot-management-transition-support-life",why:"思考支持如何延伸到真實生活"},
-{title:"以需求為本的服務設計",url:"https://allenmindlab.com/articles/ot-management-needs-based-service-design",why:"從當事人需求出發設計支持"},
-{title:"跨系統服務整合",url:"https://allenmindlab.com/articles/ot-management-cross-system-service-integration",why:"檢視資源銜接、協作與支持網絡"}]};
+{title:"在不同領域，OT 怎麼提供真正需要的服務？",url:"https://allenmindlab.com/articles/ot-management-needs-based-service-design",why:"第一階段：先確認本人需求，再思考如何設計個別支持"},
+{title:"跨系統職能治療服務管理：如何把不同系統真正接起來？",url:"https://allenmindlab.com/articles/ot-management-cross-system-service-integration",why:"第二階段：思考交通練習、家屬與支持者間如何協作"},
+{title:"讓改變走得更遠",url:"https://allenmindlab.com/articles/ot-management-transition-support-life",why:"第三階段：將支持延伸到真實生活並持續檢視調整"}]};
 function readingLinks(key,decisions){const section=document.createElement("section");section.setAttribute("aria-label","AML 建議延伸閱讀");const h=document.createElement("h3");h.textContent="延伸閱讀｜從模擬走向實務";section.append(h);section.append(paragraph("依三階段的決策議題搭配 AML 文章，並附上您本次選擇值得再思考的問題。這不是能力評分或個人分類。閱讀需連上網路。","subtle"));const ul=document.createElement("ul");for(const [n,item] of recommendedReading[key].entries()){const li=document.createElement("li");li.append(document.createTextNode("第 "+(n+1)+" 階段延伸｜"));const a=document.createElement("a");a.href=item.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=item.title+"（另開新分頁）";li.append(a,document.createTextNode(" — "+item.why));const follow=paragraph("連結您的選擇："+catalog[key].stages[n].options[decisions[n].choice].label+"。可思考："+catalog[key].stages[n].options[decisions[n].choice].reflection,"subtle");li.append(follow);ul.append(li);}section.append(ul);return section;}
 function sceneFor(key,index,history){if(index===0)return catalog[key].stages[0].scene;const previous=history[index-1];return branchScenes[key][index-1][previous.choice]+" "+catalog[key].stages[index].scene;}
 const title=document.getElementById("stepTitle"),body=document.getElementById("body"),actions=document.getElementById("actions"),log=document.getElementById("log"),historyPanel=document.getElementById("historyPanel");
