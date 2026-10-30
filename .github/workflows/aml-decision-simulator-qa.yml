@@ -14,6 +14,8 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -29,3 +31,14 @@ jobs:
         run: node decision-simulator/test-axe.cjs
       - name: Validate three-bay navigation links and anchors
         run: node decision-simulator/test-navigation.cjs
+      - name: Package frozen acceptance candidate
+        run: |
+          mkdir -p acceptance-artifact
+          git show 90a59fda21d9be220a963175b01864a5698fe50a:decision-simulator/index.html > acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
+          test -s acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
+      - name: Upload offline acceptance HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: AML-3.3-offline-acceptance-90a59fd
+          path: acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
+          retention-days: 30
