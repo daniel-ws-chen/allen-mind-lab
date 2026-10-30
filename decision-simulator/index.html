@@ -18,26 +18,58 @@
 <script>
 "use strict";
 const catalog={
-pbs:{name:"PBS 正向行為支持",scene:"住宿服務對象在活動轉換時緊握平板並提高音量。工作人員注意到他後退，團體活動即將開始。",choices:[
-["立即要求收起平板","要求密度突然提高，模擬情境中對方進一步後退。","在情緒升高前，有沒有其他可用的預告與溝通方法？"],
-["降低語速並提供活動轉換選擇","對方仍有些猶豫，但開始觀察選項與工作人員的反應。","除了當下的降溫，怎樣支持長期的替代溝通？"],
-["暫時停止活動要求","對方暫時平靜，但尚未建立下一步參與安排。","安全與活動參與如何兼顧？"]]},
-management:{name:"管理學",scene:"某住宿服務單位突然有兩名同仁請假，當天仍有既定活動與必需照護任務。團隊提出互相衝突的調整建議。",choices:[
-["照原排程執行所有活動","團隊工作負荷升高，部分必要照顧工作開始受到擠壓。","哪些工作是不可延後的？如何辨識風險？"],
-["先確認必要照護與安全需求，再共同調整活動","團隊開始區分必要與可調整任務，但活動參與仍需另外設計支持。","如何讓服務對象參與決策，而非只有主管分派？"],
-["由主管單獨決定並通知所有人","調整速度加快，但第一線資訊與部分限制尚未充分被看見。","何時需要快速決策？何時應納入第一線觀點？"]]},
-disability:{name:"身心障礙服務知能",scene:"服務對象希望自行參加社區活動。家屬擔心交通與安全問題，工作人員則認為應該支持自主選擇。",choices:[
-["直接拒絕參加以確保安全","活動取消，但服務對象的自主選擇需求未獲回應。","安全考量如何避免變成過度限制？"],
-["與當事人一起評估可用支持與風險","團隊開始討論交通練習、支持者安排與應變計畫。","如何確認當事人真的理解、並有機會表達意願？"],
-["不做任何準備，直接讓他自行前往","自主選擇獲得尊重，但交通與求助資源尚未確認。","支持自主與放任風險，有什麼不同？"]]}
-};
-const title=document.getElementById("stepTitle"),body=document.getElementById("body"),actions=document.getElementById("actions"),log=document.getElementById("log"),historyPanel=document.getElementById("historyPanel");let current=null;
+pbs:{name:"PBS 正向行為支持",stages:[
+{scene:"下午活動轉換時，小宇握緊平板、後退並提高音量。團體活動即將開始，尚未確認行為功能。",options:[
+{label:"降低語速，給予可理解的預告與選擇",reaction:"小宇停止後退，但仍緊握平板。",reflection:"您優先考慮可預測性與選擇權；還需要了解他想避免什麼，或想保留什麼。",tag:"support"},
+{label:"立即要求交出平板並開始活動",reaction:"小宇後退並提高音量，工作人員開始擔心現場安全。",reflection:"要求可能提高衝突；若有立即危險，仍須依個別安全計畫處理。",tag:"pressure"},
+{label:"暫停要求，先觀察和蒐集線索",reaction:"小宇逐漸安靜，但活動安排仍未協調。",reflection:"觀察可以減少過早推論；下一步也需考慮替代溝通與參與。",tag:"pause"}]},
+{scene:"新增資訊：小宇指著影片說「還要看」，同時搖頭拒絕團體活動。團隊發現可能同時存在取得平板與逃避活動兩種功能。",options:[
+{label:"提供短暫延長與清楚結束提示，教導表達休息需求",reaction:"小宇願意看提示卡，但仍需要時間轉換。",reflection:"您同時考慮兩種需求，也應觀察此安排是否有助於自主表達。",tag:"support"},
+{label:"只把問題視為逃避，持續要求立即參加",reaction:"小宇再次拒絕，團隊尚未回應平板需求。",reflection:"單一功能假設可能忽略其他維持因素。",tag:"pressure"},
+{label:"完全取消後續活動且不安排溝通練習",reaction:"小宇保持平靜，但活動與替代技能都未有後續安排。",reflection:"短期平靜不等於支持目標已全部達成。",tag:"pause"}]},
+{scene:"團隊討論後，希望逐步恢復有意義的參與。小宇已能使用簡單圖卡提出需求。",options:[
+{label:"先邀請短時間參與，並保留可使用的休息選項",reaction:"小宇先在活動區旁觀，再嘗試參與部分活動。",reflection:"請思考如何與本人共同確認參與目標，並持續記錄生活品質。",tag:"support"},
+{label:"要求一次補足全部缺席活動時間",reaction:"小宇猶豫並再次遠離活動區。",reflection:"即使情緒降低，也需留意突然增加要求的影響。",tag:"pressure"},
+{label:"僅以沒有再尖叫作為介入成功的證據",reaction:"團隊無法確認溝通技能及活動參與是否改善。",reflection:"PBS 成效不宜僅依單一問題行為指標判定。",tag:"pause"}]}
+]},
+management:{name:"管理學",stages:[
+{scene:"住宿服務單位當班兩人臨時請假，既定活動與必要照護工作同時受到影響。",options:[
+{label:"先盤點必要照護、安全需求與可調整活動",reaction:"團隊找出不能延後的工作，但部分服務對象表達失望。",reflection:"您的起點是風險優先序；下一步仍需納入服務對象的聲音。",tag:"support"},
+{label:"要求全員照原計畫完成全部項目",reaction:"團隊工作負荷升高，必要照護可能受到擠壓。",reflection:"維持原計畫未必能維持實際服務品質。",tag:"pressure"},
+{label:"立即取消所有活動但不進行討論",reaction:"短期排班壓力降低，團隊沒有討論替代參與方案。",reflection:"減少任務可能必要，但需交代決策依據及影響。",tag:"pause"}]},
+{scene:"新增資訊：一位同仁表示負荷過大，另一位擔心調整將犧牲住民權益。",options:[
+{label:"與團隊及住民代表檢視替代方案與分工",reaction:"討論出短時活動與必要照護安排，但需要再確認執行能力。",reflection:"您把資源配置與服務權益一起納入考慮。",tag:"support"},
+{label:"忽略不同意見，直接公布原班表",reaction:"執行速度快，但第一線風險資訊沒有充分進入決策。",reflection:"何時須立即指揮，何時適合參與式決策？",tag:"pressure"},
+{label:"將爭議全部延後，由個別同仁自行決定",reaction:"不同班別採取不同標準，容易出現協作落差。",reflection:"授權仍需要共同底線與回報機制。",tag:"pause"}]},
+{scene:"一天結束後，沒有發生重大意外，但活動參與率下降，團隊感到疲憊。",options:[
+{label:"檢視工作負荷、參與品質與備援流程",reaction:"團隊形成可供下次應變的紀錄與建議。",reflection:"除了是否出事，也應重視員工可持續性與服務品質。",tag:"support"},
+{label:"只因沒有重大事件就判定安排完美",reaction:"部分風險與經驗沒有被記錄。",reflection:"無事故並不等於決策沒有改善空間。",tag:"pressure"},
+{label:"只要求同仁下次更努力",reaction:"團隊缺乏可操作的流程改善。",reflection:"系統性問題通常不能只靠個人努力解決。",tag:"pause"}]}
+]},
+disability:{name:"身心障礙服務知能",stages:[
+{scene:"服務對象想自行參與社區活動，家屬擔心交通安全，工作人員希望尊重其自主權。",options:[
+{label:"先和本人確認意願、理解及需要哪些支持",reaction:"服務對象說明想參加的原因，也提出不熟悉交通路線。",reflection:"先確認當事人意願與支持需求，是合理調整的起點。",tag:"support"},
+{label:"因家屬反對就立即取消",reaction:"服務對象感到失望，未有機會參與討論。",reflection:"家屬顧慮重要，但不能取代當事人的意願探索。",tag:"pressure"},
+{label:"不評估交通風險就讓本人獨自前往",reaction:"自主選擇受到尊重，但必要支持與求助方式尚未確認。",reflection:"支持自主與不提供支持，不是同一件事。",tag:"pause"}]},
+{scene:"新增資訊：當事人能辨識路線圖，但對轉車地點和迷路時如何求助仍不熟悉。",options:[
+{label:"和本人規劃交通練習及可選擇的協助方式",reaction:"服務對象參與練習，並提出想先由支持者陪同一次。",reflection:"支持是讓人逐步增加選擇機會，不是永遠替他決定。",tag:"support"},
+{label:"直接規定所有外出都必須家屬陪同",reaction:"可降低部分風險，但限制超過目前已確認的需求。",reflection:"限制措施是否符合比例原則，應持續檢視。",tag:"pressure"},
+{label:"只提供一張地圖，不確認是否能實際使用",reaction:"當事人仍不確定臨時狀況如何求助。",reflection:"資訊提供與能力支持之間，可能還有落差。",tag:"pause"}]},
+{scene:"練習後，當事人願意嘗試部分自行移動，團隊需要安排後續支持與回饋。",options:[
+{label:"共同決定下一步，並設定可調整的求助安排",reaction:"本人與團隊確認可執行的支持方式，保留重新調整的空間。",reflection:"請思考如何避免支持逐漸轉化為不必要的控制。",tag:"support"},
+{label:"無期限要求完全由工作人員陪同",reaction:"短期安排清楚，但自主練習的機會受到限制。",reflection:"安全措施是否能逐步檢討並調整？",tag:"pressure"},
+{label:"活動後不再追蹤經驗與感受",reaction:"團隊難以得知此安排對生活品質及自主感的影響。",reflection:"服務效果也需要由當事人的觀點理解。",tag:"pause"}]}
+]}};
+const title=document.getElementById("stepTitle"),body=document.getElementById("body"),actions=document.getElementById("actions"),log=document.getElementById("log"),historyPanel=document.getElementById("historyPanel");
+let current=null,stage=0,path=[];
 function clear(){actions.replaceChildren();body.replaceChildren();}
 function paragraph(t,cls){const p=document.createElement("p");p.textContent=t;if(cls)p.className=cls;return p;}
 function btn(label,fn,primary=false){const b=document.createElement("button");b.type="button";b.textContent=label;if(primary)b.className="primary";b.addEventListener("click",fn);actions.append(b);}
 function focusTitle(){title.setAttribute("tabindex","-1");title.focus({preventScroll:true});}
-function start(){current=null;log.replaceChildren();historyPanel.hidden=true;title.textContent="選擇探索領域";clear();body.append(paragraph("請選擇一個專業領域，探索同一情境下不同策略可能帶來的影響。"));for(const [key,data] of Object.entries(catalog))btn(data.name,()=>scenario(key));focusTitle();}
-function scenario(key){current=key;title.textContent=catalog[key].name+"｜情境判斷";clear();body.append(paragraph(catalog[key].scene));body.append(paragraph("您會先採取哪一種做法？這裡沒有計分。","subtle"));catalog[key].choices.forEach((c,i)=>btn(c[0],()=>outcome(i)));btn("返回領域選擇",start);focusTitle();}
-function outcome(i){const d=catalog[current],c=d.choices[i];title.textContent="模擬推演｜"+d.name;clear();body.append(paragraph("您的選擇："+c[0]));body.append(paragraph("模擬中的可能發展："+c[1]));body.append(paragraph("值得再探索："+c[2]));body.append(paragraph("提醒：這只是依情境假設設計的一種可能結果，不代表真實世界必然如此。","subtle"));const li=document.createElement("li");li.textContent=d.name+"｜"+c[0]+"。反思："+c[2];log.append(li);historyPanel.hidden=false;btn("返回同一情境，嘗試另一策略",()=>scenario(current),true);btn("選擇其他領域",start);focusTitle();}
+function start(){current=null;stage=0;path=[];log.replaceChildren();historyPanel.hidden=true;title.textContent="選擇探索領域";clear();body.append(paragraph("請選擇領域，探索三階段情境、不同策略及可能後果。不計分，也不評定個人能力。"));for(const [key,data] of Object.entries(catalog))btn(data.name,()=>scenario(key));focusTitle();}
+function scenario(key){current=key;stage=0;path=[];log.replaceChildren();historyPanel.hidden=true;renderStage();}
+function renderStage(){const d=catalog[current],s=d.stages[stage];title.textContent=d.name+"｜第 "+(stage+1)+" / "+d.stages.length+" 階段";clear();body.append(paragraph(s.scene));body.append(paragraph("您會如何回應？請選擇一項，再觀察可能的情境發展。","subtle"));s.options.forEach((c,i)=>btn(c.label,()=>outcome(i)));btn("重新選擇領域",start);focusTitle();}
+function outcome(i){const d=catalog[current],c=d.stages[stage].options[i];path.push({stage,choice:i,tag:c.tag});title.textContent=d.name+"｜第 "+(stage+1)+" 階段的模擬推演";clear();body.append(paragraph("您的選擇："+c.label));body.append(paragraph("一種可能的發展："+c.reaction));body.append(paragraph("值得探索："+c.reflection));body.append(paragraph("提醒：情節依事先設定的規則推演，不是對真實個案結果的預測。","subtle"));const li=document.createElement("li");li.textContent="階段 "+(stage+1)+"｜"+c.label+"。反思："+c.reflection;log.append(li);historyPanel.hidden=false;if(stage+1<d.stages.length){btn("繼續下一階段",()=>{stage++;renderStage();},true);}else{btn("閱讀本次探索回顧",review,true);}btn("重新探索此領域",()=>scenario(current));focusTitle();}
+function review(){title.textContent=catalog[current].name+"｜我的探索回顧";clear();body.append(paragraph("已完成三階段決策練習。本次沒有分數或專業能力標籤，以下只是依本次選擇提供的反思方向。"));const count=path.reduce((a,p)=>(a[p.tag]=(a[p.tag]||0)+1,a),{});const focus=count.support>=2?"您多次選擇先確認需求與支持條件。也可試著探索在時間與資源限制下會如何調整。":count.pressure>=2?"您多次選擇直接提高要求或快速定案。可探索不同當事人的觀點與決策中的風險資訊。":"您的決策涵蓋不同取向。可以回頭比較：每次最優先關注的是安全、自主、效率，還是參與？";body.append(paragraph(focus));body.append(paragraph("自我提問：我忽略哪些線索？若情況改變，我願意怎樣修正？哪一項策略值得再試？"));body.append(paragraph("您可以重新挑戰，試著選擇與第一次不同的策略。","subtle"));btn("重新探索相同領域",()=>scenario(current),true);btn("探索其他領域",start);focusTitle();}
 start();
 </script></body></html>
