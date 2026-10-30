@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>決策模擬艙｜AML Decision Simulator（測試版）</title>
+<meta name="description" content="探索 PBS、管理學與身心障礙服務的專業情境，練習決策與自我反思。">
+<style>
+:root{color-scheme:light;--ink:#19343b;--muted:#4c646a;--green:#216e6b;--line:#bbd1d0;--bg:#f4faf9}*{box-sizing:border-box}body{margin:0;font:1rem/1.7 system-ui,-apple-system,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink)}main{max-width:780px;margin:auto;padding:1.25rem}a{color:#125a62}a:focus-visible,button:focus-visible{outline:3px solid #b04900;outline-offset:3px}header{border-radius:18px;background:#183b43;color:white;padding:1.5rem}header p{color:#e1efed}h1{font-size:clamp(1.65rem,4vw,2.35rem);line-height:1.3}.eyebrow{font-weight:700;letter-spacing:.1em}.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:1.3rem;margin:1rem 0}button{font:inherit;cursor:pointer;border:2px solid var(--green);border-radius:10px;padding:.8rem 1rem;background:white;color:var(--ink);text-align:left;width:100%;margin:.35rem 0}button:hover{background:#e4f3f0}button.primary{background:var(--green);color:white;text-align:center}button.primary:hover{background:#14524f}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.6rem}p,li{max-width:75ch}.subtle{color:var(--muted)}.warning{border-left:5px solid #94712a;padding:.5rem 1rem;background:#fff7e6}#log li{margin-bottom:.8rem}footer{padding:2rem 0}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+</style></head>
+<body><main>
+<p><a href="/tools.html">← 返回 AML 互動實驗室</a></p>
+<header><div class="eyebrow">AML INTERACTIVE LAB · PROTOTYPE</div><h1>決策模擬艙</h1><p>AML Decision Simulator｜跨領域專業素養與自我探索平台</p><p>在情境中探索，在決策中覺察，在反思中成長。</p></header>
+<section class="panel"><h2>探索說明</h2><p>這裡不打分、不排名，也不判定您的專業資格。請根據情境選擇您可能採取的做法，觀察示意性的後續情節，再思考其他可能。</p><p class="warning">本平台使用虛構案例與規則式分支，不是臨床、法律或管理專業決策建議。遇到立即安全風險，請依現場安全程序尋求協助。請勿輸入任何真實個案個資。</p></section>
+<section class="panel" id="app" aria-labelledby="stepTitle"><h2 id="stepTitle">選擇探索領域</h2><div id="body"><p>請選擇一個主題開始。</p></div><div id="actions" class="choices"></div></section>
+<section class="panel" id="historyPanel" hidden><h2>我的決策探索紀錄</h2><ol id="log"></ol><p class="subtle">此紀錄僅在當前網頁開啟期間保留，重新整理即可清除；不會傳送至伺服器。</p></section>
+<footer><p><a href="/">Allen Mind Lab 首頁</a> · <a href="/self-study">進階自學室</a></p><small>AML Decision Simulator 0.1 · AML 3.3 候選功能 · 測試版，尚未正式上線</small></footer>
+</main>
+<script>
+"use strict";
+const catalog={
+pbs:{name:"PBS 正向行為支持",scene:"住宿服務對象在活動轉換時緊握平板並提高音量。工作人員注意到他後退，團體活動即將開始。",choices:[
+["立即要求收起平板","要求密度突然提高，模擬情境中對方進一步後退。","在情緒升高前，有沒有其他可用的預告與溝通方法？"],
+["降低語速並提供活動轉換選擇","對方仍有些猶豫，但開始觀察選項與工作人員的反應。","除了當下的降溫，怎樣支持長期的替代溝通？"],
+["暫時停止活動要求","對方暫時平靜，但尚未建立下一步參與安排。","安全與活動參與如何兼顧？"]]},
+management:{name:"管理學",scene:"某住宿服務單位突然有兩名同仁請假，當天仍有既定活動與必需照護任務。團隊提出互相衝突的調整建議。",choices:[
+["照原排程執行所有活動","團隊工作負荷升高，部分必要照顧工作開始受到擠壓。","哪些工作是不可延後的？如何辨識風險？"],
+["先確認必要照護與安全需求，再共同調整活動","團隊開始區分必要與可調整任務，但活動參與仍需另外設計支持。","如何讓服務對象參與決策，而非只有主管分派？"],
+["由主管單獨決定並通知所有人","調整速度加快，但第一線資訊與部分限制尚未充分被看見。","何時需要快速決策？何時應納入第一線觀點？"]]},
+disability:{name:"身心障礙服務知能",scene:"服務對象希望自行參加社區活動。家屬擔心交通與安全問題，工作人員則認為應該支持自主選擇。",choices:[
+["直接拒絕參加以確保安全","活動取消，但服務對象的自主選擇需求未獲回應。","安全考量如何避免變成過度限制？"],
+["與當事人一起評估可用支持與風險","團隊開始討論交通練習、支持者安排與應變計畫。","如何確認當事人真的理解、並有機會表達意願？"],
+["不做任何準備，直接讓他自行前往","自主選擇獲得尊重，但交通與求助資源尚未確認。","支持自主與放任風險，有什麼不同？"]]}
+};
+const title=document.getElementById("stepTitle"),body=document.getElementById("body"),actions=document.getElementById("actions"),log=document.getElementById("log"),historyPanel=document.getElementById("historyPanel");let current=null;
+function clear(){actions.replaceChildren();body.replaceChildren();}
+function paragraph(t,cls){const p=document.createElement("p");p.textContent=t;if(cls)p.className=cls;return p;}
+function btn(label,fn,primary=false){const b=document.createElement("button");b.type="button";b.textContent=label;if(primary)b.className="primary";b.addEventListener("click",fn);actions.append(b);}
+function focusTitle(){title.setAttribute("tabindex","-1");title.focus({preventScroll:true});}
+function start(){current=null;log.replaceChildren();historyPanel.hidden=true;title.textContent="選擇探索領域";clear();body.append(paragraph("請選擇一個專業領域，探索同一情境下不同策略可能帶來的影響。"));for(const [key,data] of Object.entries(catalog))btn(data.name,()=>scenario(key));focusTitle();}
+function scenario(key){current=key;title.textContent=catalog[key].name+"｜情境判斷";clear();body.append(paragraph(catalog[key].scene));body.append(paragraph("您會先採取哪一種做法？這裡沒有計分。","subtle"));catalog[key].choices.forEach((c,i)=>btn(c[0],()=>outcome(i)));btn("返回領域選擇",start);focusTitle();}
+function outcome(i){const d=catalog[current],c=d.choices[i];title.textContent="模擬推演｜"+d.name;clear();body.append(paragraph("您的選擇："+c[0]));body.append(paragraph("模擬中的可能發展："+c[1]));body.append(paragraph("值得再探索："+c[2]));body.append(paragraph("提醒：這只是依情境假設設計的一種可能結果，不代表真實世界必然如此。","subtle"));const li=document.createElement("li");li.textContent=d.name+"｜"+c[0]+"。反思："+c[2];log.append(li);historyPanel.hidden=false;btn("返回同一情境，嘗試另一策略",()=>scenario(current),true);btn("選擇其他領域",start);focusTitle();}
+start();
+</script></body></html>
