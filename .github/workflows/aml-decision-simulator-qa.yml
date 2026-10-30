@@ -20,7 +20,9 @@ jobs:
         run: node decision-simulator/test-routes.cjs
       - name: Install headless browser test tools
         run: |
-          npm install --no-save playwright@1.57.0
+          npm install --no-save playwright@1.57.0 @axe-core/playwright@4.10.2
           npx playwright install --with-deps chromium
       - name: Check desktop/mobile complete interactions
         run: node decision-simulator/test-browser.cjs
+      - name: Automated WCAG A/AA scans on interactive states
+        run: node decision-simulator/test-axe.cjs
