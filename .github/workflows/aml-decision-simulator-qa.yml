@@ -1,0 +1,20 @@
+name: AML Decision Simulator structural QA
+on:
+  pull_request:
+    paths:
+      - 'decision-simulator/**'
+      - '.github/workflows/aml-decision-simulator-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-simulator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate all decision paths and source boundaries
+        run: node decision-simulator/test-routes.cjs
