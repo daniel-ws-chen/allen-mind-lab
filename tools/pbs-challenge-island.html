@@ -861,7 +861,7 @@ function question(){phase='question';let sc=levels[game.n].levels[game.stage];st
 function choose(i){
  if(phase!=='question')return;
  let sc=levels[game.n].levels[game.stage],c=sc.choices[i],isCycle=levels[game.n].kind==='cycle';
- game.history.push({question:sc.line,choice:c.t,reply:c.reply,why:c.why,reviewedEvidence:!!game.reviewedClues?.has(game.n+'-'+game.stage),assessment:c.effect===1?'較符合劇本目標':c.conditional?'有條件可考慮，須補充後續支持':c.effect===0?'仍有待處理需求':'可能升高模擬風險'});
+ game.history.push({effect:c.effect,question:sc.line,choice:c.t,reply:c.reply,why:c.why,reviewedEvidence:!!game.reviewedClues?.has(game.n+'-'+game.stage),assessment:c.effect===1?'較符合劇本目標':c.conditional?'有條件可考慮，須補充後續支持':c.effect===0?'仍有待處理需求':'可能升高模擬風險'});
  game.crisis=Math.max(0,Math.min(3,game.crisis+(isCycle?(c.effect===1?-1:1):(c.effect===-1?2:c.effect===0?(c.conditional?0:1):-1))));
  last=c;phase='reaction';
  const failed=game.crisis>=3,pass=c.effect>0;
@@ -871,8 +871,14 @@ function choose(i){
  screen.innerHTML=`<div class="step">${isCycle?'情緒週期辨識回饋':'服務對象的模擬反應'}</div>${characterScene(ico,failed?'crisis':pass?'calm':'uneasy',failed?'模擬風險升高':pass?'觀察後續反應':'持續觀察')}<div class="reaction reactionFocus"><div class="resultTitle ${failed?'bad':pass?'good':'neutral'}">${headline}</div><div class="resultText">${escapeHTML(c.reply)}</div></div><section class="pbsReason" aria-label="PBS 思考提示"><div class="pbsReasonTitle">🧠 PBS 思考提示</div><p>${escapeHTML(whyText)}</p><p class="pbsInterpret">${escapeHTML(interpretation)}</p><p class="pbsInterpret"><strong>驗證提醒：</strong>${escapeHTML(clinicalLens[game.n].observe)}</p><small>${isCycle?'此為訓練案例中的最佳辨識；真實情境須綜合時間與多項線索。':'上述反應是其中一種可能的劇本發展，不代表真實個案必然如此。'}</small></section>${isCycle?'<p class="meta">本關容許兩次辨識失誤；累積三次需重新挑戰。</p>':meter(game.crisis)}<button class="act" onclick="advance()">${failed?'查看本次結果':'下一個情境 →'}</button>`;
  game.fail=failed;
 }
-function advance(){if(game.fail){finish(false);return}game.stage++;if(game.stage>=levels[game.n].levels.length){finish(true);return}game.pending={follow:levels[game.n].levels[game.stage].line,face:levels[game.n].levels[game.stage].face};question()}
-function finish(success){phase='finish';status.textContent='挑戰結束';if(success){const firstClear=!completed.has(game.n);completed.add(game.n);unlocked=Math.max(unlocked,Math.min(game.n+1,levels.length-1));recentUnlock=firstClear?(completed.size===levels.length?levels.length:game.n+1):-1}let h=game.history;screen.innerHTML=`<div class="step">${escapeHTML(levels[game.n].name)} · 結局</div>${endingScene(success,false)}${success?'<div class="starAward" aria-label="獲得一顆通關星章"><span class="star" aria-hidden="true">★</span></div><div class="awardText">星章 +1 · 解鎖冒險旅程</div>':''}<p class="prompt">${success?(game.n<levels.length-1?'地圖新島已解鎖，獲得一顆星！':'七星收集完成！魔王島已開放。'):levels[game.n].kind==='cycle'?'週期判斷錯誤累積，重新挑戰！':'本次劇本判定風險達臨界，回顧情境線索後再挑戰。'}</p><button class="act" onclick="start(${game.n})">🔄 再挑戰一次</button><button class="act alt" onclick="home()">🏝️ 返回闖關地圖</button><details><summary>回顧本次選項與專業反思</summary><ol>${h.map(x=>`<li><strong>${escapeHTML(x.choice)}</strong><br><em>${escapeHTML(x.assessment||'')}</em><br>${escapeHTML(x.reply)}<br><small>${escapeHTML(x.why)}</small></li>`).join('')}</ol><p>本遊戲採預設劇本分支。現實事件需依個別支持計畫、即時風險及專業判斷處理；不能以偶然停止行為認定處置必然適切。</p></details>`}
+function advance(){if(game.fail){finish(false);return}game.stage++;if(game.stage>=levels[game.n].levels.length){
+  // Safety alone is not mastery: require consistent evidence-aligned decisions.
+  const total=levels[game.n].levels.length;
+  const correct=game.history.filter(h=>h.effect===1).length;
+  const required=Math.ceil(total*2/3);
+  finish(correct>=required);return
+ }game.pending={follow:levels[game.n].levels[game.stage].line,face:levels[game.n].levels[game.stage].face};question()}
+function finish(success){phase='finish';status.textContent='挑戰結束';if(success){const firstClear=!completed.has(game.n);completed.add(game.n);unlocked=Math.max(unlocked,Math.min(game.n+1,levels.length-1));recentUnlock=firstClear?(completed.size===levels.length?levels.length:game.n+1):-1}let h=game.history;screen.innerHTML=`<div class="step">${escapeHTML(levels[game.n].name)} · 結局</div>${endingScene(success,false)}${success?'<div class="starAward" aria-label="獲得一顆通關星章"><span class="star" aria-hidden="true">★</span></div><div class="awardText">星章 +1 · 解鎖冒險旅程</div>':''}<p class="prompt">${success?(game.n<levels.length-1?'地圖新島已解鎖，獲得一顆星！':'七星收集完成！魔王島已開放。'):levels[game.n].kind==='cycle'?'週期判斷錯誤累積，重新挑戰！' :'本次未達通關標準（至少三分之二回合選擇較符合情境的策略，且危機未達臨界）。請回顧判斷後再試一次。'}</p><button class="act" onclick="start(${game.n})">🔄 再挑戰一次</button><button class="act alt" onclick="home()">🏝️ 返回闖關地圖</button><details><summary>回顧本次選項與專業反思</summary><ol>${h.map(x=>`<li><strong>${escapeHTML(x.choice)}</strong><br><em>${escapeHTML(x.assessment||'')}</em><br>${escapeHTML(x.reply)}<br><small>${escapeHTML(x.why)}</small></li>`).join('')}</ol><p>本遊戲採預設劇本分支。現實事件需依個別支持計畫、即時風險及專業判斷處理；不能以偶然停止行為認定處置必然適切。</p></details>`}
 
 // 魔王島：只有直接對服務對象的短句採六字限制；專業判斷題不限字數。各場有雙重功能假設。
 // 使用固定情境分支，非臨床效果預測；危機時僅提供安全層面的選擇，不提供限制技術。
