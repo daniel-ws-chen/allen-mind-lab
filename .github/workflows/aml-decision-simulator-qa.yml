@@ -36,6 +36,19 @@ jobs:
           mkdir -p acceptance-artifact
           git show db0b0834efcda51a317eadba7cd90243c60215de:decision-simulator/index.html > acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
           test -s acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
+      - name: Package isolated HTTPS preview site (not deployed)
+        run: |
+          mkdir -p preview-site
+          git show db0b0834efcda51a317eadba7cd90243c60215de:decision-simulator/index.html > preview-site/index.html
+          printf 'User-agent: *\nDisallow: /\n' > preview-site/robots.txt
+          printf '%s\n' 'Preview only; no production publishing. Candidate db0b0834efcda51a317eadba7cd90243c60215de.' > preview-site/README.txt
+          test -s preview-site/index.html
+      - name: Upload isolated preview site package
+        uses: actions/upload-artifact@v4
+        with:
+          name: AML-3.3-cloudflare-preview-db0b083
+          path: preview-site/
+          retention-days: 30
       - name: Upload offline acceptance HTML
         uses: actions/upload-artifact@v4
         with:
