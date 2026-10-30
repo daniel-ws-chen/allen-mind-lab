@@ -1004,14 +1004,17 @@ const gameAnnouncement=document.querySelector('#game-announcement');
 let announcedState='';
 const renderObserver=new MutationObserver(()=>{
   const currentState=phase+'|'+status.textContent;
-  if(currentState!==announcedState){
+  const changedScreen=currentState!==announcedState;
+  if(changedScreen){
     announcedState=currentState;
     const labels={question:'請閱讀情境並選擇策略',reaction:'已顯示模擬反應與 PBS 提示',finish:'本次挑戰結果已顯示',bossQuestion:'魔王島新回合，請選擇策略',bossReaction:'魔王島回饋已顯示',bossEnd:'魔王島結果已顯示'};
     gameAnnouncement.textContent=(status.textContent||'PBS 闖關島')+'。'+(labels[phase]||'畫面已更新');
-  }
-  // Only move focus when a screen replacement removed the focused control.
-  // Expanding optional evidence keeps focus on the evidence button.
-  if(document.activeElement===document.body || !document.activeElement?.isConnected){
+    // A transition must explicitly establish the new reading position.
+    // Do not rely on the browser's transient body-focus state after innerHTML replacement.
+    sceneFocus();
+  }else if(!screen.contains(document.activeElement) &&
+           (document.activeElement===document.body || !document.activeElement?.isConnected)){
+    // An unexpected removal may also orphan keyboard focus.
     sceneFocus();
   }
 });
