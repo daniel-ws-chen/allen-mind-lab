@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>決策模擬艙｜AML Decision Simulator（測試版）</title>
+<meta name="description" content="探索 PBS、管理學與身心障礙服務的專業情境，練習決策與自我反思。">
+<style>
+:root{color-scheme:light;--ink:#19343b;--muted:#4c646a;--green:#216e6b;--line:#bbd1d0;--bg:#f4faf9}*{box-sizing:border-box}body{margin:0;font:1rem/1.7 system-ui,-apple-system,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink)}main{max-width:780px;margin:auto;padding:1.25rem}a{color:#125a62}a:focus-visible,button:focus-visible{outline:3px solid #b04900;outline-offset:3px}header{border-radius:18px;background:#183b43;color:white;padding:1.5rem}header p{color:#e1efed}h1{font-size:clamp(1.65rem,4vw,2.35rem);line-height:1.3}.eyebrow{font-weight:700;letter-spacing:.1em}.panel{background:white;border:1px solid var(--line);border-radius:14px;padding:1.3rem;margin:1rem 0}button{font:inherit;cursor:pointer;border:2px solid var(--green);border-radius:10px;padding:.8rem 1rem;background:white;color:var(--ink);text-align:left;width:100%;margin:.35rem 0}button:hover{background:#e4f3f0}button{min-height:48px;overflow-wrap:anywhere}a,button{-webkit-tap-highlight-color:transparent}button.primary{background:var(--green);color:white;text-align:center}button.primary:hover{background:#14524f}.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:.6rem}p,li{max-width:75ch}.subtle{color:var(--muted)}.warning{border-left:5px solid #94712a;padding:.5rem 1rem;background:#fff7e6}.info-block{border:1px solid #c6d8d6;border-left:5px solid #216e6b;border-radius:10px;background:#f0f8f6;padding:.75rem 1rem;margin:.85rem 0;overflow-wrap:anywhere}.info-block strong{display:block;font-size:1.02rem;margin:0 0 .2rem}.info-block p{margin:.1rem 0;line-height:1.75}.info-scene{background:#edf5fb;border-color:#bfd4e6;border-left-color:#245e86}.info-choice{background:#f0f5ff;border-color:#c8d6ed;border-left-color:#3d5e9b}.info-outcome{background:#fff7e9;border-color:#e7d3ae;border-left-color:#906018}.info-expert{background:#eaf6ef;border-color:#b4d7c0;border-left-color:#21643b}.info-next{background:#f4effc;border-color:#d5c9e7;border-left-color:#684a8e}.info-reading{background:#f5f9fb;border-left:5px solid #245e86;border-radius:12px;padding:1rem;margin:1rem 0}.info-reading li{background:#fff;border:1px solid #c6d8d6;border-radius:10px;padding:.75rem;margin:.75rem 0;overflow-wrap:anywhere}.info-reading li p{margin:.3rem 0 0}.info-block:focus-within,.info-reading li:focus-within{outline:2px solid #b04900;outline-offset:2px}@media(max-width:420px){.info-block,.info-reading{padding:.7rem}}@media(forced-colors:active){.info-block,.info-reading,.info-reading li{border:2px solid CanvasText;border-left-width:5px;background:Canvas;color:CanvasText}}#log li{margin-bottom:.8rem}#stepTitle:focus{outline:3px solid #b04900;outline-offset:5px}#app{scroll-margin-top:1rem}footer{padding:2rem 0}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important}}
+</style></head>
+<body><main>
+<p><a href="/tools.html">← 返回 AML 互動實驗室</a></p>
+<header><div class="eyebrow">AML INTERACTIVE LAB · PROTOTYPE</div><h1>決策模擬艙</h1><p>AML Decision Simulator｜跨領域專業素養與自我探索平台</p><p>在情境中探索，在決策中覺察，在反思中成長。</p></header>
+<section class="panel"><h2>探索說明</h2><p>這裡不打分、不排名，也不判定您的專業資格。請根據情境選擇您可能採取的做法，觀察示意性的後續情節，再思考其他可能。</p><p class="warning">本平台使用虛構案例與規則式分支，不是臨床、法律或管理專業決策建議。遇到立即安全風險，請依現場安全程序尋求協助。請勿輸入任何真實個案個資。</p></section>
+<section class="panel" id="app" aria-labelledby="stepTitle"><h2 id="stepTitle">選擇探索領域</h2><div id="body"><p>請選擇一個主題開始。</p></div><div id="actions" class="choices" role="group" aria-label="本階段可選擇的行動"></div><p id="status" class="subtle" role="status" aria-live="polite" aria-atomic="true"></p></section>
+<section class="panel" id="historyPanel" hidden aria-labelledby="historyTitle"><h2 id="historyTitle">我的決策探索紀錄</h2><ol id="log"></ol><p class="subtle">此紀錄僅在當前網頁開啟期間保留，重新整理即可清除；不會傳送至伺服器。</p></section>
+<footer><p><a href="/">Allen Mind Lab 首頁</a> · <a href="/self-study">進階自學室</a></p><small>AML Decision Simulator 0.8 · AML 3.3 候選功能 · 測試版，尚未正式上線</small></footer>
+</main>
+<script>
+"use strict";
+const catalog={
+pbs:{name:"PBS 正向行為支持",stages:[
+{scene:"下午活動轉換時，小宇握緊平板、後退並提高音量。團體活動即將開始，尚未確認行為功能。",options:[
+{label:"降低語速，給予可理解的預告與選擇",reaction:"在這條示意路徑中，小宇暫時停止後退，但仍緊握平板；實際反應可能不同。",reflection:"您優先考慮可預測性與選擇權；還需要了解他想避免什麼，或想保留什麼。",tag:"support"},
+{label:"清楚說明活動時間已到，請小宇現在開始準備",reaction:"小宇仍有些抗拒，工作人員注意到他持續後退，需要判斷是否應調整要求方式。",reflection:"要求可能提高衝突；若有立即危險，仍須依個別安全計畫處理。",tag:"pressure"},
+{label:"先保留一段觀察時間，再決定是否調整活動",reaction:"在這條示意路徑中，小宇看起來稍微放鬆；團隊仍須觀察其他反應並釐清活動轉換的支持需求。",reflection:"觀察可以減少過早推論；下一步也需考慮替代溝通與參與。",tag:"pause"}]},
+{scene:"新增資訊：小宇指著影片說「還要看」，同時搖頭拒絕團體活動。團隊將取得平板與逃避活動列為兩項待驗證的行為功能假設，仍需結合更多情境資料與本人溝通確認。",options:[
+{label:"提供短暫延長與清楚結束提示，教導表達休息需求",reaction:"這次示意推演中，小宇短暫看向提示卡，但是否理解或接受仍須確認。",reflection:"您同時考慮兩種需求，也應觀察此安排是否有助於自主表達。",tag:"support"},
+{label:"先以減少活動逃避為主要目標，維持參與安排",reaction:"小宇持續表達想觀看影片，團隊需要再檢視是否遺漏取得活動的需求。",reflection:"單一功能假設可能忽略其他維持因素。",tag:"pressure"},
+{label:"先延長影片時間，之後再評估活動安排",reaction:"小宇暫時沒有升高情緒，但下一次活動轉換仍需要另外規劃。",reflection:"短期平靜不等於支持目標已全部達成。",tag:"pause"}]},
+{scene:"團隊準備重新檢視活動參與的支持方式，並評估是否需要進一步教導替代溝通。",options:[
+{label:"先邀請短時間參與，並保留可使用的休息選項",reaction:"這次示意推演中，小宇先在活動區旁觀，之後短暫嘗試參與；團隊仍需確認是否符合本人意願。",reflection:"請思考如何與本人共同確認參與目標，並持續記錄生活品質。",tag:"support"},
+{label:"恢復原本活動時數，以維持參與的一致性",reaction:"小宇對恢復原時數仍顯得猶豫，團隊需要評估他目前可接受的參與程度。",reflection:"即使情緒降低，也需留意突然增加要求的影響。",tag:"pressure"},
+{label:"先以尖叫次數作為本週主要追蹤指標",reaction:"尖叫次數提供了一項線索，但尚不足以了解溝通技能與參與品質。",reflection:"PBS 成效不宜僅依單一問題行為指標判定。",tag:"pause"}]}
+]},
+management:{name:"管理學",stages:[
+{scene:"住宿服務單位當班兩人臨時請假，既定活動與必要照護工作同時受到影響。",options:[
+{label:"先盤點必要照護、安全需求與可調整活動",reaction:"團隊找出不能延後的工作，但部分服務對象表達失望。",reflection:"您的起點是風險優先序；下一步仍需納入服務對象的聲音。",tag:"support"},
+{label:"維持既定服務項目，請同仁協調調整執行方式",reaction:"維持原服務項目後，部分同仁反映執行時間緊縮，需監測必要照護品質。",reflection:"維持原計畫未必能維持實際服務品質。",tag:"pressure"},
+{label:"先暫停非必要活動，稍後再與團隊討論",reaction:"這條示意路徑中，暫停部分活動後當班工作較能安排；是否真正緩解負荷仍待確認，團隊也需討論替代參與機會。",reflection:"減少任務可能必要，但需交代決策依據及影響。",tag:"pause"}]},
+{scene:"新增資訊：一位同仁表示負荷過大，另一位擔心調整將犧牲住民權益。",options:[
+{label:"與團隊及住民代表檢視替代方案與分工",reaction:"討論出短時活動與必要照護安排，但需要再確認執行能力。",reflection:"您把資源配置與服務權益一起納入考慮。",tag:"support"},
+{label:"先由主管依現有資料決定排班，再收集回饋",reaction:"主管先完成初步排班，後續回饋指出部分現場限制仍需要調整。",reflection:"何時須立即指揮，何時適合參與式決策？",tag:"pressure"},
+{label:"先授權各班別自行調整，再統一彙整做法",reaction:"各班別提出不同安排，團隊需要釐清共同底線以避免協作落差。",reflection:"授權仍需要共同底線與回報機制。",tag:"pause"}]},
+{scene:"一天結束後，未通報重大意外，但部分活動參與受到影響，團隊也感到疲憊。",options:[
+{label:"檢視工作負荷、參與品質與備援流程",reaction:"在這條示意路徑中，團隊整理出初步紀錄與建議；仍須檢驗是否可供下次應變。",reflection:"除了是否出事，也應重視員工可持續性與服務品質。",tag:"support"},
+{label:"先確認安全事件數，再考慮是否需要額外檢討",reaction:"安全事件數已有紀錄，但工作負荷與參與品質尚未充分回顧。",reflection:"無事故並不等於決策沒有改善空間。",tag:"pressure"},
+{label:"先加強個別同仁的工作提醒與應變要求",reaction:"個別提醒可能改善部分執行問題，但備援流程仍需共同檢視。",reflection:"系統性問題通常不能只靠個人努力解決。",tag:"pause"}]}
+]},
+disability:{name:"身心障礙服務知能",stages:[
+{scene:"服務對象想自行參與社區活動，家屬擔心交通安全，工作人員希望尊重其自主權。",options:[
+{label:"先和本人確認意願、理解及需要哪些支持",reaction:"服務對象說明想參加的原因，也提出不熟悉交通路線。",reflection:"先確認當事人意願與支持需求，是合理調整的起點。",tag:"support"},
+{label:"先尊重家屬的安全顧慮，延後活動安排",reaction:"活動暫緩後，當事人仍希望表達對外出的想法與期待。",reflection:"家屬顧慮重要，但不能取代當事人的意願探索。",tag:"pressure"},
+{label:"先尊重本人外出意願，再視情況提供後續協助",reaction:"當事人獲得自行安排的空間，但交通風險與求助方式仍需進一步確認。",reflection:"支持自主與不提供支持，不是同一件事。",tag:"pause"}]},
+{scene:"新增資訊：當事人能辨識路線圖，但對轉車地點和迷路時如何求助仍不熟悉。",options:[
+{label:"和本人規劃交通練習及可選擇的協助方式",reaction:"這條示意路徑中，當事人嘗試參與交通練習，並提出希望先由支持者陪同一次；實際支持方式仍需共同確認。",reflection:"支持是讓人逐步增加選擇機會，不是永遠替他決定。",tag:"support"},
+{label:"暫時安排家屬陪同，再討論未來自行外出的可能",reaction:"陪同安排可回應部分安全顧慮，但團隊仍須確認是否符合本人意願及支持需求。",reflection:"限制措施是否符合比例原則，應持續檢視。",tag:"pressure"},
+{label:"先提供路線圖與求助資訊，讓本人自主準備",reaction:"當事人取得資訊後，仍希望能有人協助演練突發情況。",reflection:"資訊提供與能力支持之間，可能還有落差。",tag:"pause"}]},
+{scene:"團隊需要與當事人確認下一步行動，並討論後續支持與回饋方式。",options:[
+{label:"共同決定下一步，並設定可調整的求助安排",reaction:"這次示意推演中，本人與團隊討論一項可能的支持安排，仍須實際確認可行性並保留調整空間。",reflection:"請思考如何避免支持逐漸轉化為不必要的控制。",tag:"support"},
+{label:"維持工作人員陪同，待團隊更有把握再調整",reaction:"持續陪同提供了支持，也需要定期與本人討論何時調整協助程度。",reflection:"安全措施是否能逐步檢討並調整？",tag:"pressure"},
+{label:"先完成當次活動安排，暫緩進行後續回饋",reaction:"這條示意路徑假設當次活動順利完成；若缺少本人回饋，團隊仍難充分理解參與經驗，實際結果不一定相同。",reflection:"服務效果也需要由當事人的觀點理解。",tag:"pause"}]}
+]}};
+const branchScenes={
+pbs:[
+["工作人員放慢步調後，小宇仍握著平板，開始看向視覺提示。您需要進一步確認他的需要。","要求收起平板後，小宇明顯後退。團隊須先確認現場安全與如何降低壓力。","暫停要求後，小宇逐漸安靜，但是否願意活動轉換尚不明朗。"],
+["在先前的溝通安排後，小宇願意看一看需求圖卡，但仍希望保留觀看時間。","小宇在再度要求下開始提高音量，現場需要先評估風險並重新調整支持方式。","小宇暫時沒有衝突，卻尚未開始練習替代溝通或逐步參與。"]],
+management:[
+["完成任務優先序盤點後，團隊開始討論如何兼顧住民活動與必要照護。","所有任務照舊執行後，同仁反映負荷明顯升高，部分服務內容可能延遲。","活動全面取消後，住民希望知道是否有替代安排，團隊仍需重新溝通。"],
+["團隊討論了替代活動與支援安排，仍須確認是否能實際執行。","維持原班表後，有同仁反映重要風險訊息沒有被納入安排。","分散決策後，不同班別做法不一致，需要建立基本協作原則。"]],
+disability:[
+["確認當事人意願後，發現其願意練習交通，但希望保留自行決定的機會。","活動取消後，當事人再次提出外出意願，團隊須重新討論合理支持。","直接外出安排後，轉車與緊急求助資訊尚不清楚，應補足必要支持。"],
+["在與本人討論及練習後，當事人希望先嘗試短距離自行移動。","固定陪同的安排雖降低部分擔憂，但當事人希望有更多自主練習。","提供路線圖後，當事人對突發轉車與迷路應變仍感到不確定。"]]
+};
+const expertGuide={
+pbs:[
+["先取得本人可理解的線索、減低要求的壓力，避免把當下抗拒直接等同於不配合。","明確預告也可能必要，但應先留意退後、提高音量等壓力線索，避免只靠要求維持流程。","短暫觀察可蒐集線索；仍要主動規劃溝通方式，不能只把活動延後。"],
+["同時評估影片取得與活動迴避兩種待驗證假設，透過選擇、預告及替代溝通調整。","持續參與可能是目標，但只處理活動迴避會忽略影片需求；應比較兩項功能假設。","暫緩轉換可能降低當下壓力，但仍需設計可預期的結束及下次活動轉換支持。"],
+["漸進參與、可選擇的休息及本人意願，有助於同時觀察參與品質與安全。","恢復原時數不是一律不可行，關鍵在準備度、意願及是否有合理支持。","頻率紀錄有參考價值，但應搭配溝通、參與、生活品質與權益等指標。"]],
+management:[
+["先守住必要照護及安全，再公開說明服務調整依據，邀請當事人表達意願。","維持所有活動有連續性的優點，但需要先確認人力與時間是否真的能支撐。","暫停活動可作應急，但要界定必要與非必要、補救參與及安排溝通。"],
+["共議可兼顧工作量與服務權益；仍需有人承擔執行與追蹤責任。","緊急時主管先決定可能合理，重點是風險依據、後續回饋及修正。","授權能回應現場差異，但要先界定共同服務底線、回報機制及權責。"],
+["檢討應涵蓋員工負荷、住民參與和備援，而不只依事故數字。","安全事件數是底線指標，但不足以代表全部服務品質。","個別提醒可能有幫助，若是系統性缺人仍需處理備援與資源配置。"]],
+disability:[
+["先聽本人意願並共同確認交通支持需求，避免以保護直接取代選擇。","家屬的安全資訊應納入，但是否延後仍需與本人討論必要性及替代方案。","自主不是放任；應確認路線、求助及本人希望採取的支持。"],
+["共同安排練習可擴大選擇權；支持程度要可調整並由本人參與決定。","陪同可作過渡支持，須確認本人意願、比例原則與減少支持的條件。","資訊可能幫助準備，但仍應詢問是否希望演練迷路與轉車情境。"],
+["共同決策與可調整的求助安排可兼顧風險、自主及參與品質。","持續陪同未必不妥，但要設檢討時點與本人可表達的選擇。","完成活動也要聽本人回饋，否則難以理解其參與經驗與下一步需求。"]]
+};
+const nextSteps={
+pbs:["下次可先記錄前事、行為、後果與本人表達，再和團隊檢驗功能假設。","下次可設計兼顧兩種需求的轉換預告、替代溝通與支持方式。","下次可與本人及團隊設定參與品質、溝通與行為頻率的多元追蹤指標。"],
+management:["下次可建立最低照護底線與可調整活動清單。","下次可盤點分工、授權底線與住民回饋機制。","下次可安排事件後檢討，納入疲勞、服務權益及備援。"],
+disability:["下次可和本人盤點外出目標、交通風險與偏好的支持。","下次可練習轉車及求助情境，並讓本人選擇陪同程度。","下次可確認本人參與感受及是否需要調整支持。"]
+};
+function orderFor(key,step){const offset={pbs:1,management:2,disability:0}[key];return [0,1,2].map((_,i)=>(i+offset+step)%3);}
+const recommendedReading={
+pbs:[
+{title:"當行為改善了，關係也改善了嗎？",url:"https://allenmindlab.com/articles/pbs-double-abc-relationships",why:"延伸思考行為指標、關係與生活品質"},
+{title:"為什麼同一份 PBS 計畫，換個地方就不一定有效？",url:"https://allenmindlab.com/articles/pbs-plan-contextual-fit",why:"檢視支持策略與現場條件的適配"},
+{title:"明明是在幫他冷靜，為什麼結果可能完全不同？",url:"https://allenmindlab.com/articles/pbs-emotional-cycle-intervention-timing",why:"進一步理解活動轉換與情緒支持時機"}],
+management:[
+{title:"從管理決策到當責文化",url:"https://allenmindlab.com/articles/ot-management-decision-accountability",why:"思考決策依據、分工與後續改善"},
+{title:"大缺工時代，照顧工作需要重新設計",url:"https://allenmindlab.com/articles/care-work-redesign-labor-shortage",why:"延伸探討人力限制下的服務設計"},
+{title:"當管理沒有唯一正解：風格可以改變，核心不能漂移",url:"https://allenmindlab.com/articles/management-no-single-right-answer",why:"理解策略取捨與管理判斷"}],
+disability:[
+{title:"在不同領域，OT 怎麼提供真正需要的服務？",url:"https://allenmindlab.com/articles/ot-management-needs-based-service-design",why:"第一階段：先確認本人需求，再思考如何設計個別支持"},
+{title:"跨系統職能治療服務管理：如何把不同系統真正接起來？",url:"https://allenmindlab.com/articles/ot-management-cross-system-service-integration",why:"第二階段：思考交通練習、家屬與支持者間如何協作"},
+{title:"讓改變走得更遠",url:"https://allenmindlab.com/articles/ot-management-transition-support-life",why:"第三階段：將支持延伸到真實生活並持續檢視調整"}]};
+function readingLinks(key,decisions){const section=document.createElement("section");section.setAttribute("aria-label","AML 建議延伸閱讀");section.className="info-reading";const h=document.createElement("h3");h.textContent="延伸閱讀｜從模擬走向實務";section.append(h);section.append(paragraph("依三階段的決策議題搭配 AML 文章，並附上您本次選擇值得再思考的問題。這不是能力評分或個人分類。閱讀需連上網路。","subtle"));const ul=document.createElement("ul");for(const [n,item] of recommendedReading[key].entries()){const li=document.createElement("li");li.append(document.createTextNode("第 "+(n+1)+" 階段延伸｜"));const a=document.createElement("a");a.href=item.url;a.target="_blank";a.rel="noopener noreferrer";a.textContent=item.title+"（另開新分頁）";li.append(a,document.createTextNode(" — "+item.why));const follow=paragraph("連結您的選擇："+catalog[key].stages[n].options[decisions[n].choice].label+"。可思考："+catalog[key].stages[n].options[decisions[n].choice].reflection,"subtle");li.append(follow);ul.append(li);}section.append(ul);return section;}
+function sceneFor(key,index,history){if(index===0)return catalog[key].stages[0].scene;const previous=history[index-1];return branchScenes[key][index-1][previous.choice]+" "+catalog[key].stages[index].scene;}
+const title=document.getElementById("stepTitle"),body=document.getElementById("body"),actions=document.getElementById("actions"),log=document.getElementById("log"),historyPanel=document.getElementById("historyPanel");
+let current=null,stage=0,path=[];const status=document.getElementById("status");
+function clear(){actions.replaceChildren();body.replaceChildren();status.textContent="";}
+function paragraph(t,cls){const p=document.createElement("p");p.textContent=t;if(cls)p.className=cls;return p;}
+function infoBlock(label,value,kind){const box=document.createElement("div");box.className="info-block info-"+kind;const heading=document.createElement("strong");heading.textContent=label;box.append(heading,paragraph(value));return box;}
+function btn(label,fn,primary=false){const b=document.createElement("button");b.type="button";b.textContent=label;if(primary)b.className="primary";b.addEventListener("click",fn);actions.append(b);}
+function focusTitle(){title.setAttribute("tabindex","-1");title.focus({preventScroll:true});}
+function start(){current=null;stage=0;path=[];log.replaceChildren();historyPanel.hidden=true;title.textContent="選擇探索領域";clear();body.append(paragraph("請選擇領域，探索三階段情境、不同策略及可能後果。不計分，也不評定個人能力。"));for(const [key,data] of Object.entries(catalog))btn(data.name,()=>scenario(key));focusTitle();}
+function scenario(key){current=key;stage=0;path=[];log.replaceChildren();historyPanel.hidden=true;renderStage();}
+function renderStage(){const d=catalog[current],s=d.stages[stage];title.textContent=d.name+"｜第 "+(stage+1)+" / "+d.stages.length+" 階段";clear();body.append(infoBlock("情境資訊",sceneFor(current,stage,path),"scene"));body.append(paragraph("您會如何回應？請選擇一項，再觀察可能的情境發展。","subtle"));orderFor(current,stage).forEach(i=>btn(s.options[i].label,()=>outcome(i)));btn("結束本次探索並選擇其他領域",start);focusTitle();}
+function outcome(i){const d=catalog[current],c=d.stages[stage].options[i];path.push({stage,choice:i,tag:c.tag});title.textContent=d.name+"｜第 "+(stage+1)+" 階段的模擬推演";clear();body.append(infoBlock("您的選擇",c.label,"choice"));body.append(infoBlock("一種可能的發展",c.reaction,"outcome"));body.append(infoBlock("值得探索",c.reflection,"scene"));body.append(infoBlock("專家觀點（情境示意）",expertGuide[current][stage][i],"expert"));body.append(infoBlock("可以再試什麼",nextSteps[current][stage],"next"));body.append(paragraph("提醒：情節依事先設定的規則推演，不是對真實個案結果的預測。","subtle"));const li=document.createElement("li");li.textContent="階段 "+(stage+1)+"｜"+c.label+"。專家解析："+expertGuide[current][stage][i];log.append(li);historyPanel.hidden=false;status.textContent="已完成第 "+(stage+1)+" 階段選擇，可閱讀可能發展與反思後繼續。";if(stage+1<d.stages.length){btn("繼續下一階段",()=>{stage++;renderStage();},true);}else{btn("閱讀本次探索回顧",review,true);}btn("重新探索此領域",()=>scenario(current));focusTitle();}
+function review(){title.textContent=catalog[current].name+"｜我的探索回顧";clear();body.append(paragraph("已完成三階段決策練習。本次沒有分數或專業能力標籤，以下只是依本次選擇提供的反思方向。"));body.append(paragraph("請回顧剛才的三個選擇：每一階段，您優先注意了哪些資訊與當事人的需求？有哪些不確定因素值得繼續釐清？"));body.append(paragraph("如果重新選擇另一種策略，您會怎樣衡量安全、自主、參與、時間與資源？這些問題沒有單一標準答案。"));body.append(paragraph("自我提問：我忽略哪些線索？若情況改變，我願意怎樣修正？哪一項策略值得再試？"));body.append(paragraph("三階段專家解析重點："));path.forEach((p,n)=>{const item=catalog[current].stages[n].options[p.choice];body.append(infoBlock("階段 "+(n+1)+"｜您的選擇",item.label,"choice"));body.append(infoBlock("專家觀點",expertGuide[current][n][p.choice],"expert"));body.append(infoBlock("實務下一步",nextSteps[current][n],"next"));});body.append(paragraph("綜合提醒：請選出一項值得帶回現場查證的假設，與同仁或服務對象討論，再依實際結果調整策略。"));body.append(readingLinks(current,path));body.append(paragraph("您可以重新探索，試比較其他策略的優勢、限制及可能代價。","subtle"));btn("重新探索相同領域",()=>scenario(current),true);btn("探索其他領域",start);status.textContent="本次探索回顧已顯示。";focusTitle();}
+start();
+</script></body></html>

@@ -1,0 +1,57 @@
+name: AML Decision Simulator structural QA
+on:
+  pull_request:
+    paths:
+      - 'decision-simulator/**'
+      - 'tools.html'
+      - '.github/workflows/aml-decision-simulator-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-simulator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate all decision paths and source boundaries
+        run: node decision-simulator/test-routes.cjs
+      - name: Install headless browser test tools
+        run: |
+          npm install --no-save playwright@1.57.0 @axe-core/playwright@4.10.2
+          npx playwright install --with-deps chromium
+      - name: Check desktop/mobile complete interactions
+        run: node decision-simulator/test-browser.cjs
+      - name: Automated WCAG A/AA scans on interactive states
+        run: node decision-simulator/test-axe.cjs
+      - name: Validate three-bay navigation links and anchors
+        run: node decision-simulator/test-navigation.cjs
+      - name: Package frozen acceptance candidate
+        run: |
+          mkdir -p acceptance-artifact
+          git show db0b0834efcda51a317eadba7cd90243c60215de:decision-simulator/index.html > acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
+          test -s acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
+      - name: Package isolated HTTPS preview site (not deployed)
+        run: |
+          mkdir -p preview-site
+          git show db0b0834efcda51a317eadba7cd90243c60215de:decision-simulator/index.html > preview-site/index.html
+          printf 'User-agent: *\nDisallow: /\n' > preview-site/robots.txt
+          printf '%s\n' 'Preview only; no production publishing. Candidate db0b0834efcda51a317eadba7cd90243c60215de.' > preview-site/README.txt
+          test -s preview-site/index.html
+      - name: Upload isolated preview site package
+        uses: actions/upload-artifact@v4
+        with:
+          name: AML-3.3-cloudflare-preview-db0b083
+          path: preview-site/
+          retention-days: 30
+      - name: Upload offline acceptance HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: AML-3.3-offline-acceptance-db0b083
+          path: acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
+          retention-days: 30
