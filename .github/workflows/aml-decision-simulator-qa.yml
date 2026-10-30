@@ -34,11 +34,11 @@ jobs:
       - name: Package frozen acceptance candidate
         run: |
           mkdir -p acceptance-artifact
-          git show 90a59fda21d9be220a963175b01864a5698fe50a:decision-simulator/index.html > acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
+          git show f5075a76d41b3529c10919905068b1fcd5596b5c:decision-simulator/index.html > acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
           test -s acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
       - name: Upload offline acceptance HTML
         uses: actions/upload-artifact@v4
         with:
-          name: AML-3.3-offline-acceptance-90a59fd
+          name: AML-3.3-offline-acceptance-f5075a7
           path: acceptance-artifact/AML_Decision_Simulator_3_3_RC.html
           retention-days: 30
