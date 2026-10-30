@@ -35,12 +35,33 @@ const assert = require("node:assert/strict");
         assert.equal(await page.locator("#historyPanel").isHidden(),true,"history must reset");
         paths++;
       }
+      // Keyboard-only traversal of one complete scenario, without mouse clicks.
+      await page.goto("file://"+path.resolve(__dirname,"index.html"));
+      await page.locator("#actions button").first().focus();
+      await page.keyboard.press("Enter");
+      for(let step=1;step<=3;step++){
+        assert.match(await page.locator("#stepTitle").innerText(),new RegExp("第 "+step+" / 3 階段"));
+        await page.locator("#actions button").first().focus();
+        await page.keyboard.press("Enter");
+        assert.equal(await page.locator("#log li").count(),step);
+        if(step<3){
+          await page.getByRole("button",{name:"繼續下一階段"}).focus();
+          await page.keyboard.press("Enter");
+        } else {
+          await page.getByRole("button",{name:"閱讀本次探索回顧"}).focus();
+          await page.keyboard.press("Enter");
+        }
+      }
+      assert.match(await page.locator("#stepTitle").innerText(),/我的探索回顧/);
+      await page.getByRole("button",{name:"探索其他領域",exact:true}).focus();
+      await page.keyboard.press("Enter");
+      assert.equal(await page.locator("#historyPanel").isHidden(),true,"keyboard reset");
       const horizontalOverflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+1);
       assert.equal(horizontalOverflow,false,"horizontal overflow at "+viewport.width);
       assert.deepEqual(errors,[],"browser errors at "+viewport.width);
       await page.close();
     }
-    console.log("PASS: "+paths+" browser end-to-end explorations; mobile/desktop, focus, reset, stage transitions, no horizontal overflow.");
+    console.log("PASS: "+paths+" pointer-driven explorations plus 2 keyboard-driven complete explorations; focus, reset, stage transitions, no horizontal overflow.");
     console.log("Not covered: NVDA/VoiceOver, human WCAG assessment, physical devices, or all 81 end-to-end choices.");
   } finally { await browser.close(); }
 })().catch(e=>{console.error(e);process.exitCode=1;});
