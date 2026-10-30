@@ -71,6 +71,26 @@ disability:[
 ["確認當事人意願後，發現其願意練習交通，但希望保留自行決定的機會。","活動取消後，當事人再次提出外出意願，團隊須重新討論合理支持。","直接外出安排後，轉車與緊急求助資訊尚不清楚，應補足必要支持。"],
 ["在與本人討論及練習後，當事人希望先嘗試短距離自行移動。","固定陪同的安排雖降低部分擔憂，但當事人希望有更多自主練習。","提供路線圖後，當事人對突發轉車與迷路應變仍感到不確定。"]]
 };
+const expertGuide={
+pbs:[
+["先取得本人可理解的線索、減低要求的壓力，避免把當下抗拒直接等同於不配合。","明確預告也可能必要，但應先留意退後、提高音量等壓力線索，避免只靠要求維持流程。","短暫觀察可蒐集線索；仍要主動規劃溝通方式，不能只把活動延後。"],
+["同時評估影片取得與活動迴避兩種待驗證假設，透過選擇、預告及替代溝通調整。","持續參與可能是目標，但只處理活動迴避會忽略影片需求；應比較兩項功能假設。","暫緩轉換可能降低當下壓力，但仍需設計可預期的結束及下次活動轉換支持。"],
+["漸進參與、可選擇的休息及本人意願，有助於同時觀察參與品質與安全。","恢復原時數不是一律不可行，關鍵在準備度、意願及是否有合理支持。","頻率紀錄有參考價值，但應搭配溝通、參與、生活品質與權益等指標。"]],
+management:[
+["先守住必要照護及安全，再公開說明服務調整依據，邀請當事人表達意願。","維持所有活動有連續性的優點，但需要先確認人力與時間是否真的能支撐。","暫停活動可作應急，但要界定必要與非必要、補救參與及安排溝通。"],
+["共議可兼顧工作量與服務權益；仍需有人承擔執行與追蹤責任。","緊急時主管先決定可能合理，重點是風險依據、後續回饋及修正。","授權能回應現場差異，但要先界定共同服務底線、回報機制及權責。"],
+["檢討應涵蓋員工負荷、住民參與和備援，而不只依事故數字。","安全事件數是底線指標，但不足以代表全部服務品質。","個別提醒可能有幫助，若是系統性缺人仍需處理備援與資源配置。"]],
+disability:[
+["先聽本人意願並共同確認交通支持需求，避免以保護直接取代選擇。","家屬的安全資訊應納入，但是否延後仍需與本人討論必要性及替代方案。","自主不是放任；應確認路線、求助及本人希望採取的支持。"],
+["共同安排練習可擴大選擇權；支持程度要可調整並由本人參與決定。","陪同可作過渡支持，須確認本人意願、比例原則與減少支持的條件。","資訊可能幫助準備，但仍應詢問是否希望演練迷路與轉車情境。"],
+["共同決策與可調整的求助安排可兼顧風險、自主及參與品質。","持續陪同未必不妥，但要設檢討時點與本人可表達的選擇。","完成活動也要聽本人回饋，否則難以理解其參與經驗與下一步需求。"]]
+};
+const nextSteps={
+pbs:["下次可先記錄前事、行為、後果與本人表達，再和團隊檢驗功能假設。","下次可設計兼顧兩種需求的轉換預告、替代溝通與支持方式。","下次可與本人及團隊設定參與品質、溝通與行為頻率的多元追蹤指標。"],
+management:["下次可建立最低照護底線與可調整活動清單。","下次可盤點分工、授權底線與住民回饋機制。","下次可安排事件後檢討，納入疲勞、服務權益及備援。"],
+disability:["下次可和本人盤點外出目標、交通風險與偏好的支持。","下次可練習轉車及求助情境，並讓本人選擇陪同程度。","下次可確認本人參與感受及是否需要調整支持。"]
+};
+function orderFor(key,step){const offset={pbs:1,management:2,disability:0}[key];return [0,1,2].map((_,i)=>(i+offset+step)%3);}
 function sceneFor(key,index,history){if(index===0)return catalog[key].stages[0].scene;const previous=history[index-1];return branchScenes[key][index-1][previous.choice]+" "+catalog[key].stages[index].scene;}
 const title=document.getElementById("stepTitle"),body=document.getElementById("body"),actions=document.getElementById("actions"),log=document.getElementById("log"),historyPanel=document.getElementById("historyPanel");
 let current=null,stage=0,path=[];const status=document.getElementById("status");
@@ -80,8 +100,8 @@ function btn(label,fn,primary=false){const b=document.createElement("button");b.
 function focusTitle(){title.setAttribute("tabindex","-1");title.focus({preventScroll:true});}
 function start(){current=null;stage=0;path=[];log.replaceChildren();historyPanel.hidden=true;title.textContent="選擇探索領域";clear();body.append(paragraph("請選擇領域，探索三階段情境、不同策略及可能後果。不計分，也不評定個人能力。"));for(const [key,data] of Object.entries(catalog))btn(data.name,()=>scenario(key));focusTitle();}
 function scenario(key){current=key;stage=0;path=[];log.replaceChildren();historyPanel.hidden=true;renderStage();}
-function renderStage(){const d=catalog[current],s=d.stages[stage];title.textContent=d.name+"｜第 "+(stage+1)+" / "+d.stages.length+" 階段";clear();body.append(paragraph(sceneFor(current,stage,path)));body.append(paragraph("您會如何回應？請選擇一項，再觀察可能的情境發展。","subtle"));s.options.forEach((c,i)=>btn(c.label,()=>outcome(i)));btn("結束本次探索並選擇其他領域",start);focusTitle();}
-function outcome(i){const d=catalog[current],c=d.stages[stage].options[i];path.push({stage,choice:i,tag:c.tag});title.textContent=d.name+"｜第 "+(stage+1)+" 階段的模擬推演";clear();body.append(paragraph("您的選擇："+c.label));body.append(paragraph("一種可能的發展："+c.reaction));body.append(paragraph("值得探索："+c.reflection));body.append(paragraph("提醒：情節依事先設定的規則推演，不是對真實個案結果的預測。","subtle"));const li=document.createElement("li");li.textContent="階段 "+(stage+1)+"｜"+c.label+"。反思："+c.reflection;log.append(li);historyPanel.hidden=false;status.textContent="已完成第 "+(stage+1)+" 階段選擇，可閱讀可能發展與反思後繼續。";if(stage+1<d.stages.length){btn("繼續下一階段",()=>{stage++;renderStage();},true);}else{btn("閱讀本次探索回顧",review,true);}btn("重新探索此領域",()=>scenario(current));focusTitle();}
-function review(){title.textContent=catalog[current].name+"｜我的探索回顧";clear();body.append(paragraph("已完成三階段決策練習。本次沒有分數或專業能力標籤，以下只是依本次選擇提供的反思方向。"));body.append(paragraph("請回顧剛才的三個選擇：每一階段，您優先注意了哪些資訊與當事人的需求？有哪些不確定因素值得繼續釐清？"));body.append(paragraph("如果重新選擇另一種策略，您會怎樣衡量安全、自主、參與、時間與資源？這些問題沒有單一標準答案。"));body.append(paragraph("自我提問：我忽略哪些線索？若情況改變，我願意怎樣修正？哪一項策略值得再試？"));body.append(paragraph("您可以重新挑戰，試著選擇與第一次不同的策略。","subtle"));btn("重新探索相同領域",()=>scenario(current),true);btn("探索其他領域",start);status.textContent="本次探索回顧已顯示。";focusTitle();}
+function renderStage(){const d=catalog[current],s=d.stages[stage];title.textContent=d.name+"｜第 "+(stage+1)+" / "+d.stages.length+" 階段";clear();body.append(paragraph(sceneFor(current,stage,path)));body.append(paragraph("您會如何回應？請選擇一項，再觀察可能的情境發展。","subtle"));orderFor(current,stage).forEach(i=>btn(s.options[i].label,()=>outcome(i)));btn("結束本次探索並選擇其他領域",start);focusTitle();}
+function outcome(i){const d=catalog[current],c=d.stages[stage].options[i];path.push({stage,choice:i,tag:c.tag});title.textContent=d.name+"｜第 "+(stage+1)+" 階段的模擬推演";clear();body.append(paragraph("您的選擇："+c.label));body.append(paragraph("一種可能的發展："+c.reaction));body.append(paragraph("值得探索："+c.reflection));body.append(paragraph("專家觀點（情境示意）："+expertGuide[current][stage][i]));body.append(paragraph("可以再試什麼："+nextSteps[current][stage]));body.append(paragraph("提醒：情節依事先設定的規則推演，不是對真實個案結果的預測。","subtle"));const li=document.createElement("li");li.textContent="階段 "+(stage+1)+"｜"+c.label+"。專家解析："+expertGuide[current][stage][i];log.append(li);historyPanel.hidden=false;status.textContent="已完成第 "+(stage+1)+" 階段選擇，可閱讀可能發展與反思後繼續。";if(stage+1<d.stages.length){btn("繼續下一階段",()=>{stage++;renderStage();},true);}else{btn("閱讀本次探索回顧",review,true);}btn("重新探索此領域",()=>scenario(current));focusTitle();}
+function review(){title.textContent=catalog[current].name+"｜我的探索回顧";clear();body.append(paragraph("已完成三階段決策練習。本次沒有分數或專業能力標籤，以下只是依本次選擇提供的反思方向。"));body.append(paragraph("請回顧剛才的三個選擇：每一階段，您優先注意了哪些資訊與當事人的需求？有哪些不確定因素值得繼續釐清？"));body.append(paragraph("如果重新選擇另一種策略，您會怎樣衡量安全、自主、參與、時間與資源？這些問題沒有單一標準答案。"));body.append(paragraph("自我提問：我忽略哪些線索？若情況改變，我願意怎樣修正？哪一項策略值得再試？"));body.append(paragraph("三階段專家解析重點："));path.forEach((p,n)=>{const item=catalog[current].stages[n].options[p.choice];body.append(paragraph("階段 "+(n+1)+"｜您的選擇："+item.label));body.append(paragraph("專家觀點："+expertGuide[current][n][p.choice]));body.append(paragraph("實務下一步："+nextSteps[current][n]));});body.append(paragraph("您可以重新探索，試比較其他策略的優勢、限制及可能代價。","subtle"));btn("重新探索相同領域",()=>scenario(current),true);btn("探索其他領域",start);status.textContent="本次探索回顧已顯示。";focusTitle();}
 start();
 </script></body></html>
