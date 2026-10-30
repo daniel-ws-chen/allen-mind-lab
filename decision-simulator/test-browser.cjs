@@ -57,7 +57,7 @@ const assert = require("node:assert/strict");
         assert.equal(await page.locator("#body section[aria-label='AML 建議延伸閱讀'] li").count(),3,"three decision-linked reading prompts");
         assert.equal((reviewText.match(/連結您的選擇：/g)||[]).length,3,"each reading relates to selected decision");
         assert.equal(await page.locator("#body section[aria-label='AML 建議延伸閱讀'] a[target='_blank'][rel='noopener noreferrer']").count(),3,"safe external article links");
-        assert.equal((reviewText.match(/專家觀點：/g)||[]).length,3,"every decision has expert review");
+        assert.equal(await page.locator("#body .info-block.info-expert").count(),3,"every decision has expert review");
         assert.match(reviewText,/安全、自主、參與、時間與資源/,"review should prompt balanced reflection");
         assert.doesNotMatch(reviewText,/您多次選擇/,"review must not infer a user strategy profile");
         await page.getByRole("button",{name:"探索其他領域",exact:true}).click();
