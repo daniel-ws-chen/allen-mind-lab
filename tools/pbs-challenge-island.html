@@ -1,0 +1,1027 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PBS 闖關島｜正向行為支持情境冒險｜Allen Mind Lab</title><style>
+
+:root{
+  --ink:#173044;--ink-soft:#4d6672;--sea-1:#dff7fb;--sea-2:#a7deec;--sea-3:#6fbccd;
+  --panel:#fffef8;--line:#b9dce5;--teal:#12677a;--teal-2:#1d8292;--gold:#f1b74f;
+  --good:#18805b;--bad:#b63c3c;--warn:#9b6120;
+  font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;color:var(--ink);background:linear-gradient(180deg,#effbfd 0%,#c9ecf5 38%,#9fd5e4 100%);
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{margin:0;display:grid;place-items:center;padding:14px;background:
+  radial-gradient(circle at 15% 10%,#ffffffd8 0 8%,transparent 8.5%),
+  radial-gradient(circle at 84% 8%,#ffffffbb 0 7%,transparent 7.5%),
+  radial-gradient(circle at 18% 82%,#ffffff88 0 4%,transparent 4.5%),
+  linear-gradient(180deg,#edfafd 0%,#d6f0f7 30%,#99d0dd 100%)}
+.app{width:min(980px,100%);background:linear-gradient(180deg,#fffefc 0%,#f9fffe 100%);border-radius:34px;box-shadow:0 28px 80px rgba(17,61,76,.16),0 8px 25px rgba(17,61,76,.1);overflow:hidden;border:1px solid #d8edf2}
+.top{position:relative;background:linear-gradient(135deg,#0f3f56 0%,#176880 55%,#228fa0 100%);color:white;padding:18px 26px;display:flex;justify-content:space-between;gap:8px;align-items:center;overflow:hidden}
+.top:before,.top:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.08)}
+.top:before{width:220px;height:220px;right:-80px;top:-130px}
+.top:after{width:140px;height:140px;left:-50px;bottom:-80px}
+.brand{position:relative;font-weight:1000;letter-spacing:.06em;font-size:18px;text-shadow:0 1px 0 rgba(0,0,0,.15)}
+.sub{position:relative;opacity:.9;font-size:12px}
+.chip{position:relative;background:rgba(255,255,255,.16);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:9px 13px;font-weight:900;font-size:13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+.body{padding:22px 22px 26px;min-height:600px}
+.step{font-size:14px;color:#57717c;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.portrait{font-size:82px;text-align:center;line-height:1.08;margin:10px 0 8px;filter:drop-shadow(0 8px 14px rgba(23,48,68,.14))}
+.bubble{background:linear-gradient(180deg,#f4fcff 0%,#edf7fa 100%);border:1px solid #d4e9ee;border-radius:26px;padding:24px 22px;min-height:118px;font-size:clamp(24px,4.4vw,35px);font-weight:1000;line-height:1.45;text-align:center;display:grid;place-items:center;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 10px 22px rgba(35,87,103,.06)}
+.prompt{text-align:center;font-size:17px;font-weight:900;margin:18px 0 14px;color:#21495b}
+.choices{display:grid;gap:12px}
+.choice{position:relative;cursor:pointer;text-align:left;font:800 clamp(17px,2.8vw,21px)/1.45 inherit;color:var(--ink);background:linear-gradient(180deg,#ffffff 0%,#f8fcfd 100%);border:2px solid #c8e0e6;border-radius:19px;padding:16px 18px 16px 22px;box-shadow:0 6px 14px rgba(32,89,108,.06);transition:transform .14s ease,border-color .14s ease,box-shadow .14s ease,background .14s ease}
+.choice:before{content:"";position:absolute;left:0;top:12px;bottom:12px;width:6px;border-radius:999px;background:linear-gradient(180deg,#94d9e3,#4da8b4);opacity:.75}
+.choice:hover,.choice:focus-visible{transform:translateY(-1px);border-color:#59a8b6;background:linear-gradient(180deg,#ffffff 0%,#effafb 100%);outline:none;box-shadow:0 10px 20px rgba(32,89,108,.1)}
+.choice:disabled{opacity:.55;cursor:default}
+.reaction{text-align:center;padding:14px 0 6px}.resultTitle{font-size:clamp(30px,6vw,48px);font-weight:1000;margin:6px 0 10px}.resultText{font-size:clamp(22px,4vw,30px);font-weight:900;line-height:1.55;background:linear-gradient(180deg,#f3f8fa 0%,#ebf3f5 100%);padding:24px;border-radius:22px;border:1px solid #d8e6ea}.good{color:var(--good)}.bad{color:var(--bad)}.neutral{color:var(--warn)}
+.act{width:100%;border:0;background:linear-gradient(135deg,#14758a 0%,#0f6172 100%);color:white;font:900 20px inherit;border-radius:18px;padding:16px 18px;cursor:pointer;margin-top:18px;box-shadow:0 10px 18px rgba(18,103,122,.22);transition:transform .14s ease,box-shadow .14s ease}
+.act:hover,.act:focus-visible{transform:translateY(-1px);box-shadow:0 14px 24px rgba(18,103,122,.26);outline:3px solid #f4cf7a;outline-offset:2px}
+.alt{background:linear-gradient(180deg,#eef6f8 0%,#e1edf0 100%);color:#17475a;box-shadow:0 8px 14px rgba(23,71,90,.08)}
+.meta{font-size:13px;color:#627681;text-align:center;margin-top:14px;line-height:1.6}.meter{display:flex;gap:8px;margin:16px 0 4px}.meter span{flex:1;height:12px;border-radius:999px;background:linear-gradient(180deg,#dce9ec,#cadbdf)}.meter span.on{background:linear-gradient(180deg,#f4c36e,#e49334);box-shadow:0 0 0 2px rgba(255,255,255,.3) inset}.pill{display:inline-block;border-radius:999px;padding:7px 12px;background:#e2f0f2;font-weight:900;font-size:14px;margin:8px 0}
+details{margin-top:18px;border-top:1px dashed #d6e4e8;padding-top:14px;color:#425b69;background:linear-gradient(180deg,#fbfefd 0%,#f5fafb 100%);border-radius:18px;padding:14px 16px}summary{cursor:pointer;font-weight:900}li{margin:8px 0}
+button:focus-visible{outline:3px solid #e29c2f;outline-offset:3px}
+
+.mapTitle{text-align:center;font-size:clamp(30px,5vw,42px);font-weight:1000;margin:4px 0 8px;color:#11384a}.mapLead{text-align:center;color:#4f6772;font-size:16px;line-height:1.6;margin:0 0 12px}
+.mapButtons{display:flex;gap:10px;justify-content:center}.tinyBtn{background:linear-gradient(180deg,#eff6f8,#e4eef1);border:1px solid #c6dbe0;padding:11px 16px;font:800 14px inherit;border-radius:13px;cursor:pointer;color:#1c495d;box-shadow:0 5px 12px rgba(23,71,90,.07)}.tinyBtn:hover{transform:translateY(-1px)}
+
+.adventure{position:relative;isolation:isolate;overflow:hidden;border-radius:34px;padding:20px 16px 28px;background:
+ linear-gradient(180deg,#bdeaf1 0%,#a6ddea 36%,#77c0d0 100%);border:2px solid #7ab8c6;min-height:700px;box-shadow:inset 0 2px 0 rgba(255,255,255,.45),0 16px 30px rgba(48,111,129,.12)}
+.adventure:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.42;background:
+ radial-gradient(circle at 18% 16%,#ffffff 0 4%,transparent 4.5%),
+ radial-gradient(circle at 83% 26%,#ffffff 0 3.2%,transparent 3.7%),
+ radial-gradient(circle at 69% 78%,#ffffff 0 2.3%,transparent 2.8%),
+ radial-gradient(circle at 35% 70%,rgba(255,255,255,.22) 0 10%,transparent 10.5%),
+ linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0) 55%)}
+.adventure:after{content:"";position:absolute;inset:12px;border-radius:28px;border:1px dashed rgba(255,255,255,.22);pointer-events:none}
+.seaMark{position:absolute;font-size:24px;pointer-events:none;opacity:.85;filter:drop-shadow(0 4px 8px rgba(32,89,108,.15));animation:float 4s ease-in-out infinite}
+.seaMark:nth-of-type(2){animation-duration:5.3s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.mapHud{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:rgba(255,255,255,.76);backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.5);border-radius:18px;padding:12px 15px;margin-bottom:22px;font-weight:900;box-shadow:0 12px 20px rgba(39,97,112,.1)}
+.mapHint{font-size:12px;font-weight:700;color:#3b6273}
+.journey{position:relative;max-width:760px;margin:auto;display:grid;grid-template-columns:1fr 1fr;row-gap:12px;column-gap:24px;padding:6px 4px 10px}
+.journey:before{content:"";position:absolute;left:50%;top:24px;bottom:36px;width:6px;transform:translateX(-50%);border-radius:999px;background:repeating-linear-gradient(180deg,rgba(255,255,255,.7) 0 16px,rgba(68,131,146,.0) 16px 30px);box-shadow:0 0 0 2px rgba(123,178,189,.18)}
+.mapNode{position:relative;min-width:0;display:flex}.mapNode:nth-child(4n+1),.mapNode:nth-child(4n+4){justify-content:center}.mapNode:nth-child(4n+2){justify-content:flex-end}.mapNode:nth-child(4n+3){justify-content:flex-start}.mapNode:nth-child(even){transform:translateY(26px)}
+.mapNode:before{content:"";position:absolute;top:50%;width:72px;height:16px;transform:translateY(-50%);pointer-events:none;background:linear-gradient(90deg,transparent 0 10%,rgba(255,255,255,.78) 10% 16%,transparent 16% 30%,rgba(255,255,255,.65) 30% 36%,transparent 36% 100%)}
+.mapNode:nth-child(odd):before{right:-34px}.mapNode:nth-child(even):before{left:-34px;transform:translateY(-50%) scaleX(-1)}
+.mapNode:last-child:before{display:none}
+.islandCard{position:relative;display:flex;flex-direction:column;text-align:center;align-items:center;justify-content:center;gap:5px;color:#173044;width:min(100%,285px);min-height:154px;padding:18px 12px 22px;border-radius:46% 54% 46% 49% / 36% 33% 45% 44%;cursor:pointer;font:inherit;border:3px solid rgba(255,255,255,.86);box-shadow:0 12px 0 rgba(60,127,115,.9),0 18px 24px rgba(34,83,96,.16);transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}
+.islandCard:not(:disabled):hover{transform:translateY(-4px) scale(1.01);box-shadow:0 14px 0 rgba(60,127,115,.9),0 24px 28px rgba(34,83,96,.18);filter:saturate(1.04)}
+.islandCard:disabled{background:linear-gradient(145deg,#e8eded,#d3dedb)!important;border-color:#eef4f2;color:#62757c;cursor:not-allowed;box-shadow:0 11px 0 #7a9ba0,0 16px 24px rgba(34,83,96,.1)}
+.mapNode:nth-child(1) .islandCard{background:linear-gradient(145deg,#f9ffe4,#d8f2bf)}
+.mapNode:nth-child(2) .islandCard{background:linear-gradient(145deg,#fff4da,#f1d787);box-shadow:0 12px 0 #b79047,0 18px 24px rgba(34,83,96,.16)}
+.mapNode:nth-child(3) .islandCard{background:linear-gradient(145deg,#fde2ef,#f1bfd7);box-shadow:0 12px 0 #b06b8f,0 18px 24px rgba(34,83,96,.16)}
+.mapNode:nth-child(4) .islandCard{background:linear-gradient(145deg,#e6f0ff,#b9d3ff);box-shadow:0 12px 0 #6f8ec0,0 18px 24px rgba(34,83,96,.16)}
+.mapNode:nth-child(5) .islandCard{background:linear-gradient(145deg,#fff1dd,#edca99);box-shadow:0 12px 0 #b78958,0 18px 24px rgba(34,83,96,.16)}
+.mapNode:nth-child(6) .islandCard{background:linear-gradient(145deg,#e4f9f2,#bfe8d8);box-shadow:0 12px 0 #5d9b86,0 18px 24px rgba(34,83,96,.16)}
+.mapNode:nth-child(7) .islandCard{background:linear-gradient(145deg,#f0e4ff,#d8c1fa);box-shadow:0 12px 0 #8c6cb3,0 18px 24px rgba(34,83,96,.16)}
+.islandEmoji{font-size:45px;line-height:1;filter:drop-shadow(0 4px 10px rgba(255,255,255,.2))}
+.islandDetails{display:flex;flex-direction:column;gap:3px}.islandName{font-size:16px;font-weight:1000;line-height:1.35}.islandLabel{font-size:12px;font-weight:800;color:#23495a}.nodeNum{position:absolute;top:7px;left:18px;background:#22546a;color:#fff;border-radius:50%;width:29px;height:29px;display:grid;place-items:center;font-size:12px;font-weight:1000;box-shadow:0 4px 8px rgba(11,40,55,.2)}.nodeStars{position:absolute;top:9px;right:16px;font-size:16px;color:#bb760c;text-shadow:0 1px 0 #fff}
+.bossCard{background:linear-gradient(145deg,#402436,#8c3b49 48%,#f0ad59)!important;color:#fff;border-color:#ffd7b3;box-shadow:0 12px 0 #702b35,0 22px 28px rgba(34,83,96,.2)!important}
+/* v3.4 island individuality */
+.islandCard{overflow:visible;padding-top:72px;padding-bottom:18px;isolation:isolate}
+.island3d{position:absolute;left:50%;top:-16px;transform:translateX(-50%);width:118px;height:86px;pointer-events:none;filter:drop-shadow(0 9px 15px rgba(19,64,78,.16))}
+.island3d:before{content:"";position:absolute;inset:10px 8px 0;border-radius:55% 45% 48% 52% / 58% 42% 58% 42%;background:linear-gradient(180deg,rgba(255,255,255,.9) 0 18%,#f7e2a2 18% 31%,#7dcf8f 31% 100%);box-shadow:0 10px 0 rgba(104,152,95,.95),0 16px 16px rgba(25,76,87,.12)}
+.island3d:after{content:"";position:absolute;left:18px;right:18px;bottom:-3px;height:18px;border-radius:50%;background:rgba(17,58,69,.16);filter:blur(6px);z-index:-1}
+.terrainIcon,.featureIcon,.island3d .islandEmoji{position:absolute;display:grid;place-items:center}
+.terrainIcon{left:9px;top:8px;font-size:24px}
+.featureIcon{right:10px;top:12px;font-size:22px}
+.island3d .islandEmoji{left:50%;top:24px;transform:translateX(-50%);font-size:35px;line-height:1;filter:drop-shadow(0 3px 7px rgba(255,255,255,.28))}
+.islandAccent{display:inline-block;margin-top:4px;font-size:11px;font-weight:900;color:#315466;background:rgba(255,255,255,.45);padding:3px 8px;border-radius:999px}
+.islandCard:hover .island3d{transform:translateX(-50%) translateY(-2px)}
+.mapNode .islandCard{border-radius:44% 56% 43% 57% / 35% 34% 50% 48%}
+.isle-shore{border-radius:46% 54% 41% 59% / 31% 39% 48% 52% !important}
+.isle-shore .island3d:before{background:linear-gradient(180deg,#fff7da 0 18%,#f1d17c 18% 30%,#87d98d 30% 100%);box-shadow:0 10px 0 #6fa46c,0 16px 16px rgba(25,76,87,.12)}
+.isle-study{border-radius:52% 48% 43% 57% / 42% 29% 53% 47% !important}
+.isle-study .island3d:before{background:linear-gradient(180deg,#eaf6ff 0 16%,#b7d0a7 16% 26%,#86b36f 26% 100%);box-shadow:0 10px 0 #668751,0 16px 16px rgba(25,76,87,.12)}
+.isle-study .terrainIcon{font-size:22px;left:12px;top:10px}
+.isle-dining{border-radius:56% 44% 54% 46% / 36% 43% 41% 54% !important}
+.isle-dining .island3d:before{background:linear-gradient(180deg,#fff6d7 0 20%,#f6dca0 20% 33%,#9fd07a 33% 100%);box-shadow:0 10px 0 #719d55,0 16px 16px rgba(25,76,87,.12)}
+.isle-empathy{border-radius:43% 57% 49% 51% / 44% 34% 51% 43% !important}
+.isle-empathy .island3d:before{background:linear-gradient(180deg,#fff0f7 0 16%,#ffd7e6 16% 27%,#96d77e 27% 100%);box-shadow:0 10px 0 #6ca15d,0 16px 16px rgba(25,76,87,.12)}
+.isle-cycle{border-radius:49% 51% 58% 42% / 39% 37% 63% 61% !important}
+.isle-cycle .island3d:before{background:linear-gradient(180deg,#e4f2ff 0 13%,#a1d4ea 13% 28%,#6fb790 28% 100%);box-shadow:0 10px 0 #4e8b69,0 16px 16px rgba(25,76,87,.12)}
+.isle-sensory{border-radius:41% 59% 45% 55% / 35% 49% 51% 65% !important}
+.isle-sensory .island3d:before{background:linear-gradient(180deg,#ede8ff 0 12%,#b9abd6 12% 26%,#7eb080 26% 100%);box-shadow:0 10px 0 #5c835d,0 16px 16px rgba(25,76,87,.12)}
+.isle-crisis{border-radius:54% 46% 41% 59% / 46% 38% 52% 44% !important}
+.isle-crisis .island3d:before{background:linear-gradient(180deg,#ffe2de 0 13%,#f4b38d 13% 27%,#95bc72 27% 100%);box-shadow:0 10px 0 #68884b,0 16px 16px rgba(25,76,87,.12)}
+.bossCard{padding-top:72px}
+.bossCard .island3d:before{background:linear-gradient(180deg,#5d2937 0 10%,#a6474f 10% 25%,#f3a84c 25% 35%,#6a7934 35% 100%);box-shadow:0 10px 0 #594223,0 18px 18px rgba(25,76,87,.18)}
+.bossCard .island3d .islandEmoji{font-size:32px;top:26px}
+.bossCard .featureIcon{font-size:20px;right:12px;top:11px}
+.bossCard .terrainIcon{font-size:22px;left:10px;top:8px}
+.mapNode.justUnlocked .island3d:before{animation:unlockPop 1s ease}
+@keyframes unlockPop{0%{transform:scale(.86)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+
+
+/* v3.7 contrast and island intro card */
+.mapTitle{color:#0c2a3b;text-shadow:0 1px 0 rgba(255,255,255,.65);letter-spacing:.02em}
+.mapLead{color:#17394c;background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.58);padding:10px 14px;border-radius:16px;max-width:620px;margin:0 auto 14px;box-shadow:0 8px 16px rgba(26,78,93,.08)}
+.mapHud{background:rgba(255,255,255,.9)!important;border-color:rgba(199,226,232,.98)!important;color:#103145;box-shadow:0 10px 18px rgba(39,97,112,.12)!important}
+.mapHud span:first-child{font-size:15px;color:#0f3448;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+.mapHint{font-size:13px!important;font-weight:900!important;color:#244d61!important;background:rgba(237,249,252,.88);padding:6px 10px;border-radius:999px;border:1px solid #d4eaf0}
+.islandDetails{background:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.7);border-radius:18px;padding:10px 10px 8px;backdrop-filter:blur(2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.65)}
+.islandName{font-size:17px!important;font-weight:1000!important;color:#0d3041!important;text-shadow:0 1px 0 rgba(255,255,255,.55)}
+.islandLabel{font-size:12px!important;font-weight:1000!important;color:#163d52!important;background:rgba(255,255,255,.92);display:inline-block;margin:3px auto 0;padding:4px 9px;border-radius:999px;border:1px solid rgba(208,227,233,.95)}
+.islandAccent{display:inline-block!important;margin-top:6px!important;font-size:11px!important;font-weight:1000!important;color:#22485c!important;background:rgba(229,244,248,.96)!important;padding:4px 9px!important;border-radius:999px!important;border:1px solid #c8e0e7!important}
+.nodeNum{background:#123b52!important;box-shadow:0 5px 10px rgba(11,40,55,.24)!important}
+.nodeStars{color:#9f6100!important;text-shadow:0 1px 0 #fff,0 0 10px rgba(255,217,120,.6)!important}
+.stateLocked .islandDetails{background:rgba(244,248,249,.9);border-color:#d7e0e3}
+.stateLocked .islandLabel{color:#4b6270!important;background:rgba(255,255,255,.95)}
+.stateLocked .islandAccent{color:#5b7480!important;background:rgba(243,246,247,.96)!important}
+.stateDone .islandDetails{background:rgba(246,255,245,.86);border-color:rgba(224,243,221,.95)}
+.stateOpen .islandDetails{background:rgba(255,255,255,.84)}
+.unlockRibbon{color:#5f3f00!important;background:#ffe59c!important;text-shadow:none}
+.mapNode.activeGoal:after{box-shadow:0 4px 10px rgba(138,90,12,.18),0 1px 0 rgba(255,255,255,.6) inset}
+.bossCard .islandDetails{background:rgba(255,245,238,.12);border-color:rgba(255,234,219,.3)}
+.bossCard .islandName,.bossCard .islandLabel,.bossCard .islandAccent{color:#fff!important;text-shadow:0 1px 4px rgba(34,10,10,.26)}
+.bossCard .islandLabel{background:rgba(92,33,41,.45)!important;border-color:rgba(255,222,194,.25)!important}
+.bossCard .islandAccent{background:rgba(250,204,136,.22)!important;border-color:rgba(255,219,164,.35)!important}
+.islandIntroCard{background:linear-gradient(180deg,#fafdff 0%,#f2fbfc 100%);border:1px solid #d5e8ee;border-radius:24px;padding:18px;box-shadow:0 12px 24px rgba(24,82,99,.08)}
+.introTop{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.introFace{font-size:44px;line-height:1;filter:drop-shadow(0 4px 8px rgba(25,76,87,.12))}
+.introName{font-size:24px;font-weight:1000;color:#0f3143;line-height:1.25}
+.introDesc{font-size:14px;font-weight:900;color:#27546b;margin-top:4px}
+.introTags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.introTag{display:inline-block;background:#e8f5f8;border:1px solid #cfe6ec;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:1000;color:#21495c}
+@media(max-width:640px){
+  .mapLead{font-size:15px;padding:10px 12px}
+  .mapHud span:first-child{font-size:14px}
+  .mapHint{font-size:12px!important}
+  .islandName{font-size:15px!important}
+  .islandLabel{font-size:11px!important}
+  .introTop{align-items:flex-start}.introName{font-size:21px}.introFace{font-size:40px}
+}
+
+/* v3.5 exploration feel and differentiated states */
+.routeMap path{animation:routeDrift 18s linear infinite}
+.routeMap .routeShadow{animation:none}
+@keyframes routeDrift{from{stroke-dashoffset:0}to{stroke-dashoffset:-220}}
+.activeGoal .islandCard:not(:disabled){outline:4px solid rgba(255,243,171,.85);outline-offset:5px;animation:goalPulse 1.8s ease-in-out infinite}
+.done .islandCard{filter:saturate(1.05)}
+.lockedZone .islandCard,.stateLocked{filter:grayscale(.18) saturate(.65) brightness(.97)}
+.stateDone{box-shadow:0 13px 0 #3f8f5d,0 19px 25px #20546740!important}
+.stateDone .islandAccent{background:rgba(227,255,230,.75);color:#255c38}
+.stateDone .nodeStars{font-size:18px;text-shadow:0 0 10px rgba(255,221,112,.6),0 1px 0 #fff}
+.stateDone .island3d:before{box-shadow:0 10px 0 rgba(81,150,83,.96),0 0 0 4px rgba(255,255,255,.34) inset,0 16px 16px rgba(25,76,87,.12)}
+.stateDone:after{background:#0a7a454a}
+.stateOpen .islandAccent{background:rgba(255,255,255,.65)}
+.stateOpen .island3d{animation:isleBob 3.6s ease-in-out infinite}
+.stateLocked .island3d:before{background:linear-gradient(180deg,#f3f6f6 0 18%,#d7dddd 18% 31%,#c9d3d3 31% 100%)!important;box-shadow:0 10px 0 #9caeaf,0 16px 16px rgba(25,76,87,.09)!important}
+.stateLocked .terrainIcon,.stateLocked .featureIcon{opacity:.72}
+.stateLocked .islandAccent{background:rgba(235,242,243,.72);color:#60757c}
+.unlockRibbon{animation:ribbonBounce 1.2s ease}
+@keyframes ribbonBounce{0%{transform:translateY(-10px) scale(.85);opacity:0}60%{transform:translateY(2px) scale(1.06);opacity:1}100%{transform:translateY(0) scale(1)}}
+@keyframes goalPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes isleBob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-4px)}}
+.mapNode.done:after{content:'✅';position:absolute;right:8px;bottom:10px;font-size:20px;filter:drop-shadow(0 2px 4px rgba(255,255,255,.45))}
+.mapNode.activeGoal:after{content:'NEXT';position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);background:#fff7c6;color:#8a5a0c;font-size:11px;font-weight:1000;padding:4px 8px;border-radius:999px;box-shadow:0 4px 10px rgba(138,90,12,.18)}
+.bossNode .islandCard:before{content:'🌋';font-size:24px;top:14px;right:12px}
+.bossCard .island3d{animation:volcanoPulse 2.9s ease-in-out infinite}
+.bossCard .island3d:after{left:12px;right:12px;bottom:-6px;height:22px;background:rgba(113,43,53,.22);filter:blur(8px)}
+.bossCard .island3d .terrainIcon{animation:smokeFloat 2.6s ease-in-out infinite alternate}
+.bossCard .island3d .featureIcon{animation:lavaBlink 1.6s ease-in-out infinite}
+@keyframes volcanoPulse{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.04)}}
+@keyframes smokeFloat{0%{transform:translateY(0)}100%{transform:translateY(-4px)}}
+@keyframes lavaBlink{0%,100%{opacity:.92}50%{opacity:1;transform:scale(1.08)}}
+.compass,.boatMark{filter:drop-shadow(0 5px 8px rgba(28,82,93,.18))}
+.seaMark{opacity:.92}
+@media(prefers-reduced-motion:reduce){
+ .routeMap path,.activeGoal .islandCard:not(:disabled),.stateOpen .island3d,.bossCard .island3d,.bossCard .island3d .terrainIcon,.bossCard .island3d .featureIcon,.unlockRibbon{animation:none!important}
+}
+
+@media(max-width:640px){
+  .islandCard{padding-top:62px;min-height:148px}
+  .island3d{width:100px;height:74px;top:-12px}
+  .island3d .islandEmoji{font-size:30px;top:20px}
+  .terrainIcon{font-size:20px}.featureIcon{font-size:18px}
+  .islandAccent{font-size:10px;padding:2px 7px}
+}
+
+.bossCard .islandLabel,.bossCard .islandName{color:#fff}.bossCard .nodeNum{background:#fff3}.bossCard .islandEmoji{font-size:52px;filter:drop-shadow(0 0 12px rgba(255,202,110,.4))}
+.mapLegend{text-align:center;margin-top:20px;font-size:14px;color:#194b5f;font-weight:800;line-height:1.65;position:relative}.mapButtons{position:relative}
+
+.bossTag{display:inline-block;background:#fff0dc;color:#753c21;border-radius:999px;font-weight:1000;padding:8px 16px;margin-bottom:12px;box-shadow:0 6px 12px rgba(117,60,33,.1)}
+.bossHint{text-align:center;color:#536775;font-weight:800;font-size:15px;margin:10px 0 6px;line-height:1.6}.bossChoice{font-size:clamp(21px,3.5vw,28px);font-weight:1000;text-align:center}.bossReaction{background:linear-gradient(180deg,#f8f0f0 0%,#f0f4f7 100%);padding:24px;border-radius:22px;font-size:clamp(23px,4vw,33px);line-height:1.5;font-weight:900;text-align:center;border:1px solid #e0e7ea}.bossCrisis{font-weight:1000;font-size:18px;text-align:center}.bossSummary{background:linear-gradient(180deg,#fff7ed 0%,#f4fbf7 100%);border:1px solid #e5e7d8;border-radius:20px;padding:16px;font-size:16px;line-height:1.65}
+
+@media(prefers-reduced-motion:no-preference){.portrait{animation:pop .23s ease-out}@keyframes pop{from{transform:scale(.9);opacity:.4}to{transform:scale(1);opacity:1}}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+@media(max-width:640px){.body{padding:16px 14px 22px;min-height:560px}.top{padding:14px 16px}.brand{font-size:16px}.chip{font-size:12px;padding:8px 10px}.adventure{padding:14px 10px 22px;min-height:620px}.journey{gap:16px 10px}.journey:before{display:none}.mapNode:nth-child(even){transform:translateY(14px)}.mapNode:before{display:none}.islandCard{min-height:132px;width:min(100%,220px);padding:16px 8px 18px}.islandEmoji{font-size:35px}.islandName{font-size:13px}.islandLabel{font-size:11px}.nodeNum{left:8px;top:5px;width:23px;height:23px;font-size:10px}.nodeStars{right:8px;font-size:12px}}
+
+
+/* v2.9 celebration and unlock — no gameplay changes */
+.starAward{display:flex;justify-content:center;align-items:center;gap:10px;margin:10px auto 4px;min-height:60px}
+.starAward .star{display:inline-grid;place-items:center;width:62px;height:62px;background:linear-gradient(140deg,#fff2ac,#f9b943);border:3px solid #fff3ce;border-radius:50%;font-size:38px;box-shadow:0 8px 0 #ba7a21,0 12px 24px #73501b35;text-shadow:0 2px 0 #fff3c0}
+.awardText{text-align:center;font-weight:950;font-size:17px;color:#8b5d10}
+.justUnlocked .islandCard:not(:disabled){outline:4px solid #ffe28a;outline-offset:4px}
+.unlockRibbon{position:absolute;right:-4px;top:-8px;background:#ffe089;color:#734907;padding:7px 12px;border-radius:999px;font-size:11px;font-weight:1000;z-index:3;box-shadow:0 5px 10px #54451c30}
+.bossOpen .bossCard:not(:disabled){outline:4px solid #ffc07d;outline-offset:4px}
+@media(prefers-reduced-motion:no-preference){
+ .starAward .star{animation:starWin .7s cubic-bezier(.2,1.5,.4,1) both}
+ .justUnlocked .islandCard:not(:disabled){animation:unlockPulse 1.25s ease-out 2}
+ .bossOpen .bossCard:not(:disabled){animation:unlockPulse 1.25s ease-out 2}
+ @keyframes starWin{0%{transform:scale(.3) rotate(-30deg);opacity:0}70%{transform:scale(1.18) rotate(8deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+ @keyframes unlockPulse{0%,100%{filter:brightness(1)}50%{filter:brightness(1.13) saturate(1.2)}}
+}
+
+/* v2.9: accessible boss risk feedback, no flashes or involuntary shaking */
+.bossRisk{margin:18px 0 14px;padding:14px 17px;border:1px solid #d8e5e7;background:#f7fbfc;border-radius:18px;box-shadow:0 6px 16px #1a4d5c0c}
+.bossRiskHead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;font-size:15px;font-weight:900;color:#264b5e}
+.bossRiskTrack{height:17px;border-radius:999px;background:#dce8ea;overflow:hidden;border:1px solid #c5d9dc}
+.bossRiskFill{height:100%;width:var(--danger,0%);border-radius:999px;background:linear-gradient(90deg,#3c958b,#d6a347);transition:width .45s ease,background .45s ease}
+.bossRisk[data-risk="2"] .bossRiskFill{background:linear-gradient(90deg,#e6ab48,#cf713f)}
+.bossRisk[data-risk="3"] .bossRiskFill,.bossRisk[data-risk="4"] .bossRiskFill{background:linear-gradient(90deg,#d47440,#aa3d48)}
+.bossRisk[data-risk="3"],.bossRisk[data-risk="4"]{background:#fff2ec;border-color:#e8baae}
+.bossRiskDesc{font-size:13px;color:#546a75;margin-top:9px;line-height:1.5}
+.stormStage{position:relative;border-radius:24px;overflow:hidden;padding:14px 12px 18px;margin:8px 0;background:linear-gradient(165deg,#f7fbfb,#eaf5f6);border:1px solid #d7e6e9}
+.stormStage[data-risk="2"]{background:linear-gradient(165deg,#fff6e7,#f9eadf);border-color:#e8d0a7}
+.stormStage[data-risk="3"],.stormStage[data-risk="4"]{background:linear-gradient(165deg,#fff1e8,#efdad8);border-color:#e6b5ae}
+.stormStage .portrait{font-size:80px}
+.stormEvent{display:inline-block;max-width:100%;background:#fff8;padding:8px 14px;border:1px solid #ffffffa8;border-radius:30px;color:#653b42;font-size:15px;font-weight:900;margin:4px auto 10px}
+.stormStage[data-risk="0"] .stormEvent,.stormStage[data-risk="1"] .stormEvent{color:#2f6873}
+.stormStage .bossReaction{background:#fffffff0;border:1px solid #e2e6e7;box-shadow:0 9px 22px #6f4d3b13}
+.bossResultBanner{padding:10px 15px;border-radius:14px;font-size:18px;font-weight:900;background:#fff0eb;text-align:center;margin-top:8px;color:#8c3a40}
+.bossResultBanner.safe{background:#e8f6f0;color:#216e56}
+@media(prefers-reduced-motion:reduce){.bossRiskFill{transition:none}}
+
+/* v3.0 — a navigable archipelago, not just a list of cards */
+.adventure{background:radial-gradient(ellipse at 13% 20%,#e1fcff 0%,transparent 30%),radial-gradient(ellipse at 94% 75%,#8bceda 0%,transparent 38%),linear-gradient(160deg,#b2eaf2,#80cada 52%,#56aebe);border-color:#64b3c5}
+.adventure:before{background:repeating-radial-gradient(ellipse at 35% 30%,transparent 0 39px,rgba(255,255,255,.24) 40px 42px,transparent 43px 79px),radial-gradient(circle at 84% 18%,#ffffffa0 0 5%,transparent 5.5%);opacity:.7}
+.adventure .compass{position:absolute;right:20px;top:79px;border:2px solid #ffffffae;border-radius:50%;width:58px;height:58px;display:grid;place-items:center;font-size:28px;color:#256176;box-shadow:0 5px 12px #12536b20;background:#ffffff89;pointer-events:none}
+.adventure .compass:before{content:'N';position:absolute;top:2px;font-size:9px;font-weight:900}
+.routeMap{position:absolute;inset:88px 0 55px;width:100%;height:calc(100% - 143px);pointer-events:none;z-index:0;overflow:visible}
+.routeMap path{fill:none;stroke:#fff5dc;stroke-width:7;stroke-linecap:round;stroke-dasharray:1 16;filter:drop-shadow(0 2px 1px #3e879370)}
+.routeMap .routeShadow{stroke:#296d7d50;stroke-width:13;stroke-dasharray:none;opacity:.35;filter:none}
+.journey{z-index:1;grid-template-columns:1fr 1fr;row-gap:24px;column-gap:60px;max-width:750px;padding:14px 8px 24px}
+.journey:before,.mapNode:before{display:none!important}
+.mapNode:nth-child(even){transform:translateY(42px)}
+.mapNode:nth-child(4n+1){transform:rotate(-2deg)}.mapNode:nth-child(4n+3){transform:rotate(2deg)}
+.islandCard{width:min(100%,265px);min-height:156px;isolation:isolate;box-shadow:0 13px 0 #458a7a,0 19px 25px #20546740!important}
+.islandCard:before{content:'🌴';position:absolute;top:16px;right:15px;font-size:20px;opacity:.75;transform:rotate(12deg);z-index:-1}
+.islandCard:after{content:'';position:absolute;left:20%;right:20%;bottom:-17px;height:13px;background:#0a627348;border-radius:50%;filter:blur(7px);z-index:-2}
+.mapNode:nth-child(2) .islandCard:before{content:'⛰️'}
+.mapNode:nth-child(3) .islandCard:before{content:'🐚'}
+.mapNode:nth-child(4) .islandCard:before{content:'🌙'}
+.mapNode:nth-child(5) .islandCard:before{content:'💧'}
+.mapNode:nth-child(6) .islandCard:before{content:'🌷'}
+.mapNode:nth-child(7) .islandCard:before{content:'☁️'}
+.mapNode:nth-child(8) .islandCard:before{content:'🔥';font-size:25px}
+.bossCard{background:linear-gradient(160deg,#43283d,#9c4a4c 54%,#edac5e)!important;box-shadow:0 13px 0 #692936,0 19px 25px #20546750!important;border-color:#ffe0c1}
+.mapNode:nth-child(8){grid-column:1/-1;justify-content:center;transform:translateY(25px)}
+.mapNode:nth-child(8) .islandCard{width:min(85%,310px);min-height:165px}
+.mapHud{max-width:700px;margin:0 auto 26px}
+.seaMark{font-size:29px}
+.adventure .boatMark{position:absolute;left:48%;top:44%;font-size:27px;transform:rotate(-12deg);pointer-events:none;filter:drop-shadow(0 4px 4px #15546955)}
+@media(max-width:640px){.journey{gap:18px 12px;padding:10px 0 30px}.mapNode:nth-child(even){transform:translateY(16px)}.mapNode:nth-child(4n+1),.mapNode:nth-child(4n+3){transform:none}.mapNode:nth-child(8){transform:translateY(7px)}.adventure .compass{top:88px;right:13px;width:42px;height:42px;font-size:20px}.routeMap{inset:106px 0 45px;height:calc(100% - 151px)}.islandCard{min-height:128px}.islandCard:before{font-size:14px;right:8px;top:14px}.adventure .boatMark{display:none}}
+
+
+/* v3.3: legibility, focus, touch target, reduced motion and responsive audit */
+html{scroll-behavior:smooth}
+button{touch-action:manipulation}
+.choice,.act,.tinyBtn{min-height:48px}
+button:focus-visible,.islandCard:focus-visible{outline:4px solid #f8bf4a!important;outline-offset:4px!important}
+.mapHud,.mapLegend{line-height:1.55}
+.mapNode .islandCard:disabled{opacity:1;filter:saturate(.35)}
+.bossCard:disabled{background:linear-gradient(145deg,#635360,#a07f82)!important;color:#fff!important}
+.bossCard:disabled .islandName,.bossCard:disabled .islandLabel{color:#fff!important}
+.islandLabel{font-size:13px}
+.mapLegend{max-width:640px;margin-left:auto;margin-right:auto}
+@media(max-width:480px){
+  body{padding:6px}
+  .app{border-radius:20px}
+  .mapTitle{font-size:clamp(28px,7.2vw,36px)}
+  .adventure{padding:12px 8px 24px}
+  .islandCard{min-height:142px}
+  .islandName{font-size:14px}
+  .islandLabel{font-size:12px}
+  .mapHud{padding:10px 12px}
+  .mapHint{font-size:11px}
+  .choice{padding:15px 14px 15px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ .seaMark{animation:none!important}
+}
+
+/* v3.3 - expressive non-flashing portraits, reaction focus, ending theatrics */
+.characterStage{position:relative;display:flex;justify-content:center;align-items:center;min-height:142px;margin:12px auto 14px;max-width:430px;overflow:hidden;border-radius:26px;background:linear-gradient(180deg,#effafd 0%,#e0eff3 100%);border:1px solid #d1e5ea}
+.characterStage[data-mood="calm"]{background:linear-gradient(180deg,#e8faf2,#d2efe3)}
+.characterStage[data-mood="uneasy"]{background:linear-gradient(180deg,#fff8eb,#f7e6c9)}
+.characterStage[data-mood="crisis"]{background:linear-gradient(180deg,#fff0ed,#f6d9d6)}
+.characterStage .charHalo{position:absolute;width:125px;height:125px;border-radius:50%;background:rgba(255,255,255,.48);filter:blur(2px)}
+.characterStage .charIcon{font-size:clamp(74px,16vw,110px);position:relative;line-height:1;filter:drop-shadow(0 9px 10px #1b49542b);transform-origin:50% 90%}
+.characterStage .charMood{position:absolute;bottom:9px;right:14px;font-size:13px;font-weight:900;color:#214957;background:#ffffffd9;border:1px solid #ffffff;border-radius:99px;padding:5px 11px}
+.sceneHeadline{font-weight:950;font-size:clamp(21px,4vw,30px);line-height:1.5;text-align:center}
+.reactionFocus{background:#fbfefe;border-radius:23px;border:1px solid #d5e9e9;padding:20px;box-shadow:0 10px 20px rgba(32,89,108,.06)}
+.endingStage{position:relative;isolation:isolate;text-align:center;padding:27px 18px;border-radius:28px;margin:12px 0 16px;overflow:hidden}
+.endingStage.clear{background:linear-gradient(155deg,#e1faf1,#a8e3cc);border:2px solid #78c6a4}
+.endingStage.over{background:linear-gradient(155deg,#ffecea,#f4c8c4);border:2px solid #d9918b}
+.endingStage .endingIcon{font-size:84px;line-height:1.1;filter:drop-shadow(0 8px 12px #183f4e1d)}
+.endingStage .endingName{font-size:clamp(32px,7vw,51px);font-weight:1000;letter-spacing:.01em;margin:6px 0 2px}
+.endingStage .endingSub{font-size:16px;font-weight:750;margin:0}
+.endingStage.clear .endingName{color:#176d4f}.endingStage.over .endingName{color:#a83b3a}
+@media(prefers-reduced-motion:no-preference){
+ .characterStage .charIcon{animation:charBreath 2.9s ease-in-out infinite}
+ .characterStage[data-mood="crisis"] .charIcon{animation:charTense 1.7s ease-in-out infinite}
+ .endingStage .endingIcon{animation:arrive .55s cubic-bezier(.2,.9,.4,1.25) both}
+ @keyframes charBreath{0%,100%{transform:translateY(2px) scale(1)}50%{transform:translateY(-3px) scale(1.025)}}
+ @keyframes charTense{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-2deg)}}
+ @keyframes arrive{from{opacity:.3;transform:translateY(12px) scale(.84)}to{opacity:1;transform:translateY(0) scale(1)}}
+}
+@media(prefers-reduced-motion:reduce){.characterStage .charIcon,.endingStage .endingIcon{animation:none!important}}
+
+/* v3.3 experience polish */
+#screen:focus{outline:none}
+.characterStage{min-height:138px}
+.charMood{font-size:15px;letter-spacing:.03em}
+.reactionFocus .resultText{max-width:720px;margin:0 auto}
+.endingStage{overflow:hidden}
+.endingStage.clear{box-shadow:inset 0 0 0 2px rgba(30,130,90,.12)}
+.endingStage.over{box-shadow:inset 0 0 0 2px rgba(177,67,65,.13)}
+.bossRiskHead{font-weight:900}
+@media(max-width:540px){.characterStage{min-height:120px}.reactionFocus .resultText{font-size:clamp(21px,5.8vw,29px);line-height:1.5}.endingStage{padding:20px 12px}}
+@media(prefers-reduced-motion:reduce){.characterStage *,.endingStage *{animation:none!important;transition:none!important}}
+
+/* v3.7 compact progress and boss victory */
+.progressPanel{position:relative;z-index:2;margin:0 auto 20px;max-width:720px;padding:14px 18px 10px;border-radius:20px;background:#fcfffeee;border:2px solid #a6ccd7;box-shadow:0 9px 18px #17596d20;color:#11364b}
+.progressHeader{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:14px;font-weight:850}.progressHeader strong{font-size:16px}.progressTrack{margin-top:11px;background:#cfdfe4;border:1px solid #aecbd2;border-radius:999px;height:16px;overflow:hidden}.progressTrack span{display:block;height:100%;background:linear-gradient(90deg,#348b80,#4ca67a);transition:width .28s ease;border-radius:999px}.progressRank{margin:9px 0 0;color:#174b5b;font-weight:900;font-size:13px}
+.masterAward{margin:18px auto 10px;max-width:540px;text-align:center;border:3px solid #edc567;border-radius:25px;background:linear-gradient(155deg,#fff9df,#fff3cb 48%,#fce8a5);box-shadow:0 14px 30px #79571a24;padding:22px 16px;color:#563c14;display:flex;flex-direction:column;align-items:center;gap:8px}.masterMedal{font-size:70px;filter:drop-shadow(0 5px 6px #70491930)}.masterAward strong{font-size:clamp(28px,6vw,40px);font-weight:1000}.masterAward span{font-size:23px;font-weight:900}.masterAward small{font-size:14px;font-weight:750}
+@media(max-width:500px){.progressPanel{padding:12px 13px}.progressHeader{font-size:12px}.progressHeader strong{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.progressTrack span{transition:none}}
+
+/* v3.8 color boost */
+.mapNode:nth-child(1) .islandCard{background:linear-gradient(145deg,#fff1a9,#ffd36f)!important;box-shadow:0 12px 0 #d59b2f,0 18px 24px rgba(34,83,96,.18)!important}
+.mapNode:nth-child(2) .islandCard{background:linear-gradient(145deg,#a7efff,#57c7ff)!important;box-shadow:0 12px 0 #2e8fca,0 18px 24px rgba(34,83,96,.18)!important}
+.mapNode:nth-child(3) .islandCard{background:linear-gradient(145deg,#ffd9ad,#ffad4f)!important;box-shadow:0 12px 0 #d07f25,0 18px 24px rgba(34,83,96,.18)!important}
+.mapNode:nth-child(4) .islandCard{background:linear-gradient(145deg,#ffc7e8,#ff7ec1)!important;box-shadow:0 12px 0 #c55692,0 18px 24px rgba(34,83,96,.18)!important}
+.mapNode:nth-child(5) .islandCard{background:linear-gradient(145deg,#d9dcff,#8ca0ff)!important;box-shadow:0 12px 0 #5d70d4,0 18px 24px rgba(34,83,96,.18)!important}
+.mapNode:nth-child(6) .islandCard{background:linear-gradient(145deg,#d6ffe5,#72dd9e)!important;box-shadow:0 12px 0 #43a96e,0 18px 24px rgba(34,83,96,.18)!important}
+.mapNode:nth-child(7) .islandCard{background:linear-gradient(145deg,#ffe3cf,#ff8f7c)!important;box-shadow:0 12px 0 #d0624f,0 18px 24px rgba(34,83,96,.18)!important}
+.isle-shore .island3d:before{background:linear-gradient(180deg,#fff9d7 0 16%,#ffd36d 16% 30%,#4ccc76 30% 100%)!important;box-shadow:0 10px 0 #259453,0 16px 16px rgba(25,76,87,.16)!important}
+.isle-study .island3d:before{background:linear-gradient(180deg,#eefcff 0 14%,#7bd9ff 14% 28%,#58b95a 28% 100%)!important;box-shadow:0 10px 0 #3a9350,0 16px 16px rgba(25,76,87,.16)!important}
+.isle-dining .island3d:before{background:linear-gradient(180deg,#fff6d2 0 17%,#ffb452 17% 31%,#8ecb57 31% 100%)!important;box-shadow:0 10px 0 #5f9745,0 16px 16px rgba(25,76,87,.16)!important}
+.isle-empathy .island3d:before{background:linear-gradient(180deg,#fff0f8 0 15%,#ff8dc6 15% 29%,#73cb68 29% 100%)!important;box-shadow:0 10px 0 #47944b,0 16px 16px rgba(25,76,87,.16)!important}
+.isle-cycle .island3d:before{background:linear-gradient(180deg,#eef2ff 0 13%,#8798ff 13% 27%,#58b88a 27% 100%)!important;box-shadow:0 10px 0 #378267,0 16px 16px rgba(25,76,87,.16)!important}
+.isle-sensory .island3d:before{background:linear-gradient(180deg,#ecfff5 0 13%,#67d89d 13% 27%,#4cae67 27% 100%)!important;box-shadow:0 10px 0 #2e8552,0 16px 16px rgba(25,76,87,.16)!important}
+.isle-crisis .island3d:before{background:linear-gradient(180deg,#fff1e8 0 13%,#ff8b76 13% 27%,#78bf59 27% 100%)!important;box-shadow:0 10px 0 #4f8f45,0 16px 16px rgba(25,76,87,.16)!important}
+.bossCard{background:linear-gradient(145deg,#5a1826,#c93c3c 45%,#ffb347)!important;box-shadow:0 12px 0 #7f2a26,0 22px 28px rgba(34,83,96,.24)!important}
+.bossCard .island3d:before{background:linear-gradient(180deg,#662134 0 9%,#ea4a43 9% 23%,#ffb94d 23% 34%,#70a13d 34% 100%)!important;box-shadow:0 10px 0 #805028,0 18px 18px rgba(25,76,87,.22)!important}
+.islandDetails{background:rgba(255,255,255,.88)!important}
+.mapNode:nth-child(1) .islandDetails{background:rgba(255,250,223,.92)!important;border-color:#f1d269!important}
+.mapNode:nth-child(2) .islandDetails{background:rgba(234,250,255,.92)!important;border-color:#7fd5f5!important}
+.mapNode:nth-child(3) .islandDetails{background:rgba(255,243,225,.92)!important;border-color:#f8b35f!important}
+.mapNode:nth-child(4) .islandDetails{background:rgba(255,237,246,.92)!important;border-color:#f29bc5!important}
+.mapNode:nth-child(5) .islandDetails{background:rgba(239,240,255,.92)!important;border-color:#98a8ff!important}
+.mapNode:nth-child(6) .islandDetails{background:rgba(237,255,243,.92)!important;border-color:#86d8a4!important}
+.mapNode:nth-child(7) .islandDetails{background:rgba(255,239,233,.92)!important;border-color:#ff9c8f!important}
+.mapNode:nth-child(1) .islandAccent{background:#ffe58c!important;border-color:#efcb58!important;color:#714e00!important}
+.mapNode:nth-child(2) .islandAccent{background:#bcefff!important;border-color:#78d1ef!important;color:#0b5170!important}
+.mapNode:nth-child(3) .islandAccent{background:#ffd8aa!important;border-color:#f4ae56!important;color:#7d4500!important}
+.mapNode:nth-child(4) .islandAccent{background:#ffc7e4!important;border-color:#ef8dbd!important;color:#7a1e4d!important}
+.mapNode:nth-child(5) .islandAccent{background:#cfd6ff!important;border-color:#8998ff!important;color:#28398b!important}
+.mapNode:nth-child(6) .islandAccent{background:#c8f5d6!important;border-color:#74d098!important;color:#1c6442!important}
+.mapNode:nth-child(7) .islandAccent{background:#ffd1c8!important;border-color:#ff9788!important;color:#7e2e24!important}
+.stateOpen .islandCard:not(.bossCard){filter:saturate(1.12) contrast(1.02)!important}
+.stateDone .islandCard:not(.bossCard){filter:saturate(1.18) brightness(1.02)!important}
+.stateLocked .islandCard{filter:grayscale(.08) saturate(.82) brightness(.98)!important}
+
+
+/* v3.9 AML-style boss island */
+.bossCard{background:linear-gradient(145deg,#0f4c63 0%,#17738a 42%,#2db0ba 78%,#f2c76c 100%)!important;border-color:#d9f5f6!important;box-shadow:0 12px 0 #0d5a69,0 22px 30px rgba(13,90,105,.26)!important;color:#fff!important}
+.bossCard .island3d:before{background:linear-gradient(180deg,#effeff 0 10%,#b8f4f1 10% 24%,#51c4b6 24% 36%,#2b9f89 36% 100%)!important;box-shadow:0 10px 0 #1f7666,0 18px 18px rgba(13,90,105,.22)!important}
+.bossCard .island3d:after{background:rgba(15,76,99,.26)!important}
+.bossCard .terrainIcon{left:10px;top:8px;font-size:21px;filter:drop-shadow(0 1px 4px rgba(255,255,255,.22))}
+.bossCard .featureIcon{right:12px;top:11px;font-size:20px;filter:drop-shadow(0 1px 4px rgba(255,245,200,.25))}
+.bossCard .island3d .islandEmoji{font-size:32px;top:26px;filter:drop-shadow(0 0 10px rgba(255,255,255,.22))}
+.bossCard .islandDetails{background:linear-gradient(180deg,rgba(255,255,255,.18) 0%,rgba(231,250,251,.14) 100%)!important;border-color:rgba(225,248,249,.38)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.bossCard .islandName{color:#ffffff!important;text-shadow:0 1px 4px rgba(8,48,62,.28)!important}
+.bossCard .islandLabel{background:rgba(238,252,252,.18)!important;border-color:rgba(232,250,251,.36)!important;color:#ffffff!important;text-shadow:none!important}
+.bossCard .islandAccent{background:rgba(246,205,111,.9)!important;border-color:#f8d992!important;color:#6c4b00!important;text-shadow:none!important}
+.bossCard .nodeNum{background:#f2c76c!important;color:#5b4000!important;box-shadow:0 5px 10px rgba(91,64,0,.24)!important}
+.bossCard .nodeStars{color:#fff6d0!important;text-shadow:0 0 10px rgba(255,246,208,.6),0 1px 0 rgba(13,90,105,.4)!important}
+.bossNode.activeGoal:after{background:#f3c86f!important;color:#6b4700!important}
+
+
+/* AML v4.0 — coherent brand finish, keep the seven islands' cheerful palettes */
+:root{--aml-ink:#103d50;--aml-teal:#087f90;--aml-aqua:#32b8b1;--aml-gold:#eebc5b}
+.top{background:linear-gradient(110deg,#123e54 0%,#0c6477 56%,#109a9c 100%)!important;border-bottom:4px solid #eebc5b}
+.amlKicker{margin:0 auto 5px;text-align:center;color:#176178;font-weight:1000;letter-spacing:.12em;font-size:11px}
+.amlMotto{width:max-content;max-width:100%;margin:2px auto 15px;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;border-radius:15px;padding:9px 22px;background:#ecfaf9;border:1px solid #a9e1db;color:#114e61}
+.amlMotto span{font-weight:1000;font-size:clamp(15px,2.7vw,20px);letter-spacing:.02em}
+.amlMotto small{color:#246576;font-size:12px;font-weight:800}
+.adventure{border:3px solid #79bfc9!important;box-shadow:inset 0 0 0 4px rgba(255,255,255,.2),0 18px 32px rgba(11,90,108,.12)!important}
+.mapHud{border-left:5px solid var(--aml-gold)!important}
+.mapLegend{background:rgba(244,252,251,.93);border:1px solid #b1e2df;padding:10px 15px;border-radius:14px;color:#154c5d!important}
+.bossNode{position:relative}
+.bossNode:before{content:"AML • FINAL DESTINATION";display:block!important;position:absolute;left:50%;top:-22px;transform:translateX(-50%);width:max-content;max-width:92%;padding:5px 11px;border-radius:99px;color:#0e5260;background:#fff9df;border:2px solid #eac777;font-weight:1000;font-size:10px;letter-spacing:.05em;z-index:4;box-shadow:0 4px 9px rgba(15,70,76,.12)}
+.bossCard{background:linear-gradient(145deg,#baf6eb 0%,#6bd4c3 42%,#1d9aa4 80%,#11718d 100%)!important;border:4px solid #fff0bd!important;box-shadow:0 13px 0 #16768c,0 23px 28px rgba(13,78,100,.26)!important;color:#103c51!important}
+.bossCard .island3d:before{background:linear-gradient(180deg,#fff8dc 0 17%,#a2efe2 17% 32%,#44c9af 32% 100%)!important;box-shadow:0 10px 0 #167e81,0 18px 20px rgba(10,82,92,.22)!important}
+.bossCard .island3d .islandEmoji{font-size:38px!important}
+.bossCard .terrainIcon,.bossCard .featureIcon{color:#f4ca6f;filter:drop-shadow(0 1px 3px rgba(3,74,84,.2))}
+.bossCard .islandDetails{background:rgba(255,255,255,.92)!important;border:2px solid rgba(244,201,104,.9)!important;box-shadow:0 7px 16px rgba(13,89,99,.12)!important}
+.bossCard .islandName{color:#0e4559!important;text-shadow:none!important;font-size:18px!important}
+.bossCard .islandLabel{color:#155062!important;background:#e3f8f4!important;border:1px solid #88d4c7!important;text-shadow:none!important}
+.bossCard .islandAccent{color:#674600!important;background:#ffebac!important;border:1px solid #dfb954!important;text-shadow:none!important;font-size:10px!important}
+.bossCard:disabled{opacity:1!important;background:linear-gradient(145deg,#bee7e4,#8bc5c8,#6da2ad)!important}
+.bossCard:disabled .islandName,.bossCard:disabled .islandLabel{color:#224f61!important}
+.bossCard .nodeNum{background:#efc363!important;color:#4d3b00!important}
+.bossNode.activeGoal .bossCard{outline:4px solid #f1c86a!important;outline-offset:5px!important}
+.masterAward em{display:block;margin-top:12px;color:#0b6670;font-style:normal;font-weight:1000;letter-spacing:.03em}
+@media(max-width:540px){.amlMotto{padding:8px 12px}.amlMotto small{font-size:11px}.bossCard .islandName{font-size:15px!important}.bossNode:before{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.bossNode .bossCard{animation:none!important}}
+
+
+/* v5.8: prevent flipped or rotated map labels. Island shapes remain asymmetric. */
+.adventure .mapNode:nth-child(4n+1),
+.adventure .mapNode:nth-child(4n+3){transform:none!important}
+.adventure .mapNode:nth-child(even):not(.bossNode){transform:translateY(20px)!important}
+.adventure .mapNode.bossNode{transform:translateY(14px)!important}
+.adventure .mapNode .islandDetails,
+.adventure .mapNode .islandName,
+.adventure .mapNode .islandLabel,
+.adventure .mapNode .islandAccent,
+.adventure .mapNode .nodeNum,
+.adventure .mapNode .nodeStars,
+.adventure .bossNode:before{direction:ltr;writing-mode:horizontal-tb;transform:none!important}
+.adventure .bossNode:before{left:50%;transform:translateX(-50%)!important;white-space:nowrap}
+@media(max-width:640px){
+ .adventure .mapNode:nth-child(even):not(.bossNode){transform:translateY(12px)!important}
+ .adventure .mapNode.bossNode{transform:translateY(8px)!important}
+}
+
+/* v5.8 — distinct 3D dioramas, readable horizontal nameplates */
+.mapNode:nth-child(4n+1),.mapNode:nth-child(4n+3){transform:none!important}
+.mapNode:nth-child(even){transform:translateY(20px)!important}
+.mapNode.bossNode{transform:translateY(16px)!important}
+.journey{row-gap:42px!important;column-gap:32px!important;padding-top:34px!important}
+.islandCard{min-height:183px!important;padding:92px 10px 16px!important;border-width:3px!important;overflow:visible!important}
+.island3d{top:-35px!important;width:159px!important;height:119px!important;filter:drop-shadow(0 8px 10px rgba(16,72,83,.23))!important}
+.island3d:before{inset:11px 3px 15px!important;transform:skewY(-5deg);border:4px solid rgba(255,255,255,.65);border-radius:49% 51% 42% 58% / 61% 40% 57% 45%!important}
+.island3d:after{bottom:0!important;filter:blur(9px)!important;background:rgba(13,68,81,.28)!important}
+.terrainIcon{left:12px!important;top:2px!important;font-size:33px!important;z-index:2;filter:drop-shadow(0 5px 3px #285c5b45)}
+.featureIcon{right:12px!important;top:11px!important;font-size:33px!important;z-index:2;filter:drop-shadow(0 5px 3px #285c5b45)}
+.island3d .islandEmoji{font-size:43px!important;top:29px!important;z-index:3;filter:drop-shadow(0 6px 5px #285c5b45)}
+.islandDetails{z-index:5!important;position:relative!important;width:96%!important;min-height:90px!important;display:flex!important;justify-content:center!important;gap:3px!important;border:2px solid #ffffff!important;border-radius:17px!important;box-shadow:0 5px 14px #16536230!important;background:rgba(255,255,255,.95)!important;padding:8px!important}
+.islandName{font-size:16px!important;line-height:1.35!important;transform:none!important;direction:ltr!important}
+.islandLabel{padding:3px 6px!important;line-height:1.3!important}
+.islandAccent{font-size:10px!important;padding:3px 6px!important}
+.isle-shore{border-radius:52% 48% 45% 55% / 35% 51% 49% 65%!important}
+.isle-study{border-radius:45% 55% 62% 38% / 38% 30% 65% 56%!important}
+.isle-dining{border-radius:61% 39% 48% 52% / 39% 58% 42% 61%!important}
+.isle-empathy{border-radius:42% 58% 43% 57% / 63% 38% 57% 42%!important}
+.isle-cycle{border-radius:55% 45% 52% 48% / 36% 64% 36% 64%!important}
+.isle-sensory{border-radius:48% 52% 38% 62% / 61% 43% 57% 39%!important}
+.isle-crisis{border-radius:56% 44% 60% 40% / 42% 38% 65% 52%!important}
+.isle-shore .island3d:before{background:linear-gradient(150deg,#fff8c6 0 27%,#f4c75e 28% 46%,#54c47d 47%)!important}
+.isle-study .island3d:before{background:linear-gradient(145deg,#f3fdff 0 12%,#93dfff 13% 38%,#71b77f 39%)!important;clip-path:polygon(8% 44%,24% 5%,61% 10%,79% 29%,98% 65%,83% 97%,22% 94%,1% 70%)}
+.isle-dining .island3d:before{background:linear-gradient(145deg,#fff9ce 0 25%,#ffc578 26% 52%,#a7d76b 53%)!important}
+.isle-empathy .island3d:before{background:linear-gradient(160deg,#ffe6f4 0 21%,#ffc1dd 22% 48%,#7fd69b 49%)!important}
+.isle-cycle .island3d:before{background:linear-gradient(150deg,#e5f6ff 0 20%,#7c95ef 21% 49%,#57bbb7 50%)!important;clip-path:polygon(18% 4%,57% 10%,81% 0,98% 46%,88% 83%,51% 100%,14% 80%,0 36%)}
+.isle-sensory .island3d:before{background:linear-gradient(140deg,#eeecff 0 26%,#aea3e9 27% 48%,#65bb99 49%)!important}
+.isle-crisis .island3d:before{background:linear-gradient(135deg,#fff2cf 0 21%,#ff9a75 22% 50%,#6fa97e 51%)!important;clip-path:polygon(6% 39%,37% 6%,63% 0,95% 39%,100% 77%,69% 99%,30% 91%,0 69%)}
+.bossNode:before{transform:translateX(-50%)!important;white-space:nowrap!important}
+.bossCard{min-height:204px!important;padding-top:106px!important;border-radius:56% 44% 54% 46% / 49% 41% 59% 51%!important}
+.bossCard .island3d{top:-36px!important;width:187px!important;height:139px!important}
+.bossCard .island3d:before{inset:5px 4px 19px!important;clip-path:polygon(12% 58%,23% 24%,41% 14%,48% 0,72% 24%,85% 19%,100% 57%,83% 89%,49% 100%,8% 88%,0 70%);background:linear-gradient(145deg,#fff8da 0 16%,#a9f1e2 17% 42%,#41bbad 43% 78%,#127e96 79%)!important}
+.bossCard .island3d .islandEmoji{font-size:58px!important;top:25px!important}
+.bossCard .islandDetails{border-color:#f4d88d!important}
+.bossCard .islandName{color:#0e4559!important}.bossCard .islandLabel{color:#145366!important;background:#e5f8f2!important}.bossCard .islandAccent{color:#765100!important;background:#ffedb7!important}
+@media(max-width:600px){.journey{row-gap:34px!important;column-gap:10px!important}.islandCard{min-height:164px!important;padding:77px 4px 13px!important}.island3d{width:120px!important;height:96px!important;top:-27px!important}.island3d .islandEmoji{font-size:32px!important;top:22px!important}.terrainIcon,.featureIcon{font-size:25px!important}.islandName{font-size:14px!important}.islandLabel{font-size:10px!important}.islandAccent{font-size:9px!important}.bossCard .island3d{width:150px!important;height:116px!important}.bossCard{padding-top:90px!important}.bossCard .island3d .islandEmoji{font-size:47px!important}}
+
+/* v5.8 miniature diorama emphasis */
+.mapLead{max-width:560px}
+.journey{row-gap:42px!important}
+.mapNode{padding-top:6px}
+.islandCard{min-height:248px!important;padding:0 12px 0!important;border-radius:46% 54% 42% 58% / 36% 34% 52% 48%!important;display:block!important;overflow:visible!important}
+.islandCard:not(.bossCard){background:linear-gradient(180deg,rgba(255,255,255,.45) 0%,rgba(255,255,255,.25) 100%)!important}
+.island3d{top:18px!important;width:190px!important;height:118px!important;filter:drop-shadow(0 12px 18px rgba(17,58,69,.18))!important}
+.island3d:before{inset:8px 4px 12px!important;border-radius:56% 44% 50% 50% / 48% 43% 57% 52%!important;box-shadow:0 18px 0 rgba(73,132,120,.92),0 30px 0 rgba(49,97,94,.55),0 24px 24px rgba(17,58,69,.12)!important}
+.island3d:after{left:22px!important;right:22px!important;bottom:-10px!important;height:26px!important;filter:blur(10px)!important;background:rgba(10,45,55,.18)!important}
+.terrainIcon,.featureIcon,.sceneProp{position:absolute;display:grid;place-items:center;font-size:24px;z-index:2;filter:drop-shadow(0 2px 5px rgba(255,255,255,.22))}
+.terrainIcon{left:18px!important;top:10px!important}
+.featureIcon{right:18px!important;top:14px!important}
+.sceneProp.prop3{left:50%;bottom:14px;transform:translateX(-50%);font-size:20px}
+.island3d .islandEmoji{left:50%!important;top:40px!important;transform:translateX(-50%)!important;font-size:36px!important;z-index:3}
+.island3d .islandEmoji::before{content:'';position:absolute;left:50%;top:50%;width:42px;height:24px;transform:translate(-50%,-50%);background:rgba(255,255,255,.18);border-radius:50%;z-index:-1;filter:blur(6px)}
+.isle-shore .island3d:before{background:linear-gradient(145deg,#fffbe3 0 22%,#ffd665 22% 44%,#35c982 44% 100%)!important}
+.isle-study .island3d:before{background:linear-gradient(145deg,#effbff 0 18%,#7bd8ff 18% 38%,#56bc67 38% 100%)!important}
+.isle-dining .island3d:before{background:linear-gradient(145deg,#fff7d2 0 18%,#ffb152 18% 38%,#94cf58 38% 100%)!important}
+.isle-empathy .island3d:before{background:linear-gradient(145deg,#fff0f8 0 18%,#ff95cb 18% 38%,#73ca6e 38% 100%)!important}
+.isle-cycle .island3d:before{background:linear-gradient(145deg,#eef1ff 0 18%,#91a0ff 18% 38%,#59bc94 38% 100%)!important}
+.isle-sensory .island3d:before{background:linear-gradient(145deg,#effff6 0 18%,#68dca1 18% 38%,#4faf6b 38% 100%)!important}
+.isle-crisis .island3d:before{background:linear-gradient(145deg,#fff0e8 0 18%,#ff8b78 18% 38%,#7fbe59 38% 100%)!important}
+.bossCard .island3d{width:202px!important;height:126px!important;top:12px!important}
+.bossCard .island3d:before{background:linear-gradient(145deg,#fff5cf 0 18%,#a3efe2 18% 38%,#3cc5b0 38% 100%)!important;box-shadow:0 18px 0 #157787,0 30px 0 rgba(13,89,104,.55),0 24px 24px rgba(13,89,104,.14)!important}
+.bossCard .sceneProp.prop3{font-size:24px;bottom:12px}
+.islandDetails{position:absolute!important;left:50%!important;bottom:14px!important;transform:translateX(-50%)!important;width:calc(100% - 44px)!important;max-width:250px!important;padding:12px 14px!important;border-radius:20px!important;gap:6px!important;background:rgba(255,255,255,.93)!important;box-shadow:0 10px 18px rgba(18,73,88,.12)!important;backdrop-filter:blur(3px)}
+.islandName{font-size:15px!important;line-height:1.25!important}
+.islandAccent{font-size:10px!important;padding:4px 9px!important;align-self:center}
+.islandLabel{font-size:11px!important;padding:4px 10px!important;align-self:center}
+.mapNode:nth-child(1) .islandDetails{border:1px solid #f0cf68!important}
+.mapNode:nth-child(2) .islandDetails{border:1px solid #8ed8ee!important}
+.mapNode:nth-child(3) .islandDetails{border:1px solid #f5b366!important}
+.mapNode:nth-child(4) .islandDetails{border:1px solid #f0a3ca!important}
+.mapNode:nth-child(5) .islandDetails{border:1px solid #a7b0ff!important}
+.mapNode:nth-child(6) .islandDetails{border:1px solid #8fd7a3!important}
+.mapNode:nth-child(7) .islandDetails{border:1px solid #ffab9e!important}
+.bossCard .islandDetails{border:2px solid #eac777!important;background:rgba(255,255,255,.94)!important}
+.mapNode.activeGoal:after{bottom:-16px!important}
+@media (max-width:640px){
+ .journey{row-gap:28px!important}
+ .islandCard{min-height:224px!important}
+ .island3d{width:160px!important;height:100px!important;top:16px!important}
+ .bossCard .island3d{width:170px!important;height:106px!important}
+ .islandDetails{width:calc(100% - 26px)!important;bottom:10px!important;padding:10px 10px!important}
+ .islandName{font-size:14px!important}
+}
+
+
+/* v5.8 – genuine custom isometric illustration per island; legible label underneath */
+.journey{row-gap:46px!important}
+.islandCard,.bossCard{min-height:268px!important;background:transparent!important;border:0!important;border-radius:18px!important;box-shadow:none!important;padding:4px 8px 0!important;display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:flex-start!important;gap:0!important;overflow:visible!important;filter:none!important}
+.islandCard:disabled{background:transparent!important;box-shadow:none!important;opacity:1!important;filter:none!important}
+.islandCard:hover,.islandCard:not(:disabled):hover{background:transparent!important;transform:translateY(-3px)!important;box-shadow:none!important}
+.islandCard:before,.islandCard:after{content:none!important;display:none!important}
+.island3d{display:none!important}
+.dioramaScene{display:block;width:min(100%,290px);height:172px;position:relative;z-index:1;filter:drop-shadow(0 13px 11px rgba(11,81,95,.15));transition:transform .18s ease}
+.dioramaSvg{display:block;width:100%;height:100%;object-fit:contain}
+.islandCard:hover .dioramaScene{transform:translateY(-3px)}
+.stateLocked .dioramaScene{filter:grayscale(.56) saturate(.5) opacity(.8)}
+.stateDone .dioramaScene{filter:drop-shadow(0 8px 12px rgba(25,137,85,.24)) saturate(1.1)}
+.islandDetails,.bossCard .islandDetails{position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;margin-top:-1px!important;width:min(95%,265px)!important;max-width:265px!important;min-height:83px!important;padding:12px 12px!important;border-radius:17px!important;background:#fffefb!important;border:2px solid #badce3!important;box-shadow:0 8px 0 #98b6bb,0 12px 16px rgba(15,75,89,.14)!important;z-index:2}
+.islandName{font-size:16px!important;color:#123b4c!important;line-height:1.4!important;transform:none!important}
+.islandLabel{color:#224b5e!important;background:#e9f6f7!important;border:1px solid #c6e4e7!important;font-weight:900!important}
+.islandAccent{background:#eef8f6!important;color:#1b5263!important;border-color:#cce4e6!important}
+.nodeNum{left:10px!important;top:28px!important;z-index:5!important}
+.nodeStars{right:14px!important;top:31px!important;z-index:5!important}
+.bossNode:before{top:-10px!important;z-index:5!important;transform:translateX(-50%)!important}
+.bossCard .islandDetails{border-color:#dcb967!important;box-shadow:0 8px 0 #93adb1,0 12px 16px rgba(15,75,89,.14)!important}
+.bossCard .islandName{color:#104657!important}
+.bossCard .islandLabel{color:#1b5763!important;background:#e5f8f4!important}
+.bossCard .islandAccent{background:#fff0bd!important;color:#735000!important;border-color:#ddbd6c!important}
+.bossCard:disabled .islandName{color:#123b4c!important}
+.mapNode.activeGoal .islandCard:not(:disabled),.bossNode.activeGoal .bossCard{outline:3px solid #f3c970!important;outline-offset:2px!important;border-radius:19px!important;animation:none!important}
+.mapNode:nth-child(4n+1),.mapNode:nth-child(4n+3){transform:none!important}
+.mapNode:nth-child(even){transform:translateY(26px)!important}
+.mapNode.activeGoal:after{bottom:-15px!important}
+@media(max-width:640px){.journey{column-gap:12px!important;row-gap:34px!important}.islandCard,.bossCard{min-height:227px!important}.dioramaScene{height:130px}.islandDetails,.bossCard .islandDetails{width:100%!important;min-height:89px!important;padding:9px 6px!important}.islandName{font-size:13px!important}.islandAccent{font-size:10px!important}.islandLabel{font-size:11px!important}.nodeNum{top:20px!important;left:3px!important}.nodeStars{top:20px!important;right:2px!important}.bossNode:before{font-size:8px!important}}
+@media(prefers-reduced-motion:reduce){.dioramaScene{transition:none!important}}
+
+/* v5.8 map composition refinement */
+.adventure{padding:20px 14px 28px!important;background:
+ radial-gradient(circle at 16% 22%, rgba(255,255,255,.22) 0 0, rgba(255,255,255,.22) 44px, transparent 46px),
+ radial-gradient(circle at 82% 18%, rgba(255,255,255,.18) 0 0, rgba(255,255,255,.18) 54px, transparent 56px),
+ linear-gradient(180deg,#9fd6e5 0%,#80c6da 58%,#76bfd3 100%)!important}
+.mapHud{max-width:640px!important;margin:0 auto 22px!important}
+.routeMap{inset:110px 0 78px!important;height:calc(100% - 188px)!important}
+.routeMap path{stroke:#fff0cc!important;stroke-width:8!important;stroke-dasharray:1 17!important;filter:drop-shadow(0 2px 0 rgba(57,128,143,.6))!important}
+.routeMap .routeShadow{stroke:#4e9eb14d!important;stroke-width:16!important;opacity:.45!important}
+.journey{max-width:820px!important;column-gap:78px!important;row-gap:56px!important;padding:24px 8px 42px!important;align-items:start!important}
+.mapNode{display:flex;justify-content:center!important}
+.mapNode:nth-child(odd){transform:translateY(0)!important}
+.mapNode:nth-child(even){transform:translateY(52px)!important}
+.mapNode:nth-child(1){transform:translate(-12px,0)!important}
+.mapNode:nth-child(2){transform:translate(14px,52px)!important}
+.mapNode:nth-child(3){transform:translate(-18px,0)!important}
+.mapNode:nth-child(4){transform:translate(16px,52px)!important}
+.mapNode:nth-child(5){transform:translate(-8px,0)!important}
+.mapNode:nth-child(6){transform:translate(10px,52px)!important}
+.mapNode:nth-child(7){transform:translate(-2px,0)!important}
+.mapNode:nth-child(8){transform:translateY(28px)!important;grid-column:1/-1;justify-content:center!important}
+.islandCard{background:transparent!important;border:none!important;box-shadow:none!important;padding:0!important;gap:0!important;width:min(100%,318px)!important;min-height:auto!important}
+.islandCard:after,.islandCard:before{display:none!important}
+.islandCard:not(:disabled):hover{transform:none!important;box-shadow:none!important;filter:none!important}
+.dioramaScene{width:min(100%,316px)!important;height:196px!important;filter:drop-shadow(0 16px 16px rgba(18,89,100,.14))!important}
+.dioramaSvg{overflow:visible}
+.islandCard:hover .dioramaScene{transform:translateY(-4px) scale(1.012)!important}
+.island3d{display:none!important}
+.nodeNum{top:18px!important;left:12px!important;background:#173f55!important;box-shadow:0 6px 10px rgba(12,50,67,.18)!important}
+.nodeStars{top:19px!important;right:18px!important}
+.islandDetails,.bossCard .islandDetails{position:relative!important;margin-top:-4px!important;width:min(88%,226px)!important;max-width:226px!important;min-height:74px!important;padding:12px 14px 11px!important;border-radius:16px!important;background:linear-gradient(180deg,#fffefb 0%,#f8fbfc 100%)!important;border:2px solid #c9e3e7!important;box-shadow:0 8px 0 #95b8bf,0 14px 16px rgba(15,75,89,.13)!important}
+.islandDetails:before,.islandDetails:after{content:"";position:absolute;top:-13px;width:16px;height:16px;border-radius:50%;background:#fffefb;border:2px solid #c9e3e7;box-shadow:0 2px 0 #95b8bf}
+.islandDetails:before{left:26px}.islandDetails:after{right:26px}
+.islandDetails .islandName{font-size:17px!important;line-height:1.28!important;letter-spacing:.01em}
+.islandDetails .islandAccent{align-self:center!important;margin:1px auto 3px!important;background:#eef8f6!important;color:#295769!important;border:1px solid #c8e1e3!important;padding:3px 10px!important;font-size:10px!important}
+.islandDetails .islandLabel{align-self:center!important;background:#eef7fb!important;color:#21495c!important;border:1px solid #c6e1ea!important;padding:5px 10px!important;font-size:11px!important}
+.stateLocked .islandDetails{background:linear-gradient(180deg,#f5f7f7 0%,#edf2f2 100%)!important;border-color:#d4dee0!important;box-shadow:0 8px 0 #a6b3b7,0 14px 16px rgba(15,75,89,.09)!important}
+.stateLocked .islandDetails .islandName{color:#516973!important}
+.stateLocked .dioramaScene{filter:grayscale(.32) saturate(.82) opacity(.92)!important}
+.stateDone .islandDetails{border-color:#98d2a1!important;box-shadow:0 8px 0 #6ea878,0 14px 16px rgba(22,118,70,.13)!important}
+.stateDone .islandDetails .islandLabel{background:#effcf1!important;border-color:#bfe4c1!important;color:#23683d!important}
+.mapNode.activeGoal .islandDetails,.bossNode.activeGoal .islandDetails{border-color:#f0c76f!important;box-shadow:0 8px 0 #c59d48,0 14px 16px rgba(138,90,12,.16)!important}
+.mapNode.activeGoal:after{bottom:-18px!important}
+.unlockRibbon{top:-2px!important}
+.seaMark{font-size:28px;opacity:.9}
+.adventure .boatMark{top:45%!important;left:50%!important;font-size:28px!important;filter:drop-shadow(0 4px 6px rgba(20,77,88,.18))}
+.compass{right:7%!important;top:6%!important;background:rgba(255,255,255,.75)!important;border:2px solid rgba(235,245,247,.8)!important;box-shadow:0 8px 16px rgba(18,89,100,.09)!important}
+.mapLegend{max-width:760px!important;margin:2px auto 0!important;line-height:1.8!important;padding:14px 18px!important;background:rgba(255,255,255,.92)!important;border:1px solid #d5ecef!important;border-radius:20px!important;box-shadow:0 8px 18px rgba(20,77,88,.08)!important}
+.bossNode:before{top:-16px!important;background:#fff5d4!important;border-color:#eac777!important;color:#155164!important;box-shadow:0 6px 12px rgba(14,82,96,.12)!important}
+.bossCard .dioramaScene{height:208px!important}
+.bossCard .islandDetails{border-color:#e1c26f!important;background:linear-gradient(180deg,#fffef9 0%,#fbfcfd 100%)!important;box-shadow:0 8px 0 #a4b8bb,0 14px 16px rgba(15,75,89,.13)!important}
+.bossCard .islandDetails .islandName{color:#0f4858!important}
+.bossCard .islandDetails .islandAccent{background:#ffefba!important;color:#735000!important;border-color:#dfc266!important}
+.progressPanel{max-width:640px!important;margin:0 auto 18px!important}
+@media(max-width:700px){
+  .journey{grid-template-columns:1fr!important;max-width:360px!important;row-gap:42px!important;padding-bottom:34px!important}
+  .mapNode,.mapNode:nth-child(1),.mapNode:nth-child(2),.mapNode:nth-child(3),.mapNode:nth-child(4),.mapNode:nth-child(5),.mapNode:nth-child(6),.mapNode:nth-child(7),.mapNode:nth-child(8){transform:none!important}
+  .routeMap{display:none!important}
+  .dioramaScene{height:184px!important}
+  .bossCard .dioramaScene{height:194px!important}
+  .islandDetails,.bossCard .islandDetails{width:min(84%,220px)!important}
+}
+
+
+/* v5.8 detailed diorama / ocean finishing */
+.adventure{background:radial-gradient(ellipse at 18% 38%,rgba(219,252,242,.38),transparent 26%),radial-gradient(ellipse at 85% 77%,rgba(224,250,241,.3),transparent 30%),linear-gradient(180deg,#a7dfeb 0%,#78c5d9 70%,#6dbad0 100%)!important}
+.adventure:before{opacity:.3!important}
+.dioramaScene{filter:drop-shadow(0 16px 14px rgba(9,77,94,.16))!important}
+.dioramaScene .dioramaSvg{overflow:visible;filter:saturate(1.08)}
+.islandDetails,.bossCard .islandDetails{border-radius:15px!important;box-shadow:0 7px 0 #9ab7ba,0 12px 18px rgba(18,82,98,.15)!important}
+.islandName{letter-spacing:.02em}
+.mapNode .islandCard:focus-visible{outline:4px solid #f4c35a!important;outline-offset:4px!important}
+.mapLegend{font-size:14px!important}
+@media(prefers-reduced-motion:reduce){.dioramaScene{transition:none!important}}
+
+/* v5.8 route order refinement: emphasize 4 -> 5 -> 6 */
+.journey{row-gap:62px!important}
+.mapNode:nth-child(4){transform:translate(10px,30px)!important}
+.mapNode:nth-child(5){transform:translate(-30px,-6px)!important}
+.mapNode:nth-child(6){transform:translate(24px,16px)!important}
+.mapNode:nth-child(7){transform:translate(-8px,16px)!important}
+.routeMap{inset:108px 0 80px!important;height:calc(100% - 188px)!important}
+.routeMap path{stroke-dasharray:1 16!important}
+@media(max-width:700px){
+  .journey{row-gap:42px!important}
+  .mapNode:nth-child(4),.mapNode:nth-child(5),.mapNode:nth-child(6),.mapNode:nth-child(7){transform:none!important}
+}
+
+
+/* v5.8: anchored stage-to-stage route, 1→2→3→4→5→6→7→BOSS */
+.adventure{position:relative!important}
+.routeMap{position:absolute!important;inset:0!important;top:0!important;left:0!important;width:100%!important;height:100%!important;z-index:0!important;pointer-events:none!important;overflow:hidden!important}
+.routeMap path{fill:none!important;stroke:#fff5d5!important;stroke-width:8!important;stroke-linecap:round!important;stroke-dasharray:1 17!important}
+.routeMap .routeShadow{stroke:#2d819a!important;stroke-width:16!important;stroke-dasharray:none!important;opacity:.26!important}
+.journey{position:relative!important;z-index:1!important}
+@media(max-width:700px){.routeMap{display:block!important}.routeMap path{stroke-width:5!important;stroke-dasharray:1 13!important}.routeMap .routeShadow{stroke-width:11!important}}
+@media(prefers-reduced-motion:reduce){.routeMap path{animation:none!important}}
+
+/* v5.8: professional consistency + accessible island state */
+.isle-bath .islandDetails{border-color:#86c7e0!important}
+.stateLocked .dioramaScene{filter:grayscale(.18) saturate(.8) opacity(.96)!important}
+.stateLocked .islandName{color:#254656!important}
+.stateLocked .islandLabel{color:#405968!important}
+@media(prefers-reduced-motion:reduce){.routeMap path{animation:none!important}}
+.bossChoiceLong{font-size:clamp(16px,2.3vw,20px);font-weight:800;text-align:left;line-height:1.55;padding:15px 18px}
+
+.bossCheckpoint{text-align:center;background:linear-gradient(160deg,#e7faf6,#fff8dc);border:2px solid #83cabb;border-radius:24px;padding:26px 16px;box-shadow:0 12px 22px rgba(18,98,110,.10)}
+.bossCheckpoint .checkIcon{font-size:60px}
+.bossCheckpoint h2{font-size:clamp(25px,4vw,35px);margin:8px 0;color:#116778}
+.bossCheckpoint p{font-size:18px;font-weight:900;color:#1b5063}
+.bossCheckpoint .checkLine{background:#fff;border-radius:14px;border:1px solid #d6e9e9;padding:12px;font-weight:800;font-size:15px;color:#31576a}
+
+/* v5.8 accessibility polish */
+.choice:focus-visible,.act:focus-visible,.tinyBtn:focus-visible,.islandCard:focus-visible{outline:3px solid #0b536b!important;outline-offset:4px!important}
+.bossChoiceLong{min-height:58px}
+@media(prefers-reduced-motion:reduce){.dioramaScene,.routeMap path{transition:none!important;animation:none!important}}
+
+/* v5.8 pedagogical feedback: distinct observation and explanation */
+.pbsReason{margin:14px 0 16px;border:1px solid #b6dfe1;background:linear-gradient(180deg,#f5fdfc,#ecf7f8);border-radius:17px;padding:16px 18px;box-shadow:0 5px 12px rgba(19,90,98,.07)}
+.pbsReasonTitle{font-size:17px;font-weight:950;color:#12566a;margin-bottom:7px}
+.pbsReason p{font-size:16px;line-height:1.75;color:#234c5a;margin:0 0 10px;font-weight:700}
+.pbsReason small{font-size:13px;line-height:1.65;color:#526c77;display:block}
+@media(max-width:640px){.pbsReason{padding:13px 14px}.pbsReason p{font-size:15px}}
+/* v5.8 PBS teaching audit */
+.pbsInterpret{background:#edf7f8;border-left:4px solid #298999;border-radius:8px;padding:10px 12px;color:#225568;font-weight:750}
+@media (prefers-contrast:more){.pbsInterpret{border:2px solid #225568}}
+
+.clinicalLens{margin:12px auto 16px;padding:12px 16px;border:1px solid #bbdce4;border-radius:16px;background:#f4fafb;max-width:760px;color:#244e60;line-height:1.7}
+.clinicalLens summary{cursor:pointer;font-size:15px;font-weight:850;outline-offset:4px}
+.clinicalLens p{font-size:14px;margin:10px 0 2px}
+.clinicalLens:focus-within{outline:2px solid #247b91;outline-offset:3px}
+@media(max-width:640px){.clinicalLens{padding:11px 12px}.clinicalLens summary{font-size:14px}}
+
+/* v5.8 nuanced assessment accessibility */
+.reactionFocus .resultTitle.neutral{color:#81500f}
+.pbsReason .pbsInterpret{line-height:1.7}
+@media(prefers-reduced-motion:reduce){.reactionFocus,.pbsReason{scroll-behavior:auto!important}}
+
+/* v5.8 optional clue inspection */
+.investigationBox{margin:12px 0 16px;padding:13px 15px;border:1px solid #97cbd2;border-radius:16px;background:#eff9fa;color:#1b4d60}
+.investigationCaption{font-size:13px;font-weight:900;margin-bottom:8px}
+.investigationButton{font:inherit;font-weight:850;font-size:15px;background:#fff;border:2px solid #39899a;border-radius:12px;color:#145365;padding:11px 15px;cursor:pointer;width:100%;text-align:left}
+.investigationButton:hover:not(:disabled){background:#def4f4}.investigationButton:disabled{cursor:default;background:#e4f4ed;color:#1f6b59;border-color:#7bb7a4}
+.investigationButton:focus-visible{outline:3px solid #edac37;outline-offset:3px}
+.investigationNote{margin-top:11px;padding:13px;background:#fff;border-left:4px solid #257f85;border-radius:10px;line-height:1.75;font-size:15px}
+.investigationNote p{margin:9px 0 0}.investigationNote[hidden]{display:none}
+
+/* v5.8 focus and clue exploration */
+.investigationButton:focus-visible,.choice:focus-visible,.act:focus-visible,.tinyBtn:focus-visible{outline:3px solid #8a5200!important;outline-offset:4px!important}
+.investigationButton[aria-expanded="true"]{background:#e3f4ec;border-color:#277a68}
+@media(prefers-reduced-motion:reduce){.investigationBox *{scroll-behavior:auto!important}}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.choice:focus-visible,.act:focus-visible,.investigationButton:focus-visible{outline:3px solid #9a6200!important;outline-offset:4px!important}
+.aml-return-nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.aml-return-nav a{color:#fff;text-decoration:underline;text-underline-offset:4px;font-weight:800;background:#13566a;padding:9px 12px;border-radius:10px}
+.aml-return-nav a:focus-visible{outline:3px solid #ffe08c;outline-offset:3px}
+@media(max-width:620px){.top{flex-wrap:wrap;gap:12px}.aml-return-nav{justify-content:flex-start}}
+</style><meta name="application-version" content="5.8-playtest-candidate"></head><body><main class="app"><header class="top"><div><div class="brand">🏝️ AML · PBS 闖關島</div><div class="sub">快問快答 · 同理對話 · 點擊關卡 · AML 品牌冒險版 v5.8</div></div><div class="aml-return-nav"><a href="/tools.html#lab-halls" title="返回 AML 互動實驗室的互動探索艙">← 返回互動實驗室</a><span class="chip" id="status">公開測試</span></div></header><section class="body" id="screen" tabindex="-1" aria-live="off"></section><div id="game-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div></main><script>
+const levels=[
+ {name:'客廳 · 活動轉換',face:'📺',intro:'「我還要看！不要關！」',levels:[
+  {face:'😠',line:'小安緊握遙控器，不肯關電視。',choices:[{t:'「看完這一小段，我陪你切換到用餐。」',effect:1,reply:'小安看了進度條，手稍微放鬆。',why:'具體的結束點與陪同，有助活動轉換。'},{t:'「我已經提醒過你了，現在就要關。」',effect:-1,reply:'小安提高音量：「不要！」',why:'要求本身未必有錯，但當下重複施壓可能升高衝突。'},{t:'「那你自己決定什麼時候關。」',effect:0,reply:'小安繼續看，下一步的活動仍無法安排。',why:'保留自主性有價值，但缺少可理解的安排與界線。'}]},
+  {face:'😟',line:'影片結束，小安仍說：「還沒好！」',choices:[{t:'「你剛答應了，不能反悔。」',effect:-1,reply:'小安把遙控器敲在桌上。',why:'當下強調承諾，可能忽略其理解與調節需求。'},{t:'「我們先看看你最在意哪一段。」',effect:1,reply:'小安指著片尾，聲音變小。',why:'探索具體需求，可以找到更明確的支持方式。'},{t:'「再延長半小時，先不要吵。」',effect:0,conditional:true,reply:'小安繼續看，團隊對接下來的安排產生分歧。',why:'暫緩不是一定錯，但可能遺留一致性與活動安排問題。'}]},
+  {face:'😮‍💨',line:'小安安靜坐著，但呼吸還很快。',choices:[{t:'「既然冷靜了，現在把剛才的事講清楚。」',effect:-1,reply:'小安突然站起來，喊「不要再說了！」',why:'安靜不等於已恢復，過早說理有二次升高風險。'},{t:'「先把剛剛沒做的事全部補完。」',effect:0,reply:'小安低頭不語，又開始緊握拳頭。',why:'在恢復未完成前累積要求，可能再度造成負荷。'},{t:'保持距離、安靜陪伴，晚點再討論。',effect:1,reply:'小安呼吸慢慢穩下來，願意喝口水。',why:'冷靜期優先維持低刺激和安全觀察。'}]}
+ ]},
+ {name:'教室 · 任務要求',face:'📚',intro:'「我不會！不要做！」',levels:[
+  {face:'😣',line:'雅琳把練習紙推開。',choices:[{t:'「先告訴我，哪個步驟最難？」',effect:1,reply:'雅琳指著第二題，說：「這個。」',why:'辨識技能與任務困難，比直接歸因於不配合更可行。'},{t:'「先做完三題，才可以休息。」',effect:-1,reply:'雅琳把紙揉成一團。',why:'在需求未釐清前提高完成壓力，可能強化逃避。'},{t:'先替她把全部題目完成。',effect:0,reply:'雅琳停止抗拒，但沒有獲得練習求助的機會。',why:'可以暫時減輕負荷，卻可能失去建立自主技能的機會。'}]},
+  {face:'😤',line:'雅琳開始敲桌子，其他同學看過來。',choices:[{t:'當眾解釋她必須守規矩。',effect:-1,reply:'雅琳敲得更大聲，轉頭怒視同學。',why:'公開說理可能增加社交與情緒壓力。'},{t:'讓同學幫她做完，好趕上進度。',effect:0,reply:'雅琳安靜了，但把紙交出去後不再參與。',why:'可能解決眼前進度，卻未處理支持技能與參與。'},{t:'降低現場關注，給她求助或短暫休息的選擇。',effect:1,reply:'雅琳停下敲桌，指了指休息卡。',why:'提供可用的替代溝通與調節選擇。'}]},
+  {face:'😮‍💨',line:'雅琳不再敲桌，但仍避開題目。',choices:[{t:'先讓她選一小步，再確認是否需要示範。',effect:1,reply:'雅琳點頭，願意先看一次示範。',why:'在恢復與任務能力之間搭橋。'},{t:'「看吧，你明明可以控制自己。」',effect:-1,reply:'雅琳又把紙推開：「我不要！」',why:'評價性語言可能令壓力再次升高。'},{t:'今天全部取消任務，也不再談這件事。',effect:0,reply:'雅琳放鬆了，但沒有建立下次面對困難的支持方式。',why:'暫停可有其必要，但後續仍須調整任務與求助方式。'}]}
+ ]},
+ {name:'餐廳 · 等待取食',face:'🍽️',intro:'「為什麼還不能吃！」',levels:[
+  {face:'😬',line:'阿泰伸手拿了隔壁座位的點心。',choices:[{t:'先確認是否未理解分配規則，提供可見的等待提示。',effect:1,reply:'阿泰看看自己的餐盤，將手縮回。',why:'先確認需求與可理解的等待方式。'},{t:'「這叫偷竊！現在給我放回去！」',effect:-1,reply:'阿泰握緊點心，開始大叫。',why:'道德標籤與公開斥責可能升高衝突。'},{t:'直接再給他一份，先維持安靜。',effect:0,reply:'阿泰拿到點心，但同桌開始要求相同安排。',why:'滿足需求可能減壓，但需要評估公平、健康與功能。'}]},
+  {face:'😠',line:'阿泰拍桌，旁邊的人嚇了一跳。',choices:[{t:'請其他人保持距離，減少圍觀並提供簡短選擇。',effect:1,reply:'周圍安靜一些，阿泰停止拍桌。',why:'先處理安全、刺激和可預測性。'},{t:'請兩名同仁立刻圍住他，免得再拿食物。',effect:-1,reply:'阿泰站起來，推開靠近的人。',why:'不必要的逼近或限制可能提高衝突及權益風險。'},{t:'隔空不斷提醒「不可以、不可以」。',effect:0,reply:'阿泰仍在拍桌，注意力轉向工作人員。',why:'反覆口頭指令可能增加刺激，未必有助調節。'}]},
+  {face:'😮‍💨',line:'阿泰停下拍桌，仍盯著點心。',choices:[{t:'先讓他平穩，再安排個別化等待與替代溝通。',effect:1,reply:'阿泰慢慢坐穩，願意看等待卡。',why:'從恢復連結到未來預防與替代技能。'},{t:'當場要求道歉，大家才可以繼續吃。',effect:-1,reply:'阿泰再次拍桌，大喊「不要！」',why:'恢復未完成時強迫公開道歉，可能二次升高。'},{t:'立刻把點心收光，避免再發生。',effect:0,reply:'阿泰沒再取食，但持續盯著餐車，顯得焦躁。',why:'移除刺激可能暫時有效，但未必解決需求。'}]}
+ ]}
+ ,{name:'寢室 · 夜間聲響',face:'🛏️',intro:'「咚、咚、咚！」',levels:[
+  {face:'😐',line:'小杰半夜反覆敲床沿，室友被吵醒。',choices:[{t:'「你是不是睡不著？我先看看哪裡不舒服。」',effect:1,reply:'小杰指了指走廊亮著的燈。',why:'先評估睡眠、環境及健康需求，不直接推定故意搗亂。'},{t:'「現在大家都在睡！不准再敲。」',effect:-1,reply:'小杰用力敲了三下，轉身不看你。',why:'斥責可能提高壓力，且未回應可能的環境不適。'},{t:'把床沿包起來就好，先不要打擾他。',effect:0,reply:'聲音變小了，小杰卻又走到門邊敲門。',why:'減少聲響不代表已確認原因與安全需求。'}]},
+  {face:'😟',line:'燈關暗了，小杰仍來回走動。',choices:[{t:'「先回床上，不然明天不能玩手機。」',effect:-1,reply:'小杰大聲說「不要」，開始踢床腳。',why:'在失眠與不適未明時加入威脅，可能再次升高。'},{t:'提供低刺激休息選擇，觀察是否有疼痛或急性不適。',effect:1,reply:'小杰走到熟悉的座位坐下，呼吸逐漸平穩。',why:'保留安全與舒適選擇，並留意健康訊號。'},{t:'讓他一直走動，完全不用再觀察。',effect:0,reply:'小杰停下敲床，但仍頻繁摸著腹部。',why:'減少干預有時有益，但不能忽略健康及安全線索。'}]},
+  {face:'😮‍💨',line:'小杰安靜坐著，手仍按著肚子。',choices:[{t:'「安靜就好了，現在趕快去睡。」',effect:-1,reply:'小杰推開被子，又開始用力敲床。',why:'安靜不等於不適已解除，過早要求可能二次升高。'},{t:'先確認身體不適及需要的照護，再協助逐步返回休息。',effect:1,reply:'小杰願意讓工作人員了解狀況，慢慢放鬆。',why:'恢復期仍須評估健康與支持需求。'},{t:'等明早再詢問他為什麼敲床。',effect:0,conditional:true,reply:'小杰坐著沒說話，仍不時皺眉。',why:'延後討論可能避免說理，但急性不適不能延誤評估。'}]}
+ ]},
+ {name:'浴室 · 洗澡困難',face:'🚿',intro:'「不要！水好吵！」',levels:[
+  {face:'😣',line:'小柏站在浴室門口，不願進去。',choices:[{t:'「先不要急，我們看看水聲或溫度是不是不舒服。」',effect:1,reply:'小柏摀住耳朵，指向蓮蓬頭。',why:'先確認感官與身體因素及其具體線索。'},{t:'「今天一定要洗，大家都洗完了。」',effect:-1,reply:'小柏後退，開始拍打門板。',why:'施壓忽略當下刺激與拒絕原因。'},{t:'不洗就算了，以後都不要再安排。',effect:0,reply:'小柏離開浴室，但清潔需求及可能不適尚未處理。',why:'暫停活動可以是合理的，但需要後續評估與支持安排。'}]},
+  {face:'😤',line:'降低水聲後，小柏仍緊握衣角。',choices:[{t:'「水聲小了，現在沒理由拒絕。」',effect:-1,reply:'小柏大喊並轉身離開。',why:'忽略隱私、疼痛或其他可能仍存在的原因。'},{t:'提供個別化洗澡方式和隱私選擇，確認身體不適。',effect:1,reply:'小柏指著肩膀，示意抬手會痛。',why:'對感官與疼痛線索保持開放，避免單一功能推論。'},{t:'由最熟悉的工作人員立刻拉他進來。',effect:0,reply:'小柏僵住，抓住門框。',why:'熟悉關係不代表可以忽略同意與身體界線。'}]},
+  {face:'😮‍💨',line:'小柏坐下休息，仍護著肩膀。',choices:[{t:'「剛剛吵完了，現在快補洗。」',effect:-1,reply:'小柏又縮起肩膀，情緒再次升高。',why:'恢復前重啟原要求且忽略疼痛，可能造成第二次風暴。'},{t:'先交由適當專業評估疼痛，再安排可接受的清潔支持。',effect:1,reply:'小柏點頭，願意先用毛巾清潔沒有疼痛的部位。',why:'優先健康、安全、尊嚴與可接受的替代安排。'},{t:'讓小柏獨處，完全不再詢問或交班。',effect:0,reply:'小柏停止抗拒，但疼痛線索沒有被交接。',why:'停止刺激可能暫時有益，卻不能漏掉必要的健康追蹤。'}]}
+ ]},
+ {name:'同理心島 · 聽懂情緒',face:'💬',intro:'「你們根本都不懂我！」',levels:[
+  {face:'😢',line:'欣怡把畫紙推開：「我不要畫了！」',choices:[{t:'「是不是哪裡讓你覺得很挫折？我想聽你說。」',effect:1,reply:'欣怡看你一眼：「畫錯了，大家都看到了。」',why:'先承接感受並邀請表達，不急於評論。'},{t:'「沒關係啦，這哪有什麼好哭的。」',effect:-1,reply:'欣怡哭得更大聲：「你就不懂！」',why:'意圖安慰，卻可能否定當事人的感受。'},{t:'「你畫得很好，大家都說很棒喔！」',effect:0,reply:'欣怡低頭：「可是我覺得很醜。」',why:'讚美未必回應其正在經驗的挫折與羞愧。'}]},
+  {face:'😟',line:'欣怡說：「我怕別人笑我。」',choices:[{t:'「他們不會笑啦，你想太多了。」',effect:-1,reply:'欣怡轉身不說話，把畫紙揉起來。',why:'急著保證，可能讓當事人感到未被理解。'},{t:'「你很在意別人怎麼看，這讓你很不安，對嗎？」',effect:1,reply:'欣怡點點頭：「對，我不想給他們看。」',why:'以可確認的語句反映感受，留出被修正的空間。'},{t:'「不要管別人，做自己就好了。」',effect:0,reply:'欣怡搖搖頭：「說得容易。」',why:'建議本身未必錯，但太早給答案可能跳過情緒理解。'}]},
+  {face:'😮‍💨',line:'欣怡小聲問：「我可以先不要給大家看嗎？」',choices:[{t:'「可以，我們一起想一個你安心的展示方式。」',effect:1,reply:'欣怡鬆開握著畫紙的手：「那我先放你這裡。」',why:'尊重選擇，連結情緒理解與具體可行支持。'},{t:'「你都畫好了，不展示很可惜耶。」',effect:0,reply:'欣怡沉默，將畫紙壓在桌下。',why:'正向鼓勵可能帶來無形壓力，仍須尊重意願。'},{t:'「不行，大家都展示，你也要。」',effect:-1,reply:'欣怡站起來大喊：「我說不要！」',why:'強制要求忽略了當前已表達的需求。'}]}
+ ]}
+ ,{name:'情緒週期島 · 看線索快判',face:'🌪️',intro:'看動作、聽語氣，猜現在是哪個階段！',kind:'cycle',levels:[
+  {face:'🙂',line:'小哲照常看書，會主動向同仁打招呼。',correct:'平穩期',choices:[{t:'平穩期',effect:1,reply:'小哲仍自在看書，能平靜互動。',why:'行為與平時基準相近，尚未出現明顯升高線索。'},{t:'觸發期',effect:0,reply:'目前看不到明確誘發事件或改變。',why:'不能僅憑當下活動推論已有觸發。'},{t:'恢復期',effect:-1,reply:'未見先前風暴後的恢復脈絡。',why:'恢復期需要前面已發生的情緒事件作為脈絡。'}]},
+  {face:'😯',line:'原定活動突然取消，小哲皺眉：「怎麼變了？」',correct:'觸發期',choices:[{t:'焦躁期',effect:0,reply:'他開始在意改變，但尚缺持續焦躁線索。',why:'這一刻著重誘發事件及初始反應。'},{t:'觸發期',effect:1,reply:'小哲停下動作，反覆確認剛才的改變。',why:'意外變動是明確的觸發事件。'},{t:'加速期',effect:-1,reply:'尚未出現顯著對立或持續升高的行為。',why:'不宜過度推定行為已進入加速。'}]},
+  {face:'😟',line:'小哲來回踱步、搓手，反覆問：「還要等多久？」',correct:'焦躁期',choices:[{t:'加速期',effect:0,reply:'他很不安，但尚未直接與人對立。',why:'持續不安與重複動作，更接近焦躁期的線索。'},{t:'冷靜期',effect:-1,reply:'此刻尚未經歷高峰，不能視為冷靜期。',why:'週期判斷需參考前後事件。'},{t:'焦躁期',effect:1,reply:'小哲搓著手，不安地望向門口。',why:'踱步、反覆詢問與身體不安，符合本題焦躁期。'}]},
+  {face:'😠',line:'小哲對同仁大喊：「不要再說！」並用力推開椅子。',correct:'加速期',choices:[{t:'加速期',effect:1,reply:'小哲提高音量，持續拒絕對話。',why:'出現明顯對立及升高，尚未達本題設定的危機高峰。'},{t:'觸發期',effect:-1,reply:'行為已從初始刺激持續升高。',why:'不能忽略正在加速的可觀察行為。'},{t:'風暴期',effect:0,reply:'已有風險，但此題尚未出現嚴重失控或迫切危險線索。',why:'高峰需根據行為強度與即時危險判斷。'}]},
+  {face:'😱',line:'小哲突然連續推倒桌椅，物品四散，周遭人員急忙退開。',correct:'風暴期',choices:[{t:'加速期',effect:0,reply:'現場已有明顯危險，需優先確保安全。',why:'這已超出單純對立或升高階段。'},{t:'風暴期',effect:1,reply:'工作人員協助旁人撤離並依危機程序處理。',why:'危險與強烈行為已達本題設定的高峰。'},{t:'焦躁期',effect:-1,reply:'低估了立即的安全風險。',why:'風暴期以安全保護為優先，不應延誤處置。'}]},
+  {face:'😮‍💨',line:'事件後，小哲停止推物，坐在角落；呼吸仍急促、手握得很緊。',correct:'冷靜期',choices:[{t:'恢復期',effect:0,reply:'雖然安靜了，身體仍有明顯緊繃。',why:'停止危險行為不代表已能回到平時活動。'},{t:'冷靜期',effect:1,reply:'小哲低著頭，不希望有人立即靠近說理。',why:'高峰後逐漸降溫但尚未完整恢復。'},{t:'平穩期',effect:-1,reply:'仍需留意過早提出要求所造成的二次升高。',why:'不能將表面安靜當成平穩期。'}]},
+  {face:'🙂',line:'過一段時間，小哲呼吸平穩，主動喝水，願意討論接下來的活動。',correct:'恢復期',choices:[{t:'冷靜期',effect:0,reply:'他已展現更多重新參與與溝通的能力。',why:'本題較接近逐步恢復，而非單純降低強度。'},{t:'平穩期',effect:0,reply:'雖接近平常狀態，仍要記得剛經歷危機。',why:'此題重點在高峰後的恢復脈絡。'},{t:'恢復期',effect:1,reply:'小哲開始重新參與，工作人員安排適時回顧。',why:'狀態逐漸恢復，能在適當時間重新建立日常參與。'}]}
+ ]}
+];
+let game,phase='home',last;let unlocked=0,completed=new Set();let bossGame=null;let recentUnlock=-1;
+const screen=document.querySelector('#screen'),status=document.querySelector('#status');
+function sceneFocus(){const root=document.querySelector('#screen');if(!root)return;root.setAttribute('tabindex','-1');root.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
+const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function shuffle(arr){return arr.map(x=>({x,r:Math.random()})).sort((a,b)=>a.r-b.r).map(o=>o.x)}
+function meter(n){return '<div class="meter" role="meter" aria-valuemin="0" aria-valuemax="3" aria-valuenow="'+n+'" aria-label="危機強度 '+n+' / 3">'+[1,2,3].map(i=>'<span class="'+(i<=n?'on':'')+'"></span>').join('')+'</div>'}
+
+const islandMeta=[
+ {klass:'isle-shore', terrain:'🌴', feature:'📺', prop:'🪑', accent:'沙灘客廳', desc:'活動轉換快答'},
+ {klass:'isle-study', terrain:'🏫', feature:'📚', prop:'📝', accent:'學習山丘', desc:'任務要求挑戰'},
+ {klass:'isle-dining', terrain:'⛱️', feature:'🍽️', prop:'🍱', accent:'餐桌碼頭', desc:'等待取食挑戰'},
+ {klass:'isle-sensory', terrain:'🌙', feature:'🛏️', prop:'🔔', accent:'夜色寢室', desc:'夜間聲響情境'},
+ {klass:'isle-bath', terrain:'🛁', feature:'🚿', prop:'💧', accent:'洗澡溪谷', desc:'洗澡困難挑戰'},
+ {klass:'isle-empathy', terrain:'🌷', feature:'💬', prop:'🤝', accent:'同理花園', desc:'同理心對話練習'},
+ {klass:'isle-cycle', terrain:'🌪️', feature:'🌀', prop:'⏱️', accent:'週期風暴', desc:'情緒週期快判'}
+];
+
+const dioramaScenes=[`<svg class="dioramaSvg" viewBox="0 0 320 224" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><ellipse cx="160" cy="197" rx="129" ry="27" fill="#184f68" opacity=".14"/><path d="M28 137 Q37 102 95 91 L177 57 Q207 47 235 68 L292 109 Q306 123 284 143 L206 191 Q164 212 126 195 L44 161 Q28 153 28 137Z" fill="#36a46c"/><path d="M28 119 Q35 96 95 74 L177 39 Q206 29 237 51 L292 92 Q309 108 284 124 L205 171 Q166 191 124 177 L44 141 Q28 133 28 119Z" fill="#efcc7b" stroke="#fff4d3" stroke-width="4"/><path d="M51 117 L182 56 Q199 49 224 62 L274 97 Q291 108 269 121 L197 160 Q168 174 133 163 L61 133 Q44 127 51 117Z" fill="#75d58f"/><path d="M44 141 L125 177 Q161 191 205 171 L284 124 L284 143 L206 191 Q164 212 126 195 L44 161Z" fill="#36a46c" opacity=".68"/><path d="M76 102 L76 60" stroke="#876242" stroke-width="8" stroke-linecap="round"/><path d="M77 61 Q53 35 35 59 Q65 54 77 67 M77 61 Q98 32 120 48 Q91 54 76 67 M76 63 Q59 72 58 84 Q67 75 79 69" fill="#2eaa76" stroke="#23885c" stroke-width="2"/><rect x="144" y="86" width="55" height="35" rx="3" fill="#1c627b" stroke="#e8fafb" stroke-width="4"/><rect x="150" y="92" width="43" height="23" fill="#8ad9ed"/><path d="M171 120v16 M153 136h35" stroke="#6a665b" stroke-width="4"/><g stroke-linejoin="round"><ellipse cx="220" cy="138" rx="24" ry="10" fill="#256a54" opacity=".20"/><path d="M196 113l19-10 24 11-20 12z" fill="#ffa964" stroke="#a96c43" stroke-width="2"/><path d="M196 113v16l23 12v-15z" fill="#c87654"/><path d="M219 126l20-12v16l-20 11z" fill="#a75f4d"/><path d="M203 106v-13l11-5 11 6v13" fill="none" stroke="#e9f3d4" stroke-width="5"/><path d="M99 142l17-9 22 12-17 10z" fill="#fff2d5" stroke="#c99b55" stroke-width="2"/><path d="M106 151v12m24-13v13" stroke="#9a6c49" stroke-width="4"/><rect x="113" y="137" width="11" height="6" rx="2" fill="#fba655"/></g></svg>`,`<svg class="dioramaSvg" viewBox="0 0 320 224" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><ellipse cx="160" cy="197" rx="129" ry="27" fill="#184f68" opacity=".14"/><path d="M28 137 Q37 102 95 91 L177 57 Q207 47 235 68 L292 109 Q306 123 284 143 L206 191 Q164 212 126 195 L44 161 Q28 153 28 137Z" fill="#388dbb"/><path d="M28 119 Q35 96 95 74 L177 39 Q206 29 237 51 L292 92 Q309 108 284 124 L205 171 Q166 191 124 177 L44 141 Q28 133 28 119Z" fill="#a9d875" stroke="#fff4d3" stroke-width="4"/><path d="M51 117 L182 56 Q199 49 224 62 L274 97 Q291 108 269 121 L197 160 Q168 174 133 163 L61 133 Q44 127 51 117Z" fill="#74c9ee"/><path d="M44 141 L125 177 Q161 191 205 171 L284 124 L284 143 L206 191 Q164 212 126 195 L44 161Z" fill="#388dbb" opacity=".68"/><path d="M116 107 L116 67 L159 49 L203 71 L203 111 L160 136 Z" fill="#f9efcd" stroke="#547889" stroke-width="3"/><path d="M106 69 L158 35 L215 68 L203 79 L159 51 L116 80 Z" fill="#e27963"/><rect x="150" y="91" width="22" height="40" rx="2" fill="#508ca2"/><path d="M121 86 L140 77 L140 97 L121 105Z" fill="#91cddb"/><path d="M222 119 l20 -11 l12 9 l-20 13Z" fill="#f9e5a6" stroke="#b4865b" stroke-width="2"/><g stroke-linejoin="round"><path d="M98 124l39-20 39 20-38 22z" fill="#d4a16f" stroke="#795e4a" stroke-width="2"/><path d="M98 124v15l40 20v-13z" fill="#a87554"/><path d="M138 146l38-22v16l-38 19z" fill="#8d654a"/><path d="M114 119l21-10 17 8-20 11z" fill="#f9f1db"/><path d="M116 120l16 7" stroke="#4b9aaf" stroke-width="2"/><path d="M189 109v-43l52 18v43z" fill="#215f6d" stroke="#e8f8ed" stroke-width="3"/><path d="M197 77l35 12m-35 0l24 8" stroke="#eaf5cc" stroke-width="3"/><path d="M78 107l20-12 14 8-20 12z" fill="#89c7d4"/><path d="M85 110v15m21-20v17" stroke="#346b80" stroke-width="4"/></g></svg>`,`<svg class="dioramaSvg" viewBox="0 0 320 224" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><ellipse cx="160" cy="197" rx="129" ry="27" fill="#184f68" opacity=".14"/><path d="M28 137 Q37 102 95 91 L177 57 Q207 47 235 68 L292 109 Q306 123 284 143 L206 191 Q164 212 126 195 L44 161 Q28 153 28 137Z" fill="#bd9551"/><path d="M28 119 Q35 96 95 74 L177 39 Q206 29 237 51 L292 92 Q309 108 284 124 L205 171 Q166 191 124 177 L44 141 Q28 133 28 119Z" fill="#81c76d" stroke="#fff4d3" stroke-width="4"/><path d="M51 117 L182 56 Q199 49 224 62 L274 97 Q291 108 269 121 L197 160 Q168 174 133 163 L61 133 Q44 127 51 117Z" fill="#efcd83"/><path d="M44 141 L125 177 Q161 191 205 171 L284 124 L284 143 L206 191 Q164 212 126 195 L44 161Z" fill="#bd9551" opacity=".68"/><polygon points="127,100 170,75 220,94 176,122" fill="#f5ddaa" stroke="#ab804a" stroke-width="4"/><path d="M134 109 L134 138 M205 108 L205 137" stroke="#906d49" stroke-width="8"/><ellipse cx="174" cy="97" rx="13" ry="6" fill="#fff"/><circle cx="175" cy="96" r="5" fill="#e7a865"/><path d="M90 86 L90 53" stroke="#a78056" stroke-width="5"/><path d="M90 53 Q64 48 61 70 L118 69 Q114 48 90 53Z" fill="#ff936b"/><g stroke-linejoin="round"><ellipse cx="160" cy="136" rx="46" ry="17" fill="#2f8e6a" opacity=".24"/><path d="M118 122l38-21 43 21-40 23z" fill="#fff0c3" stroke="#ad7542" stroke-width="3"/><path d="M118 122v14l41 22v-13z" fill="#b98556"/><path d="M159 145l40-23v14l-40 22z" fill="#966743"/><ellipse cx="157" cy="122" rx="14" ry="6" fill="#f8faf8" stroke="#6ba9bf" stroke-width="2"/><ellipse cx="157" cy="122" rx="7" ry="3" fill="#f4b454"/><path d="M112 137l-12 7-14-7 12-7zM203 135l15 9 15-9-15-8z" fill="#d97958" stroke="#784c43" stroke-width="2"/><path d="M98 145v15m121-16v16" stroke="#8d5741" stroke-width="5"/><path d="M237 85v45" stroke="#b78656" stroke-width="5"/><path d="M210 83q28-26 56 1z" fill="#f8d67e" stroke="#fff0ba" stroke-width="3"/></g></svg>`,`<svg class="dioramaSvg" viewBox="0 0 320 224" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><ellipse cx="160" cy="197" rx="129" ry="27" fill="#184f68" opacity=".14"/><path d="M28 137 Q37 102 95 91 L177 57 Q207 47 235 68 L292 109 Q306 123 284 143 L206 191 Q164 212 126 195 L44 161 Q28 153 28 137Z" fill="#517fa6"/><path d="M28 119 Q35 96 95 74 L177 39 Q206 29 237 51 L292 92 Q309 108 284 124 L205 171 Q166 191 124 177 L44 141 Q28 133 28 119Z" fill="#78ba88" stroke="#fff4d3" stroke-width="4"/><path d="M51 117 L182 56 Q199 49 224 62 L274 97 Q291 108 269 121 L197 160 Q168 174 133 163 L61 133 Q44 127 51 117Z" fill="#91bbde"/><path d="M44 141 L125 177 Q161 191 205 171 L284 124 L284 143 L206 191 Q164 212 126 195 L44 161Z" fill="#517fa6" opacity=".68"/><polygon points="121,90 180,59 227,83 166,118" fill="#f0ecff" stroke="#4c809d" stroke-width="4"/><polygon points="121,90 166,118 166,138 121,111" fill="#5586a7"/><polygon points="166,118 227,83 227,106 166,138" fill="#79a9c1"/><path d="M128 91 L165 73 L179 80 L144 99Z" fill="#fff"/><path d="M185 76 L214 90" stroke="#9dcad0" stroke-width="4"/><path d="M94 75 l0 -28" stroke="#7e9fa8" stroke-width="5"/><path d="M77 45h36l-7 23H84Z" fill="#f8dd85"/><circle cx="247" cy="62" r="10" fill="#fff4c1"/><g stroke-linejoin="round"><path d="M97 127l37-20 54 27-38 20z" fill="#d7f1f0" stroke="#4e9e9e" stroke-width="3"/><path d="M97 127v15l53 28v-16z" fill="#75b2a8"/><path d="M150 154l38-20v15l-38 21z" fill="#4a968f"/><path d="M108 121l23-11 43 22-23 11z" fill="#fff9eb"/><path d="M184 113v-45" stroke="#9b8b5e" stroke-width="5"/><path d="M184 70q22 16 31-8q-8 33-31 33" fill="#fff6c5" stroke="#f5df96" stroke-width="2"/><path d="M206 107l16 11-16 9-16-9z" fill="#d0a5e5"/><path d="M208 120v14" stroke="#85649b" stroke-width="3"/></g></svg>`,`<svg class="dioramaSvg" viewBox="0 0 320 224" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><ellipse cx="160" cy="197" rx="129" ry="27" fill="#184f68" opacity=".14"/><path d="M28 137 Q37 102 95 91 L177 57 Q207 47 235 68 L292 109 Q306 123 284 143 L206 191 Q164 212 126 195 L44 161 Q28 153 28 137Z" fill="#be7959"/><path d="M28 119 Q35 96 95 74 L177 39 Q206 29 237 51 L292 92 Q309 108 284 124 L205 171 Q166 191 124 177 L44 141 Q28 133 28 119Z" fill="#96bd6c" stroke="#fff4d3" stroke-width="4"/><path d="M51 117 L182 56 Q199 49 224 62 L274 97 Q291 108 269 121 L197 160 Q168 174 133 163 L61 133 Q44 127 51 117Z" fill="#e9ad8a"/><path d="M44 141 L125 177 Q161 191 205 171 L284 124 L284 143 L206 191 Q164 212 126 195 L44 161Z" fill="#be7959" opacity=".68"/><polygon points="160,111 172,50 198,50 212,111" fill="#fcf7e9" stroke="#247b8c" stroke-width="3"/><polygon points="172,50 185,32 199,50" fill="#f3be5b"/><rect x="179" y="51" width="13" height="18" rx="2" fill="#f4cf64"/><path d="M177 74h19 M172 91h29" stroke="#3ab1b0" stroke-width="6"/><ellipse cx="186" cy="113" rx="28" ry="8" fill="#cbeee3"/><path d="M185 32V19" stroke="#4a6d79" stroke-width="3"/><path d="M185 20 L211 26 L185 32" fill="#f6d67a"/><path d="M96 135 l24 -35 l13 14 l-17 26Z" fill="#e9c3a9"/><path d="M229 124 l15 -31 l14 21 l-8 24Z" fill="#f5debc"/><g stroke-linejoin="round"><path d="M98 139l48-28 62 29-48 29z" fill="#ffd4a3" stroke="#a26a45" stroke-width="3"/><path d="M98 139v14l62 31v-15z" fill="#da8c62"/><path d="M160 169l48-29v14l-48 30z" fill="#bc694e"/><path d="M159 103v44" stroke="#716b68" stroke-width="6"/><path d="M146 94l13-19 13 19" fill="#ffedd7" stroke="#fff8e0" stroke-width="2"/><path d="M149 96v19h20V96" fill="#ec7759"/><path d="M118 122l12-10 13 10-12 8z" fill="#d8f7ec"/><path d="M213 117l12-9 12 9-12 9z" fill="#fff0bb"/><path d="M226 110v-12" stroke="#8a735b" stroke-width="4"/></g><g aria-hidden="true" stroke-linejoin="round"><path d="M118 99v-27q0-17 17-17h28" stroke="#effaff" stroke-width="8" fill="none"/><path d="M154 56q27-9 37 8" stroke="#276f8e" stroke-width="6" fill="none"/><path d="M154 66l-5 12m19-8l-5 14m22-14l-5 14" stroke="#8ad9f5" stroke-width="4" stroke-linecap="round"/><path d="M110 128l58-30 68 34-58 31z" fill="#e8f9fc" stroke="#4e92a5" stroke-width="4"/><path d="M110 128v13l68 33v-11z" fill="#b0dae6" stroke="#4e92a5" stroke-width="3"/><path d="M178 163l58-31v13l-58 29z" fill="#7db5c7" stroke="#4e92a5" stroke-width="3"/></g></svg>`,`<svg class="dioramaSvg" viewBox="0 0 320 224" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><ellipse cx="160" cy="197" rx="129" ry="27" fill="#184f68" opacity=".14"/><path d="M28 137 Q37 102 95 91 L177 57 Q207 47 235 68 L292 109 Q306 123 284 143 L206 191 Q164 212 126 195 L44 161 Q28 153 28 137Z" fill="#c87da6"/><path d="M28 119 Q35 96 95 74 L177 39 Q206 29 237 51 L292 92 Q309 108 284 124 L205 171 Q166 191 124 177 L44 141 Q28 133 28 119Z" fill="#8acc87" stroke="#fff4d3" stroke-width="4"/><path d="M51 117 L182 56 Q199 49 224 62 L274 97 Q291 108 269 121 L197 160 Q168 174 133 163 L61 133 Q44 127 51 117Z" fill="#efb4cf"/><path d="M44 141 L125 177 Q161 191 205 171 L284 124 L284 143 L206 191 Q164 212 126 195 L44 161Z" fill="#c87da6" opacity=".68"/><path d="M95 121v-16" stroke="#438960" stroke-width="3"/><circle cx="95" cy="102" r="8" fill="#f687ad"/><circle cx="95" cy="102" r="3" fill="#fff4b1"/><path d="M119 93v-16" stroke="#438960" stroke-width="3"/><circle cx="119" cy="74" r="8" fill="#ffda69"/><circle cx="119" cy="74" r="3" fill="#fff4b1"/><path d="M219 116v-16" stroke="#438960" stroke-width="3"/><circle cx="219" cy="97" r="8" fill="#f195ce"/><circle cx="219" cy="97" r="3" fill="#fff4b1"/><path d="M240 103v-16" stroke="#438960" stroke-width="3"/><circle cx="240" cy="84" r="8" fill="#f6d15a"/><circle cx="240" cy="84" r="3" fill="#fff4b1"/><path d="M140 117 Q166 91 190 117" stroke="#fbf0d5" stroke-width="12" fill="none"/><path d="M143 119 Q166 99 188 119" stroke="#81a67d" stroke-width="3" fill="none"/><g stroke-linejoin="round"><path d="M98 117q31-27 63 0q25-23 52 2l-23 26-58 8z" fill="#b7e7c9" stroke="#5a9d78" stroke-width="3"/><path d="M111 122q25-18 43 7m12 0q16-18 32-7" fill="none" stroke="#fffbe0" stroke-width="5"/><path d="M150 135v21" stroke="#7b6a52" stroke-width="5"/><path d="M96 145q-7-12 0-21q9-9 19 0q8 12 0 21" fill="#f9bed6"/><path d="M225 133q-6-11 0-18q10-8 18 2q7 11-1 20" fill="#f8d079"/><path d="M89 158l11-15m136 4l11 14" stroke="#4d9b65" stroke-width="4"/><circle cx="99" cy="142" r="4" fill="#fff8e8"/><circle cx="239" cy="138" r="4" fill="#fff8e8"/></g></svg>`,`<svg class="dioramaSvg" viewBox="0 0 320 224" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><ellipse cx="160" cy="197" rx="129" ry="27" fill="#184f68" opacity=".14"/><path d="M28 137 Q37 102 95 91 L177 57 Q207 47 235 68 L292 109 Q306 123 284 143 L206 191 Q164 212 126 195 L44 161 Q28 153 28 137Z" fill="#747bb7"/><path d="M28 119 Q35 96 95 74 L177 39 Q206 29 237 51 L292 92 Q309 108 284 124 L205 171 Q166 191 124 177 L44 141 Q28 133 28 119Z" fill="#68baa1" stroke="#fff4d3" stroke-width="4"/><path d="M51 117 L182 56 Q199 49 224 62 L274 97 Q291 108 269 121 L197 160 Q168 174 133 163 L61 133 Q44 127 51 117Z" fill="#a4a6ef"/><path d="M44 141 L125 177 Q161 191 205 171 L284 124 L284 143 L206 191 Q164 212 126 195 L44 161Z" fill="#747bb7" opacity=".68"/><path d="M132 55 Q145 34 171 42 Q187 26 208 46 Q232 42 238 65 Q251 86 227 90 L141 90 Q115 84 132 55Z" fill="#f7f8ff" stroke="#8397bd" stroke-width="4"/><path d="M181 89 l-18 23 h15 l-12 23 34-35 h-17 l12-11" fill="#f7ce60" stroke="#d6a24f" stroke-width="2"/><path d="M111 130 Q144 111 163 130 Q183 147 216 122" fill="none" stroke="#f5f8ff" stroke-width="6" stroke-dasharray="8 6"/><g stroke-linejoin="round"><path d="M123 139l39-25 40 23-39 25z" fill="#f0f4ff" stroke="#7c8bce" stroke-width="3"/><path d="M163 126v-28" stroke="#566ab7" stroke-width="5"/><circle cx="163" cy="88" r="24" fill="#fff6cf" stroke="#6578c5" stroke-width="5"/><path d="M163 73v15l12 8" stroke="#43558c" stroke-width="4" fill="none"/><path d="M126 113c-12-17-2-30 9-38m54 39c15-18 13-31 1-40" fill="none" stroke="#eff8ff" stroke-width="4" stroke-linecap="round"/><path d="M105 140l18-9 17 9-17 10z" fill="#f9d77f"/><path d="M197 148l19-12 18 10-19 13z" fill="#94cce2"/></g></svg>`,`<svg class="dioramaSvg" viewBox="0 0 320 224" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><ellipse cx="160" cy="197" rx="129" ry="27" fill="#184f68" opacity=".14"/><path d="M28 137 Q37 102 95 91 L177 57 Q207 47 235 68 L292 109 Q306 123 284 143 L206 191 Q164 212 126 195 L44 161 Q28 153 28 137Z" fill="#248f97"/><path d="M28 119 Q35 96 95 74 L177 39 Q206 29 237 51 L292 92 Q309 108 284 124 L205 171 Q166 191 124 177 L44 141 Q28 133 28 119Z" fill="#edcf7e" stroke="#fff4d3" stroke-width="4"/><path d="M51 117 L182 56 Q199 49 224 62 L274 97 Q291 108 269 121 L197 160 Q168 174 133 163 L61 133 Q44 127 51 117Z" fill="#76d7d2"/><path d="M44 141 L125 177 Q161 191 205 171 L284 124 L284 143 L206 191 Q164 212 126 195 L44 161Z" fill="#248f97" opacity=".68"/><polygon points="160,111 172,50 198,50 212,111" fill="#fcf7e9" stroke="#247b8c" stroke-width="3"/><polygon points="172,50 185,32 199,50" fill="#f3be5b"/><rect x="179" y="51" width="13" height="18" rx="2" fill="#f4cf64"/><path d="M177 74h19 M172 91h29" stroke="#3ab1b0" stroke-width="6"/><ellipse cx="186" cy="113" rx="28" ry="8" fill="#cbeee3"/><path d="M185 32V19" stroke="#4a6d79" stroke-width="3"/><path d="M185 20 L211 26 L185 32" fill="#f6d67a"/><path d="M76 102 L76 60" stroke="#876242" stroke-width="8" stroke-linecap="round"/><path d="M77 61 Q53 35 35 59 Q65 54 77 67 M77 61 Q98 32 120 48 Q91 54 76 67 M76 63 Q59 72 58 84 Q67 75 79 69" fill="#2eaa76" stroke="#23885c" stroke-width="2"/><g stroke-linejoin="round"><path d="M124 133l37-24 42 23-41 24z" fill="#e1faf3" stroke="#36a89c" stroke-width="3"/><path d="M124 133v16l38 20v-13z" fill="#39a49b"/><path d="M162 156l41-24v17l-41 20z" fill="#167b85"/><path d="M156 122v-45" stroke="#277d89" stroke-width="9"/><path d="M145 82l12-22 12 22z" fill="#f5ce68" stroke="#fff5ce" stroke-width="3"/><path d="M151 88h11v24h-11z" fill="#ecfffb"/><path d="M145 115h24" stroke="#f4ca67" stroke-width="5"/><path d="M119 130l-14-8 14-8 14 8z" fill="#f6d578"/><path d="M214 126l12-9 13 10-12 9z" fill="#fff1c9"/><path d="M226 116v-13" stroke="#368b88" stroke-width="4"/></g></svg>`];
+let bossCleared=false;
+
+// 航線以實際地圖節點為準；不依賴固定座標，避免 4→5→6 路徑錯位。
+function alignIslandRoute(){
+ const map=document.querySelector('.adventure'), svg=map?.querySelector('.routeMap');
+ if(!map||!svg)return;
+ const nodes=[...map.querySelectorAll('.journey .mapNode')];
+ if(nodes.length!==8)return;
+ const frame=map.getBoundingClientRect();
+ const pts=nodes.map((node)=>{
+   const image=node.querySelector('.dioramaScene')||node.querySelector('.islandCard');
+   const r=image.getBoundingClientRect();
+   return {x:r.left+r.width/2-frame.left,y:r.top+r.height*.59-frame.top};
+ });
+ const w=map.clientWidth,h=map.clientHeight;
+ svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
+ svg.setAttribute('preserveAspectRatio','none');
+ // 每個相鄰站點各自有一段路線，4→5→6 可直接核對。
+ const commands=[];
+ for(let i=0;i<pts.length-1;i++){
+   const a=pts[i],b=pts[i+1],dx=b.x-a.x,dy=b.y-a.y;
+   const bend=Math.min(34,Math.abs(dx)*.13);
+   const midY=(a.y+b.y)/2;
+   commands.push(`M ${a.x.toFixed(1)} ${a.y.toFixed(1)} C ${(a.x+Math.sign(dx)*bend).toFixed(1)} ${midY.toFixed(1)}, ${(b.x-Math.sign(dx)*bend).toFixed(1)} ${midY.toFixed(1)}, ${b.x.toFixed(1)} ${b.y.toFixed(1)}`);
+ }
+ const d=commands.join(' ');
+ svg.querySelectorAll('path').forEach(p=>p.setAttribute('d',d));
+}
+let routeResizeFrame=0;
+window.addEventListener('resize',()=>{
+ cancelAnimationFrame(routeResizeFrame);
+ routeResizeFrame=requestAnimationFrame(alignIslandRoute);
+});
+
+function home(){phase='home';status.textContent='冒險地圖';const stars=completed.size;
+screen.innerHTML=`<div class="step">🏝️ PBS CHALLENGE ISLAND · MAP</div><div class="amlKicker">ALLEN MIND LAB · PBS ADVENTURE</div><h1 class="mapTitle">PBS 闖關島</h1><div class="amlMotto"><span>Building A Meaningful Life</span><small>以理解出發，讓支持更有意義</small></div><p class="mapLead">從海岸出發，集滿七顆星，沿著航線探索七座主題小島，最後前進 AML 終點站！</p><div class="adventure"><div class="seaMark" style="top:23%;left:5%">🐠</div><div class="seaMark" style="top:65%;right:4%">⛵</div><div class="seaMark" style="top:10%;right:12%">🕊️</div><div class="seaMark" style="top:82%;left:8%">🐚</div><div class="seaMark" style="top:48%;left:3%">⚓</div><div class="mapHud" aria-live="polite"><span>⭐ 已得 ${stars} / ${levels.length} 星</span><span class="mapHint">${bossCleared?'🏆 全島通關':'點亮航線 · 探索下一座島'}</span></div><section class="progressPanel" aria-label="冒險進度"><div class="progressHeader"><strong>探險完成度</strong><span>${stars}/7 座島嶼${bossCleared?' · 魔王已通關':''}</span></div><div class="progressTrack" role="progressbar" aria-label="一般島嶼通關進度" aria-valuemin="0" aria-valuemax="7" aria-valuenow="${stars}"><span style="width:${(stars/7)*100}%"></span></div><p class="progressRank">${bossCleared?'🏅 PBS 冒險大師':stars===7?'⚔️ 魔王挑戰者':stars>=4?'🧭 資深探索者':stars>=1?'⛵ 島嶼探索者':'🌊 新手冒險者'}</p></section><span class="compass" aria-hidden="true">✦</span><span class="boatMark" aria-hidden="true">⛵</span><svg class="routeMap" viewBox="0 0 800 1080" preserveAspectRatio="none" aria-hidden="true"><path class="routeShadow" d="M200 50 C520 105 650 140 590 245 S170 290 210 385 S610 440 595 545 Q555 625 430 650 T205 760 Q385 760 590 760 Q470 850 235 895 Q320 980 400 1025"/><path d="M200 50 C520 105 650 140 590 245 S170 290 210 385 S610 440 595 545 Q555 625 430 650 T205 760 Q385 760 590 760 Q470 850 235 895 Q320 980 400 1025"/></svg><div class="journey">${levels.map((l,i)=>`<div class="mapNode ${completed.has(i)?'done':''} ${i===unlocked && !completed.has(i)?'activeGoal':''} ${i>unlocked?'lockedZone':''} ${recentUnlock===i?'justUnlocked':''}">${recentUnlock===i?'<span class="unlockRibbon">NEW 解鎖</span>':''}<button class="islandCard ${islandMeta[i].klass} ${completed.has(i)?'stateDone':i>unlocked?'stateLocked':'stateOpen'}" ${i>unlocked?'disabled aria-label="第 '+(i+1)+' 關尚未解鎖"':''} onclick="start(${i})"><span class="nodeNum">${i+1}</span><span class="nodeStars">${completed.has(i)?'★':''}</span><span class="dioramaScene" aria-hidden="true">${dioramaScenes[i]}</span><span class="island3d" aria-hidden="true"><span class="terrainIcon">${i>unlocked?'🔒':islandMeta[i].terrain}</span><span class="featureIcon">${i>unlocked?'':islandMeta[i].feature}</span><span class="sceneProp prop3">${i>unlocked?'':islandMeta[i].prop}</span><span class="islandEmoji">${i>unlocked?'🔒':l.face}</span></span><span class="islandDetails"><span class="islandName">${escapeHTML(l.name)}</span><span class="islandAccent">${islandMeta[i].accent}</span><span class="islandLabel">${completed.has(i)?'★ 已通關':i>unlocked?'等待解鎖':'▶ 開始闖關'}</span></span></button></div>`).join('')}<div class="mapNode bossNode ${completed.size>=levels.length?'activeGoal':''} ${recentUnlock===levels.length?'bossOpen justUnlocked':''}">${recentUnlock===levels.length?'<span class="unlockRibbon">BOSS 已開放</span>':''}<button class="islandCard bossCard ${completed.size<levels.length?'stateLocked':'stateOpen'}" ${completed.size<levels.length?'disabled aria-label="魔王島尚未解鎖"':'onclick="bossIntro()" aria-label="挑戰魔王島"'}><span class="nodeNum">★</span><span class="nodeStars">${completed.size>=levels.length?'✦':''}</span><span class="dioramaScene" aria-hidden="true">${dioramaScenes[7]}</span><span class="island3d" aria-hidden="true"><span class="terrainIcon">✦</span><span class="featureIcon">⭐</span><span class="sceneProp prop3">🏛️</span><span class="islandEmoji">🧭</span></span><span class="islandDetails"><span class="islandName">AML 最終挑戰島</span><span class="islandAccent">Building A Meaningful Life</span><span class="islandLabel">${completed.size<levels.length?'🔒 集滿七顆星解鎖':(bossCleared?'🏆 魔王已通關':'⚔️ 雙功能 · 六字回應')}</span></span></button></div></div><p class="mapLegend">🏆 每座島過關獲得 1 星章 · 🧭 集滿七星，前進 AML 最終挑戰島：雙重功能、六字短句與專業判斷</p></div><div class="mapButtons" style="margin-top:18px"><button class="tinyBtn" onclick="resetProgress()">重設本次進度</button></div><p class="meta">不需登入、不上傳紀錄。進度只在本次開啟頁面保留。本遊戲為虛構模擬，不能取代機構危機處理規範。</p>`;requestAnimationFrame(alignIslandRoute)}
+function resetProgress(){if(!confirm('確定要重新鎖定關卡嗎？'))return;unlocked=0;completed.clear();recentUnlock=-1;bossCleared=false;home()}
+function start(n){if(n<0||n>=levels.length||n>unlocked)return;recentUnlock=-1;game={n,stage:0,crisis:0,history:[],pending:null,investigated:new Set(),reviewedClues:new Set()};status.textContent=`第 1 / ${levels[n].levels.length} 回合`;phase='intro';const l=levels[n], m=islandMeta[n];screen.innerHTML=`<div class="step">${escapeHTML(l.name)}</div><section class="islandIntroCard"><div class="introTop"><span class="introFace" aria-hidden="true">${l.face}</span><div><div class="introName">${escapeHTML(l.name)}</div><div class="introDesc">${escapeHTML(m?.desc||'闖關挑戰')}</div></div></div><div class="introTags"><span class="introTag">${escapeHTML(m?.accent||'PBS 闖關')}</span><span class="introTag">共 ${l.levels.length} 回合</span></div><div class="bubble">${escapeHTML(l.intro)}</div><button class="act" onclick="question()">開始挑戰 →</button></section>`}
+function characterScene(emoji,mood,label){return `<div class="characterStage" data-mood="${mood}"><div class="charHalo" aria-hidden="true"></div><div class="charIcon" aria-hidden="true">${emoji}</div><span class="charMood">${label}</span></div>`}
+function endingScene(ok,boss){return `<section class="endingStage ${ok?'clear':'over'}" role="status"><div class="endingIcon" aria-hidden="true">${ok?'🏆':'🌪️'}</div><div class="endingName">${ok?(boss?'BOSS CLEAR!':'STAGE CLEAR!'):'GAME OVER'}</div><p class="endingSub">${ok?'成功完成這場模擬挑戰':'危機持續升高，重新嘗試不同策略'}</p></section>`}
+const clinicalLens=[
+ {cue:'確認活動結束的預告方式、理解能力與偏好；不可僅從拒絕推定逃避功能。',observe:'留意預告是否可理解、活動轉換中的主動選擇及後續參與。'},
+ {cue:'先辨識任務難度、教學方式、可求助管道及環境壓力。',observe:'記錄獨立完成程度、求助與替代溝通，而非只有有無完成。'},
+ {cue:'同時評估飢餓、食物取得規則、等待能力與可理解的提示。',observe:'確認是否理解分配、可使用等待提示，並維持其他人的安全與尊嚴。'},
+ {cue:'夜間行為須同時考量疼痛、睡眠、光線與其他健康警訊。',observe:'留意不適徵象；必要時依照護規範尋求醫護評估。'},
+ {cue:'洗澡拒絕可能涉及水聲、水溫、隱私、自主性或疼痛。',observe:'觀察不適的位置與溝通方式，避免強拉或未經同意的介入。'},
+ {cue:'先以當事人可接受的方式確認感受，不假設自己已完全理解。',observe:'尊重其拒絕展示的意願，提供不被公開評價的選擇。'},
+ {cue:'情緒週期屬教學化框架，須配合個人基準與事件前後脈絡。',observe:'特別區分風暴後短暫安靜、身心逐步恢復與日常平穩。'}
+];
+function clinicalPrompt(n){const lens=clinicalLens[n];return `<details class="clinicalLens"><summary>🔎 作答前：有哪些線索還需要確認？</summary><p>${escapeHTML(lens.cue)}</p><p><strong>後續觀察：</strong>${escapeHTML(lens.observe)}</p></details>`}
+// v5.8：局部關卡可選擇查閱額外情境線索；線索純屬虛構模擬資料。
+const investigationCases={
+ '0-1':{label:'查看活動轉換紀錄',summary:'過去三次都在片尾尚未結束時要求關機；有提供結束倒數時，轉換較順利。',caution:'仍須確認對方是否理解時間提示，以及下一個活動是否可接受。'},
+ '1-0':{label:'查看任務設計與前因',summary:'雅琳可獨立完成第一題；第二題改為雙步驟後，曾兩度主動求助但未獲即時協助。',caution:'現有資料支持評估技能及求助管道，不能直接斷言唯一行為功能。'},
+ '4-0':{label:'查看浴室環境線索',summary:'今天洗澡水聲較大，且小柏在水還沒接觸身體前就停在門口；尚未詢問其感受。',caution:'還需評估水溫、隱私、疼痛、健康與自主選擇，不宜直接定義為感官逃避。'},
+ '5-0':{label:'查看互動前後脈絡',summary:'服務對象早些時候曾主動靠近工作人員；被要求等候後才提高音量。',caution:'可能涉及互動需求，也可能同時有其他因素，須跨時段記錄。'}
+};
+function investigationPanel(){
+ const key=game.n+'-'+game.stage, record=investigationCases[key];
+ if(!record)return '';
+ const opened=!!game.investigated?.has(key);
+ const id='investigation-note-'+game.n+'-'+game.stage;
+ return `<section class="investigationBox" aria-label="額外情境線索"><div class="investigationCaption">🧭 進階線索 · 可選擇查閱</div><button class="investigationButton" type="button" onclick="revealInvestigation()" aria-expanded="${opened}" aria-controls="${id}">${opened?'▴ 收合線索':'🔎 '+escapeHTML(record.label)}</button><div id="${id}" class="investigationNote" ${opened?'':'hidden'}><strong>模擬觀察：</strong>${escapeHTML(record.summary)}<p><strong>判斷限制：</strong>${escapeHTML(record.caution)}</p></div></section>`;
+}
+function revealInvestigation(){
+ if(phase!=='question')return;
+ const key=game.n+'-'+game.stage;
+ if(!investigationCases[key])return;
+ game.investigated??=new Set();
+ if(game.investigated.has(key))game.investigated.delete(key);
+ else {game.investigated.add(key);game.reviewedClues.add(key);}
+ const target=document.querySelector('.investigationBox');
+ if(target)target.outerHTML=investigationPanel();
+ const btn=document.querySelector('.investigationButton');
+ if(btn)btn.focus({preventScroll:true});
+}
+function question(){phase='question';let sc=levels[game.n].levels[game.stage];status.textContent=`第 ${game.stage+1} / ${levels[game.n].levels.length} 回合`;let current=game.pending;let txt=current?.follow || sc.line;screen.innerHTML=`<div class="step">${escapeHTML(levels[game.n].name)} · ${levels[game.n].kind==='cycle'?'週期辨識':game.stage===2?'第 3 回合':game.stage===1?'第 2 回合':'情境開始'}</div>${characterScene(current?.face||sc.face,game.crisis>=2?'crisis':game.crisis===1?'uneasy':'calm','觀察行為')}<div class="bubble">${escapeHTML(txt)}</div>${clinicalPrompt(game.n)}${investigationPanel()}${meter(game.crisis)}<div class="prompt">${levels[game.n].kind==='cycle'?'依這段事件脈絡，哪個階段最符合？':'依目前線索，哪個行動較適切？'}</div><div class="choices">${shuffle(sc.choices).map((c,i)=>`<button class="choice" onclick="choose(${sc.choices.indexOf(c)})">${String.fromCharCode(65+i)}. ${escapeHTML(c.t)}</button>`).join('')}</div>`;game.pending=null}
+function choose(i){
+ if(phase!=='question')return;
+ let sc=levels[game.n].levels[game.stage],c=sc.choices[i],isCycle=levels[game.n].kind==='cycle';
+ game.history.push({question:sc.line,choice:c.t,reply:c.reply,why:c.why,reviewedEvidence:!!game.reviewedClues?.has(game.n+'-'+game.stage),assessment:c.effect===1?'較符合劇本目標':c.conditional?'有條件可考慮，須補充後續支持':c.effect===0?'仍有待處理需求':'可能升高模擬風險'});
+ game.crisis=Math.max(0,Math.min(3,game.crisis+(isCycle?(c.effect===1?-1:1):(c.effect===-1?2:c.effect===0?(c.conditional?0:1):-1))));
+ last=c;phase='reaction';
+ const failed=game.crisis>=3,pass=c.effect>0;
+ const headline=isCycle?(failed?'🔎 辨識需再練習':pass?'✨ 符合本題線索':'🔎 再核對線索'):(failed?'⚡ 模擬風險升高':pass?'🌿 劇本設定的支持方向':(c.conditional?'🧭 有條件的暫時作法':'↗ 仍有未處理需求'));
+ const ico=isCycle?sc.face:(failed?'🌪️':pass?'😌':'😕');
+ const whyText=c.why||'請結合前因、環境及服務對象的個別支持計畫進一步判斷。';const interpretation= isCycle?'辨識依情境線索進行；不同時點可能需要更多觀察。':(c.effect===1?'本題評分代表較符合預設支持方向，不代表已確認功能或保證有效。':c.conditional?'此做法可能在特定條件下短暫降低負荷；仍需說明期限、後續支持與安全追蹤，不能視為完整策略。':c.effect===0?'此選項可能暫時改變情境，但不等於需求已獲完整支持。':'此選項在本劇本可能增加風險；請回到安全、環境與溝通支持重新判斷。');
+ screen.innerHTML=`<div class="step">${isCycle?'情緒週期辨識回饋':'服務對象的模擬反應'}</div>${characterScene(ico,failed?'crisis':pass?'calm':'uneasy',failed?'模擬風險升高':pass?'觀察後續反應':'持續觀察')}<div class="reaction reactionFocus"><div class="resultTitle ${failed?'bad':pass?'good':'neutral'}">${headline}</div><div class="resultText">${escapeHTML(c.reply)}</div></div><section class="pbsReason" aria-label="PBS 思考提示"><div class="pbsReasonTitle">🧠 PBS 思考提示</div><p>${escapeHTML(whyText)}</p><p class="pbsInterpret">${escapeHTML(interpretation)}</p><p class="pbsInterpret"><strong>驗證提醒：</strong>${escapeHTML(clinicalLens[game.n].observe)}</p><small>${isCycle?'此為訓練案例中的最佳辨識；真實情境須綜合時間與多項線索。':'上述反應是其中一種可能的劇本發展，不代表真實個案必然如此。'}</small></section>${isCycle?'<p class="meta">本關容許兩次辨識失誤；累積三次需重新挑戰。</p>':meter(game.crisis)}<button class="act" onclick="advance()">${failed?'查看本次結果':'下一個情境 →'}</button>`;
+ game.fail=failed;
+}
+function advance(){if(game.fail){finish(false);return}game.stage++;if(game.stage>=levels[game.n].levels.length){finish(true);return}game.pending={follow:levels[game.n].levels[game.stage].line,face:levels[game.n].levels[game.stage].face};question()}
+function finish(success){phase='finish';status.textContent='挑戰結束';if(success){const firstClear=!completed.has(game.n);completed.add(game.n);unlocked=Math.max(unlocked,Math.min(game.n+1,levels.length-1));recentUnlock=firstClear?(completed.size===levels.length?levels.length:game.n+1):-1}let h=game.history;screen.innerHTML=`<div class="step">${escapeHTML(levels[game.n].name)} · 結局</div>${endingScene(success,false)}${success?'<div class="starAward" aria-label="獲得一顆通關星章"><span class="star" aria-hidden="true">★</span></div><div class="awardText">星章 +1 · 解鎖冒險旅程</div>':''}<p class="prompt">${success?(game.n<levels.length-1?'地圖新島已解鎖，獲得一顆星！':'七星收集完成！魔王島已開放。'):levels[game.n].kind==='cycle'?'週期判斷錯誤累積，重新挑戰！':'本次劇本判定風險達臨界，回顧情境線索後再挑戰。'}</p><button class="act" onclick="start(${game.n})">🔄 再挑戰一次</button><button class="act alt" onclick="home()">🏝️ 返回闖關地圖</button><details><summary>回顧本次選項與專業反思</summary><ol>${h.map(x=>`<li><strong>${escapeHTML(x.choice)}</strong><br><em>${escapeHTML(x.assessment||'')}</em><br>${escapeHTML(x.reply)}<br><small>${escapeHTML(x.why)}</small></li>`).join('')}</ol><p>本遊戲採預設劇本分支。現實事件需依個別支持計畫、即時風險及專業判斷處理；不能以偶然停止行為認定處置必然適切。</p></details>`}
+
+// 魔王島：只有直接對服務對象的短句採六字限制；專業判斷題不限字數。各場有雙重功能假設。
+// 使用固定情境分支，非臨床效果預測；危機時僅提供安全層面的選擇，不提供限制技術。
+const bossRounds=[
+ {title:'第一戰｜影片與餐廳',icon:'📺',dual:['延續影片','逃避吵雜'],opening:'😠「我還要看！」\n小安摀住耳朵。',
+  turns:[
+   {scene:'小安抱住遙控器，不願走向餐廳。',choices:[
+    {say:'「先不急」',needs:[],delta:0,reply:'小安不再喊叫，卻仍摀著耳朵。',tip:'減少催促有幫助，但兩項需求仍未釐清。'},
+    {say:'「看完這段」',needs:[0],delta:-1,reply:'小安看回螢幕，卻仍盯著吵雜的餐廳。',tip:'照顧了影片結束點，未處理環境刺激。'},
+    {say:'「我陪你走」',needs:[1],delta:0,reply:'小安走到門邊，聽到餐廳聲音又退回沙發。',tip:'陪伴可能有幫助，但需要具體降低感官負荷。'},
+    {say:'「現在去吃」',needs:[],delta:2,reply:'小安用力敲桌：「不要！」',tip:'直接施壓可能讓情緒升高。'}]},
+   {scene:'影片快結束，餐廳的聲音更大了。',choices:[
+    {say:'「先去安靜處」',needs:[1],delta:-1,reply:'小安移到門外安靜處，仍指著電視。',tip:'處理環境需求，還要建立活動結束的安排。'},
+    {say:'「待會再看」',needs:[0],delta:-1,reply:'小安問：「真的？」並望向餐廳。',tip:'回應偏好活動，但仍需處理餐廳刺激。'},
+    {say:'「你要守規矩」',needs:[],delta:2,reply:'小安抓緊遙控器，開始尖叫。',tip:'反覆說理未處理目前的兩個需求。'},
+    {say:'「我們先等等」',needs:[],delta:0,reply:'小安暫時不喊，但一直在原處徘徊。',tip:'等待可能爭取時間，但困難仍存在。'}]}
+  ,{scene:'接著，影片畫面停住了；餐廳仍很吵。',choices:[
+    {say:'「先到安靜處」',needs:[1],delta:-1,reply:'小安離開吵雜門口，指著暫停的畫面。',tip:'回應感官負荷，但仍要提供可預期的影片安排。'},
+    {say:'「影片先保留」',needs:[0],delta:-1,reply:'小安確認影片保留後，開始注意餐廳方向。',tip:'建立可預期性，仍須處理環境刺激。'},
+    {say:'「看完再去」',needs:[0],delta:0,reply:'小安繼續看影片，餐廳聲響仍讓他摀耳。',tip:'單處理偏好活動，環境問題持續。'},
+    {say:'「現在就走」',needs:[],delta:2,reply:'小安退到沙發後面，情緒再次升高。',tip:'增加要求卻未處理雙重需求。'}]}
+  ]},
+ {title:'第二戰｜物品與關注',icon:'🧩',dual:['取得偏好物','尋求互動'],opening:'😤「這個我要！」\n阿泰拿著他人的拼圖。',
+  turns:[
+   {scene:'阿泰拿起拼圖，頻頻看著同仁。',choices:[
+    {say:'「你想一起玩？」',needs:[1],delta:-1,reply:'阿泰點點頭，但仍緊握拼圖。',tip:'捕捉互動需求，仍需處理物品使用界線。'},
+    {say:'「我們來借」',needs:[0],delta:-1,reply:'阿泰看看拼圖主人，又望向你。',tip:'提供取得物品的適切途徑，但互動需要仍待回應。'},
+    {say:'「不准拿！」',needs:[],delta:2,reply:'阿泰後退並大聲說：「我的！」',tip:'喝止可能升高衝突，且未提供替代做法。'},
+    {say:'「我幫你拿」',needs:[0],delta:0,reply:'阿泰高興了，卻直接把拼圖塞進口袋。',tip:'取得物品不等於符合界線，也未建立互動方式。'}]},
+   {scene:'阿泰又看向你，指著桌上的拼圖。',choices:[
+    {say:'「一起問他？」',needs:[0,1],delta:-2,reply:'阿泰把拼圖放回桌面，拉著你一起詢問。',tip:'同時建立互動與取得物品的適切途徑。'},
+    {say:'「先還給他」',needs:[0],delta:0,reply:'阿泰放回拼圖，卻用力拍桌吸引注意。',tip:'物品界線重要，但還需建立適當的互動方式。'},
+    {say:'「自己去玩」',needs:[],delta:1,reply:'阿泰敲桌，反覆看向工作人員。',tip:'未回應互動及物品的需求。'},
+    {say:'「我在這裡」',needs:[1],delta:-1,reply:'阿泰靠近你，手仍放在拼圖上。',tip:'有回應互動，但需補充物品使用協商。'}]}
+  ,{scene:'拼圖主人走近，阿泰又望向工作人員。',choices:[
+    {say:'「一起徵求同意」',needs:[0,1],delta:-2,reply:'阿泰與你一起詢問，等待對方回答。',tip:'尊重物品界線，同時給予互動支持。'},
+    {say:'「我們輪流玩」',needs:[0,1],delta:-1,reply:'阿泰看向主人，願意討論輪流。',tip:'需徵得物品主人同意，並提供互動支持。'},
+    {say:'「我陪你等」',needs:[1],delta:-1,reply:'阿泰靠近你，但仍伸手拿拼圖。',tip:'互動需求稍有回應，物品界線仍要支持。'},
+    {say:'「不許再拿」',needs:[],delta:2,reply:'阿泰大聲反駁，把拼圖抱得更緊。',tip:'未提供可行的替代取得與互動方法。'}]}
+  ]},
+ {title:'第三戰｜冷靜與二次風暴',icon:'🌪️',dual:['逃避當下要求','尋求可預期的安全感'],opening:'😮‍💨 風暴剛過。\n小安坐下，仍緊握雙手。',
+  turns:[
+   {scene:'小安停止推物，但呼吸仍很快。',choices:[
+    {say:'「先休息」',needs:[0],delta:-1,reply:'小安點頭坐著，仍不希望他人靠近。',tip:'暫停要求，但仍需要可預期且低刺激的支持。'},
+    {say:'「我在旁邊」',needs:[1],delta:-1,reply:'小安看你一眼，呼吸仍快。',tip:'有助安全感，也要尊重距離及避免增加要求。'},
+    {say:'「現在道歉」',needs:[],delta:3,reply:'小安突然站起身，推開椅子。第二次風暴！',tip:'過早追究可能再次升高。'},
+    {say:'「沒事了吧」',needs:[],delta:1,reply:'小安皺眉：「我還沒好！」',tip:'安靜不代表恢復。'}]},
+   {scene:'小安看向門口，仍然不願說話。',choices:[
+    {say:'「需要我退開？」',needs:[0,1],delta:-2,reply:'小安點頭，工作人員保持安全觀察，他漸漸放鬆。',tip:'兼顧距離自主性、可預期性與安全觀察。'},
+    {say:'「可以慢慢來」',needs:[0],delta:-1,reply:'小安稍微放鬆，仍不時望向門口。',tip:'降低要求，但仍要留意對環境及安全感的需求。'},
+    {say:'「我們講清楚」',needs:[],delta:2,reply:'小安再次提高音量：「不要！」',tip:'時機未到的說理可能帶來二次升高。'},
+    {say:'「我會等你」',needs:[1],delta:-1,reply:'小安安靜了一些，但仍緊繃。',tip:'支持可預期性，仍須留意其距離及自主性。'}]}
+  ,{scene:'小安坐著不說話，手仍緊繃。',choices:[
+    {say:'「我在這裡等」',needs:[1],delta:-1,reply:'小安看你一眼，逐漸放鬆。',tip:'維持可預期陪伴，仍需尊重距離。'},
+    {say:'「先不用回答」',needs:[0,1],delta:-2,reply:'小安點頭，安全觀察持續，呼吸放慢。',tip:'降低要求並明確保留自主空間。'},
+    {say:'「要不要喝水」',needs:[1],delta:0,reply:'小安搖頭，身體仍然緊繃。',tip:'善意提議不一定符合當下需要，應觀察接受程度。'},
+    {say:'「現在說清楚」',needs:[],delta:3,reply:'小安再次推開椅子，情緒迅速升高。',tip:'過早追問可能造成二次升高。'}]}
+  ]}
+
+,{title:'第四戰｜任務與聲響',icon:'🧠',dual:['逃避困難任務','降低環境聲響'],opening:'雅琳推開工作紙，也摀住耳朵。',turns:[
+ {mode:'analysis',scene:'紀錄顯示，題目變難及環境吵雜時，都較容易離席。哪項判斷最合適？',choices:[
+ {say:'將任務難度及聲響列為兩項待驗證功能假設，蒐集 ABC 資料。',needs:[0,1],delta:-1,reply:'團隊開始分別記錄任務難度與環境條件。',tip:'不能只憑行為表現判定功能。'},
+ {say:'摀耳就證明是感官功能，不必再看任務難度。',needs:[1],delta:1,reply:'降低噪音後，雅琳仍推開過難的工作紙。',tip:'忽略任務因素。'},
+ {say:'推紙就是逃避工作，不必再考慮聲音。',needs:[0],delta:1,reply:'減少題量後，雅琳仍因吵雜而離席。',tip:'忽略環境因素。'},
+ {say:'先強迫完成，再來討論原因。',needs:[],delta:2,reply:'雅琳更焦躁，停止參與。',tip:'當下增加壓力可能升高危機。'}]},
+ {mode:'strategy',scene:'資料支持兩種功能假設。接下來採取哪種組合策略？',choices:[
+ {say:'降低任務難度、提供求助方式，同時調整座位與聲響。',needs:[0,1],delta:-2,reply:'雅琳願意嘗試一小題，並使用求助卡。',tip:'同時回應兩項需求。'},
+ {say:'只取消作業，其他都不調整。',needs:[0],delta:0,reply:'雅琳離開桌面，仍摀著耳朵。',tip:'未處理環境負荷。'},
+ {say:'只提供耳罩，原本難度維持不變。',needs:[1],delta:1,reply:'聲響改善了，雅琳仍然拒絕作業。',tip:'未處理任務可及性。'},
+ {say:'反覆提高音量解釋規矩。',needs:[],delta:2,reply:'雅琳的呼吸加快，離開座位。',tip:'未回應兩項需求。'}]},
+ {mode:'team',scene:'策略實施後，團隊如何評估效果？',choices:[
+ {say:'同時追蹤任務參與、聲響、替代溝通及個人舒適程度。',needs:[0,1],delta:-1,reply:'團隊能辨識有效支持並進一步調整。',tip:'追蹤不應只看外顯問題行為。'},
+ {say:'只要沒有推紙，就等於全部解決。',needs:[],delta:1,reply:'推紙變少，但雅琳仍頻繁遮耳。',tip:'單一指標不足以確認改善。'},
+ {say:'只記錄完成題數，不記錄環境。',needs:[0],delta:1,reply:'資料無法說明聲響因素。',tip:'遺漏第二項需求。'},
+ {say:'以不配合記錄所有事件。',needs:[],delta:2,reply:'團隊無法釐清真正需要的支持。',tip:'標籤不能取代功能評估。'}]}
+ ]}
+,{title:'第五戰｜外出與等待',icon:'⏳',dual:['取得偏好活動','取得可預期時間資訊'],opening:'阿泰一直問外出時間，並拉著同仁往門口走。',turns:[
+ {mode:'analysis',scene:'外出是偏好活動，接駁車卻延誤且未通知。合理的功能假設？',choices:[
+ {say:'同時想盡快外出，也可能需要明確的時間資訊。',needs:[0,1],delta:-1,reply:'團隊確認期待活動與時間不確定性兩條線索。',tip:'需透過平日資料與觀察驗證。'},
+ {say:'只是吸引注意，忽略就好。',needs:[],delta:1,reply:'阿泰繼續詢問並拉人。',tip:'不能憑重複提問推定功能。'},
+ {say:'只要告知時間，活動期待不重要。',needs:[1],delta:1,reply:'阿泰仍一直往門口走。',tip:'忽略偏好活動需求。'},
+ {say:'隨便保證五分鐘內出發。',needs:[0],delta:2,reply:'承諾落空後，阿泰更加激動。',tip:'不可靠的承諾增加不確定性。'}]},
+ {mode:'communication',scene:'阿泰問：「現在走？」車還沒到。請選擇一句簡短回應。',choices:[
+ {say:'「車還沒到」',needs:[1],delta:-1,reply:'阿泰往門口看，仍期待出發。',tip:'給予真實資訊，仍要安排等待支持。'},
+ {say:'「一起看時間」',needs:[1],delta:-1,reply:'阿泰願意查看更新的時間表。',tip:'提供具體且可理解的時間提示。'},
+ {say:'「馬上就走」',needs:[0],delta:1,reply:'未能出發後，阿泰開始拍門。',tip:'不應做無法確定的承諾。'},
+ {say:'「不要再問」',needs:[],delta:2,reply:'阿泰情緒升高，反覆拉人。',tip:'喝止沒有回應需求。'}]},
+ {mode:'strategy',scene:'主管確認延後十五分鐘，團隊如何調整？',choices:[
+ {say:'更新視覺時間表、提供可選的等待活動，時間再變動時主動告知。',needs:[0,1],delta:-2,reply:'阿泰願意參與短暫活動，也會查看時間提示。',tip:'同時回應偏好活動與可預期性。'},
+ {say:'只給他時鐘，其他事情不管。',needs:[1],delta:1,reply:'阿泰仍不斷走向出口。',tip:'活動期待仍待處理。'},
+ {say:'直接取消外出，不說明也不安排替代活動。',needs:[],delta:2,reply:'阿泰持續追問並變得不安。',tip:'增加不確定性。'},
+ {say:'只拿點心轉移注意，不更新時間資訊。',needs:[0],delta:0,reply:'阿泰短暫安靜，又開始追問時間。',tip:'短暫轉移不等於回應時間資訊。'}]}
+ ]}
+];
+const bossH=b=>String(b).replaceAll('「','').replaceAll('」','');
+function bossIntro(){if(completed.size<levels.length)return;phase='bossIntro';status.textContent='魔王島';screen.innerHTML=`<div class="step">🌋 最終魔王島</div><div class="portrait">🌋</div><div class="bubble">雙重功能 × 進階混合挑戰</div><p class="prompt">五場 BOSS 戰，每戰三回合。完成整場後才會出現檢查點。<br>短暫緩和不代表兩項需求都獲支持。</p><p class="bossHint">此為虛構劇情，僅訓練判斷，不預測真實反應。</p><button class="act" onclick="bossStart()">⚔️ 開始魔王戰</button><button class="act alt" onclick="home()">回闖關地圖</button>`}
+function bossStart(){bossGame={round:0,turn:0,risk:0,covered:new Set(),log:[],waiting:false,checkpoint:null};bossSaveCheckpoint();bossQuestion()}
+function bossSaveCheckpoint(){const g=bossGame;g.checkpoint={round:g.round,risk:g.risk,logLength:g.log.length}}
+function bossRetryRound(){const g=bossGame;if(!g?.checkpoint){bossStart();return}const c=g.checkpoint;g.round=c.round;g.turn=0;g.risk=c.risk;g.covered=new Set();g.log=g.log.slice(0,c.logLength);g.waiting=false;bossQuestion()}
+function bossIntermission(){const g=bossGame;phase='bossIntermission';status.textContent='已通過 '+g.round+' / '+bossRounds.length+' 場';
+screen.innerHTML=`<div class="bossCheckpoint" role="status"><div class="checkIcon">⭐</div><h2>第 ${g.round} 戰 CLEAR!</h2><p>兩項功能假設已納入適切支持策略</p><div class="checkLine">進度 ${g.round} / ${bossRounds.length}　·　下一關：${escapeHTML(bossRounds[g.round].title)}</div></div><button class="act" onclick="bossQuestion()">⚔️ 挑戰下一場</button><button class="act alt" onclick="home()">🏝️ 結束本次，返回地圖</button><p class="meta">檢查點僅供本次魔王挑戰失敗時重試；返回地圖不會儲存魔王進度。</p>`}
+
+function bossBranchScene(g){const b=bossRounds[g.round]; const prior=g.log[g.log.length-1];if(!prior)return b.turns[1].scene;if(g.round>=3)return b.turns[g.turn].scene;const covered=prior.needs||[]; if(g.round===0)return covered.includes(0)?'影片接近尾聲，小安不再喊叫，卻一直摀著耳朵。':covered.includes(1)?'小安不再摀耳，卻繼續盯著電視不願離開。':'小安提高音量，仍抱住遙控器。';if(g.round===1)return covered.includes(0)?'物品有了處理方向，阿泰卻一直望向同仁。':covered.includes(1)?'阿泰願意靠近工作人員，仍抓著別人的拼圖。':'阿泰又敲桌，頻繁看向工作人員。';return covered.includes(0)?'小安稍微安靜了，卻仍不讓人靠近。':covered.includes(1)?'小安聽見有人陪伴，卻皺眉避開新的要求。':'小安坐著不說話，緊握雙拳。'}
+function bossRiskDisplay(risk){const level=Math.max(0,Math.min(4,risk));const percent=Math.round(level/3*100);const text=level===0?'目前平穩':level===1?'需要留意':level===2?'危機升高':'危機臨界';return `<div class="bossRisk" data-risk="${level}" role="group" aria-label="模擬危機狀態"><div class="bossRiskHead"><span>🌡️ 危機升溫條</span><span>${text}</span></div><div class="bossRiskTrack" role="progressbar" aria-label="情境危機程度" aria-valuemin="0" aria-valuemax="3" aria-valuenow="${Math.min(3,level)}" aria-valuetext="${text}"><div class="bossRiskFill" style="--danger:${Math.min(100,percent)}%"></div></div><div class="bossRiskDesc">僅為遊戲劇本中的危機指標，不是臨床評估，也不保證真實結果。</div></div>`}
+function bossQuestion(){if(!bossGame||bossGame.round>=bossRounds.length)return;phase='bossQuestion';const g=bossGame,b=bossRounds[g.round],t=b.turns[g.turn];status.textContent=`BOSS ${g.round+1}/${bossRounds.length} · ${g.turn+1}/${b.turns.length}`;
+let reordered=shuffle(t.choices.map((c,i)=>({c,i}))); const sceneText=g.turn===0?b.opening:(g.turn===1?bossBranchScene(g):t.scene);
+screen.innerHTML=`<div class="step">${escapeHTML(b.title)} · ${g.turn+1}/${b.turns.length}</div><div class="portrait">${b.icon}</div><div class="bubble" style="white-space:pre-line">${escapeHTML(sceneText)}</div><div class="prompt">${t.mode==='communication'||!t.mode?'六字內，你會說什麼？':t.mode==='analysis'?'辨識雙重功能假設':t.mode==='team'?'選擇團隊評估方案':'選擇整合支持策略'}</div><div class="choices">${reordered.map(o=>`<button class="choice ${t.mode&&t.mode!=='communication'?'bossChoiceLong':'bossChoice'}" onclick="bossChoose(${o.i})">${escapeHTML(o.c.say)} ${!t.mode||t.mode==='communication'?`<small style="font-size:13px;color:#63747b">${Array.from(bossH(o.c.say)).length}字</small>`:''}</button>`).join('')}</div>${bossRiskDisplay(g.risk)}`}
+function bossChoose(i){if(phase!=='bossQuestion')return;const g=bossGame,b=bossRounds[g.round],c=b.turns[g.turn].choices[i];if((!b.turns[g.turn].mode||b.turns[g.turn].mode==='communication')&&Array.from(bossH(c.say)).length>6){alert('魔王島口語回應不得超過六字');return} // A choice that escalates risk is not evidence of appropriate support, even if a function is mentioned.
+if(c.delta<=0)c.needs.forEach(n=>g.covered.add(n));g.risk=Math.max(0,Math.min(4,g.risk+c.delta));g.log.push({round:g.round,turn:g.turn,say:c.say,reply:c.reply,tip:c.tip,needs:c.needs,appropriate:c.delta<=0});
+let partial=g.turn>=1&&g.covered.size<2;let reaction=c.reply;
+if(g.turn===1 && partial && g.risk<3){g.risk=Math.min(4,g.risk+1);reaction+=' 剛緩和的反應又開始波動。'}
+if(g.turn===2 && partial && g.risk<3){g.risk=Math.min(4,g.risk+1);reaction+=' 另一項需求仍可能造成後續困難。'}
+const fail=g.risk>=3;g.waiting=fail;phase='bossReaction';screen.innerHTML=`<div class="step">${escapeHTML(b.title)} · 接著出現的反應</div><section class="stormStage" data-risk="${Math.min(g.risk,4)}">${characterScene(fail?'🌪️':g.risk===0?'😌':'😟',fail?'crisis':g.risk===0?'calm':'uneasy',fail?'風暴警示':'持續觀察')}<div class="stormEvent">${fail?'風暴警示':partial?'尚有需求未獲回應':'持續觀察中'}</div><div class="bossReaction">${escapeHTML(reaction)}</div></section><div class="bossResultBanner ${!fail&&g.risk===0?'safe':''}" role="status">${fail?'⚡ 危機升溫！':partial?'⚠️ 暫時緩和，仍有需求':'情境持續發展…'}</div>${bossRiskDisplay(g.risk)}<button class="act" onclick="bossNext()">${fail?'查看結果':'下一步 →'}</button>`}
+function bossNext(){
+ const g=bossGame;
+ if(g.waiting){bossEnd(false,'危機已達臨界，先回顧安全與支持策略。');return}
+ g.turn++;
+ if(g.turn>=bossRounds[g.round].turns.length){
+   if(g.covered.size<2){
+      g.log.push({round:g.round,turn:3,say:'回合檢核',reply:'尚未對兩項功能假設採取足夠的適切支持。',tip:'三回合內須對兩項功能假設採取適切支持；僅提及需求或短暫安靜都不代表支持完成。',needs:[]});
+      bossEnd(false,'尚未對兩項功能假設採取足夠的適切支持；可重新挑戰並調整策略。');return;
+   }
+   g.round++;g.turn=0;g.covered=new Set();g.risk=Math.max(0,g.risk-1);
+   if(g.round>=bossRounds.length){bossEnd(true);return}
+   bossSaveCheckpoint();bossIntermission();return;
+ }
+ bossQuestion();
+}
+function bossEnd(success,reason=''){if(success)bossCleared=true;phase='bossEnd';status.textContent='魔王結局';let txt=success?'🌟 BOSS CLEAR！':'🌪️ 挑戰未完成！';screen.innerHTML=`${!success&&reason.startsWith('尚未')?'<section class="endingStage over" role="status"><div class="endingIcon" aria-hidden="true">🔎</div><div class="endingName">TRY AGAIN</div><p class="endingSub">尚未充分支持雙重功能假設</p></section>':endingScene(success,true)}${success?'<div class="masterAward" role="status"><div class="masterMedal" aria-hidden="true">🏅</div><strong>全島通關！</strong><span>PBS 冒險大師</span><small>七島星章 × 五場雙重功能挑戰</small><em>Building A Meaningful Life</em></div>':''}<p class="prompt">${success?'完成五場雙重功能挑戰！':escapeHTML(reason||'重新觀察兩項需求，換一條路線再試！')}</p>${!success&&bossGame.checkpoint?'<button class="act" onclick="bossRetryRound()">🔁 從本場重新挑戰</button>':''}<button class="act alt" onclick="bossStart()">🔄 從第一戰重來</button><button class="act alt" onclick="home()">🏝️ 返回地圖</button><details><summary>通關後看短句回應與專業決策解析</summary><div class="bossSummary"><p>五戰的行為功能假設（需依個案資料驗證）：</p><ol>${bossRounds.map(b=>`<li>${escapeHTML(b.title)}：${b.dual.map(escapeHTML).join(' ＋ ')}</li>`).join('')}</ol><p>你的選擇與劇本模擬反應（並非真實個案的預測）：</p><ol>${bossGame.log.map(e=>`<li><strong>${escapeHTML(e.say)}</strong> → ${escapeHTML(e.reply)}<div>${escapeHTML(e.tip)}</div></li>`).join('')}</ol><p>單一回應不必同時解決兩種需求；關鍵在連續觀察與支持。安全風險時應優先依專業及機構危機程序處理。本遊戲不提供真實行為預測。</p></div></details>`}
+
+// Announce concise state changes, rather than reading the whole game screen on every mutation.
+const gameAnnouncement=document.querySelector('#game-announcement');
+let announcedState='';
+const renderObserver=new MutationObserver(()=>{
+  const currentState=phase+'|'+status.textContent;
+  const changedScreen=currentState!==announcedState;
+  if(changedScreen){
+    announcedState=currentState;
+    const labels={question:'請閱讀情境並選擇策略',reaction:'已顯示模擬反應與 PBS 提示',finish:'本次挑戰結果已顯示',bossQuestion:'魔王島新回合，請選擇策略',bossReaction:'魔王島回饋已顯示',bossEnd:'魔王島結果已顯示'};
+    gameAnnouncement.textContent=(status.textContent||'PBS 闖關島')+'。'+(labels[phase]||'畫面已更新');
+    // A transition must explicitly establish the new reading position.
+    // Do not rely on the browser's transient body-focus state after innerHTML replacement.
+    sceneFocus();
+  }else if(!screen.contains(document.activeElement) &&
+           (document.activeElement===document.body || !document.activeElement?.isConnected)){
+    // An unexpected removal may also orphan keyboard focus.
+    sceneFocus();
+  }
+});
+renderObserver.observe(screen,{childList:true});
+home();
+</script></body></html>
