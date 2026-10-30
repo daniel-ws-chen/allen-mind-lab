@@ -54,6 +54,11 @@
 - 目前僅完成開發分支上的原始碼修正，**未完成實機 Android/iOS、NVDA、VoiceOver、200%/400% 縮放、色彩對比或跨瀏覽器驗收**。
 - 不應僅因標章已取得就認定新功能自動通過無障礙審查；發布前須確認認證維護要求。
 
+## 0.8 後續：可重複檢查機制
+- 已新增獨立 GitHub Actions 工作流程 `.github/workflows/aml-decision-simulator-qa.yml`，在影響模擬艙的 Pull Request 上執行 `node decision-simulator/test-routes.cjs`。
+- 這是**結構性回歸防線**，不取代真實手機、鍵盤完整操作、螢幕閱讀器、色彩對比、WCAG 人工審核或專家內容審查。
+- [ ] 確認 GitHub Actions 首次實際執行結果為綠燈。
+
 ## 發布前必須完成（尚未驗收）
 - [x] 第二、三階段加入依前一階段選擇切換的情境文字（規則式分支）。
 - [x] 81 組決策路徑的資料完整性與分支索引自動化檢查已通過（結構與可達性）。
