@@ -13,6 +13,15 @@ const assert = require("node:assert/strict");
       const errors=[];
       page.on("pageerror",e=>errors.push(e.message));
       await page.goto("file://"+path.resolve(__dirname,"index.html"));
+      // Verify natural Tab and Shift+Tab navigation from the focused stage heading.
+      assert.equal(await page.locator("#stepTitle").evaluate(e=>document.activeElement===e),true,"initial heading must receive focus");
+      await page.keyboard.press("Tab");
+      assert.equal(await page.locator("#actions button").first().evaluate(e=>document.activeElement===e),true,"Tab should reach first option");
+      await page.keyboard.press("Tab");
+      assert.equal(await page.locator("#actions button").nth(1).evaluate(e=>document.activeElement===e),true,"Tab should reach second option");
+      await page.keyboard.press("Shift+Tab");
+      assert.equal(await page.locator("#actions button").first().evaluate(e=>document.activeElement===e),true,"Shift+Tab should return to first option");
+      await page.locator("#stepTitle").focus();
       for(const [label,idx] of [["PBS 正向行為支持",0],["管理學",1],["身心障礙服務知能",2]]){
         // Independent complete three-stage pathway on each viewport.
         await page.getByRole("button",{name:label,exact:true}).click();
