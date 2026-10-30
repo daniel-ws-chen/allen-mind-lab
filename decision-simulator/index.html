@@ -13,7 +13,7 @@
 <section class="panel"><h2>探索說明</h2><p>這裡不打分、不排名，也不判定您的專業資格。請根據情境選擇您可能採取的做法，觀察示意性的後續情節，再思考其他可能。</p><p class="warning">本平台使用虛構案例與規則式分支，不是臨床、法律或管理專業決策建議。遇到立即安全風險，請依現場安全程序尋求協助。請勿輸入任何真實個案個資。</p></section>
 <section class="panel" id="app" aria-labelledby="stepTitle"><h2 id="stepTitle">選擇探索領域</h2><div id="body"><p>請選擇一個主題開始。</p></div><div id="actions" class="choices"></div></section>
 <section class="panel" id="historyPanel" hidden><h2>我的決策探索紀錄</h2><ol id="log"></ol><p class="subtle">此紀錄僅在當前網頁開啟期間保留，重新整理即可清除；不會傳送至伺服器。</p></section>
-<footer><p><a href="/">Allen Mind Lab 首頁</a> · <a href="/self-study">進階自學室</a></p><small>AML Decision Simulator 0.1 · AML 3.3 候選功能 · 測試版，尚未正式上線</small></footer>
+<footer><p><a href="/">Allen Mind Lab 首頁</a> · <a href="/self-study">進階自學室</a></p><small>AML Decision Simulator 0.3 · AML 3.3 候選功能 · 測試版，尚未正式上線</small></footer>
 </main>
 <script>
 "use strict";
@@ -27,7 +27,7 @@ pbs:{name:"PBS 正向行為支持",stages:[
 {label:"提供短暫延長與清楚結束提示，教導表達休息需求",reaction:"小宇願意看提示卡，但仍需要時間轉換。",reflection:"您同時考慮兩種需求，也應觀察此安排是否有助於自主表達。",tag:"support"},
 {label:"只把問題視為逃避，持續要求立即參加",reaction:"小宇再次拒絕，團隊尚未回應平板需求。",reflection:"單一功能假設可能忽略其他維持因素。",tag:"pressure"},
 {label:"完全取消後續活動且不安排溝通練習",reaction:"小宇保持平靜，但活動與替代技能都未有後續安排。",reflection:"短期平靜不等於支持目標已全部達成。",tag:"pause"}]},
-{scene:"團隊討論後，希望逐步恢復有意義的參與。小宇已能使用簡單圖卡提出需求。",options:[
+{scene:"團隊準備重新檢視活動參與的支持方式，並評估是否需要進一步教導替代溝通。",options:[
 {label:"先邀請短時間參與，並保留可使用的休息選項",reaction:"小宇先在活動區旁觀，再嘗試參與部分活動。",reflection:"請思考如何與本人共同確認參與目標，並持續記錄生活品質。",tag:"support"},
 {label:"要求一次補足全部缺席活動時間",reaction:"小宇猶豫並再次遠離活動區。",reflection:"即使情緒降低，也需留意突然增加要求的影響。",tag:"pressure"},
 {label:"僅以沒有再尖叫作為介入成功的證據",reaction:"團隊無法確認溝通技能及活動參與是否改善。",reflection:"PBS 成效不宜僅依單一問題行為指標判定。",tag:"pause"}]}
@@ -41,7 +41,7 @@ management:{name:"管理學",stages:[
 {label:"與團隊及住民代表檢視替代方案與分工",reaction:"討論出短時活動與必要照護安排，但需要再確認執行能力。",reflection:"您把資源配置與服務權益一起納入考慮。",tag:"support"},
 {label:"忽略不同意見，直接公布原班表",reaction:"執行速度快，但第一線風險資訊沒有充分進入決策。",reflection:"何時須立即指揮，何時適合參與式決策？",tag:"pressure"},
 {label:"將爭議全部延後，由個別同仁自行決定",reaction:"不同班別採取不同標準，容易出現協作落差。",reflection:"授權仍需要共同底線與回報機制。",tag:"pause"}]},
-{scene:"一天結束後，沒有發生重大意外，但活動參與率下降，團隊感到疲憊。",options:[
+{scene:"一天結束後，未通報重大意外，但部分活動參與受到影響，團隊也感到疲憊。",options:[
 {label:"檢視工作負荷、參與品質與備援流程",reaction:"團隊形成可供下次應變的紀錄與建議。",reflection:"除了是否出事，也應重視員工可持續性與服務品質。",tag:"support"},
 {label:"只因沒有重大事件就判定安排完美",reaction:"部分風險與經驗沒有被記錄。",reflection:"無事故並不等於決策沒有改善空間。",tag:"pressure"},
 {label:"只要求同仁下次更努力",reaction:"團隊缺乏可操作的流程改善。",reflection:"系統性問題通常不能只靠個人努力解決。",tag:"pause"}]}
@@ -55,7 +55,7 @@ disability:{name:"身心障礙服務知能",stages:[
 {label:"和本人規劃交通練習及可選擇的協助方式",reaction:"服務對象參與練習，並提出想先由支持者陪同一次。",reflection:"支持是讓人逐步增加選擇機會，不是永遠替他決定。",tag:"support"},
 {label:"直接規定所有外出都必須家屬陪同",reaction:"可降低部分風險，但限制超過目前已確認的需求。",reflection:"限制措施是否符合比例原則，應持續檢視。",tag:"pressure"},
 {label:"只提供一張地圖，不確認是否能實際使用",reaction:"當事人仍不確定臨時狀況如何求助。",reflection:"資訊提供與能力支持之間，可能還有落差。",tag:"pause"}]},
-{scene:"練習後，當事人願意嘗試部分自行移動，團隊需要安排後續支持與回饋。",options:[
+{scene:"團隊需要與當事人確認下一步行動，並討論後續支持與回饋方式。",options:[
 {label:"共同決定下一步，並設定可調整的求助安排",reaction:"本人與團隊確認可執行的支持方式，保留重新調整的空間。",reflection:"請思考如何避免支持逐漸轉化為不必要的控制。",tag:"support"},
 {label:"無期限要求完全由工作人員陪同",reaction:"短期安排清楚，但自主練習的機會受到限制。",reflection:"安全措施是否能逐步檢討並調整？",tag:"pressure"},
 {label:"活動後不再追蹤經驗與感受",reaction:"團隊難以得知此安排對生活品質及自主感的影響。",reflection:"服務效果也需要由當事人的觀點理解。",tag:"pause"}]}
@@ -63,13 +63,13 @@ disability:{name:"身心障礙服務知能",stages:[
 const branchScenes={
 pbs:[
 ["工作人員放慢步調後，小宇仍握著平板，開始看向視覺提示。您需要進一步確認他的需要。","要求收起平板後，小宇明顯後退。團隊須先確認現場安全與如何降低壓力。","暫停要求後，小宇逐漸安靜，但是否願意活動轉換尚不明朗。"],
-["先前的溝通提示讓小宇願意指向需求圖卡，但他仍希望保留觀看時間。","小宇在再度要求下開始提高音量，現場需要先評估風險並重新調整支持方式。","小宇暫時沒有衝突，卻尚未開始練習替代溝通或逐步參與。"]],
+["在先前的溝通安排後，小宇願意看一看需求圖卡，但仍希望保留觀看時間。","小宇在再度要求下開始提高音量，現場需要先評估風險並重新調整支持方式。","小宇暫時沒有衝突，卻尚未開始練習替代溝通或逐步參與。"]],
 management:[
 ["完成任務優先序盤點後，團隊開始討論如何兼顧住民活動與必要照護。","所有任務照舊執行後，同仁反映負荷明顯升高，部分服務內容可能延遲。","活動全面取消後，住民希望知道是否有替代安排，團隊仍需重新溝通。"],
-["經過跨角色討論，團隊形成替代活動與支援安排，仍須確認可行性。","維持原班表後，有同仁反映重要風險訊息沒有被納入安排。","分散決策後，不同班別做法不一致，需要建立基本協作原則。"]],
+["團隊討論了替代活動與支援安排，仍須確認是否能實際執行。","維持原班表後，有同仁反映重要風險訊息沒有被納入安排。","分散決策後，不同班別做法不一致，需要建立基本協作原則。"]],
 disability:[
 ["確認當事人意願後，發現其願意練習交通，但希望保留自行決定的機會。","活動取消後，當事人再次提出外出意願，團隊須重新討論合理支持。","直接外出安排後，轉車與緊急求助資訊尚不清楚，應補足必要支持。"],
-["與本人一起練習後，當事人希望先嘗試短距離自行移動。","固定陪同的安排雖降低部分擔憂，但當事人希望有更多自主練習。","提供路線圖後，當事人對突發轉車與迷路應變仍感到不確定。"]]
+["在與本人討論及練習後，當事人希望先嘗試短距離自行移動。","固定陪同的安排雖降低部分擔憂，但當事人希望有更多自主練習。","提供路線圖後，當事人對突發轉車與迷路應變仍感到不確定。"]]
 };
 function sceneFor(key,index,history){if(index===0)return catalog[key].stages[0].scene;const previous=history[index-1];return branchScenes[key][index-1][previous.choice]+" "+catalog[key].stages[index].scene;}
 const title=document.getElementById("stepTitle"),body=document.getElementById("body"),actions=document.getElementById("actions"),log=document.getElementById("log"),historyPanel=document.getElementById("historyPanel");
