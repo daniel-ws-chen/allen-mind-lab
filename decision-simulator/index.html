@@ -109,7 +109,8 @@ function sceneFor(key,index,history){if(index===0)return catalog[key].stages[0].
 const title=document.getElementById("stepTitle"),body=document.getElementById("body"),actions=document.getElementById("actions"),log=document.getElementById("log"),historyPanel=document.getElementById("historyPanel");
 let current=null,stage=0,path=[];const status=document.getElementById("status");
 function clear(){actions.replaceChildren();body.replaceChildren();status.textContent="";}
-function paragraph(t,cls){const p=document.createElement("p");p.textContent=t;if(cls)p.className=cls;return p;}\nfunction infoBlock(label,value,kind){const box=document.createElement("div");box.className="info-block info-"+kind;const heading=document.createElement("strong");heading.textContent=label;box.append(heading,paragraph(value));return box;}
+function paragraph(t,cls){const p=document.createElement("p");p.textContent=t;if(cls)p.className=cls;return p;}
+function infoBlock(label,value,kind){const box=document.createElement("div");box.className="info-block info-"+kind;const heading=document.createElement("strong");heading.textContent=label;box.append(heading,paragraph(value));return box;}
 function btn(label,fn,primary=false){const b=document.createElement("button");b.type="button";b.textContent=label;if(primary)b.className="primary";b.addEventListener("click",fn);actions.append(b);}
 function focusTitle(){title.setAttribute("tabindex","-1");title.focus({preventScroll:true});}
 function start(){current=null;stage=0;path=[];log.replaceChildren();historyPanel.hidden=true;title.textContent="選擇探索領域";clear();body.append(paragraph("請選擇領域，探索三階段情境、不同策略及可能後果。不計分，也不評定個人能力。"));for(const [key,data] of Object.entries(catalog))btn(data.name,()=>scenario(key));focusTitle();}
