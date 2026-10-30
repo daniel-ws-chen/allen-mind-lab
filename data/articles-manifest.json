@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-14T07:05:00.000Z",
+  "generatedAt": "2026-10-31T00:00:00.000+08:00",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 79,
+    "total": 80,
     "ot": 29,
     "mind": 14,
     "pbs": 19,
     "education": 16,
     "management": 41,
     "ai": 27,
-    "notes": 12
+    "notes": 13
   },
   "featuredReading": [
     "pbs-support-transition-real-life",
@@ -78,6 +78,42 @@
     }
   },
   "articles": [
+    {
+      "slug": "aml-accessibility-25-days",
+      "title": "歷經 25 天的網站閉關修練，無障礙標章 GET！",
+      "summary": "歷經 25 天的網站閉關修練，AML 正式取得無障礙網站 A 級標章。這段反覆檢測與修正的歷程，也重新提醒我們：網站能看見，不代表每個人都能使用。",
+      "date": "2026-10-31",
+      "domains": [
+        "notes"
+      ],
+      "primaryDomain": "notes",
+      "crossDomains": [],
+      "tag": "AML Notes",
+      "cardMeta": "2026.10.31 · AML Notes",
+      "keywords": [
+        "AML 3.5",
+        "無障礙網站",
+        "網站開發",
+        "資訊可近用性"
+      ],
+      "articlePath": "/articles/aml-accessibility-25-days.html",
+      "order": -22,
+      "canonical": "https://allenmindlab.com/articles/aml-accessibility-25-days",
+      "hero": "/images/articles/aml-accessibility-25-days-hero.webp",
+      "ogImage": "/images/articles/aml-accessibility-25-days-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇小品 ← 讓光慢慢發生",
+          "href": "/articles/let-light-gently-grow.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": true
+    },
     {
       "slug": "local-success-overall-dilemma",
       "title": "局部的成功，有時候正是整體困境的開始",
