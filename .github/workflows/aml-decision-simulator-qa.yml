@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'decision-simulator/**'
+      - 'tools.html'
       - '.github/workflows/aml-decision-simulator-qa.yml'
   workflow_dispatch:
 permissions:
@@ -26,3 +27,5 @@ jobs:
         run: node decision-simulator/test-browser.cjs
       - name: Automated WCAG A/AA scans on interactive states
         run: node decision-simulator/test-axe.cjs
+      - name: Validate three-bay navigation links and anchors
+        run: node decision-simulator/test-navigation.cjs
