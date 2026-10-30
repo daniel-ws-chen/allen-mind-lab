@@ -9,7 +9,8 @@ const assert=require("node:assert/strict");
  const browser=await chromium.launch({headless:true});
  try {
   for(const width of [320,390,1280]){
-   const page=await browser.newPage({viewport:{width,height:850}});
+   const context=await browser.newContext({viewport:{width,height:850}});
+   const page=await context.newPage();
    await page.goto("file://"+path.resolve(__dirname,"index.html"));
    const scan=async(label)=>{
     const result=await new AxeBuilder({page}).withTags(["wcag2a","wcag2aa","wcag21a","wcag21aa","wcag22aa"]).analyze();
@@ -22,7 +23,7 @@ const assert=require("node:assert/strict");
    await scan(width+"px stage");
    await page.locator("#actions button").first().click();
    await scan(width+"px outcome");
-   await page.close();
+   await context.close();
   }
   console.log("PASS: axe-core automated WCAG A/AA checks on entry, decision and outcome states at three viewport widths.");
   console.log("Manual assistive technology, contrast judgment, content review, zoom and device tests remain required.");
