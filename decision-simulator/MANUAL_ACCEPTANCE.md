@@ -4,6 +4,15 @@
 
 > 本表是操作記錄，不代表通過。實測人員須填入裝置、瀏覽器版本、輔助科技版本、檢查者、日期、結果、證據連結；不得預先勾選合格。
 
+## 2026-10-30 最新驗收證據與限制（以此區為準）
+- **最新 PR head**：`4be038e251684e85bd7fa3d185d23288ba428e42`，GitHub Actions **#41080251079 已完成、結果 success**。
+- **最新已驗證程式內容**：`db0b0834efcda51a317eadba7cd90243c60215de`（新增色塊、逐階段專家觀點、總結與三篇文章推薦）；PR head 的後續提交只更新離線附件打包設定。
+- **最新離線測試附件**：[下載 AML 3.3 色塊版](https://github.com/daniel-ws-chen/allen-mind-lab/actions/runs/41080251079/artifacts/12988274578)。
+- 本表早期出現的 `f5075a7` 屬於**舊候選版**，請勿拿來代表本輪驗收。
+- GitHub 自動化測試已通過：情境結構、Chromium 桌面／手機尺寸、鍵盤流程、導覽與 axe-core 掃描；這些均**不能取代** NVDA／TalkBack、手機實機、專業審稿、網站回歸與人工對比檢視。
+- 目前 PR #40 仍為 draft，尚未合併。正式站 `main` 的 `tools.html` 未見新增決策模擬艙入口；在線網站及標章連結的外部抓取無法完成，因此**沒有聲稱實際網站回歸或標章現況已驗收**。
+- 人工檢查項目均保持未勾選；實際操作人員應登錄環境、執行結果及證據後，才能變更發布判定。
+
 ## 最簡單的電腦端快速試玩（不需安裝程式）
 - 前往固定版本的 [決策模擬艙 HTML 原始檔](https://github.com/daniel-ws-chen/allen-mind-lab/blob/f5075a76d41b3529c10919905068b1fcd5596b5c/decision-simulator/index.html)。
 - 在 GitHub 檔案頁選擇 **Raw**，再以瀏覽器「另存新檔」存為 `aml-decision-simulator-rc.html`（檔案類型選 HTML，避免存成 `.txt`）。
