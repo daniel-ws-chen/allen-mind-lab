@@ -4,9 +4,9 @@ import { join, dirname, resolve, relative } from 'node:path';
 import { spawnSync } from 'node:child_process';
 
 const root = process.cwd();
-const DOMAIN_PAGES = { ot:'ot.html', mind:'mind.html', pbs:'pbs.html', education:'education.html', management:'management.html', ai:'ai.html' };
-const DOMAIN_LABELS = { ot:'OT & Human Occupation', mind:'Mind & Well-being', pbs:'PBS', education:'Education', management:'Management & Leadership', ai:'AI × Practice' };
-const DOMAIN_HUB_LABELS = { ot:'OT 特色館', mind:'Mind 特色館', pbs:'PBS 特色館', education:'Education 特色館', management:'Management 特色館', ai:'AI 特色館' };
+const DOMAIN_PAGES = { ot:'ot.html', mind:'mind.html', pbs:'pbs.html', education:'education.html', management:'management.html', ai:'ai.html', notes:'notes.html' };
+const DOMAIN_LABELS = { ot:'OT & Human Occupation', mind:'Mind & Well-being', pbs:'PBS', education:'Education', management:'Management & Leadership', ai:'AI × Practice', notes:'AML Notes' };
+const DOMAIN_HUB_LABELS = { ot:'OT 特色館', mind:'Mind 特色館', pbs:'PBS 特色館', education:'Education 特色館', management:'Management 特色館', ai:'AI 特色館', notes:'AML 小品集' };
 const READING_PATHS = {
   management:{page:'management-learning.html',label:'管理實務學習'},
   pbs:{page:'pbs-learning.html',label:'PBS 實務學習'},
@@ -53,7 +53,7 @@ function validateConfig(c){
   c.heroAlt ??= `${c.title} AML 主視覺`;
   c.articleRole ??='Article'; c.collectionRole ??='';
   c.featured ??=false; c.featuredRank ??=null;
-  c.isNote ??=false; c.readingPaths ??=[]; c.homepageFeatured ??=false; c.practiceBridge ??=null;
+  c.isNote ??=false; if(c.domains.includes('notes')) c.isNote=true; c.readingPaths ??=[]; c.homepageFeatured ??=false; c.practiceBridge ??=null;
   if(c.practiceBridge){
     const reqBridge=['label','title','desc','href','cta'];
     const missBridge=reqBridge.filter(k=>!c.practiceBridge[k]);
@@ -290,9 +290,9 @@ function prepare(c){
   const m2=newManifest(c,structuredClone(m)); write(join(changes,'data','articles-manifest.json'),jsonPretty(m2));
   // Library + domain pages
   write(join(changes,'library.html'),updateLibraryPage(read(join(root,'library.html')),c,m2.counts.total));
-  for(const d of c.domains){ const f=DOMAIN_PAGES[d]; const cc={...c,primaryDomain:d}; write(join(changes,f),updateDomainPage(read(join(root,f)),cc,m2.counts[d])); }
+  for(const d of c.domains){ if(d==='notes') continue; const f=DOMAIN_PAGES[d]; const cc={...c,primaryDomain:d}; write(join(changes,f),updateDomainPage(read(join(root,f)),cc,m2.counts[d])); }
   // Optional collection / curation surfaces
-  if(c.isNote) write(join(changes,'notes.html'),updateNotesPage(read(join(root,'notes.html')),c));
+  if(c.isNote || c.domains.includes('notes')) write(join(changes,'notes.html'),updateNotesPage(read(join(root,'notes.html')),c));
   for(const rp of c.readingPaths){ const info=READING_PATHS[rp.id]; const f=info.page; const source=existsSync(join(changes,f))?read(join(changes,f)):read(join(root,f)); write(join(changes,f),updateReadingPathPage(source,c,rp)); }
   if(c.homepageFeatured) write(join(changes,'index.html'),updateHomepageFeatured(read(join(root,'index.html')),c));
   // sitemap/rss
