@@ -90,7 +90,7 @@
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel{min-width:230px}
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--home::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--home::before{background:#d7a84f;box-shadow:0 0 13px rgba(215,168,79,.38)}
       .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--management::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--management::before{background:#7da9ff;box-shadow:0 0 13px rgba(125,169,255,.42)}
-      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--pbs::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--pbs::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}
+      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--pbs::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--pbs::before{background:#8bf2c6;box-shadow:0 0 13px rgba(139,242,198,.42)}\n      .aml-nav-group[data-aml-study-nav] .aml-nav-panel .aml-study-subnav--disability::before,.aml-nav-group[data-aml-selfstudy-nav] .aml-nav-panel .aml-study-subnav--disability::before{background:#d7a84f;box-shadow:0 0 13px rgba(215,168,79,.36)}
       .aml-nav-group .aml-nav-panel a:hover,.aml-nav-group .aml-nav-panel a:focus-visible{background:linear-gradient(90deg,rgba(215,168,79,.08),rgba(111,103,255,.04));outline:none}
       .aml-nav-group[data-aml-collection-nav] .aml-nav-panel{min-width:270px}
       .aml-nav-group[data-aml-collection-nav] .aml-nav-panel a.aml-collection-entry--overview{font-weight:800;color:#173d63;padding-top:.9rem;padding-bottom:.85rem}
@@ -258,12 +258,25 @@
         existingStudyNav.setAttribute('data-aml-study-nav', 'true');
         existingStudyNav.removeAttribute('data-aml-selfstudy-nav');
       }
+      const studyItems = [
+        {href:'/self-study.html', className:'aml-study-subnav aml-study-subnav--home', label:'進階自學室總覽'},
+        {href:'/management-self-study.html', className:'aml-study-subnav aml-study-subnav--management', label:'管理學自學'},
+        {href:'/pbs-self-study.html', className:'aml-study-subnav aml-study-subnav--pbs', label:'PBS 自學'},
+        {href:'/disability-self-study.html', className:'aml-study-subnav aml-study-subnav--disability', label:'認識身心障礙自學'}
+      ];
+      if (existingStudyNav) {
+        const panel = existingStudyNav.querySelector(':scope > .aml-nav-panel');
+        if (panel) {
+          panel.textContent = '';
+          studyItems.forEach(item => {
+            const a=document.createElement('a');
+            a.href=item.href; a.className=item.className; a.textContent=item.label;
+            panel.appendChild(a);
+          });
+        }
+      }
       if (!existingStudyNav) {
-        const studyNav = makeDetails('進階自學室', 'amlStudyNav', [
-          {href:'/self-study.html', className:'aml-study-subnav aml-study-subnav--home', label:'進階自學室總覽'},
-          {href:'/management-self-study.html', className:'aml-study-subnav aml-study-subnav--management', label:'管理學自學'},
-          {href:'/pbs-self-study.html', className:'aml-study-subnav aml-study-subnav--pbs', label:'PBS 自學'}
-        ]);
+        const studyNav = makeDetails('進階自學室', 'amlStudyNav', studyItems);
         const directStudy = Array.from(links.querySelectorAll('a[href="/self-study.html"], a.aml-nav-direct')).find((a) =>
           a.getAttribute('href') === '/self-study.html' || a.textContent.trim() === '進階自學室'
         );
@@ -311,13 +324,14 @@
       let n=studyLabel.nextElementSibling;
       while(n && !n.classList.contains('aml-mobile-label')){
         const next=n.nextElementSibling;
-        if (n.matches('a[href="/self-study.html"],a[href="/management-self-study.html"],a[href="/pbs-self-study.html"]')) n.remove();
+        if (n.matches('a[href="/self-study.html"],a[href="/management-self-study.html"],a[href="/pbs-self-study.html"],a[href="/disability-self-study.html"]')) n.remove();
         n=next;
       }
       const sh=document.createElement('a'); sh.href='/self-study.html'; sh.className='aml-study-subnav aml-study-subnav--home'; sh.textContent='進階自學室總覽';
       const sm=document.createElement('a'); sm.href='/management-self-study.html'; sm.className='aml-study-subnav aml-study-subnav--management'; sm.textContent='管理學自學';
       const sp=document.createElement('a'); sp.href='/pbs-self-study.html'; sp.className='aml-study-subnav aml-study-subnav--pbs'; sp.textContent='PBS 自學';
-      studyLabel.after(sh,sm,sp);
+      const sd=document.createElement('a'); sd.href='/disability-self-study.html'; sd.className='aml-study-subnav aml-study-subnav--disability'; sd.textContent='認識身心障礙自學';
+      studyLabel.after(sh,sm,sp,sd);
     });
   }
 
@@ -1214,7 +1228,8 @@
       const hub = document.createElement('a'); hub.href='/self-study.html'; hub.textContent='進階自學室';
       const m = document.createElement('a'); m.href='/management-self-study.html'; m.textContent='管理學自學';
       const p = document.createElement('a'); p.href='/pbs-self-study.html'; p.textContent='PBS 自學';
-      group.append(hub,m,p);
+      const d = document.createElement('a'); d.href='/disability-self-study.html'; d.textContent='認識身心障礙自學';
+      group.append(hub,m,p,d);
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncAdvancedSelfStudy, {once:true});

@@ -1,13 +1,13 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-31T00:00:00.000+08:00",
+  "generatedAt": "2026-10-31T11:26:00.000+08:00",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 80,
-    "ot": 29,
-    "mind": 14,
-    "pbs": 19,
+    "total": 89,
+    "ot": 38,
+    "mind": 15,
+    "pbs": 23,
     "education": 16,
     "management": 41,
     "ai": 27,
@@ -75,9 +75,385 @@
         "ai-review-quality-collaboration",
         "ai-manager-leadership-human-ai-collaboration"
       ]
+    },
+    "disability-support-knowledge-series": {
+      "title": "認識身心障礙｜AML 知識庫系列",
+      "description": "制度 → 功能 → 障礙輪廓 → 支持 → PBS → 溝通 → AAC → 老化 → 現場判斷",
+      "items": [
+        "disability-system-map",
+        "icf-life-function",
+        "disability-profiles-service-focus",
+        "support-not-doing-for",
+        "behavior-as-message-pbs",
+        "disability-communication-skills",
+        "aac-more-than-speech",
+        "disability-aging-care",
+        "disability-service-field-judgment"
+      ]
     }
   },
   "articles": [
+    {
+      "slug": "disability-system-map",
+      "title": "認識身心障礙的制度地圖：從定義、八大類別到鑑定制度",
+      "summary": "從臺灣身心障礙鑑定新制、八大類別與需求評估出發，理解制度分類是服務入口，不是對一個人的完整定義。",
+      "date": "2026-10-31",
+      "domains": [
+        "ot"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [],
+      "tag": "OT & Human Occupation",
+      "cardMeta": "2026.10.31 · OT & Human Occupation",
+      "keywords": [
+        "身心障礙",
+        "八大類別",
+        "身心障礙鑑定",
+        "需求評估",
+        "ICF"
+      ],
+      "articlePath": "/articles/disability-system-map.html",
+      "order": -31,
+      "canonical": "https://allenmindlab.com/articles/disability-system-map",
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.webp",
+      "series": [
+        {
+          "id": "disability-support-knowledge-series",
+          "stage": 1
+        }
+      ],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [
+        "disability-support-knowledge-series"
+      ],
+      "isNote": false
+    },
+    {
+      "slug": "icf-life-function",
+      "title": "從障礙分類到生活功能：用 ICF 重新理解一個人",
+      "summary": "用 ICF 從身體功能、活動、參與與環境重新理解身心障礙，從「他是哪一類」走向「怎麼讓他生活得更好」。",
+      "date": "2026-10-31",
+      "domains": [
+        "ot"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [],
+      "tag": "OT & Human Occupation",
+      "cardMeta": "2026.10.31 · OT & Human Occupation",
+      "keywords": [
+        "ICF",
+        "生活功能",
+        "活動",
+        "參與",
+        "環境因素"
+      ],
+      "articlePath": "/articles/icf-life-function.html",
+      "order": -30,
+      "canonical": "https://allenmindlab.com/articles/icf-life-function",
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.webp",
+      "series": [
+        {
+          "id": "disability-support-knowledge-series",
+          "stage": 2
+        }
+      ],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [
+        "disability-support-knowledge-series"
+      ],
+      "isNote": false
+    },
+    {
+      "slug": "disability-profiles-service-focus",
+      "title": "看懂常見障礙特質：從診斷輪廓到服務重點",
+      "summary": "整理智能障礙、自閉症、視聽覺障礙、肢體與多重障礙等常見服務線索，避免把診斷變成固定標籤。",
+      "date": "2026-10-31",
+      "domains": [
+        "ot"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [],
+      "tag": "OT & Human Occupation",
+      "cardMeta": "2026.10.31 · OT & Human Occupation",
+      "keywords": [
+        "智能障礙",
+        "自閉症",
+        "視覺障礙",
+        "聽覺障礙",
+        "肢體障礙",
+        "多重障礙"
+      ],
+      "articlePath": "/articles/disability-profiles-service-focus.html",
+      "order": -29,
+      "canonical": "https://allenmindlab.com/articles/disability-profiles-service-focus",
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.webp",
+      "series": [
+        {
+          "id": "disability-support-knowledge-series",
+          "stage": 3
+        }
+      ],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [
+        "disability-support-knowledge-series"
+      ],
+      "isNote": false
+    },
+    {
+      "slug": "support-not-doing-for",
+      "title": "好的服務不是幫他做完：從照顧走向支持",
+      "summary": "從等待、提示、示範、環境調整到部分與完全協助，思考如何在安全、自主與能力之間找到適切支持。",
+      "date": "2026-10-31",
+      "domains": [
+        "ot",
+        "pbs"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [
+        "pbs"
+      ],
+      "tag": "OT & Human Occupation × PBS",
+      "cardMeta": "2026.10.31 · OT & Human Occupation × PBS",
+      "keywords": [
+        "支持",
+        "自主",
+        "過度協助",
+        "照顧",
+        "環境調整"
+      ],
+      "articlePath": "/articles/support-not-doing-for.html",
+      "order": -28,
+      "canonical": "https://allenmindlab.com/articles/support-not-doing-for",
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.webp",
+      "series": [
+        {
+          "id": "disability-support-knowledge-series",
+          "stage": 4
+        }
+      ],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [
+        "disability-support-knowledge-series"
+      ],
+      "isNote": false
+    },
+    {
+      "slug": "behavior-as-message-pbs",
+      "title": "當行為成為訊息：從功能分析到正向行為支持",
+      "summary": "從 ABC 紀錄、四項常見行為功能假設、前事策略與替代行為，建立第一線 PBS 的基本思考。",
+      "date": "2026-10-31",
+      "domains": [
+        "pbs",
+        "ot"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [
+        "ot"
+      ],
+      "tag": "PBS × OT & Human Occupation",
+      "cardMeta": "2026.10.31 · PBS × OT & Human Occupation",
+      "keywords": [
+        "PBS",
+        "正向行為支持",
+        "ABC",
+        "行為功能",
+        "替代行為",
+        "情緒週期"
+      ],
+      "articlePath": "/articles/behavior-as-message-pbs.html",
+      "order": -27,
+      "canonical": "https://allenmindlab.com/articles/behavior-as-message-pbs",
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.webp",
+      "series": [
+        {
+          "id": "disability-support-knowledge-series",
+          "stage": 5
+        }
+      ],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [
+        "disability-support-knowledge-series"
+      ],
+      "isNote": false
+    },
+    {
+      "slug": "disability-communication-skills",
+      "title": "當溝通方式不同：身心障礙者的互動與溝通技巧",
+      "summary": "從接收、理解、表達、等待與非語言訊息，重新理解身心障礙服務中的有效溝通。",
+      "date": "2026-10-31",
+      "domains": [
+        "ot",
+        "pbs"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [
+        "pbs"
+      ],
+      "tag": "OT & Human Occupation × PBS",
+      "cardMeta": "2026.10.31 · OT & Human Occupation × PBS",
+      "keywords": [
+        "溝通技巧",
+        "身心障礙",
+        "等待",
+        "理解",
+        "非語言溝通"
+      ],
+      "articlePath": "/articles/disability-communication-skills.html",
+      "order": -26,
+      "canonical": "https://allenmindlab.com/articles/disability-communication-skills",
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.webp",
+      "series": [
+        {
+          "id": "disability-support-knowledge-series",
+          "stage": 6
+        }
+      ],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [
+        "disability-support-knowledge-series"
+      ],
+      "isNote": false
+    },
+    {
+      "slug": "aac-more-than-speech",
+      "title": "說不出口，不代表沒有話要說：認識輔助與替代溝通 AAC",
+      "summary": "AAC 不只是一台電子設備，也不只給完全沒有口語的人；從手勢、圖卡、文字到溝通裝置，重點是增加可用的表達道路。",
+      "date": "2026-10-31",
+      "domains": [
+        "ot"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [],
+      "tag": "OT & Human Occupation",
+      "cardMeta": "2026.10.31 · OT & Human Occupation",
+      "keywords": [
+        "AAC",
+        "輔助溝通",
+        "替代溝通",
+        "溝通板",
+        "圖卡"
+      ],
+      "articlePath": "/articles/aac-more-than-speech.html",
+      "order": -25,
+      "canonical": "https://allenmindlab.com/articles/aac-more-than-speech",
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.webp",
+      "series": [
+        {
+          "id": "disability-support-knowledge-series",
+          "stage": 7
+        }
+      ],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [
+        "disability-support-knowledge-series"
+      ],
+      "isNote": false
+    },
+    {
+      "slug": "disability-aging-care",
+      "title": "當障礙遇上老化：身心障礙者的功能退化與照顧重點",
+      "summary": "面對身心障礙者老化，以個人基準線辨識新的功能變化，避免把所有退化都歸因原有障礙或正常老化。",
+      "date": "2026-10-31",
+      "domains": [
+        "ot",
+        "mind"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [
+        "mind"
+      ],
+      "tag": "OT & Human Occupation × Mind & Well-being",
+      "cardMeta": "2026.10.31 · OT & Human Occupation × Mind & Well-being",
+      "keywords": [
+        "老化",
+        "失智",
+        "智能障礙",
+        "功能退化",
+        "基準線"
+      ],
+      "articlePath": "/articles/disability-aging-care.html",
+      "order": -24,
+      "canonical": "https://allenmindlab.com/articles/disability-aging-care",
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.webp",
+      "series": [
+        {
+          "id": "disability-support-knowledge-series",
+          "stage": 8
+        }
+      ],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [
+        "disability-support-knowledge-series"
+      ],
+      "isNote": false
+    },
+    {
+      "slug": "disability-service-field-judgment",
+      "title": "從看見需求到做出支持：身心障礙服務的現場判斷",
+      "summary": "用八個問題整合安全、功能、接收、理解、表達、自主與變化，避免第一線服務太快下結論。",
+      "date": "2026-10-31",
+      "domains": [
+        "ot",
+        "pbs"
+      ],
+      "primaryDomain": "ot",
+      "crossDomains": [
+        "pbs"
+      ],
+      "tag": "OT & Human Occupation × PBS",
+      "cardMeta": "2026.10.31 · OT & Human Occupation × PBS",
+      "keywords": [
+        "身心障礙服務",
+        "現場判斷",
+        "安全",
+        "功能",
+        "溝通",
+        "自主",
+        "支持"
+      ],
+      "articlePath": "/articles/disability-service-field-judgment.html",
+      "order": -23,
+      "canonical": "https://allenmindlab.com/articles/disability-service-field-judgment",
+      "hero": "/images/allen-banner.webp",
+      "ogImage": "/images/allen-banner.webp",
+      "series": [
+        {
+          "id": "disability-support-knowledge-series",
+          "stage": 9
+        }
+      ],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [
+        "disability-support-knowledge-series"
+      ],
+      "isNote": false
+    },
     {
       "slug": "aml-accessibility-25-days",
       "title": "歷經 25 天的網站閉關修練，無障礙標章 GET！",
