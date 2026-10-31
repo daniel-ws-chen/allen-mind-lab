@@ -27,7 +27,7 @@
     if(passed){ chip.textContent='已完訓'; main.href=t.quiz; main.textContent='查看總測驗／完訓證明 →'; text.textContent=`核心進度 ${n} / ${t.max||12}；總測驗已通過。完訓資格由原自學系統判定，本頁只顯示結果。`; }
     else if(n===(t.max||12)){ chip.textContent='核心完成'; main.href=t.quiz; main.textContent='前往總測驗 →'; text.textContent='核心任務已完成，可依原自學流程進入總測驗。'; }
     else if(n>0){ chip.textContent='進行中'; main.href=t.home; main.textContent='繼續自學 →'; text.textContent=`目前完成 ${n} / ${t.max||12} 個核心節點；既有解鎖與完訓規則維持不變。`; }
-    else { chip.textContent='尚未開始'; main.href=t.home; main.textContent=name==='management'?'開始管理學自學 →':name==='pbs'?'開始 PBS 自學 →':'開始身心障礙自學 →'; }
+    else { chip.textContent='尚未開始'; main.href=t.home; main.textContent=name==='management'?'開始管理學自學 →':name==='pbs'?'開始 PBS 自學 →':'開始認識身心障礙自學 →'; }
     return {name,n,passed,home:t.home,quiz:t.quiz};
   }
   function renderLab(){
