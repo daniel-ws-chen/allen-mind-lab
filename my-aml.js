@@ -42,20 +42,28 @@
     if(c)c.textContent=`${total} / 8`; if(b)b.style.width=`${Math.round(total/8*100)}%`; if(m)m.textContent=`${mgmt} / 2`; if(p)p.textContent=`${pbs} / 2`; if(o)o.textContent=`${other} / 4`;
     return total;
   }
-  function renderContinue(mgmt,pbs,lab){
+  function renderContinue(mgmt,pbs,disability,lab){
     const title=document.querySelector('[data-continue-title]'), text=document.querySelector('[data-continue-text]'), link=document.querySelector('[data-continue-link]');
     if(!title||!text||!link) return;
-    let target={title:'從 AML 自主學習入口開始',text:'目前尚未偵測到管理學或 PBS 的既有進度，可先從進階自學室選一條路徑開始。',href:'/self-study.html',label:'前往自主學習 →'};
-    const candidates=[mgmt,pbs].filter(x=>x && !x.passed && x.n>0).sort((a,b)=>b.n-a.n);
+    let target={title:'從 AML 自主學習入口開始',text:'目前尚未偵測到三館的既有進度，可先從進階自學室選一條路徑開始。',href:'/self-study.html',label:'前往自主學習 →'};
+    const candidates=[mgmt,pbs,disability].filter(x=>x && !x.passed && x.n>0).sort((a,b)=>(b.n/(tracks[b.name].max||12))-(a.n/(tracks[a.name].max||12)) || b.n-a.n);
     if(candidates.length){
-      const x=candidates[0], isMgmt=x.name==='management', label=isMgmt?'管理學':'PBS';
-      if(x.n===12){target={title:`${label}核心任務已完成`,text:'下一步可依原本自學流程進入總測驗；完訓條件與證明機制完全不變。',href:x.quiz,label:'前往總測驗 →'};}
-      else{target={title:`繼續${label}自學`,text:`目前已完成 ${x.n} / 12 個核心節點，可從原自學頁接著進行。`,href:x.home,label:`繼續${label} →`};}
-    } else if(mgmt&&pbs&&mgmt.passed&&pbs.passed&&lab<8){
-      target={title:'兩條自學路徑都已完成',text:`互動實驗室目前完成 ${lab} / 8 個探索節點，可以繼續自由探索。`,href:'/tools.html#lab-halls',label:'繼續互動探索 →'};
-    } else if((mgmt&&mgmt.passed)||(pbs&&pbs.passed)){
-      const other=(mgmt&&mgmt.passed)?pbs:mgmt, label=other&&other.name==='management'?'管理學':'PBS';
-      if(other && !other.passed){target={title:`下一條可以試試 ${label}`,text:'已完成一條正式自學路徑；另一條路徑仍可依自己的節奏開始。',href:other.home,label:`前往${label}自學 →`};}
+      const x=candidates[0], label=x.name==='management'?'管理學':x.name==='pbs'?'PBS':'認識身心障礙';
+      if(x.n===(tracks[x.name].max||12)){target={title:`${label}核心任務已完成`,text:'下一步可依原本自學流程進入總測驗；完訓條件與證明機制完全不變。',href:x.quiz,label:'前往總測驗 →'};}
+      else{target={title:`繼續${label}自學`,text:`目前已完成 ${x.n} / ${tracks[x.name].max||12} 個核心節點，可從原自學頁接著進行。`,href:x.home,label:`繼續${label} →`};}
+    } else {
+      const all=[mgmt,pbs,disability].filter(Boolean);
+      const unfinished=all.filter(x=>!x.passed);
+      const passedCount=all.filter(x=>x.passed).length;
+      if(passedCount===all.length && all.length===3){
+        target=lab<8
+          ? {title:'三館自學都已完成',text:`互動實驗室目前完成 ${lab} / 8 個探索節點，可以繼續自由探索。`,href:'/tools.html#lab-halls',label:'繼續互動探索 →'}
+          : {title:'三館自學與互動探索皆已完成',text:'目前正式自學三館與互動探索節點都已完成，可以回到閱讀路徑或文章館藏持續自由學習。',href:'/reading-paths.html',label:'回到閱讀路徑 →'};
+      } else if(unfinished.length){
+        const next=unfinished.sort((a,b)=>(a.n>0?0:1)-(b.n>0?0:1) || (b.n/(tracks[b.name].max||12))-(a.n/(tracks[a.name].max||12)))[0];
+        const label=next.name==='management'?'管理學':next.name==='pbs'?'PBS':'認識身心障礙';
+        target={title:`下一條可以試試 ${label}`,text:passedCount>0?'已完成部分正式自學路徑；其餘路徑仍可依自己的節奏開始。':'三館都可以直接開始，選一條最接近目前需求的路徑即可。',href:next.home,label:`前往${label}自學 →`};
+      }
     }
     title.textContent=target.title; text.textContent=target.text; link.href=target.href; link.textContent=target.label;
   }
@@ -78,7 +86,7 @@
     const remove=e.target.closest('[data-remove-saved]'); if(remove){ e.preventDefault(); const s=readPersonal(); s.saved=s.saved.filter(x=>x!==remove.dataset.removeSaved); writePersonal(s); renderPersonal(); return; }
     const recent=e.target.closest('[data-recent-route]'); if(recent) markRecent(recent.dataset.recentRoute);
   });
-  function render(){const mgmt=renderTrack('management');const pbs=renderTrack('pbs');renderTrack('disability');const lab=renderLab();renderContinue(mgmt,pbs,lab);renderPersonal();}
+  function render(){const mgmt=renderTrack('management');const pbs=renderTrack('pbs');const disability=renderTrack('disability');const lab=renderLab();renderContinue(mgmt,pbs,disability,lab);renderPersonal();}
   window.addEventListener('pageshow',render);
   window.addEventListener('storage',render);
   render();
