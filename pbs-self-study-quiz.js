@@ -49,6 +49,7 @@
     const rand=Math.random().toString(36).slice(2,6).toUpperCase();
     return `AML-PBS-${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}-${rand}`;
   }
+function focusEl(el){if(!el)return;requestAnimationFrame(()=>{el.focus({preventScroll:true});el.scrollIntoView({block:'center',behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})});}
   function gateInit(){
     const s=load();
     if(completionExit) completionExit.style.display=s.quiz.passed?'block':'none';
@@ -72,6 +73,7 @@
       b.addEventListener('click',()=>answer(i));
       options.appendChild(b);
     });
+    focusEl(question);
   }
   function answer(choice){
     const item=qs[idx];
@@ -105,6 +107,7 @@
       s.quiz.passed=true; s.quiz.date=s.quiz.date||today(); s.quiz.certificateId=s.quiz.certificateId||makeId();
       save(s); certPanel.style.display='block'; if(completionExit) completionExit.style.display='block';
     } else if(completionExit){ completionExit.style.display='none'; }else save(s);
+    focusEl(resultTitle);
   }
   function generateCert(){
     const name=(nameInput.value||'').trim();
@@ -115,7 +118,7 @@
     certName.textContent=name;
     certDate.textContent=s.quiz.date||today();
     certId.textContent=s.quiz.certificateId||makeId();
-    cert.hidden=false; printBtn.style.display='inline-flex';
+    cert.hidden=false; printBtn.style.display='inline-flex'; focusEl(cert);
   }
   startBtn.addEventListener('click',start);
   retry.addEventListener('click',start);
