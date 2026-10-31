@@ -1,8 +1,9 @@
 (() => {
   'use strict';
   const tracks = {
-    management:{key:'amlManagementSelfStudyV1',ids:['detective','direction','strategy','leadership','quality','systems'],home:'/management-self-study.html',quiz:'/management-self-study-quiz.html'},
-    pbs:{key:'amlPbsSelfStudyV1',ids:['abc','function','strategy','replacement','emotion','family'],home:'/pbs-self-study.html',quiz:'/pbs-self-study-quiz.html'}
+    management:{key:'amlManagementSelfStudyV1',ids:['detective','direction','strategy','leadership','quality','systems'],max:12,home:'/management-self-study.html',quiz:'/management-self-study-quiz.html'},
+    pbs:{key:'amlPbsSelfStudyV1',ids:['abc','function','strategy','replacement','emotion','family'],max:12,home:'/pbs-self-study.html',quiz:'/pbs-self-study-quiz.html'},
+    disability:{key:'amlDisabilitySelfStudyV1',ids:['system','icf','profiles','support','pbs','communication','aac','aging','judgment'],max:18,home:'/disability-self-study.html',quiz:'/disability-self-study-quiz.html'}
   };
   const personalKey='amlMyAmlV1';
   const routes={
@@ -18,15 +19,15 @@
   function writePersonal(s){ try { localStorage.setItem(personalKey,JSON.stringify({saved:s.saved.slice(0,12),recent:s.recent.slice(0,5)})); } catch(e){} }
   function coreCount(t,s){ let n=0; const a=(s&&s.articles)||{},g=(s&&s.games)||{}; t.ids.forEach(id=>{if(a[id])n++;if(g[id])n++;}); return n; }
   function renderTrack(name){
-    const t=tracks[name], s=readJSON(t.key)||{}, n=coreCount(t,s), passed=!!(s.quiz&&s.quiz.passed), pct=Math.round(n/12*100);
+    const t=tracks[name], s=readJSON(t.key)||{}, n=coreCount(t,s), passed=!!(s.quiz&&s.quiz.passed), pct=Math.round(n/(t.max||12)*100);
     const count=document.querySelector(`[data-track-count="${name}"]`), bar=document.querySelector(`[data-track-bar="${name}"]`), chip=document.querySelector(`[data-track-chip="${name}"]`), main=document.querySelector(`[data-track-main="${name}"]`), text=document.querySelector(`[data-track-text="${name}"]`);
-    if(count) count.textContent=`${n} / 12`; if(bar) bar.style.width=`${pct}%`;
+    if(count) count.textContent=`${n} / ${t.max||12}`; if(bar) bar.style.width=`${pct}%`;
     if(!chip||!main||!text) return;
     chip.classList.toggle('done',passed);
-    if(passed){ chip.textContent='已完訓'; main.href=t.quiz; main.textContent='查看總測驗／完訓證明 →'; text.textContent=`核心進度 ${n} / 12；總測驗已通過。完訓資格由原自學系統判定，本頁只顯示結果。`; }
-    else if(n===12){ chip.textContent='核心完成'; main.href=t.quiz; main.textContent='前往總測驗 →'; text.textContent='核心任務已完成，可依原自學流程進入總測驗。'; }
-    else if(n>0){ chip.textContent='進行中'; main.href=t.home; main.textContent='繼續自學 →'; text.textContent=`目前完成 ${n} / 12 個核心節點；既有解鎖與完訓規則維持不變。`; }
-    else { chip.textContent='尚未開始'; main.href=t.home; main.textContent=name==='management'?'開始管理學自學 →':'開始 PBS 自學 →'; }
+    if(passed){ chip.textContent='已完訓'; main.href=t.quiz; main.textContent='查看總測驗／完訓證明 →'; text.textContent=`核心進度 ${n} / ${t.max||12}；總測驗已通過。完訓資格由原自學系統判定，本頁只顯示結果。`; }
+    else if(n===(t.max||12)){ chip.textContent='核心完成'; main.href=t.quiz; main.textContent='前往總測驗 →'; text.textContent='核心任務已完成，可依原自學流程進入總測驗。'; }
+    else if(n>0){ chip.textContent='進行中'; main.href=t.home; main.textContent='繼續自學 →'; text.textContent=`目前完成 ${n} / ${t.max||12} 個核心節點；既有解鎖與完訓規則維持不變。`; }
+    else { chip.textContent='尚未開始'; main.href=t.home; main.textContent=name==='management'?'開始管理學自學 →':name==='pbs'?'開始 PBS 自學 →':'開始身心障礙自學 →'; }
     return {name,n,passed,home:t.home,quiz:t.quiz};
   }
   function renderLab(){
@@ -77,7 +78,7 @@
     const remove=e.target.closest('[data-remove-saved]'); if(remove){ e.preventDefault(); const s=readPersonal(); s.saved=s.saved.filter(x=>x!==remove.dataset.removeSaved); writePersonal(s); renderPersonal(); return; }
     const recent=e.target.closest('[data-recent-route]'); if(recent) markRecent(recent.dataset.recentRoute);
   });
-  function render(){const mgmt=renderTrack('management');const pbs=renderTrack('pbs');const lab=renderLab();renderContinue(mgmt,pbs,lab);renderPersonal();}
+  function render(){const mgmt=renderTrack('management');const pbs=renderTrack('pbs');renderTrack('disability');const lab=renderLab();renderContinue(mgmt,pbs,lab);renderPersonal();}
   window.addEventListener('pageshow',render);
   window.addEventListener('storage',render);
   render();
