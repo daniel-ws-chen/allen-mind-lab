@@ -206,6 +206,26 @@
 .aml-pbs-island-entry:hover{border-color:#0b5161;box-shadow:0 14px 30px rgba(14,83,98,.15)}
 .aml-pbs-island-entry:focus-visible{outline:3px solid #b0770e;outline-offset:4px}
 @media(max-width:650px){.aml-pbs-island-entry{padding:18px 20px}}
+
+/* Standalone quick-play islands; distinct from the four-hall learning path. */
+.aml-quick-islands{padding:clamp(2rem,5vw,3.5rem) 1.5rem;background:#f4f7f5;border-block:1px solid #d9e5df;color:#213e36}
+.aml-quick-islands__inner{max-width:1080px;margin:0 auto}
+.aml-quick-islands__intro{max-width:760px}
+.aml-quick-islands__kicker{font-size:.78rem;font-weight:800;letter-spacing:.1em;color:#35695b}
+.aml-quick-islands h2{font-size:clamp(1.6rem,3vw,2.25rem);line-height:1.35;color:#17483f;margin:7px 0 10px}
+.aml-quick-islands__intro p{margin:0 0 22px;color:#4b6259;line-height:1.75}
+.aml-quick-islands__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.aml-quick-islands__card{display:flex;gap:18px;align-items:flex-start;background:#fff;border:1px solid #d5e4dc;border-radius:20px;padding:22px;box-shadow:0 8px 22px rgba(20,65,52,.04)}
+.aml-quick-islands__icon{flex:0 0 52px;display:grid;place-items:center;width:52px;height:52px;background:#e8f2eb;border-radius:16px;font-size:1.6rem}
+.aml-quick-islands__content{min-width:0}
+.aml-quick-islands__category{color:#35695b;font-weight:800;font-size:.8rem;margin:0 0 4px}
+.aml-quick-islands h3{font-size:1.3rem;color:#17483f;margin:0 0 8px}
+.aml-quick-islands__content>p:not(.aml-quick-islands__category){color:#456056;font-size:.94rem;line-height:1.7;margin:0 0 10px}
+.aml-quick-islands__content .aml-quick-islands__note{font-size:.78rem;color:#596e63}
+.aml-quick-islands__button{display:inline-flex;margin-top:8px;padding:10px 18px;border-radius:999px;background:#205f50;color:white;text-decoration:none;font-weight:800}
+.aml-quick-islands__button:hover{background:#17483f}
+.aml-quick-islands__button:focus-visible{outline:3px solid #17483f;outline-offset:3px}
+@media(max-width:560px){.aml-quick-islands__card{flex-direction:column;gap:12px;padding:18px}.aml-quick-islands__button{display:flex;justify-content:center}}
 </style>
 <style>
 /* AML Interactive Lab — Future Lab 4.0 */
@@ -1538,6 +1558,29 @@
 </section>
 
 </div>
+<!-- AML Challenge Islands: independent, expandable quick-play collection -->
+<section class="aml-quick-islands" id="challenge-islands" aria-labelledby="challenge-islands-title">
+  <div class="aml-quick-islands__inner">
+    <div class="aml-quick-islands__intro">
+      <div class="aml-quick-islands__kicker">QUICK PLAY · 快問快答</div>
+      <h2 id="challenge-islands-title">闖關島｜用短回合挑戰你的判斷</h2>
+      <p>想換個方式練習？這裡收集獨立的情境式快問快答遊戲，從短回合選擇中觀察線索、修正想法。未來也可加入不同主題的闖關島。</p>
+    </div>
+    <div class="aml-quick-islands__grid">
+      <article class="aml-quick-islands__card">
+        <div class="aml-quick-islands__icon" aria-hidden="true">🏝️</div>
+        <div class="aml-quick-islands__content">
+          <p class="aml-quick-islands__category">第一座主題 · PBS 行為支持</p>
+          <h3>PBS 闖關島</h3>
+          <p>七座主題島嶼與最終挑戰島，透過連續決策、情緒週期與雙重行為功能，練習支持策略。</p>
+          <p class="aml-quick-islands__note">獨立遊戲 · 無須登入 · 不列入四館八個任務進度</p>
+          <a href="/tools/pbs-challenge-island.html" class="aml-quick-islands__button">進入 PBS 闖關島 →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- /AML Challenge Islands -->
 <!-- AML 3.3 candidate · Decision Simulator independent bay -->
 <section id="decision-simulator-bay" aria-labelledby="decision-simulator-heading" style="background:#f1f8f6;padding:clamp(2rem,5vw,4rem) 1.5rem;border-top:1px solid #d3e3df;border-bottom:1px solid #d3e3df">
   <div style="max-width:1080px;margin:0 auto">
