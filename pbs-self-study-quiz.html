@@ -42,13 +42,14 @@ h1{font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.1;color:var(--navy);margin:8
   .certificate{width:100%;min-height:170mm!important;box-shadow:none!important;page-break-inside:avoid}
 }
 </style>
+<link rel="stylesheet" href="/aml-self-study-quiz-v2.css">
 </head>
 <body><a class="aml-skip-link" href="#quiz-main">跳到測驗</a><nav class="aml-lab-shell-nav" aria-label="進階自學室導覽"><a class="aml-lab-shell-nav__back" href="/self-study.html">← 回進階自學室</a><div class="aml-lab-shell-nav__links"><a href="/pbs-self-study.html">PBS 自學路徑</a><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div></nav>
 <main class="wrap" id="quiz-main">
 
 <div class="kicker">AML PBS · FINAL REVIEW</div>
 <h1>PBS 自學總複習</h1>
-<p class="lead">10 題生活化情境題。建議答對 8 題以上視為完成本次自學總複習；可重複挑戰。</p>
+<p class="lead">10 題生活化情境題。建議答對 8 題以上視為完成本次自學總複習；可重複挑戰。</p><ul class="quiz-spec" aria-label="測驗資訊"><li><strong>題數</strong><span>10 題生活情境</span></li><li><strong>通過標準</strong><span>8 / 10（80%）</span></li><li><strong>回饋方式</strong><span>總分＋複習主題</span></li></ul>
 
 <section class="gate" data-gate>
   <strong>正在確認六堂自學進度…</strong>
@@ -81,22 +82,11 @@ h1{font-size:clamp(2rem,4.5vw,3.6rem);line-height:1.1;color:var(--navy);margin:8
     <input type="text" maxlength="40" placeholder="請輸入姓名" aria-label="姓名" data-name>
     <button class="btn" type="button" data-generate>產生證明</button>
   </div>
-  <div class="certificate" data-certificate hidden tabindex="-1" role="region" aria-label="AML 自主學習完訓證明">
-    <div class="brand">ALLEN MIND LAB · AML</div>
-    <h2>PBS 自學完訓證明</h2>
-    <div>茲證明</div>
-    <div class="name" data-cert-name></div>
-    <div>已完成</div>
-    <div class="course">PBS 自學路徑｜6 堂文章 × 6 個互動練習</div>
-    <div>並完成 PBS 自學總複習測驗</div>
-    <div class="meta">完成日期：<span data-cert-date></span><br>證明編號：<span data-cert-id></span></div>
-    <div class="notice">本證明為 Allen Mind Lab 非正式自學完成紀錄，不代表學分、繼續教育時數、專業資格、執照或政府認證。</div>
-  </div>
-  <div class="action-row">
+  <div class="certificate" data-certificate hidden tabindex="-1" role="region" aria-label="AML PBS 自學完訓證明"><div class="certificate__topline">ALLEN MIND LAB</div><div class="brand">AML · SELF-STUDY COMPLETION</div><h2 class="certificate__title">PBS 自學完訓證明</h2><div class="certificate__en">CERTIFICATE OF SELF-STUDY COMPLETION</div><div class="certificate__statement">茲證明</div><div class="name" data-cert-name></div><div class="certificate__course"><strong>PBS 自學路徑</strong><span>完成 6 堂核心文章 × 6 個互動練習，並通過 PBS 自學總複習測驗</span></div><div class="certificate__meta"><div><strong>學習路徑</strong>PBS · Positive Behavior Support</div><div><strong>完成日期</strong><span data-cert-date></span></div><div><strong>證明編號</strong><span data-cert-id></span></div></div><div class="certificate__signature">Allen Mind Lab · 自主學習紀錄</div><div class="notice">本證明為 Allen Mind Lab 非正式自學完成紀錄，不代表學分、繼續教育時數、專業資格、執照或政府認證。</div></div><div class="action-row">
     <button class="btn" type="button" data-print style="display:none">列印／另存 PDF</button>
   </div>
 </section>
-<section class="completion-exit" data-completion-exit aria-label="完訓後下一步" style="display:none"><div class="completion-exit__kicker">NEXT STEP · 完訓後繼續</div><h2>完成這一段，下一步由你決定。</h2><p>可以回到進階自學室選擇下一條路徑，也可以回目前的自學主線複習；想換個主題時，再切換到另一套自學系統。</p><div class="completion-exit__actions"><a class="primary" href="/self-study.html">回進階自學室 →</a><a href="/pbs-self-study.html">回 PBS 自學路徑</a><a href="/management-self-study.html">前往管理學自學</a></div></section></main>
+<section class="completion-exit" data-completion-exit aria-label="完訓後下一步" style="display:none"><div class="completion-exit__kicker">NEXT STEP · 完訓後繼續</div><h2>完成這一段，下一步由你決定。</h2><p>可以回到進階自學室選擇下一條路徑，也可以回目前的自學主線複習；想換個主題時，再切換到另一套自學系統。</p><div class="completion-exit__actions"><a class="primary" href="/self-study.html">回進階自學室 →</a><a href="/pbs-self-study.html">回 PBS 自學路徑</a><a href="/management-self-study.html">前往管理學自學</a><a href="/disability-self-study.html">前往認識身心障礙自學</a></div></section></main>
 <script src="/pbs-self-study-quiz.js"></script>
 <footer class="aml-lab-mini-footer" aria-label="進階自學室快速導覽"><div>Allen Mind Lab · 進階自學室</div><div class="aml-lab-mini-footer__links"><a href="/self-study.html">進階自學室</a><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div></footer>
 </body>
