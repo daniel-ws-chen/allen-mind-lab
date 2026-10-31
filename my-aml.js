@@ -55,8 +55,10 @@
       const all=[mgmt,pbs,disability].filter(Boolean);
       const unfinished=all.filter(x=>!x.passed);
       const passedCount=all.filter(x=>x.passed).length;
-      if(passedCount===all.length && all.length===3 && lab<8){
-        target={title:'三館自學都已完成',text:`互動實驗室目前完成 ${lab} / 8 個探索節點，可以繼續自由探索。`,href:'/tools.html#lab-halls',label:'繼續互動探索 →'};
+      if(passedCount===all.length && all.length===3){
+        target=lab<8
+          ? {title:'三館自學都已完成',text:`互動實驗室目前完成 ${lab} / 8 個探索節點，可以繼續自由探索。`,href:'/tools.html#lab-halls',label:'繼續互動探索 →'}
+          : {title:'三館自學與互動探索皆已完成',text:'目前正式自學三館與互動探索節點都已完成，可以回到閱讀路徑或文章館藏持續自由學習。',href:'/reading-paths.html',label:'回到閱讀路徑 →'};
       } else if(unfinished.length){
         const next=unfinished.sort((a,b)=>(a.n>0?0:1)-(b.n>0?0:1) || (b.n/(tracks[b.name].max||12))-(a.n/(tracks[a.name].max||12)))[0];
         const label=next.name==='management'?'管理學':next.name==='pbs'?'PBS':'認識身心障礙';
