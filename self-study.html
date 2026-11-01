@@ -87,6 +87,32 @@ body:has(.selfhub-grid){background:var(--academy-paper)}
 .selfhub-card__eyebrow{color:#53627b}
 .selfhub-card[data-study-card="pbs"] .selfhub-card__eyebrow{color:#58427c}
 .selfhub-card[data-study-card="disability"] .selfhub-card__eyebrow{color:#23655c}
+
+/* Editorial Academy readability refinement — Nov 2026 */
+.selfhub-card:before{font-size:clamp(.91rem,1.15vw,1.03rem);letter-spacing:.13em;line-height:1.6}
+.selfhub-card__eyebrow{font-size:.92rem;letter-spacing:.10em;line-height:1.6}
+.selfhub-card__status{font-size:.89rem;padding:8px 13px;line-height:1.45}
+.selfhub-card p{font-size:clamp(1.04rem,1.25vw,1.18rem);line-height:1.85}
+.selfhub-route{gap:12px}
+.selfhub-route__step{padding:17px 13px;min-width:0}
+.selfhub-route__step b{font-size:clamp(.99rem,1.18vw,1.12rem);line-height:1.5}
+.selfhub-route__step span{font-size:clamp(.92rem,1.05vw,1.02rem);line-height:1.55;margin-top:4px}
+.selfhub-progress{padding:16px 18px}
+.selfhub-progress__top strong,.selfhub-progress__top span{font-size:1rem;line-height:1.5}
+.selfhub-actions a{font-size:1.02rem;line-height:1.5;padding:13px 18px}
+.selfhub-route__step:not(:last-child):after{right:-11px}
+@media(max-width:720px){
+ .selfhub-card:before{font-size:.92rem}
+ .selfhub-card__eyebrow{font-size:.85rem;overflow-wrap:anywhere}
+ .selfhub-route{gap:10px}
+ .selfhub-route__step{padding:14px 10px}
+ .selfhub-route__step b{font-size:1rem}
+ .selfhub-route__step span{font-size:.94rem}
+ .selfhub-actions a{font-size:1rem}
+}
+@media(max-width:360px){.selfhub-route{grid-template-columns:1fr}}
+/* End readability refinement */
+
 /* End AML Editorial Academy */
 
 </style>
