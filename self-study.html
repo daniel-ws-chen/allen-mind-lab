@@ -19,6 +19,76 @@
 
 /* Phase 38 — AML 自主學習旅程定位列 */
 .aml-learning-journey{max-width:1120px;margin:0 auto 22px;padding:0 24px}.aml-learning-journey__inner{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:10px;border:1px solid rgba(54,71,103,.12);border-radius:18px;background:rgba(255,255,255,.9);box-shadow:0 10px 26px rgba(24,38,69,.05)}.aml-learning-journey a,.aml-learning-journey span{display:flex;align-items:center;gap:10px;min-width:0;padding:10px 12px;border-radius:13px;text-decoration:none;color:#5e697c}.aml-learning-journey a:hover,.aml-learning-journey a:focus-visible{background:#f5f7fb;outline:none}.aml-learning-journey [aria-current="page"]{background:linear-gradient(135deg,#eef1ff,#f3fbfb);color:#34406f;box-shadow:inset 0 0 0 1px rgba(91,108,224,.14)}.aml-learning-journey__no{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:9px;background:#f0f3f8;color:#7a8698;font-size:.72rem;font-weight:950}.aml-learning-journey [aria-current="page"] .aml-learning-journey__no{background:#5d69d7;color:#fff}.aml-learning-journey__copy{min-width:0}.aml-learning-journey__copy strong{display:block;font-size:.83rem;color:inherit}.aml-learning-journey__copy small{display:block;margin-top:1px;font-size:.68rem;color:#8a94a5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.aml-learning-journey [aria-current="page"] .aml-learning-journey__copy small{color:#6f78a1}@media(max-width:720px){.aml-learning-journey{padding:0 18px;margin-bottom:16px}.aml-learning-journey__inner{grid-template-columns:1fr;gap:6px}.aml-learning-journey a,.aml-learning-journey span{padding:9px 10px}.aml-learning-journey__copy small{white-space:normal}}
+
+
+/* AML Editorial Academy — isolated self-study visual layer */
+:root{--academy-paper:#f6f3ed;--academy-ink:#17283e;--academy-line:#b7c0c6}
+body:has(.selfhub-grid){background:var(--academy-paper)}
+.selfhub-hero{max-width:1120px;padding-top:82px;padding-bottom:48px;border-bottom:1px solid var(--academy-line)}
+.selfhub-kicker{color:#4b617e;letter-spacing:.2em;font-size:.79rem}
+.selfhub-hero h1{max-width:940px;font-size:clamp(2.7rem,6.2vw,5.3rem);line-height:1.16;letter-spacing:-.065em;color:var(--academy-ink);font-weight:950}
+.selfhub-hero p{max-width:640px;color:#445568;font-size:1.12rem}
+.selfhub-hero:after{content:"THE LEARNING EDITION / 001";display:block;margin-top:28px;font-size:.72rem;font-weight:900;letter-spacing:.19em;color:#4b617e}
+.selfhub-console{margin-top:30px}
+.selfhub-console__inner{background:transparent;border:1px solid #aebbc4;border-radius:5px;box-shadow:none}
+.selfhub-console__badge{background:#17283e;box-shadow:none;border-radius:3px}
+.selfhub-grid{grid-template-columns:1fr;gap:22px;padding-top:10px}
+.selfhub-card{position:relative;display:flex;flex-direction:column;align-items:stretch;min-width:0;gap:0;padding:34px 40px;border-radius:5px;border:1px solid #b8c4cf;box-shadow:0 6px 0 rgba(23,40,62,.06);background:#fff}
+.selfhub-card:before{content:"01 / MANAGEMENT";display:block;flex:0 0 auto;padding:0 0 17px;margin-bottom:18px;border-bottom:1px solid currentColor;letter-spacing:.19em;font-size:.72rem;font-weight:950}
+.selfhub-card[data-study-card="management"]{background:#182940;color:#e8cc93;border-color:#182940}
+.selfhub-card[data-study-card="management"]:before{color:#e8cc93}
+.selfhub-card[data-study-card="pbs"]{background:#eeeaf5;color:#58427c;border-color:#bcb1ce}
+.selfhub-card[data-study-card="pbs"]:before{content:"02 / POSITIVE BEHAVIOR SUPPORT"}
+.selfhub-card[data-study-card="disability"]{background:#e3f0ec;color:#23655c;border-color:#9ebfb7}
+.selfhub-card[data-study-card="disability"]:before{content:"03 / DISABILITY SUPPORT"}
+.selfhub-card__status{align-self:flex-start}
+.selfhub-card__eyebrow{letter-spacing:.16em}
+.selfhub-card h2{font-size:clamp(1.9rem,3.1vw,3.1rem);line-height:1.2;letter-spacing:-.045em;color:inherit}
+.selfhub-card p{color:inherit;opacity:.94;font-size:1rem;max-width:72ch}
+.selfhub-route{grid-template-columns:repeat(4,minmax(0,1fr));margin:6px 0 20px}
+.selfhub-route__step{background:rgba(255,255,255,.75);border-color:rgba(39,54,78,.16)}
+.selfhub-progress{margin:0 0 16px;background:rgba(255,255,255,.8)}
+.selfhub-card__status:before{box-shadow:none}
+.selfhub-card[data-study-card="management"] .selfhub-card__status{background:#36516a;color:#fff}
+.selfhub-card[data-study-card="management"] .selfhub-card__status:before{background:#d5eac8}
+.selfhub-card[data-study-card="management"] .selfhub-card__eyebrow{color:#e3d6b9}
+.selfhub-card[data-study-card="management"] h2,.selfhub-card[data-study-card="management"] p{color:#fff}
+.selfhub-card[data-study-card="management"] .selfhub-route__step,.selfhub-card[data-study-card="management"] .selfhub-progress{background:#f5f2e9}
+.selfhub-card[data-study-card="management"] .selfhub-route__step b,.selfhub-card[data-study-card="management"] .selfhub-route__step span{color:#263a4b}
+.selfhub-card[data-study-card="management"] .selfhub-actions .primary{background:#e6c990;color:#182940}
+.selfhub-card[data-study-card="management"] .selfhub-actions .secondary{background:#fff;color:#17283e}
+.selfhub-card[data-study-card="pbs"] .selfhub-card__status{color:#3f345e;background:#e1d8ed}
+.selfhub-card[data-study-card="pbs"] .selfhub-actions .primary{background:#554078;color:#fff}
+.selfhub-card[data-study-card="disability"] .selfhub-card__status{color:#174f47;background:#d0e6df}
+.selfhub-card[data-study-card="disability"] .selfhub-actions .primary{background:#24695e;color:#fff}
+.selfhub-card .selfhub-actions a{border-radius:4px;box-shadow:none}
+.selfhub-card .selfhub-progress__top strong,.selfhub-card .selfhub-progress__top span{color:#34445c}
+.selfhub-actions a:hover{text-decoration:underline}
+.selfhub-actions a:focus-visible,.selfhub-console__cta:focus-visible,.selfhub-reset:focus-visible{outline:3px solid #d68b00;outline-offset:4px}
+.selfhub-bridge__inner,.selfhub-notice__inner,.selfhub-notice__item,.selfhub-reset-panel{border-radius:5px}
+@media(max-width:790px){
+ .selfhub-hero{padding-top:45px;padding-bottom:30px}
+ .selfhub-hero h1{font-size:clamp(2.2rem,9vw,3.7rem)}
+ .selfhub-grid{grid-template-columns:1fr;padding:4px 18px 44px}
+ .selfhub-card{padding:24px 22px}
+ .selfhub-route{margin:18px 0}
+ .selfhub-progress{margin:0 0 18px}
+ .selfhub-card h2{font-size:clamp(1.85rem,7vw,2.5rem)}
+}
+@media(max-width:720px){.selfhub-route{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){.selfhub-card *,.selfhub-console__cta{transition:none!important}}
+/* Readability audit: ensure small explanatory labels meet AA contrast. */
+.selfhub-route__step span{color:#47566c}
+.selfhub-route__step b{color:#253751}
+.selfhub-progress__top span{color:#45546b}
+.selfhub-card[data-study-card="management"] .selfhub-route__step span{color:#47566c}
+.selfhub-card[data-study-card="management"] .selfhub-progress__top span{color:#45546b}
+.selfhub-actions .secondary{color:#36465b}
+.selfhub-card__eyebrow{color:#53627b}
+.selfhub-card[data-study-card="pbs"] .selfhub-card__eyebrow{color:#58427c}
+.selfhub-card[data-study-card="disability"] .selfhub-card__eyebrow{color:#23655c}
+/* End AML Editorial Academy */
+
 </style>
 
 <style id="aml-phase56-footer-ia">
