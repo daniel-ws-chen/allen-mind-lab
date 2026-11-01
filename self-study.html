@@ -73,6 +73,29 @@ body:has(.selfhub-grid){background:var(--academy-paper)}
  .selfhub-card h2{font-size:clamp(1.85rem,7vw,2.5rem)}
 }
 @media(prefers-reduced-motion:reduce){.selfhub-card *, .selfhub-console__cta{transition:none!important}}
+
+/* Review refinement: preserve document order in every viewport.
+   Avoid implicit CSS-grid row placement that could overlap controls. */
+.selfhub-card{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.selfhub-card:before{flex:0 0 auto}
+.selfhub-card__status{align-self:flex-start}
+.selfhub-card__eyebrow,.selfhub-card h2,.selfhub-card p,.selfhub-route,.selfhub-progress,.selfhub-actions{grid-column:auto;grid-row:auto}
+.selfhub-card p{max-width:72ch}
+.selfhub-route{grid-template-columns:repeat(4,minmax(0,1fr));margin:6px 0 20px}
+.selfhub-card__status:before{box-shadow:none}
+.selfhub-card[data-study-card="management"] .selfhub-progress,
+.selfhub-card[data-study-card="management"] .selfhub-route__step{background:#f5f2e9}
+.selfhub-card[data-study-card="management"] .selfhub-route__step b,
+.selfhub-card[data-study-card="management"] .selfhub-route__step span{color:#263a4b}
+.selfhub-card[data-study-card="management"] .selfhub-actions .secondary{color:#17283e;background:#fff}
+.selfhub-card[data-study-card="management"] .selfhub-card__status{color:#fff;background:#36516a}
+.selfhub-card[data-study-card="management"] .selfhub-card__status:before{background:#d5eac8}
+.selfhub-card[data-study-card="pbs"] .selfhub-card__status{color:#3f345e;background:#e1d8ed}
+.selfhub-card[data-study-card="disability"] .selfhub-card__status{color:#174f47;background:#d0e6df}
+.selfhub-actions a:hover{text-decoration:underline}
+.selfhub-reset:focus-visible,.selfhub-actions a:focus-visible,.selfhub-console__cta:focus-visible{outline:3px solid #d68b00;outline-offset:4px}
+@media(max-width:720px){.selfhub-route{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
 /* End AML Editorial Academy */
 
 </style>
