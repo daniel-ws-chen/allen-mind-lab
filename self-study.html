@@ -77,6 +77,16 @@ body:has(.selfhub-grid){background:var(--academy-paper)}
 }
 @media(max-width:720px){.selfhub-route{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.selfhub-card *,.selfhub-console__cta{transition:none!important}}
+/* Readability audit: ensure small explanatory labels meet AA contrast. */
+.selfhub-route__step span{color:#47566c}
+.selfhub-route__step b{color:#253751}
+.selfhub-progress__top span{color:#45546b}
+.selfhub-card[data-study-card="management"] .selfhub-route__step span{color:#47566c}
+.selfhub-card[data-study-card="management"] .selfhub-progress__top span{color:#45546b}
+.selfhub-actions .secondary{color:#36465b}
+.selfhub-card__eyebrow{color:#53627b}
+.selfhub-card[data-study-card="pbs"] .selfhub-card__eyebrow{color:#58427c}
+.selfhub-card[data-study-card="disability"] .selfhub-card__eyebrow{color:#23655c}
 /* End AML Editorial Academy */
 
 </style>
