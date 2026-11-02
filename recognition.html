@@ -392,13 +392,13 @@
 @media(max-width:520px){.award-proof{flex-direction:column}.award-proof img{width:min(100%,260px);max-height:none}.award-proof__content{width:100%}}
 /* Official certificate archive · keep original documents unaltered */
 .award-proof{margin-top:18px;display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap;padding:16px;border:1px solid #d6bd7e;border-radius:14px;background:#111c2a;color:#f4e6bf}
-.award-proof img{display:block;width:135px;max-height:180px;object-fit:contain;border:2px solid #c7a76a;border-radius:4px;background:#fff}
+.award-proof img{display:block;width:clamp(180px,28vw,260px);max-width:100%;height:auto;max-height:none;object-fit:contain;border:2px solid #c7a76a;border-radius:5px;background:#fff;flex-shrink:0}
 .award-proof__content{flex:1;min-width:190px}
 .award-proof__content strong{color:#f3d68e;display:block;margin-bottom:5px}
 .award-proof__content p{margin:0 0 8px;color:#e6e0d2;font-size:.9rem}
 .award-proof__content a{display:inline-block;color:#fff1bf;text-decoration:underline;text-underline-offset:4px;font-weight:700}
 .award-proof img{height:auto;max-width:100%}
-@media(max-width:520px){.award-proof{gap:12px}.award-proof img{width:110px}}
+@media(max-width:520px){.award-proof{gap:12px}.award-proof img{width:min(100%,320px);max-height:none}}
 </style>
 <!-- AML SEO / Social Preview -->
 <link href="https://allenmindlab.com/recognition" rel="canonical"/>
