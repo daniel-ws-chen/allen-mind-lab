@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-10-31T11:26:00.000+08:00",
+  "generatedAt": "2026-11-04T21:00:00.000+08:00",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 89,
+    "total": 90,
     "ot": 38,
     "mind": 15,
-    "pbs": 23,
-    "education": 16,
-    "management": 41,
+    "pbs": 24,
+    "education": 17,
+    "management": 42,
     "ai": 27,
     "notes": 13
   },
@@ -93,6 +93,45 @@
     }
   },
   "articles": [
+    {
+      "slug": "pbs-system-support-gap",
+      "title": "PBS 推動多年，真正缺少的是什麼？",
+      "summary": "PBS 推動多年，真正的挑戰或許不在專業技術，而在支持系統能否落實。從雙師制度、全校環境、第三級專業服務，到行政授權與醫療銜接，重新思考高支持需求學生所需要的完整支持體系。",
+      "date": "2026-11-04",
+      "domains": [
+        "pbs",
+        "education",
+        "management"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [
+        "education",
+        "management"
+      ],
+      "tag": "PBS",
+      "cardMeta": "2026.11.04 · PBS",
+      "keywords": [
+        "正向行為支持",
+        "特殊教育",
+        "第三級支持",
+        "雙師制度",
+        "跨專業合作",
+        "組織管理",
+        "校園支持",
+        "醫療銜接"
+      ],
+      "articlePath": "/articles/pbs-system-support-gap.html",
+      "order": -32,
+      "canonical": "https://allenmindlab.com/articles/pbs-system-support-gap",
+      "hero": "/images/articles/pbs-system-support-gap-hero.webp",
+      "ogImage": "/images/articles/pbs-system-support-gap-og.jpg",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "disability-system-map",
       "title": "認識身心障礙的制度地圖：從定義、八大類別到鑑定制度",
