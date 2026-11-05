@@ -1067,6 +1067,56 @@
 <meta content="https://allenmindlab.com/images/aml-campus-map.png" name="twitter:image"/>
 <meta content="Allen Mind Lab" name="twitter:image:alt"/>
 <link href="aml-site.css" rel="stylesheet"/>
+
+<!-- AML homepage logo glow: original brand artwork retained, motion only on interaction -->
+<style>
+  .aml-global-nav .aml-brand.aml-brand--home-glow {
+    isolation: isolate;
+    position: relative;
+    overflow: hidden;
+  }
+  .aml-global-nav .aml-brand.aml-brand--home-glow::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    background: linear-gradient(105deg,
+      transparent 0%, transparent 37%,
+      rgba(255,229,150,.08) 44%,
+      rgba(255,245,201,.56) 49%,
+      rgba(255,210,111,.20) 54%,
+      transparent 62%, transparent 100%);
+    background-size: 240% 100%;
+    background-position: 140% 50%;
+    mix-blend-mode: screen;
+  }
+  @media (hover:hover) and (prefers-reduced-motion:no-preference) {
+    .aml-global-nav .aml-brand.aml-brand--home-glow:hover::before {
+      animation: amlHomeLogoShine 1.65s ease-out 1 both;
+    }
+  }
+  @media (prefers-reduced-motion:no-preference) {
+    .aml-global-nav .aml-brand.aml-brand--home-glow:focus-visible::before {
+      animation: amlHomeLogoShine 1.65s ease-out 1 both;
+    }
+  }
+  @keyframes amlHomeLogoShine {
+    0% { opacity: 0; background-position: 140% 50%; }
+    15% { opacity: .9; }
+    75% { opacity: .85; }
+    100% { opacity: 0; background-position: -140% 50%; }
+  }
+  @media (prefers-reduced-motion:reduce) {
+    .aml-global-nav .aml-brand.aml-brand--home-glow::before {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+  }
+</style>
+
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Allen Mind Lab","url":"https://allenmindlab.com/","description":"Allen Mind Lab｜從閱讀、主題學習與互動探索出發，連結職能治療、PBS、管理、教育、AI 與身心福祉。","inLanguage":"zh-Hant","publisher":{"@type":"Organization","name":"Allen Mind Lab","url":"https://allenmindlab.com/"}}</script>
 <style>
 /* AML 2.0 six-domain representative carousel: one complete poster at a time. */
@@ -1257,7 +1307,7 @@
 <body>
 <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Allen Mind Lab｜Building A Meaningful Life</h1>
 <a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
-<nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
+<nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand aml-brand--home-glow" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
 <details class="aml-nav-group" name="aml-primary-nav"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
 <details class="aml-nav-group" name="aml-primary-nav" data-aml-collection-nav="true"><summary>主題館藏</summary><div class="aml-nav-panel aml-nav-panel--collection"><a class="aml-collection-entry aml-collection-entry--overview" href="/articles.html">探索主題館藏</a><a class="aml-collection-entry aml-collection-entry--core aml-collection-entry--core-start" href="/ot.html">職能治療與人類職能</a><a class="aml-collection-entry aml-collection-entry--core" href="/pbs.html">PBS 正向行為支持</a><a class="aml-collection-entry aml-collection-entry--core" href="/management.html">管理與領導</a><a class="aml-collection-entry aml-collection-entry--core" href="/education.html">教育與學習</a><a class="aml-collection-entry aml-collection-entry--core" href="/ai.html">AI × 實務</a><a class="aml-collection-entry aml-collection-entry--core" href="/mind.html">身心與福祉</a><a class="aml-collection-entry aml-collection-entry--notes" href="/notes.html">AML 小品集</a><a class="aml-collection-entry aml-collection-entry--library" href="/library.html">搜尋全部文章</a></div></details>
 <details class="aml-nav-group" name="aml-primary-nav"><summary>閱讀路徑</summary><div class="aml-nav-panel aml-nav-panel--paths"><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div></details>
