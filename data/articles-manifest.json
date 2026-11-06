@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-04T21:00:00.000+08:00",
+  "generatedAt": "2026-11-07T07:12:00+08:00",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 90,
+    "total": 91,
     "ot": 38,
     "mind": 15,
     "pbs": 24,
-    "education": 17,
+    "education": 18,
     "management": 42,
-    "ai": 27,
+    "ai": 28,
     "notes": 13
   },
   "featuredReading": [
@@ -93,6 +93,40 @@
     }
   },
   "articles": [
+    {
+      "slug": "why-learn-statistics-in-ai-era",
+      "title": "凡事問AI的年代，為何還需要學統計？",
+      "summary": "從「股民平均賺200萬」與「彩券中獎率50%」的生活故事出發，理解平均數、眾數、中位數、機率與統計素養，探索AI時代如何用統計看懂世界。",
+      "date": "2026-11-07",
+      "domains": [
+        "education",
+        "ai"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "Education × AI × Practice",
+      "cardMeta": "2026.11.07 · Education × AI × Practice",
+      "keywords": [
+        "統計素養",
+        "統計謬誤",
+        "AI素養",
+        "批判思考",
+        "生活學習"
+      ],
+      "articlePath": "/articles/why-learn-statistics-in-ai-era.html",
+      "order": -33,
+      "canonical": "https://allenmindlab.com/articles/why-learn-statistics-in-ai-era",
+      "hero": "/images/articles/aml_article_091_poster.webp",
+      "ogImage": "/images/articles/aml_article_091_poster.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "pbs-system-support-gap",
       "title": "PBS 推動多年，真正缺少的是什麼？",
