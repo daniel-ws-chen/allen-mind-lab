@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>凡事問AI的年代，為何還需要學統計？｜Allen Mind Lab</title><meta name="description" content="從股民平均賺200萬、彩券中獎率50%的生活故事，認識平均數、眾數、中位數與機率，探索AI時代為什麼更需要統計素養。"><link rel="canonical" href="https://allenmindlab.com/articles/why-learn-statistics-in-ai-era">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2026-11-07">
+<meta property="article:modified_time" content="2026-11-07"><meta property="og:site_name" content="Allen Mind Lab"><meta property="og:title" content="凡事問AI的年代，為何還需要學統計？"><meta property="og:description" content="AI時代的統計學趨勢與學思歷程"><meta property="og:url" content="https://allenmindlab.com/articles/why-learn-statistics-in-ai-era"><meta property="og:image" content="https://allenmindlab.com/images/articles/aml_article_091_poster.png"><meta property="og:image:alt" content="AML第91篇：AI時代統計學生活科普海報">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="凡事問AI的年代，為何還需要學統計？"><meta name="twitter:description" content="AI時代的統計學趨勢與學思歷程"><meta name="twitter:image" content="https://allenmindlab.com/images/articles/aml_article_091_poster.png"><link href="/aml-site.css" rel="stylesheet"><link href="/aml-article-shared-v1.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"凡事問AI的年代，為何還需要學統計？","alternativeHeadline":"AI時代的統計學趨勢與學思歷程","datePublished":"2026-11-07","dateModified":"2026-11-07","author":{"@type":"Person","name":"陳威勝"},"publisher":{"@type":"Organization","name":"Allen Mind Lab"},"mainEntityOfPage":"https://allenmindlab.com/articles/why-learn-statistics-in-ai-era","image":"https://allenmindlab.com/images/articles/aml_article_091_poster.png","description":"AI時代的統計學趨勢與學思歷程","isAccessibleForFree":true}</script></link></head>
+<body><nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
+<details class="aml-nav-group"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
+<details class="aml-nav-group"><summary>主題館藏</summary><div class="aml-nav-panel aml-nav-panel--collection"><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a></div></details>
+<details class="aml-nav-group"><summary>閱讀路徑</summary><div class="aml-nav-panel aml-nav-panel--paths"><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div></details>
+<a class="aml-nav-direct" href="/self-study.html">進階自學室</a><details class="aml-nav-group" data-aml-lab-nav="true"><summary>互動實驗室</summary><div class="aml-nav-panel"><a class="aml-lab-subnav aml-lab-subnav--explore" href="/tools.html#lab-halls">互動探索艙</a><a class="aml-lab-subnav aml-lab-subnav--support" href="/tools.html#practice-tools">智能支援艙</a></div></details>
+<details class="aml-nav-group"><summary>資源與聯繫</summary><div class="aml-nav-panel"><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></details>
+</div><button aria-controls="aml-mobile-menu" aria-expanded="false" aria-label="開啟網站選單" class="aml-menu-toggle" type="button">☰</button><div class="aml-mobile-menu" id="aml-mobile-menu"><span class="aml-mobile-label">關於 AML</span><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a><span class="aml-mobile-label">主題館藏</span><a href="/articles.html">主題館藏總覽</a><a href="/ot.html">職能治療與人類職能</a><a href="/mind.html">身心與福祉</a><a href="/pbs.html">PBS 正向行為支持</a><a href="/education.html">教育與學習</a><a href="/management.html">管理與領導</a><a href="/ai.html">AI × 實務</a><a href="/notes.html">AML 小品集</a><a href="/library.html">完整文章館藏</a><span class="aml-mobile-label">閱讀路徑</span><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a><span class="aml-mobile-label">進階自學室</span><a href="/self-study.html">進入進階自學室</a><span class="aml-mobile-label">互動實驗室</span><a class="aml-lab-subnav aml-lab-subnav--explore" href="/tools.html#lab-halls">互動探索艙</a><a class="aml-lab-subnav aml-lab-subnav--support" href="/tools.html#practice-tools">智能支援艙</a><span class="aml-mobile-label">資源與聯繫</span><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></nav>
+<section class="hero"><div class="hero-inner"><div class="eyebrow">EDUCATION × AI × STATISTICAL LITERACY</div><h1>凡事問AI的年代，為何還需要學統計？</h1><p class="subtitle">AI時代的統計學趨勢與學思歷程</p><div class="meta">陳威勝 · Allen Mind Lab · 2026.11.07</div><a class="series-link" href="/education.html">進入 Education 特色館</a></div></section><div class="hero-image"><picture><source srcset="/images/articles/aml_article_091_poster.webp" type="image/webp"><img src="/images/articles/aml_article_091_poster.png" alt="第91篇文章海報：凡事問AI的年代，為何還需要學統計？" width="1230" height="1278" loading="eager"></picture></div>
+<main><nav aria-label="本文目錄" class="aml-article-toc"><strong>本文目錄</strong><div><a href="#section-1">一、我的200萬去哪了？🤣</a><a href="#section-2">二、彩券中獎率50%，這麼好賺？</a><a href="#section-3">三、數字沒有說完的故事</a><a href="#section-4">四、統計學讓我們看見什麼？</a><a href="#section-5">五、從理解數字，到作出更好的決策</a><a href="#section-6">六、AI什麼都會算，我們還需要學什麼？</a><a href="#section-7">七、讓統計學成為一場探索</a><a href="#section-8">結語｜學習統計，是為了更有智慧地理解世界</a></div></nav>
+<h2 id="section-1">一、我的200萬去哪了？🤣</h2>
+<p>每逢股市大漲，新聞偶爾會出現令人振奮的標題：「台股市值大增，平均每位股民賺進200萬元！」</p>
+<p>看到這種新聞，忍不住打開證券帳戶。奇怪，我的200萬呢？難道證券商忘記匯款了？XD</p>
+<p>假設10位投資人當中，1位大戶賺了2,000萬元，其餘9位都沒有賺錢。這時候，我們可以用三種不同方式來理解這組數字：</p>
+<ul><li>平均數（Mean）：200萬元。將所有人的獲利加總，再除以10人。</li><li>眾數（Mode）：0元。因為10人當中，有9人的獲利都是0元，這是出現次數最多的數值。</li><li>中位數（Median）：0元。將10人的獲利由小到大排列，位於中間的兩個數值都是0元。</li></ul>
+<p>有趣了！同樣一組資料，平均數告訴我們每人平均賺了200萬元，但眾數與中位數卻呈現出另一個事實：九成的人根本沒有賺到錢。</p>
+<p>究竟哪個數字才是正確的？答案是：三個都正確，只是回答了不同的問題。</p>
+<p>平均數反映整體獲利的平均水準；眾數告訴我們最常出現的獲利金額；中位數則呈現排序後的中間位置，比較不容易受到少數極端值影響。</p>
+<p>在這個假設案例中，若想了解多數投資人的情況，眾數與中位數顯然比平均數更有參考價值。不過，在真實股市中，每個人的獲利金額可能各不相同，眾數未必具有代表性，因此還需要觀察整體分布。</p>
+<p>更值得注意的是，有些所謂的「平均獲利」，可能只是將股市總市值增加額除以投資人人數，並不代表每個人實際賺進口袋的金額。</p>
+<p>原來，統計學並不是要我們在平均數、眾數與中位數之間選出唯一正確的答案，而是學會依照問題，選擇適合的統計指標。</p>
+<p><strong>同樣一組數字，換個角度觀察，就可能看見完全不同的故事。</strong></p>
+<h2 id="section-2">二、彩券中獎率50%，這麼好賺？</h2>
+<p>另一個經典笑話是：「買彩券，中獎機率就是50%！」為什麼？「因為只有兩種結果啊！不是中獎，就是沒中獎！」🤣</p>
+<p>照這個邏輯，明天不是下雨就是不下雨，降雨機率也是50%？當然不是。</p>
+<p><strong>可能的結果只有兩種，不代表兩種結果發生的機率相同。</strong></p>
+<p>這就是機率（Probability）最基本、也最容易被誤解的概念之一。類似的統計問題其實隨處可見。</p>
+<p>網購時，5個人給5顆星，與5,000個人給4.8顆星，哪個更值得相信？這涉及樣本數與資料品質。</p>
+<p>如果發現喝咖啡的人工作效率較高，就代表多喝咖啡能提高效率嗎？這又涉及「相關不等於因果」。</p>
+<p>原來，統計學不只是課本裡的公式，生活中早就充滿值得探索的統計問題。</p>
+<h2 id="section-3">三、數字沒有說完的故事</h2>
+<p>我們每天接觸大量數字：民意調查、商品評價、投資報酬、健康資訊，以及各式各樣的新聞報導。但數字並不會自動告訴我們真相。</p>
+<p>平均數可能掩蓋個別差異；百分比可能忽略比較基準；樣本數再大，也不保證資料具有代表性。</p>
+<p>這些問題並不是統計學本身不可靠，而是我們可能忽略了數字產生的條件，以及它所能支持的解釋。</p>
+<p>例如，一項調查顯示某政策獲得60%的支持，我們還需要知道調查了多少人、如何抽樣，以及問題如何設計。</p>
+<p>如果調查對象缺乏代表性，即使蒐集了大量資料，也未必能反映整體民意。</p>
+<p>學習統計，首先帶來的好處，就是讓我們不再只是被動接受數字，而是懂得追問數字背後的故事。</p>
+<p><strong>統計素養不是讓人懷疑一切，而是讓我們知道什麼值得相信，以及為什麼值得相信。</strong></p>
+<h2 id="section-4">四、統計學讓我們看見什麼？</h2>
+<p>如果統計學只是幫助我們拆穿數字陷阱，那未免太可惜了。它更迷人的地方，是讓我們從看似雜亂的現象中，逐漸發現值得探索的規律。</p>
+<p>單看某一天的氣溫，我們很難理解長期氣候變化；但累積多年的觀測資料，就能觀察季節特徵與長期趨勢。</p>
+<p>單看一位顧客的購買行為，可能難以預測下一次會買什麼；但觀察大量消費紀錄，卻可能發現某些商品經常一起被購買。</p>
+<p>這些規律不一定能解釋所有原因，也不保證未來一定如此，卻能幫助我們提出更有價值的問題。</p>
+<p>統計學的發展，從早期的人口資料整理、機率理論，到抽樣調查、統計推論及現代資料科學，始終圍繞著一個重要課題：</p>
+<p><strong>如何從有限的資料中理解世界，並在不確定的情況下作出合理判斷？</strong></p>
+<p>這也讓我們學會一件重要的事：不確定性並不代表毫無頭緒。</p>
+<p>透過機率、抽樣與統計推論，我們可以評估估計值的精確程度、理解可能存在的誤差，並判斷證據是否足夠。</p>
+<p>例如，天氣預報的降雨機率70%，不是保證明天一定下雨，而是在特定預報條件下，對降雨可能性的量化表達。</p>
+<p>學習統計，不是讓我們永遠猜得準，而是更清楚自己有多大的把握。</p>
+<h2 id="section-5">五、從理解數字，到作出更好的決策</h2>
+<p>統計學的價值，最終仍要回到生活中的選擇。</p>
+<p>假設某種新的學習方法，讓學生平均成績提高0.2分。在樣本數足夠大、資料條件適當時，這個微小差異也可能達到「統計顯著」。</p>
+<p>但0.2分真的值得投入大量時間與成本嗎？這就涉及統計顯著性與實際重要性的差別。</p>
+<p>統計檢定可以幫助我們評估，在特定假設與分析條件下，觀察到的差異有多不尋常；但它不能單獨告訴我們，這項差異究竟有多重要。</p>
+<p>我們仍需要考慮效果大小、估計的不確定性、實際成本，以及不同情境下的應用價值。</p>
+<p>從家庭預算、消費選擇、工作改善到公共政策，這種思考方式都能派上用場。</p>
+<p>統計學不會替我們決定什麼才是最好的選擇，卻能讓我們知道，自己的判斷究竟建立在什麼證據之上。</p>
+<p><strong>好的決策不一定保證得到最好的結果，但應該建立在合理的資訊與思考過程之上。</strong></p>
+<h2 id="section-6">六、AI什麼都會算，我們還需要學什麼？</h2>
+<p>過去學習統計，經常需要花費大量時間理解公式、查閱統計表與操作軟體。</p>
+<p>如今，AI已能協助整理資料、製作圖表、執行統計分析，甚至撰寫初步報告。這確實改變了統計學的學習方式，也讓更多人有機會接觸資料分析。</p>
+<p>但AI的便利，並不代表我們可以省略統計基礎。</p>
+<p>如果不了解平均數與中位數的差異，不知道抽樣可能產生偏差，或無法區分相關與因果，即使AI產生了漂亮的圖表，也可能無從判斷結論是否合理。</p>
+<p>更值得注意的是，AI能將分析結果整理成流暢而有說服力的文字。當不適當的推論搭配精美圖表，我們反而更容易忽略其中的問題。</p>
+<p>因此，AI時代學習統計，不是要與機器比誰算得快，而是學會如何提出更好的問題、選擇適當的方法，並檢查結果是否可信。</p>
+<p>基本的統計概念與計算邏輯仍然重要，但學習重心可以逐漸從重複運算，轉向理解、探索與應用。</p>
+<p>我們可以請AI協助分析，也能進一步追問：「為什麼使用這種方法？」「這個結果還有其他解釋嗎？」「如果改變分析條件，結論會不會不同？」</p>
+<p>當然，使用AI分析資料之前，也應確認資料是否適合提供給外部工具，避免將個人或敏感資訊直接上傳。</p>
+<p><strong>AI讓取得答案變得容易，而統計學讓我們更有能力判斷答案。</strong></p>
+<h2 id="section-7">七、讓統計學成為一場探索</h2>
+<p>如果學習統計，不再只是背公式、套數字與準備考試，而是從生活中的疑問出發，會不會更有趣？</p>
+<p>我們可以從一則令人懷疑的新聞開始，蒐集資料、提出假設，再利用AI與互動工具探索答案。</p>
+<p>過程中，逐漸建立六個統計學思歷程：</p>
+<ul><li>問｜我真正想了解的是什麼？</li><li>辨｜資料從哪裡來？是否可靠？</li><li>析｜應該如何分析與比較？</li><li>驗｜計算、假設與推論是否合理？</li><li>釋｜結果代表什麼？有多大的不確定性？</li><li>思｜這些發現能如何應用？還有哪些值得探索的問題？</li></ul>
+<p>從平均數、機率、抽樣，到相關分析與統計推論，每個概念都可以成為一道生活中的趣味謎題。</p>
+<p>而學習最有意思的時刻，往往不是終於算出正確答案，而是突然發現：「原來還可以這樣想！」</p>
+<h2 id="section-8">結語｜學習統計，是為了更有智慧地理解世界</h2>
+<p>回頭看看那位「平均賺200萬」的股民，以及「中獎機率50%」的彩券玩家。這些令人會心一笑的例子，提醒我們統計學其實離生活並不遙遠。</p>
+<p>它不只幫助我們辨識資訊中的謬誤，也讓我們發現規律、理解不確定性、評估證據，並作出更有依據的選擇。</p>
+<p>在AI能夠快速提供答案的年代，我們不一定需要比機器算得更快，但仍然需要知道問題是否問對、資料是否可靠，以及結論是否值得相信。</p>
+<p><strong>AI幫我們算得更快，統計學讓我們看得更透。</strong></p>
+<p>或許，統計學最值得學習的地方，就是讓我們對世界多一分好奇，對數字多一分理解，也對自己的判斷多一分謙遜。</p>
+<section aria-labelledby="references-heading"><h2 id="references-heading">參考資料</h2><ol><li>American Statistical Association. (2016). <cite>Guidelines for Assessment and Instruction in Statistics Education (GAISE) College Report 2016</cite>. <a href="https://www.amstat.org/education/guidelines-for-assessment-and-instruction-in-statistics-education-%28gaise%29-reports">官方資料</a></li><li>Wasserstein, R. L., &amp; Lazar, N. A. (2016). The ASA statement on p-values: Context, process, and purpose. <cite>The American Statistician, 70</cite>(2), 129–133. <a href="https://doi.org/10.1080/00031305.2016.1154108">DOI</a></li><li>Miao, F., &amp; Holmes, W. (2023). <cite>Guidance for generative AI in education and research</cite>. UNESCO. <a href="https://doi.org/10.54675/EWZM9535">DOI</a></li></ol></section>
+<section aria-label="分享文章" class="aml-share"><div class="aml-share-copy"><strong>分享這篇文章</strong><p>把這篇 AML 文章分享給可能也會需要的人。</p></div><div class="aml-share-actions"><button class="aml-share-btn" data-aml-share type="button">分享文章 ↗</button><button class="aml-share-btn secondary" data-aml-copy-link type="button">複製連結</button></div><div aria-live="polite" class="aml-share-status" data-aml-share-status></div></section></main>
+
+<section aria-label="文章閱讀導覽" class="aml-article-footer-nav"><div class="aml-article-footer-nav__head"><div class="aml-article-footer-nav__eyebrow">Continue Reading · AML</div><div class="aml-article-footer-nav__route">Education × AI × 統計素養</div></div><div class="aml-article-footer-nav__grid"><div class="aml-article-footer-nav__hub"><small>回到館藏</small><strong>Education 特色館</strong><div class="aml-article-footer-nav__hub-links"><a href="/education.html">進入主館</a><a href="/ai.html">AI × 實務館</a></div></div></div><div class="aml-article-footer-nav__utility"><a href="/articles.html">Articles 總館</a><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ Back to top</a></div></section><footer class="aml-global-footer"><div class="aml-footer-top"><div><div class="aml-footer-brand">Allen Mind Lab <span>AML</span></div><div class="aml-footer-tagline">Building A Meaningful Life.</div><div class="aml-footer-copy">從職能治療、PBS、管理、教育、AI 到身心修習，整合專業、實踐與反思，持續探索更有意義的生活。</div></div><div class="aml-footer-links"><div class="aml-footer-group"><h4>關於 AML</h4><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div><div class="aml-footer-group"><h4>主題館藏</h4><a href="/articles.html">主題館藏總覽</a><a href="/library.html">完整文章館藏</a><a href="/notes.html">AML 小品集</a></div><div class="aml-footer-group"><h4>閱讀路徑</h4><a href="/reading-paths.html">閱讀路徑總覽</a><a href="/management-learning.html">管理實務學習</a><a href="/pbs-learning.html">PBS 實務學習</a><a href="/helper-learning.html">助人者永續實踐</a></div><div class="aml-footer-group"><h4>進階自學室</h4><a href="/self-study.html">進階自學室</a><a href="/management-self-study.html">管理學自學</a><a href="/pbs-self-study.html">PBS 自學</a></div><div class="aml-footer-group"><h4>互動實驗室</h4><a href="/tools.html#lab-halls">互動探索艙</a><a href="/tools.html#practice-tools">智能支援艙</a></div><div class="aml-footer-group"><h4>資源與聯繫</h4><a href="/resources.html">精選資源</a><a href="/contact.html">聯繫 AML</a></div></div></div><div class="aml-footer-bottom"><div>© 2026 Allen Mind Lab · Allen Chen 陳威勝</div><div class="aml-footer-mini-links"><a href="https://www.facebook.com/weishengdaniel.chen/" rel="noopener noreferrer" target="_blank">Facebook</a><a href="https://buttondown.com/danielwschen" rel="noopener noreferrer" target="_blank">Notes from the Lab</a><span><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/rss.xml">RSS</a> · <a href="/sitemap.xml">Sitemap</a></span></div></div></footer><script defer="" src="/aml-site.js"></script>
+</body></html>
