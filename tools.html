@@ -1420,6 +1420,20 @@
 @media(max-width:720px){.lumi-bay{padding:24px 16px 36px}.lumi-bay__signal{align-items:flex-start;flex-direction:column;padding:14px 16px}.lumi-bay__toggle{width:100%}.lumi-bay.is-open .lumi-bay__reveal{padding-top:18px;max-height:1800px}.lumi-bay__fullart{border-radius:18px}.lumi-bay__routes{padding:17px;border-radius:18px}.lumi-bay__routes-head{display:grid;gap:7px}.lumi-bay__route-grid{grid-template-columns:1fr}.lumi-bay__route:last-child{grid-column:auto}}
 @media(prefers-reduced-motion:reduce){.lumi-bay__reveal{transition:none}}
 </style>
+<style id="aml-practice-refresh-v1">
+#practice-tools .aml-practice-intro{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:22px;padding:25px 28px;border-radius:22px;background:linear-gradient(120deg,#102e4c 0%,#155a72 100%);color:#fff;margin-top:12px}
+#practice-tools .aml-practice-intro h2{font-size:clamp(1.35rem,2.8vw,1.85rem);color:#fff;margin:5px 0 7px;line-height:1.4}
+#practice-tools .aml-practice-intro p{margin:0;color:#e1ebf3;font-size:1rem;line-height:1.75}
+#practice-tools .aml-practice-eyebrow{color:#f2cf86;font-size:.78rem;letter-spacing:.12em;font-weight:800}
+#practice-tools .aml-practice-intro>a{flex-shrink:0;display:inline-block;border:1px solid #edcf90;border-radius:999px;color:#142c45;background:#f2d698;text-decoration:none;font-weight:800;padding:11px 18px}
+#practice-tools .aml-practice-feature{grid-column:1/-1;max-width:none!important;display:grid!important;grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr);column-gap:24px;align-items:center;position:relative;border:2px solid #d7b46e!important;background:linear-gradient(115deg,#fffefa,#f3f8fb)!important}
+#practice-tools .aml-practice-feature h3{font-size:clamp(1.3rem,2.7vw,1.8rem)!important;margin:6px 0}
+#practice-tools .aml-practice-feature>small,#practice-tools .aml-practice-feature>h3,#practice-tools .aml-practice-feature>p{grid-column:1}
+#practice-tools .aml-practice-feature .support-io{grid-column:2;grid-row:1/4;margin:0}
+#practice-tools .aml-practice-feature .btn{grid-column:1;justify-self:start;margin-top:12px}
+#practice-tools .aml-practice-intro>a:focus-visible,#practice-tools .aml-practice-feature a:focus-visible{outline:3px solid #e9a831;outline-offset:4px}
+@media(max-width:720px){#practice-tools .aml-practice-intro{flex-direction:column;align-items:flex-start;padding:21px 18px}#practice-tools .aml-practice-feature{display:flex!important;flex-direction:column;align-items:stretch}#practice-tools .aml-practice-feature .support-io{margin-top:12px}#practice-tools .aml-practice-feature .btn{align-self:flex-start}}
+</style>
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
 <details class="aml-nav-group" name="aml-primary-nav"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
@@ -1628,7 +1642,8 @@
       <a href="#tool-planning" data-support-guide data-support-message="你有期末方案初稿，或只有部分章節內容？我推薦方案規劃與管理智能助理 3.0：組長可整合全組十章與 Final；組員可只處理自己負責章節，並將公民咖啡館回饋轉成可執行的修訂紀錄。">📄 我要檢查方案內容</a>
       <a href="#tool-infection" data-support-guide data-support-message="你要處理感染事件、追蹤或文件填報？我帶你到感控防治文件填報智能助理，將重複填報流程集中處理。">🩺 我要處理感控文件</a>
       <a href="#tool-transition" data-support-guide data-support-message="你要整理服務轉銜條件、支持資源與後續承接？我推薦跨系統轉銜規劃智能助理 2.0：用線上表單整理服務對象、接續支持者與環境資源，並產出可下載、可列印的轉銜評估報告。">🧭 我要做轉銜評估</a>
-      <a href="#tool-community" data-support-guide data-support-message="目前沒有完全符合你的工具？把『想完成什麼、手上有什麼資料、希望得到什麼成果』告訴 AML，我們把它收進下一輪工具需求池。">✨ 找不到？向 AML 許願</a>
+      <a href="#tool-sample-size" data-support-guide data-support-message="想做問卷、社區民調或滿意度調查？我推薦「我應該抽樣多少人？」：輸入母體人數與精確度，就能估算所需有效樣本，並提醒抽樣偏誤與回覆率限制。">📊 我要規劃問卷調查</a>
+       <a href="#tool-community" data-support-guide data-support-message="目前沒有完全符合你的工具？把『想完成什麼、手上有什麼資料、希望得到什麼成果』告訴 AML，我們把它收進下一輪工具需求池。">✨ 找不到？向 AML 許願</a>
     </div>
     <div class="support-xier-guide__reply" aria-live="polite"><span>曦兒：</span><strong>先選一個最接近你現在的任務，我會先告訴你「輸入什麼、會得到什麼」。</strong></div>
     <div class="support-xier-guide__flow" aria-label="智能支援艙使用流程">
@@ -1662,8 +1677,9 @@
   </div>
 </article>
 
-<article class="tool-card" id="tool-sample-size" aria-labelledby="sample-size-title">
-<small>STATISTICS · PRACTICAL PLANNING</small>
+<div class="aml-practice-intro" id="aml-practice-intro"><div><span class="aml-practice-eyebrow">PRACTICAL TOOLS · 實務工具</span><h2>有明確任務？直接開啟工具。</h2><p>不必先理解複雜公式，從調查規劃開始，把問題轉成可以執行的下一步。</p></div><a href="/tools/sample-size-planner/">開始規劃抽樣 →</a></div>
+<article class="tool-card aml-practice-feature" id="tool-sample-size" aria-labelledby="sample-size-title">
+<small>📊 統計與研究 · STATISTICS</small>
 <h3 id="sample-size-title">我應該抽樣多少人？｜樣本數規劃實驗室</h3>
 <p>不用背公式。輸入調查對象人數與希望的精確度，立即估算有效問卷與邀請人數，並學會辨識抽樣偏誤。</p>
 <div class="support-io"><div><span>INPUT｜輸入</span><b>母體人數、精確度、回覆率</b></div><div><span>OUTPUT｜產出</span><b>樣本數估算、AI 提問與品質提醒</b></div></div>
