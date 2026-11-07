@@ -1452,6 +1452,38 @@
 #practice-tools .support-assistant-card .tool-related-reading{order:8;min-height:0!important;margin-top:10px!important;font-size:.79rem!important;line-height:1.6!important}
 @media(max-width:720px){#practice-tools .support-assistant-card{padding:18px!important}#practice-tools .support-assistant-card .support-io{grid-template-columns:1fr!important}}
 </style>
+<style id="aml-horizontal-tool-catalog-v1">
+/* One full-width tool per row; preserve tool contents and accessible controls. */
+#practice-tools .tool-grid{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+#practice-tools .support-assistant-card{grid-column:1/-1!important;display:grid!important;grid-template-columns:minmax(0,1fr) minmax(255px,32%)!important;column-gap:26px!important;row-gap:7px!important;align-items:start!important;min-height:0!important;height:auto!important;padding:22px 26px!important}
+#practice-tools .support-assistant-card>.tool-status,
+#practice-tools .support-assistant-card>.tool-type-kicker,
+#practice-tools .support-assistant-card>small,
+#practice-tools .support-assistant-card>h3,
+#practice-tools .support-assistant-card>p:not(.tool-related-reading),
+#practice-tools .support-assistant-card>.aml-assistant-details,
+#practice-tools .support-assistant-card>.tool-related-reading{grid-column:1!important}
+#practice-tools .support-assistant-card>.tool-status{grid-row:1!important}
+#practice-tools .support-assistant-card>.tool-type-kicker{grid-row:2!important;margin:0!important}
+#practice-tools .support-assistant-card>small{grid-row:3!important;margin:0!important}
+#practice-tools .support-assistant-card>h3{grid-row:4!important;margin:2px 0!important;min-height:0!important}
+#practice-tools .support-assistant-card>p:not(.tool-related-reading){grid-row:5!important;margin:0!important;min-height:0!important;max-width:70ch}
+#practice-tools .support-assistant-card>.aml-assistant-details{grid-row:6!important;margin:5px 0 0!important}
+#practice-tools .support-assistant-card>.tool-related-reading{grid-row:7!important;margin:3px 0 0!important;min-height:0!important}
+#practice-tools .support-assistant-card>.support-io{grid-column:2!important;grid-row:1/6!important;display:grid!important;grid-template-columns:1fr!important;margin:0!important;min-height:0!important;align-self:start!important}
+#practice-tools .support-assistant-card>.actions{grid-column:2!important;grid-row:6/8!important;display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:start!important;min-height:0!important;margin:0!important;gap:8px!important}
+#practice-tools .support-assistant-card>.actions .btn{width:100%!important;max-width:none!important;text-align:center!important;white-space:normal!important;min-height:42px!important}
+#practice-tools .support-assistant-card>.aml-assistant-details ul{min-height:0!important}
+#practice-tools .aml-practice-feature{grid-column:1/-1!important}
+@media(max-width:820px){
+#practice-tools .support-assistant-card{display:flex!important;flex-direction:column!important;padding:19px!important;gap:7px!important}
+#practice-tools .support-assistant-card>.support-io{width:100%!important;grid-template-columns:repeat(2,minmax(0,1fr))!important}
+#practice-tools .support-assistant-card>.actions{width:100%!important;flex-direction:row!important;flex-wrap:wrap!important}
+#practice-tools .support-assistant-card>.actions .btn{width:auto!important;flex:1 1 190px!important}
+#practice-tools .support-assistant-card>.aml-assistant-details{width:100%!important}
+}
+@media(max-width:520px){#practice-tools .support-assistant-card>.support-io{grid-template-columns:1fr!important}#practice-tools .support-assistant-card>.actions{flex-direction:column!important}#practice-tools .support-assistant-card>.actions .btn{width:100%!important;flex:auto!important}}
+</style>
 </head>
 <body><a class="aml-skip-link" href="#aml-main">跳到主要內容</a><nav aria-label="主要導覽" class="aml-global-nav"><a class="aml-brand" href="/index.html">ALLEN MIND LAB</a><div class="aml-desktop-links">
 <details class="aml-nav-group" name="aml-primary-nav"><summary>關於 AML</summary><div class="aml-nav-panel"><a href="/about.html">認識 AML</a><a href="/research.html">研究</a><a href="/publications.html">出版與成果</a><a href="/recognition.html">專業肯定</a></div></details>
