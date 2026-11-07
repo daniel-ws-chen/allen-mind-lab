@@ -1,0 +1,34 @@
+{
+  "slug": "aml-accessibility-25-days",
+  "title": "歷經 25 天的網站閉關修練，無障礙標章 GET！",
+  "subtitle": "從反覆檢測與修正，重新思考網站的資訊可近用性",
+  "seoDescription": "Allen Mind Lab（AML）歷經 25 天無障礙網站檢測、人工審查與反覆改善，於 2026 年 10 月 30 日正式取得 A 級標章。從網站閉關修練的真實經歷，反思資訊可近用性與網站設計的意義，記錄 AML 3.5 的重要里程碑。",
+  "summary": "歷經 25 天的網站閉關修練，AML 正式取得無障礙網站 A 級標章。這段反覆檢測與修正的歷程，也重新提醒我們：網站能看見，不代表每個人都能使用。",
+  "date": "2026-10-31",
+  "primaryDomain": "notes",
+  "crossDomains": [],
+  "tag": "AML Notes",
+  "eyebrow": "AML NOTES · 3.5",
+  "keywords": [
+    "AML 3.5",
+    "無障礙網站",
+    "網站開發",
+    "資訊可近用性"
+  ],
+  "bodyFile": "body.html",
+  "heroWebp": "aml-accessibility-25-days-hero.webp",
+  "ogImage": "aml-accessibility-25-days-hero.png",
+  "heroAlt": "AML 3.5 網站閉關修練 25 天的山水修行意象插畫，紀念取得無障礙網站 A 級標章；畫面中的圖示不是官方標章",
+  "isNote": true,
+  "homepageFeatured": true,
+  "rss": true,
+  "sitemap": true,
+  "navigation": {
+    "routeLabel": "AML Notes",
+    "seriesLinkLabel": "前往小品集",
+    "hub": {
+      "label": "AML Notes 小品集",
+      "href": "/notes.html"
+    }
+  }
+}
