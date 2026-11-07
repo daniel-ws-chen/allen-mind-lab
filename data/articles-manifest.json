@@ -1,14 +1,14 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-07T07:12:00+08:00",
+  "generatedAt": "2026-11-07T19:00:00+08:00",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 91,
+    "total": 92,
     "ot": 38,
     "mind": 15,
     "pbs": 24,
-    "education": 18,
+    "education": 19,
     "management": 42,
     "ai": 28,
     "notes": 13
@@ -93,6 +93,44 @@
     }
   },
   "articles": [
+    {
+      "slug": "dragon-city-income-statistics",
+      "title": "住在天龍國，人人都是有錢人？",
+      "summary": "同樣平均所得10萬元，兩個里的所得分布卻截然不同。從長條圖、直方圖、累積分布圖與盒鬚圖，理解統計如何改變問題定義與政策思考。",
+      "date": "2026-11-07",
+      "domains": [
+        "education"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [],
+      "tag": "Education × Statistics",
+      "cardMeta": "2026.11.07 · Education × Statistics",
+      "keywords": [
+        "描述統計",
+        "集中趨勢",
+        "離散程度",
+        "所得分布",
+        "資料視覺化",
+        "探索性資料分析"
+      ],
+      "articlePath": "/articles/dragon-city-income-statistics.html",
+      "order": -34,
+      "canonical": "https://allenmindlab.com/articles/dragon-city-income-statistics",
+      "hero": "/images/articles/aml_article_092_poster.svg",
+      "ogImage": "/images/articles/aml_article_092_poster.svg",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 凡事問AI的年代，為何還需要學統計？",
+          "href": "/articles/why-learn-statistics-in-ai-era.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "why-learn-statistics-in-ai-era",
       "title": "凡事問AI的年代，為何還需要學統計？",
