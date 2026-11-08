@@ -1,0 +1,49 @@
+name: AML Article Publishing Guard
+on:
+  pull_request:
+    paths:
+      - 'articles/**'
+      - 'images/articles/**'
+      - 'data/articles-manifest.json'
+      - 'rss.xml'
+      - 'sitemap.xml'
+      - 'scripts/check_articles.py'
+      - '.github/workflows/aml-article-check.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'articles/**'
+      - 'images/articles/**'
+      - 'data/articles-manifest.json'
+      - 'rss.xml'
+      - 'sitemap.xml'
+      - 'scripts/check_articles.py'
+      - '.github/workflows/aml-article-check.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  publishing-guard:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Identify changed files
+        id: changed
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            git diff --name-only "${{ github.event.pull_request.base.sha }}" "${{ github.sha }}" > /tmp/aml-changed.txt
+          elif [[ "${{ github.event_name }}" == "push" && "${{ github.event.before }}" != "0000000000000000000000000000000000000000" ]]; then
+            git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" > /tmp/aml-changed.txt
+          else
+            git ls-files 'articles/*.html' > /tmp/aml-changed.txt
+          fi
+      - name: Check article manifest and AML layout
+        run: |
+          mapfile -t changed < /tmp/aml-changed.txt
+          python scripts/check_articles.py --changed "${changed[@]}"
