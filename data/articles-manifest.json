@@ -4,11 +4,11 @@
   "generatedAt": "2026-11-08",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 93,
+    "total": 94,
     "ot": 38,
     "mind": 15,
     "pbs": 24,
-    "education": 20,
+    "education": 21,
     "management": 42,
     "ai": 28,
     "notes": 13
@@ -122,6 +122,49 @@
       "featured": false,
       "featuredRank": null,
       "navigation": [],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
+      "slug": "sampling-representativeness",
+      "title": "問了300個里民，就能代表整個里？",
+      "summary": "從均富里長與天龍里長的居民調查，理解抽樣方法、樣本代表性、選擇偏誤與樣本數，認識為什麼問得多不一定問得準。",
+      "date": "2026-11-08",
+      "domains": [
+        "education"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [],
+      "tag": "Education × Statistics",
+      "cardMeta": "2026.11.08 · Education × Statistics",
+      "keywords": [
+        "抽樣",
+        "代表性",
+        "抽樣偏誤",
+        "選擇偏誤",
+        "樣本數",
+        "統計素養"
+      ],
+      "articlePath": "/articles/sampling-representativeness.html",
+      "order": -35,
+      "canonical": "https://allenmindlab.com/articles/sampling-representativeness",
+      "hero": "/images/articles/sampling-representativeness-poster.webp",
+      "ogImage": "/images/articles/sampling-representativeness-poster.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 住在天龍國，人人都是有錢人？",
+          "href": "/articles/dragon-city-income-statistics.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 明明是同一個里，怎麼每次調查都不一樣？ →",
+          "href": "/articles/sampling-distribution-central-limit-theorem.html"
+        }
+      ],
       "readingPaths": [],
       "isNote": false
     },
