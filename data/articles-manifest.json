@@ -4,11 +4,11 @@
   "generatedAt": "2026-11-08",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 92,
+    "total": 93,
     "ot": 38,
     "mind": 15,
     "pbs": 24,
-    "education": 19,
+    "education": 20,
     "management": 42,
     "ai": 28,
     "notes": 13
