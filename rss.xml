@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
 <channel>
+<item><title>明明是同一個里，怎麼每次調查都不一樣？</title><link>https://allenmindlab.com/articles/sampling-distribution-central-limit-theorem</link><guid isPermaLink="true">https://allenmindlab.com/articles/sampling-distribution-central-limit-theorem</guid><pubDate>Sun, 08 Nov 2026 14:00:00 GMT</pubDate><description>從抽樣分布、中央極限定理到95%信賴區間，理解隨機抽樣的規律。</description></item>
+
 <item><title>住在天龍國，人人都是有錢人？</title><link>https://allenmindlab.com/articles/dragon-city-income-statistics</link><guid isPermaLink="true">https://allenmindlab.com/articles/dragon-city-income-statistics</guid><pubDate>Sat, 07 Nov 2026 11:00:00 GMT</pubDate><description>從兩個平均所得相同的里，理解描述統計、資料分布及不同治理決策。</description></item>
 <item><title>凡事問AI的年代，為何還需要學統計？</title><link>https://allenmindlab.com/articles/why-learn-statistics-in-ai-era</link><guid isPermaLink="true">https://allenmindlab.com/articles/why-learn-statistics-in-ai-era</guid><pubDate>Fri, 06 Nov 2026 23:12:00 GMT</pubDate><description>從「股民平均賺200萬」與「彩券中獎率50%」的生活故事出發，理解平均數、眾數、中位數、機率與統計素養，探索AI時代如何用統計看懂世界。</description></item>
 
