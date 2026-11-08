@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-07T19:00:00+08:00",
+  "generatedAt": "2026-11-08",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
     "total": 92,
@@ -93,6 +93,38 @@
     }
   },
   "articles": [
+    {
+      "slug": "sampling-distribution-central-limit-theorem",
+      "title": "明明是同一個里，怎麼每次調查都不一樣？",
+      "summary": "從均富里長與天龍里長的支持率調查，理解抽樣變異、抽樣分布、常態分布、中央極限定理、標準誤與95%信賴區間。",
+      "date": "2026-11-08",
+      "domains": [
+        "education"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [],
+      "tag": "Education × Statistics",
+      "cardMeta": "2026.11.08 · Education × Statistics",
+      "keywords": [
+        "抽樣分布",
+        "中央極限定理",
+        "常態分布",
+        "標準誤",
+        "信賴區間",
+        "統計素養"
+      ],
+      "articlePath": "/articles/sampling-distribution-central-limit-theorem.html",
+      "order": -36,
+      "canonical": "https://allenmindlab.com/articles/sampling-distribution-central-limit-theorem",
+      "hero": "/images/articles/aml-article-94-poster.webp",
+      "ogImage": "/images/articles/aml-article-94-poster.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "dragon-city-income-statistics",
       "title": "住在天龍國，人人都是有錢人？",
