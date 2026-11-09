@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-09",
+  "generatedAt": "2026-11-10",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 95,
+    "total": 96,
     "ot": 38,
     "mind": 15,
     "pbs": 24,
-    "education": 22,
-    "management": 42,
+    "education": 23,
+    "management": 43,
     "ai": 28,
     "notes": 13
   },
@@ -93,6 +93,47 @@
     }
   },
   "articles": [
+    {
+      "slug": "hypothesis-testing-p-value",
+      "title": "只差一票，結論就不同？——從假設檢定到p值，理解統計顯著性的真相",
+      "summary": "30人中20人與21人支持，為何統計結論不同？從假設檢定、p值與信賴區間，理解統計證據如何交棒給管理決策。",
+      "date": "2026-11-10",
+      "domains": [
+        "education",
+        "management"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [
+        "management"
+      ],
+      "tag": "Education × Statistics",
+      "cardMeta": "2026.11.10 · Education × Statistics × Management",
+      "keywords": [
+        "假設檢定",
+        "p值",
+        "統計顯著性",
+        "Wilson信賴區間",
+        "統計素養",
+        "循證管理"
+      ],
+      "articlePath": "/articles/hypothesis-testing-p-value.html",
+      "order": -38,
+      "canonical": "https://allenmindlab.com/articles/hypothesis-testing-p-value",
+      "hero": "/images/articles/AML_Article_096_Poster.webp",
+      "ogImage": "/images/articles/AML_Article_096_Poster.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 95%信賴區間，究竟在相信什麼？",
+          "href": "/articles/confidence-interval-95-meaning.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "confidence-interval-95-meaning",
       "title": "95%信賴區間，究竟在相信什麼？",
