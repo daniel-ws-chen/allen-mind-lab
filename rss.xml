@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0">
 <channel>
+<item><title>95%信賴區間，究竟在相信什麼？</title><link>https://allenmindlab.com/articles/confidence-interval-95-meaning</link><guid isPermaLink="true">https://allenmindlab.com/articles/confidence-interval-95-meaning</guid><pubDate>Mon, 09 Nov 2026 04:00:00 GMT</pubDate><description>從兩位里長的居民調查理解95%信賴區間、1.96與Wilson區間。</description></item>
+
 <item><title>問了300個里民，就能代表整個里？</title><link>https://allenmindlab.com/articles/sampling-representativeness</link><guid isPermaLink="true">https://allenmindlab.com/articles/sampling-representativeness</guid><pubDate>Sun, 08 Nov 2026 12:00:00 GMT</pubDate><description>從居民調查理解抽樣代表性、選擇偏誤與樣本數。</description></item>
 <item><title>明明是同一個里，怎麼每次調查都不一樣？</title><link>https://allenmindlab.com/articles/sampling-distribution-central-limit-theorem</link><guid isPermaLink="true">https://allenmindlab.com/articles/sampling-distribution-central-limit-theorem</guid><pubDate>Sun, 08 Nov 2026 14:00:00 GMT</pubDate><description>從抽樣分布、中央極限定理到95%信賴區間，理解隨機抽樣的規律。</description></item>
 
