@@ -1,14 +1,14 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-08",
+  "generatedAt": "2026-11-09",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 94,
+    "total": 95,
     "ot": 38,
     "mind": 15,
     "pbs": 24,
-    "education": 21,
+    "education": 22,
     "management": 42,
     "ai": 28,
     "notes": 13
@@ -94,6 +94,44 @@
   },
   "articles": [
     {
+      "slug": "confidence-interval-95-meaning",
+      "title": "95%信賴區間，究竟在相信什麼？",
+      "summary": "從均富里長與天龍里長的居民調查，理解95%信賴區間、長期涵蓋率、1.96與Wilson區間，以及統計推論如何協助判斷不確定性。",
+      "date": "2026-11-09",
+      "domains": [
+        "education"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [],
+      "tag": "Education × Statistics",
+      "cardMeta": "2026.11.09 · Education × Statistics",
+      "keywords": [
+        "信賴區間",
+        "Wilson區間",
+        "統計推論",
+        "標準誤",
+        "抽樣分布",
+        "統計素養"
+      ],
+      "articlePath": "/articles/confidence-interval-95-meaning.html",
+      "order": -37,
+      "canonical": "https://allenmindlab.com/articles/confidence-interval-95-meaning",
+      "hero": "/images/articles/aml-article-95-poster.webp",
+      "ogImage": "/images/articles/aml-article-95-poster.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 明明是同一個里，怎麼每次調查都不一樣？",
+          "href": "/articles/sampling-distribution-central-limit-theorem.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "sampling-distribution-central-limit-theorem",
       "title": "明明是同一個里，怎麼每次調查都不一樣？",
       "summary": "從均富里長與天龍里長的支持率調查，理解抽樣變異、抽樣分布、常態分布、中央極限定理、標準誤與95%信賴區間。",
@@ -121,7 +159,13 @@
       "series": [],
       "featured": false,
       "featuredRank": null,
-      "navigation": [],
+      "navigation": [
+        {
+          "kind": "next",
+          "label": "下一篇 95%信賴區間，究竟在相信什麼？ →",
+          "href": "/articles/confidence-interval-95-meaning.html"
+        }
+      ],
       "readingPaths": [],
       "isNote": false
     },
