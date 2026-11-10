@@ -643,6 +643,48 @@
   .resource-section .resource-item,.resource-section--partner .resource-item{grid-template-columns:minmax(150px,195px) minmax(0,1fr);gap:0 16px;}
 }
 </style>
+<style id="aml-resource-preview-fit-v3">
+/* Keep full website screenshots visible in horizontal resource cards. */
+.resource-section .resource-item>.resource-preview,
+.resource-section--partner .resource-item>.resource-preview{
+  display:flex;align-items:center;justify-content:center;
+  background:#f1f5f8;
+  min-height:168px;max-height:230px;
+}
+.resource-section .resource-item>.resource-preview img,
+.resource-section--partner .resource-item>.resource-preview img,
+.resource-section .resource-preview--photo-first img{
+  width:100%;height:100%;object-fit:contain;object-position:center;
+  transform:none;transform-origin:center;filter:none;
+}
+.resource-section .resource-item>.resource-preview iframe{
+  width:100%;height:100%;transform:none;pointer-events:none;
+}
+.resource-section .resource-item>.resource-preview::after{
+  content:"網站預覽";background:rgba(255,255,255,.94);
+  color:#334f65;border:1px solid #cbd8df;
+}
+.resource-section .resource-preview--seraphina::after{content:"AML 協力夥伴";}
+.resource-section .resource-preview--photo-first::after{content:"Sera.Phina · 精選預覽";}
+.resource-section .resource-preview--photo-first::before{display:none;}
+.resource-section .partner-preview-copy{display:none;}
+@media(min-width:761px){
+  .resource-section .resource-item,.resource-section--partner .resource-item{
+    grid-template-columns:minmax(235px,290px) minmax(0,1fr);
+  }
+}
+@media(min-width:761px) and (max-width:940px){
+  .resource-section .resource-item,.resource-section--partner .resource-item{
+    grid-template-columns:minmax(190px,235px) minmax(0,1fr);
+  }
+}
+@media(max-width:760px){
+  .resource-section .resource-item>.resource-preview,
+  .resource-section--partner .resource-item>.resource-preview{
+    height:175px;min-height:175px;max-height:none;
+  }
+}
+</style>
 </head>
 <body>
 <a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
