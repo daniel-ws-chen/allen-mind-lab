@@ -556,6 +556,54 @@
   .aml-footer-links{grid-template-columns:repeat(2,minmax(0,1fr));}
 }
 </style>
+<style id="aml-resource-compact-v1">
+/* Compact resource library: accessible disclosure, AML navy / teal / warm gold */
+.resource-hero{padding:48px 5vw 34px;background:linear-gradient(125deg,#edf3fb,#f3faf8 55%,#fff9ed)}
+.resource-hero h1{font-size:clamp(2rem,3.3vw,2.9rem);line-height:1.2;margin-bottom:12px}
+.resource-hero p{font-size:.98rem;line-height:1.7}
+.resource-principles{margin-top:16px;gap:8px}
+.resource-principles span{padding:6px 11px;font-size:.82rem;box-shadow:none}
+.resources{padding:36px 4vw 62px;background:#f7f9fc}
+.resource-wrap,.resource-grid,.resource-section{max-width:1240px}
+.resource-index{max-width:1240px;margin:-18px auto 28px;padding:0 4vw}
+.resource-index__panel{padding:16px 19px;border-radius:16px;grid-template-columns:1fr 3fr;gap:16px;box-shadow:0 8px 24px rgba(24,52,90,.06)}
+.resource-index__links{gap:7px}
+.resource-index__links a{padding:8px 11px;border-radius:9px;color:#23476d;background:#f5f8fc}
+.resource-section{margin-bottom:30px}
+.resource-section__head{align-items:center;gap:16px;margin-bottom:15px}
+.resource-section h2.resource-section__title{font-size:clamp(1.4rem,2vw,1.8rem);color:#1b3b65}
+.resource-section__intro{font-size:.9rem;line-height:1.55}
+.resource-section--wellbeing,.resource-section--education,.resource-section--disability,.resource-section--family{padding:20px;border-radius:18px}
+.resource-section--wellbeing{background:#eef7f4;border-color:#d7e9e2}
+.resource-section--education{background:#eff3fa;border-color:#dce5f2}
+.resource-section--disability{background:#ebf4f8;border-color:#d9e8ee}
+.resource-section--family{background:#faf4e9;border-color:#eee2d0}
+.resource-section__grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.resource-item{min-width:0;min-height:0;padding:17px 18px 18px;border-radius:15px;border-color:#d8e3e8;box-shadow:0 5px 17px rgba(24,52,90,.045)}
+.resource-item::before,.resource-item:nth-child(2)::before{height:3px;background:linear-gradient(90deg,#254c83,#25847d)}
+.resource-item:hover{transform:none;box-shadow:0 9px 24px rgba(24,52,90,.085);border-color:#acc5cf}
+.resource-item__meta,.resource-item:nth-child(2) .resource-item__meta{margin:2px 0 10px;padding:5px 8px;background:#edf3fa;color:#365a7d;font-size:.74rem;letter-spacing:0;line-height:1.4;border-radius:7px}
+.resource-preview{height:118px;margin:0 0 12px;border-radius:10px}
+.resource-preview::after{font-size:.65rem;padding:3px 6px;bottom:6px;right:6px}
+.resource-item h2{font-size:1.12rem;line-height:1.45;margin:0 0 8px;color:#1e416b}
+.resource-item p{font-size:.88rem;line-height:1.68;margin-bottom:10px;color:#4d6073}
+.resource-detail,.resource-item .why,.resource-item:nth-child(2) .why{display:block;margin:5px 0 0;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+.resource-detail summary{display:list-item;list-style:revert;cursor:pointer;padding:8px 7px;color:#205d70;font-size:.86rem;font-weight:750;border-top:1px solid #e3edf0;line-height:1.45}
+.resource-detail summary:hover{background:#f3f8fa;color:#163e6a}
+.resource-detail summary:focus-visible,.resource-item .go:focus-visible{outline:3px solid #205e98;outline-offset:3px;border-radius:4px}
+.resource-detail__body{padding:8px 8px 10px;color:#4d6073;font-size:.85rem;line-height:1.65}
+.resource-detail__body p,.resource-item .why .resource-detail__body p{margin:0;color:#4d6073;font-size:.85rem;line-height:1.65}
+.resource-item .go{margin-top:auto;padding:15px 0 0;color:#14616b;font-size:.88rem;line-height:1.5;text-decoration:underline;text-decoration-color:#b2cbd0;text-underline-offset:3px}
+.resource-section--partner .resource-item{grid-template-columns:minmax(280px,.9fr) minmax(0,1.3fr);column-gap:22px}
+.resource-section--partner .resource-preview{min-height:230px;height:100%}
+.resource-section--partner .resource-item h2{font-size:1.35rem}
+.resource-share{padding:22px 24px;margin-top:30px;background:#fff;border-radius:16px}
+.resource-share-card{padding:16px 18px}
+.resource-note{padding:16px 20px}
+@media(max-width:1100px){.resource-section__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.resource-section--partner .resource-section__grid{grid-template-columns:1fr}}
+@media(max-width:760px){.resource-hero{padding:60px 5vw 30px}.resources{padding:28px 4vw 48px}.resource-index{padding:0 4vw;margin:-15px auto 24px}.resource-index__panel{grid-template-columns:1fr;padding:15px}.resource-index__links{display:flex;flex-wrap:wrap;justify-content:flex-start}.resource-index__links a{width:auto;text-align:left}.resource-section{margin-bottom:24px}.resource-section__head{display:block}.resource-section__intro{margin-top:6px}.resource-section__grid{grid-template-columns:1fr}.resource-section--wellbeing,.resource-section--education,.resource-section--disability,.resource-section--family{padding:14px;border-radius:15px}.resource-item{padding:16px}.resource-preview{height:126px}.resource-section--partner .resource-item{display:flex}.resource-section--partner .resource-preview{min-height:190px;height:190px}.resource-share{padding:18px 16px}.resource-share-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.resource-item{transition:none}}
+</style>
 </head>
 <body>
 <a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
@@ -581,37 +629,37 @@
 <div class="resource-item__meta">協力夥伴 · AML 協力夥伴 · 心理健康職能治療 · 身心整合</div>
 <div class="resource-preview resource-preview--photo-first"><img alt="Sera.Phina 心理健康與意識神經科學研究室網站精選預覽" decoding="async" height="713" loading="lazy" src="images/resources/seraphina-home.webp" width="1600"/><div aria-hidden="true" class="partner-preview-copy"><strong>Sera.Phina</strong><span>Mental Health · Occupational Therapy · Consciousness</span></div></div>
 <h2>Sera.Phina｜Eliza</h2>
-<p>以心理健康職能治療為專業核心，連結教學研究、自我覺察、情緒調節與身心整合，整理 Eliza 的專業實踐與持續探索。</p><div class="for-who"><strong>適合誰</strong>適合關注心理健康職能治療、自我覺察、情緒調節與身心整合的讀者。</div>
+<p>以心理健康職能治療為專業核心，連結教學研究、自我覺察、情緒調節與身心整合，整理 Eliza 的專業實踐與持續探索。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關注心理健康職能治療、自我覺察、情緒調節與身心整合的讀者。</div></details>
 <div class="why"><strong>AML × Sera.Phina｜協力夥伴</strong><p>Sera.Phina 與 AML 是彼此獨立、相互協力的專業網站。兩者各自保有不同的主題與氣質，並在職能治療、心理健康、教育與生活實踐之間彼此交流、互相連結。</p></div>
 <a class="go" href="/sera-phina/">前往 Sera.Phina →</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">教學研究網站 · 教學 · 研究 · AI 啟發</div>
 <div class="resource-preview resource-preview--hsieh"><img alt="謝清麟教學研究 blog 專屬資源封面，呈現教學、研究與 AI 啟發主題" decoding="async" height="941" loading="lazy" src="images/resources/hsieh-blog-home.webp" width="1672"/></div>
 <h2>謝清麟 教學／研究 blog</h2>
-<p>自 2009 年起持續書寫教學、研究與臨床心得，整理專業思考、學習歷程與實務反思，也保留了長期寫作所形成的知識脈絡與個人風格。</p><div class="for-who"><strong>適合誰</strong>適合關注教學研究、長期寫作、臨床反思，以及想從個人網站理解知識整理與學習歷程的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>對 AML 而言，謝清麟老師是 AI 啟蒙的重要老師之一。這個 blog 不只是一個個人網站，更示範了如何透過長期書寫、知識整理與公開分享，把教學、研究與實務經驗轉化為可持續交流的學習資源，因此值得在 AML 中收錄。</p></div>
+<p>自 2009 年起持續書寫教學、研究與臨床心得，整理專業思考、學習歷程與實務反思，也保留了長期寫作所形成的知識脈絡與個人風格。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關注教學研究、長期寫作、臨床反思，以及想從個人網站理解知識整理與學習歷程的讀者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>對 AML 而言，謝清麟老師是 AI 啟蒙的重要老師之一。這個 blog 不只是一個個人網站，更示範了如何透過長期書寫、知識整理與公開分享，把教學、研究與實務經驗轉化為可持續交流的學習資源，因此值得在 AML 中收錄。</p></div></details>
 <a class="go" href="https://atriptouq.blogspot.com/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往謝清麟 教學／研究 blog ↗</a>
 </article></div></section>
 <section class="resource-section resource-section--wellbeing" id="wellbeing"><div class="resource-section__head"><div><div class="resource-section__eyebrow">WELLBEING & PRACTICE</div><h2 class="resource-section__title">身心健康與生活實踐</h2></div><p class="resource-section__intro">從專業健康資訊延伸至日常照護、身心調節與生活實踐。</p></div><div class="resource-section__grid"><article class="resource-item">
 <div class="resource-item__meta">專業網站 · 中西整合醫學 · 氣的醫學</div>
 <div class="resource-preview"><img alt="高堯楷醫師網站首頁預覽" decoding="async" height="851" loading="lazy" src="images/resources/dr-kao-home.webp" width="1792"/></div>
 <h2>高堯楷醫師</h2>
-<p>高堯楷醫師的個人專業網站，內容涵蓋中西整合醫學、身體調理指引、氣功養生、研究知識、出版著作與醫學研究新知。</p><div class="for-who"><strong>適合誰</strong>適合想延伸理解中西整合醫學、健康促進、氣功養生與身心實踐的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對身心整合、生活實踐與專業知識轉譯的關注高度相連，也提供持續更新的第一手專業內容。</p></div>
+<p>高堯楷醫師的個人專業網站，內容涵蓋中西整合醫學、身體調理指引、氣功養生、研究知識、出版著作與醫學研究新知。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合想延伸理解中西整合醫學、健康促進、氣功養生與身心實踐的讀者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>與 AML 對身心整合、生活實踐與專業知識轉譯的關注高度相連，也提供持續更新的第一手專業內容。</p></div></details>
 <a class="go" href="https://www.drkao.org/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往高堯楷醫師網站 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">專業醫療網站 · 中醫 · 個人化調理</div>
 <div class="resource-preview"><img alt="台北大安中醫診所網站首頁預覽" decoding="async" height="847" loading="lazy" src="images/resources/daan-clinic-home.webp" width="1867"/></div>
 <h2>台北大安中醫診所</h2>
-<p>以中醫辨證結合現代醫學檢查與既有醫療資料，網站整理內科調理、疼痛與筋骨、睡眠與自律神經等診療與健康資訊。</p><div class="for-who"><strong>適合誰</strong>適合需要中醫健康資訊、睡眠／自律神經與日常調理延伸資料的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>網站資訊結構清楚，能補充 AML 在健康促進、身心調理與生活實踐面向的延伸閱讀，也與高堯楷醫師的臨床工作場域相互連結。</p></div>
+<p>以中醫辨證結合現代醫學檢查與既有醫療資料，網站整理內科調理、疼痛與筋骨、睡眠與自律神經等診療與健康資訊。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合需要中醫健康資訊、睡眠／自律神經與日常調理延伸資料的讀者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>網站資訊結構清楚，能補充 AML 在健康促進、身心調理與生活實踐面向的延伸閱讀，也與高堯楷醫師的臨床工作場域相互連結。</p></div></details>
 <a class="go" href="https://daanclinic.com/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往台北大安中醫診所 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">實踐團體 · 身心實踐 · 氣功推廣</div>
 <div class="resource-preview"><img alt="中華民國幸福氣功協會大安氣功推廣網站首頁預覽" decoding="async" height="846" loading="lazy" src="images/resources/happiness-qigong-home.webp" width="1917"/></div>
 <h2>中華民國幸福氣功協會｜大安氣功推廣</h2>
-<p>提供幸福氣功相關理念與大安地區推廣資訊，內容包含教室、團練、新生班與練習相關資料，作為認識氣功實踐與團體學習的延伸入口。</p><div class="for-who"><strong>適合誰</strong>適合想實際接觸氣功、團體練習與日常身心調節活動的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對身心整合、日常實踐與自我覺察的探索相互呼應，提供對相關實踐有興趣的讀者進一步探索。</p></div>
+<p>提供幸福氣功相關理念與大安地區推廣資訊，內容包含教室、團練、新生班與練習相關資料，作為認識氣功實踐與團體學習的延伸入口。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合想實際接觸氣功、團體練習與日常身心調節活動的讀者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>與 AML 對身心整合、日常實踐與自我覺察的探索相互呼應，提供對相關實踐有興趣的讀者進一步探索。</p></div></details>
 <a class="go" href="https://sites.google.com/view/daan-class" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往大安氣功推廣網頁 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">個人創作 · AI 影音 · 佛經研讀 · 生活實踐</div>
@@ -620,16 +668,16 @@
 </div>
 <h2>薇薇安・雲心｜佛經與修行分享</h2>
 <p>由公開署名「薇薇安・雲心」的創作者個人建立並經營的 YouTube 頻道。創作者也是大安心境眾多教練之一。運用 AI 製作佛經與修行相關影音內容，提供傳統經典智慧與心性修養的學習素材。</p>
-<div class="for-who"><strong>適合誰</strong>適合對佛經研讀、佛教修行、心性修養及 AI 影音知識分享有興趣的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>這個頻道展現個人運用 AI 將關注的傳統文化與宗教知識轉化為影音資源的可能，與 AML 探索 AI 協作、終身學習及知識分享的理念相互呼應，也提供生活實踐的不同視角。宗教修行內容不等同醫療或心理治療建議。</p></div>
+<details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合對佛經研讀、佛教修行、心性修養及 AI 影音知識分享有興趣的讀者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>這個頻道展現個人運用 AI 將關注的傳統文化與宗教知識轉化為影音資源的可能，與 AML 探索 AI 協作、終身學習及知識分享的理念相互呼應，也提供生活實踐的不同視角。宗教修行內容不等同醫療或心理治療建議。</p></div></details>
 <p style="font-size:.86rem;color:#586b70">註：本頻道由薇薇安・雲心個人創作與經營，非大安心境團體官方頻道。</p>
 <a class="go" href="https://www.youtube.com/@vivianhuang3425" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往薇薇安・雲心 YouTube 頻道 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">專業協會 · 心理健康 · 憂鬱症防治 · OT 專業傳承</div>
 <div class="resource-preview"><img alt="社團法人臺灣憂鬱症防治協會網站預覽" decoding="async" height="832" loading="lazy" src="images/resources/taad-huang-mantsung-home.webp" width="1792"/></div>
 <h2>社團法人臺灣憂鬱症防治協會｜黃曼聰老師紀念專輯</h2>
-<p>臺灣憂鬱症防治協會長期投入憂鬱症防治、心理健康教育與社會倡議；本連結亦保存「黃曼聰老師紀念專輯」相關內容，留下重要的專業與歷史記錄。</p><div class="for-who"><strong>適合誰</strong>適合關注心理健康、憂鬱症防治、職能治療專業發展，以及希望理解前輩專業貢獻與歷史脈絡的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>黃曼聰老師是 AML 的 OT 啟蒙老師之一，也是臺灣憂鬱症防治協會的發起人之一。她一生致力於職能治療專業與心理健康推廣，不遺餘力；協會所收錄的黃曼聰老師紀念專輯，也保留了這段值得被看見與延續的專業傳承，因此對 AML 具有深刻的專業、歷史與紀念價值。</p></div>
+<p>臺灣憂鬱症防治協會長期投入憂鬱症防治、心理健康教育與社會倡議；本連結亦保存「黃曼聰老師紀念專輯」相關內容，留下重要的專業與歷史記錄。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關注心理健康、憂鬱症防治、職能治療專業發展，以及希望理解前輩專業貢獻與歷史脈絡的讀者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>黃曼聰老師是 AML 的 OT 啟蒙老師之一，也是臺灣憂鬱症防治協會的發起人之一。她一生致力於職能治療專業與心理健康推廣，不遺餘力；協會所收錄的黃曼聰老師紀念專輯，也保留了這段值得被看見與延續的專業傳承，因此對 AML 具有深刻的專業、歷史與紀念價值。</p></div></details>
 <a class="go" href="https://www.depression.org.tw/news/info.asp?/65.html" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往臺灣憂鬱症防治協會紀念專輯 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">兒科醫師專業網站 · 兒童睡眠 · 睡眠衛教</div>
@@ -638,67 +686,67 @@
 </div>
 <h2>兒童睡眠二三事｜黃正憲醫師</h2>
 <p>由兒科、小兒神經及睡眠專科黃正憲醫師分享兒童與青少年睡眠相關衛教、研究解讀與實務建議，涵蓋睡眠作息、夜驚、打鼾與睡眠呼吸障礙等主題，並提供免費兒童睡眠日誌工具。</p>
-<div class="for-who"><strong>適合誰</strong>適合關心兒童與青少年睡眠、作息調整與日常照顧的家長、教師、治療師及其他助人工作者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>睡眠是健康、情緒調節、學習及日常職能參與的重要基礎。網站以臨床專業結合易懂的衛教內容與實用記錄工具，補充 AML 在兒少健康、家庭支持與生活實踐方面的延伸資源。</p></div>
+<details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關心兒童與青少年睡眠、作息調整與日常照顧的家長、教師、治療師及其他助人工作者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>睡眠是健康、情緒調節、學習及日常職能參與的重要基礎。網站以臨床專業結合易懂的衛教內容與實用記錄工具，補充 AML 在兒少健康、家庭支持與生活實踐方面的延伸資源。</p></div></details>
 <a class="go" href="https://www.kidnsleep.com/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往兒童睡眠二三事 ↗</a>
 </article></div></section>
 <section class="resource-section resource-section--education" id="education"><div class="resource-section__head"><div><div class="resource-section__eyebrow">EDUCATION & LEARNING</div><h2 class="resource-section__title">教育與學習支持</h2></div><p class="resource-section__intro">連結情緒教育、人才培力及教育現場的學習資源。</p></div><div class="resource-section__grid"><article class="resource-item">
 <div class="resource-item__meta">教育協會 · SEL · 情緒教育 · 親師生學習</div>
 <div class="resource-preview"><img alt="社團法人臺灣芯福里情緒教育推廣協會網站首頁預覽" decoding="async" height="462" loading="lazy" src="images/resources/happiness-village-home.webp" width="1200"/></div>
 <h2>社團法人臺灣芯福里情緒教育推廣協會</h2>
-<p>以社會情緒學習（SEL）與情緒教育為核心，推動親師生情緒教育、培訓與相關學習資源，提供理解情緒、互動與共好實踐的延伸入口。</p><div class="for-who"><strong>適合誰</strong>適合家長、教師與助人工作者探索 SEL、情緒教育與親師生學習資源。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對教育、助人實務、心理健康與日常參與的關注相互呼應，也提供親師生進一步探索社會情緒學習與情緒教育的公共資源。</p></div>
+<p>以社會情緒學習（SEL）與情緒教育為核心，推動親師生情緒教育、培訓與相關學習資源，提供理解情緒、互動與共好實踐的延伸入口。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合家長、教師與助人工作者探索 SEL、情緒教育與親師生學習資源。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>與 AML 對教育、助人實務、心理健康與日常參與的關注相互呼應，也提供親師生進一步探索社會情緒學習與情緒教育的公共資源。</p></div></details>
 <a class="go" href="https://www.happinessvillage.org/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往臺灣芯福里情緒教育推廣協會 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">教育公益組織 · 教育 · 教師培力 · 教育公平</div>
 <div class="resource-preview"><img alt="Teach For Taiwan 為台灣而教網站首頁預覽" decoding="async" height="715" loading="lazy" src="images/resources/tft-home.webp" width="1600"/></div>
 <h2>Teach For Taiwan｜為台灣而教</h2>
-<p>長期投入教育人才培育、教育現場協力與教育議題倡議，從第一線場域出發，持續探索教育不平等與系統改變的可能。</p><div class="for-who"><strong>適合誰</strong>適合關注教師培力、教育現場、教育公平與系統合作的讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>與 AML 對教育、教師專業、學習支持與系統合作的關注相互呼應。2026 有感節「如果這世界，老師消失了」也成為 AML 第 51 篇〈新世代教師的轉型與賦能〉的重要思考緣起。</p></div>
+<p>長期投入教育人才培育、教育現場協力與教育議題倡議，從第一線場域出發，持續探索教育不平等與系統改變的可能。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關注教師培力、教育現場、教育公平與系統合作的讀者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>與 AML 對教育、教師專業、學習支持與系統合作的關注相互呼應。2026 有感節「如果這世界，老師消失了」也成為 AML 第 51 篇〈新世代教師的轉型與賦能〉的重要思考緣起。</p></div></details>
 <a class="go" href="https://www.teach4taiwan.org/invite/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往 Teach For Taiwan ↗</a>
 </article></div></section>
 <section class="resource-section resource-section--disability" id="disability"><div class="resource-section__head"><div><div class="resource-section__eyebrow">DISABILITY & COMMUNICATION</div><h2 class="resource-section__title">身心障礙與溝通支持</h2></div><p class="resource-section__intro">探索資訊近用、輔助溝通、情緒行為支持與自主參與。</p></div><div class="resource-section__grid"><article class="resource-item">
 <div class="resource-item__meta">官方資訊資源 · 資訊平權 · 易讀易懂 · CRPD</div>
 <div class="resource-preview"><img alt="臺北市立陽明教養院易讀易懂資訊共享專區頁面預覽" decoding="async" height="633" loading="lazy" src="images/resources/yangming-easy-read-information-sharing.webp" width="989"/></div>
 <h2>陽明教養院｜易讀易懂資訊共享專區</h2>
-<p>臺北市立陽明教養院自民國 104 年成立易讀小組，持續推動易讀易懂資訊，並將相關權益資料、訓練教材與實務成果公開分享，讓資訊更容易被理解與使用。</p><div class="for-who"><strong>適合誰</strong>適合關注身心障礙者資訊平權、易讀資訊設計、CRPD、智能障礙支持，以及希望參考實務範例的服務工作者、家庭與一般讀者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>易讀易懂與數位無障礙都指向同一個核心：資訊不只要「有提供」，更要能被取得、理解與使用。這個共享專區保存了陽明教養院多年來的實務累積，也是 AML 思考資訊平權與普及性設計的重要延伸資源。</p></div>
+<p>臺北市立陽明教養院自民國 104 年成立易讀小組，持續推動易讀易懂資訊，並將相關權益資料、訓練教材與實務成果公開分享，讓資訊更容易被理解與使用。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關注身心障礙者資訊平權、易讀資訊設計、CRPD、智能障礙支持，以及希望參考實務範例的服務工作者、家庭與一般讀者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>易讀易懂與數位無障礙都指向同一個核心：資訊不只要「有提供」，更要能被取得、理解與使用。這個共享專區保存了陽明教養院多年來的實務累積，也是 AML 思考資訊平權與普及性設計的重要延伸資源。</p></div></details>
 <a class="go" href="https://www.ym.gov.taipei/News_Content.aspx?n=0273A212C84D24B3&amp;sms=3444753E80AF660B&amp;s=4CE7E9E4D42441EF" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往易讀易懂資訊共享專區 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">官方服務窗口 · 官方服務 · 情緒行為支持 · 轉介申請</div>
 <div class="resource-preview"><img alt="臺北市政府社會局臺北市情緒行為支持中心官方頁面預覽" decoding="async" height="560" loading="lazy" src="images/resources/taipei-emotional-behavior-support-center.webp" width="1915"/></div>
 <h2>臺北市情緒行為支持中心｜服務與申請資訊</h2>
-<p>臺北市政府社會局官方資訊，提供情緒行為支持中心的服務內容、轉介資格、申請表件、受理方式與聯絡窗口。</p><div class="for-who"><strong>適合誰</strong>適合正在尋找臺北市正式情緒行為支持、轉介資格與申請窗口的家庭或服務單位。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>當情緒行為支持需求超出一般家庭或服務現場可自行處理的範圍時，清楚找到正式服務與轉介窗口很重要。此官方頁面提供臺北市情緒行為支持中心的受理與申請資訊，作為需要進一步專業支持時的實務入口。</p></div>
+<p>臺北市政府社會局官方資訊，提供情緒行為支持中心的服務內容、轉介資格、申請表件、受理方式與聯絡窗口。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合正在尋找臺北市正式情緒行為支持、轉介資格與申請窗口的家庭或服務單位。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>當情緒行為支持需求超出一般家庭或服務現場可自行處理的範圍時，清楚找到正式服務與轉介窗口很重要。此官方頁面提供臺北市情緒行為支持中心的受理與申請資訊，作為需要進一步專業支持時的實務入口。</p></div></details>
 <a class="go" href="https://dosw.gov.taipei/cp.aspx?n=506C3AC6C1309560" rel="noopener noreferrer" target="_blank" title="另開新視窗">查看官方服務與申請資訊 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">專業協會 · AAC · 輔助科技 · 溝通參與</div>
 <div class="resource-preview" style="background:linear-gradient(135deg,#f0f6ff,#fff6e7);display:flex;align-items:center;justify-content:center"><img alt="社團法人中華響響輔助科技協會網站形象圖，描繪孩子使用圖像溝通平板與成人互動" decoding="async" height="536" loading="lazy" src="images/resources/tsata-home.png" width="1280" onerror="this.style.display='none';this.parentElement.appendChild(document.createTextNode('中華響響輔助科技協會'))"/></div>
 <h2>社團法人中華響響輔助科技協會</h2>
-<p>推動輔助與替代性溝通（AAC）及輔助科技服務，支持無口語、低口語與複雜溝通需求者，運用合適的工具、策略及支持系統表達想法、做出選擇並參與生活。</p><div class="for-who"><strong>適合誰</strong>適合有溝通支持需求的個人與家庭，以及關注 AAC 的教師、治療師、社工、教保員與服務工作者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>溝通是自主決定與生活參與的重要基礎。協會推動 AAC 共學、家庭溝通支持及輔助科技應用，與 AML 對職能參與、身心障礙支持和資訊平權的關注相互呼應。</p></div>
+<p>推動輔助與替代性溝通（AAC）及輔助科技服務，支持無口語、低口語與複雜溝通需求者，運用合適的工具、策略及支持系統表達想法、做出選擇並參與生活。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合有溝通支持需求的個人與家庭，以及關注 AAC 的教師、治療師、社工、教保員與服務工作者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>溝通是自主決定與生活參與的重要基礎。協會推動 AAC 共學、家庭溝通支持及輔助科技應用，與 AML 對職能參與、身心障礙支持和資訊平權的關注相互呼應。</p></div></details>
 <a class="go" href="https://sites.google.com/view/tsata/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往中華響響輔助科技協會官網 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">學習社群 · AAC · 輔助與替代性溝通 · 溝通支持</div>
 <div class="resource-preview" style="background:linear-gradient(135deg,#f7eee2,#edf6f2);display:flex;align-items:center;justify-content:center"><img alt="AAC學苑｜AAC Support 社群封面：孩子與成人共同操作圖像溝通平板" decoding="async" height="402" loading="lazy" src="images/resources/aac-support-facebook.png" width="720" onerror="this.style.display='none';this.parentElement.appendChild(document.createTextNode('AAC學苑｜AAC Support'))"/></div>
 <h2>AAC學苑｜AAC Support</h2>
-<p>以輔助與替代性溝通（AAC）為主題的 Facebook 社群交流入口，提供有興趣的家庭、教育與支持工作者進一步認識及交流圖像溝通、溝通輔具與支持方法。</p><div class="for-who"><strong>適合誰</strong>適合關注非口語溝通、AAC 應用與溝通參與的家長、教師、職能治療師、語言治療師及其他支持工作者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>表達意願與參與生活，是自主及資訊近用的重要基礎。AAC 的理念與 AML 關注的身心障礙支持、職能參與及資訊平權相互呼應；此連結可作為延伸探索與社群交流入口。社群貼文不等同個別化專業評估或建議。</p></div>
+<p>以輔助與替代性溝通（AAC）為主題的 Facebook 社群交流入口，提供有興趣的家庭、教育與支持工作者進一步認識及交流圖像溝通、溝通輔具與支持方法。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關注非口語溝通、AAC 應用與溝通參與的家長、教師、職能治療師、語言治療師及其他支持工作者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>表達意願與參與生活，是自主及資訊近用的重要基礎。AAC 的理念與 AML 關注的身心障礙支持、職能參與及資訊平權相互呼應；此連結可作為延伸探索與社群交流入口。社群貼文不等同個別化專業評估或建議。</p></div></details>
 <a class="go" href="https://www.facebook.com/share/g/1HXDgHu8Nx/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往 AAC學苑 Facebook 社群 ↗</a>
 </article></div></section>
 <section class="resource-section resource-section--family" id="family"><div class="resource-section__head"><div><div class="resource-section__eyebrow">FAMILY & CARE SUPPORT</div><h2 class="resource-section__title">家庭照顧與支持服務</h2></div><p class="resource-section__intro">提供家庭照顧者與家長可進一步參考的支持資源。</p></div><div class="resource-section__grid"><article class="resource-item">
 <div class="resource-item__meta">照顧者支持組織 · 家庭照顧者支持 · 長期照顧 · 關懷諮詢</div>
 <div class="resource-preview"><img alt="中華民國家庭照顧者關懷總會官方網站首頁預覽" decoding="async" height="667" loading="lazy" src="images/resources/familycare-home.png" width="1902"/></div>
 <h2>中華民國家庭照顧者關懷總會</h2>
-<p>推動家庭照顧者權益與支持服務，提供照顧知能、支持資源、喘息服務資訊及家庭照顧者關懷專線（0800-507-272）。</p><div class="for-who"><strong>適合誰</strong>適合長期照顧家人、面臨照顧壓力或希望尋找支持資源的家庭照顧者與助人工作者。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>家庭照顧者的心理健康、長期照顧壓力與支持需求，是 AML 關注的重要議題。家總長期投入照顧者支持及政策倡議，能協助讀者從知識閱讀延伸至實際可運用的求助與支持資源。</p></div>
+<p>推動家庭照顧者權益與支持服務，提供照顧知能、支持資源、喘息服務資訊及家庭照顧者關懷專線（0800-507-272）。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合長期照顧家人、面臨照顧壓力或希望尋找支持資源的家庭照顧者與助人工作者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>家庭照顧者的心理健康、長期照顧壓力與支持需求，是 AML 關注的重要議題。家總長期投入照顧者支持及政策倡議，能協助讀者從知識閱讀延伸至實際可運用的求助與支持資源。</p></div></details>
 <a class="go" href="https://www.familycare.org.tw/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往家庭照顧者關懷總會 ↗</a>
 </article><article class="resource-item">
 <div class="resource-item__meta">家長支持平台 · ADHD · 家長支持 · 親職資源</div>
 <div aria-hidden="true" class="resource-preview"><iframe loading="lazy" src="https://jin40225-boop.github.io/ADHD-Website/" tabindex="-1" title="ADHD 家長支持平台首頁預覽"></iframe></div>
 <h2>ADHD 家長支持平台｜大A彥宇</h2>
-<p>以 ADHD 家長與照顧者為主要對象，整理 ADHD 相關知識、親職支持與實務經驗，提供家庭在理解孩子、陪伴與日常應對上的延伸資源。</p><div class="for-who"><strong>適合誰</strong>適合 ADHD 兒少家長與照顧者，尋找親職支持、日常陪伴與實務經驗。</div>
-<div class="why"><strong>AML 為什麼收錄</strong><p>ADHD 的支持不只發生在治療場域，也與家庭理解、日常參與、同儕互動及成長歷程密切相關。此平台提供家長取向的延伸入口，與 AML 對兒童青少年支持、職能參與及家庭合作的關注相互呼應。</p></div>
+<p>以 ADHD 家長與照顧者為主要對象，整理 ADHD 相關知識、親職支持與實務經驗，提供家庭在理解孩子、陪伴與日常應對上的延伸資源。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合 ADHD 兒少家長與照顧者，尋找親職支持、日常陪伴與實務經驗。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>ADHD 的支持不只發生在治療場域，也與家庭理解、日常參與、同儕互動及成長歷程密切相關。此平台提供家長取向的延伸入口，與 AML 對兒童青少年支持、職能參與及家庭合作的關注相互呼應。</p></div></details>
 <a class="go" href="https://jin40225-boop.github.io/ADHD-Website/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往 ADHD 家長支持平台 ↗</a>
 </article></div></section><section aria-labelledby="resource-share-title" class="resource-share">
 <div class="kicker">Share a Good Resource</div>
