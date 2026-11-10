@@ -604,6 +604,45 @@
 @media(max-width:760px){.resource-hero{padding:60px 5vw 30px}.resources{padding:28px 4vw 48px}.resource-index{padding:0 4vw;margin:-15px auto 24px}.resource-index__panel{grid-template-columns:1fr;padding:15px}.resource-index__links{display:flex;flex-wrap:wrap;justify-content:flex-start}.resource-index__links a{width:auto;text-align:left}.resource-section{margin-bottom:24px}.resource-section__head{display:block}.resource-section__intro{margin-top:6px}.resource-section__grid{grid-template-columns:1fr}.resource-section--wellbeing,.resource-section--education,.resource-section--disability,.resource-section--family{padding:14px;border-radius:15px}.resource-item{padding:16px}.resource-preview{height:126px}.resource-section--partner .resource-item{display:flex}.resource-section--partner .resource-preview{min-height:190px;height:190px}.resource-share{padding:18px 16px}.resource-share-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.resource-item{transition:none}}
 </style>
+<style id="aml-resource-horizontal-v2">
+/* Resource Directory v2 — unified single-column horizontal layout */
+.resource-section__grid,.resource-section--partner .resource-section__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;}
+.resource-section--partner .resource-item,.resource-section .resource-item{display:grid;grid-template-columns:minmax(170px,235px) minmax(0,1fr);grid-template-rows:repeat(6,auto) 1fr;gap:0 22px;align-items:start;padding:17px 20px;min-height:0;}
+.resource-section .resource-item>.resource-preview,.resource-section--partner .resource-item>.resource-preview{grid-column:1;grid-row:1 / span 8;align-self:stretch;width:100%;height:100%;min-height:156px;max-height:220px;margin:0;border-radius:10px;}
+.resource-section .resource-item>.resource-item__meta,.resource-section .resource-item>h2,.resource-section .resource-item>p,.resource-section .resource-item>.resource-detail,.resource-section .resource-item>.for-who,.resource-section .resource-item>.why,.resource-section .resource-item>.go{grid-column:2;min-width:0;}
+.resource-section .resource-item>.resource-item__meta{margin:0 0 8px;justify-self:start;}
+.resource-section .resource-item>h2{font-size:clamp(1.12rem,1.6vw,1.36rem);margin:0 0 7px;}
+.resource-section .resource-item>p{margin:0 0 9px;}
+.resource-section .resource-item>.resource-detail{margin:2px 0 0;}
+.resource-section .resource-item>.go{margin:0;padding:10px 0 0;align-self:end;}
+.resource-section--partner .resource-item>.resource-preview{max-height:250px;}
+.resource-section--partner .resource-item{border-left:3px solid #9e85aa;}
+.resource-subgroup{margin:16px 0 0;}
+.resource-subgroup:first-of-type{margin-top:2px;}
+.resource-subgroup__head{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin:0 0 10px;padding:0 2px 9px;border-bottom:1px solid #dbe7e8;}
+.resource-subgroup__head h3{font-size:1.06rem;line-height:1.5;margin:0;font-weight:800;color:#1d4965;}
+.resource-subgroup__head p{font-size:.82rem;line-height:1.5;color:#5b6d7c;margin:0;}
+.resource-subgroup__num{font-size:.76rem;color:#267a78;margin-right:10px;letter-spacing:.07em;}
+.resource-section--wellbeing>.resource-section__head{margin-bottom:14px;}
+.resource-section--wellbeing{background:#f2f8f6;}
+.resource-section--education{background:#f4f6fb;}
+.resource-section--disability{background:#f0f7fa;}
+.resource-section--family{background:#fcf8f0;}
+@media(max-width:760px){
+  .resource-section .resource-item,.resource-section--partner .resource-item{display:flex;flex-direction:column;gap:0;padding:15px;}
+  .resource-section .resource-item>.resource-preview,.resource-section--partner .resource-item>.resource-preview{order:0;height:126px;min-height:126px;max-height:none;margin:0 0 12px;align-self:stretch;}
+  .resource-section .resource-item>.resource-item__meta{order:1;}
+  .resource-section .resource-item>h2{order:2;}
+  .resource-section .resource-item>p{order:3;}
+  .resource-section .resource-item>.resource-detail,.resource-section .resource-item>.for-who,.resource-section .resource-item>.why{order:4;width:100%;}
+  .resource-section .resource-item>.go{order:5;margin-top:4px;}
+  .resource-subgroup__head{display:block;}
+  .resource-subgroup__head p{margin:4px 0 0;}
+}
+@media(min-width:761px) and (max-width:940px){
+  .resource-section .resource-item,.resource-section--partner .resource-item{grid-template-columns:minmax(150px,195px) minmax(0,1fr);gap:0 16px;}
+}
+</style>
 </head>
 <body>
 <a class="aml-skip-link" href="#aml-main">跳到主要內容</a>
@@ -640,28 +679,58 @@
 <details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>對 AML 而言，謝清麟老師是 AI 啟蒙的重要老師之一。這個 blog 不只是一個個人網站，更示範了如何透過長期書寫、知識整理與公開分享，把教學、研究與實務經驗轉化為可持續交流的學習資源，因此值得在 AML 中收錄。</p></div></details>
 <a class="go" href="https://atriptouq.blogspot.com/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往謝清麟 教學／研究 blog ↗</a>
 </article></div></section>
-<section class="resource-section resource-section--wellbeing" id="wellbeing"><div class="resource-section__head"><div><div class="resource-section__eyebrow">WELLBEING & PRACTICE</div><h2 class="resource-section__title">身心健康與生活實踐</h2></div><p class="resource-section__intro">從專業健康資訊延伸至日常照護、身心調節與生活實踐。</p></div><div class="resource-section__grid"><article class="resource-item">
+<section class="resource-section resource-section--wellbeing" id="wellbeing"><div class="resource-section__head"><div><div class="resource-section__eyebrow">WELLBEING & PRACTICE</div><h2 class="resource-section__title">身心健康與生活實踐</h2></div><p class="resource-section__intro">從專業健康資訊延伸至日常照護、身心調節與生活實踐。</p></div><div class="resource-subgroup" aria-labelledby="wellbeing-health">
+<div class="resource-subgroup__head"><h3 id="wellbeing-health"><span class="resource-subgroup__num" aria-hidden="true">01</span>醫療與健康促進</h3><p>醫療專業、健康資訊與睡眠衛教</p></div>
+<div class="resource-section__grid"><article class="resource-item">
 <div class="resource-item__meta">專業網站 · 中西整合醫學 · 氣的醫學</div>
 <div class="resource-preview"><img alt="高堯楷醫師網站首頁預覽" decoding="async" height="851" loading="lazy" src="images/resources/dr-kao-home.webp" width="1792"/></div>
 <h2>高堯楷醫師</h2>
 <p>高堯楷醫師的個人專業網站，內容涵蓋中西整合醫學、身體調理指引、氣功養生、研究知識、出版著作與醫學研究新知。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合想延伸理解中西整合醫學、健康促進、氣功養生與身心實踐的讀者。</div></details>
 <details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>與 AML 對身心整合、生活實踐與專業知識轉譯的關注高度相連，也提供持續更新的第一手專業內容。</p></div></details>
 <a class="go" href="https://www.drkao.org/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往高堯楷醫師網站 ↗</a>
-</article><article class="resource-item">
+</article>
+<article class="resource-item">
 <div class="resource-item__meta">專業醫療網站 · 中醫 · 個人化調理</div>
 <div class="resource-preview"><img alt="台北大安中醫診所網站首頁預覽" decoding="async" height="847" loading="lazy" src="images/resources/daan-clinic-home.webp" width="1867"/></div>
 <h2>台北大安中醫診所</h2>
 <p>以中醫辨證結合現代醫學檢查與既有醫療資料，網站整理內科調理、疼痛與筋骨、睡眠與自律神經等診療與健康資訊。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合需要中醫健康資訊、睡眠／自律神經與日常調理延伸資料的讀者。</div></details>
 <details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>網站資訊結構清楚，能補充 AML 在健康促進、身心調理與生活實踐面向的延伸閱讀，也與高堯楷醫師的臨床工作場域相互連結。</p></div></details>
 <a class="go" href="https://daanclinic.com/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往台北大安中醫診所 ↗</a>
-</article><article class="resource-item">
+</article>
+<article class="resource-item">
+<div class="resource-item__meta">兒科醫師專業網站 · 兒童睡眠 · 睡眠衛教</div>
+<div class="resource-preview" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8f3fb 0%,#f2f0fd 52%,#fff8eb 100%);text-align:center">
+<div style="padding:20px;color:#243b6b"><div aria-hidden="true" style="font-size:2.7rem;line-height:1.3">☾</div><strong style="display:block;font-size:1.45rem;line-height:1.5">兒童睡眠二三事</strong><span style="display:block;font-size:.88rem;color:#536477">小兒神經與睡眠醫學 · Kid'n Sleep</span></div>
+</div>
+<h2>兒童睡眠二三事｜黃正憲醫師</h2>
+<p>由兒科、小兒神經及睡眠專科黃正憲醫師分享兒童與青少年睡眠相關衛教、研究解讀與實務建議，涵蓋睡眠作息、夜驚、打鼾與睡眠呼吸障礙等主題，並提供免費兒童睡眠日誌工具。</p>
+<details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關心兒童與青少年睡眠、作息調整與日常照顧的家長、教師、治療師及其他助人工作者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>睡眠是健康、情緒調節、學習及日常職能參與的重要基礎。網站以臨床專業結合易懂的衛教內容與實用記錄工具，補充 AML 在兒少健康、家庭支持與生活實踐方面的延伸資源。</p></div></details>
+<a class="go" href="https://www.kidnsleep.com/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往兒童睡眠二三事 ↗</a>
+</article></div>
+</div>
+<div class="resource-subgroup" aria-labelledby="wellbeing-mental">
+<div class="resource-subgroup__head"><h3 id="wellbeing-mental"><span class="resource-subgroup__num" aria-hidden="true">02</span>心理健康與專業支持</h3><p>心理健康倡議與專業傳承</p></div>
+<div class="resource-section__grid"><article class="resource-item">
+<div class="resource-item__meta">專業協會 · 心理健康 · 憂鬱症防治 · OT 專業傳承</div>
+<div class="resource-preview"><img alt="社團法人臺灣憂鬱症防治協會網站預覽" decoding="async" height="832" loading="lazy" src="images/resources/taad-huang-mantsung-home.webp" width="1792"/></div>
+<h2>社團法人臺灣憂鬱症防治協會｜黃曼聰老師紀念專輯</h2>
+<p>臺灣憂鬱症防治協會長期投入憂鬱症防治、心理健康教育與社會倡議；本連結亦保存「黃曼聰老師紀念專輯」相關內容，留下重要的專業與歷史記錄。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關注心理健康、憂鬱症防治、職能治療專業發展，以及希望理解前輩專業貢獻與歷史脈絡的讀者。</div></details>
+<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>黃曼聰老師是 AML 的 OT 啟蒙老師之一，也是臺灣憂鬱症防治協會的發起人之一。她一生致力於職能治療專業與心理健康推廣，不遺餘力；協會所收錄的黃曼聰老師紀念專輯，也保留了這段值得被看見與延續的專業傳承，因此對 AML 具有深刻的專業、歷史與紀念價值。</p></div></details>
+<a class="go" href="https://www.depression.org.tw/news/info.asp?/65.html" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往臺灣憂鬱症防治協會紀念專輯 ↗</a>
+</article></div>
+</div>
+<div class="resource-subgroup" aria-labelledby="wellbeing-practice">
+<div class="resource-subgroup__head"><h3 id="wellbeing-practice"><span class="resource-subgroup__num" aria-hidden="true">03</span>身心修習與心靈探索</h3><p>氣功實踐、佛經研讀與個人修習</p></div>
+<div class="resource-section__grid"><article class="resource-item">
 <div class="resource-item__meta">實踐團體 · 身心實踐 · 氣功推廣</div>
 <div class="resource-preview"><img alt="中華民國幸福氣功協會大安氣功推廣網站首頁預覽" decoding="async" height="846" loading="lazy" src="images/resources/happiness-qigong-home.webp" width="1917"/></div>
 <h2>中華民國幸福氣功協會｜大安氣功推廣</h2>
 <p>提供幸福氣功相關理念與大安地區推廣資訊，內容包含教室、團練、新生班與練習相關資料，作為認識氣功實踐與團體學習的延伸入口。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合想實際接觸氣功、團體練習與日常身心調節活動的讀者。</div></details>
 <details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>與 AML 對身心整合、日常實踐與自我覺察的探索相互呼應，提供對相關實踐有興趣的讀者進一步探索。</p></div></details>
 <a class="go" href="https://sites.google.com/view/daan-class" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往大安氣功推廣網頁 ↗</a>
-</article><article class="resource-item">
+</article>
+<article class="resource-item">
 <div class="resource-item__meta">個人創作 · AI 影音 · 佛經研讀 · 生活實踐</div>
 <div class="resource-preview" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e9f1f5 0%,#f5f0e9 55%,#edf3ed 100%);text-align:center">
 <div style="padding:20px;color:#304d59"><div aria-hidden="true" style="font-size:2.3rem;line-height:1.3">☸</div><strong style="display:block;font-size:1.35rem;line-height:1.5">佛經與修行分享</strong><span style="display:block;font-size:.88rem;color:#586b70">薇薇安・雲心 · AI 影音創作</span></div>
@@ -672,24 +741,8 @@
 <details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>這個頻道展現個人運用 AI 將關注的傳統文化與宗教知識轉化為影音資源的可能，與 AML 探索 AI 協作、終身學習及知識分享的理念相互呼應，也提供生活實踐的不同視角。宗教修行內容不等同醫療或心理治療建議。</p></div></details>
 <p style="font-size:.86rem;color:#586b70">註：本頻道由薇薇安・雲心個人創作與經營，非大安心境團體官方頻道。</p>
 <a class="go" href="https://www.youtube.com/@vivianhuang3425" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往薇薇安・雲心 YouTube 頻道 ↗</a>
-</article><article class="resource-item">
-<div class="resource-item__meta">專業協會 · 心理健康 · 憂鬱症防治 · OT 專業傳承</div>
-<div class="resource-preview"><img alt="社團法人臺灣憂鬱症防治協會網站預覽" decoding="async" height="832" loading="lazy" src="images/resources/taad-huang-mantsung-home.webp" width="1792"/></div>
-<h2>社團法人臺灣憂鬱症防治協會｜黃曼聰老師紀念專輯</h2>
-<p>臺灣憂鬱症防治協會長期投入憂鬱症防治、心理健康教育與社會倡議；本連結亦保存「黃曼聰老師紀念專輯」相關內容，留下重要的專業與歷史記錄。</p><details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關注心理健康、憂鬱症防治、職能治療專業發展，以及希望理解前輩專業貢獻與歷史脈絡的讀者。</div></details>
-<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>黃曼聰老師是 AML 的 OT 啟蒙老師之一，也是臺灣憂鬱症防治協會的發起人之一。她一生致力於職能治療專業與心理健康推廣，不遺餘力；協會所收錄的黃曼聰老師紀念專輯，也保留了這段值得被看見與延續的專業傳承，因此對 AML 具有深刻的專業、歷史與紀念價值。</p></div></details>
-<a class="go" href="https://www.depression.org.tw/news/info.asp?/65.html" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往臺灣憂鬱症防治協會紀念專輯 ↗</a>
-</article><article class="resource-item">
-<div class="resource-item__meta">兒科醫師專業網站 · 兒童睡眠 · 睡眠衛教</div>
-<div class="resource-preview" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#e8f3fb 0%,#f2f0fd 52%,#fff8eb 100%);text-align:center">
-<div style="padding:20px;color:#243b6b"><div aria-hidden="true" style="font-size:2.7rem;line-height:1.3">☾</div><strong style="display:block;font-size:1.45rem;line-height:1.5">兒童睡眠二三事</strong><span style="display:block;font-size:.88rem;color:#536477">小兒神經與睡眠醫學 · Kid'n Sleep</span></div>
-</div>
-<h2>兒童睡眠二三事｜黃正憲醫師</h2>
-<p>由兒科、小兒神經及睡眠專科黃正憲醫師分享兒童與青少年睡眠相關衛教、研究解讀與實務建議，涵蓋睡眠作息、夜驚、打鼾與睡眠呼吸障礙等主題，並提供免費兒童睡眠日誌工具。</p>
-<details class="for-who resource-detail"><summary>適合誰</summary><div class="resource-detail__body">適合關心兒童與青少年睡眠、作息調整與日常照顧的家長、教師、治療師及其他助人工作者。</div></details>
-<details class="why resource-detail"><summary>AML 為什麼收錄</summary><div class="resource-detail__body"><p>睡眠是健康、情緒調節、學習及日常職能參與的重要基礎。網站以臨床專業結合易懂的衛教內容與實用記錄工具，補充 AML 在兒少健康、家庭支持與生活實踐方面的延伸資源。</p></div></details>
-<a class="go" href="https://www.kidnsleep.com/" rel="noopener noreferrer" target="_blank" title="另開新視窗">前往兒童睡眠二三事 ↗</a>
-</article></div></section>
+</article></div>
+</div></section>
 <section class="resource-section resource-section--education" id="education"><div class="resource-section__head"><div><div class="resource-section__eyebrow">EDUCATION & LEARNING</div><h2 class="resource-section__title">教育與學習支持</h2></div><p class="resource-section__intro">連結情緒教育、人才培力及教育現場的學習資源。</p></div><div class="resource-section__grid"><article class="resource-item">
 <div class="resource-item__meta">教育協會 · SEL · 情緒教育 · 親師生學習</div>
 <div class="resource-preview"><img alt="社團法人臺灣芯福里情緒教育推廣協會網站首頁預覽" decoding="async" height="462" loading="lazy" src="images/resources/happiness-village-home.webp" width="1200"/></div>
