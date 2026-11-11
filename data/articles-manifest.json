@@ -1,14 +1,14 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-10",
+  "generatedAt": "2026-11-11",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 96,
+    "total": 97,
     "ot": 38,
     "mind": 15,
     "pbs": 24,
-    "education": 23,
+    "education": 24,
     "management": 43,
     "ai": 28,
     "notes": 13
@@ -93,6 +93,44 @@
     }
   },
   "articles": [
+    {
+      "slug": "correlation-vs-causation",
+      "title": "一起增加，就代表有關係？——從相關係數到因果推論，別讓數據帶著我們走錯方向",
+      "summary": "冰淇淋銷量與溺水事件一起增加，就代表有因果關係嗎？從相關係數、混淆變項、辛普森悖論到研究設計，學會檢驗原因。",
+      "date": "2026-11-11",
+      "domains": [
+        "education"
+      ],
+      "primaryDomain": "education",
+      "crossDomains": [],
+      "tag": "Education × Statistics",
+      "cardMeta": "2026.11.11 · Education × Statistics × Research Design",
+      "keywords": [
+        "相關係數",
+        "因果推論",
+        "研究設計",
+        "辛普森悖論",
+        "混淆變項",
+        "AI研究素養"
+      ],
+      "articlePath": "/articles/correlation-vs-causation.html",
+      "order": -39,
+      "canonical": "https://allenmindlab.com/articles/correlation-vs-causation",
+      "hero": "/images/articles/AML_Article_097_Poster_Revised.webp",
+      "ogImage": "/images/articles/AML_Article_097_Poster_Revised.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 只差一票，結論就不同？",
+          "href": "/articles/hypothesis-testing-p-value.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "hypothesis-testing-p-value",
       "title": "只差一票，結論就不同？——從假設檢定到p值，理解統計顯著性的真相",
