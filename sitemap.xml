@@ -578,4 +578,10 @@
 <url><loc>https://allenmindlab.com/articles/sampling-distribution-central-limit-theorem</loc><lastmod>2026-11-08</lastmod></url>
 <url><loc>https://allenmindlab.com/articles/confidence-interval-95-meaning</loc><lastmod>2026-11-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://allenmindlab.com/articles/hypothesis-testing-p-value</loc><lastmod>2026-11-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://allenmindlab.com/articles/correlation-vs-causation</loc>
+    <lastmod>2026-11-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
