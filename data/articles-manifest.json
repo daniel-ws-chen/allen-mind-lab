@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-13",
+  "generatedAt": "2026-11-14",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 98,
+    "total": 99,
     "ot": 38,
-    "mind": 15,
+    "mind": 16,
     "pbs": 24,
     "education": 25,
     "management": 43,
     "ai": 28,
-    "notes": 13
+    "notes": 14
   },
   "featuredReading": [
     "pbs-support-transition-real-life",
@@ -93,6 +93,50 @@
     }
   },
   "articles": [
+    {
+      "slug": "joy-of-hearing-dharma",
+      "title": "原來，這就是得聞佛法的喜悅",
+      "summary": "五百位同修齊聚臺北，從功法傳授、經典解說到同心詠唱，在三小時的共修中體會得聞佛法的歡喜，並相約持續精進、再聚高峰。",
+      "date": "2026-11-14",
+      "domains": [
+        "mind",
+        "notes"
+      ],
+      "primaryDomain": "notes",
+      "crossDomains": [
+        "mind"
+      ],
+      "tag": "AML Notes × Mind & Well-being",
+      "cardMeta": "2026.11.14 · AML Notes × Mind & Well-being",
+      "keywords": [
+        "得聞佛法",
+        "法喜",
+        "氣功",
+        "修習",
+        "共修",
+        "高醫師",
+        "心若清淨",
+        "天降甘霖",
+        "AML小品文"
+      ],
+      "articlePath": "/articles/joy-of-hearing-dharma.html",
+      "order": -41,
+      "canonical": "https://allenmindlab.com/articles/joy-of-hearing-dharma",
+      "hero": "/images/articles/aml-joy-of-hearing-dharma-poster.webp",
+      "ogImage": "/images/articles/aml-joy-of-hearing-dharma-poster.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 明明有關係，為什麼還要畫一條線？",
+          "href": "/articles/linear-regression-prediction.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": true
+    },
     {
       "slug": "linear-regression-prediction",
       "title": "明明有關係，為什麼還要畫一條線？——從相關分析走進迴歸分析，學會預測，也學會懷疑",
