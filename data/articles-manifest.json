@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-14",
+  "generatedAt": "2026-11-16",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 99,
+    "total": 100,
     "ot": 38,
-    "mind": 16,
+    "mind": 17,
     "pbs": 24,
     "education": 25,
     "management": 43,
     "ai": 28,
-    "notes": 14
+    "notes": 15
   },
   "featuredReading": [
     "pbs-support-transition-real-life",
@@ -93,6 +93,55 @@
     }
   },
   "articles": [
+    {
+      "slug": "bearing-virtue-inclusive-inner-outer-harmony",
+      "title": "厚德載物，邁向包容並蓄與內外齊一",
+      "summary": "從年輕時追求卓越，到在工作、教學、書寫與修習之間持續成長。AML 第100篇以「書、學、調、齊」體會包容並蓄與內外齊一。",
+      "date": "2026-11-16",
+      "domains": [
+        "mind",
+        "notes"
+      ],
+      "primaryDomain": "notes",
+      "crossDomains": [
+        "mind"
+      ],
+      "tag": "AML Notes × Mind & Well-being",
+      "cardMeta": "2026.11.16 · AML Notes × Mind & Well-being",
+      "keywords": [
+        "厚德載物",
+        "包容並蓄",
+        "內外齊一",
+        "書學調齊",
+        "教學相長",
+        "內在成長",
+        "大安氣功",
+        "修習",
+        "AML第100篇"
+      ],
+      "articlePath": "/articles/bearing-virtue-inclusive-inner-outer-harmony.html",
+      "order": -42,
+      "canonical": "https://allenmindlab.com/articles/bearing-virtue-inclusive-inner-outer-harmony",
+      "hero": "/images/articles/aml_article_100_inner_outer_harmony_poster.webp",
+      "ogImage": "/images/articles/aml_article_100_inner_outer_harmony_poster.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 原來，這就是得聞佛法的喜悅",
+          "href": "/articles/joy-of-hearing-dharma.html"
+        },
+        {
+          "kind": "next",
+          "label": "延伸閱讀 → 厚德載物，也學習承載自己",
+          "href": "/about.html#inner-growth"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": true
+    },
     {
       "slug": "joy-of-hearing-dharma",
       "title": "原來，這就是得聞佛法的喜悅",
