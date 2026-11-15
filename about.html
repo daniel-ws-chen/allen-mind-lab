@@ -352,6 +352,32 @@ section{padding:92px 8vw}
  .mentor-photo img{max-height:520px;object-fit:contain}
 }
 
+
+/* Inner Growth full-width editorial layout: single-column, larger portrait */
+.inner-growth--banner .growth-banner{max-width:1100px;margin:0 auto}
+.inner-growth--banner .growth-banner-intro{max-width:890px;margin:0 auto 38px}
+.inner-growth--banner .growth-banner-intro .section-lead{max-width:860px}
+.inner-growth--banner .growth-banner-intro .growth-quote{max-width:740px;margin-top:26px}
+.inner-growth--banner .growth-banner-photo{margin:0 auto 30px;max-width:570px}
+.inner-growth--banner .growth-banner-photo picture,
+.inner-growth--banner .growth-banner-photo img{display:block;width:100%}
+.inner-growth--banner .growth-banner-photo img{height:auto;aspect-ratio:1086 / 1448;object-fit:contain;border-radius:22px;box-shadow:0 18px 42px rgba(15,23,42,.13);background:#f5f0e8}
+.inner-growth--banner .growth-banner-photo figcaption{text-align:center;margin-top:12px;font-size:.84rem;color:var(--muted)}
+.inner-growth--banner .growth-banner-mentor{max-width:890px;margin:0 auto;text-align:center}
+.inner-growth--banner .growth-banner-mentor h3{color:var(--navy);font-size:1.55rem;margin:10px 0 16px}
+.inner-growth--banner .growth-banner-mentor p{color:var(--muted);max-width:790px;margin:12px auto;line-height:1.85}
+.inner-growth--banner .growth-banner-links{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-top:16px}
+.inner-growth--banner .growth-banner-links .external-link{margin-top:0}
+.inner-growth--banner .boundary{max-width:890px;margin:42px auto 0}
+@media(max-width:640px){
+ .inner-growth--banner .growth-banner-intro{margin-bottom:28px}
+ .inner-growth--banner .growth-banner-photo{max-width:100%;margin-bottom:26px}
+ .inner-growth--banner .growth-banner-photo img{border-radius:16px}
+ .inner-growth--banner .growth-banner-mentor{text-align:left}
+ .inner-growth--banner .growth-banner-links{justify-content:flex-start}
+ .inner-growth--banner .boundary{margin-top:30px}
+}
+
 /* Inner growth */
 .inner-growth{
   background:linear-gradient(135deg,#f6f1e8,#fffdf9);
@@ -1249,38 +1275,38 @@ border-radius:999px;background:#f5f0e6;color:#71562d;font-size:.82rem;font-weigh
 </div>
 </div>
 </section>
-<section class="inner-growth" id="inner-growth">
-<div class="growth-grid">
-<div>
+<section class="inner-growth inner-growth--banner" id="inner-growth">
+<div class="growth-banner">
+<div class="growth-banner-intro">
 <div class="eyebrow">Inner Growth</div>
 <h2 class="section-title">厚德載物，<br/>也學習承載自己。</h2>
 <p class="section-lead">過去很長一段時間，我習慣透過準備、努力與掌控，讓事情盡可能做到最好。</p>
 <p class="section-lead">但走到人生下半場，我慢慢開始學習另一種力量：有準備，而不執著；有經驗，而不自滿；能承擔，也願意承載變化。</p>
 <div class="growth-quote">不是不再追求卓越，<br/>而是不再需要用卓越證明自己。</div>
 </div>
-<div class="mentor-card mentor-card--photo">
-<figure class="mentor-photo">
+<figure class="growth-banner-photo">
 <picture>
 <source srcset="/images/articles/aml_dr_kao_event_20261114.webp" type="image/webp"/>
 <img src="/images/articles/aml_dr_kao_event_20261114.png" alt="2026 年 11 月 14 日，Allen 與高堯楷醫師於大安氣功活動舞台合影，手持大安氣功義診團加油看板。" width="1086" height="1448" loading="lazy" decoding="async"/>
 </picture>
 <figcaption>2026.11.14｜大安氣功活動合影</figcaption>
 </figure>
-<div class="mentor-copy">
+<div class="growth-banner-mentor">
 <div class="mentor-label">Mentor · Physician · Teacher</div>
 <h3>高堯楷醫師</h3>
 <p>在人生下半場，高醫師不只是醫師，也是帶領我重新理解身心、修習與生活態度的重要導師。</p>
 <p>大安氣功與幸福氣功的修習，讓我在忙碌工作與持續向外承擔之外，多了一條回到自己、安定身心、練習感恩與覺察的路。</p>
+<div class="growth-banner-links">
 <a class="external-link" href="https://www.drkao.org/#sanctuary" rel="noopener noreferrer" target="_blank" title="另開新視窗">Visit Dr. Kao →</a>
 <a class="external-link" href="https://sites.google.com/view/daan-class?pli=1&amp;authuser=0" rel="noopener noreferrer" target="_blank" title="另開新視窗">大安氣功推廣網頁 →</a>
-</div>
 </div>
 </div>
 <div class="boundary">
 <strong>關於專業與修習</strong><br/>
     對我而言，科學、醫療與修習並不需要互相否定。這裡分享的是個人修習、生活實踐與生命體悟；
     涉及疾病診斷與治療時，仍應以合格醫療專業人員的個別評估與建議為依據。
-  </div>
+</div>
+</div>
 </section>
 <section class="values">
 <div class="eyebrow">What Matters</div>
