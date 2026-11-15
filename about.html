@@ -328,6 +328,30 @@ section{padding:92px 8vw}
   margin:0;
 }
 
+
+/* Inner Growth: photo and mentor profile, 2026-11-15 */
+.growth-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px}
+.mentor-card--photo{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1fr);gap:22px;align-items:center;padding:20px}
+.mentor-photo{margin:0;min-width:0}
+.mentor-photo picture,.mentor-photo img{display:block;width:100%}
+.mentor-photo img{height:auto;aspect-ratio:1086 / 1448;object-fit:cover;border-radius:16px;background:#f5f0e8}
+.mentor-photo figcaption{font-size:.72rem;color:var(--muted);line-height:1.6;margin-top:8px}
+.mentor-card--photo .mentor-copy{min-width:0}
+.mentor-card--photo .external-link{margin-right:4px;font-size:.86rem}
+@media(max-width:1150px){
+ .mentor-card--photo{grid-template-columns:1fr}
+ .mentor-photo img{max-height:460px;object-fit:contain}
+}
+@media(max-width:980px){
+ .growth-grid{grid-template-columns:1fr}
+ .mentor-card--photo{grid-template-columns:minmax(0,.8fr) minmax(0,1fr)}
+ .mentor-photo img{max-height:none;object-fit:cover}
+}
+@media(max-width:640px){
+ .mentor-card--photo{grid-template-columns:1fr;padding:18px}
+ .mentor-photo img{max-height:520px;object-fit:contain}
+}
+
 /* Inner growth */
 .inner-growth{
   background:linear-gradient(135deg,#f6f1e8,#fffdf9);
@@ -1234,13 +1258,22 @@ border-radius:999px;background:#f5f0e6;color:#71562d;font-size:.82rem;font-weigh
 <p class="section-lead">但走到人生下半場，我慢慢開始學習另一種力量：有準備，而不執著；有經驗，而不自滿；能承擔，也願意承載變化。</p>
 <div class="growth-quote">不是不再追求卓越，<br/>而是不再需要用卓越證明自己。</div>
 </div>
-<div class="mentor-card">
+<div class="mentor-card mentor-card--photo">
+<figure class="mentor-photo">
+<picture>
+<source srcset="/images/articles/aml_dr_kao_event_20261114.webp" type="image/webp"/>
+<img src="/images/articles/aml_dr_kao_event_20261114.png" alt="2026 年 11 月 14 日，Allen 與高堯楷醫師於大安氣功活動舞台合影，手持大安氣功義診團加油看板。" width="1086" height="1448" loading="lazy" decoding="async"/>
+</picture>
+<figcaption>2026.11.14｜大安氣功活動合影</figcaption>
+</figure>
+<div class="mentor-copy">
 <div class="mentor-label">Mentor · Physician · Teacher</div>
 <h3>高堯楷醫師</h3>
 <p>在人生下半場，高醫師不只是醫師，也是帶領我重新理解身心、修習與生活態度的重要導師。</p>
 <p>大安氣功與幸福氣功的修習，讓我在忙碌工作與持續向外承擔之外，多了一條回到自己、安定身心、練習感恩與覺察的路。</p>
 <a class="external-link" href="https://www.drkao.org/#sanctuary" rel="noopener noreferrer" target="_blank" title="另開新視窗">Visit Dr. Kao →</a>
 <a class="external-link" href="https://sites.google.com/view/daan-class?pli=1&amp;authuser=0" rel="noopener noreferrer" target="_blank" title="另開新視窗">大安氣功推廣網頁 →</a>
+</div>
 </div>
 </div>
 <div class="boundary">
