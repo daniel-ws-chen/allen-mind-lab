@@ -28,6 +28,30 @@ def local_path(url):
         return None
     return ROOT / path
 
+def check_visible_article_counts(total, category_counts):
+    """Verify initial HTML count fallbacks against the published manifest."""
+    home = (ROOT / "index.html").read_text(encoding="utf-8")
+    library = (ROOT / "library.html").read_text(encoding="utf-8")
+    expected = {
+        "homepage total": (home, r"全站收錄\s*(\d+)\s*篇文章", total),
+        "library feedback total": (library, r"目前共有\s*<strong>(\d+)</strong>\s*篇文章", total),
+        "library toolbar total": (library, r"全部文章\s*·\s*(\d+)\s*篇", total),
+    }
+    for name, (html, pattern, count) in expected.items():
+        found = re.findall(pattern, html)
+        if len(found) != 1:
+            err(f"{name}: expected exactly one static count; found {len(found)}")
+        elif int(found[0]) != count:
+            err(f"{name}: displayed {found[0]}, manifest says {count}")
+    for domain, count in {"all": total, **category_counts}.items():
+        pattern = (r'<button\b[^>]*\bdata-filter="' + re.escape(domain)
+                   + r'"[^>]*>[\s\S]*?<span class="filter-count">\((\d+)\)</span></button>')
+        found = re.findall(pattern, library)
+        if len(found) != 1:
+            err(f"library filter {domain}: expected one static count; found {len(found)}")
+        elif int(found[0]) != count:
+            err(f"library filter {domain}: displayed {found[0]}, manifest says {count}")
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--changed", nargs="*", default=[], help="Changed repository paths; validate affected article pages and their references")
@@ -74,6 +98,7 @@ def main():
         declared = manifest.get("counts", {}).get(domain)
         if declared != count:
             warn(f"Legacy domain count {domain}: declared {declared}, calculated {count}; review before changing totals")
+    check_visible_article_counts(len(articles), expected_counts)
     changed = {p.lstrip("./") for p in args.changed}
     if changed:
         targets = {p for p in changed if p.startswith("articles/") and p.endswith(".html") and p.count("/") == 1}
