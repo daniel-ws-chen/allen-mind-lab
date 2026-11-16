@@ -63,7 +63,7 @@ def validate_scripted_practice_bridges(articles):
         return
     config = source[start:end]
     pairs = re.findall(
-        r'"(/articles/[a-z0-9-]+)"\\s*:\\s*\\{[^{}]*?\\bhref:\\s*"([^"]+)"',
+        r'"(/articles/[a-z0-9-]+)"\s*:\s*\{[^{}]*?\bhref:\s*"([^"]+)"',
         config, flags=re.S
     )
     if not pairs:
