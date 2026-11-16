@@ -9,6 +9,8 @@ on:
       - 'library.html'
       - 'rss.xml'
       - 'sitemap.xml'
+      - 'aml-site.js'
+      - 'tools/**'
       - 'scripts/check_articles.py'
       - '.github/workflows/aml-article-check.yml'
   push:
@@ -21,6 +23,8 @@ on:
       - 'library.html'
       - 'rss.xml'
       - 'sitemap.xml'
+      - 'aml-site.js'
+      - 'tools/**'
       - 'scripts/check_articles.py'
       - '.github/workflows/aml-article-check.yml'
   workflow_dispatch:
