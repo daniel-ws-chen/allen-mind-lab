@@ -52,6 +52,44 @@ def check_visible_article_counts(total, category_counts):
         elif int(found[0]) != count:
             err(f"library filter {domain}: displayed {found[0]}, manifest says {count}")
 
+def validate_sequence_and_practice(articles):
+    """Guard ordered learning series and manifest-defined practice destinations."""
+    ordered = {}
+    for article in articles:
+        slug = article.get("slug", "?")
+        for entry in article.get("series", []):
+            if not isinstance(entry, dict):
+                continue  # String-only series are thematic; do not impose an order.
+            series_id = entry.get("id")
+            if not isinstance(series_id, str) or not series_id.strip():
+                continue  # Already reported by metadata validation.
+            position = entry.get("order", entry.get("stage"))
+            if position is None:
+                continue
+            if type(position) is not int or position < 1:
+                err(f"{slug}: {series_id} order/stage must be a positive integer")
+                continue
+            ordered.setdefault(series_id, []).append((position, slug))
+        bridge = article.get("practiceBridge")
+        if bridge is None:
+            continue
+        if not isinstance(bridge, dict) or not isinstance(bridge.get("href"), str):
+            err(f"{slug}: practiceBridge must contain an href string")
+            continue
+        href = bridge["href"]
+        if not href.startswith("/"):
+            warn(f"{slug}: external/relative practiceBridge target needs manual review: {href}")
+            continue
+        target = local_path(href)
+        if target is None or not (target.is_file() or (target.is_dir() and (target / "index.html").is_file())):
+            err(f"{slug}: practiceBridge target missing: {href}")
+    for series_id, entries in ordered.items():
+        positions = [position for position, _slug in entries]
+        if len(set(positions)) != len(positions):
+            err(f"{series_id}: duplicate ordered stage(s) in {entries}")
+        if sorted(positions) != list(range(1, len(positions) + 1)):
+            err(f"{series_id}: ordered stages must be contiguous from 1; found {sorted(positions)}")
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--changed", nargs="*", default=[], help="Changed repository paths; validate affected article pages and their references")
@@ -118,6 +156,7 @@ def main():
         if declared != count:
             warn(f"Legacy domain count {domain}: declared {declared}, calculated {count}; review before changing totals")
     check_visible_article_counts(len(articles), expected_counts)
+    validate_sequence_and_practice(articles)
     changed = {p.lstrip("./") for p in args.changed}
     if changed:
         targets = {p for p in changed if p.startswith("articles/") and p.endswith(".html") and p.count("/") == 1}
