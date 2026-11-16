@@ -93,6 +93,25 @@ def main():
         else:
             for domain in set(a["domains"]):
                 if domain in expected_counts: expected_counts[domain] += 1
+        # Knowledge-network metadata supports string series IDs and {id, ...} records.
+        series = a.get("series", [])
+        if not isinstance(series, list):
+            err(f"{slug}: series must be a list")
+        else:
+            series_ids = []
+            for entry in series:
+                series_id = entry if isinstance(entry, str) else entry.get("id") if isinstance(entry, dict) else None
+                if not isinstance(series_id, str) or not series_id.strip():
+                    err(f"{slug}: series entry must be a nonempty ID or object with nonempty id")
+                else:
+                    series_ids.append(series_id)
+            if len(set(series_ids)) != len(series_ids):
+                err(f"{slug}: duplicate series IDs")
+        reading_paths = a.get("readingPaths", [])
+        if not isinstance(reading_paths, list) or any(
+            not isinstance(value, str) or not value.strip() for value in reading_paths
+        ):
+            err(f"{slug}: readingPaths must be a list of nonempty strings")
         # Existing legacy entries may reference missing files; enforce file presence on changed articles.
     for domain, count in expected_counts.items():
         declared = manifest.get("counts", {}).get(domain)
