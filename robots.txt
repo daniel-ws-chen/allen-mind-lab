@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://allenmindlab.com/sitemap.xml
+Sitemap: https://allenmindlab.com/sera-phina/sitemap.xml
