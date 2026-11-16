@@ -40,20 +40,23 @@ const sizes = [
         );
         assert.deepEqual(details, [], topic + " " + size.name + " axe violations");
 
-        // Test readable component bounds at a narrow CSS viewport (WCAG 1.4.10).
-        // This is a component reflow smoke check, not a substitute for browser zoom testing.
-        await page.setViewportSize({ width: 320, height: 768 });
-        const overflowing = await page.evaluate(() => {
-          const selectors = [".aml-related-reading", ".aml-practice-bridge"];
-          return selectors.flatMap(selector => [...document.querySelectorAll(selector)].flatMap(root => {
-            const nodes = [root, ...root.querySelectorAll("a, strong, p, span, h2")];
-            return nodes.filter(node => {
-              const r = node.getBoundingClientRect();
-              return r.width > 0 && (r.left < -1 || r.right > innerWidth + 1);
-            }).map(node => selector + " " + node.tagName.toLowerCase() + " " + node.className);
-          }));
-        });
-        assert.deepEqual(overflowing, [], topic + ": component protrudes at 320px viewport");
+        // Emulate the effective CSS width of 1280px at 200% and 400% zoom.
+        // This is only a reflow proxy; true browser zoom + assistive technology
+        // still require separate manual acceptance before AML 3.6 release.
+        for (const width of [640, 320]) {
+          await page.setViewportSize({ width, height: 768 });
+          const overflowing = await page.evaluate(() => {
+            const selectors = [".aml-related-reading", ".aml-practice-bridge"];
+            return selectors.flatMap(selector => [...document.querySelectorAll(selector)].flatMap(root => {
+              const nodes = [root, ...root.querySelectorAll("a, strong, p, span, h2")];
+              return nodes.filter(node => {
+                const r = node.getBoundingClientRect();
+                return r.width > 0 && (r.left < -1 || r.right > innerWidth + 1);
+              }).map(node => selector + " " + node.tagName.toLowerCase() + " " + node.className);
+            }));
+          });
+          assert.deepEqual(overflowing, [], topic + ": component protrudes at " + width + "px viewport");
+        }
         await page.setViewportSize({ width: size.width, height: size.height });
         process.stdout.write("PASS axe/reflow " + topic + " / " + size.name + "\n");
         passed++;
