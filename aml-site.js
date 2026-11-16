@@ -901,9 +901,14 @@
       if (candidate.primaryDomain && candidate.primaryDomain === current.primaryDomain) score += 12;
       score += sharedDomains.length * 4;
 
-      const currentSeries = new Set(current.series || []);
-      const candidateSeries = new Set(candidate.series || []);
-      score += [...currentSeries].filter((s) => candidateSeries.has(s)).length * 8;
+      // Manifest series entries may be string IDs or objects with an id.
+      // Compare their IDs, not distinct object references.
+      const seriesIds = (article) => new Set((article.series || [])
+        .map((entry) => typeof entry === "string" ? entry : entry?.id)
+        .filter(Boolean));
+      const currentSeries = seriesIds(current);
+      const candidateSeries = seriesIds(candidate);
+      score += [...currentSeries].filter((id) => candidateSeries.has(id)).length * 8;
 
       const currentPaths = new Set(current.readingPaths || []);
       const candidatePaths = new Set(candidate.readingPaths || []);
