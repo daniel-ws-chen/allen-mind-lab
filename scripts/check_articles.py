@@ -118,7 +118,8 @@ def main():
             err(f"MISSING ARTICLE FILE: {p}")
             continue
         html = file.read_text(encoding="utf-8")
-        for marker in REQUIRED:
+        required_markers = ("aml-global-nav", "aml-article-footer-nav", "aml-global-footer") if indexed[p].get("isNote") else REQUIRED
+        for marker in required_markers:
             if marker not in html: err(f"{p}: missing AML template component {marker}")
         if "<h1" not in html or "<main" not in html:
             err(f"{p}: missing h1 or main")
