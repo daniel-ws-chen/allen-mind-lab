@@ -23,7 +23,7 @@ const viewports = [
       for (const journey of cases) {
         const response = await page.goto(base + journey.article, { waitUntil: "domcontentloaded" });
         assert.equal(response.status(), 200, journey.topic + ": article HTTP status");
-        assert.equal(await page.locator("main h1").count(), 1, journey.topic + ": one main heading");
+        assert.equal(await page.locator("h1").count(), 1, journey.topic + ": one main heading");
         const related = page.locator(".aml-related-reading");
         await related.waitFor({ state: "visible", timeout: 12000 });
         const cards = related.locator("a.aml-related-reading__card");
@@ -61,7 +61,7 @@ const viewports = [
         await page.keyboard.press("Enter");
         await page.waitForURL(url => url.pathname === new URL(chosen, base).pathname ||
           url.pathname === new URL(chosen, base).pathname.replace(/\.html$/, ""), { timeout: 12000 });
-        assert.equal(await page.locator("main h1").count(), 1, journey.topic + ": recommended article opens");
+        assert.equal(await page.locator("h1").count(), 1, journey.topic + ": recommended article opens");
 
         const toolResponse = await page.goto(base + journey.tool, { waitUntil: "domcontentloaded" });
         assert.equal(toolResponse.status(), 200, journey.topic + ": practice page HTTP status");
