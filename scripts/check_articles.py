@@ -76,7 +76,7 @@ def main():
             warn(f"Legacy domain count {domain}: declared {declared}, calculated {count}; review before changing totals")
     changed = {p.lstrip("./") for p in args.changed}
     if changed:
-        targets = {p for p in changed if p.startswith("articles/") and p.endswith(".html")}
+        targets = {p for p in changed if p.startswith("articles/") and p.endswith(".html") and p.count("/") == 1}
         if "data/articles-manifest.json" in changed:
             # Validate newest entries, plus every article whose path was changed.
             targets.update(a.get("articlePath", "").lstrip("/") for a in articles[:5])
