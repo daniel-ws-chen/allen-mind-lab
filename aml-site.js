@@ -716,31 +716,31 @@
     },
     "/articles/management-coach-leader-workflow": {
       label: "MANAGEMENT · LEARNING TOOL",
-      title: "直接使用方案規劃與管理智能助理 2.0",
+      title: "直接使用方案規劃與管理智能助理 3.0",
       desc: "把十章方案內容交回一個共同架構，協助組長整理、檢查跨章連貫性與形成修訂版；AI 協助彙整，人仍負責查證與管理判斷。",
       href: "/tools/management-coach/",
-      cta: "開啟方案規劃與管理智能助理 2.0 →"
+      cta: "開啟方案規劃與管理智能助理 3.0 →"
     },
     "/articles/ot-management-organizational-planning": {
       label: "MANAGEMENT · LEARNING TOOL",
       title: "把願景、使命與服務方向繼續往下做",
-      desc: "如果你正在規劃一項服務，可用方案規劃與管理智能助理 2.0 把需求、價值主張、策略、人力、流程與成果逐步整理成完整方案。",
+      desc: "如果你正在規劃一項服務，可用方案規劃與管理智能助理 3.0 把需求、價值主張、策略、人力、流程與成果逐步整理成完整方案。",
       href: "/tools/management-coach/",
-      cta: "開啟方案規劃與管理智能助理 2.0 →"
+      cta: "開啟方案規劃與管理智能助理 3.0 →"
     },
     "/articles/ot-management-strategy-swot": {
       label: "MANAGEMENT · LEARNING TOOL",
       title: "把策略分析接回完整方案",
-      desc: "SWOT 不是終點。可用方案規劃與管理智能助理 2.0 把策略選擇繼續連到人力、流程、品質、財務、合作與成果呈現。",
+      desc: "SWOT 不是終點。可用方案規劃與管理智能助理 3.0 把策略選擇繼續連到人力、流程、品質、財務、合作與成果呈現。",
       href: "/tools/management-coach/",
-      cta: "開啟方案規劃與管理智能助理 2.0 →"
+      cta: "開啟方案規劃與管理智能助理 3.0 →"
     },
     "/articles/ot-management-service-development-choice": {
       label: "MANAGEMENT · LEARNING TOOL",
       title: "把服務選擇轉成可檢驗的方案",
-      desc: "當你已經釐清「真正缺的是什麼」，可以進一步用方案規劃與管理智能助理 2.0 整理服務設計、資源條件、流程與成果假設。",
+      desc: "當你已經釐清「真正缺的是什麼」，可以進一步用方案規劃與管理智能助理 3.0 整理服務設計、資源條件、流程與成果假設。",
       href: "/tools/management-coach/",
-      cta: "開啟方案規劃與管理智能助理 2.0 →"
+      cta: "開啟方案規劃與管理智能助理 3.0 →"
     },
 
     /* Reader Journey 1.1：優先橋接真正有自然下一步的文章 */
