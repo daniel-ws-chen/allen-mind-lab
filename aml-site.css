@@ -501,9 +501,9 @@
 .aml-related-reading{background:#f6f1e7;border-top:1px solid #e7e0d4;padding:58px 7vw 64px}
 .aml-related-reading__inner{max-width:1120px;margin:0 auto}
 .aml-related-reading__head{display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px}
-.aml-related-reading__kicker{color:#9a7439;font-size:.76rem;font-weight:800;letter-spacing:.16em}
+.aml-related-reading__kicker{color:#74511f;font-size:.76rem;font-weight:800;letter-spacing:.16em}
 .aml-related-reading h2{margin:8px 0 0;color:#071a33;font-family:Georgia,"Times New Roman","Noto Serif TC",serif;font-size:clamp(1.75rem,3.3vw,2.55rem);line-height:1.3}
-.aml-related-reading__head>p{margin:0;color:#657081;font-size:.92rem}
+.aml-related-reading__head>p{margin:0;color:#465264;font-size:.92rem}
 .aml-related-reading__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .aml-related-reading__card{display:flex;min-width:0;min-height:230px;flex-direction:column;padding:22px;border:1px solid #e0d7c7;border-radius:20px;background:#fff;color:#142031;text-decoration:none;transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease}
 .aml-related-reading__card:hover{border-color:#c7a76a;transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,23,42,.06)}
@@ -1633,7 +1633,7 @@ body .newsletter-icon{
 }
 .aml-related-reading__head p{
   margin:0;
-  color:#667085;
+  color:#465264;
   font-size:.9rem;
 }
 .aml-related-reading__grid{
