@@ -52,6 +52,41 @@ def check_visible_article_counts(total, category_counts):
         elif int(found[0]) != count:
             err(f"library filter {domain}: displayed {found[0]}, manifest says {count}")
 
+def validate_scripted_practice_bridges(articles):
+    """Check article→tool destinations maintained in the shared site script."""
+    script_path = ROOT / "aml-site.js"
+    source = script_path.read_text(encoding="utf-8")
+    start = source.find("const amlPracticeToolBridge = {")
+    end = source.find("const renderPracticeBridge", start)
+    if start < 0 or end < 0:
+        err("aml-site.js: practice bridge configuration not found")
+        return
+    config = source[start:end]
+    pairs = re.findall(
+        r'"(/articles/[a-z0-9-]+)"\\s*:\\s*\\{[^{}]*?\\bhref:\\s*"([^"]+)"',
+        config, flags=re.S
+    )
+    if not pairs:
+        err("aml-site.js: no fixed practice bridge destinations extracted")
+        return
+    indexed = {a.get("slug") for a in articles}
+    seen = set()
+    for article_path, href in pairs:
+        slug = article_path.rsplit("/", 1)[-1]
+        if slug in seen:
+            err(f"aml-site.js: duplicate fixed practice bridge for {slug}")
+        seen.add(slug)
+        if slug not in indexed:
+            err(f"aml-site.js: practice bridge references unknown article {slug}")
+        if not href.startswith("/"):
+            warn(f"aml-site.js: review external practice destination for {slug}: {href}")
+            continue
+        target = local_path(href)
+        if target is None or not (
+            target.is_file() or (target.is_dir() and (target / "index.html").is_file())
+        ):
+            err(f"aml-site.js: missing practice destination for {slug}: {href}")
+
 def validate_sequence_and_practice(articles):
     """Guard ordered learning series and manifest-defined practice destinations."""
     ordered = {}
@@ -157,6 +192,7 @@ def main():
             warn(f"Legacy domain count {domain}: declared {declared}, calculated {count}; review before changing totals")
     check_visible_article_counts(len(articles), expected_counts)
     validate_sequence_and_practice(articles)
+    validate_scripted_practice_bridges(articles)
     changed = {p.lstrip("./") for p in args.changed}
     if changed:
         targets = {p for p in changed if p.startswith("articles/") and p.endswith(".html") and p.count("/") == 1}
