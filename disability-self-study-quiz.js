@@ -9,9 +9,8 @@ function focusEl(el){if(!el)return;requestAnimationFrame(()=>{el.focus({preventS
 let i=0,score=0,miss={};
 function showExistingCertificate(s){const record=s.quiz||{},passed=record.passed===true;if(!passed)return false;
   const scoreEl=document.querySelector('[data-score]'),textEl=document.querySelector('[data-result-text]'),review=document.querySelector('[data-review]');
-  gateText.textContent='核心進度 '+completeCount(s)+' / 18；整合總測驗已通過。可直接查看完訓證明，不必重做測驗。';
-  start.textContent='重新挑戰（選用） →';
-  start.style.display='inline-flex';document.querySelector('[data-gate-back]').style.display='none';
+  gate.style.display='none';
+  start.style.display='none';
   if(scoreEl)scoreEl.textContent=Number.isInteger(record.score)?record.score+' / '+Q.length:'已通過';
   resultTitle.textContent='整合挑戰已通過';
   textEl.textContent='以下為本裝置儲存的完訓紀錄；重新挑戰並非查看證明的必要條件。';
