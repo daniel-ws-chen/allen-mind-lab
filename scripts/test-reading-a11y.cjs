@@ -20,10 +20,11 @@ const sizes = [
   let passed = 0;
   try {
     for (const size of sizes) {
-      const page = await browser.newPage({
+      const context = await browser.newContext({
         viewport: { width: size.width, height: size.height },
         reducedMotion: "reduce"
       });
+      const page = await context.newPage();
       for (const [topic, route] of articles) {
         await page.goto(base + route, { waitUntil: "domcontentloaded" });
         await page.locator(".aml-related-reading__card").first().waitFor({ state: "visible" });
@@ -57,7 +58,7 @@ const sizes = [
         process.stdout.write("PASS axe/reflow " + topic + " / " + size.name + "\n");
         passed++;
       }
-      await page.close();
+      await context.close();
     }
     process.stdout.write("AML 3.6 focused axe/reflow: " + passed + "/6 passed\n");
   } finally {
