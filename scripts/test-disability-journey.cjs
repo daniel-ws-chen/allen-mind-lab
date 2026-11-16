@@ -72,6 +72,35 @@ const base = process.env.AML_TEST_BASE || "http://127.0.0.1:8765";
         },unit.id);
         assert.ok(complete,"Unit quiz progress is stored "+unit.id);
       }
+      // A passed learner must reopen their certificate without repeating 15 questions.
+      const certUrl=base+"/disability-self-study-quiz.html";
+      await page.goto(certUrl);
+      await page.evaluate(()=>{
+        const key="amlDisabilitySelfStudyV1",s=JSON.parse(localStorage.getItem(key)||"{}");
+        s.quiz={passed:true,score:13,date:"2026-11-16T07:00:00.000Z",certificateId:"AML-DS-20261116-TEST01",name:"驗收測試"};
+        localStorage.setItem(key,JSON.stringify(s));
+      });
+      await page.reload();
+      assert.equal(await page.locator("[data-quiz]").isVisible(),false,"Passed learners do not need to restart the exam");
+      assert.equal(await page.locator("[data-certificate]").isVisible(),true,"Saved completion certificate visible");
+      assert.equal(await page.locator("[data-cert-name]").innerText(),"驗收測試","Certificate restores saved name");
+      assert.equal(await page.locator("[data-cert-id]").innerText(),"AML-DS-20261116-TEST01","Certificate restores saved ID");
+      assert.equal(await page.locator("[data-print]").isVisible(),true,"Certificate can be printed again");
+      await page.evaluate(()=>{
+        const key="amlDisabilitySelfStudyV1",s=JSON.parse(localStorage.getItem(key));
+        s.quiz.name=null;s.quiz.certificateId=null;
+        localStorage.setItem(key,JSON.stringify(s));
+      });
+      await page.reload();
+      assert.equal(await page.locator("[data-certificate-panel]").isVisible(),true,"Passed learner without certificate can create one");
+      assert.equal(await page.locator("[data-certificate]").isVisible(),false,"Unissued certificate stays hidden");
+      await page.locator("[data-name]").fill("補發測試");
+      await page.locator("[data-generate]").click();
+      assert.equal(await page.locator("[data-certificate]").isVisible(),true,"Certificate generated without retaking");
+      assert.equal(await page.locator("[data-cert-name]").innerText(),"補發測試","New certificate name saved");
+      await page.reload();
+      assert.equal(await page.locator("[data-cert-name]").innerText(),"補發測試","New certificate survives reload");
+      assert.equal(await page.locator("[data-certificate]").isVisible(),true,"New certificate visible on return");
       await page.goto(base+"/articles/pbs-emotional-cycle-intervention-timing.html?course=pbs&lesson=strategy");
       const editorial=page.locator("main section.aml-related-reading[aria-label='延伸閱讀']");
       assert.equal(await editorial.count(),1,"One editorial reading section");
