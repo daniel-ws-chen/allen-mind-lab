@@ -509,6 +509,7 @@
 .aml-related-reading__card:hover{border-color:#c7a76a;transform:translateY(-2px);box-shadow:0 12px 28px rgba(15,23,42,.06)}
 .aml-related-reading__card:focus-visible{outline:3px solid rgba(199,167,106,.5);outline-offset:3px}
 .aml-related-reading__label{display:block;margin-bottom:10px;color:#8a6a32;font-size:.75rem;font-weight:800;letter-spacing:.06em}
+.aml-related-reading__reason{display:block;margin:-4px 0 10px;color:#536271;font-size:.78rem;line-height:1.5;font-weight:600}
 .aml-related-reading__card strong{color:#071a33;font-size:1.05rem;line-height:1.55}
 .aml-related-reading__card p{margin:10px 0 0;color:#657081;font-size:.9rem;line-height:1.65;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
 .aml-related-reading__go{margin-top:auto;padding-top:18px;color:#8a6a32;font-size:.88rem;font-weight:800}

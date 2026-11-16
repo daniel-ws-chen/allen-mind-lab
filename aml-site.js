@@ -866,6 +866,20 @@
       article?.tag ||
       domainLabels[article?.primaryDomain] ||
       "Allen Mind Lab";
+    // Short, verifiable reasons derived only from manifest metadata.
+    const relatedReason = (current, candidate, editorial) => {
+      if (editorial) return "編輯精選延伸";
+      const ids = (article) => new Set((article.series || [])
+        .map((item) => typeof item === "string" ? item : item?.id)
+        .filter(Boolean));
+      const series = ids(candidate);
+      if ([...ids(current)].some((id) => series.has(id))) return "同系列延伸";
+      const paths = new Set(candidate.readingPaths || []);
+      if ((current.readingPaths || []).some((id) => paths.has(id))) return "同閱讀路徑";
+      const domains = new Set(candidate.domains || []);
+      if ((current.domains || []).some((id) => domains.has(id))) return "同領域延伸";
+      return "延伸探索";
+    };
 
     const collectManualRelated = () => {
       const headings = Array.from(document.querySelectorAll("main h2, main h3"));
@@ -959,6 +973,7 @@
       );
 
       const manual = collectManualRelated();
+      const manualPaths = new Set(manual.items.map((item) => item.path));
       const picked = [];
       const seen = new Set([currentPath]);
 
@@ -1002,6 +1017,7 @@
         return `
           <a class="aml-related-reading__card" href="${href}">
             <span class="aml-related-reading__label">${labelFor(article)}</span>
+            <span class="aml-related-reading__reason">${relatedReason(current, article, manualPaths.has(normalizeArticlePath(href)))}</span>
             <strong>${article.title}</strong>
             <p>${article.summary || ""}</p>
             <span class="aml-related-reading__go">延伸閱讀 →</span>
