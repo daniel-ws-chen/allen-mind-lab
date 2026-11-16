@@ -15,6 +15,33 @@ const base = process.env.AML_TEST_BASE || "http://127.0.0.1:8765";
         id:n.dataset.lesson, link:n.querySelector('a[href*="/tools/disability-self-study/"]')?.getAttribute("href")
       })));
       assert.equal(units.length,9,"Nine disability self-study units");
+      // AML 3.6: each published core reading must retain the recovered
+      // longform body and its learning-progress completion exit.
+      const articleSlugs=[
+        "disability-system-map", "icf-life-function",
+        "disability-profiles-service-focus", "support-not-doing-for",
+        "behavior-as-message-pbs", "disability-communication-skills",
+        "aac-more-than-speech", "disability-aging-care",
+        "disability-service-field-judgment"
+      ];
+      for(let index=0;index<units.length;index++){
+        const unit=units[index],slug=articleSlugs[index];
+        const articleResponse=await page.goto(base+"/articles/"+slug+".html?course=disability&lesson="+unit.id);
+        assert.equal(articleResponse.status(),200,"Core article HTTP "+slug);
+        assert.ok(await page.locator("main h2[id^='section-']").count()>=8,
+          "Restored core article has full chapter headings: "+slug);
+        const length=await page.locator("main").evaluate(node=>node.innerText.length);
+        assert.ok(length>=2800,"Restored article body is unexpectedly short: "+slug+" ("+length+")");
+        const done=page.locator('a[href="/disability-self-study.html#lesson-'+unit.id+'"]');
+        assert.equal(await done.count(),1,"Reading completion link preserved "+slug);
+        await done.click();
+        await page.waitForURL(url=>url.pathname==="/disability-self-study.html");
+        const marked=await page.evaluate(id=>{
+          const state=JSON.parse(localStorage.getItem("amlDisabilitySelfStudyV1")||"{}");
+          return state.articles?.[id]===true;
+        },unit.id);
+        assert.ok(marked,"Article reading completion is persisted "+slug);
+      }
       for(const unit of units){
         assert.equal(unit.link,"/tools/disability-self-study/?lesson="+unit.id,"Correct quiz URL for "+unit.id);
         const response=await page.goto(base+unit.link);
