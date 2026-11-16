@@ -974,6 +974,11 @@
 
       const manual = collectManualRelated();
       const manualPaths = new Set(manual.items.map((item) => item.path));
+      // Prev/next cards already provide chronological navigation. Avoid
+      // suggesting them again automatically; retain deliberate editor picks.
+      const footerPaths = new Set(Array.from(document.querySelectorAll(
+        ".aml-article-footer-nav__card--prev[href], .aml-article-footer-nav__card--next[href]"
+      )).map((a) => normalizeArticlePath(a.getAttribute("href"))));
       const picked = [];
       const seen = new Set([currentPath]);
 
@@ -989,7 +994,7 @@
           .map((candidate) => ({ candidate, score: scoreCandidate(current, candidate) }))
           .filter(({ candidate, score }) => {
             const path = normalizeArticlePath(candidate.articlePath || candidate.canonical);
-            return Number.isFinite(score) && !seen.has(path);
+            return Number.isFinite(score) && !seen.has(path) && !footerPaths.has(path);
           })
           .sort((a, b) =>
             b.score - a.score ||
