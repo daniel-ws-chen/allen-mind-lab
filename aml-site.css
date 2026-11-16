@@ -1695,3 +1695,59 @@ body .newsletter-icon{
   .aml-related-reading__card{min-height:0;padding:18px}
 }
 /* ===== /AML Related Reading Engine v1 ===== */
+
+
+/* AML 3.6 · Editorial in-article reading, distinct from full-width network cards. */
+main section.aml-related-reading[aria-label="延伸閱讀"]{
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  margin:34px 0;
+  padding:24px;
+  background:#f7f3ea;
+  border:1px solid #e4d9c5;
+  border-radius:18px;
+}
+main section.aml-related-reading[aria-label="延伸閱讀"] h2{
+  margin:0 0 16px;
+  font-size:clamp(1.3rem,2.4vw,1.8rem);
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+main section.aml-related-reading[aria-label="延伸閱讀"] .aml-related-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  min-width:0;
+}
+main section.aml-related-reading[aria-label="延伸閱讀"] .aml-related-card{
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  gap:8px;
+  padding:18px;
+  background:#fff;
+  border:1px solid #e3d8c6;
+  border-radius:14px;
+  color:#193452;
+  text-decoration:none;
+  overflow-wrap:anywhere;
+}
+main section.aml-related-reading[aria-label="延伸閱讀"] .aml-related-card strong{
+  color:#112c49;
+  font-size:1rem;
+  line-height:1.5;
+}
+main section.aml-related-reading[aria-label="延伸閱讀"] .aml-related-card span{
+  color:#465264;
+  font-size:.9rem;
+  line-height:1.6;
+}
+main section.aml-related-reading[aria-label="延伸閱讀"] .aml-related-card:focus-visible{
+  outline:3px solid #8a641e;
+  outline-offset:3px;
+}
+@media(max-width:760px){
+  main section.aml-related-reading[aria-label="延伸閱讀"]{padding:18px}
+  main section.aml-related-reading[aria-label="延伸閱讀"] .aml-related-grid{grid-template-columns:1fr}
+}
