@@ -1,0 +1,31 @@
+name: AML 3.6 full knowledge-network link audit
+on:
+  pull_request:
+    paths:
+      - 'articles/**'
+      - 'tools/**'
+      - 'data/articles-manifest.json'
+      - 'scripts/audit-reading-network.py'
+      - '.github/workflows/aml-full-reading-audit.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'articles/**'
+      - 'tools/**'
+      - 'data/articles-manifest.json'
+      - 'scripts/audit-reading-network.py'
+      - '.github/workflows/aml-full-reading-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit-reading-links:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit links across all manifest articles
+        run: python scripts/audit-reading-network.py
