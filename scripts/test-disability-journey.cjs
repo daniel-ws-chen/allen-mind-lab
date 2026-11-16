@@ -52,12 +52,19 @@ const base = process.env.AML_TEST_BASE || "http://127.0.0.1:8765";
         await page.locator("[data-question]").waitFor({state:"visible"});
         assert.ok((await page.locator("[data-title]").innerText()).includes(lesson.title),"Quiz heading matches unit "+unit.id);
         for(let i=0;i<lesson.questions.length;i++){
+          assert.equal(await page.locator("[data-next]").isVisible(),false,"Next button hidden before answering "+unit.id+" Q"+(i+1));
+          assert.equal(await page.locator("[data-finish]").isVisible(),false,"Finish hidden until final answer "+unit.id+" Q"+(i+1));
           assert.equal(await page.locator("[data-options] button").count(),4,"Four options "+unit.id);
           const answer=lesson.questions[i].options[lesson.questions[i].answer];
           await page.getByRole("button",{name:answer,exact:true}).click();
           assert.match(await page.locator("[data-feedback]").innerText(),/答對了/,"Correct answer "+unit.id);
-          if(i<lesson.questions.length-1)await page.locator("[data-next]").click();
+          if(i<lesson.questions.length-1){
+            assert.equal(await page.locator("[data-next]").isVisible(),true,"Next visible after a non-final answer "+unit.id);
+            await page.locator("[data-next]").click();
+          }
         }
+        assert.equal(await page.locator("[data-next]").isVisible(),false,"Next hidden after last answer "+unit.id);
+        assert.equal(await page.locator("[data-step]").innerText(),lesson.questions.length+" / "+lesson.questions.length,"Question counter never exceeds total "+unit.id);
         assert.ok(await page.locator("[data-finish]").isVisible(),"Finish action appears "+unit.id);
         const complete=await page.evaluate(id => {
           const x=JSON.parse(localStorage.getItem("amlDisabilitySelfStudyV1")||"{}");
