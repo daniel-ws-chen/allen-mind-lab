@@ -849,6 +849,25 @@
   (() => {
     if (!currentPath.startsWith("/articles/")) return;
 
+    // AML site-wide policy: remove recommendation-only reading blocks.
+    // Keep references, article body, share/copy controls and footer navigation intact.
+    const removeRecommendationBlocks = () => {
+      document.querySelectorAll('section.aml-related-reading, [data-aml-auto-related], main section.further-reading').forEach((section) => section.remove());
+      document.querySelectorAll('main h2, main h3').forEach((heading) => {
+        if (heading.id !== 'section-related' && heading.textContent.trim() !== '延伸閱讀') return;
+        const next = heading.nextElementSibling;
+        if (next && (next.tagName === 'UL' || next.tagName === 'OL')) next.remove();
+        heading.remove();
+      });
+      document.querySelectorAll('.aml-article-toc a[href="#section-related"]').forEach((link) => link.remove());
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', removeRecommendationBlocks, { once: true });
+    } else {
+      removeRecommendationBlocks();
+    }
+    return; // Disable automatic related-reading injection; leave other site behavior unchanged.
+
     const normalizeArticlePath = (path) =>
       normalizePath(String(path || "").replace(/^https?:\/\/[^/]+/i, ""));
 
