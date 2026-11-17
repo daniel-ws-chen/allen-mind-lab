@@ -1751,3 +1751,15 @@ main section.aml-related-reading[aria-label="延伸閱讀"] .aml-related-card:fo
   main section.aml-related-reading[aria-label="延伸閱讀"]{padding:18px}
   main section.aml-related-reading[aria-label="延伸閱讀"] .aml-related-grid{grid-template-columns:1fr}
 }
+
+/* AML unified article footer: recommendation-only blocks retired.
+   CSS prevents flashes without JS; article references and normal navigation remain visible. */
+.aml-related-reading,
+[data-aml-auto-related],
+main section.further-reading,
+main #section-related,
+main #section-related + ul,
+main #section-related + ol,
+.aml-article-toc a[href="#section-related"] {
+  display: none !important;
+}
