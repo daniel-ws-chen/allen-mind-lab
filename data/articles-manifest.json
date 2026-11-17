@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-17",
+  "generatedAt": "2026-11-17T23:10:00+08:00",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 101,
+    "total": 102,
     "ot": 38,
     "mind": 18,
     "pbs": 24,
     "education": 25,
-    "management": 43,
-    "ai": 28,
+    "management": 44,
+    "ai": 29,
     "notes": 16
   },
   "featuredReading": [
@@ -93,6 +93,52 @@
     }
   },
   "articles": [
+    {
+      "slug": "ai-era-workplace-skills-new-challenge",
+      "title": "別只當個傳統的好員工：AI時代的職場能力新考題",
+      "summary": "從國際職場能力研究與29份匿名自評，反思責任感、團隊合作、當責及AI如何由個人減負走向系統性創新。",
+      "date": "2026-11-17",
+      "domains": [
+        "management",
+        "ai"
+      ],
+      "primaryDomain": "management",
+      "crossDomains": [
+        "ai"
+      ],
+      "tag": "Management & Leadership × AI × Practice",
+      "cardMeta": "2026.11.17 · Management & Leadership × AI × Practice",
+      "keywords": [
+        "AI",
+        "未來職場",
+        "管理學",
+        "當責",
+        "團隊合作",
+        "危機處理",
+        "勇於創新",
+        "績效管理",
+        "組織創新",
+        "年度自評",
+        "第102篇"
+      ],
+      "articlePath": "/articles/ai-era-workplace-skills-new-challenge.html",
+      "order": -44,
+      "canonical": "https://allenmindlab.com/articles/ai-era-workplace-skills-new-challenge",
+      "hero": "/images/articles/aml-102-ai-workplace-skills-hero.webp",
+      "ogImage": "/images/articles/aml-102-ai-workplace-skills-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 一蓮一鏡，一念向前",
+          "href": "/articles/lotus-mirror-one-thought-forward.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
     {
       "slug": "lotus-mirror-one-thought-forward",
       "title": "一蓮一鏡，一念向前",
