@@ -102,18 +102,17 @@ const base = process.env.AML_TEST_BASE || "http://127.0.0.1:8765";
       assert.equal(await page.locator("[data-cert-name]").innerText(),"補發測試","New certificate survives reload");
       assert.equal(await page.locator("[data-certificate]").isVisible(),true,"New certificate visible on return");
       await page.goto(base+"/articles/pbs-emotional-cycle-intervention-timing.html?course=pbs&lesson=strategy");
-      const editorial=page.locator("main section.aml-related-reading[aria-label='延伸閱讀']");
-      assert.equal(await editorial.count(),1,"One editorial reading section");
-      assert.equal(await editorial.locator("a.aml-related-card").count(),3,"Three editorial cards");
-      const layout=await editorial.evaluate(el=>{
-        const r=el.getBoundingClientRect();
-        const h=el.querySelector("h2").getBoundingClientRect();
-        return {left:r.left,right:r.right,titleLeft:h.left,titleRight:h.right,viewport:innerWidth};
-      });
-      assert.ok(layout.left>=-1&&layout.right<=layout.viewport+1,"Editorial box stays within viewport: "+JSON.stringify(layout));
-      assert.ok(layout.titleLeft>=layout.left-1&&layout.titleRight<=layout.right+1,"Editorial heading stays within box: "+JSON.stringify(layout));
+      // Recommendation-only cards are retired; keep reading controls and PBS return behavior.
+      assert.equal(await page.locator(".aml-related-reading").count(), 0,
+        "No editorial recommendation cards remain");
+      assert.ok(await page.locator(".aml-article-footer-nav").count() > 0,
+        "Article footer navigation remains available");
+      assert.ok(await page.locator('[data-aml-share], #aml-share').count() > 0,
+        "Article share button remains available");
+      assert.ok(await page.locator('[data-aml-copy-link], #aml-copy').count() > 0,
+        "Article copy-link button remains available");
       await context.close();
-      console.log("PASS disability quiz 9/9 + editorial reading at "+width+"px");
+      console.log("PASS disability quiz 9/9 + safe article footer at "+width+"px");
     }
   }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exitCode=1});
