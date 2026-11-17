@@ -125,6 +125,69 @@ def validate_sequence_and_practice(articles):
         if sorted(positions) != list(range(1, len(positions) + 1)):
             err(f"{series_id}: ordered stages must be contiguous from 1; found {sorted(positions)}")
 
+def validate_latest_article_links(articles):
+    """Mandatory structure and reciprocal-link audit for the newest AML article."""
+    if not articles:
+        return
+    newest = articles[0]
+    slug = newest.get("slug", "")
+    article_path = newest.get("articlePath", "").lstrip("/")
+    file = ROOT / article_path
+    if not file.is_file():
+        return  # Reported by the existing article checks.
+
+    html = file.read_text(encoding="utf-8")
+    def exactly_one(label, pattern):
+        count = len(re.findall(pattern, html, flags=re.I))
+        if count != 1:
+            err(f"{slug}: expected exactly one {label}, found {count}")
+
+    exactly_one("main element", r"<main\\b")
+    exactly_one("article table of contents", r'class=["\\'][^"\\']*\\baml-article-toc\\b')
+    exactly_one("article share section", r'class=["\\'][^"\\']*\\baml-article-share\\b')
+    exactly_one("footer navigation", r'class=["\\'][^"\\']*\\baml-article-footer-nav\\b')
+    if not re.search(r'id=["\\']top["\\']', html) or 'href="#top"' not in html:
+        err(f"{slug}: missing working back-to-top link")
+    for href in ("/articles.html", "/library.html",
+                 f"/{newest.get('primaryDomain', '')}.html"):
+        if f'href="{href}"' not in html and f"href='{href}'" not in html:
+            err(f"{slug}: footer/hub missing {href}")
+    for d in newest.get("domains", []):
+        if d != newest.get("primaryDomain") and f'href="/{d}.html"' not in html:
+            err(f"{slug}: cross-domain hub missing /{d}.html")
+    footer_match = re.search(
+        r'<section\\b[^>]*class=["\\'][^"\\']*\\baml-article-footer-nav\\b[\\s\\S]*?</section>',
+        html, flags=re.I)
+    if footer_match:
+        footer = footer_match.group(0)
+        if 'aml-article-footer-nav__card--prev' not in footer:
+            err(f"{slug}: footer missing previous article card")
+        if 'aml-article-footer-nav__card--next' not in footer:
+            err(f"{slug}: footer missing next-article card or explicit unpublished state")
+        for href in ("/articles.html", "/library.html",
+                     f"/{newest.get('primaryDomain', '')}.html", "#top"):
+            if f'href="{href}"' not in footer and f"href='{href}'" not in footer:
+                err(f"{slug}: footer missing {href}")
+    # Detect a copied article mistakenly retained after a new article and share area.
+    if len(re.findall(r'class=["\\'][^"\\']*\\baml-article-toc\\b', html)) > 1:
+        err(f"{slug}: duplicate TOC, likely stale article template content")
+    prev = next((n for n in newest.get("navigation", [])
+                 if n.get("kind") == "previous"), None)
+    if prev:
+        previous_path = prev.get("href", "")
+        if previous_path and previous_path not in html:
+            err(f"{slug}: previous navigation missing in HTML: {previous_path}")
+        prior = next((a for a in articles if a.get("articlePath") == previous_path), None)
+        if prior:
+            expected = newest.get("articlePath")
+            prior_nav = prior.get("navigation", [])
+            if not any(n.get("kind") == "next" and n.get("href") == expected
+                       for n in prior_nav):
+                err(f"{slug}: {prior['slug']} manifest next link must point back to newest article")
+            prior_file = ROOT / previous_path.lstrip("/")
+            if prior_file.is_file() and expected not in prior_file.read_text(encoding="utf-8"):
+                err(f"{slug}: previous article HTML lacks reciprocal next link")
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--changed", nargs="*", default=[], help="Changed repository paths; validate affected article pages and their references")
@@ -192,6 +255,7 @@ def main():
             warn(f"Legacy domain count {domain}: declared {declared}, calculated {count}; review before changing totals")
     check_visible_article_counts(len(articles), expected_counts)
     validate_sequence_and_practice(articles)
+    validate_latest_article_links(articles)
     validate_scripted_practice_bridges(articles)
     changed = {p.lstrip("./") for p in args.changed}
     if changed:
