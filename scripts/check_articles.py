@@ -142,21 +142,15 @@ def validate_latest_article_links(articles):
         if count != 1:
             err(f"{slug}: expected exactly one {label}, found {count}")
 
-    exactly_one("main element", r"<main\\b")
-    exactly_one("article table of contents", r'class=["\\'][^"\\']*\\baml-article-toc\\b')
-    exactly_one("article share section", r'class=["\\'][^"\\']*\\baml-article-share\\b')
-    exactly_one("footer navigation", r'class=["\\'][^"\\']*\\baml-article-footer-nav\\b')
-    if not re.search(r'id=["\\']top["\\']', html) or 'href="#top"' not in html:
+    exactly_one("main element", r"<main\b")
+    exactly_one("article table of contents", r'class="[^"]*\baml-article-toc\b')
+    exactly_one("article share section", r'class="[^"]*\baml-article-share\b')
+    exactly_one("footer navigation", r'class="[^"]*\baml-article-footer-nav\b')
+    if 'id="top"' not in html or 'href="#top"' not in html:
         err(f"{slug}: missing working back-to-top link")
-    for href in ("/articles.html", "/library.html",
-                 f"/{newest.get('primaryDomain', '')}.html"):
-        if f'href="{href}"' not in html and f"href='{href}'" not in html:
-            err(f"{slug}: footer/hub missing {href}")
-    for d in newest.get("domains", []):
-        if d != newest.get("primaryDomain") and f'href="/{d}.html"' not in html:
-            err(f"{slug}: cross-domain hub missing /{d}.html")
+
     footer_match = re.search(
-        r'<section\\b[^>]*class=["\\'][^"\\']*\\baml-article-footer-nav\\b[\\s\\S]*?</section>',
+        r'<section\b[^>]*class="[^"]*\baml-article-footer-nav\b[\s\S]*?</section>',
         html, flags=re.I)
     if footer_match:
         footer = footer_match.group(0)
@@ -166,11 +160,12 @@ def validate_latest_article_links(articles):
             err(f"{slug}: footer missing next-article card or explicit unpublished state")
         for href in ("/articles.html", "/library.html",
                      f"/{newest.get('primaryDomain', '')}.html", "#top"):
-            if f'href="{href}"' not in footer and f"href='{href}'" not in footer:
+            if f'href="{href}"' not in footer:
                 err(f"{slug}: footer missing {href}")
-    # Detect a copied article mistakenly retained after a new article and share area.
-    if len(re.findall(r'class=["\\'][^"\\']*\\baml-article-toc\\b', html)) > 1:
-        err(f"{slug}: duplicate TOC, likely stale article template content")
+        for domain in newest.get("domains", []):
+            if domain != newest.get("primaryDomain") and f'href="/{domain}.html"' not in footer:
+                err(f"{slug}: footer missing cross-domain hub /{domain}.html")
+
     prev = next((n for n in newest.get("navigation", [])
                  if n.get("kind") == "previous"), None)
     if prev:
@@ -180,13 +175,13 @@ def validate_latest_article_links(articles):
         prior = next((a for a in articles if a.get("articlePath") == previous_path), None)
         if prior:
             expected = newest.get("articlePath")
-            prior_nav = prior.get("navigation", [])
             if not any(n.get("kind") == "next" and n.get("href") == expected
-                       for n in prior_nav):
+                       for n in prior.get("navigation", [])):
                 err(f"{slug}: {prior['slug']} manifest next link must point back to newest article")
             prior_file = ROOT / previous_path.lstrip("/")
             if prior_file.is_file() and expected not in prior_file.read_text(encoding="utf-8"):
                 err(f"{slug}: previous article HTML lacks reciprocal next link")
+
 
 def main():
     parser = argparse.ArgumentParser()
