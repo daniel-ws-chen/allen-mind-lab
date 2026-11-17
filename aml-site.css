@@ -1763,3 +1763,10 @@ main #section-related + ol,
 .aml-article-toc a[href="#section-related"] {
   display: none !important;
 }
+
+/* AML unified footer series-only routes: visually secondary to the three main cards. */
+.aml-article-footer-nav__course{flex-basis:100%;display:flex;justify-content:center;flex-wrap:wrap;gap:6px 14px;align-items:center;margin-top:5px;padding-top:9px;border-top:1px solid #e7e0d4;font-size:.8rem}
+.aml-article-footer-nav__course>span{font-weight:800;color:#516176}
+.aml-article-footer-nav__course>a{overflow-wrap:anywhere;color:#315d8b}
+.aml-article-footer-nav__card:not(a){background:#f7f8fa;box-shadow:none}
+.aml-article-footer-nav__card:not(a):hover{transform:none;border-color:#e7e0d4;box-shadow:none}
