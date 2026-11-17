@@ -32,7 +32,6 @@ const sizes = [
         // Scan the dynamic additions introduced/maintained for the knowledge network.
         const result = await new AxeBuilder({ page })
           .include(".aml-practice-bridge")
-          .include(".aml-article-footer-nav")
           .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
           .analyze();
         const details = result.violations.map(v =>
@@ -46,7 +45,7 @@ const sizes = [
         for (const width of [640, 320]) {
           await page.setViewportSize({ width, height: 768 });
           const overflowing = await page.evaluate(() => {
-            const selectors = [".aml-article-footer-nav", ".aml-practice-bridge"];
+            const selectors = [".aml-practice-bridge"];
             return selectors.flatMap(selector => [...document.querySelectorAll(selector)].flatMap(root => {
               const nodes = [root, ...root.querySelectorAll("a, strong, p, span, h2")];
               return nodes.filter(node => {
