@@ -1491,7 +1491,7 @@
     const articles = Array.isArray(manifest?.articles) ? manifest.articles : [];
     const index = articles.findIndex(article =>
       String(hrefFor(article)).replace(/\.html$/, '') === path);
-    if (articles.length !== 102 || index < 0) return; // Safe fallback on incomplete data.
+    if (!articles.length || Number(manifest?.counts?.total) !== articles.length || index < 0) return; // Safe fallback on incomplete data.
     const current = articles[index];
     const prev = articles[index + 1] || null; // Manifest is newest first.
     const next = articles[index - 1] || null;
