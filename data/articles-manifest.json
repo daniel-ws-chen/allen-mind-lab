@@ -3267,8 +3267,13 @@
       "navigation": [
         {
           "kind": "previous",
-          "label": "前站 ← 當學生已經有了 AI，老師還要教什麼？",
+          "label": "上一篇 ← 當學生已經有了 AI，老師還要教什麼？",
           "href": "/articles/ai-era-teaching-learning.html"
+        },
+        {
+          "kind": "next",
+          "label": "接著閱讀 新世代教師的轉型與賦能 →",
+          "href": "/articles/next-generation-teacher-transformation-empowerment.html"
         }
       ]
     },
