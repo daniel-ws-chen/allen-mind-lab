@@ -27,12 +27,12 @@ const sizes = [
       const page = await context.newPage();
       for (const [topic, route] of articles) {
         await page.goto(base + route, { waitUntil: "domcontentloaded" });
-        await page.locator(".aml-related-reading__card").first().waitFor({ state: "visible" });
+        assert.equal(await page.locator(".aml-related-reading").count(), 0, topic + ": no recommendation cards");
         await page.locator(".aml-practice-bridge").waitFor({ state: "visible" });
         // Scan the dynamic additions introduced/maintained for the knowledge network.
         const result = await new AxeBuilder({ page })
-          .include(".aml-related-reading")
           .include(".aml-practice-bridge")
+          .include(".aml-article-footer-nav")
           .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
           .analyze();
         const details = result.violations.map(v =>
@@ -46,7 +46,7 @@ const sizes = [
         for (const width of [640, 320]) {
           await page.setViewportSize({ width, height: 768 });
           const overflowing = await page.evaluate(() => {
-            const selectors = [".aml-related-reading", ".aml-practice-bridge"];
+            const selectors = [".aml-article-footer-nav", ".aml-practice-bridge"];
             return selectors.flatMap(selector => [...document.querySelectorAll(selector)].flatMap(root => {
               const nodes = [root, ...root.querySelectorAll("a, strong, p, span, h2")];
               return nodes.filter(node => {
