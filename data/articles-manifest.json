@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-16",
+  "generatedAt": "2026-11-17",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 100,
+    "total": 101,
     "ot": 38,
-    "mind": 17,
+    "mind": 18,
     "pbs": 24,
     "education": 25,
     "management": 43,
     "ai": 28,
-    "notes": 15
+    "notes": 16
   },
   "featuredReading": [
     "pbs-support-transition-real-life",
@@ -94,6 +94,50 @@
   },
   "articles": [
     {
+      "slug": "lotus-mirror-one-thought-forward",
+      "title": "一蓮一鏡，一念向前",
+      "summary": "從千手觀音的慈悲願力與人類雙手創造文明談起，以白蓮華修德、寶鏡啟慧，為第一百零一步立下慈悲與智慧同行的心願。",
+      "date": "2026-11-17",
+      "domains": [
+        "notes",
+        "mind"
+      ],
+      "primaryDomain": "notes",
+      "crossDomains": [
+        "mind"
+      ],
+      "tag": "AML Notes × Mind & Well-being",
+      "cardMeta": "2026.11.17 · AML Notes × Mind & Well-being",
+      "keywords": [
+        "白蓮華",
+        "寶鏡",
+        "千手觀音",
+        "慈悲",
+        "智慧",
+        "修行",
+        "發願",
+        "AML小品文",
+        "第101篇"
+      ],
+      "articlePath": "/articles/lotus-mirror-one-thought-forward.html",
+      "order": -43,
+      "canonical": "https://allenmindlab.com/articles/lotus-mirror-one-thought-forward",
+      "hero": "/images/articles/aml-101-lotus-mirror-hero.webp",
+      "ogImage": "/images/articles/aml-101-lotus-mirror-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 厚德載物，邁向包容並蓄與內外齊一",
+          "href": "/articles/bearing-virtue-inclusive-inner-outer-harmony.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": true
+    },
+    {
       "slug": "bearing-virtue-inclusive-inner-outer-harmony",
       "title": "厚德載物，邁向包容並蓄與內外齊一",
       "summary": "從年輕時追求卓越，到在工作、教學、書寫與修習之間持續成長。AML 第100篇以「書、學、調、齊」體會包容並蓄與內外齊一。",
@@ -135,8 +179,8 @@
         },
         {
           "kind": "next",
-          "label": "延伸閱讀 → 厚德載物，也學習承載自己",
-          "href": "/about.html#inner-growth"
+          "label": "下一篇 → 一蓮一鏡，一念向前",
+          "href": "/articles/lotus-mirror-one-thought-forward.html"
         }
       ],
       "readingPaths": [],
