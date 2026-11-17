@@ -179,6 +179,11 @@
           "kind": "previous",
           "label": "上一篇 ← 厚德載物，邁向包容並蓄與內外齊一",
           "href": "/articles/bearing-virtue-inclusive-inner-outer-harmony.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 → 別只當個傳統的好員工：AI時代的職場能力新考題",
+          "href": "/articles/ai-era-workplace-skills-new-challenge.html"
         }
       ],
       "readingPaths": [],
