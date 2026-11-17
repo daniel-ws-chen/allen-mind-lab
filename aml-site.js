@@ -1406,3 +1406,136 @@
   else init();
 })();
 /* ===== /AML Related Reading Engine v1 ===== */
+
+
+/* ===== AML Unified Article Footer v1 · manifest-driven, progressive enhancement =====
+   All 102 published articles use the same visible 3-column footer:
+   chronological previous | primary domain hall | chronological next.
+   Course-order navigation is independent, and shown separately when metadata
+   contains ordered series stages. Never touch article body or share/copy controls.
+   If the manifest cannot load, retain the original HTML without intervention.
+*/
+(() => {
+  'use strict';
+  const hallNames = {
+    ot: '職能治療館', mind: '身心健康館', pbs: 'PBS 正向行為支持館',
+    education: '教育與學習館', management: '管理與領導館',
+    ai: 'AI × 實務館', notes: 'AML 小品集'
+  };
+  const hrefFor = (article) =>
+    article.articlePath || ('/articles/' + article.slug + '.html');
+  const el = (tag, className, content) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (content != null) node.textContent = String(content);
+    return node;
+  };
+  const link = (href, label, className) => {
+    const node = el('a', className, label);
+    node.setAttribute('href', href);
+    return node;
+  };
+  const card = (article, label, direction) => {
+    const node = article
+      ? link(hrefFor(article), '', 'aml-article-footer-nav__card aml-article-footer-nav__card--' + direction)
+      : el('div', 'aml-article-footer-nav__card aml-article-footer-nav__card--' + direction);
+    node.append(el('small', '', label));
+    node.append(el('strong', '', article
+      ? ((direction === 'prev' ? '← ' : '') + article.title + (direction === 'next' ? ' →' : ''))
+      : '目前沒有' + label));
+    return node;
+  };
+  const orderedStage = (series, id) => {
+    for (const item of (Array.isArray(series) ? series : [])) {
+      if (item && typeof item === 'object' && item.id === id) {
+        const stage = item.order ?? item.stage;
+        if (Number.isInteger(stage) && stage > 0) return stage;
+      }
+    }
+    return null;
+  };
+  const seriesLinks = (current, articles, prev, next) => {
+    const route = [];
+    for (const entry of (current.series || [])) {
+      if (!entry || typeof entry !== 'object' || !entry.id) continue;
+      const pos = entry.order ?? entry.stage;
+      if (!Number.isInteger(pos) || pos < 1) continue;
+      const stages = articles
+        .map(article => ({article, stage: orderedStage(article.series, entry.id)}))
+        .filter(item => item.stage !== null)
+        .sort((a, b) => a.stage - b.stage);
+      if (stages.length < 2) continue;
+      const index = stages.findIndex(item => item.article.slug === current.slug);
+      if (index < 0) continue;
+      const earlier = stages[index - 1]?.article;
+      const later = stages[index + 1]?.article;
+      if (earlier && earlier.slug !== prev?.slug)
+        route.push({href: hrefFor(earlier), label: '系列上一單元 ← ' + earlier.title});
+      if (later && later.slug !== next?.slug)
+        route.push({href: hrefFor(later), label: '系列下一單元 → ' + later.title});
+      break; // One curated sequence; do not repeat links from overlapping series.
+    }
+    return route;
+  };
+  async function init() {
+    const path = location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+    if (!/^\/articles\/[a-z0-9-]+$/.test(path)) return;
+    const footer = document.querySelector('section.aml-article-footer-nav');
+    if (!footer || footer.dataset.amlUnifiedFooter === 'yes') return;
+    let manifest;
+    try {
+      const response = await fetch('/data/articles-manifest.json', {cache: 'no-cache'});
+      if (!response.ok) return;
+      manifest = await response.json();
+    } catch (_) { return; }
+    const articles = Array.isArray(manifest?.articles) ? manifest.articles : [];
+    const index = articles.findIndex(article =>
+      String(hrefFor(article)).replace(/\.html$/, '') === path);
+    if (!articles.length || Number(manifest?.counts?.total) !== articles.length || index < 0) return; // Safe fallback on incomplete data.
+    const current = articles[index];
+    const prev = articles[index + 1] || null; // Manifest is newest first.
+    const next = articles[index - 1] || null;
+    if (!current.primaryDomain || !hallNames[current.primaryDomain]) return;
+
+    const heading = el('div', 'aml-article-footer-nav__head');
+    heading.append(el('div', 'aml-article-footer-nav__eyebrow', 'Continue Reading · AML'));
+    heading.append(el('div', 'aml-article-footer-nav__route', '全館文章閱讀導覽'));
+    const grid = el('div', 'aml-article-footer-nav__grid');
+    grid.append(card(prev, '上一篇', 'prev'));
+
+    const hub = el('div', 'aml-article-footer-nav__hub');
+    hub.append(el('small', '', '回主題館'));
+    hub.append(el('strong', '', hallNames[current.primaryDomain]));
+    const hallLinks = el('div', 'aml-article-footer-nav__hub-links');
+    hallLinks.append(link('/' + current.primaryDomain + '.html', '進入主題館'));
+    for (const domain of (current.domains || [])) {
+      if (domain !== current.primaryDomain && hallNames[domain]) {
+        hallLinks.append(link('/' + domain + '.html', hallNames[domain]));
+      }
+    }
+    hallLinks.append(link('/library.html', '完整館藏'));
+    hub.append(hallLinks);
+    grid.append(hub, card(next, '下一篇', 'next'));
+
+    const utility = el('div', 'aml-article-footer-nav__utility');
+    utility.append(link('/articles.html', 'Articles 總館'));
+    utility.append(link('#top', '↑ 回到頁首'));
+    const routes = seriesLinks(current, articles, prev, next);
+    if (routes.length) {
+      const course = el('div', 'aml-article-footer-nav__course');
+      course.append(el('span', '', '系列閱讀'));
+      routes.forEach(item => course.append(link(item.href, item.label)));
+      utility.append(course);
+    }
+    document.body.id ||= 'top';
+    // Change only the navigation section. Never touch the main article,
+    // citations, course completion controls, share, copy, or global footer.
+    footer.replaceChildren(heading, grid, utility);
+    footer.dataset.amlUnifiedFooter = 'yes';
+    footer.setAttribute('aria-label', '文章閱讀導覽');
+  }
+  if (document.readyState === 'loading')
+    document.addEventListener('DOMContentLoaded', init, {once: true});
+  else init();
+})();
+/* ===== /AML Unified Article Footer v1 ===== */
