@@ -165,6 +165,8 @@ function resolveRelated(c,m){
   return autoRelated(c,m,3);
 }
 function relatedHtml(c,m){
+  // AML editorial standard: do not produce recommendation-only blocks.
+  return '';
   const related=resolveRelated(c,m);
   if(!related.length) return '';
   const bySlug=new Map(m.articles.map(a=>[a.slug,a]));

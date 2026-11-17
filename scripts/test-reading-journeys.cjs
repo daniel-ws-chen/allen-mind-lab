@@ -24,27 +24,19 @@ const viewports = [
         const response = await page.goto(base + journey.article, { waitUntil: "domcontentloaded" });
         assert.equal(response.status(), 200, journey.topic + ": article HTTP status");
         assert.equal(await page.locator("h1").count(), 1, journey.topic + ": one main heading");
-        const related = page.locator(".aml-related-reading");
-        await related.waitFor({ state: "visible", timeout: 12000 });
-        const cards = related.locator("a.aml-related-reading__card");
-        assert.equal(await cards.count(), 3, journey.topic + ": three related cards");
-        const hrefs = await cards.evaluateAll(nodes => nodes.map(a => new URL(a.href).pathname.replace(/\.html$/, "")));
-        assert.equal(new Set(hrefs).size, 3, journey.topic + ": no duplicate recommendation cards");
-        const footerHrefs = await page.locator(
-          ".aml-article-footer-nav__card--prev[href], .aml-article-footer-nav__card--next[href]"
-        ).evaluateAll(nodes => nodes.map(a => new URL(a.href).pathname.replace(/\.html$/, "")));
-        // Editorial manual selections are intentionally allowed to repeat an existing footer link.
-        const curated = await cards.evaluateAll(nodes => nodes.filter(a =>
-          a.querySelector(".aml-related-reading__reason")?.textContent.trim() === "編輯精選延伸"
-        ).map(a => new URL(a.href).pathname.replace(/\.html$/, "")));
-        for (const href of hrefs) {
-          if (!curated.includes(href)) {
-            assert.ok(!footerHrefs.includes(href), journey.topic + ": automatic suggestion should not repeat the footer");
-          }
-        }
-        const reasons = await cards.locator(".aml-related-reading__reason").allTextContents();
-        assert.equal(reasons.length, 3, journey.topic + ": each card has an explained reason");
-        assert.ok(reasons.every(x => x.trim()), journey.topic + ": empty related reason");
+        // Related-reading recommendations were intentionally retired site-wide.
+        assert.equal(await page.locator(".aml-related-reading, [data-aml-auto-related]").count(), 0,
+          journey.topic + ": recommendation block must be absent");
+        assert.equal(await page.locator("main #section-related").count(), 0,
+          journey.topic + ": no legacy related-reading heading");
+        const footer = page.locator(".aml-article-footer-nav");
+        assert.equal(await footer.count(), 1, journey.topic + ": keep footer navigation");
+        const footerLinks = footer.locator("a[href]");
+        assert.ok(await footerLinks.count() > 0, journey.topic + ": keep navigation links");
+        assert.ok(await page.locator('[data-aml-share], #aml-share').count() > 0,
+          journey.topic + ": preserve share button");
+        assert.ok(await page.locator('[data-aml-copy-link], #aml-copy').count() > 0,
+          journey.topic + ": preserve copy-link button");
 
         const practice = page.locator(".aml-practice-bridge");
         await practice.waitFor({ state: "visible", timeout: 12000 });
@@ -53,15 +45,10 @@ const viewports = [
         const practiceUrl = await practiceLink.getAttribute("href");
         assert.equal(practiceUrl, journey.tool, journey.topic + ": expected practice destination");
 
-        // Verify both interactive destinations are reachable through keyboard or real links.
-        await cards.first().focus();
-        assert.ok(await cards.first().evaluate(el => document.activeElement === el),
-          journey.topic + ": related card can receive keyboard focus");
-        const chosen = await cards.first().getAttribute("href");
-        await page.keyboard.press("Enter");
-        await page.waitForURL(url => url.pathname === new URL(chosen, base).pathname ||
-          url.pathname === new URL(chosen, base).pathname.replace(/\.html$/, ""), { timeout: 12000 });
-        assert.equal(await page.locator("h1").count(), 1, journey.topic + ": recommended article opens");
+        // Practice link remains keyboard accessible after recommendations are removed.
+        await practiceLink.focus();
+        assert.ok(await practiceLink.evaluate(el => document.activeElement === el),
+          journey.topic + ": practice link can receive keyboard focus");
 
         const toolResponse = await page.goto(base + journey.tool, { waitUntil: "domcontentloaded" });
         assert.equal(toolResponse.status(), 200, journey.topic + ": practice page HTTP status");
