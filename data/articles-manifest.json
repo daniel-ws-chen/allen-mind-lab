@@ -4295,12 +4295,12 @@
       "navigation": [
         {
           "kind": "previous",
-          "label": "相關閱讀 ← 當學生已經有了 AI，老師還要教什麼？",
+          "label": "上一篇 ← 當學生已經有了 AI，老師還要教什麼？",
           "href": "/articles/ai-era-teaching-learning.html"
         },
         {
           "kind": "next",
-          "label": "接著閱讀 當 GPT 開始審 GPT →",
+          "label": "下一篇 當 GPT 開始審 GPT →",
           "href": "/articles/ai-review-quality-collaboration.html"
         }
       ]
