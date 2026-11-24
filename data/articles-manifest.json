@@ -1,17 +1,17 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-17T23:10:00+08:00",
+  "generatedAt": "2026-11-24T01:00:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 102,
+    "total": 103,
     "ot": 38,
     "mind": 18,
     "pbs": 24,
     "education": 25,
-    "management": 44,
+    "management": 45,
     "ai": 29,
-    "notes": 16
+    "notes": 17
   },
   "featuredReading": [
     "ai-era-workplace-skills-new-challenge",
@@ -95,6 +95,50 @@
   },
   "articles": [
     {
+      "slug": "like-a-dream-or-bubble",
+      "title": "如夢幻泡影的十一天",
+      "summary": "從十一天的執行長去而復返，思考關鍵人物風險、公司治理、組織韌性與全球經濟安全，重新理解人的有限性與制度的價值。",
+      "date": "2026-11-24",
+      "domains": [
+        "notes",
+        "management"
+      ],
+      "primaryDomain": "notes",
+      "crossDomains": [
+        "management"
+      ],
+      "tag": "AML Notes × Management & Leadership",
+      "cardMeta": "2026.11.24 · AML Notes × Management & Leadership",
+      "keywords": [
+        "公司治理",
+        "關鍵人物風險",
+        "領導倫理",
+        "組織韌性",
+        "系統思維",
+        "經濟安全",
+        "黃仁勳",
+        "輝達",
+        "第103篇"
+      ],
+      "articlePath": "/articles/like-a-dream-or-bubble.html",
+      "order": -45,
+      "canonical": "https://allenmindlab.com/articles/like-a-dream-or-bubble",
+      "hero": "/images/articles/aml-103-like-a-dream-or-bubble-hero.webp",
+      "ogImage": "/images/articles/aml-103-like-a-dream-or-bubble-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 別只當個傳統的好員工：AI時代的職場能力新考題",
+          "href": "/articles/ai-era-workplace-skills-new-challenge.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": true
+    },
+    {
       "slug": "ai-era-workplace-skills-new-challenge",
       "title": "別只當個傳統的好員工：AI時代的職場能力新考題",
       "summary": "從國際職場能力研究與29份匿名自評，反思責任感、團隊合作、當責及AI如何由個人減負走向系統性創新。",
@@ -135,6 +179,11 @@
           "kind": "previous",
           "label": "上一篇 ← 一蓮一鏡，一念向前",
           "href": "/articles/lotus-mirror-one-thought-forward.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 → 如夢幻泡影的十一天",
+          "href": "/articles/like-a-dream-or-bubble.html"
         }
       ],
       "readingPaths": [],
