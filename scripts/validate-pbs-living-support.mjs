@@ -3,7 +3,7 @@ import {readFileSync} from "node:fs";
 import vm from "node:vm";
 import {TextEncoder} from "node:util";
 const read=p=>readFileSync(p,"utf8");
-const files=["pbs-companion-web.js","pbs-living-support.js","pbs-living-support-rules.js","pbs-living-support-import.js","pbs-living-support-cards.js","pbs-living-support-export.js","pbs-living-support-ai.js"];
+const files=["pbs-companion-web.js","pbs-living-support.js","pbs-living-support-rules.js","pbs-living-support-import.js","pbs-living-support-cards.js","pbs-living-support-export.js","pbs-living-support-ai.js","pbs-living-support-structured.js","pbs-living-support-start.js"];
 for(const f of files){new vm.Script(read(f),{filename:f});console.log("Syntax OK:",f);}
 const html=read("pbs-living-support.html"), ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);assert.equal(new Set(ids).size,ids.length,"Duplicate HTML IDs");
 for(const f of files.slice(1)){for(const m of read(f).matchAll(/\$\("([A-Za-z][A-Za-z0-9]*)"\)/g)){if(m[1]!=="pageStyle")assert.ok(ids.includes(m[1]),f+": missing "+m[1]);}}
