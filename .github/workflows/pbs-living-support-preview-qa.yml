@@ -1,7 +1,7 @@
 name: PBS Living Support preview QA
 on:
   push:
-    branches: [feature/pbs-living-support, feature/pbs-living-support-ux]
+    branches: [feature/pbs-living-support, feature/pbs-living-support-ux, feature/pbs-living-support-wizard]
 permissions:
   contents: read
 jobs:
