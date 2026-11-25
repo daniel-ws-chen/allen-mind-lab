@@ -17,3 +17,5 @@ const data=Buffer.from(await blob.arrayBuffer());assert.equal(data.readUInt32LE(
 assert.equal(Object.keys(entries)[0],"mimetype");assert.equal(entries.mimetype,"application/vnd.oasis.opendocument.text");assert.match(entries["content.xml"],/匿名測試 &amp; &lt; &gt;/);assert.match(entries["content.xml"],/<text:line-break\/>/);assert.match(entries["styles.xml"],/fo:page-width="29.7cm"/);assert.ok(entries["META-INF/manifest.xml"]);assert.equal(data.readUInt32LE(off),0x02014b50);
 console.log("Static structure, PBS rules, and text-only ODT package smoke tests passed.");
 assert.ok(!html.includes("pbs-living-support-ai.js"));assert.ok(!ids.includes("aiPanel"));console.log("Local-only interface checks passed.");
+
+assert.ok(ids.includes("easyWeekLayout"));assert.match(read("pbs-living-support-export.js"),/fo:break-before="page"/);assert.match(read("pbs-living-support-export.js"),/OffCell/);console.log("Weekly layout and ODT styles present.");
