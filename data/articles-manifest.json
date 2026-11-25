@@ -1,16 +1,16 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-24T01:00:00.000Z",
+  "generatedAt": "2026-11-25T15:30:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 103,
-    "ot": 38,
+    "total": 104,
+    "ot": 39,
     "mind": 18,
-    "pbs": 24,
+    "pbs": 25,
     "education": 25,
     "management": 45,
-    "ai": 29,
+    "ai": 30,
     "notes": 17
   },
   "featuredReading": [
@@ -95,6 +95,55 @@
   },
   "articles": [
     {
+      "slug": "pbs-living-support-studio",
+      "title": "讓生活有預期，讓努力被看見",
+      "summary": "從個案研討與節能減碳小幫手的案例出發，探討如何將行為特質轉化為支持資源與有意義的職能，並透過 AML 生活支持工具工坊，將 PBS、ISP、個別化作息及兌點獎勵融入日常生活。",
+      "date": "2026-11-25",
+      "domains": [
+        "pbs",
+        "ot",
+        "ai"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [
+        "ot",
+        "ai"
+      ],
+      "tag": "PBS × OT & Human Occupation × AI × Practice",
+      "cardMeta": "2026.11.25 · PBS × OT & Human Occupation × AI × Practice",
+      "keywords": [
+        "PBS",
+        "正向行為支持",
+        "優勢觀點",
+        "個別化服務計畫",
+        "ISP",
+        "職能參與",
+        "個別化作息",
+        "每週作息",
+        "兌點獎勵",
+        "易讀資訊",
+        "AML實務工具",
+        "第104篇"
+      ],
+      "articlePath": "/articles/pbs-living-support-studio.html",
+      "order": -46,
+      "canonical": "https://allenmindlab.com/articles/pbs-living-support-studio",
+      "hero": "/images/articles/aml-104-pbs-living-support-studio-hero.webp",
+      "ogImage": "/images/articles/aml-104-pbs-living-support-studio-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 如夢幻泡影的十一天",
+          "href": "/articles/like-a-dream-or-bubble.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "like-a-dream-or-bubble",
       "title": "如夢幻泡影的十一天",
       "summary": "從十一天的執行長去而復返，思考關鍵人物風險、公司治理、組織韌性與全球經濟安全，重新理解人的有限性與制度的價值。",
@@ -133,6 +182,11 @@
           "kind": "previous",
           "label": "上一篇 ← 別只當個傳統的好員工：AI時代的職場能力新考題",
           "href": "/articles/ai-era-workplace-skills-new-challenge.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 讓生活有預期，讓努力被看見 →",
+          "href": "/articles/pbs-living-support-studio.html"
         }
       ],
       "readingPaths": [],
