@@ -1,0 +1,14 @@
+(()=>{"use strict";
+const $=id=>document.getElementById(id), gate=$("importConsent"),file=$("sourceFile"),read=$("readSource"),raw=$("sourceText"),use=$("useSource"),status=$("importStatus");let revision=0,busy=false;
+function sync(){file.disabled=!gate.checked||busy;read.disabled=!gate.checked||!file.files.length||busy;raw.disabled=!gate.checked||busy;use.disabled=!gate.checked||busy||!raw.value.trim();}
+gate.addEventListener("change",()=>{revision++;if(!gate.checked){file.value="";raw.value="";status.textContent="已清除匯入暫存資料。";}sync();});
+file.addEventListener("change",()=>{revision++;raw.value="";status.textContent="請按擷取文字。";sync();});raw.addEventListener("input",sync);
+read.addEventListener("click",async()=>{if(!gate.checked||busy||!file.files.length)return;const f=file.files[0],ticket=++revision;busy=true;raw.value="";sync();status.textContent="正在本機擷取文字…";try{if(f.size>5*1024*1024)throw new Error("檔案須小於或等於 5 MB。");const ext=f.name.split(".").pop().toLowerCase();let out="";
+if(ext==="txt"||ext==="csv"){out=await f.text();}
+else if(ext==="docx"){if(!globalThis.mammoth)throw new Error("Word 解析元件未載入，請改貼純文字。");const result=await mammoth.extractRawText({arrayBuffer:await f.arrayBuffer()});out=result.value;}
+else if(ext==="xlsx"){if(!globalThis.XLSX)throw new Error("Excel 解析元件未載入，請改貼純文字。");const wb=XLSX.read(await f.arrayBuffer(),{type:"array",sheetRows:201,cellFormula:false,cellHTML:false});if(wb.SheetNames.length>10)throw new Error("工作表超過 10 張，請另存需要的範圍。");let lines=[];for(const name of wb.SheetNames){const sheet=wb.Sheets[name];if(!sheet["!ref"])continue;const range=XLSX.utils.decode_range(sheet["!ref"]);if(range.e.r-range.s.r>=200||range.e.c-range.s.c>=30)throw new Error("工作表超過 200 列或 30 欄，請另存需要的範圍。");lines.push("【"+name+"】");for(const row of XLSX.utils.sheet_to_json(sheet,{header:1,raw:false,defval:"",blankrows:false})){lines.push(row.map(v=>String(v).trim()).filter(Boolean).join("｜"));}}out=lines.join("\n");}
+else throw new Error("目前支援 DOCX、XLSX、TXT、CSV。");
+if(ticket!==revision||!gate.checked)return;if(!out.trim())throw new Error("沒有擷取到文字，請確認文件內容。");if(out.length>30000)throw new Error("擷取文字超過 30,000 字，請縮小文件範圍。");raw.value=out;status.textContent="擷取完成。請刪除非目標內容、個資及表頭，每行保留一項約定。";
+}catch(e){if(ticket===revision&&gate.checked)status.textContent=e instanceof Error?e.message:"無法解析文件。";}finally{busy=false;sync();}});
+use.addEventListener("click",()=>{if(!gate.checked||busy)return;const lines=raw.value.split(/\r?\n/).map(v=>v.trim()).filter(Boolean);if(!lines.length||lines.length>12||lines.some(v=>v.length>250)){status.textContent="請整理為 1 至 12 行，每行不超過 250 字。";return;}if($("goals").value.trim()&&!window.confirm("以整理後的文字取代目前的目標欄位？"))return;$("goals").value=lines.join("\n");$("goals").dispatchEvent(new Event("change",{bubbles:true}));raw.value="";file.value="";gate.checked=false;revision++;sync();status.textContent="已帶入目標欄位並清除匯入暫存。請確認後生成草稿。";$("goals").focus();});sync();
+})();
