@@ -1,7 +1,7 @@
 name: PBS Living Support preview QA
 on:
   push:
-    branches: [feature/pbs-living-support]
+    branches: [feature/pbs-living-support, feature/pbs-living-support-ux]
 permissions:
   contents: read
 jobs:
@@ -52,7 +52,7 @@ jobs:
       - name: Simulate production build without deployment
         run: |
           node build-dist.mjs
-          for f in pbs-living-support.html pbs-living-support.css pbs-living-support.js pbs-living-support-ai.js pbs-living-support-cards.js pbs-living-support-export.js pbs-living-support-import.js pbs-living-support-rules.js pbs-companion-web.html pbs-companion-web.js tools.html; do
+          for f in pbs-living-support.html pbs-living-support.css pbs-living-support.js pbs-living-support-ai.js pbs-living-support-cards.js pbs-living-support-export.js pbs-living-support-import.js pbs-living-support-rules.js pbs-living-support-start.js pbs-companion-web.html pbs-companion-web.js tools.html; do
             test -s "dist/$f"
           done
           grep -q 'pbs-living-support.html' dist/tools.html
@@ -73,6 +73,8 @@ jobs:
           test -s /tmp/pbs-fixtures/fixture.docx
           test -s /tmp/pbs-fixtures/fixture.xlsx
       - run: node scripts/validate-pbs-living-support-browser.mjs
+        env:
+          AML_QA_ROOT: dist
       - name: Open generated ODT files in LibreOffice
         run: |
           for name in checklist easy-read guide custom-photo mono-checklist mono-easy; do
