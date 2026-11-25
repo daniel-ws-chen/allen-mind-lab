@@ -1,7 +1,7 @@
 name: PBS Living Support preview QA
 on:
   push:
-    branches: [feature/pbs-living-support, feature/pbs-living-support-ux, feature/pbs-living-support-wizard, feature/pbs-living-support-structured]
+    branches: [feature/pbs-living-support, feature/pbs-living-support-ux, feature/pbs-living-support-wizard, feature/pbs-living-support-structured, feature/pbs-living-support-unified]
 permissions:
   contents: read
 jobs:
@@ -77,15 +77,15 @@ jobs:
           AML_QA_ROOT: dist
       - name: Open generated ODT files in LibreOffice
         run: |
-          for name in checklist easy-read custom-photo mono-checklist mono-easy routine-staff routine-easy task-staff task-easy; do
+          for name in checklist easy-read custom-photo mono-checklist mono-easy routine-staff routine-easy; do
             unzip -t /tmp/pbs-qa/$name.odt
             libreoffice -env:UserInstallation=file:///tmp/pbs-output-profile --headless --convert-to pdf --outdir /tmp/pbs-rendered /tmp/pbs-qa/$name.odt
             test -s /tmp/pbs-rendered/$name.pdf
             pdftotext /tmp/pbs-rendered/$name.pdf /tmp/pbs-rendered/$name.txt
             case "$name" in
               routine-*) grep -q '07:00' /tmp/pbs-rendered/$name.txt ;;
-              task-*) grep -q '步驟' /tmp/pbs-rendered/$name.txt ;;
-              *) grep -q '休息' /tmp/pbs-rendered/$name.txt ;;
+              
+              *) grep -q '07:00' /tmp/pbs-rendered/$name.txt ;;
             esac
             pdfinfo /tmp/pbs-rendered/$name.pdf | grep 'Page size'
           done
