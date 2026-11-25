@@ -1,0 +1,32 @@
+(()=>{"use strict";
+const icons={
+rest:["休息卡",'<rect x="28" y="12" width="64" height="96" rx="9"/><path d="M48 35v30 M72 35v30" stroke-width="10"/>'],
+communication:["溝通卡",'<rect x="18" y="19" width="84" height="76" rx="8"/><path d="M32 33h56v32H63L45 81V65H32z"/><circle cx="44" cy="49" r="2"/><circle cx="60" cy="49" r="2"/><circle cx="76" cy="49" r="2"/>'],
+wait:["等待",'<circle cx="60" cy="59" r="39"/><path d="M60 34v26l19 12 M60 15v6 M60 97v6"/>'],
+help:["求助",'<circle cx="32" cy="33" r="12"/><path d="M12 100V75q0-25 20-25t20 25v25 M52 68l19-25"/><path d="M77 13q25 0 25 18 0 12-13 18-9 4-9 15 M80 77v2"/>'],
+brush:["刷牙",'<path d="M19 25q13-13 28-1 13-12 26 1 10 13-4 48-8 23-16 6l-6-19-7 19q-8 17-16-6Q10 38 19 25z"/><rect x="88" y="27" width="10" height="76" rx="4"/><path d="M88 26H77v29h11 M77 34h11 M77 44h11"/>'],
+meal:["用餐／收餐具",'<circle cx="60" cy="60" r="31"/><circle cx="60" cy="60" r="21"/><path d="M13 15v38q0 9 9 9v43 M22 15v38 M31 15v38q0 9-9 9 M105 15q-14 17-14 42h14v48"/>'],
+wash:["洗手",'<path d="M15 34h55V20H48 M27 34v15h30 M70 34h25v16H70 M79 62l-5 11 M91 62l-5 11 M18 93q15-16 31-9l17 9 22-10q14-5 17 4l-31 17H44z"/>'],
+sleep:["睡覺",'<path d="M12 51v53 M108 73v31 M14 86h94 M15 62h22q8 0 8 13 M46 63h45q17 0 17 22 M78 15q-13 25 15 33-31 13-38-10-5-17 23-23z"/>'],
+tidy:["整理物品",'<rect x="15" y="48" width="90" height="55" rx="5"/><path d="M15 65h90 M48 79h24 M30 48V20h25v28 M65 48V12h25v36"/>'],
+drink:["喝水",'<path d="M31 24h58l-9 79H40z M36 55h48"/><path d="M60 8v8"/>'],
+music:["聽音樂",'<path d="M49 86V24l48-10v60 M49 40l48-10"/><ellipse cx="34" cy="87" rx="15" ry="11"/><ellipse cx="82" cy="75" rx="15" ry="11"/>']
+};
+const mappings=[[/休息卡|休息圖卡/,"rest"],[/溝通卡|需求卡/,"communication"],[/等待/,"wait"],[/求助|幫忙/,"help"],[/刷牙/,"brush"],[/餐具|用餐|吃飯/,"meal"],[/洗手/,"wash"],[/睡覺|睡前|就寢/,"sleep"],[/整理|收拾物品/,"tidy"],[/喝水/,"drink"],[/音樂/,"music"]];
+function guess(text){const hits=mappings.filter(([re])=>re.test(text));return hits.length===1?hits[0][1]:"none";}
+function builtin(key){if(!icons[key])return null;const [alt,body]=icons[key];const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120"><rect width="120" height="120" rx="10" fill="white"/><g fill="none" stroke="#243b35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">'+body+'</g></svg>';return {src:"data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg),alt};}
+function imageNode(card){if(!card)return null;const img=document.createElement("img");img.src=card.src;img.alt=card.alt;img.className="support-pictogram";return img;}
+function resize(file){return new Promise((resolve,reject)=>{if(!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>5*1024*1024){reject(new Error("請選擇 5 MB 以內的 JPG、PNG 或 WebP。"));return;}const url=URL.createObjectURL(file),img=new Image();img.onload=()=>{try{if(img.naturalWidth*img.naturalHeight>24000000)throw new Error("圖片像素過大，請先縮小。");const scale=Math.min(1,720/Math.max(img.naturalWidth,img.naturalHeight)),c=document.createElement("canvas");c.width=Math.max(1,Math.round(img.naturalWidth*scale));c.height=Math.max(1,Math.round(img.naturalHeight*scale));const ctx=c.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,c.width,c.height);ctx.drawImage(img,0,0,c.width,c.height);resolve(c.toDataURL("image/jpeg",0.85));}catch(e){reject(e);}finally{URL.revokeObjectURL(url);}};img.onerror=()=>{URL.revokeObjectURL(url);reject(new Error("無法讀取圖片。"));};img.src=url;});}
+function editor(parent,text){const box=document.createElement("div");box.className="card-editor";const label=document.createElement("label");label.textContent="易讀圖卡";const select=document.createElement("select");for(const [value,title] of [["none","純文字（不使用圖卡）"],...Object.entries(icons).map(([k,v])=>[k,v[0]]),["custom","自訂照片"]]){const o=document.createElement("option");o.value=value;o.textContent=title;select.append(o);}select.value=guess(text);label.append(select);box.append(label);
+const upload=document.createElement("div"),consentLabel=document.createElement("label"),consent=document.createElement("input");consent.type="checkbox";consent.className="inline-check";consentLabel.append(consent," 我確認照片無可識別個資，且有權使用。");upload.append(consentLabel);const fl=document.createElement("label");fl.textContent="本機照片（JPG、PNG、WebP，最多 5 MB）";const file=document.createElement("input");file.type="file";file.accept="image/jpeg,image/png,image/webp";file.disabled=true;fl.append(file);upload.append(fl);const al=document.createElement("label");al.textContent="圖片替代文字（描述圖片所呈現的內容）";const alt=document.createElement("input");alt.maxLength=100;al.append(alt);upload.append(al);box.append(upload);const preview=document.createElement("div");preview.className="card-preview";box.append(preview);const status=document.createElement("p");status.setAttribute("role","status");box.append(status);parent.append(box);
+let src="",pending=false,seq=0;
+function get(){if(select.value==="none")return null;if(select.value==="custom")return src&&alt.value.trim()&&consent.checked&&!pending?{src,alt:alt.value.trim()}:null;return builtin(select.value);}
+function draw(){upload.hidden=select.value!=="custom";file.disabled=!consent.checked||pending;preview.replaceChildren();const card=get();if(card)preview.append(imageNode(card));else if(select.value==="custom")preview.textContent="請提供照片及替代文字。";}
+function invalidate(){box.dispatchEvent(new Event("input",{bubbles:true}));}
+select.addEventListener("change",()=>{seq++;pending=false;src="";file.value="";alt.value="";consent.checked=false;status.textContent="";draw();invalidate();});
+consent.addEventListener("change",()=>{if(!consent.checked){seq++;src="";file.value="";pending=false;alt.value="";}draw();invalidate();});
+alt.addEventListener("input",draw);
+file.addEventListener("change",async()=>{const ticket=++seq;src="";pending=true;draw();invalidate();try{if(!file.files.length)return;const result=await resize(file.files[0]);if(ticket!==seq||!consent.checked||select.value!=="custom")return;src=result;status.textContent="照片已於本機縮圖，請確認替代文字。";}catch(e){if(ticket===seq)status.textContent=e.message;}finally{if(ticket===seq){pending=false;draw();invalidate();}}});
+draw();return {get,valid:()=>select.value!=="custom"||!!get()};}
+globalThis.PBSLivingCards=Object.freeze({editor,imageNode});
+})();
