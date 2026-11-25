@@ -5,6 +5,41 @@ on:
 permissions:
   contents: read
 jobs:
+  site-integrity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Compare existing main and feature site validation
+        shell: bash
+        run: |
+          set +e
+          mkdir -p /tmp/aml-site-qa
+          git worktree add --detach /tmp/aml-main-baseline origin/main || exit 1
+          (cd /tmp/aml-main-baseline && node validate-aml.mjs) > /tmp/aml-site-qa/main.log 2>&1
+          baseline=$?
+          node validate-aml.mjs > /tmp/aml-site-qa/feature.log 2>&1
+          candidate=$?
+          cat /tmp/aml-site-qa/main.log
+          cat /tmp/aml-site-qa/feature.log
+          grep '^✗ ' /tmp/aml-site-qa/main.log | sort > /tmp/aml-site-qa/main-errors.txt
+          grep '^✗ ' /tmp/aml-site-qa/feature.log | sort > /tmp/aml-site-qa/feature-errors.txt
+          comm -13 /tmp/aml-site-qa/main-errors.txt /tmp/aml-site-qa/feature-errors.txt > /tmp/aml-site-qa/new-errors.txt
+          echo "Main exit: $baseline; feature exit: $candidate"
+          echo "New error lines:"
+          cat /tmp/aml-site-qa/new-errors.txt
+          if [ "$candidate" -ne 0 ]; then exit "$candidate"; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: aml-site-baseline-comparison
+          path: /tmp/aml-site-qa/
+          retention-days: 7
   smoke:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
@@ -13,8 +48,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate AML existing site
-        run: node validate-aml.mjs
       - run: node scripts/validate-pbs-living-support.mjs
       - name: Simulate production build without deployment
         run: |
