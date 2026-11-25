@@ -7,13 +7,46 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-24.04
-    timeout-minutes: 12
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - run: node scripts/validate-pbs-living-support.mjs
-      - run: npm install --no-save --ignore-scripts playwright@1.56.1
+      - run: npm install --no-save --ignore-scripts playwright@1.56.1 mammoth@1.8.0 xlsx@0.18.5
       - run: npx playwright install --with-deps chromium
+      - name: Prepare synthetic office documents and compatibility tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libreoffice-writer libreoffice-calc fonts-noto-cjk poppler-utils
+          mkdir -p /tmp/pbs-fixtures /tmp/pbs-rendered
+          printf '需要休息時使用休息卡\n' > /tmp/pbs-fixtures/fixture.txt
+          libreoffice -env:UserInstallation=file:///tmp/pbs-fixture-profile --headless --convert-to docx --outdir /tmp/pbs-fixtures /tmp/pbs-fixtures/fixture.txt
+          printf '目標,說明\n休息卡,需要休息時使用\n' > /tmp/pbs-fixtures/fixture.csv
+          libreoffice -env:UserInstallation=file:///tmp/pbs-fixture-profile --headless --convert-to xlsx --outdir /tmp/pbs-fixtures /tmp/pbs-fixtures/fixture.csv
+          test -s /tmp/pbs-fixtures/fixture.docx
+          test -s /tmp/pbs-fixtures/fixture.xlsx
       - run: node scripts/validate-pbs-living-support-browser.mjs
+      - name: Open generated ODT files in LibreOffice
+        run: |
+          for name in checklist easy-read guide custom-photo; do
+            unzip -t /tmp/pbs-qa/$name.odt
+            libreoffice -env:UserInstallation=file:///tmp/pbs-output-profile --headless --convert-to pdf --outdir /tmp/pbs-rendered /tmp/pbs-qa/$name.odt
+            test -s /tmp/pbs-rendered/$name.pdf
+            pdftotext /tmp/pbs-rendered/$name.pdf /tmp/pbs-rendered/$name.txt
+            grep -q '休息' /tmp/pbs-rendered/$name.txt
+            pdfinfo /tmp/pbs-rendered/$name.pdf | grep 'Page size'
+          done
+          pdfimages -list /tmp/pbs-rendered/custom-photo.pdf
+          test "$(pdfimages -list /tmp/pbs-rendered/custom-photo.pdf | tail -n +3 | wc -l)" -ge 1
+      - name: Preserve synthetic QA documents
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: pbs-synthetic-document-qa
+          path: |
+            /tmp/pbs-qa/
+            /tmp/pbs-rendered/
+          if-no-files-found: ignore
+          retention-days: 7
