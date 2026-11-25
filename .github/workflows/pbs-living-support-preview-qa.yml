@@ -1,7 +1,7 @@
 name: PBS Living Support preview QA
 on:
   push:
-    branches: [feature/pbs-living-support, feature/pbs-living-support-ux, feature/pbs-living-support-wizard, feature/pbs-living-support-structured, feature/pbs-living-support-unified]
+    branches: [feature/pbs-living-support, feature/pbs-living-support-ux, feature/pbs-living-support-wizard, feature/pbs-living-support-structured, feature/pbs-living-support-unified, feature/pbs-weekly-schedule-v13]
 permissions:
   contents: read
 jobs:
@@ -77,7 +77,7 @@ jobs:
           AML_QA_ROOT: dist
       - name: Open generated ODT files in LibreOffice
         run: |
-          for name in checklist easy-read custom-photo mono-checklist mono-easy routine-staff routine-easy; do
+          for name in checklist easy-read custom-photo mono-checklist mono-easy routine-staff routine-easy weekly-overview; do
             unzip -t /tmp/pbs-qa/$name.odt
             libreoffice -env:UserInstallation=file:///tmp/pbs-output-profile --headless --convert-to pdf --outdir /tmp/pbs-rendered /tmp/pbs-qa/$name.odt
             test -s /tmp/pbs-rendered/$name.pdf
@@ -89,6 +89,10 @@ jobs:
             esac
             pdfinfo /tmp/pbs-rendered/$name.pdf | grep 'Page size'
           done
+          unzip -p /tmp/pbs-qa/routine-staff.odt content.xml | grep -q 'table:style-name="OffCell"'
+          unzip -p /tmp/pbs-qa/routine-easy.odt content.xml | grep -q 'text:style-name="DayTitle"'
+          test "$(pdfinfo /tmp/pbs-rendered/routine-easy.pdf | awk '/^Pages:/ {print $2}')" -ge 7
+          test "$(pdfinfo /tmp/pbs-qa/weekly-days-browser.pdf | awk '/^Pages:/ {print $2}')" -ge 7
           pdfimages -list /tmp/pbs-rendered/custom-photo.pdf
           test "$(pdfimages -list /tmp/pbs-rendered/custom-photo.pdf | tail -n +3 | wc -l)" -ge 1
       - name: Package independent manual acceptance preview
