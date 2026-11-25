@@ -1,13 +1,17 @@
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 import {createServer} from "node:http";
-import {readFile} from "node:fs/promises";
+import {readFile, writeFile, mkdir} from "node:fs/promises";
+import {createRequire} from "node:module";
+const require=createRequire(import.meta.url);
 import {resolve,extname} from "node:path";
 const root=process.cwd(), mime={".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8"};
 const server=createServer(async(req,res)=>{try{const path=resolve(root,"."+new URL(req.url,"http://localhost").pathname);if(!path.startsWith(root+"/")){res.writeHead(403).end();return;}const data=await readFile(path);res.writeHead(200,{"Content-Type":mime[extname(path)]||"application/octet-stream"});res.end(data);}catch{res.writeHead(404).end();}});
 await new Promise(r=>server.listen(0,"127.0.0.1",r));const base="http://127.0.0.1:"+server.address().port;
-const browser=await chromium.launch({headless:true});const context=await browser.newContext({acceptDownloads:true});const page=await context.newPage();const errors=[];page.on("pageerror",e=>errors.push(e.message));await page.route("https://cdn.jsdelivr.net/**",route=>route.abort());
+const browser=await chromium.launch({headless:true});const context=await browser.newContext({acceptDownloads:true});const page=await context.newPage();const errors=[];page.on("pageerror",e=>errors.push(e.message));await page.route("https://cdn.jsdelivr.net/**",async route=>{const url=route.request().url();const module=url.includes("/mammoth@1.8.0/")?"mammoth/mammoth.browser.min.js":url.includes("/xlsx@0.18.5/")?"xlsx/dist/xlsx.full.min.js":null;if(module)await route.fulfill({path:require.resolve(module),contentType:"application/javascript"});else await route.abort();});
 try{
+ await mkdir("/tmp/pbs-qa",{recursive:true});
+ const save=async name=>{const pending=page.waitForEvent("download");await page.locator("#downloadOdt").click();const f=await pending;await f.saveAs("/tmp/pbs-qa/"+name+".odt");await page.waitForFunction(()=>!document.querySelector("#downloadOdt").disabled);};
  await page.goto(base+"/pbs-living-support.html");
  await page.locator("#demo").click();await page.locator("#plan button[type=submit]").click();
  assert.equal(await page.locator("#rows fieldset").count(),2);
@@ -16,11 +20,20 @@ try{
  assert.equal(await page.locator("#output").isVisible(),true);assert.equal(await page.locator("#paper tbody tr").count(),2);
  await page.locator("#version").selectOption("easy");assert.equal(await page.locator("#paper img").count(),2);
  assert.ok((await page.locator("#paper img").first().getAttribute("alt")).length);
- const download=page.waitForEvent("download");await page.locator("#downloadOdt").click();const d=await download;assert.equal(d.suggestedFilename(),"AML-PBS-easy-read.odt");await d.saveAs("/tmp/aml-pbs-easy-read.odt");
- await page.locator("#version").selectOption("guide");assert.match(await page.locator("#paper").innerText(),/不扣除/);
+ const download=page.waitForEvent("download");await page.locator("#downloadOdt").click();const d=await download;assert.equal(d.suggestedFilename(),"AML-PBS-easy-read.odt");await d.saveAs("/tmp/pbs-qa/easy-read.odt");await page.waitForFunction(()=>!document.querySelector("#downloadOdt").disabled);
+ await page.locator("#version").selectOption("guide");assert.match(await page.locator("#paper").innerText(),/不扣除/);await save("guide");
  await page.locator("#orientation").selectOption("landscape");assert.equal(await page.locator("#output").isVisible(),false);await page.locator("#reviewed").check();await page.locator("#preview").click();
- await page.locator("#version").selectOption("staff");const pdf=await page.pdf({format:"A4",landscape:true,printBackground:true});assert.equal(pdf.subarray(0,5).toString(),"%PDF-");
+ await page.locator("#version").selectOption("staff");const pdf=await page.pdf({format:"A4",landscape:true,printBackground:true});assert.equal(pdf.subarray(0,5).toString(),"%PDF-");await writeFile("/tmp/pbs-qa/checklist-browser.pdf",pdf);await save("checklist");
  await page.goto(base+"/pbs-living-support.html");await page.locator("#importConsent").check();await page.locator("#sourceFile").setInputFiles({name:"sample.txt",mimeType:"text/plain",buffer:Buffer.from("需要休息時使用休息卡\n使用溝通卡表達需求")});await page.locator("#readSource").click();await page.waitForFunction(()=>document.querySelector("#sourceText").value.includes("休息卡"));await page.locator("#useSource").click();assert.match(await page.locator("#goals").inputValue(),/休息卡/);assert.equal(await page.locator("#sourceText").inputValue(),"");
+ // Test actual parser libraries with synthetic fixtures, not personal information.
+ for(const [name,type,fixture] of [["fixture.docx","application/vnd.openxmlformats-officedocument.wordprocessingml.document","/tmp/pbs-fixtures/fixture.docx"],["fixture.xlsx","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","/tmp/pbs-fixtures/fixture.xlsx"]]){
+ await page.goto(base+"/pbs-living-support.html");await page.locator("#importConsent").check();await page.locator("#sourceFile").setInputFiles({name,mimeType:type,buffer:await readFile(fixture)});await page.locator("#readSource").click();await page.waitForFunction(()=>document.querySelector("#sourceText").value.includes("休息卡"));assert.match(await page.locator("#sourceText").inputValue(),/休息卡/);await page.locator("#importConsent").uncheck();assert.equal(await page.locator("#sourceText").inputValue(),"");
+ }
+ await page.goto(base+"/pbs-living-support.html");await page.locator("#demo").click();await page.locator("#plan button[type=submit]").click();
+ const card=page.locator(".card-editor").first();await card.locator("select").selectOption("custom");await card.locator('input[type="checkbox"]').check();
+ const png=await page.evaluate(()=>{const c=document.createElement("canvas");c.width=80;c.height=60;const x=c.getContext("2d");x.fillStyle="#468d72";x.fillRect(0,0,80,60);return c.toDataURL("image/png").split(",")[1];});
+ await card.locator('input[type="file"]').setInputFiles({name:"synthetic.png",mimeType:"image/png",buffer:Buffer.from(png,"base64")});await card.locator('input:not([type])').fill("綠色測試圖卡");await card.locator(".card-preview img").waitFor();
+ await page.locator("#reviewed").check();await page.locator("#preview").click();await page.locator("#version").selectOption("easy");assert.equal(await page.locator("#paper img").first().getAttribute("alt"),"綠色測試圖卡");await save("custom-photo");await writeFile("/tmp/pbs-qa/easy-browser.pdf",await page.pdf({format:"A4",printBackground:true}));
  await page.goto(base+"/pbs-companion-web.html");await page.locator("#targetBehavior").fill("匿名測試行為");await page.locator('input[name="functionClue"][value="escape"]').check();await page.locator("#analyzeBtn").click();assert.ok(await page.locator("#functionAnalysis").innerText());await page.locator("#reportBtn").click();assert.match(await page.locator("#reportOutput").innerText(),/功能假設/);
  await page.locator("#livingCandidates input").first().check();await page.locator("#livingConsent").check();await Promise.all([page.waitForURL("**/pbs-living-support.html"),page.locator("#livingTransfer").click()]);assert.match(await page.locator("#goals").inputValue(),/休息/);assert.equal(await page.evaluate(()=>sessionStorage.getItem("aml-pbs-living-transfer-v1")),null);
  await page.setViewportSize({width:390,height:844});assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1));
