@@ -85,6 +85,33 @@ jobs:
           done
           pdfimages -list /tmp/pbs-rendered/custom-photo.pdf
           test "$(pdfimages -list /tmp/pbs-rendered/custom-photo.pdf | tail -n +3 | wc -l)" -ge 1
+      - name: Package independent manual acceptance preview
+        run: |
+          mkdir -p /tmp/pbs-manual-preview
+          cp dist/pbs-living-support* dist/pbs-companion-web.html dist/pbs-companion-web.js dist/pbs-companion-web.css /tmp/pbs-manual-preview/
+          mkdir -p /tmp/pbs-manual-preview/vendor
+          cp node_modules/mammoth/mammoth.browser.min.js /tmp/pbs-manual-preview/vendor/
+          cp node_modules/xlsx/dist/xlsx.full.min.js /tmp/pbs-manual-preview/vendor/
+          cp node_modules/mammoth/LICENSE* /tmp/pbs-manual-preview/vendor/mammoth-LICENSE
+          cp node_modules/xlsx/LICENSE* /tmp/pbs-manual-preview/vendor/xlsx-LICENSE
+          python - <<'PY'
+          from pathlib import Path
+          root=Path('/tmp/pbs-manual-preview')
+          for name in ('pbs-living-support.html','pbs-companion-web.html'):
+              p=root/name
+              s=p.read_text()
+              s=s.replace('https://cdn.jsdelivr.net/npm/mammoth@1.13.0/mammoth.browser.min.js','vendor/mammoth.browser.min.js')
+              s=s.replace('https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js','vendor/xlsx.full.min.js')
+              p.write_text(s)
+          (root/'README.txt').write_text('AML PBS manual acceptance preview. Extract ZIP, then open pbs-living-support.html. Use synthetic or de-identified data only. Standalone preview; other AML site links may not work. For cross-tool sessionStorage testing, serve this directory via localhost HTTP. PDF uses browser print. External AI collaboration requires manual copy/paste. Not a production release.\n')
+          PY
+          (cd /tmp/pbs-manual-preview && sha256sum vendor/*.js > SHA256SUMS.txt)
+      - name: Preserve manual acceptance preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: pbs-manual-acceptance-preview
+          path: /tmp/pbs-manual-preview/
+          retention-days: 7
       - name: Preserve synthetic QA documents
         uses: actions/upload-artifact@v4
         if: always()
