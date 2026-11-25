@@ -344,6 +344,7 @@ function analyze(){
 }
 
 function renderAnalysis(a){
+  renderLiving(a);
   $("#analysisEmpty").hidden=true; $("#analysisResult").hidden=false;
   $("#functionAnalysis").innerHTML=a.functions.map(f=>`
     <div class="pbsw-function-card"><strong>${esc(f.role)}｜${esc(f.name)}</strong>
@@ -354,6 +355,22 @@ function renderAnalysis(a){
   fill("#consequenceStrategies",a.strategies.after);
   $("#cycleTable").innerHTML=a.cycles.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join("")}</tr>`).join("");
 }
+
+
+const livingOptions={
+ attention:["想與他人互動時，使用本人可行的呼喚或溝通方式。"],
+ escape:["需要休息時，使用本人可行的休息表達方式。","遇到困難時，使用本人可行的求助方式。","不願繼續活動時，使用本人可行的拒絕方式。"],
+ tangible:["想要物品或活動時，使用本人可行的需求表達方式。","在適合等待的情境中，使用已理解的等待提示。"],
+ sensory:["需要調節感官刺激時，選擇本人熟悉且安全的調節活動。"],
+ medical:[],unclear:[]
+};
+let livingReady=false;
+function resetLiving(){livingReady=false;$("#livingConsent").checked=false;$("#livingTransfer").disabled=true;$("#livingCandidates").textContent="請重新產生分析草稿。";$("#livingCustom").value="";}
+function renderLiving(a){resetLiving();livingReady=true;const out=$("#livingCandidates");out.replaceChildren();const candidates=unique(a.functions.flatMap(f=>livingOptions[f.key]||[]));if(!candidates.length)out.textContent="目前無適合自動建議的方向，請先確認需求或自行新增目標。";for(const goal of candidates){const label=document.createElement("label"),input=document.createElement("input");input.type="checkbox";input.value=goal;label.append(input,document.createTextNode(" "+goal));out.append(label,document.createElement("br"));}$("#livingStatus").textContent="請挑選適合的候選行為，必要時於下方自行改寫。";}
+$("#livingBridge").addEventListener("input",e=>{if(e.target.id!=="livingConsent")$("#livingConsent").checked=false;$("#livingTransfer").disabled=!(livingReady&&$("#livingConsent").checked);});
+$("#pbsForm").addEventListener("input",e=>{if(!$("#livingBridge").contains(e.target))resetLiving();});
+$("#pbsForm").addEventListener("change",e=>{if(!$("#livingBridge").contains(e.target))resetLiving();});
+$("#livingTransfer").addEventListener("click",()=>{if(!livingReady||!$("#livingConsent").checked)return;const goals=unique([...Array.from($("#livingCandidates").querySelectorAll("input:checked"),x=>x.value),...$("#livingCustom").value.split(/\r?\n/).map(s=>s.trim())]);if(!goals.length||goals.length>12||goals.some(x=>x.length>250)){ $("#livingStatus").textContent="請選擇或輸入 1 至 12 項，每項不超過 250 字。";return;}try{sessionStorage.setItem("aml-pbs-living-transfer-v1",JSON.stringify({created:Date.now(),goals}));location.assign("pbs-living-support.html");}catch{$("#livingStatus").textContent="瀏覽器不允許暫存，請手動複製目標至獨立工具。";}});
 
 $("#analyzeBtn").addEventListener("click",()=>{
   lastAnalysis=analyze(); if(lastAnalysis) renderAnalysis(lastAnalysis);
