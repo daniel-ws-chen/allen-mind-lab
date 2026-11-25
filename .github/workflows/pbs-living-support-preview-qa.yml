@@ -52,12 +52,12 @@ jobs:
       - name: Simulate production build without deployment
         run: |
           node build-dist.mjs
-          for f in pbs-living-support.html pbs-living-support.css pbs-living-support.js pbs-living-support-ai.js pbs-living-support-cards.js pbs-living-support-export.js pbs-living-support-import.js pbs-living-support-rules.js pbs-living-support-start.js pbs-living-support-structured.js pbs-companion-web.html pbs-companion-web.js tools.html; do
+          for f in pbs-living-support.html pbs-living-support.css pbs-living-support.js pbs-living-support-cards.js pbs-living-support-export.js pbs-living-support-import.js pbs-living-support-rules.js pbs-living-support-start.js pbs-living-support-structured.js pbs-companion-web.html pbs-companion-web.js tools.html; do
             test -s "dist/$f"
           done
           grep -q 'pbs-living-support.html' dist/tools.html
           grep -q 'pbs-living-support.html' dist/pbs-companion-web.html
-          grep -q 'pbs-living-support-ai.js' dist/pbs-living-support.html
+          ! grep -q 'pbs-living-support-ai.js' dist/pbs-living-support.html
           echo "Production build includes all PBS runtime files and both entrances."
       - run: npm install --no-save --ignore-scripts playwright@1.56.1 mammoth@1.13.0 https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz axe-core@4.10.3
       - run: npx playwright install --with-deps chromium
@@ -109,7 +109,7 @@ jobs:
               s=s.replace('https://cdn.jsdelivr.net/npm/mammoth@1.13.0/mammoth.browser.min.js','vendor/mammoth.browser.min.js')
               s=s.replace('https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js','vendor/xlsx.full.min.js')
               p.write_text(s)
-          (root/'README.txt').write_text('AML PBS manual acceptance preview. Extract ZIP, then open pbs-living-support.html. Use synthetic or de-identified data only. Standalone preview; other AML site links may not work. For cross-tool sessionStorage testing, serve this directory via localhost HTTP. PDF uses browser print. External AI collaboration requires manual copy/paste. Not a production release.\n')
+          (root/'README.txt').write_text('AML PBS manual acceptance preview. Extract ZIP, then open pbs-living-support.html. Use synthetic or de-identified data only. Standalone preview; other AML site links may not work. For cross-tool sessionStorage testing, serve this directory via localhost HTTP. PDF uses browser print. Support suggestions use local rules; no external AI service. Not a production release.\n')
           PY
           (cd /tmp/pbs-manual-preview && sha256sum vendor/*.js > SHA256SUMS.txt)
       - name: Preserve manual acceptance preview
