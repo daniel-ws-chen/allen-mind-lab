@@ -13,7 +13,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Validate AML existing site
+        run: node validate-aml.mjs
       - run: node scripts/validate-pbs-living-support.mjs
+      - name: Simulate production build without deployment
+        run: |
+          node build-dist.mjs
+          for f in pbs-living-support.html pbs-living-support.css pbs-living-support.js pbs-living-support-ai.js pbs-living-support-cards.js pbs-living-support-export.js pbs-living-support-import.js pbs-living-support-rules.js pbs-companion-web.html pbs-companion-web.js tools.html; do
+            test -s "dist/$f"
+          done
+          grep -q 'pbs-living-support.html' dist/tools.html
+          grep -q 'pbs-living-support.html' dist/pbs-companion-web.html
+          grep -q 'pbs-living-support-ai.js' dist/pbs-living-support.html
+          echo "Production build includes all PBS runtime files and both entrances."
       - run: npm install --no-save --ignore-scripts playwright@1.56.1 mammoth@1.13.0 https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz axe-core@4.10.3
       - run: npx playwright install --with-deps chromium
       - name: Prepare synthetic office documents and compatibility tools
