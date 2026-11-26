@@ -10,7 +10,7 @@
 <link href="pbs-companion-web.css" rel="stylesheet"/>
 <script defer="" src="https://cdn.jsdelivr.net/npm/mammoth@1.13.0/mammoth.browser.min.js"></script>
 <script defer="" src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
-<script defer="" src="pbs-companion-web.js"></script>
+<script defer src="/aml-document-export.js?v=1"></script><script defer src="pbs-companion-web.js?v=36-odt"></script>
 <link rel="canonical" href="https://allenmindlab.com/pbs-companion-web">
 </head>
 <body>
@@ -171,7 +171,7 @@
 <button class="pbsw-btn primary" id="reportBtn" type="button">產生完整報告初稿</button>
 <button class="pbsw-btn secondary" disabled="" id="copyReportBtn" type="button">複製報告</button>
 <button class="pbsw-btn secondary" disabled="" id="copyAiBtn" type="button">複製 AI 任務包</button>
-<button class="pbsw-btn secondary" disabled="" id="printBtn" type="button">列印／存成 PDF</button>
+<button class="pbsw-btn secondary" disabled="" id="odtBtn" type="button">下載可編輯報告（ODT）</button><button class="pbsw-btn secondary" disabled="" id="printBtn" type="button">列印／存成 PDF</button>
 </div>
 <article aria-live="polite" class="pbsw-report" id="reportOutput">
 <p class="pbsw-empty">尚未產生報告。</p>
