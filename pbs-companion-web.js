@@ -502,7 +502,7 @@ $("#reportBtn").addEventListener("click",()=>{
   lastAiPack=buildAiPack(lastAnalysis);
   $("#copyReportBtn").disabled=false;
   $("#copyAiBtn").disabled=false;
-  $("#printBtn").disabled=false;
+  $("#printBtn").disabled=false; $("#odtBtn").disabled=false;
 });
 
 async function copyText(value,button,label){
@@ -516,6 +516,7 @@ async function copyText(value,button,label){
 }
 $("#copyReportBtn").addEventListener("click",e=>copyText(lastReportText,e.currentTarget,"已複製報告"));
 $("#copyAiBtn").addEventListener("click",e=>copyText(lastAiPack,e.currentTarget,"已複製 AI 任務包"));
+$("#odtBtn").addEventListener("click",()=>AMLDocumentExport.save("PBS 行為分析與正向行為支持報告（初稿）",$("#reportOutput"),"AML-PBS-report"));
 $("#printBtn").addEventListener("click",()=>window.print());
 
 })();
