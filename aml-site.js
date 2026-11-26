@@ -234,22 +234,20 @@
     });
   }
 
+  const labItems = [
+{href:'/tools.html',label:'互動實驗室總覽',className:'aml-lab-subnav'},
+{href:'/tools.html#explore',label:'互動探索艙',className:'aml-lab-subnav aml-lab-subnav--explore'},
+{href:'/tools.html#challenge',label:'情境挑戰艙',className:'aml-lab-subnav'},
+{href:'/tools.html#support',label:'智能支援艙',className:'aml-lab-subnav aml-lab-subnav--support'},
+{href:'/tools.html#research',label:'統計實驗艙',className:'aml-lab-subnav'}
+];
+  function labLink(item){const a=document.createElement('a');a.href=item.href;a.className=item.className;a.textContent=item.label;return a}
+  function isLabLink(a){return a.tagName==='A' && /^\/(?:tools(?:\.html)?|tools-v2-preview\.html)(?:#.*)?$/.test(a.getAttribute('href')||'')}
   function buildDesktopNav() {
     document.querySelectorAll('.aml-desktop-links').forEach((links) => {
-      // Interactive Lab
-      if (!links.querySelector('.aml-nav-group[data-aml-lab-nav]')) {
-        const direct = Array.from(links.querySelectorAll('a.aml-nav-direct, a[href="/tools.html"]')).find((a) => {
-          const t = a.textContent.trim();
-          return t === 'Interactive Lab' || t === '互動實驗室';
-        });
-        if (direct) {
-          direct.replaceWith(makeDetails('互動實驗室', 'amlLabNav', [
-            {href:'/tools.html#lab-halls', className:'aml-lab-subnav aml-lab-subnav--explore', label:'互動探索艙'},
-            {href:'/tools.html#practice-tools', className:'aml-lab-subnav aml-lab-subnav--support', label:'智能支援艙'}
-          ]));
-        }
-      }
-
+      const existing=Array.from(links.querySelectorAll('.aml-nav-group')).find(d=>d.hasAttribute('data-aml-lab-nav')||['互動實驗室','Interactive Lab'].includes(d.querySelector('summary')?.textContent.trim()));
+      if(existing){existing.setAttribute('data-aml-lab-nav','true');const panel=existing.querySelector('.aml-nav-panel');if(panel)panel.replaceChildren(...labItems.map(labLink))}
+      else {const direct=Array.from(links.querySelectorAll('a')).find(a=>isLabLink(a)&&['互動實驗室','Interactive Lab'].includes(a.textContent.trim()));if(direct)direct.replaceWith(makeDetails('互動實驗室','amlLabNav',labItems))}
       // Advanced Self-Study Room — normalize legacy marker first, then inject only if absent.
       const existingStudyNav = links.querySelector(
         '.aml-nav-group[data-aml-study-nav], .aml-nav-group[data-aml-selfstudy-nav]'
@@ -299,22 +297,9 @@
 
   function buildMobileNav() {
     document.querySelectorAll('.aml-mobile-menu').forEach((menu) => {
-      // Interactive Lab section
-      const labels = Array.from(menu.querySelectorAll('.aml-mobile-label'));
-      const labLabel = labels.find(el => ['Interactive Lab','互動實驗室'].includes(el.textContent.trim()));
-      if (labLabel) {
-        labLabel.textContent = '互動實驗室';
-        let n = labLabel.nextElementSibling;
-        while (n && !n.classList.contains('aml-mobile-label')) {
-          const next=n.nextElementSibling;
-          if (n.matches('a[href="/tools.html"],a[href="/tools.html#lab-halls"],a[href="/tools.html#practice-tools"]')) n.remove();
-          n=next;
-        }
-        const explore=document.createElement('a'); explore.href='/tools.html#lab-halls'; explore.className='aml-lab-subnav aml-lab-subnav--explore'; explore.textContent='互動探索艙';
-        const support=document.createElement('a'); support.href='/tools.html#practice-tools'; support.className='aml-lab-subnav aml-lab-subnav--support'; support.textContent='智能支援艙';
-        labLabel.after(explore,support);
-      }
-
+      const labels=Array.from(menu.querySelectorAll('.aml-mobile-label'));
+      const labLabel=labels.find(el=>['Interactive Lab','互動實驗室'].includes(el.textContent.trim()));
+      if(labLabel){labLabel.textContent='互動實驗室';let n=labLabel.nextElementSibling;while(n&&!n.classList.contains('aml-mobile-label')){const next=n.nextElementSibling;if(isLabLink(n))n.remove();n=next}labLabel.after(...labItems.map(labLink))}
       // Self-study section: normalize to one label + three links.
       let studyLabel = Array.from(menu.querySelectorAll('.aml-mobile-label')).find(el => el.textContent.trim()==='進階自學室');
       if (!studyLabel) {
@@ -1203,27 +1188,24 @@
 /* AML Interactive Lab footer: keep the two bay entrances together site-wide. */
 (function () {
   function syncInteractiveLabFooter() {
-    document.querySelectorAll('.aml-footer-group').forEach((group) => {
-      const heading = group.querySelector('h4');
-      if (!heading) return;
-      const title = heading.textContent.trim();
-      if (title !== '互動實驗室' && title !== 'Interactive Lab') return;
-
-      heading.textContent = '互動實驗室';
-      group.querySelectorAll('a').forEach((link) => link.remove());
-
-      const explore = document.createElement('a');
-      explore.href = '/tools.html#lab-halls';
-      explore.className = 'aml-lab-subnav aml-lab-subnav--explore';
-      explore.textContent = '互動探索艙';
-
-      const support = document.createElement('a');
-      support.href = '/tools.html#practice-tools';
-      support.className = 'aml-lab-subnav aml-lab-subnav--support';
-      support.textContent = '智能支援艙';
-
-      group.appendChild(explore);
-      group.appendChild(support);
+    const items=[
+{href:'/tools.html',label:'互動實驗室總覽',className:'aml-lab-subnav'},
+{href:'/tools.html#explore',label:'互動探索艙',className:'aml-lab-subnav aml-lab-subnav--explore'},
+{href:'/tools.html#challenge',label:'情境挑戰艙',className:'aml-lab-subnav'},
+{href:'/tools.html#support',label:'智能支援艙',className:'aml-lab-subnav aml-lab-subnav--support'},
+{href:'/tools.html#research',label:'統計實驗艙',className:'aml-lab-subnav'}
+];
+    const isLab=a=>/^\/(?:tools(?:\.html)?|tools-v2-preview\.html)(?:#.*)?$/.test(a.getAttribute('href')||'');
+    document.querySelectorAll('.aml-footer-group').forEach(group=>{
+      const h=group.querySelector('h3,h4');if(!h)return;
+      const label=h.textContent.trim();
+      if(['學習與互動','互動實驗室','Interactive Lab'].includes(label)){
+        const old=Array.from(group.querySelectorAll('a')).filter(isLab);
+        if(!old.length&&label==='學習與互動')return;
+        const links=items.map(item=>{const a=document.createElement('a');a.href=item.href;a.className=item.className;a.textContent=item.label;return a});
+        if(old.length){old[0].before(...links);old.forEach(a=>a.remove())}else group.append(...links);
+      }
+      if(label==='資源與聯繫'&&!group.querySelector('a[href="/wish.html"]')){const a=document.createElement('a');a.href='/wish.html';a.textContent='AML Wish';const contact=group.querySelector('a[href="/contact.html"]');if(contact)contact.before(a);else group.append(a)}
     });
   }
 
