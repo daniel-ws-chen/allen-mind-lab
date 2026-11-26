@@ -60,7 +60,10 @@ function summaryLines(){
  l.push(["p","尊重本人意願、尊嚴、自主、參與及安全；立即危險或急性不適請先尋求緊急協助。完整資料另見完整紀錄。"]);return l;
 }
 function reportLines(){return reportMode==="summary"?summaryLines():fullReportLines()}
-function preview(){let r=$("report");r.replaceChildren();for(const [type,t] of reportLines())r.append(el(type==="title"?"h2":type==="h"?"h3":type==="sub"?"h4":"p",t));$("report-mode").value=reportMode;screen("output");$("output-title").focus()}
+const studyTitles=["先把事情看清楚","行為可能正在完成什麼？","看似有效，不一定真的有幫助","不要只阻止，也要教會新的方法","在情緒升高以前看見訊號","先接住，再回到支持"];
+function nextSupport(){const mapping=state.route==="case"?[0,1,2,2,3,2,4,5]:[0,1,2,2,3,4,5,2,0];let picks=[];mapping.forEach((n,i)=>{const a=state.answers[i];if((!a||a.status!=="本次不涉及"&&(a.status!=="已掌握"||!a.text.trim()))&&!picks.includes(n))picks.push(n)});$("study-suggestions").textContent=picks.length?"可優先精進："+picks.slice(0,3).map(n=>studyTitles[n]).join("、")+"。這些是依待確認題目提供的學習建議。":"可依需要選讀六堂自學短課，持續精進。";$("professional-note").textContent=state.route==="case"?"先補充必要觀察資料，與主管或專業人員討論，再共同進行功能分析與策略研擬。":"若仍有行為功能或支持策略疑問，可與專業團隊共同使用分析工具。";$("living-note").textContent=state.route==="care"?"將經本人及團隊確認的支持措施，轉化為每日或每週生活支持表。":"若已有經確認的生活支持方向，可進一步製作個人化支持表。"}
+async function copySummary(){if(!confirm("請確認摘要已充分去識別化。複製後請只貼到適當的工作環境，是否繼續？"))return;const value=summaryLines().map(x=>x[1]).join("\n");try{await navigator.clipboard.writeText(value);$("copy-status").textContent="已複製精簡摘要。請妥善管理剪貼簿資料。"}catch(e){$("copy-status").textContent="瀏覽器未允許複製，請改用報告下載或手動選取文字。"}}
+function preview(){let r=$("report");r.replaceChildren();for(const [type,t] of reportLines())r.append(el(type==="title"?"h2":type==="h"?"h3":type==="sub"?"h4":"p",t));$("report-mode").value=reportMode;nextSupport();$("copy-status").textContent="";screen("output");$("output-title").focus()}
 function download(blob,name){let url=URL.createObjectURL(blob),a=el("a");a.href=url;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 const enc=new TextEncoder(),mime="application/vnd.oasis.opendocument.text",xml=s=>String(s).replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\ufffe\uffff]/g,"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&apos;"}[c])).replace(/\r\n|\r|\n/g,"<text:line-break/>");
 function crc(b){let c=0xffffffff;for(let x of b){c^=x;for(let i=0;i<8;i++)c=c&1?0xedb88320^(c>>>1):c>>>1}return(c^0xffffffff)>>>0}
@@ -73,7 +76,7 @@ $("case").onclick=()=>start("case");$("care").onclick=()=>start("care");$("home"
 $("answer").oninput=()=>{state.answers[step].text=clean($("answer").value);save()};
 $("answer-status").onchange=()=>{state.answers[step].status=$("answer-status").value;help();save()};
 $("prev").onclick=()=>{if(step>0){step--;render()}};$("next").onclick=()=>{if(step<qs().length-1){step++;render()}else preview()};
-$("report-mode").onchange=()=>{reportMode=$("report-mode").value;preview()};$("edit").onclick=render;$("print").onclick=()=>window.print();$("odt").onclick=odt;
+$("report-mode").onchange=()=>{reportMode=$("report-mode").value;preview()};$("copy-summary").onclick=copySummary;$("edit").onclick=render;$("print").onclick=()=>window.print();$("odt").onclick=odt;
 $("demo").onclick=()=>{if(!confirm("載入教學案例會取代目前工作，是否繼續？"))return;state=blank();state.teaching=true;state.problem="白天踹櫃子後未取得代幣，晚間未取得餅乾而索取襪子；被要求休息後揮拳。護理師介入後仍生氣。";state.topic="物品需求";save();home();say("已載入第105篇改編教學案例，請選擇練習路徑。")};
 $("backup").onclick=()=>download(new Blob([JSON.stringify(state)],{type:"application/json"}),"aml-pbs-work-record.json");
 $("import").onchange=async e=>{let f=e.target.files[0];if(!f)return;try{if(f.size>2*1024*1024)throw Error("檔案太大");let n=normalize(JSON.parse(await f.text()));if(confirm("開啟紀錄會取代目前工作，是否繼續？")){state=n;save();home();say("已開啟工作紀錄，可選原路徑繼續。")}}catch(e){say("無法開啟工作紀錄："+e.message)}finally{$("import").value=""}};
