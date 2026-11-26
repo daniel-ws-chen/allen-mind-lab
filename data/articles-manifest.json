@@ -1,15 +1,15 @@
 {
   "schemaVersion": "1.0",
   "site": "Allen Mind Lab",
-  "generatedAt": "2026-11-25T15:30:00.000Z",
+  "generatedAt": "2026-11-26T08:30:00.000Z",
   "sourceOfTruth": "/data/articles-manifest.json",
   "counts": {
-    "total": 104,
+    "total": 105,
     "ot": 39,
     "mind": 18,
-    "pbs": 25,
+    "pbs": 26,
     "education": 25,
-    "management": 45,
+    "management": 46,
     "ai": 30,
     "notes": 17
   },
@@ -95,6 +95,49 @@
   },
   "articles": [
     {
+      "slug": "pbs-capable-environments",
+      "title": "PBS 不應只是一份計畫，而是生活情境的建構",
+      "summary": "從身心障礙者照顧日常出發，逐步拆解生活事件，探討行為理解、正向增強、生活結構、溝通支持、作息轉銜、情緒支持及團隊管理，提出七項基礎工程與六步驟改善循環。",
+      "date": "2026-11-26",
+      "domains": [
+        "pbs",
+        "management"
+      ],
+      "primaryDomain": "pbs",
+      "crossDomains": [
+        "management"
+      ],
+      "tag": "PBS × Management & Leadership",
+      "cardMeta": "2026.11.26 · PBS × Management & Leadership",
+      "keywords": [
+        "PBS",
+        "正向行為支持",
+        "生活情境",
+        "支持性環境",
+        "代幣制度",
+        "情緒行為支持",
+        "機構管理",
+        "第105篇"
+      ],
+      "articlePath": "/articles/pbs-capable-environments.html",
+      "order": -47,
+      "canonical": "https://allenmindlab.com/articles/pbs-capable-environments",
+      "hero": "/images/articles/pbs-capable-environments-hero.webp",
+      "ogImage": "/images/articles/pbs-capable-environments-hero.png",
+      "series": [],
+      "featured": false,
+      "featuredRank": null,
+      "navigation": [
+        {
+          "kind": "previous",
+          "label": "上一篇 ← 讓生活有預期，讓努力被看見",
+          "href": "/articles/pbs-living-support-studio.html"
+        }
+      ],
+      "readingPaths": [],
+      "isNote": false
+    },
+    {
       "slug": "pbs-living-support-studio",
       "title": "讓生活有預期，讓努力被看見",
       "summary": "從個案研討與節能減碳小幫手的案例出發，探討如何將行為特質轉化為支持資源與有意義的職能，並透過 AML 生活支持工具工坊，將 PBS、ISP、個別化作息及兌點獎勵融入日常生活。",
@@ -138,6 +181,11 @@
           "kind": "previous",
           "label": "上一篇 ← 如夢幻泡影的十一天",
           "href": "/articles/like-a-dream-or-bubble.html"
+        },
+        {
+          "kind": "next",
+          "label": "下一篇 PBS 不應只是一份計畫，而是生活情境的建構 →",
+          "href": "/articles/pbs-capable-environments.html"
         }
       ],
       "readingPaths": [],
