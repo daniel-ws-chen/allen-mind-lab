@@ -14,13 +14,13 @@
     "notes": 17
   },
   "featuredReading": [
+    "pbs-capable-environments",
+    "icf-life-function",
     "ai-era-workplace-skills-new-challenge",
-    "pbs-support-transition-real-life",
+    "ai-literacy-how-much-is-enough",
+    "why-learn-statistics-in-ai-era",
     "research-update-ai-digital-burnout-meditation",
-    "pbs-emotion-escalation-deescalation",
-    "ai-practice-refined-learning",
-    "ot-management-why-management-matters",
-    "ai-human-occupation-moho"
+    "bearing-virtue-inclusive-inner-outer-harmony"
   ],
   "series": {
     "pbs-core": {
@@ -846,7 +846,7 @@
       "articlePath": "/articles/icf-life-function.html",
       "order": -30,
       "canonical": "https://allenmindlab.com/articles/icf-life-function",
-      "hero": "/images/allen-banner.webp",
+      "hero": "/images/articles/icf-life-function-hero.webp",
       "ogImage": "/images/allen-banner.webp",
       "series": [
         {
