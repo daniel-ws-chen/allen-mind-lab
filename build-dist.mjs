@@ -223,7 +223,7 @@ function transform(html,filename,style){
   if(!open||top<open.length||bottom<=top||!/<\/head>/i.test(html))return html;
   const prefix=original.slice(open.length,top),directory=original.slice(top,bottom),visible=original.slice(bottom,-9);
   const footer=open.replace(/\bclass=(["'])([^"']*)\1/i,(_,q,c)=>`class=${q}${c} aml-garden-footer${q}`)+
-  `<div class="aml-garden-footer-mission"><strong>航行沒有終點，助人始終是方向。</strong><p lang="en">Building A Meaningful Life.</p><div class="aml-garden-footer-actions" role="navigation" aria-label="頁尾快速探索"><a href="/articles.html">探索知識館藏 →</a><a href="/reading-paths.html">從閱讀路徑開始 →</a><a href="/resources.html">探索精選資源 →</a><a href="/contact.html">聯繫 AML →</a><a href="/">← 回到首頁</a></div></div><div class="aml-garden-footer-info"><div class="aml-garden-footer-name">Allen Mind Lab</div><div class="aml-garden-footer-sub">一座移動的花園城市</div>${prefix}<details class="aml-garden-footer-directory"><summary>全站導覽</summary>${directory}</details>${visible}</div></footer>`;
+  `<div class="aml-garden-footer-mission"><strong>航行沒有終點，助人始終是方向。</strong><p lang="en">Building A Meaningful Life.</p><div class="aml-garden-footer-actions" role="navigation" aria-label="頁尾快速探索"><a href="/articles.html">探索知識館藏 →</a><a href="/reading-paths.html">從閱讀路徑開始 →</a><a href="/resources.html">探索精選資源 →</a><a href="/contribute.html">投稿與協作 →</a><a href="/contact.html">聯繫 AML →</a><a href="/">← 回到首頁</a></div></div><div class="aml-garden-footer-info"><div class="aml-garden-footer-name">Allen Mind Lab</div><div class="aml-garden-footer-sub">一座移動的花園城市</div>${prefix}<details class="aml-garden-footer-directory"><summary>全站導覽</summary>${directory}</details>${visible}</div></footer>`;
   // Preserve every existing footer anchor verbatim (including badges/legal links).
   if([...original.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/gi)].some(m=>!footer.includes(m[0])))throw new Error("Footer link preservation failed: "+filename);
   html=html.replace(original,footer).replace(/<\/head>/i,style+"</head>");
@@ -258,6 +258,35 @@ function addReadingRouteEntries(html) {
     .replace(/<span\b[^>]*class=["'][^"']*\baml-mobile-label\b[^"']*["'][^>]*>閱讀路徑<\/span>[\s\S]*?(?=<span\b[^>]*class=["'][^"']*\baml-mobile-label\b)/gi, extend));
 }
 
+function normalizePublicNavigation(html) {
+  const routes = [
+    ["/reading-paths.html","閱讀路徑總覽"],["/pbs-learning.html","PBS 實務學習"],["/management-learning.html","管理實務學習"],["/disability-learning.html","認識身心障礙"],["/ot-beyond-clinic-learning.html","OT Beyond the Clinic"],["/adhd-self-understanding-learning.html","ADHD × 自我理解"],["/helper-learning.html","助人者永續實踐"]
+  ];
+  const study = [["/self-study.html","進階自學室總覽"],["/management-self-study.html","管理學自學"],["/pbs-self-study.html","PBS 自學"],["/disability-self-study.html","認識身心障礙自學"]];
+  const anchors = entries => entries.map(([href,label])=>'<a href="'+href+'">'+label+'</a>').join("");
+  const order = (block,entries) => {
+    const links = [...block.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*>[\s\S]*?<\/a>/gi)];
+    if (!links.length) return block;
+    const known = new Set(entries.map(x=>x[0]));
+    const existing = new Map(links.filter(m=>known.has(m[1])).map(m=>[m[1],m[0]]));
+    const ordered = entries.map(e=>existing.get(e[0])||anchors([e])).join("");
+    let inserted=false;
+    return block.replace(/<a\b[^>]*href=["']([^"']+)["'][^>]*>[\s\S]*?<\/a>/gi,(a,href)=>{
+      if(!known.has(href))return a;
+      if(inserted)return "";
+      inserted=true;return ordered;
+    });
+  };
+  return html.replace(/<nav\b[^>]*\bclass=["'][^"']*\baml-global-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi, block=>{
+    let nav=block.replace(/<details\b[^>]*>\s*<summary>閱讀路徑<\/summary>[\s\S]*?<\/details>/gi,b=>order(b,routes))
+      .replace(/<span\b[^>]*class=["'][^"']*\baml-mobile-label\b[^"']*["'][^>]*>閱讀路徑<\/span>[\s\S]*?(?=<span\b[^>]*class=["'][^"']*\baml-mobile-label\b)/gi,b=>order(b,routes));
+    if(!/<summary>進階自學室<\/summary>/.test(nav)){
+      nav=nav.replace(/<details\b[^>]*>\s*<summary>互動實驗室<\/summary>/i,m=>'<details class="aml-nav-group" name="aml-primary-nav" data-aml-study-nav="true"><summary>進階自學室</summary><div class="aml-nav-panel">'+anchors(study)+'</div></details>'+m);
+    }
+    return nav;
+  });
+}
+
 function patchHtmlFiles(dir) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
@@ -267,7 +296,7 @@ function patchHtmlFiles(dir) {
     }
     if (!/\.html?$/i.test(name)) continue;
     const before = readFileSync(p, "utf8");
-    const after = transform(addReadingRouteEntries(addContributionEntry(ensureSkipLink(before))), name, gardenFooterStyle);
+    const after = transform(normalizePublicNavigation(addReadingRouteEntries(addContributionEntry(ensureSkipLink(before)))), name, gardenFooterStyle);
     if (after !== before) writeFileSync(p, after, "utf8");
   }
 }
