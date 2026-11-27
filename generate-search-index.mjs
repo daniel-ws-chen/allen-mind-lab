@@ -34,6 +34,7 @@ const STATIC_PAGES = [
   ['research.html','關於','研究'],
   ['publications.html','關於','出版與成果'],
   ['recognition.html','關於','專業肯定'],
+  ['contribute.html','關於','投稿與協作'],
   ['contact.html','關於','聯繫 AML']
 ];
 

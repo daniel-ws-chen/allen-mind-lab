@@ -233,6 +233,15 @@ function transform(html,filename,style){
   return html;
 }
 
+function addContributionEntry(html) {
+  // Only extend recognized global navigation and footer landmarks.
+  const entry = '<a href="/contribute.html">投稿與協作</a>';
+  return html.replace(/<(?:nav|footer)\b[^>]*\bclass=["'][^"']*\baml-global-(?:nav|footer)\b[^"']*["'][^>]*>[\s\S]*?<\/(?:nav|footer)>/gi, block => {
+    if (block.includes('href="/contribute.html"')) return block;
+    return block.replace(/<a\b[^>]*href=["']\/contact\.html["'][^>]*>聯繫 AML<\/a>/g, match => entry + match);
+  });
+}
+
 function patchHtmlFiles(dir) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
@@ -242,7 +251,7 @@ function patchHtmlFiles(dir) {
     }
     if (!/\.html?$/i.test(name)) continue;
     const before = readFileSync(p, "utf8");
-    const after = transform(ensureSkipLink(before), name, gardenFooterStyle);
+    const after = transform(addContributionEntry(ensureSkipLink(before)), name, gardenFooterStyle);
     if (after !== before) writeFileSync(p, after, "utf8");
   }
 }
