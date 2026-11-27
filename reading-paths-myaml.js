@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const key='amlMyAmlV1';
-  const allowed=new Set(['management','pbs','helper','adhd','ot','disability']);
+  const allowed=new Set(['management','pbs','helper','adhd','ot','disability','ai','statistics']);
   const formal={
     management:{key:'amlManagementSelfStudyV1',ids:['detective','direction','strategy','leadership','quality','systems']},
     pbs:{key:'amlPbsSelfStudyV1',ids:['abc','function','strategy','replacement','emotion','family']},
@@ -33,5 +33,7 @@
   });
   window.addEventListener('pageshow',sync);
   window.addEventListener('storage',e=>{if(e.key===key||Object.values(formal).some(t=>t.key===e.key))sync();});
+  const current=document.currentScript?.dataset.currentRoute;
+  if(allowed.has(current)){const s=read();s.recent=[current,...s.recent.filter(x=>x!==current)];write(s);}
   sync();
 })();
