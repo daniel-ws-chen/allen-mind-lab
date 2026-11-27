@@ -469,7 +469,9 @@
           "href": "/articles/correlation-vs-causation.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "statistics-evidence"
+      ],
       "isNote": false
     },
     {
@@ -512,7 +514,9 @@
           "href": "/articles/linear-regression-prediction.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "statistics-evidence"
+      ],
       "isNote": false
     },
     {
@@ -553,7 +557,9 @@
           "href": "/articles/confidence-interval-95-meaning.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "statistics-evidence"
+      ],
       "isNote": false
     },
     {
@@ -591,7 +597,9 @@
           "href": "/articles/sampling-distribution-central-limit-theorem.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "statistics-evidence"
+      ],
       "isNote": false
     },
     {
@@ -629,7 +637,9 @@
           "href": "/articles/confidence-interval-95-meaning.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "statistics-evidence"
+      ],
       "isNote": false
     },
     {
@@ -672,7 +682,9 @@
           "href": "/articles/sampling-distribution-central-limit-theorem.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "statistics-evidence"
+      ],
       "isNote": false
     },
     {
@@ -710,7 +722,9 @@
           "href": "/articles/why-learn-statistics-in-ai-era.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "statistics-evidence"
+      ],
       "isNote": false
     },
     {
@@ -744,7 +758,9 @@
       "featured": false,
       "featuredRank": null,
       "navigation": [],
-      "readingPaths": [],
+      "readingPaths": [
+        "statistics-evidence"
+      ],
       "isNote": false
     },
     {
@@ -1388,7 +1404,9 @@
           "href": "/articles/ai-literacy-how-much-is-enough.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "ai-practice"
+      ],
       "isNote": false
     },
     {
@@ -1465,7 +1483,9 @@
       "featuredRank": null,
       "featuredMeta": null,
       "navigation": [],
-      "readingPaths": [],
+      "readingPaths": [
+        "ai-practice"
+      ],
       "isNote": false
     },
     {
@@ -2010,7 +2030,9 @@
           "href": "/articles/resource-mapping-service-layout.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "ai-practice"
+      ],
       "isNote": false
     },
     {
@@ -2475,7 +2497,9 @@
           "href": "/articles/pbs-supportive-care-environment.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "ai-practice"
+      ],
       "isNote": false
     },
     {
@@ -2569,7 +2593,9 @@
           "href": "/articles/ai-human-occupation-moho.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "ai-practice"
+      ],
       "isNote": false
     },
     {
@@ -2613,7 +2639,9 @@
           "href": "/articles/if-life-had-a-homepage.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "helper"
+      ],
       "isNote": true
     },
     {
@@ -2698,7 +2726,9 @@
           "href": "/articles/adhd-adolescent-development-support.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "adhd"
+      ],
       "isNote": false
     },
     {
@@ -2791,7 +2821,9 @@
           "href": "/articles/adult-adhd-sensory-processing.html"
         }
       ],
-      "readingPaths": [],
+      "readingPaths": [
+        "adhd"
+      ],
       "isNote": false
     },
     {
@@ -2838,6 +2870,9 @@
           "label": "下一篇 在長大以前，我們能為 ADHD 青少年守住什麼？ →",
           "href": "/articles/adhd-adolescent-development-support.html"
         }
+      ],
+      "readingPaths": [
+        "helper"
       ]
     },
     {
@@ -2884,7 +2919,10 @@
           "href": "/articles/enter-the-play.html"
         }
       ],
-      "isNote": true
+      "isNote": true,
+      "readingPaths": [
+        "helper"
+      ]
     },
     {
       "slug": "schedule-empty-space",
@@ -2926,7 +2964,10 @@
           "href": "/articles/cultivation-first-thought.html"
         }
       ],
-      "isNote": true
+      "isNote": true,
+      "readingPaths": [
+        "helper"
+      ]
     },
     {
       "slug": "cultivation-first-thought",
@@ -3012,6 +3053,9 @@
           "label": "上一篇 ← 如何從一個案例出發，凝聚成集體力量？",
           "href": "/articles/ot-management-case-to-collective-action.html"
         }
+      ],
+      "readingPaths": [
+        "ot-beyond-clinic"
       ]
     },
     {
@@ -3058,6 +3102,9 @@
           "label": "下一篇 從倡議到普及：健康服務的最後一哩路 →",
           "href": "/articles/ot-management-health-service-last-mile.html"
         }
+      ],
+      "readingPaths": [
+        "ot-beyond-clinic"
       ]
     },
     {
@@ -3104,6 +3151,9 @@
           "label": "下一篇 如何從一個案例出發，凝聚成集體力量？ →",
           "href": "/articles/ot-management-case-to-collective-action.html"
         }
+      ],
+      "readingPaths": [
+        "ot-beyond-clinic"
       ]
     },
     {
@@ -3150,6 +3200,9 @@
           "label": "下一篇 專業如何成為制度優化的力量？ →",
           "href": "/articles/ot-management-professional-advocacy-system-improvement.html"
         }
+      ],
+      "readingPaths": [
+        "ot-beyond-clinic"
       ]
     },
     {
@@ -3196,6 +3249,9 @@
           "label": "下一篇 治療室以外：影響專業實踐的公共政策 →",
           "href": "/articles/ot-management-public-policy-professional-practice.html"
         }
+      ],
+      "readingPaths": [
+        "ot-beyond-clinic"
       ]
     },
     {
@@ -3242,6 +3298,9 @@
           "label": "下一篇 在不同領域，OT 怎麼提供真正需要的服務？ →",
           "href": "/articles/ot-management-needs-based-service-design.html"
         }
+      ],
+      "readingPaths": [
+        "ot-beyond-clinic"
       ]
     },
     {
@@ -3287,6 +3346,10 @@
           "label": "下一篇 醫療、復健與長照怎麼接？ →",
           "href": "/articles/ot-management-care-transition-continuity.html"
         }
+      ],
+      "readingPaths": [
+        "management",
+        "ot-beyond-clinic"
       ]
     },
     {
@@ -3332,6 +3395,9 @@
           "label": "下一篇 跨系統職能治療服務管理：如何把不同系統真正接起來？ →",
           "href": "/articles/ot-management-cross-system-service-integration.html"
         }
+      ],
+      "readingPaths": [
+        "ot-beyond-clinic"
       ]
     },
     {
@@ -3528,6 +3594,9 @@
           "label": "下一篇 從「情緒行為問題」到完整支持 →",
           "href": "/articles/autism-support-intervention-map.html"
         }
+      ],
+      "readingPaths": [
+        "pbs"
       ]
     },
     {
@@ -3712,6 +3781,9 @@
           "label": "下一站 當「被看見」成為高挑戰行為 →",
           "href": "/articles/pbs-being-seen.html"
         }
+      ],
+      "readingPaths": [
+        "pbs"
       ]
     },
     {
@@ -3769,6 +3841,9 @@
           "label": "下一站 助人者也需要被支持 →",
           "href": "/articles/helper-support-system.html"
         }
+      ],
+      "readingPaths": [
+        "pbs"
       ]
     },
     {
@@ -3827,6 +3902,10 @@
           "label": "下一站 知道怎麼做，和真的做得到，是兩回事 →",
           "href": "/articles/research-update-life-skills-bst-fire-safety.html"
         }
+      ],
+      "readingPaths": [
+        "pbs",
+        "helper"
       ]
     },
     {
@@ -3885,6 +3964,9 @@
           "label": "接著閱讀 當 AI 愈來愈強，人為什麼反而更需要修行？ →",
           "href": "/articles/ai-cultivation-inner-life.html"
         }
+      ],
+      "readingPaths": [
+        "helper"
       ]
     },
     {
@@ -4075,6 +4157,10 @@
           "label": "上一站 ← 每個單位都完成任務了，為什麼服務還是會斷掉？",
           "href": "/articles/management-pbs-cross-system-services.html"
         }
+      ],
+      "readingPaths": [
+        "pbs",
+        "management"
       ]
     },
     {
@@ -4132,6 +4218,9 @@
           "label": "下一站 讓改變走得更遠 →",
           "href": "/articles/ot-management-transition-support-life.html"
         }
+      ],
+      "readingPaths": [
+        "management"
       ]
     },
     {
@@ -4184,6 +4273,9 @@
           "label": "下一站 機會很多，但不是每一個都要抓住 →",
           "href": "/articles/ot-management-service-development-choice.html"
         }
+      ],
+      "readingPaths": [
+        "management"
       ]
     },
     {
@@ -4238,6 +4330,9 @@
           "label": "下一站 我們做了很多，然後呢？ →",
           "href": "/articles/ot-management-kpi-data-pdca.html"
         }
+      ],
+      "readingPaths": [
+        "management"
       ]
     },
     {
@@ -4292,6 +4387,9 @@
           "label": "下一站 走出治療室以後 →",
           "href": "/articles/pbs-support-transition-real-life.html"
         }
+      ],
+      "readingPaths": [
+        "pbs"
       ]
     },
     {
@@ -4343,6 +4441,9 @@
           "label": "下一篇 當管理沒有唯一正解：風格可以改變，核心不能漂移 →",
           "href": "/articles/management-no-single-right-answer.html"
         }
+      ],
+      "readingPaths": [
+        "helper"
       ]
     },
     {
@@ -4400,6 +4501,9 @@
           "label": "下一站 好的策略，不是從填 SWOT 開始 →",
           "href": "/articles/ot-management-strategy-swot.html"
         }
+      ],
+      "readingPaths": [
+        "management"
       ]
     },
     {
@@ -4454,6 +4558,9 @@
           "label": "下一篇 當 GPT 開始審 GPT →",
           "href": "/articles/ai-review-quality-collaboration.html"
         }
+      ],
+      "readingPaths": [
+        "helper"
       ]
     },
     {
@@ -4518,6 +4625,9 @@
           "label": "下一站 每個單位都完成任務了，為什麼服務還是會斷掉？ →",
           "href": "/articles/management-pbs-cross-system-services.html"
         }
+      ],
+      "readingPaths": [
+        "pbs"
       ]
     },
     {
@@ -4572,6 +4682,9 @@
           "label": "接著閱讀 當 AI 越來越會管事，管理者該如何帶人？ →",
           "href": "/articles/ai-manager-leadership-human-ai-collaboration.html"
         }
+      ],
+      "readingPaths": [
+        "ai-practice"
       ]
     },
     {
@@ -4636,6 +4749,9 @@
           "label": "下一站 組織為什麼存在？ →",
           "href": "/articles/ot-management-organizational-planning.html"
         }
+      ],
+      "readingPaths": [
+        "management"
       ]
     },
     {
@@ -4694,6 +4810,9 @@
           "label": "下一站 從管理決策到當責文化 →",
           "href": "/articles/ot-management-decision-accountability.html"
         }
+      ],
+      "readingPaths": [
+        "management"
       ]
     },
     {
@@ -4741,6 +4860,9 @@
           "label": "下一站 管理與領導：如何帶領團隊一起前進？ →",
           "href": "/articles/ot-management-leadership-team-change.html"
         }
+      ],
+      "readingPaths": [
+        "management"
       ]
     },
     {
@@ -4786,6 +4908,9 @@
           "label": "下一站 從管理五大功能到品質改善 →",
           "href": "/articles/ot-management-functions-quality-improvement.html"
         }
+      ],
+      "readingPaths": [
+        "management"
       ]
     },
     {
@@ -4882,6 +5007,9 @@
           "label": "下一站 危機現場真正重要的，不是制服一個人，而是讓所有人安全下來 →",
           "href": "/articles/pbs-crisis-safety-repair.html"
         }
+      ],
+      "readingPaths": [
+        "pbs"
       ]
     },
     {
@@ -4921,6 +5049,9 @@
           "label": "接著閱讀 AI 愈方便，人反而更需要留白？ →",
           "href": "/articles/research-update-ai-digital-burnout-meditation.html"
         }
+      ],
+      "readingPaths": [
+        "helper"
       ]
     },
     {
@@ -4974,6 +5105,9 @@
           "label": "下一站 好策略不是一個老師很厲害，而是整個系統知道怎麼支持 →",
           "href": "/articles/pbs-system-team-support.html"
         }
+      ],
+      "readingPaths": [
+        "helper"
       ]
     },
     {
@@ -5011,7 +5145,10 @@
           "href": "/articles/helper-support-system.html"
         }
       ],
-      "isNote": true
+      "isNote": true,
+      "readingPaths": [
+        "helper"
+      ]
     },
     {
       "slug": "medical-care-and-inner-practice",
