@@ -279,7 +279,9 @@ function normalizePublicNavigation(html) {
   };
   return html.replace(/<nav\b[^>]*\bclass=["'][^"']*\baml-global-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi, block=>{
     let nav=block.replace(/<details\b[^>]*>\s*<summary>閱讀路徑<\/summary>[\s\S]*?<\/details>/gi,b=>order(b,routes))
-      .replace(/<span\b[^>]*class=["'][^"']*\baml-mobile-label\b[^"']*["'][^>]*>閱讀路徑<\/span>[\s\S]*?(?=<span\b[^>]*class=["'][^"']*\baml-mobile-label\b)/gi,b=>order(b,routes));
+      .replace(/<span\b[^>]*class=["'][^"']*\baml-mobile-label\b[^"']*["'][^>]*>閱讀路徑<\/span>[\s\S]*?(?=<span\b[^>]*class=["'][^"']*\baml-mobile-label\b)/gi,b=>order(b,routes))
+      .replace(/<details\b[^>]*>\s*<summary>進階自學室<\/summary>[\s\S]*?<\/details>/gi,b=>order(b,study))
+      .replace(/<span\b[^>]*class=["'][^"']*\baml-mobile-label\b[^"']*["'][^>]*>進階自學室<\/span>[\s\S]*?(?=<span\b[^>]*class=["'][^"']*\baml-mobile-label\b)/gi,b=>order(b,study));
     if(!/<summary>進階自學室<\/summary>/.test(nav)){
       nav=nav.replace(/<details\b[^>]*>\s*<summary>互動實驗室<\/summary>/i,m=>'<details class="aml-nav-group" name="aml-primary-nav" data-aml-study-nav="true"><summary>進階自學室</summary><div class="aml-nav-panel">'+anchors(study)+'</div></details>'+m);
     }
