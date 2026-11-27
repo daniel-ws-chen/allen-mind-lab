@@ -188,11 +188,11 @@
     const order = [
       {href:'/articles.html', label:'探索主題館藏', className:'aml-collection-entry aml-collection-entry--overview'},
       {href:'/ot.html', label:'職能治療與人類職能', className:'aml-collection-entry aml-collection-entry--core aml-collection-entry--core-start'},
-      {href:'/pbs.html', label:'PBS 正向行為支持', className:'aml-collection-entry aml-collection-entry--core'},
-      {href:'/management.html', label:'管理與領導', className:'aml-collection-entry aml-collection-entry--core'},
-      {href:'/education.html', label:'教育與學習', className:'aml-collection-entry aml-collection-entry--core'},
-      {href:'/ai.html', label:'AI × 實務', className:'aml-collection-entry aml-collection-entry--core'},
       {href:'/mind.html', label:'身心與福祉', className:'aml-collection-entry aml-collection-entry--core'},
+      {href:'/pbs.html', label:'PBS 正向行為支持', className:'aml-collection-entry aml-collection-entry--core'},
+      {href:'/education.html', label:'教育與學習', className:'aml-collection-entry aml-collection-entry--core'},
+      {href:'/management.html', label:'管理與領導', className:'aml-collection-entry aml-collection-entry--core'},
+      {href:'/ai.html', label:'AI × 實務', className:'aml-collection-entry aml-collection-entry--core'},
       {href:'/notes.html', label:'AML 小品集', className:'aml-collection-entry aml-collection-entry--notes'},
       {href:'/library.html', label:'搜尋全部文章', className:'aml-collection-entry aml-collection-entry--library'}
     ];
@@ -1521,3 +1521,37 @@
   else init();
 })();
 /* ===== /AML Unified Article Footer v1 ===== */
+
+/* AML 3.7 — normalize global footer directory after legacy enrichments.
+   Keep every distinct legacy destination, and never touch article-specific navigation. */
+(function(){
+  const groups=[
+    ['關於 AML',[['/about.html','認識 AML'],['/research.html','研究'],['/publications.html','出版與成果'],['/recognition.html','專業肯定']]],
+    ['知識館藏',[['/articles.html','主題館藏'],['/library.html','完整館藏'],['/reading-paths.html','閱讀路徑'],['/search.html','搜尋 AML']]],
+    ['進階自學室',[['/self-study.html','進階自學室總覽'],['/management-self-study.html','管理學自學'],['/pbs-self-study.html','PBS 自學'],['/disability-self-study.html','認識身心障礙自學']]],
+    ['互動實驗室',[['/tools.html','互動實驗室總覽'],['/tools.html#explore','互動探索艙'],['/tools.html#challenge','情境挑戰艙'],['/tools.html#support','智能支援艙'],['/tools.html#research','統計實驗艙']]],
+    ['資源與聯繫',[['/resources.html','精選資源'],['/wish.html','AML Wish'],['/contribute.html','投稿與協作'],['/contact.html','聯繫 AML']]],
+    ['個人學習',[['/my-aml.html','我的 AML']]]
+  ];
+  function normalize(){
+    document.querySelectorAll('footer.aml-garden-footer .aml-footer-links').forEach(root=>{
+      const key=a=>{try{const u=new URL(a.getAttribute('href'),location.href);return u.origin===location.origin?u.pathname.replace(/\.html$/,'')+u.search+u.hash:u.href}catch(e){return a.getAttribute('href')}};
+      const old=Array.from(root.querySelectorAll('a[href]')),used=new Set();
+      const frag=document.createDocumentFragment();
+      groups.forEach(([title,entries])=>{
+        const group=document.createElement('div');group.className='aml-footer-group';
+        const h=document.createElement('h3');h.textContent=title;group.append(h);
+        entries.forEach(([href,label])=>{
+          const a=document.createElement('a');a.href=href;a.textContent=label;
+          const k=key(a),existing=old.find(x=>key(x)===k);
+          if(existing){a.className=existing.className;for(const attr of ['target','rel','title','aria-label'])if(existing.hasAttribute(attr))a.setAttribute(attr,existing.getAttribute(attr))}
+          used.add(k);group.append(a);
+        });frag.append(group);
+      });
+      const extras=old.filter(a=>{const k=key(a);if(used.has(k))return false;used.add(k);return true});
+      if(extras.length){const g=document.createElement('div');g.className='aml-footer-group';const h=document.createElement('h3');h.textContent='其他資源';g.append(h,...extras);frag.append(g)}
+      root.replaceChildren(frag);
+    });
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',normalize,{once:true});else normalize();
+})();
