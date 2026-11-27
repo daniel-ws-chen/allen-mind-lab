@@ -223,7 +223,7 @@ function transform(html,filename,style){
   if(!open||top<open.length||bottom<=top||!/<\/head>/i.test(html))return html;
   const prefix=original.slice(open.length,top),directory=original.slice(top,bottom),visible=original.slice(bottom,-9);
   const footer=open.replace(/\bclass=(["'])([^"']*)\1/i,(_,q,c)=>`class=${q}${c} aml-garden-footer${q}`)+
-  `<div class="aml-garden-footer-mission"><strong>航行沒有終點，助人始終是方向。</strong><p lang="en">Building A Meaningful Life.</p><div class="aml-garden-footer-actions" role="navigation" aria-label="頁尾快速探索"><a href="/reading-paths.html">從閱讀路徑開始 →</a><a href="/resources.html">探索精選資源 →</a><a href="/contact.html">聯繫 AML →</a><a href="/">← 回到首頁</a></div></div><div class="aml-garden-footer-info"><div class="aml-garden-footer-name">Allen Mind Lab</div><div class="aml-garden-footer-sub">一座移動的花園城市</div>${prefix}<details class="aml-garden-footer-directory"><summary>全站導覽</summary>${directory}</details>${visible}</div></footer>`;
+  `<div class="aml-garden-footer-mission"><strong>航行沒有終點，助人始終是方向。</strong><p lang="en">Building A Meaningful Life.</p><div class="aml-garden-footer-actions" role="navigation" aria-label="頁尾快速探索"><a href="/articles.html">探索知識館藏 →</a><a href="/reading-paths.html">從閱讀路徑開始 →</a><a href="/resources.html">探索精選資源 →</a><a href="/contact.html">聯繫 AML →</a><a href="/">← 回到首頁</a></div></div><div class="aml-garden-footer-info"><div class="aml-garden-footer-name">Allen Mind Lab</div><div class="aml-garden-footer-sub">一座移動的花園城市</div>${prefix}<details class="aml-garden-footer-directory"><summary>全站導覽</summary>${directory}</details>${visible}</div></footer>`;
   // Preserve every existing footer anchor verbatim (including badges/legal links).
   if([...original.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/gi)].some(m=>!footer.includes(m[0])))throw new Error("Footer link preservation failed: "+filename);
   html=html.replace(original,footer).replace(/<\/head>/i,style+"</head>");
@@ -242,6 +242,22 @@ function addContributionEntry(html) {
   });
 }
 
+function addReadingRouteEntries(html) {
+  const entries = [
+    ["/disability-learning.html","認識身心障礙"],
+    ["/ot-beyond-clinic-learning.html","OT Beyond the Clinic"],
+    ["/adhd-self-understanding-learning.html","ADHD × 自我理解"]
+  ];
+  const extend = block => {
+    const additions = entries.filter(([href]) => !block.includes('href="'+href+'"')).map(([href,label]) => '<a href="'+href+'">'+label+'</a>').join("");
+    if (!additions) return block;
+    return block.replace(/<a\b[^>]*href=["']\/helper-learning\.html["'][^>]*>[\s\S]*?<\/a>/i, match => match + additions);
+  };
+  return html.replace(/<nav\b[^>]*\bclass=["'][^"']*\baml-global-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi, block => block
+    .replace(/<details\b[^>]*>\s*<summary>閱讀路徑<\/summary>[\s\S]*?<\/details>/gi, extend)
+    .replace(/<span\b[^>]*class=["'][^"']*\baml-mobile-label\b[^"']*["'][^>]*>閱讀路徑<\/span>[\s\S]*?(?=<span\b[^>]*class=["'][^"']*\baml-mobile-label\b)/gi, extend));
+}
+
 function patchHtmlFiles(dir) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
@@ -251,7 +267,7 @@ function patchHtmlFiles(dir) {
     }
     if (!/\.html?$/i.test(name)) continue;
     const before = readFileSync(p, "utf8");
-    const after = transform(addContributionEntry(ensureSkipLink(before)), name, gardenFooterStyle);
+    const after = transform(addReadingRouteEntries(addContributionEntry(ensureSkipLink(before))), name, gardenFooterStyle);
     if (after !== before) writeFileSync(p, after, "utf8");
   }
 }
