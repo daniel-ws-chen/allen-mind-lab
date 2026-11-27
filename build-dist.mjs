@@ -307,8 +307,32 @@ const compactFooterPaths = new Set([
   "tools/self-awareness-summary/index.html"
 ]);
 const compactFooterStyle = "<style data-aml-compact-footer>\nfooter.aml-lab-mini-footer.aml-compact-footer{display:block!important;position:static!important;box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:32px 0 0!important;padding:0!important;border:0!important;background:#0c1927!important;color:#dce5eb!important;text-align:center!important}\n.aml-compact-footer .aml-compact-brand{padding:20px 5vw 16px;background:linear-gradient(125deg,#11292b,#25433f);border-bottom:1px solid #786f52;color:#f0d8a0;font-size:1.05rem;line-height:1.55;font-weight:700}\n.aml-compact-footer .aml-compact-brand span{display:block;margin:5px 0 0;color:#e0ebe4;font-size:.88rem;font-weight:400}\n.aml-compact-footer .aml-compact-body{max-width:1100px;margin:auto;padding:15px 5vw 18px;color:#dce5eb;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}\n.aml-compact-footer .aml-compact-body>div:first-child{color:#dce5eb!important;font-size:.85rem}\n.aml-compact-footer .aml-compact-body>div:first-child span{display:block;color:#dce5eb!important}\n.aml-compact-footer .aml-compact-body nav,.aml-compact-footer .aml-lab-mini-footer__links,.aml-compact-footer .aml-compact-extra{display:flex!important;position:static!important;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 14px;background:transparent!important;border:0!important;padding:0!important}\n.aml-compact-footer a{display:inline-flex!important;align-items:center;min-height:44px;color:#f0d8a0!important;text-decoration:underline!important;text-underline-offset:3px;font-size:.86rem}\n.aml-compact-footer a:focus-visible{outline:3px solid #f0d8a0!important;outline-offset:3px}\n.aml-compact-footer .aml-compact-copy{padding:0 5vw 15px;color:#dce5eb;font-size:.78rem}\n@media(max-width:620px){.aml-compact-footer .aml-compact-body{flex-direction:column;gap:5px}.aml-compact-footer .aml-compact-brand{padding:16px 5vw 12px}}\n@media print{html body footer.aml-lab-mini-footer.aml-compact-footer{display:none!important}}\n</style>";
+
+const compactFooterPhase2 = new Set([
+  "tools/sensory/index.html",
+  "tools/energy-rhythm/index.html",
+  "tools/confidence-interval-lab/index.html",
+  "tools/sample-size-planner/index.html",
+  "tools/management-coach/index.html"
+]);
+const compactFooterPhase2Style = "<style data-aml-compact-phase2>\nfooter.aml-lab-mini-footer.aml-compact-footer .aml-compact-legacy{width:100%;max-width:100%;color:#dce5eb!important;line-height:1.65;overflow-wrap:anywhere}\n.aml-compact-footer .aml-compact-legacy .self-lab-footer__inner,.aml-compact-footer .aml-compact-legacy .aml-lab-footer__inner{display:flex!important;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 18px;margin:0 auto!important;padding:0!important;width:100%;max-width:100%;color:#dce5eb!important}\n.aml-compact-footer .aml-compact-legacy strong,.aml-compact-footer .aml-compact-legacy span{color:#dce5eb!important}\n.aml-compact-footer .aml-compact-legacy a{background:transparent!important;border:0!important;padding:0 5px!important;min-width:0!important;flex:0 1 auto!important}\n.aml-compact-footer .aml-compact-legacy nav{width:auto!important;max-width:100%}\n@media print{html body footer.aml-lab-mini-footer.aml-compact-footer{display:none!important}.aml-compact-print-note{display:block!important;color:#222!important;font-size:10pt;margin:12px 0}}\n@media screen{.aml-compact-print-note{display:none!important}}\n</style>";
+function prepareIndependentFooter(html, relativePath) {
+  if (!compactFooterPhase2.has(relativePath)) return html;
+  const matches = [...html.matchAll(/<footer\b[^>]*>[\s\S]*?<\/footer>/gi)];
+  if (matches.length !== 1 || !/<\/head>/i.test(html)) throw new Error("Independent footer structure changed: "+relativePath);
+  const original = matches[0][0];
+  const open = original.match(/^<footer\b[^>]*>/i)[0];
+  const inner = original.slice(open.length,-9);
+  const updated = '<footer class="aml-lab-mini-footer" aria-label="工具頁尾"><div class="aml-compact-legacy">'+inner+'</div><nav aria-label="工具快速導覽"><a href="/tools.html">互動實驗室</a><a href="/">回到首頁</a></nav></footer>';
+  const printNote = relativePath === "tools/sample-size-planner/index.html" ? '<div class="aml-compact-print-note">'+inner+'</div>' : "";
+  const out = html.replace(original,updated+printNote).replace(/<\/head>/i,compactFooterPhase2Style+"</head>");
+  if (!out.includes(inner)) throw new Error("Independent footer content lost: "+relativePath);
+  return out;
+}
+
 function transformCompactFooter(html, relativePath) {
-  if (!compactFooterPaths.has(relativePath) || html.includes('data-aml-compact-footer')) return html;
+  if ((!compactFooterPaths.has(relativePath) && !compactFooterPhase2.has(relativePath)) || html.includes('data-aml-compact-footer')) return html;
+  html = prepareIndependentFooter(html, relativePath);
   const pattern = /<footer\b[^>]*\bclass=["'][^"']*\baml-lab-mini-footer\b[^"']*["'][^>]*>[\s\S]*?<\/footer>/gi;
   const matches = [...html.matchAll(pattern)];
   if (matches.length !== 1 || !/<\/head>/i.test(html)) throw new Error("Compact footer structure changed: "+relativePath);
