@@ -11,7 +11,8 @@
     pbs:{title:'PBS 實務學習路徑',meta:'PBS',href:'/pbs-learning.html'},
     helper:{title:'助人者永續實踐',meta:'HELPER',href:'/helper-learning.html'},
     adhd:{title:'ADHD × 自我理解',meta:'SELF-UNDERSTANDING',href:'/adhd-self-understanding-learning.html'},
-    ot:{title:'OT Beyond the Clinic',meta:'OCCUPATIONAL THERAPY',href:'/ot-beyond-clinic-learning.html'}
+    ot:{title:'OT Beyond the Clinic',meta:'OCCUPATIONAL THERAPY',href:'/ot-beyond-clinic-learning.html'},
+    disability:{title:'認識身心障礙學習路徑',meta:'DISABILITY SUPPORT',href:'/disability-learning.html'}
   };
   const readJSON = key => { try { const raw=localStorage.getItem(key); return raw ? JSON.parse(raw) : null; } catch(e){ return null; } };
   const has = key => { try { return localStorage.getItem(key) !== null; } catch(e){ return false; } };
