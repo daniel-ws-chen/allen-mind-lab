@@ -260,7 +260,7 @@ function addReadingRouteEntries(html) {
 
 function normalizePublicNavigation(html) {
   const routes = [
-    ["/reading-paths.html","閱讀路徑總覽"],["/pbs-learning.html","PBS 實務學習"],["/management-learning.html","管理實務學習"],["/disability-learning.html","認識身心障礙"],["/ot-beyond-clinic-learning.html","OT Beyond the Clinic"],["/adhd-self-understanding-learning.html","ADHD × 自我理解"],["/helper-learning.html","助人者永續實踐"]
+    ["/reading-paths.html","閱讀路徑總覽"],["/pbs-learning.html","PBS 實務學習"],["/disability-learning.html","認識身心障礙"],["/management-learning.html","管理實務學習"],["/ot-beyond-clinic-learning.html","OT Beyond the Clinic"],["/ai-practice-learning.html","AI × 專業實踐"],["/statistics-evidence-learning.html","統計與證據思維"],["/adhd-self-understanding-learning.html","ADHD × 自我理解"],["/helper-learning.html","助人者永續實踐"]
   ];
   const study = [["/self-study.html","進階自學室總覽"],["/management-self-study.html","管理學自學"],["/pbs-self-study.html","PBS 自學"],["/disability-self-study.html","認識身心障礙自學"]];
   const anchors = entries => entries.map(([href,label])=>'<a href="'+href+'">'+label+'</a>').join("");
