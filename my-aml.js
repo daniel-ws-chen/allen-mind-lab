@@ -7,6 +7,8 @@
   };
   const personalKey='amlMyAmlV1';
   const routes={
+    ai:{title:'AI × 專業實踐',meta:'AI PRACTICE',href:'/ai-practice-learning.html'},
+    statistics:{title:'統計與證據思維',meta:'STATISTICS & EVIDENCE',href:'/statistics-evidence-learning.html'},
     management:{title:'管理實務學習路徑',meta:'MANAGEMENT',href:'/management-learning.html'},
     pbs:{title:'PBS 實務學習路徑',meta:'PBS',href:'/pbs-learning.html'},
     helper:{title:'助人者永續實踐',meta:'HELPER',href:'/helper-learning.html'},
