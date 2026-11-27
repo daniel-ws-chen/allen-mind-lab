@@ -1,10 +1,11 @@
 (() => {
   'use strict';
   const key='amlMyAmlV1';
-  const allowed=new Set(['management','pbs','helper','adhd','ot']);
+  const allowed=new Set(['management','pbs','helper','adhd','ot','disability']);
   const formal={
     management:{key:'amlManagementSelfStudyV1',ids:['detective','direction','strategy','leadership','quality','systems']},
-    pbs:{key:'amlPbsSelfStudyV1',ids:['abc','function','strategy','replacement','emotion','family']}
+    pbs:{key:'amlPbsSelfStudyV1',ids:['abc','function','strategy','replacement','emotion','family']},
+    disability:{key:'amlDisabilitySelfStudyV1',ids:['system','icf','profiles','support','pbs','communication','aac','aging','judgment']}
   };
   const read=()=>{try{const raw=localStorage.getItem(key);const s=raw?JSON.parse(raw):{};return {saved:Array.isArray(s.saved)?s.saved.filter(x=>allowed.has(x)):[],recent:Array.isArray(s.recent)?s.recent.filter(x=>allowed.has(x)):[]};}catch(e){return {saved:[],recent:[]};}};
   const write=s=>{try{localStorage.setItem(key,JSON.stringify({saved:s.saved.slice(0,12),recent:s.recent.slice(0,5)}));}catch(e){}};
@@ -14,8 +15,8 @@
     const s=loadFormal(t),a=s.articles||{},g=s.games||{};
     let n=0;t.ids.forEach(k=>{if(a[k])n++;if(g[k])n++;});
     if(s.quiz&&s.quiz.passed)return {label:'已完訓',state:'complete'};
-    if(n===12)return {label:'核心完成 · 待總複習',state:'ready'};
-    if(n>0)return {label:`已有正式進度 · ${n}/12`,state:'progress'};
+    if(n===t.ids.length*2)return {label:'核心完成 · 待總複習',state:'ready'};
+    if(n>0)return {label:`已有正式進度 · ${n}/${t.ids.length*2}`,state:'progress'};
     return null;
   };
   const routeState=(id,s)=>formalState(id) || (s.saved.includes(id)?{label:'已加入 My AML',state:'saved'}:s.recent.includes(id)?{label:'最近開啟',state:'recent'}:{label:'尚未開始',state:'new'});
