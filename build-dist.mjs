@@ -245,7 +245,7 @@ function addContributionEntry(html) {
 function addReadingRouteEntries(html) {
   const entries = [
     ["/disability-learning.html","認識身心障礙"],
-    ["/ot-beyond-clinic-learning.html","OT Beyond the Clinic"],
+    ["/ot-beyond-clinic-learning.html","跨越治療室"],
     ["/adhd-self-understanding-learning.html","ADHD × 自我理解"]
   ];
   const extend = block => {
@@ -260,7 +260,7 @@ function addReadingRouteEntries(html) {
 
 function normalizePublicNavigation(html) {
   const routes = [
-    ["/reading-paths.html","閱讀路徑總覽"],["/pbs-learning.html","PBS 實務學習"],["/disability-learning.html","認識身心障礙"],["/management-learning.html","管理實務學習"],["/ot-beyond-clinic-learning.html","OT Beyond the Clinic"],["/ai-practice-learning.html","AI × 專業實踐"],["/statistics-evidence-learning.html","統計與證據思維"],["/adhd-self-understanding-learning.html","ADHD × 自我理解"],["/helper-learning.html","助人者永續實踐"]
+    ["/reading-paths.html","閱讀路徑總覽"],["/pbs-learning.html","PBS 實務學習"],["/disability-learning.html","認識身心障礙"],["/management-learning.html","管理實務學習"],["/ot-beyond-clinic-learning.html","跨越治療室"],["/ai-practice-learning.html","AI × 專業實踐"],["/statistics-evidence-learning.html","統計與證據思維"],["/adhd-self-understanding-learning.html","ADHD × 自我理解"],["/helper-learning.html","助人者永續實踐"]
   ];
   const study = [["/self-study.html","進階自學室總覽"],["/management-self-study.html","管理學自學"],["/pbs-self-study.html","PBS 自學"],["/disability-self-study.html","認識身心障礙自學"]];
   const anchors = entries => entries.map(([href,label])=>'<a href="'+href+'">'+label+'</a>').join("");
@@ -269,7 +269,7 @@ function normalizePublicNavigation(html) {
     if (!links.length) return block;
     const known = new Set(entries.map(x=>x[0]));
     const existing = new Map(links.filter(m=>known.has(m[1])).map(m=>[m[1],m[0]]));
-    const ordered = entries.map(e=>existing.get(e[0])||anchors([e])).join("");
+    const ordered = entries.map(e=>e[0]==='/ot-beyond-clinic-learning.html'?anchors([e]):(existing.get(e[0])||anchors([e]))).join("");
     let inserted=false;
     return block.replace(/<a\b[^>]*href=["']([^"']+)["'][^>]*>[\s\S]*?<\/a>/gi,(a,href)=>{
       if(!known.has(href))return a;
@@ -279,7 +279,9 @@ function normalizePublicNavigation(html) {
   };
   return html.replace(/<nav\b[^>]*\bclass=["'][^"']*\baml-global-nav\b[^"']*["'][^>]*>[\s\S]*?<\/nav>/gi, block=>{
     let nav=block.replace(/<details\b[^>]*>\s*<summary>閱讀路徑<\/summary>[\s\S]*?<\/details>/gi,b=>order(b,routes))
-      .replace(/<span\b[^>]*class=["'][^"']*\baml-mobile-label\b[^"']*["'][^>]*>閱讀路徑<\/span>[\s\S]*?(?=<span\b[^>]*class=["'][^"']*\baml-mobile-label\b)/gi,b=>order(b,routes));
+      .replace(/<span\b[^>]*class=["'][^"']*\baml-mobile-label\b[^"']*["'][^>]*>閱讀路徑<\/span>[\s\S]*?(?=<span\b[^>]*class=["'][^"']*\baml-mobile-label\b)/gi,b=>order(b,routes))
+      .replace(/<details\b[^>]*>\s*<summary>進階自學室<\/summary>[\s\S]*?<\/details>/gi,b=>order(b,study))
+      .replace(/<span\b[^>]*class=["'][^"']*\baml-mobile-label\b[^"']*["'][^>]*>進階自學室<\/span>[\s\S]*?(?=<span\b[^>]*class=["'][^"']*\baml-mobile-label\b)/gi,b=>order(b,study));
     if(!/<summary>進階自學室<\/summary>/.test(nav)){
       nav=nav.replace(/<details\b[^>]*>\s*<summary>互動實驗室<\/summary>/i,m=>'<details class="aml-nav-group" name="aml-primary-nav" data-aml-study-nav="true"><summary>進階自學室</summary><div class="aml-nav-panel">'+anchors(study)+'</div></details>'+m);
     }
