@@ -289,6 +289,39 @@ function normalizePublicNavigation(html) {
   });
 }
 
+
+const compactFooterPaths = new Set([
+  "tools/ai-cocreation-lab/index.html",
+  "tools/ai-collaboration-principles/index.html",
+  "tools/ai-judgment-challenge/index.html",
+  "tools/management-advanced/index.html",
+  "tools/management-advanced/case001.html",
+  "tools/management-advanced/case002.html",
+  "tools/management-decision-lab/index.html",
+  "tools/management-fairness-challenge/index.html",
+  "tools/management-interactive/index.html",
+  "tools/management-self-study/index.html",
+  "tools/management-summary/index.html",
+  "tools/pbs-function-challenge/index.html",
+  "tools/pbs-summary/index.html",
+  "tools/self-awareness-summary/index.html"
+]);
+const compactFooterStyle = "<style data-aml-compact-footer>\nfooter.aml-lab-mini-footer.aml-compact-footer{display:block!important;position:static!important;box-sizing:border-box!important;width:100%!important;max-width:none!important;margin:32px 0 0!important;padding:0!important;border:0!important;background:#0c1927!important;color:#dce5eb!important;text-align:center!important}\n.aml-compact-footer .aml-compact-brand{padding:20px 5vw 16px;background:linear-gradient(125deg,#11292b,#25433f);border-bottom:1px solid #786f52;color:#f0d8a0;font-size:1.05rem;line-height:1.55;font-weight:700}\n.aml-compact-footer .aml-compact-brand span{display:block;margin:5px 0 0;color:#e0ebe4;font-size:.88rem;font-weight:400}\n.aml-compact-footer .aml-compact-body{max-width:1100px;margin:auto;padding:15px 5vw 18px;color:#dce5eb;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px}\n.aml-compact-footer .aml-compact-body>div:first-child{color:#dce5eb!important;font-size:.85rem}\n.aml-compact-footer .aml-compact-body>div:first-child span{display:block;color:#dce5eb!important}\n.aml-compact-footer .aml-compact-body nav,.aml-compact-footer .aml-lab-mini-footer__links,.aml-compact-footer .aml-compact-extra{display:flex!important;position:static!important;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 14px;background:transparent!important;border:0!important;padding:0!important}\n.aml-compact-footer a{display:inline-flex!important;align-items:center;min-height:44px;color:#f0d8a0!important;text-decoration:underline!important;text-underline-offset:3px;font-size:.86rem}\n.aml-compact-footer a:focus-visible{outline:3px solid #f0d8a0!important;outline-offset:3px}\n.aml-compact-footer .aml-compact-copy{padding:0 5vw 15px;color:#dce5eb;font-size:.78rem}\n@media(max-width:620px){.aml-compact-footer .aml-compact-body{flex-direction:column;gap:5px}.aml-compact-footer .aml-compact-brand{padding:16px 5vw 12px}}\n@media print{html body footer.aml-lab-mini-footer.aml-compact-footer{display:none!important}}\n</style>";
+function transformCompactFooter(html, relativePath) {
+  if (!compactFooterPaths.has(relativePath) || html.includes('data-aml-compact-footer')) return html;
+  const pattern = /<footer\b[^>]*\bclass=["'][^"']*\baml-lab-mini-footer\b[^"']*["'][^>]*>[\s\S]*?<\/footer>/gi;
+  const matches = [...html.matchAll(pattern)];
+  if (matches.length !== 1 || !/<\/head>/i.test(html)) throw new Error("Compact footer structure changed: "+relativePath);
+  const original = matches[0][0];
+  const open = original.match(/^<footer\b[^>]*>/i)[0];
+  const inner = original.slice(open.length,-9);
+  const extra = inner.includes('href="/my-aml.html"') || inner.includes('href="/my-aml"') ? "" : '<div class="aml-compact-extra"><a href="/my-aml.html">我的 AML</a></div>';
+  const updated = open.replace(/\bclass=(["'])([^"']*)\1/i,(_,q,c)=>"class="+q+c+" aml-compact-footer"+q)
+    + '<div class="aml-compact-brand">Allen Mind Lab<span>航行沒有終點，助人始終是方向。</span></div><div class="aml-compact-body">'+inner+extra+'</div><div class="aml-compact-copy">© 2026 Allen Mind Lab</div></footer>';
+  if ([...original.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/gi)].some(m=>!updated.includes(m[0]))) throw new Error("Compact footer link preservation failed: "+relativePath);
+  return html.replace(original,updated).replace(/<\/head>/i,compactFooterStyle+"</head>");
+}
+
 function patchHtmlFiles(dir) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
@@ -298,7 +331,7 @@ function patchHtmlFiles(dir) {
     }
     if (!/\.html?$/i.test(name)) continue;
     const before = readFileSync(p, "utf8");
-    const after = transform(normalizePublicNavigation(addReadingRouteEntries(addContributionEntry(ensureSkipLink(before)))), name, gardenFooterStyle);
+    const after = transformCompactFooter(transform(normalizePublicNavigation(addReadingRouteEntries(addContributionEntry(ensureSkipLink(before)))), name, gardenFooterStyle), p.slice(dist.length+1).split('\\').join('/'));
     if (after !== before) writeFileSync(p, after, "utf8");
   }
 }
