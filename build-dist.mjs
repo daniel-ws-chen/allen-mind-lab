@@ -213,6 +213,26 @@ function ensureSkipLink(html) {
   return html;
 }
 
+
+const gardenFooterStyle = "<style data-aml-garden-footer>\nfooter.aml-global-footer.aml-garden-footer{display:block!important;position:static!important;width:100%!important;max-width:none!important;margin:0!important;padding:0!important;background:#11292b!important;color:#e0ebe4!important;border:0!important;text-align:center!important;box-sizing:border-box}\n.aml-garden-footer *{box-sizing:border-box}\n.aml-garden-footer .aml-garden-footer-mission{display:block;position:static;max-width:none;margin:0;padding:clamp(42px,7vw,88px) 6vw;background:#11292b;color:#e0ebe4;text-align:center;border-bottom:1px solid #58716b}\n.aml-garden-footer .aml-garden-footer-mission strong{display:block;font-size:clamp(1.4rem,3.3vw,2.55rem);line-height:1.5;letter-spacing:.02em;color:#f0d8a0;font-weight:800}\n.aml-garden-footer .aml-garden-footer-mission p{font-size:1rem;line-height:1.6;letter-spacing:.06em;margin:14px 0 24px;color:#e4c78e;font-weight:700}\n.aml-garden-footer .aml-garden-footer-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:center}\n.aml-garden-footer .aml-garden-footer-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 18px;border:1px solid #b8a378;border-radius:999px;background:#183a3a;color:#f0d8a0!important;font-weight:700;text-decoration:none;line-height:1.5}\n.aml-garden-footer .aml-garden-footer-actions a:hover{background:#254b48;text-decoration:underline}\n.aml-garden-footer .aml-garden-footer-info{max-width:1200px;margin:auto;padding:30px 5vw 24px}\n.aml-garden-footer .aml-garden-footer-name{font-family:Georgia,\"Times New Roman\",serif;font-size:1.4rem;color:#f0d8a0;line-height:1.5}\n.aml-garden-footer .aml-garden-footer-sub{color:#d3e3da;font-size:.9rem;margin:4px 0 16px}\n.aml-garden-footer details.aml-garden-footer-directory{display:block;position:static;width:100%;max-width:none;margin:0 auto 18px;padding:0;border:1px solid #58716b;border-radius:12px;background:transparent;color:#e0ebe4;text-align:left}\n.aml-garden-footer details.aml-garden-footer-directory>summary{display:list-item;cursor:pointer;padding:12px 18px;min-height:44px;color:#f1d9a5;font-weight:700;text-align:center;list-style-position:inside}\n.aml-garden-footer details.aml-garden-footer-directory:not([open])>.aml-footer-top{display:none!important}\n.aml-garden-footer details.aml-garden-footer-directory[open]>.aml-footer-top{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:20px!important;padding:20px!important;margin:0;border-top:1px solid #58716b;text-align:left}\n.aml-garden-footer .aml-footer-links{display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr))!important;gap:22px!important}\n.aml-garden-footer .aml-footer-brand,.aml-garden-footer .aml-footer-tagline,.aml-garden-footer .aml-footer-group h3,.aml-garden-footer .aml-footer-group h4{color:#f1d9a5!important}\n.aml-garden-footer .aml-footer-copy,.aml-garden-footer .aml-footer-group a,.aml-garden-footer .aml-footer-bottom,.aml-garden-footer .aml-footer-mini-links a{color:#e0ebe4!important}\n.aml-garden-footer .aml-footer-bottom{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:14px!important;border-top:1px solid #58716b!important;padding:20px 0 0!important;text-align:center!important;margin:0!important}\n.aml-garden-footer .aml-footer-mini-links{display:flex!important;justify-content:center!important;align-items:center!important;flex-wrap:wrap!important;gap:12px 18px!important}\n.aml-garden-footer .aml-footer-mini-links a{display:inline-flex;align-items:center;min-height:32px}\n.aml-garden-footer a:focus-visible,.aml-garden-footer summary:focus-visible{outline:3px solid #f0d8a0!important;outline-offset:3px}\n.aml-garden-footer .aml-garden-footer-actions a:focus-visible{outline-color:#f0d8a0!important}\n@media(max-width:520px){.aml-garden-footer .aml-garden-footer-actions{gap:8px}.aml-garden-footer .aml-garden-footer-actions a{flex:1 1 42%;padding:9px 8px}.aml-garden-footer .aml-garden-footer-info{padding:24px 5vw}}\n</style>";
+function transform(html,filename,style){
+  if(html.includes('data-aml-garden-footer'))return html;
+  const pattern=/<footer\b[^>]*\bclass=["'][^"']*\baml-global-footer\b[^"']*["'][^>]*>[\s\S]*?<\/footer>/i;
+  const original=html.match(pattern)?.[0];if(!original)return html;
+  const open=original.match(/^<footer\b[^>]*>/i)?.[0];const top=original.search(/<div\b[^>]*\bclass=["'][^"']*\baml-footer-top\b[^"']*["']/i);const bottom=original.search(/<div\b[^>]*\bclass=["'][^"']*\baml-footer-bottom\b[^"']*["']/i);
+  if(!open||top<open.length||bottom<=top||!/<\/head>/i.test(html))return html;
+  const prefix=original.slice(open.length,top),directory=original.slice(top,bottom),visible=original.slice(bottom,-9);
+  const footer=open.replace(/\bclass=(["'])([^"']*)\1/i,(_,q,c)=>`class=${q}${c} aml-garden-footer${q}`)+
+  `<div class="aml-garden-footer-mission"><strong>航行沒有終點，助人始終是方向。</strong><p lang="en">Building A Meaningful Life.</p><div class="aml-garden-footer-actions" role="navigation" aria-label="頁尾快速探索"><a href="/reading-paths.html">從閱讀路徑開始 →</a><a href="/resources.html">探索精選資源 →</a><a href="/contact.html">聯繫 AML →</a><a href="/">← 回到首頁</a></div></div><div class="aml-garden-footer-info"><div class="aml-garden-footer-name">Allen Mind Lab</div><div class="aml-garden-footer-sub">一座移動的花園城市</div>${prefix}<details class="aml-garden-footer-directory"><summary>全站導覽</summary>${directory}</details>${visible}</div></footer>`;
+  // Preserve every existing footer anchor verbatim (including badges/legal links).
+  if([...original.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/gi)].some(m=>!footer.includes(m[0])))throw new Error("Footer link preservation failed: "+filename);
+  html=html.replace(original,footer).replace(/<\/head>/i,style+"</head>");
+  // About's existing closing block is represented by the shared brand mission.
+  // Only remove the exact known block, never other page-specific ending content.
+  if(filename==="about.html")html=html.replace(/<section class="ending">\s*<h2>航行沒有終點，助人始終是方向。<\/h2>\s*<p>Building A Meaningful Life\.<\/p>\s*<p>ALLEN MIND LAB<\/p>\s*<div class="about-actions">\s*<a class="btn" href="reading-paths\.html">從閱讀路徑開始 →<\/a>\s*<a class="btn-secondary" href="resources\.html">探索精選資源 →<\/a>\s*<a class="btn-secondary" href="contact\.html">聯繫 AML →<\/a>\s*<a class="btn-secondary" href="index\.html">← 回到首頁<\/a>\s*<\/div>\s*<\/section>/,"");
+  return html;
+}
+
 function patchHtmlFiles(dir) {
   for (const name of readdirSync(dir)) {
     const p = join(dir, name);
@@ -222,7 +242,7 @@ function patchHtmlFiles(dir) {
     }
     if (!/\.html?$/i.test(name)) continue;
     const before = readFileSync(p, "utf8");
-    const after = ensureSkipLink(before);
+    const after = transform(ensureSkipLink(before), name, gardenFooterStyle);
     if (after !== before) writeFileSync(p, after, "utf8");
   }
 }
